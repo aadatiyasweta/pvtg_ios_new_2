@@ -34,6 +34,6 @@ class CategoryCell: UICollectionViewCell {
     func setdata(data: Category?) {
         guard let data = data else {return}
         loadImage(data.image, imgcategory, activity: nil, defaultImage: nil)
-            self.lblCategory.text = data.name
+        self.lblCategory.text = data.name
     }
 }

@@ -17,12 +17,12 @@ open class FSPagerViewCell: UICollectionViewCell {
         if let _ = _textLabel {
             return _textLabel
         }
-        let view = UIView(frame: CGRect(x: 10, y: 5, width: self.contentView.frame.size.width, height: 25.0))
+        let view = UIView(frame: CGRect(x: 0, y: 5, width: self.contentView.frame.size.width, height: 25.0))
             view.isUserInteractionEnabled = false
             view.backgroundColor = .clear
-            let textLabel = MarqueeLabel(frame: CGRect(x: 0, y: 0, width: self.contentView.frame.size.width, height: 25.0))
+            let textLabel = MarqueeLabel(frame: CGRect(x: 0, y: 0, width: self.contentView.frame.size.width, height: 30))
             textLabel.textColor = .white
-        textLabel.font = UIFont(name: Fonts.medium.rawValue, size: 12.0)
+        textLabel.font = UIFont(name: Fonts.bold.rawValue, size: 16)
             textLabel.textAlignment = .center
             
 

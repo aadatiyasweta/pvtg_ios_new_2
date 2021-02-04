@@ -19,7 +19,7 @@ import AVFoundation
 import GooglePlaces
 import GoogleMaps
 import GoogleSignIn
-
+import FirebaseAuth
 
 
 @UIApplicationMain

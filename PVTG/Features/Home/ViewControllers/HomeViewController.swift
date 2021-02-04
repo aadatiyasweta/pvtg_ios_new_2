@@ -144,33 +144,89 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 cell.trailingConstrainOuterview.constant = 0
             }
         }
-        if id == indexPath.row {
-            cell.vwcategory.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
-            cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#06d9bd"))
-            cell.lblCategory.textColor = .white
-        } else {
-            cell.vwcategory.backgroundColor = .white
-            cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#E2E2E2"))
-            cell.lblCategory.textColor = .black
-        }
+        if self.categoryArr.count == 2{
+            if self.categoryArr[1].image == ""{
+                if indexPath.row == 0{
+                    cell.vwcategory.backgroundColor = .white
+                    cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#E2E2E2"))
+                    cell.lblCategory.textColor = .black
+                    cell.setdata(data:categoryArr[indexPath.row])
+                }else{
+                    cell.imgcategory.image = #imageLiteral(resourceName: "star")
+                    cell.lblCategory.textColor = .white
+                    cell.vwcategory.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
+                    cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#06d9bd"))
+                    cell.lblCategory.text = categoryArr[indexPath.row].name
+                }
+                
+            }else{
+                if id == indexPath.row {
+                    cell.vwcategory.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
+                    cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#06d9bd"))
+                    cell.lblCategory.textColor = .white
+                } else {
+                    cell.vwcategory.backgroundColor = .white
+                    cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#E2E2E2"))
+                    cell.lblCategory.textColor = .black
+                }
+                cell.setdata(data:categoryArr[indexPath.row])
+            }
+        }else{
+            if id == indexPath.row {
+                cell.vwcategory.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
+                cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#06d9bd"))
+                cell.lblCategory.textColor = .white
+            } else {
+                cell.vwcategory.backgroundColor = .white
+                cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#E2E2E2"))
+                cell.lblCategory.textColor = .black
+            }
             cell.setdata(data:categoryArr[indexPath.row])
+        }
+    
+       
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 let text = categoryArr[indexPath.row].name
+        
+      //  let fontAttributes = [NSAttributedString.Key.font: UIFont.init(name: Fonts.regular.rawValue, size: 12)]
+      //  let new = (text as NSString).size(withAttributes: fontAttributes as [NSAttributedString.Key : Any])
+    
              let label = UILabel(frame: CGRect.zero)
                 label.text = text
                 label.sizeToFit()
         return CGSize(width: label.frame.size.width + 71, height: 65)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if id == indexPath.row {
-            id = -1
-        } else {
-            id = indexPath.row
+        if self.categoryArr.count == 2{
+            if self.categoryArr[1].image == ""{
+                if indexPath.row == 0{
+                      loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+                }else{
+                    let vc = TransformerExampleViewController.instance()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }else{
+                if id == indexPath.row {
+                    id = -1
+                } else {
+                    id = indexPath.row
+                }
+                loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+            }
+            
+        }else{
+            if id == indexPath.row {
+                id = -1
+            } else {
+                id = indexPath.row
+            }
+            loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
         }
-        loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+        
+       
     }
 }
 
@@ -254,9 +310,14 @@ extension HomeViewController: GetHomeData {
         self.categoryArr.removeAll()
         self.categoryArr.append(Category(name: "Top Search", image: topSearch, id: ""))
         guard let data = self.homevm.model?.all_category else { return }
-        for i in data{
-            self.categoryArr.append(Category(name: i.category_name ?? "", image: i.category_image ?? "", id: i.category_id ?? ""))
+        if data.count == 0{
+             self.categoryArr.append(Category(name: "Add Interests for more recommendations", image: "", id: ""))
+        }else{
+            for i in data{
+                self.categoryArr.append(Category(name: i.category_name ?? "", image: i.category_image ?? "", id: i.category_id ?? ""))
+            }
         }
+       
         if self.homevm.model?.all_result?.count == 0 {
             self.lblNoSession.text = "No sessions"
         } else {

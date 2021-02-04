@@ -15,6 +15,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     // @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var parentView: UIView!
     
+    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var colectionVw: UICollectionView!{
         didSet {
             colectionVw.delegate = self
@@ -36,6 +37,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     var mealType:String = "Breakfast"
     var level:String = "Medium"
     var closureOK : (String,String) -> () = { _,_  in}
+    var fromSignUp = false
     fileprivate let imageNames = ["vectorSmartObject-10","vectorSmartObject-20","vectorSmartObject-30","vectorSmartObject-40","vectorSmartObject00"]
     fileprivate let backimageNames = ["shape3Copy4","shape3Copy","shape3Copy2","shape3Copy3"]
 
@@ -93,6 +95,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         fileprivate var typeIndexx = 0 {
             didSet {
                 // let type = self.transformerTypes[typeIndex]
+                
                 self.pagerView.transformer = FSPagerViewTransformer(type:.ferrisWheel)
                 self.pagerView.interitemSpacing = 0
                     self.pagerView.itemSize = CGSize(width: 70, height: 70)
@@ -100,6 +103,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
                 self.pagerView.decelerationDistance = FSPagerView.automaticDistance
             }
         }
+    
     
     
     
@@ -135,6 +139,8 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
             selector: #selector(self.scrollTo),
             name: Notification.Name("scrollTo"),
             object: nil)
+         backBtn.isHidden = self.fromSignUp
+        //self.pagerView.regis
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -178,15 +184,15 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     
     //MARK:- IBAction
     @IBAction func doneTap(_ sender: UIButton) {
-        if self.controllerId == 1{
-            let vc = ProfileVC.instance()
-                     self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            let vc = TabBarControllerViewController.navigation()
-            self.navigationController?.pushViewController(vc, animated: true)
+       
+        guard let userid = SaveToDefaults().getUserId() else {return}
+        var id = [String]()
+        for val in self.selectedCategoryArr{
+            id.append(val.category_id)
         }
+        self.vm.userSelectedCategoryApi(user_id: userid, selected_category: id.joined(separator: ","))
     }
-    
+
     
     // MARK:- FSPagerViewDataSource
     
@@ -229,13 +235,25 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         cell.pageViewTag = pagerView.tag
         return cell
     }
+    func pagerView(_ pagerView: FSPagerView, didHighlightItemAt index: Int) {
+        print("didHighlightItemAt",index)
+        let id = self.vm.model?.result?[index].category_id ?? ""
+        if !selectedCategoryArr.contains(where: {$0.category_id == id}){
+            self.selectedCategoryArr.append(SelectedInterest(category_image: self.vm.model?.result?[index].category_image ?? "", category_name: self.vm.model?.result?[index].category_name ?? "", category_id: self.vm.model?.result?[index].category_id ?? ""))
+            colectionVw.reloadData()
+            colectionVw.scrollToItem(at: IndexPath.init(row: selectedCategoryArr.count-1, section: 0), at: .centeredHorizontally, animated: true)
+        }else{
+            
+        }
+        
+       
+    }
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         if index == self.selectedCtaegory {
             
         } else {
-            self.selectedCategoryArr.append(SelectedInterest(category_image: self.vm.model?.result?[index].category_image ?? "", category_name: self.vm.model?.result?[index].category_name ?? "", category_id: self.vm.model?.result?[index].category_id ?? ""))
-            guard let userid = SaveToDefaults().getUserId() else {return}
-            self.vm.userSelectedCategoryApi(user_id: userid, selected_category: self.vm.model?.result?[index].category_id ?? "0")
+           
+            
         }
         //        if pagerView.tag == 1 {
         //            pagerView.deselectItem(at: index, animated: true)
@@ -263,6 +281,7 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCategoryCell.ident, for: indexPath) as? AllCategoryCell else { return UICollectionViewCell() }
+        cell.lblInterest.numberOfLines = 2
         if indexPath.row == 0 {
             cell.vwLeadingConstrain.constant = 18
             cell.vwtraillingConstrain.constant = 12
@@ -276,9 +295,10 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
         cell.closure = { index in
             debugPrint(index)
             if index == indexPath.row {
-                           self.selectedCategoryArr.remove(at: indexPath.row)
-                           self.colectionVw.reloadData()
-                       }
+                self.selectedCategoryArr.remove(at: indexPath.row)
+                self.colectionVw.reloadData()
+                self.colectionVw.scrollToItem(at: IndexPath.init(row: self.selectedCategoryArr.count-1, section: 0), at: .centeredHorizontally, animated: true)
+            }
         }
                return cell
     }
@@ -287,17 +307,30 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
                    let label = UILabel(frame: CGRect.zero)
                       label.text = text
                       label.sizeToFit()
-        return CGSize(width: label.frame.size.width + 50, height: 132)
+        if indexPath.row == 0{
+            return CGSize(width: 128, height: 132)
+        }
+        return CGSize(width: 110, height: 132)
     }
 }
 
 extension TransformerExampleViewController: LoadingCategory {
     func fillSelectedArray() {
-         colectionVw.reloadData()
+        if self.fromSignUp{
+            let vc = TabBarControllerViewController.instance()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     func reloaddata() {
         lblCount.text = "\(self.vm.model?.result?.count ?? 0)"
+        for val in self.vm.model?.selected_category ?? []{
+        self.selectedCategoryArr.append(SelectedInterest(category_image: val.category_image ?? "", category_name: val.category_name ?? "", category_id: val.category_id ?? ""))
+        }
+        colectionVw.reloadData()
         pagerView.reloadData()
     }
     

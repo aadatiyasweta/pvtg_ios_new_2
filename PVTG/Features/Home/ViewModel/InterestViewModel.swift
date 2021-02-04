@@ -46,7 +46,7 @@ class InterestViewModel: BaseVm {
                     if let json = response{
                         debugPrint(json)
                         if json["statusCode"] == 200 {
-                           showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                          // showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
                           self.delegate?.fillSelectedArray()
                             
                         }

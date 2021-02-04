@@ -17,13 +17,14 @@ struct CategoryBase : Codable {
 	let aPICODERESULT : String?
 	let total_Category : Int?
 	let result : [CategoryResult]?
-
+    let selected_category : [CategoryResult]?
 	enum CodingKeys: String, CodingKey {
 
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case total_Category = "total_Category"
 		case result = "result"
+        case selected_category = "selected_category"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -32,6 +33,7 @@ struct CategoryBase : Codable {
 		aPICODERESULT = try values.decodeIfPresent(String.self, forKey: .aPICODERESULT)
 		total_Category = try values.decodeIfPresent(Int.self, forKey: .total_Category)
 		result = try values.decodeIfPresent([CategoryResult].self, forKey: .result)
+        selected_category = try values.decodeIfPresent([CategoryResult].self, forKey: .selected_category)
 	}
 
 }

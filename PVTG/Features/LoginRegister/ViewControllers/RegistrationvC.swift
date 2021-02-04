@@ -87,8 +87,9 @@ extension RegistrationvC: AfterRegistration{
     
     
     func successRegisteration() {
-        let vc = TabBarControllerViewController.instance()
-     //   let vc = TransformerExampleViewController.instance()
+      
+        let vc = TransformerExampleViewController.instance()
+        vc.fromSignUp = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
