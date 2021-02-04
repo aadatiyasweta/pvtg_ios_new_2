@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProfileInterestCell" customModule="PVTG" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="113" height="111"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="113" height="111"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aE1-pd-GeW">
+                        <rect key="frame" x="0.0" y="2" width="113" height="107"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Irc-2a-dL5">
+                                <rect key="frame" x="34" y="21" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="PbX-u8-rxs"/>
+                                    <constraint firstAttribute="height" constant="45" id="Ykd-6R-lwk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Electricals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZv-ju-vCy">
+                                <rect key="frame" x="0.0" y="78" width="113" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Irc-2a-dL5" firstAttribute="centerX" secondItem="aE1-pd-GeW" secondAttribute="centerX" id="9Bj-jg-gav"/>
+                            <constraint firstItem="zZv-ju-vCy" firstAttribute="top" secondItem="Irc-2a-dL5" secondAttribute="bottom" constant="12" id="DFX-P7-luG"/>
+                            <constraint firstItem="zZv-ju-vCy" firstAttribute="leading" secondItem="aE1-pd-GeW" secondAttribute="leading" id="FeB-x5-Mmd"/>
+                            <constraint firstAttribute="trailing" secondItem="zZv-ju-vCy" secondAttribute="trailing" id="PrN-tt-zEs"/>
+                            <constraint firstItem="Irc-2a-dL5" firstAttribute="centerY" secondItem="aE1-pd-GeW" secondAttribute="centerY" constant="-10" id="QOu-v5-4sM"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="7"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="aE1-pd-GeW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="13S-2k-2rj"/>
+                <constraint firstAttribute="bottom" secondItem="aE1-pd-GeW" secondAttribute="bottom" constant="2" id="BOV-Rx-XCS"/>
+                <constraint firstItem="aE1-pd-GeW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SXi-GM-Z98"/>
+                <constraint firstAttribute="trailing" secondItem="aE1-pd-GeW" secondAttribute="trailing" id="Wpe-Ra-Fhq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="113" height="111"/>
+            <connections>
+                <outlet property="imgInterest" destination="Irc-2a-dL5" id="06w-Hz-cB9"/>
+                <outlet property="lblInterest" destination="zZv-ju-vCy" id="6gV-si-efv"/>
+                <outlet property="leadingConstraint" destination="SXi-GM-Z98" id="Kmy-PH-H6f"/>
+                <outlet property="traillingconstarint" destination="Wpe-Ra-Fhq" id="MdY-iT-Loi"/>
+                <outlet property="vwContaininterest" destination="aE1-pd-GeW" id="f9m-QJ-CL7"/>
+            </connections>
+            <point key="canvasLocation" x="180.43478260869566" y="122.87946428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>

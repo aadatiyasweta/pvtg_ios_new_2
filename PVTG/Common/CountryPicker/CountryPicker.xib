@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AirbnbCereal-Medium.ttf">
+            <string>AirbnbCerealApp-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="CountryPicker" id="iN0-l3-epB" customClass="CountryPicker" customModule="NPNGUserApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cl7-RC-lzI">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qin-5h-UVJ">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="cancelBtnTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="fOv-mV-ty4"/>
+                            </connections>
+                        </button>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENH-ru-Gae">
+                            <rect key="frame" x="22" y="54" width="276" height="460"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZf-8u-s51" customClass="WTFloatingTextfield" customModule="NPNGUserApp" customModuleProvider="target">
+                                    <rect key="frame" x="12" y="14.5" width="252" height="44"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="mhS-zh-F8Q"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isMotionEnabled" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isMotionEnabledForSubviews" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="disableFloatingLabel" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                            <color key="value" red="0.93764442209999999" green="0.42064386609999999" blue="0.37771689889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="editngEnd:" destination="iN0-l3-epB" eventType="editingDidEnd" id="rXv-8N-OTk"/>
+                                        <action selector="searchFieldChnaged:" destination="iN0-l3-epB" eventType="editingChanged" id="Um9-U0-Vi5"/>
+                                    </connections>
+                                </textField>
+                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tm3-C6-NE3">
+                                    <rect key="frame" x="12" y="62.5" width="252" height="0.5"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="s5o-qd-9PJ"/>
+                                    </constraints>
+                                </imageView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p8B-gY-XJN">
+                                    <rect key="frame" x="0.0" y="77" width="276" height="383"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="hZf-8u-s51" firstAttribute="leading" secondItem="ENH-ru-Gae" secondAttribute="leading" constant="12" id="3oi-5c-Smj"/>
+                                <constraint firstItem="p8B-gY-XJN" firstAttribute="leading" secondItem="ENH-ru-Gae" secondAttribute="leading" id="82m-4V-uKv"/>
+                                <constraint firstAttribute="trailing" secondItem="hZf-8u-s51" secondAttribute="trailing" constant="12" id="9VE-C9-Crn"/>
+                                <constraint firstItem="tm3-C6-NE3" firstAttribute="leading" secondItem="hZf-8u-s51" secondAttribute="leading" id="I5p-9I-A53"/>
+                                <constraint firstItem="tm3-C6-NE3" firstAttribute="top" secondItem="hZf-8u-s51" secondAttribute="bottom" constant="4" id="WTj-4A-swK"/>
+                                <constraint firstAttribute="bottom" secondItem="p8B-gY-XJN" secondAttribute="bottom" id="jF6-D0-yBk"/>
+                                <constraint firstItem="hZf-8u-s51" firstAttribute="top" secondItem="ENH-ru-Gae" secondAttribute="top" constant="14.5" id="l28-Dd-0Mj"/>
+                                <constraint firstAttribute="trailing" secondItem="p8B-gY-XJN" secondAttribute="trailing" id="m1Q-JR-Cum"/>
+                                <constraint firstItem="tm3-C6-NE3" firstAttribute="trailing" secondItem="hZf-8u-s51" secondAttribute="trailing" id="mG1-Vm-ApK"/>
+                                <constraint firstItem="p8B-gY-XJN" firstAttribute="top" secondItem="tm3-C6-NE3" secondAttribute="bottom" constant="14" id="qzP-uq-oDG"/>
+                                <constraint firstAttribute="height" constant="460" id="sYp-XA-vGo"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Qin-5h-UVJ" secondAttribute="trailing" id="B9E-85-NdD"/>
+                        <constraint firstAttribute="bottom" secondItem="Qin-5h-UVJ" secondAttribute="bottom" id="OMQ-eD-J5m"/>
+                        <constraint firstAttribute="trailing" secondItem="ENH-ru-Gae" secondAttribute="trailing" constant="22" id="PKF-Ft-90h"/>
+                        <constraint firstItem="Qin-5h-UVJ" firstAttribute="leading" secondItem="cl7-RC-lzI" secondAttribute="leading" id="b4d-wZ-udp"/>
+                        <constraint firstItem="ENH-ru-Gae" firstAttribute="centerY" secondItem="cl7-RC-lzI" secondAttribute="centerY" id="ikn-lB-b06"/>
+                        <constraint firstItem="ENH-ru-Gae" firstAttribute="leading" secondItem="cl7-RC-lzI" secondAttribute="leading" constant="22" id="jyX-Xr-f83"/>
+                        <constraint firstItem="Qin-5h-UVJ" firstAttribute="top" secondItem="cl7-RC-lzI" secondAttribute="top" id="ljB-a4-C4d"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cl7-RC-lzI" secondAttribute="trailing" id="HVC-MO-2h4"/>
+                <constraint firstAttribute="bottom" secondItem="cl7-RC-lzI" secondAttribute="bottom" id="Q7D-HW-i4E"/>
+                <constraint firstItem="cl7-RC-lzI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Vd1-fw-AoW"/>
+                <constraint firstItem="cl7-RC-lzI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zno-Ft-qAL"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="countryField" destination="hZf-8u-s51" id="Vvw-nO-UO9"/>
+                <outlet property="lineView" destination="tm3-C6-NE3" id="bqL-GL-lc5"/>
+                <outlet property="tableView" destination="p8B-gY-XJN" id="pGE-eb-mMD"/>
+            </connections>
+            <point key="canvasLocation" x="138.75" y="95.070422535211264"/>
+        </view>
+    </objects>
+</document>
