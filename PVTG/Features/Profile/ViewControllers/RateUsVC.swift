@@ -18,7 +18,7 @@ class RateUsVC: BaseViewController {
     
      //MARK:- variables
     private var vm = RateViewModel()
-    private var sessionid = ""
+    var sessionid = ""
     
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
@@ -54,6 +54,7 @@ extension RateUsVC {
 
 extension RateUsVC: AfterSuccess {
     func reloadData() {
+        self.navigationController?.popViewController(animated: true)
         debugPrint("After Success")
     }
     

@@ -44,7 +44,7 @@ class HomeViewController: BaseViewController {
     var lngitude: Double?
     var placesClient: GMSPlacesClient!
     var categoryArr = [Category]()
-    var id = 0
+    var id = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,7 +160,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 }
                 
             }else{
-                if id == indexPath.row {
+                if id == categoryArr[indexPath.row].id{
                     cell.vwcategory.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
                     cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#06d9bd"))
                     cell.lblCategory.textColor = .white
@@ -172,7 +172,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 cell.setdata(data:categoryArr[indexPath.row])
             }
         }else{
-            if id == indexPath.row {
+            if id == categoryArr[indexPath.row].id {
                 cell.vwcategory.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
                 cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#06d9bd"))
                 cell.lblCategory.textColor = .white
@@ -212,19 +212,19 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }else{
-                if id == indexPath.row {
-                    id = -1
+                if id == categoryArr[indexPath.row].id ?? "" {
+                    id = "-1"
                 } else {
-                    id = indexPath.row
+                    id = categoryArr[indexPath.row].id ?? ""
                 }
                 loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
             }
             
         }else{
-            if id == indexPath.row {
-                id = -1
+            if id == categoryArr[indexPath.row].id ?? "" {
+                id = "-1"
             } else {
-                id = indexPath.row
+                id = categoryArr[indexPath.row].id ?? ""
             }
             loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
         }
@@ -297,6 +297,8 @@ extension HomeViewController: CLLocationManagerDelegate{
                     self.lblLocn.text = addrss.locality
                     arrLoc.append(self.lblLocn.text ?? "")
                     SaveToDefaults().setformattedAddress(lat: self.lblLocn.text)
+                    SaveToDefaults().setLatitude(lat: addressCoordinates.latitude)
+                    SaveToDefaults().setLongtitude(lon: addressCoordinates.longitude)
                     if let addressLineArray = addrss.lines{
                         if addressLineArray.count>0{
                            // self.txtAddress.text = getAddress
@@ -311,7 +313,7 @@ extension HomeViewController: CLLocationManagerDelegate{
 extension HomeViewController: GetHomeData {
     func reloadData() {
         self.categoryArr.removeAll()
-        self.categoryArr.append(Category(name: "Top Search", image: topSearch, id: ""))
+        self.categoryArr.append(Category(name: "Top Search", image: topSearch, id: "0"))
         guard let data = self.homevm.model?.all_category else { return }
         if data.count == 0{
              self.categoryArr.append(Category(name: "Add Interests for more recommendations", image: "", id: ""))
@@ -328,9 +330,11 @@ extension HomeViewController: GetHomeData {
         }
         self.colectionVw.reloadData()
         self.tblSession.reloadData()
+        if self.homevm.model?.all_result?.count != 0{
+        self.tblSession.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
     }
     
-    
+    }
     
 }
 

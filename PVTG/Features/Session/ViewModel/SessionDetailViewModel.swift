@@ -14,13 +14,16 @@ protocol GetResponse: class{
     func bookingSuccess()
     func allTicketsSold()
 }
-
+protocol GetBookingResponse: class{
+      func bookingSuccess()
+}
 class SessionDetailViewModel: BaseVm {
     var model: SessionDetailResult?
     weak var delegate: GetResponse?
+     weak var bookingDelegate: GetBookingResponse?
     var timeArr: AllTimeBase?
     var availableTickets: GetTicketResult?
-    
+    var customModel : CustomBokingModel?
 
     
     func sessionDtailApi(user_id: String, session_id: String, latitude: String, longitude: String, top_search: String) {
@@ -55,11 +58,16 @@ class SessionDetailViewModel: BaseVm {
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
-                    self.sessionBookingApi(user_id: user_id, session_id: session_id, ticket: ticket, booking_date: booking_date, booking_from_time: booking_from_time, booking_to_time: booking_to_time, paid_amount: paid_amount, schedule_time_id: schedule_time_id)
+                 
+                    self.customModel = CustomBokingModel.init(user_id: user_id, session_id: session_id, latitude: latitude, longitude: longitude, booking_date: booking_date, booking_from_time: booking_from_time, booking_to_time: booking_to_time, paid_amount: paid_amount, schedule_time_id: schedule_time_id)
+                       self.delegate?.bookingSuccess()
+                    
+                //    self.sessionBookingApi(user_id: user_id, session_id: session_id, ticket: ticket, booking_date: booking_date, booking_from_time: booking_from_time, booking_to_time: booking_to_time, paid_amount: paid_amount, schedule_time_id: schedule_time_id)
                     // let data = try? json["result"].rawData()
                     
                 }else if json["statusCode"] == 300 {
-                    self.delegate?.allTicketsSold()
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                   // self.delegate?.allTicketsSold()
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -79,7 +87,7 @@ class SessionDetailViewModel: BaseVm {
                 debugPrint(json)
                 if json["statusCode"] == 200 {
                      let data = try? json["result"].rawData()
-                                        let jsonDecoder = JSONDecoder()
+                    let jsonDecoder = JSONDecoder()
                     let model = try? jsonDecoder.decode(GetTicketResult.self, from: data ?? Data())
                     self.availableTickets = model
                 }
@@ -121,16 +129,16 @@ class SessionDetailViewModel: BaseVm {
         }
     }
     
-    func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String) {
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id]
+    func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String) {
+        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points]
                    self.show()
                    api_manager.POSTApi(sessionBookingUrl(), param: prams, header: header()) { (response, err, code) in
                        self.dismiss()
                        if let json = response{
                            debugPrint(json)
                            if json["statusCode"] == 200 {
-                               //showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
-                             self.delegate?.bookingSuccess()
+        
+                             self.bookingDelegate?.bookingSuccess()
                                
                            }
                            else {

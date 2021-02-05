@@ -26,7 +26,7 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var vwRated: CosmosView!
     @IBOutlet weak var btnRate: UIButton!
     @IBOutlet weak var vwContainYogaName: UIView!
-    
+    @IBOutlet weak var btnbigRate: UIButton!
     //MARK:- Cell reuseIdentifier
       static let ident = "HistoryCell"
       class func nib()-> UINib {
@@ -53,7 +53,13 @@ class HistoryCell: UITableViewCell {
             self.lblDate.text = strDate
         }
         if let tkts = data.ticket {
-            self.lblNoOfTickets.text = tkts
+            if tkts == "1"{
+                self.lblNoOfTickets.text = "\(tkts) Ticket"
+            }
+            else{
+                self.lblNoOfTickets.text = "\(tkts) Tickets"
+            }
+            
         }
         if let paid = data.paid_amount {
             self.lblFair.text = paid
@@ -61,6 +67,20 @@ class HistoryCell: UITableViewCell {
         if let sessionName = data.name_of_listing {
             self.lblPlaceName.text = sessionName
         }
+        if let rating = data.rating {
+            let noOfStar = Double(rating)
+            self.vwRating.rating = noOfStar ?? 0.0
+            if noOfStar == 0.0{
+                self.btnRate.isHidden = false
+                self.vwRated.isHidden = false
+                btnbigRate.isHidden = false
+            }else{
+                self.btnRate.isHidden = true
+                self.vwRated.isHidden = true
+                btnbigRate.isHidden = false
+            }
+        }
+
         if let place = data.city, let distance = data.distance {
             let value = Double(distance) ?? 0.0
             let doubleStr = String(format: "%.2f", value)

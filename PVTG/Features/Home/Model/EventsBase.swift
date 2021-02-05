@@ -16,12 +16,13 @@ struct EventsBase : Codable {
 	let statusCode : Int?
 	let aPICODERESULT : String?
 	let result : [EventsResult]?
-
+     let history : [EventsResult]?
 	enum CodingKeys: String, CodingKey {
 
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
-		case result = "result"
+		case result = "active_event"
+        case history = "history_event"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -29,6 +30,7 @@ struct EventsBase : Codable {
 		statusCode = try values.decodeIfPresent(Int.self, forKey: .statusCode)
 		aPICODERESULT = try values.decodeIfPresent(String.self, forKey: .aPICODERESULT)
 		result = try values.decodeIfPresent([EventsResult].self, forKey: .result)
+        history = try values.decodeIfPresent([EventsResult].self, forKey: .history)
 	}
 
 }

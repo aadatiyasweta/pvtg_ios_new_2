@@ -34,14 +34,20 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var lblPoints: UILabel!
     
     @IBOutlet weak var vwmap: UIView!
+    
+    @IBOutlet weak var usePvtBtn: UIButton!
+    @IBOutlet weak var rewardedString: UILabel!
     var bookingDetails: SessionDetailResult?
+    var ticketModel : GetTicketResult?
     var totalTkt = ""
     var sessionTimeId = ""
     var vm = SessionDetailViewModel()
      var mapView:GMSMapView?
+    var customModel : CustomBokingModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.vm.bookingDelegate = self
       DispatchQueue.main.async {
 //            if let sessionImg = SaveToDefaults().getSessionImage(){
 //            loadImage(sessionImg, self.imgSession, activity: nil, defaultImage: nil)
@@ -52,6 +58,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             }
        }
         btnAvlblPoints.isUserInteractionEnabled = false
+        self.setDta()
         // Do any additional setup after loading the view.
     }
     override func viewWillLayoutSubviews() {
@@ -68,32 +75,74 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         
     }
     func SetMap(){
-           if let lat1 = SaveToDefaults().getLatitude(), let long1 = SaveToDefaults().getLongtitude(){
-               let lat = Double(lat1)
-               let long = Double(long1)
-            _ = CLLocationCoordinate2D(latitude: lat , longitude: long )
+        if let lat1 = SaveToDefaults().getLatitude(), let long1 = SaveToDefaults().getLongtitude(){
+            let lat = Double(lat1)
+            let long = Double(long1)
+            let location = CLLocationCoordinate2D(latitude: lat , longitude: long )
             let camera = GMSCameraPosition.camera(withLatitude: lat , longitude: long , zoom: 7, bearing: 0,
-                                                 viewingAngle: 40)
-           mapView = GMSMapView.map(withFrame: self.vwmap.bounds, camera: camera)
-           self.vwmap.addSubview(mapView ?? GMSMapView())
-           mapView?.delegate = self
-               mapView?.isUserInteractionEnabled = true
-//           let marker = GMSMarker()
-//           let markerImage = UIImage(named: "marker")
-//           let markerView = UIImageView(image: markerImage)
-//           markerView.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
-//           markerView.contentMode = .scaleAspectFit
-//           marker.iconView = markerView
-//           marker.position = location
-//                          marker.map = mapView
-           }
-       }
+                                                  viewingAngle: 40)
+            mapView = GMSMapView.map(withFrame: self.vwmap.bounds, camera: camera)
+            self.vwmap.addSubview(mapView ?? GMSMapView())
+            mapView?.delegate = self
+            
+            mapView?.isUserInteractionEnabled = true
+            let marker = GMSMarker()
+            let markerImage = UIImage(named: "polylineMarker")
+            let markerView = UIImageView(image: markerImage)
+            markerView.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
+            markerView.contentMode = .scaleAspectFit
+            marker.iconView = markerView
+            marker.position = location
+            marker.map = mapView
+        }
+    }
     
     @IBAction func tapPaynow(_ sender: UIButton) {
-        guard let userid = SaveToDefaults().getUserId(), let sessionId = self.vm.model?.session_id  else {return}
+        var amount = ""
+        var points = ""
+        var price = 0
+        if let tkt = Int(self.totalTkt), let pr = Int(self.ticketModel?.ticket_price ?? "0"){
+            price = tkt*pr
+            amount = "\(price)"
+        }
+        if self.usePvtBtn.isSelected{
+            
+            if Int(self.ticketModel?.total_point ?? "0")! < 300{
+                amount = "\(price/2)"
+                points = "200"
+            }
+            else{
+                amount = "0"
+                points = "300"
+            }
+        }
+        self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: amount, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:points )
     }
     
     @IBAction func tapUseNow(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            self.vwAdddashedBordr.isHidden = false
+            self.btnUseNow.isHidden = false
+            if Int(self.ticketModel?.total_point ?? "0")! < 300{
+                self.Discount.text = "50 % Discount"
+                self.lblPoints.text = "200"
+                let val = Int(self.ticketModel?.total_point ?? "0")! - 200
+                self.btnAvlblPoints.setTitle("\(val) pts available", for: .normal)
+            }else{
+                self.Discount.text = "Free"
+                self.lblPoints.text = "300"
+                let val = Int(self.ticketModel?.total_point ?? "0")! - 300
+                self.btnAvlblPoints.setTitle("\(val) pts available", for: .normal)
+            }
+        }else{
+            self.vwAdddashedBordr.isHidden = true
+            self.btnUseNow.isHidden = true
+            let val = (self.ticketModel?.total_point)!
+            self.btnAvlblPoints.setTitle("\(val) pts available", for: .normal)
+        }
+       
+        
     }
     
     
@@ -101,8 +150,17 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 
 extension SummaryVC {
     func setDta() {
-        if let img = self.bookingDetails?.images?[0], let name = self.bookingDetails?.name_of_listing, let rating = self.bookingDetails?.rating, let place = self.bookingDetails?.city, let dist = self.bookingDetails?.distance, let price = self.vm.availableTickets?.ticket_price, let pt = self.vm.availableTickets?.total_point{
-            loadImage(img.session_image ?? "", self.imgSession, activity: nil, defaultImage: nil)
+        if let name = self.bookingDetails?.name_of_listing, let rating = self.bookingDetails?.rating, let place = self.bookingDetails?.city, let dist = self.bookingDetails?.distance, let price = self.ticketModel?.ticket_price{
+            let pt = Int(self.ticketModel?.total_point ?? "0")
+            var url = ""
+            for val in self.bookingDetails?.images ?? []{
+                if val.is_cover ?? "" == "1"{
+                    url = val.session_image ?? ""
+                    break
+                }
+            }
+            self.lblCategry.text = self.bookingDetails?.category_name ?? ""
+            loadImage(url, self.imgSession, activity: nil, defaultImage: nil)
             self.lblSessionNmae.text = name
             self.vwRating.rating = Double(rating)!
             let value = Double(dist) ?? 0.0
@@ -111,11 +169,20 @@ extension SummaryVC {
             self.lblPlacewithDistance.text = str
             self.toatalTickets.text = self.totalTkt
             if let tkt = Int(self.totalTkt), let pr = Int(price){
-                self.totalFare.text = "\(tkt*pr)"
+                self.totalFare.text = "$\(tkt*pr)"
 
             }
-            self.btnAvlblPoints.setTitle("\(pt) pts available", for: .normal)
-            
+            if pt ?? 0 < 200{
+                self.usePvtBtn.isUserInteractionEnabled = false
+            }else{
+                 self.usePvtBtn.isUserInteractionEnabled = true
+            }
+            self.btnAvlblPoints.setTitle("\(pt ?? 0) pts available", for: .normal)
+            if self.ticketModel?.user_booking ?? 0 == 0{
+                self.rewardedString.text = "You will be rewarded 20pts on booking the session"
+            }else{
+                 self.rewardedString.text = "You will be rewarded 10pts on booking the session"
+            }
         }
     }
     
@@ -135,6 +202,7 @@ extension SummaryVC {
                   if let json : [String:Any] = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
 
                       let preRoutes = json["routes"] as! NSArray
+                    if preRoutes.count > 0{
                       let routes = preRoutes[0] as! NSDictionary
                       let routeOverviewPolyline:NSDictionary = routes.value(forKey: "overview_polyline") as! NSDictionary
                       let polyString = routeOverviewPolyline.object(forKey: "points") as! String
@@ -147,6 +215,7 @@ extension SummaryVC {
                         polyline.map = self.mapView
                       })
                   }
+                }
 
               } catch {
                   print("parsing error")
@@ -155,4 +224,11 @@ extension SummaryVC {
       })
       task.resume()
   }
+}
+extension SummaryVC : GetBookingResponse{
+    func bookingSuccess() {
+      
+        self.navigationController?.popToRootViewController(animated: true)
+       //self.tabBarController?.selectedIndex = 1
+    }
 }

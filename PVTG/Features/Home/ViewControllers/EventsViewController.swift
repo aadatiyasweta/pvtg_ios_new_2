@@ -12,6 +12,7 @@ class EventsViewController: BaseViewController {
     
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var collectionHeightCons: NSLayoutConstraint!
     @IBOutlet weak var collectionVwLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var colectionVw: UICollectionView!{
         didSet {
@@ -48,6 +49,7 @@ class EventsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
+        self.setCollectionVw()
         
     }
     
@@ -56,11 +58,7 @@ class EventsViewController: BaseViewController {
         loadApi()
     }
     
-    override func viewWillLayoutSubviews() {
-           super.viewWillLayoutSubviews()
-           setCollectionVw()
-        
-       }
+  
 }
 
 extension EventsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -85,33 +83,20 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
 
 extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.vm.model?.result?.count ?? 0
+        return self.vm.model?.history?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.ident, for: indexPath) as? HistoryCell else { return UITableViewCell() }
         cell.selectedRate = {
-            if let data = self.vm.model?.result?[indexPath.row].rating{
-                if Double(data) == 0.0 {
-                    cell.btnRate.isHidden = false
-                    let vc = RateUsVC.instance()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    cell.btnRate.isHidden = true
-                    if let rating = self.vm.model?.result?[indexPath.row].rating {
-                        let noOfStar = Double(rating)
-                        cell.vwRating.settings.totalStars = Int(ceil(noOfStar ?? 0.0))
-                        cell.vwRating.rating = noOfStar ?? 0.0
-                    }
-
-                }
-            }
-            
+            let vc = RateUsVC.instance()
+            vc.sessionid = self.vm.model?.history?[indexPath.row].session_id ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         cell.selectedIndex = { tap in
             self.directions()
         }
-        cell.setData(data: self.vm.model?.result?[indexPath.row])
+        cell.setData(data: self.vm.model?.history?[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -120,6 +105,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = SessionDetailVC.instance()
         vc.controllerId = 3
+        vc.sessionId = self.vm.model?.history?[indexPath.row].session_id ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -185,7 +171,7 @@ extension EventsViewController {
     private func loadApi() {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
             self.vm.getActiveEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)")
-            self.vm.getHistoryEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)")
+            //self.vm.getHistoryEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)")
         }
     }
         
@@ -193,36 +179,55 @@ extension EventsViewController {
 
 extension EventsViewController: LoadingEvents {
     func colecnreloaddata() {
-        if self.vm.model?.result?.count == 0 || self.vm.model?.result?.count == nil{
-            self.lblNoSession.isHidden = false
-            self.lblNoSession.text = "No Session"
+        if self.vm.model?.result?.count ?? 0 == 0{
             self.lblActiveEvent.isHidden = true
             self.lblUndrLine1.isHidden = true
+            self.collectionHeightCons.constant = 0
         } else {
-            self.lblNoSession.isHidden = true
-            self.lblNoSession.text = ""
+    
             self.lblActiveEvent.isHidden = false
             self.lblUndrLine1.isHidden = false
+             self.collectionHeightCons.constant = 440
         }
+        if self.vm.model?.history?.count ?? 0 == 0 &&  self.vm.model?.result?.count ?? 0 == 0{
+             self.lblNoSession.text = "No Session"
+             self.lblNoSession.isHidden = false
+        }else{
+             self.lblNoSession.text = ""
+             self.lblNoSession.isHidden = true
+        }
+        if self.vm.model?.history?.count == 0 || self.vm.model?.history?.count == nil{
+    
+            self.lblHistoryEvent.isHidden = true
+            self.lblUndrLine2.isHidden = true
+        } else {
+            self.lblHistoryEvent.isHidden = false
+            self.lblUndrLine2.isHidden = false
+        }
+        let tableHeight = (self.vm.model?.history?.count ?? 0) * 225
+        constraintHeight.constant = CGFloat(tableHeight + (self.vm.model?.history?.count ?? 0) * 70)
+        self.updateViewConstraints()
+        self.view.layoutSubviews()
+        self.view.layoutIfNeeded()
+        self.TblVwHistory.reloadData()
         self.colectionVw.reloadData()
+        
     }
     
     func tblReloadData() {
         if self.vm.model?.result?.count == 0 || self.vm.model?.result?.count == nil{
             self.lblNoSession.isHidden = false
-            self.lblNoSession.text = "No Session"
+           
             self.lblHistoryEvent.isHidden = true
             self.lblUndrLine2.isHidden = true
         } else {
             self.lblNoSession.isHidden = true
-            self.lblNoSession.text = ""
+           
             self.lblHistoryEvent.isHidden = false
             self.lblUndrLine2.isHidden = false
         }
 
-        let tableHeight = (self.vm.model?.result?.count ?? 0) * 225
-               constraintHeight.constant = CGFloat(tableHeight)
-        self.TblVwHistory.reloadData()
+       
     }
     
     
