@@ -227,6 +227,7 @@ extension SearchLocationVC: GMSAutocompleteTableDataSourceDelegate {
     txfSearch.resignFirstResponder()
     self.tableView?.removeFromSuperview()
     self.vwShowGoogleLocation.isHidden = true
+    self.navigationController?.popViewController(animated: true)
   }
 
   func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didFailAutocompleteWithError error: Error) {

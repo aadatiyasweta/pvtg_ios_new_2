@@ -293,12 +293,10 @@ extension HomeViewController: CLLocationManagerDelegate{
             
             coder.reverseGeocodeCoordinate(addressCoordinates) { response, error in
                 if let addrss = response?.firstResult() {
-                    var arrLoc = [String]()
+                    var location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
                     self.lblLocn.text = addrss.locality
-                    arrLoc.append(self.lblLocn.text ?? "")
-                    SaveToDefaults().setformattedAddress(lat: self.lblLocn.text)
-                    SaveToDefaults().setLatitude(lat: addressCoordinates.latitude)
-                    SaveToDefaults().setLongtitude(lon: addressCoordinates.longitude)
+                    SaveToDefaults().setLatitude(lat: location.latitude)
+                    SaveToDefaults().setLongtitude(lon: location.longitude)
                     if let addressLineArray = addrss.lines{
                         if addressLineArray.count>0{
                            // self.txtAddress.text = getAddress
