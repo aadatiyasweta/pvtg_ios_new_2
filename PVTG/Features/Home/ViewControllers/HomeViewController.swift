@@ -197,6 +197,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
              let label = UILabel(frame: CGRect.zero)
                 label.text = text
                 label.sizeToFit()
+        if indexPath.row == categoryArr.count-1 {
+             return CGSize(width: label.frame.size.width + 91, height: 65)
+        }
         return CGSize(width: label.frame.size.width + 71, height: 65)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

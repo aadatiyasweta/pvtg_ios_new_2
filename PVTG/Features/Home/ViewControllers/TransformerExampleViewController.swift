@@ -140,7 +140,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
             name: Notification.Name("scrollTo"),
             object: nil)
          backBtn.isHidden = self.fromSignUp
-        //self.pagerView.regis
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {

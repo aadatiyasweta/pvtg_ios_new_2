@@ -23,7 +23,7 @@ target 'PVTG' do
   pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
   pod 'paper-onboarding'
-pod 'MarqueeLabel'
+  pod 'MarqueeLabel'
 
 
 

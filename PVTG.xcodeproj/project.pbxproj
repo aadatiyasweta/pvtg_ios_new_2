@@ -163,6 +163,8 @@
 		18EACC4B25A58C0D00B1F959 /* RateUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EACC4A25A58C0D00B1F959 /* RateUsVC.swift */; };
 		18F4DE6925A8465E00E7827A /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4DE6825A8465D00E7827A /* UPCarouselFlowLayout.swift */; };
 		62DEB8BD2B65508163B88D08 /* Pods_PVTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */; };
+		D6573BF525CCF02500CB64DD /* CircularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6573BF325CCF02500CB64DD /* CircularCell.swift */; };
+		D6573BF625CCF02500CB64DD /* CircularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6573BF425CCF02500CB64DD /* CircularCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -333,6 +335,8 @@
 		558B74FBCF5C95B718FAB54C /* Pods-PVTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.release.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.release.xcconfig"; sourceTree = "<group>"; };
 		5FAAD99D1247D339D5164761 /* Pods-PVTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.debug.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.debug.xcconfig"; sourceTree = "<group>"; };
 		9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PVTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6573BF325CCF02500CB64DD /* CircularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCell.swift; sourceTree = "<group>"; };
+		D6573BF425CCF02500CB64DD /* CircularCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -798,6 +802,8 @@
 				18B184BD25B94A7100B83A6B /* AllCategoryCell.xib */,
 				18A2CB1D25BAE8D5000480E3 /* InterCell.swift */,
 				18A2CB1E25BAE8D5000480E3 /* InterCell.xib */,
+				D6573BF325CCF02500CB64DD /* CircularCell.swift */,
+				D6573BF425CCF02500CB64DD /* CircularCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -977,6 +983,7 @@
 				1855F4942592377B009396E6 /* Montserrat-Medium.ttf in Resources */,
 				1831DCF725AD633300A1570B /* FaqSectionCell.xib in Resources */,
 				18B184BF25B94A7100B83A6B /* AllCategoryCell.xib in Resources */,
+				D6573BF625CCF02500CB64DD /* CircularCell.xib in Resources */,
 				18708BEC25A41AEC001439CA /* Profile.storyboard in Resources */,
 				1855F49A2592377B009396E6 /* Montserrat-Bold.ttf in Resources */,
 				1855F4982592377B009396E6 /* Montserrat-ExtraLight.ttf in Resources */,
@@ -1091,6 +1098,7 @@
 				186AC27825C7BAA600C97842 /* Location.swift in Sources */,
 				18C3D54825BF138B00A34B3E /* TransformerExampleViewController.swift in Sources */,
 				187F3E7D258CCB58008FB2CB /* Utilities.m in Sources */,
+				D6573BF525CCF02500CB64DD /* CircularCell.swift in Sources */,
 				18DB86BA25B178FF0035084F /* ProfileViewModel.swift in Sources */,
 				1834FF55259B59FA00F205D6 /* SummaryVC.swift in Sources */,
 				186AC27725C7BAA600C97842 /* LocationBase.swift in Sources */,

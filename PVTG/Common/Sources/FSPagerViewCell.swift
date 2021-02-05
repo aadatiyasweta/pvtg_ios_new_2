@@ -40,7 +40,7 @@ open class FSPagerViewCell: UICollectionViewCell {
         if let _ = _imageView {
             return _imageView
         }
-        let imageView = UIImageView(frame: .zero)
+        let imageView = UIImageView(frame: CGRect.init(x: 25, y: 0, width: 50, height: 50))
         self.contentView.addSubview(imageView)
         _imageView = imageView
         return imageView
@@ -123,7 +123,7 @@ open class FSPagerViewCell: UICollectionViewCell {
         
         if let imageView = _imageView {
            // imageView.frame = self.contentView.bounds
-            imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+            imageView.frame = CGRect(x: 10, y: 0, width: 50, height: 50)
         }
         
         

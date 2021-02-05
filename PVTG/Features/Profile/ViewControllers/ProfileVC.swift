@@ -83,15 +83,24 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         if indexPath.row == 0 {
             cell.leadingConstraint.constant = 18
             cell.traillingconstarint.constant = 0
-        } else {
+        } else if indexPath.row == (self.vm.model?.selected_category!.count)! - 1{
             cell.leadingConstraint.constant = 0
             cell.traillingconstarint.constant = 18
 
+        }else{
+            cell.leadingConstraint.constant = 0
+            cell.traillingconstarint.constant = 0
         }
         cell.setData(interest: self.vm.model?.selected_category?[indexPath.row])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row == 0 {
+             return CGSize(width: 118, height: 105)
+        }
+        else if indexPath.row == (self.vm.model?.selected_category!.count)! - 1{
+             return CGSize(width: 118, height: 105)
+        }
         return CGSize(width: 100, height: 105)
     }
     
