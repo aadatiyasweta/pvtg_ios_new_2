@@ -28,6 +28,7 @@ class EventViewModel: BaseVm {
                       let jsonDecoder = JSONDecoder()
                       let model = try? jsonDecoder.decode(EventsBase.self, from: data ?? Data())
                       self.model = model
+                 
                     self.delegate?.colecnreloaddata()
                       
                   }

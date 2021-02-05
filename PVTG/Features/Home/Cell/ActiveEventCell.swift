@@ -49,9 +49,15 @@ class ActiveEventCell: UICollectionViewCell {
                let strDate = yyMMMddDate(date: bookingDate)
                self.lblDate.text = strDate
            }
-           if let tkts = data.ticket {
-               self.lblNoOfTickets.text = tkts
-           }
+        if let tkts = data.ticket {
+            if tkts == "1"{
+                self.lblNoOfTickets.text = "\(tkts) Ticket"
+            }
+            else{
+                self.lblNoOfTickets.text = "\(tkts) Tickets"
+            }
+            
+        }
            if let paid = data.paid_amount {
                self.lblFair.text = paid
            }
@@ -60,7 +66,6 @@ class ActiveEventCell: UICollectionViewCell {
            }
            if let rating = data.rating {
                let noOfStar = Double(rating)
-               self.vwrating.settings.totalStars = Int(ceil(noOfStar ?? 0.0))
                self.vwrating.rating = noOfStar ?? 0.0
            }
            if let place = data.city, let distance = data.distance {

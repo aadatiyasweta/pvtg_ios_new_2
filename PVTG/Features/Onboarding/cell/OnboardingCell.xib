@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,6 +47,17 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2MK-dK-L04">
+                        <rect key="frame" x="156" y="185" width="55" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="55" id="MGC-ky-O3e"/>
+                            <constraint firstAttribute="width" constant="55" id="tp3-oU-kVC"/>
+                        </constraints>
+                        <state key="normal" image="play"/>
+                        <connections>
+                            <action selector="videoPlayTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="x23-0r-UiZ"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
@@ -53,8 +65,10 @@
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="2HL-ja-DBh" secondAttribute="trailing" constant="22" id="799-s0-cWi"/>
                 <constraint firstItem="z7k-Ka-Npy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="N5x-aQ-qpJ"/>
                 <constraint firstAttribute="trailing" secondItem="z7k-Ka-Npy" secondAttribute="trailing" id="OCO-nP-bJQ"/>
+                <constraint firstItem="2MK-dK-L04" firstAttribute="centerY" secondItem="NSf-Xh-TPe" secondAttribute="centerY" id="PZp-Pe-CdB"/>
                 <constraint firstItem="z7k-Ka-Npy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Qdh-jn-ArJ"/>
                 <constraint firstItem="beb-7I-EkI" firstAttribute="trailing" secondItem="2HL-ja-DBh" secondAttribute="trailing" id="Vnk-wi-d9S"/>
+                <constraint firstItem="2MK-dK-L04" firstAttribute="centerX" secondItem="NSf-Xh-TPe" secondAttribute="centerX" id="cs6-Ch-nVE"/>
                 <constraint firstItem="beb-7I-EkI" firstAttribute="top" secondItem="2HL-ja-DBh" secondAttribute="bottom" constant="22" id="fIb-a1-4Rd"/>
                 <constraint firstItem="2HL-ja-DBh" firstAttribute="top" secondItem="NSf-Xh-TPe" secondAttribute="bottom" constant="15" id="gLu-AV-wjg"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="z7k-Ka-Npy" secondAttribute="bottom" id="iJu-pV-Scr"/>
@@ -69,8 +83,12 @@
                 <outlet property="imgDetailView" destination="z7k-Ka-Npy" id="hYx-I2-dnA"/>
                 <outlet property="imgView" destination="NSf-Xh-TPe" id="wYb-q0-S6G"/>
                 <outlet property="lblInfo" destination="beb-7I-EkI" id="Mgi-KW-igP"/>
+                <outlet property="playBtn" destination="2MK-dK-L04" id="Wye-hv-dMf"/>
             </connections>
             <point key="canvasLocation" x="83.333333333333343" y="119.53125"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="play" width="256" height="256"/>
+    </resources>
 </document>

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,7 +41,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vec-20-ANI" customClass="CosmosView" customModule="Cosmos">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vec-20-ANI" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="181" y="31" width="56" height="18"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -71,6 +72,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
                                         <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SW5-67-aL2">
@@ -79,19 +83,26 @@
                                 <state key="normal" title="Rate this trip">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbF-3T-d3h">
+                                <rect key="frame" x="165" y="31" width="72" height="44"/>
                                 <connections>
-                                    <action selector="btntapToRate:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="X8D-Uh-FL0"/>
+                                    <action selector="btntapToRate:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CrB-Ed-M24"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Vec-20-ANI" firstAttribute="centerY" secondItem="uJK-sl-eVL" secondAttribute="centerY" id="0N0-sX-ceH"/>
+                            <constraint firstItem="DbF-3T-d3h" firstAttribute="top" secondItem="Vec-20-ANI" secondAttribute="top" id="1Xr-uj-lE9"/>
                             <constraint firstAttribute="height" constant="80" id="6b2-T8-ol7"/>
                             <constraint firstAttribute="trailing" secondItem="Vec-20-ANI" secondAttribute="trailing" constant="12" id="6z4-6r-2R3"/>
+                            <constraint firstItem="DbF-3T-d3h" firstAttribute="trailing" secondItem="SW5-67-aL2" secondAttribute="trailing" id="AhM-kf-X6i"/>
                             <constraint firstItem="SW5-67-aL2" firstAttribute="centerY" secondItem="Deg-ov-2uT" secondAttribute="centerY" id="Fqf-6m-eiI"/>
+                            <constraint firstItem="DbF-3T-d3h" firstAttribute="bottom" secondItem="SW5-67-aL2" secondAttribute="bottom" id="JHx-6Y-IMH"/>
                             <constraint firstItem="SW5-67-aL2" firstAttribute="top" secondItem="Vec-20-ANI" secondAttribute="bottom" id="M6f-RH-W1X"/>
                             <constraint firstItem="uJK-sl-eVL" firstAttribute="leading" secondItem="Ghj-JP-Nnb" secondAttribute="leading" constant="8" id="Z9A-dA-kOY"/>
+                            <constraint firstItem="DbF-3T-d3h" firstAttribute="leading" secondItem="SW5-67-aL2" secondAttribute="leading" id="bx5-jA-5Na"/>
                             <constraint firstItem="uJK-sl-eVL" firstAttribute="centerY" secondItem="Ghj-JP-Nnb" secondAttribute="centerY" id="huJ-fA-WY3"/>
                             <constraint firstItem="SW5-67-aL2" firstAttribute="trailing" secondItem="Vec-20-ANI" secondAttribute="trailing" id="tT0-GE-gAh"/>
                             <constraint firstItem="Deg-ov-2uT" firstAttribute="leading" secondItem="uJK-sl-eVL" secondAttribute="leading" id="vbK-Zp-wz7"/>
@@ -250,6 +261,7 @@
                                 <rect key="frame" x="8" y="165" width="94" height="18"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="45x-Fp-ufj"/>
                                     <constraint firstAttribute="height" constant="18" id="jH3-C0-NdX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -257,10 +269,10 @@
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                        <color key="value" white="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -273,6 +285,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                         <real key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -367,6 +382,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="btnRate" destination="SW5-67-aL2" id="xIx-ZK-rlN"/>
+                <outlet property="btnbigRate" destination="DbF-3T-d3h" id="Svj-hX-RRD"/>
                 <outlet property="lblBookingId" destination="7l0-0D-MO6" id="38a-NB-ie9"/>
                 <outlet property="lblDate" destination="I3O-AR-RHa" id="A9f-HZ-3SG"/>
                 <outlet property="lblFair" destination="Dng-eM-coa" id="A0a-a2-One"/>

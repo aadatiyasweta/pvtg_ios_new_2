@@ -16,12 +16,15 @@ struct Images : Codable {
 	let session_image_id : String?
 	let session_image : String?
 	let is_cover : String?
-
+    let type : String?
+     let image_thumbnail : String?
 	enum CodingKeys: String, CodingKey {
 
 		case session_image_id = "session_image_id"
 		case session_image = "session_image"
 		case is_cover = "is_cover"
+        case type = "type"
+        case image_thumbnail = "image_thumbnail"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -29,6 +32,8 @@ struct Images : Codable {
 		session_image_id = try values.decodeIfPresent(String.self, forKey: .session_image_id)
 		session_image = try values.decodeIfPresent(String.self, forKey: .session_image)
 		is_cover = try values.decodeIfPresent(String.self, forKey: .is_cover)
+        type = try values.decodeIfPresent(String.self, forKey: .type)
+        image_thumbnail = try values.decodeIfPresent(String.self, forKey: .image_thumbnail)
 	}
 
 }

@@ -122,7 +122,7 @@ func updateProfileUrl()-> String {
     return url
 }
 func sessionRatingUrl()-> String {
-    var  url = "\(testingServer)Userapi/session_rating"
+    var  url = "\(testingServer)Sessionapi/session_rating"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/session_rating",url)
     return url
