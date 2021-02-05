@@ -1318,7 +1318,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikhail Davis (723339856Z)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WSC8P4799K;
 				INFOPLIST_FILE = PVTG/Info.plist;
@@ -1341,7 +1341,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikhail Davis (723339856Z)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WSC8P4799K;
 				INFOPLIST_FILE = PVTG/Info.plist;
