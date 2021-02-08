@@ -224,6 +224,12 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ol-qe-Dh0">
+                                <rect key="frame" x="143.5" y="110" width="33.5" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmK-Me-WYh">
                                 <rect key="frame" x="-90" y="300" width="500" height="500"/>
                                 <color key="backgroundColor" red="0.019607843140000001" green="0.85098039219999999" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -289,10 +295,12 @@
                             <constraint firstItem="crF-m2-F7f" firstAttribute="leading" secondItem="Agk-yh-Pm9" secondAttribute="trailing" id="9Cj-qc-Pmv"/>
                             <constraint firstItem="LAB-Q0-gzy" firstAttribute="trailing" secondItem="zXJ-65-iSK" secondAttribute="trailing" constant="20" id="C7d-kl-NaT"/>
                             <constraint firstItem="efH-Hw-rxl" firstAttribute="top" secondItem="bmK-Me-WYh" secondAttribute="top" id="CzB-QN-fqT"/>
+                            <constraint firstItem="8ol-qe-Dh0" firstAttribute="centerY" secondItem="EgR-BU-2Bl" secondAttribute="centerY" id="DBk-HU-CJl"/>
                             <constraint firstItem="crF-m2-F7f" firstAttribute="centerY" secondItem="Agk-yh-Pm9" secondAttribute="centerY" id="DhI-k3-sBM"/>
                             <constraint firstItem="LAB-Q0-gzy" firstAttribute="bottom" secondItem="vot-Gs-cGo" secondAttribute="bottom" id="EHM-Tj-y8e"/>
                             <constraint firstItem="Agk-yh-Pm9" firstAttribute="leading" secondItem="LAB-Q0-gzy" secondAttribute="leading" constant="18" id="GK5-sb-ZLq"/>
                             <constraint firstItem="ZQP-WF-ZTW" firstAttribute="top" secondItem="VYW-6m-f8C" secondAttribute="top" constant="33" id="SKn-vw-SJz"/>
+                            <constraint firstItem="8ol-qe-Dh0" firstAttribute="centerX" secondItem="EgR-BU-2Bl" secondAttribute="centerX" id="Tda-14-Yak"/>
                             <constraint firstItem="Agk-yh-Pm9" firstAttribute="top" secondItem="LAB-Q0-gzy" secondAttribute="top" id="YrO-7g-UHu"/>
                             <constraint firstItem="VYW-6m-f8C" firstAttribute="top" secondItem="bmK-Me-WYh" secondAttribute="top" constant="155" id="YxK-TD-ZW6"/>
                             <constraint firstItem="bmK-Me-WYh" firstAttribute="centerX" secondItem="LAB-Q0-gzy" secondAttribute="centerX" id="ZqK-yq-pOs"/>
@@ -312,8 +320,11 @@
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="Agk-yh-Pm9" id="3gE-H4-jpq"/>
+                        <outlet property="btnDone" destination="zXJ-65-iSK" id="FGB-jO-mRF"/>
+                        <outlet property="btnWidthConstrain" destination="QUe-hG-aqS" id="Qas-Lh-Y9v"/>
                         <outlet property="colectionVw" destination="EgR-BU-2Bl" id="fbT-we-N3j"/>
                         <outlet property="lblCount" destination="0TM-rB-C2t" id="Ph2-86-N0H"/>
+                        <outlet property="lblNoInterest" destination="8ol-qe-Dh0" id="gFC-S1-bkD"/>
                         <outlet property="pagerView" destination="efH-Hw-rxl" id="VaB-Ls-9Ug"/>
                         <outlet property="vw1" destination="bmK-Me-WYh" id="251-xr-DIA"/>
                         <outlet property="vw2" destination="VYW-6m-f8C" id="7ap-5P-fNx"/>
@@ -487,11 +498,11 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObA-yu-ZUI">
-                                <rect key="frame" x="18" y="0.0" width="45" height="45"/>
+                                <rect key="frame" x="18" y="0.0" width="35" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="1v3-Hr-3va"/>
-                                    <constraint firstAttribute="width" constant="45" id="LGr-pn-rGL"/>
+                                    <constraint firstAttribute="height" constant="35" id="1v3-Hr-3va"/>
+                                    <constraint firstAttribute="width" constant="35" id="LGr-pn-rGL"/>
                                 </constraints>
                                 <state key="normal" image="minimalLeft2X"/>
                                 <userDefinedRuntimeAttributes>
@@ -504,7 +515,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tj-SM-DzY">
-                                <rect key="frame" x="0.0" y="69" width="320" height="397"/>
+                                <rect key="frame" x="0.0" y="59" width="320" height="407"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCb-eT-2wc">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
@@ -679,7 +690,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHq-aU-5DE">
-                                                        <rect key="frame" x="280.5" y="226" width="17.5" height="40"/>
+                                                        <rect key="frame" x="284.5" y="226" width="13.5" height="40"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                                         <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="-25" maxY="0.0"/>
                                                         <state key="normal" image="cup">
@@ -1111,7 +1122,7 @@
     <resources>
         <image name="bg" width="557.5" height="1086.5"/>
         <image name="cross" width="13.5" height="13.5"/>
-        <image name="cup" width="17.5" height="19"/>
+        <image name="cup" width="13.5" height="14"/>
         <image name="event" width="17.5" height="17.5"/>
         <image name="eventGrey" width="17.5" height="17.5"/>
         <image name="group-3" width="22.5" height="22.5"/>

@@ -24,6 +24,7 @@ class ActiveEventCell: UICollectionViewCell {
     @IBOutlet weak var lblPlace: UILabel!
     @IBOutlet weak var vwContainSession: UIView!
     
+    @IBOutlet weak var sessionImage: UIImageView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var vwCard: UIView!
     
@@ -74,6 +75,9 @@ class ActiveEventCell: UICollectionViewCell {
                let str = place + " (\(doubleStr) km away)"
                self.lblplaceWithDistance.text = str
            }
+        if let img = data.session_image {
+            loadImage(img, self.sessionImage, activity: nil, defaultImage: nil)
+        }
 
        }
     

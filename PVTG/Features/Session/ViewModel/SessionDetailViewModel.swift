@@ -13,6 +13,7 @@ protocol GetResponse: class{
     func reloadData()
     func bookingSuccess()
     func allTicketsSold()
+    func reloadTime()
 }
 protocol GetBookingResponse: class{
       func bookingSuccess()
@@ -39,7 +40,7 @@ class SessionDetailViewModel: BaseVm {
                     let model = try? jsonDecoder.decode(SessionDetailResult.self, from: data ?? Data())
                     self.model = model
                     self.delegate?.reloadData()
-                    
+                    self.delegate?.reloadTime()
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -101,9 +102,13 @@ class SessionDetailViewModel: BaseVm {
     }
     
     //For gettingTime Of specific Date
-    func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String) {
+    func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool) {
         let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id]
+        if isloader {
+            self.dismiss()
+        } else {
         self.show()
+        }
         //url change karna h
         
         api_manager.GETApi(session_time_detail(), param: prams, header: header()) { (response, err, code) in
@@ -115,10 +120,11 @@ class SessionDetailViewModel: BaseVm {
                     let jsonDecoder = JSONDecoder()
                     let model = try? jsonDecoder.decode(AllTimeBase.self, from: json.rawData())
                     self.timeArr = model
+                    
                     self.delegate?.reloadData()
                     
                 } else if json["statusCode"] == 400 {
-                    self.delegate?.reloadData()
+                    self.delegate?.reloadTime()
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)

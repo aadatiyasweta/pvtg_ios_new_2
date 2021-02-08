@@ -1,11 +1,3 @@
-//
-//  TransformerExampleViewController.swift
-//  FSPagerViewExample
-//
-//  Created by Wenchao Ding on 09/01/2017.
-//  Copyright © 2017 Wenchao Ding. All rights reserved.
-//
-
 import UIKit
 
 var checkCollectionView = 1
@@ -20,14 +12,18 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         didSet {
             colectionVw.delegate = self
             colectionVw.dataSource = self
-             colectionVw.register(AllCategoryCell.nib(), forCellWithReuseIdentifier: AllCategoryCell.ident)
+            colectionVw.register(AllCategoryCell.nib(), forCellWithReuseIdentifier: AllCategoryCell.ident)
         }
     }
     @IBOutlet weak var vw1: UIView!
     
     @IBOutlet weak var vw2: UIView!
     
+    @IBOutlet weak var btnWidthConstrain: NSLayoutConstraint!
     @IBOutlet weak var lblCount: UILabel!
+    
+    @IBOutlet weak var lblNoInterest: UILabel!
+    @IBOutlet weak var btnDone: UIButton!
     var selectedCtaegory = -1
     var selectedCategoryArr = [SelectedInterest]()
     var vm = InterestViewModel()
@@ -38,15 +34,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     var level:String = "Medium"
     var closureOK : (String,String) -> () = { _,_  in}
     var fromSignUp = false
-    fileprivate let imageNames = ["vectorSmartObject-10","vectorSmartObject-20","vectorSmartObject-30","vectorSmartObject-40","vectorSmartObject00"]
-    fileprivate let backimageNames = ["shape3Copy4","shape3Copy","shape3Copy2","shape3Copy3"]
-
-    fileprivate let imageNamesGray = ["breakfast_2","main_course_2","meat_free2","snake_2","vegan_2","dessert_2"]
     
-    fileprivate let hour = ["Medium","Difficult","Easy","All"]
-    fileprivate let imageNamesText = ["Breakfast","Main","Meat Free","Snack","Vegan","Dessert","Drinks"]
-    
-    fileprivate let transformerNames = ["cross fading", "zoom out", "depth", "linear", "overlap", "ferris wheel", "inverted ferris wheel", "coverflow", "cubic"]
     fileprivate let transformerTypes: [FSPagerViewTransformerType] = [.crossFading,
                                                                       .zoomOut,
                                                                       .depth,
@@ -58,51 +46,51 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
                                                                       .cubic]
     
     /*fileprivate var typeIndex = 0 {
-        didSet {
-            //  let type = self.transformerTypes[typeIndex]
-            self.pagerView.transformer = FSPagerViewTransformer(type:.ferrisWheel)
-            self.pagerView.interitemSpacing = 30
-            if (self.pagerView.tag == 1){
-                self.pagerView.itemSize = CGSize(width: 100, height: 50)
-                
-            }else{
-                self.pagerView.itemSize = CGSize(width: 100, height: 50)
-            }
-            self.pagerView.decelerationDistance = FSPagerView.automaticDistance
-            //  self.pagerView2.transformer = FSPagerViewTransformer(type:type)
-            //            switch type {
-            //            case .crossFading, .zoomOut, .depth:
-            //                self.pagerView.itemSize = FSPagerView.automaticSize
-            //                self.pagerView.decelerationDistance = 1
-            //            case .linear, .overlap:
-            //                let transform = CGAffineTransform(scaleX: 0.6, y: 0.75)
-            //                self.pagerView.itemSize = self.pagerView.frame.size.applying(transform)
-            //                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
-            //            case .ferrisWheel, .invertedFerrisWheel:
-            //                self.pagerView.itemSize = CGSize(width: 50, height: 50)
-            //                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
-            //            case .coverFlow:
-            //                self.pagerView.itemSize = CGSize(width: 220, height: 170)
-            //                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
-            //            case .cubic:
-            //                let transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            //                self.pagerView.itemSize = self.pagerView.frame.size.applying(transform)
-            //                self.pagerView.decelerationDistance = 1
-            //            }
-        }
-    }*/
+     didSet {
+     //  let type = self.transformerTypes[typeIndex]
+     self.pagerView.transformer = FSPagerViewTransformer(type:.ferrisWheel)
+     self.pagerView.interitemSpacing = 30
+     if (self.pagerView.tag == 1){
+     self.pagerView.itemSize = CGSize(width: 100, height: 50)
+     
+     }else{
+     self.pagerView.itemSize = CGSize(width: 100, height: 50)
+     }
+     self.pagerView.decelerationDistance = FSPagerView.automaticDistance
+     //  self.pagerView2.transformer = FSPagerViewTransformer(type:type)
+     //            switch type {
+     //            case .crossFading, .zoomOut, .depth:
+     //                self.pagerView.itemSize = FSPagerView.automaticSize
+     //                self.pagerView.decelerationDistance = 1
+     //            case .linear, .overlap:
+     //                let transform = CGAffineTransform(scaleX: 0.6, y: 0.75)
+     //                self.pagerView.itemSize = self.pagerView.frame.size.applying(transform)
+     //                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
+     //            case .ferrisWheel, .invertedFerrisWheel:
+     //                self.pagerView.itemSize = CGSize(width: 50, height: 50)
+     //                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
+     //            case .coverFlow:
+     //                self.pagerView.itemSize = CGSize(width: 220, height: 170)
+     //                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
+     //            case .cubic:
+     //                let transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+     //                self.pagerView.itemSize = self.pagerView.frame.size.applying(transform)
+     //                self.pagerView.decelerationDistance = 1
+     //            }
+     }
+     }*/
     
-        fileprivate var typeIndexx = 0 {
-            didSet {
-                // let type = self.transformerTypes[typeIndex]
-                
-                self.pagerView.transformer = FSPagerViewTransformer(type:.ferrisWheel)
-                self.pagerView.interitemSpacing = 0
-                    self.pagerView.itemSize = CGSize(width: 70, height: 70)
-                pagerView.isInfinite = true
-                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
-            }
+    fileprivate var typeIndexx = 0 {
+        didSet {
+            // let type = self.transformerTypes[typeIndex]
+            
+            self.pagerView.transformer = FSPagerViewTransformer(type:.ferrisWheel)
+            self.pagerView.interitemSpacing = 0
+            self.pagerView.itemSize = CGSize(width: 70, height: 70)
+            pagerView.isInfinite = true
+            self.pagerView.decelerationDistance = FSPagerView.automaticDistance
         }
+    }
     
     
     
@@ -139,8 +127,9 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
             selector: #selector(self.scrollTo),
             name: Notification.Name("scrollTo"),
             object: nil)
-         backBtn.isHidden = self.fromSignUp
+        backBtn.isHidden = self.fromSignUp
        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -151,12 +140,16 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         roundedTop(targetView: vw1, desiredCurve: vw1.frame.size.height/2)
-         roundedTop(targetView: vw2, desiredCurve: vw2.frame.size.height/2)
+        roundedTop(targetView: vw2, desiredCurve: vw2.frame.size.height/2)
         //vwContainCount.layer.cornerRadius = 87.5
         roundedTop(targetView: vwContainCount, desiredCurve: 87.5)
         //  self.pagerView2.dataSource = self
         //  self.pagerView2.delegate = self
-        
+                   if self.fromSignUp {
+                       self.btnWidthConstrain.constant = 0
+                   } else {
+                       self.btnWidthConstrain.constant = 45
+                   }
         let index = self.typeIndexx
         self.typeIndexx = index // Manually trigger didSet
         
@@ -184,7 +177,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     
     //MARK:- IBAction
     @IBAction func doneTap(_ sender: UIButton) {
-       
+        
         guard let userid = SaveToDefaults().getUserId() else {return}
         var id = [String]()
         for val in self.selectedCategoryArr{
@@ -192,7 +185,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         }
         self.vm.userSelectedCategoryApi(user_id: userid, selected_category: id.joined(separator: ","))
     }
-
+    
     
     // MARK:- FSPagerViewDataSource
     
@@ -226,8 +219,8 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         //  return cell
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         
-        loadImage(self.vm.model?.result?[index].category_image ?? "", cell.imageView ?? UIImageView(), activity: nil, defaultImage: nil)
-         cell.imageView?.contentMode = .scaleAspectFit
+        loadImage(self.vm.model?.result?[index].category_image ?? "", cell.imageView ?? UIImageView(), activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
+        cell.imageView?.contentMode = .scaleAspectFit
         cell.textLabel?.text = self.vm.model?.result?[index].category_name
         cell.textLabel?.textColor = .white
         cell.textLabel?.textAlignment = .center
@@ -242,17 +235,19 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
             self.selectedCategoryArr.append(SelectedInterest(category_image: self.vm.model?.result?[index].category_image ?? "", category_name: self.vm.model?.result?[index].category_name ?? "", category_id: self.vm.model?.result?[index].category_id ?? ""))
             colectionVw.reloadData()
             colectionVw.scrollToItem(at: IndexPath.init(row: selectedCategoryArr.count-1, section: 0), at: .centeredHorizontally, animated: true)
+            self.lblCount.text = "\(selectedCategoryArr.count)"
         }else{
             
         }
         
-       
+        
+        
     }
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         if index == self.selectedCtaegory {
             
         } else {
-           
+            
             
         }
         //        if pagerView.tag == 1 {
@@ -280,7 +275,7 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCategoryCell.ident, for: indexPath) as? AllCategoryCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCategoryCell.ident, for: indexPath) as? AllCategoryCell else { return UICollectionViewCell() }
         cell.lblInterest.numberOfLines = 2
         if indexPath.row == 0 {
             cell.vwLeadingConstrain.constant = 18
@@ -289,7 +284,7 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
             cell.vwLeadingConstrain.constant = 0
             cell.vwtraillingConstrain.constant = 12
         }
-        loadImage(self.selectedCategoryArr[indexPath.row].category_image,  cell.imgInterest, activity: nil, defaultImage: nil)
+        loadImage(self.selectedCategoryArr[indexPath.row].category_image,  cell.imgInterest, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         cell.lblInterest.text = self.selectedCategoryArr[indexPath.row].category_name
         cell.tag = indexPath.row
         cell.closure = { index in
@@ -298,15 +293,26 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
                 self.selectedCategoryArr.remove(at: indexPath.row)
                 self.colectionVw.reloadData()
                 self.colectionVw.scrollToItem(at: IndexPath.init(row: self.selectedCategoryArr.count-1, section: 0), at: .centeredHorizontally, animated: true)
+                self.lblCount.text = "\(self.selectedCategoryArr.count)"
+                if self.selectedCategoryArr.count == 0{
+                    self.btnDone.setTitle("Skip", for: .normal)
+                }else{
+                    self.btnDone.setTitle("Done", for: .normal)
+                }
             }
         }
-               return cell
+        if self.selectedCategoryArr.count == 0{
+            self.btnDone.setTitle("Skip", for: .normal)
+        }else{
+            self.btnDone.setTitle("Done", for: .normal)
+        }
+        return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = selectedCategoryArr[indexPath.row].category_name
-                   let label = UILabel(frame: CGRect.zero)
-                      label.text = text
-                      label.sizeToFit()
+        let label = UILabel(frame: CGRect.zero)
+        label.text = text
+        label.sizeToFit()
         if indexPath.row == 0{
             return CGSize(width: 128, height: 132)
         }
@@ -326,9 +332,15 @@ extension TransformerExampleViewController: LoadingCategory {
     }
     
     func reloaddata() {
-        lblCount.text = "\(self.vm.model?.result?.count ?? 0)"
+        lblCount.text = "\(self.vm.model?.selected_category?.count ?? 0)"
         for val in self.vm.model?.selected_category ?? []{
-        self.selectedCategoryArr.append(SelectedInterest(category_image: val.category_image ?? "", category_name: val.category_name ?? "", category_id: val.category_id ?? ""))
+            self.selectedCategoryArr.append(SelectedInterest(category_image: val.category_image ?? "", category_name: val.category_name ?? "", category_id: val.category_id ?? ""))
+        }
+        if self.selectedCategoryArr.count == 0{
+            //skip
+            self.btnDone.setTitle("Skip", for: .normal)
+        }else{
+            self.btnDone.setTitle("Done", for: .normal)
         }
         colectionVw.reloadData()
         pagerView.reloadData()

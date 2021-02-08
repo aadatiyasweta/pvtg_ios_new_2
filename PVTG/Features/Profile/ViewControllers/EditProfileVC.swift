@@ -195,6 +195,7 @@ extension EditProfileVC {
         self.txfUserName.text = userDta?.name
         self.txfmobileNo.text = userDta?.phone
         self.txfmail.text = userDta?.email
+        SaveToDefaults().setProfilePic(value: userDta?.user_image ?? "")
         loadImage(userDta?.user_image ?? "", self.imguser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
     }
 }

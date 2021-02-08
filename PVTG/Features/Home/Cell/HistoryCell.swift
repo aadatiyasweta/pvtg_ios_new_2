@@ -27,6 +27,8 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var btnRate: UIButton!
     @IBOutlet weak var vwContainYogaName: UIView!
     @IBOutlet weak var btnbigRate: UIButton!
+    @IBOutlet weak var sessionImage: UIImageView!
+    
     //MARK:- Cell reuseIdentifier
       static let ident = "HistoryCell"
       class func nib()-> UINib {
@@ -71,21 +73,33 @@ class HistoryCell: UITableViewCell {
             let noOfStar = Double(rating)
             self.vwRating.rating = noOfStar ?? 0.0
             if noOfStar == 0.0{
-                self.btnRate.isHidden = false
-                self.vwRated.isHidden = false
+                
                 btnbigRate.isHidden = false
             }else{
-                self.btnRate.isHidden = true
                 self.vwRated.isHidden = true
                 btnbigRate.isHidden = false
             }
         }
-
+        if let userRating = data.user_rating {
+            if userRating == "0.00" {
+                 btnbigRate.isHidden = false
+                self.vwRated.isHidden = false
+                
+            } else {
+                btnbigRate.isHidden = true
+                self.vwRated.isHidden = false
+                self.vwRated.rating = Double(userRating)!
+                self.vwRated.settings.totalStars = Int(userRating) ?? 0
+            }
+        }
         if let place = data.city, let distance = data.distance {
             let value = Double(distance) ?? 0.0
             let doubleStr = String(format: "%.2f", value)
             let str = place + " (\(doubleStr) km away)"
             self.lblFromLocation.text = str
+        }
+        if let img = data.session_image {
+            loadImage(img, self.sessionImage, activity: nil, defaultImage: nil)
         }
 
     }

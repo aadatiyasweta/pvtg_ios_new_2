@@ -25,6 +25,8 @@ struct EventsResult : Codable {
 	let category_name : String?
 	let distance : String?
 	let rating : String?
+    let session_image : String?
+    let user_rating : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -40,6 +42,9 @@ struct EventsResult : Codable {
 		case category_name = "category_name"
 		case distance = "distance"
 		case rating = "rating"
+        case session_image = "session_image"
+        case user_rating = "user_rating"
+        
 	}
 
 	init(from decoder: Decoder) throws {
@@ -56,6 +61,8 @@ struct EventsResult : Codable {
 		category_name = try values.decodeIfPresent(String.self, forKey: .category_name)
 		distance = try values.decodeIfPresent(String.self, forKey: .distance)
 		rating = try values.decodeIfPresent(String.self, forKey: .rating)
+        session_image = try values.decodeIfPresent(String.self, forKey: .session_image)
+        user_rating = try values.decodeIfPresent(String.self, forKey: .user_rating)
 	}
 
 }
