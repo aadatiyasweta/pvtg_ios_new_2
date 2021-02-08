@@ -11,6 +11,8 @@ import Cosmos
 import GoogleMaps
 
 
+
+
 class SummaryVC: BaseViewController, GMSMapViewDelegate {
     
     @IBOutlet weak var imgLocn: UIImageView!

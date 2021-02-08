@@ -60,6 +60,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var vwContainfee: UIView!
     @IBOutlet weak var vwsession: UIView!
     @IBOutlet weak var btnToRemove: UIButton!
+    
+    @IBOutlet weak var vwcontainTktCount: UIView!
     @IBOutlet weak var colectnVwSessionImage: UICollectionView! {
         didSet {
             colectnVwSessionImage.dataSource = self
@@ -73,8 +75,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var btnIncrease: UIButton!
     
     @IBOutlet weak var lblNoTime: UILabel!
-    
-    @IBOutlet weak var VwVendorheightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scrollViewBotmconstarint: NSLayoutConstraint!
     @IBOutlet weak var lblAboutVendor: UILabel!
@@ -102,7 +102,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         return formatter
     }()
     var selectedDate = ""
-    fileprivate let formatter: DateFormatter = {
+     let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
@@ -130,7 +130,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = true
             self.cancelBtn.isHidden = false
             self.completedBtn.isHidden = true
-            loadApi(top_search: "")
         } else if controllerId == 2 {
             self.vwmap.isHidden = false
             self.vwcalendar.isHidden = false
@@ -143,7 +142,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
              self.btnBooknow.isHidden = true
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
-            loadApi(top_search: "1")
         }else if controllerId == 3 {
             self.vwmap.isHidden = true
             self.vwcalendar.isHidden = true
@@ -156,7 +154,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = true
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = false
-            loadApi(top_search: "")
         }else {
             self.vwmap.isHidden = false
             self.vwcalendar.isHidden = false
@@ -169,10 +166,15 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = false
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
-            loadApi(top_search: "")
         }
+        loadApi(top_search: "")
         vm.delegate = self
         handlingHeaderInFSCalendar()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setVSViewShadow(radius: 10, color: .black, view: self.vwcontainTktCount, opacity: 0.12)
     }
 //    //essionapi/ticket_data http://52.27.53.102/pvtg/api/v1/Sessionapi/ticket_data?user_id=7&session_id=1&schedule_time_id=11
 //    Token -------->>>>>> UTQT9zsaNX
@@ -290,18 +292,26 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         btnToNext.setTitle("\(headerFormatter.string(from: next))", for: .normal)
         btnToPrev.setTitle("\(headerFormatter.string(from: prev))", for: .normal)
     }
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        if date .compare(Date()) == .orderedAscending {
+            return false
+        }
+        else {
+            return true
+        }
+    }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         debugPrint("Api for getting time")
         self.formatter.dateFormat = "yyyy-MM-dd"
         print("did select date \(self.formatter.string(from: date))")
         self.selectedDate = "\(self.formatter.string(from: date))"
-        self.lblDayWithDate.text = stringconvertIntoHourFormatted(inputDate:  self.selectedDate)
+        self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
         guard let alldate = self.vm.model?.all_date else {return}
         for val in alldate {
             if selectedDate == val.schedule_date{
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if val.is_avilable == "1" {
-                    self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId)
+                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true)
                     self.scrollViewBotmconstarint.constant = 97
                     }
                 }
@@ -318,6 +328,23 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         
         self.vwCollection.reloadData()
         self.colectnVwSessionImage.reloadData()
+    }
+    
+    func stringconvertIntoHour(inputDate: String)-> String {
+        let dateAsString = inputDate
+        let dateFormatter = self.formatter
+        var Date24 = ""
+        
+        if let date1 = dateFormatter.date(from: dateAsString){
+        debugPrint("Date is \(date)")
+            debugPrint("date is \(date1)")
+        dateFormatter.dateFormat = "EEEE, MMMM d"
+        Date24 = dateFormatter.string(from: date1 )
+        }
+        debugPrint("24 hour formatted Date:",Date24)
+        
+        return Date24
+        
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance,eventDefaultColorsFor date: Date) -> [UIColor]? {
@@ -347,7 +374,9 @@ extension Date {
         let seconds:TimeInterval = TimeInterval(tz.secondsFromGMT(for: self as Date))
         return Date(timeInterval: seconds, since: self as Date)
     }
+
 }
+
 
 extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -464,6 +493,29 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
 }
 
 extension SessionDetailVC: GetResponse {
+    func reloadTime() {
+                guard let alldate = self.vm.model?.all_date else {return}
+        self.formatter.dateFormat = "yyyy-MM-dd"
+               for val in alldate {
+                if self.formatter.string(from: self.today) == val.schedule_date{
+                if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
+                    self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false)
+                    self.scrollViewBotmconstarint.constant = 97
+                }
+                
+            } else {
+                self.timeArr.removeAll()
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+                    self.scrollViewBotmconstarint.constant = 0
+                    self.btnBooknow.isHidden = true
+                }, completion: nil)
+                
+            }
+        }
+
+
+    }
+    
     func allTicketsSold() {
         showAlert(strTitle: "No ticket available")
         self.btnToRemove.isHidden = false
@@ -492,7 +544,6 @@ extension SessionDetailVC: GetResponse {
             
             self.SetMap()
         }
-
         self.timeArr = self.vm.timeArr?.result ?? Array()
         if self.timeArr.count == 0 {
             self.btnBooknow.isHidden = true
@@ -521,7 +572,7 @@ extension SessionDetailVC: GetResponse {
         let value = Double(data.distance ?? "")!
         let doubleStr = String(format: "%.2f", value)
         let str = (data.city ?? "") + " (\(doubleStr) km)"
-        self.lblsessionPrice.text = "$"+(data.ticket_price ?? "")
+        self.lblsessionPrice.text = (data.currency ?? "$")+(data.ticket_price ?? "")
         self.lblSessionname.text = data.category_name ?? ""
         self.vwrating.rating = Double(data.rating ?? "")!
         self.lblPlaceName.text = str
@@ -579,24 +630,6 @@ extension SessionDetailVC {
     private func loadApi(top_search: String) {
         guard let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude()  else {return}
         self.vm.sessionDtailApi(user_id: userid, session_id: sessionId, latitude: "\(lat)", longitude: "\(lng)", top_search: top_search)
-        guard let alldate = self.vm.model?.all_date else {return}
-        self.formatter.dateFormat = "yyyy-MM-dd"
-               for val in alldate {
-                if self.formatter.string(from: self.today) == val.schedule_date{
-                if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
-                    self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId)
-                    self.scrollViewBotmconstarint.constant = 97
-                }
-                
-            } else {
-                self.timeArr.removeAll()
-                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-                    self.scrollViewBotmconstarint.constant = 0
-                    self.btnBooknow.isHidden = true
-                }, completion: nil)
-                
-            }
-        }
         
     }
     private func bookingApi() {

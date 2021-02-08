@@ -285,6 +285,7 @@
                 <outlet property="lblSessionName" destination="ID7-IC-3sF" id="YLv-qs-fjB"/>
                 <outlet property="lblplaceWithDistance" destination="Dtf-gC-Ago" id="V21-wZ-ago"/>
                 <outlet property="leadingConstraint" destination="sZg-3z-TOt" id="Goe-jP-1an"/>
+                <outlet property="sessionImage" destination="1oV-BJ-oy9" id="cyW-of-wIy"/>
                 <outlet property="vw1" destination="56w-lL-j5N" id="der-kN-pnK"/>
                 <outlet property="vw2" destination="MNd-T4-lWK" id="eCK-aI-wV0"/>
                 <outlet property="vw3" destination="OFe-YZ-q1I" id="DCf-m6-xvL"/>

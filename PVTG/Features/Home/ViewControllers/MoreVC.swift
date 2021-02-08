@@ -68,26 +68,26 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         case 2:
              let vc = PrivacyPolicyVC.instance()
-             vc.type = "FAQ"
+             vc.type = "  FAQ"
              vc.url = faq
             self.navigationController?.pushViewController(vc, animated: true)
         case 3:
             let vc = PrivacyPolicyVC.instance()
-            vc.type = "Privacy Policy"
+            vc.type = "  Privacy Policy"
             vc.url = privacy
             self.navigationController?.pushViewController(vc, animated: true)
         case 4:
             let vc = PrivacyPolicyVC.instance()
-            vc.type = "Terms & Condition"
+            vc.type = "  Terms & Condition"
             vc.url = terms
             self.navigationController?.pushViewController(vc, animated: true)
         case 5:
             let vc = PrivacyPolicyVC.instance()
-            vc.type = "About Us"
+            vc.type = "  About Us"
             vc.url = aboutUs
             self.navigationController?.pushViewController(vc, animated: true)
         case 6:
-            debugPrint("Rate us")
+            debugPrint("  Rate us")
 //            let vc = RateUsVC.instance()
 //            self.navigationController?.pushViewController(vc, animated: true)
         case 7:

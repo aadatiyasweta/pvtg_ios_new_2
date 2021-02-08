@@ -44,6 +44,8 @@ class EventsViewController: BaseViewController {
     private var indexOfCellBeforeDragging = 0
     private var currentPage: Int = 0
     var vm = EventViewModel()
+    var indexOfPageToRequest = 0
+       var ispageEnabled = false
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
@@ -55,7 +57,7 @@ class EventsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadApi()
+        loadApi(offset: "0")
     }
     
   
@@ -91,6 +93,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectedRate = {
             let vc = RateUsVC.instance()
             vc.sessionid = self.vm.model?.history?[indexPath.row].session_id ?? ""
+            vc.bookingID = self.vm.model?.history?[indexPath.row].booking_id ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
         cell.selectedIndex = { tap in
@@ -165,16 +168,34 @@ extension EventsViewController {
         }
         
     }
+    ///Pagination
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+         if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+             // increments the number of the page to request
+            if self.vm.model?.history?.count ?? 0 > 0{
+                 indexOfPageToRequest += 10
+                 let data = String(indexOfPageToRequest)
+                 loadApi(offset: data)
+                 print(data)
+                 
+             }else{
+                lblNoSession.isHidden = true
+                lblNoSession.text = ""
+             }
+         }
+     }
+
     
     //Loading API
     
-    private func loadApi() {
+    private func loadApi(offset: String) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
-            self.vm.getActiveEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)")
+            self.vm.getActiveEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)", offset: offset)
             //self.vm.getHistoryEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)")
         }
     }
-        
+      
+    
 }
 
 extension EventsViewController: LoadingEvents {

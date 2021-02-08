@@ -48,11 +48,16 @@ class HoliosticGuideVC: BaseViewController {
         setShadowToView()
         self.btnClose.isHidden = false
         self.colectionVwCategory.isPagingEnabled = true
-        loadApi(categoryid: "1", search: "", isloader: true)
+        
         if let userid = SaveToDefaults().getUserId() {
         vm.getAllCategoryApi(user_id: userid)
         }
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadApi(categoryid: "1", search: "", isloader: true)
     }
     
     func setShadowToView() {
@@ -183,6 +188,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
         } else {
             index = indexPath.row
         }
+        catgryId = Int(self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1") ?? 0
         loadApi(categoryid: self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1", search: "", isloader: true)
         self.colectionVwCategory.reloadData()
     }

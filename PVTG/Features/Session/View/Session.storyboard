@@ -115,6 +115,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="zLw-BJ-tLM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1J-nz-1K2">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="471"/>
                                 <subviews>
@@ -222,7 +225,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Holistic Sessions Italy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Al-CC-05y">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Holistic Sessions Italy" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Al-CC-05y">
                                                         <rect key="frame" x="24" y="81" width="271" height="29.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="24"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -583,7 +586,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buC-nK-pfG">
-                                <rect key="frame" x="5" y="368" width="310" height="200"/>
+                                <rect key="frame" x="5" y="318" width="310" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many tickets do you need ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxe-xS-5Rq">
                                         <rect key="frame" x="6" y="22" width="298" height="22"/>
@@ -592,7 +595,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfo-1k-OnA">
-                                        <rect key="frame" x="45" y="67.5" width="45" height="45"/>
+                                        <rect key="frame" x="45" y="79" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="Olj-Gr-u8S"/>
                                             <constraint firstAttribute="height" constant="45" id="x2Z-RB-dAy"/>
@@ -603,10 +606,10 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ban-s9-4xk">
-                                        <rect key="frame" x="122.5" y="62.5" width="65" height="55"/>
+                                        <rect key="frame" x="122.5" y="71.5" width="65" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mG-TN-p3i">
-                                                <rect key="frame" x="2" y="7" width="61" height="41.5"/>
+                                                <rect key="frame" x="2" y="9.5" width="61" height="41.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="34"/>
                                                 <color key="textColor" red="0.37647058823529411" green="0.40392156862745099" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -618,7 +621,7 @@
                                             <constraint firstItem="1mG-TN-p3i" firstAttribute="leading" secondItem="ban-s9-4xk" secondAttribute="leading" constant="2" id="aR9-DW-kRc"/>
                                             <constraint firstItem="1mG-TN-p3i" firstAttribute="centerY" secondItem="ban-s9-4xk" secondAttribute="centerY" id="idg-ey-VaK"/>
                                             <constraint firstAttribute="width" constant="65" id="oLN-mz-UZN"/>
-                                            <constraint firstAttribute="height" constant="55" id="xgG-Pw-XMT"/>
+                                            <constraint firstAttribute="height" constant="60" id="xgG-Pw-XMT"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -627,7 +630,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxy-J7-CsU">
-                                        <rect key="frame" x="220" y="67.5" width="45" height="45"/>
+                                        <rect key="frame" x="220" y="79" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="4L7-ck-gDz"/>
                                             <constraint firstAttribute="width" constant="45" id="M9X-Uv-SXi"/>
@@ -638,7 +641,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZc-hY-dzJ">
-                                        <rect key="frame" x="75" y="133" width="160" height="45"/>
+                                        <rect key="frame" x="75" y="159" width="160" height="45"/>
                                         <color key="backgroundColor" red="0.37647058820000001" green="0.4039215686" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="7YQ-1e-WpA"/>
@@ -659,18 +662,18 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="oZc-hY-dzJ" firstAttribute="top" secondItem="dxy-J7-CsU" secondAttribute="bottom" constant="35" id="3vq-dS-dgG"/>
+                                    <constraint firstItem="Pfo-1k-OnA" firstAttribute="top" secondItem="Oxe-xS-5Rq" secondAttribute="bottom" constant="35" id="4DM-1c-Vwo"/>
                                     <constraint firstItem="Oxe-xS-5Rq" firstAttribute="top" secondItem="buC-nK-pfG" secondAttribute="top" constant="22" id="6Nv-sx-ew9"/>
                                     <constraint firstItem="Pfo-1k-OnA" firstAttribute="leading" secondItem="buC-nK-pfG" secondAttribute="leading" constant="45" id="BUq-LL-YXH"/>
-                                    <constraint firstAttribute="bottom" secondItem="oZc-hY-dzJ" secondAttribute="bottom" constant="22" id="Cp7-qe-ttY"/>
                                     <constraint firstItem="ban-s9-4xk" firstAttribute="centerX" secondItem="buC-nK-pfG" secondAttribute="centerX" id="LDO-T4-TiI"/>
                                     <constraint firstItem="ban-s9-4xk" firstAttribute="centerY" secondItem="dxy-J7-CsU" secondAttribute="centerY" id="Pop-M1-l7F"/>
                                     <constraint firstItem="Oxe-xS-5Rq" firstAttribute="centerX" secondItem="buC-nK-pfG" secondAttribute="centerX" id="QSK-XH-Mup"/>
                                     <constraint firstItem="oZc-hY-dzJ" firstAttribute="leading" secondItem="buC-nK-pfG" secondAttribute="leading" constant="75" id="R8O-Ro-Y6f"/>
-                                    <constraint firstAttribute="height" constant="200" id="RCX-DT-yTn"/>
+                                    <constraint firstAttribute="height" constant="250" id="RCX-DT-yTn"/>
                                     <constraint firstItem="dxy-J7-CsU" firstAttribute="centerY" secondItem="Pfo-1k-OnA" secondAttribute="centerY" id="eVZ-e3-svk"/>
                                     <constraint firstAttribute="trailing" secondItem="oZc-hY-dzJ" secondAttribute="trailing" constant="75" id="qFo-QI-2vY"/>
                                     <constraint firstAttribute="trailing" secondItem="dxy-J7-CsU" secondAttribute="trailing" constant="45" id="zD9-d8-Np1"/>
-                                    <constraint firstItem="Pfo-1k-OnA" firstAttribute="centerY" secondItem="buC-nK-pfG" secondAttribute="centerY" constant="-10" id="zR4-xm-zXo"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -682,8 +685,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="buC-nK-pfG" firstAttribute="leading" secondItem="2Oi-Ft-hyQ" secondAttribute="leading" constant="5" id="1IN-xx-Nt2"/>
+                            <constraint firstAttribute="bottom" secondItem="zLw-BJ-tLM" secondAttribute="bottom" id="4g9-MR-s67"/>
+                            <constraint firstItem="zLw-BJ-tLM" firstAttribute="leading" secondItem="2Oi-Ft-hyQ" secondAttribute="leading" id="63x-qY-GOT"/>
                             <constraint firstItem="OLw-1C-Gok" firstAttribute="top" secondItem="iJP-br-t1e" secondAttribute="top" id="6oX-oD-LES"/>
+                            <constraint firstAttribute="trailing" secondItem="zLw-BJ-tLM" secondAttribute="trailing" id="8Ji-IV-RMO"/>
                             <constraint firstItem="ppg-q6-o72" firstAttribute="trailing" secondItem="dLw-t5-wPy" secondAttribute="trailing" id="8Tm-Ny-Ocp"/>
+                            <constraint firstItem="zLw-BJ-tLM" firstAttribute="top" secondItem="2Oi-Ft-hyQ" secondAttribute="top" id="8gd-o0-2Ft"/>
                             <constraint firstItem="ppg-q6-o72" firstAttribute="bottom" secondItem="dLw-t5-wPy" secondAttribute="bottom" id="9e5-HZ-VO0"/>
                             <constraint firstItem="ppg-q6-o72" firstAttribute="bottom" secondItem="x1J-nz-1K2" secondAttribute="bottom" constant="97" id="A5K-wB-rnk"/>
                             <constraint firstItem="iJP-br-t1e" firstAttribute="top" secondItem="x1J-nz-1K2" secondAttribute="bottom" constant="22" id="AKo-oL-nl0"/>
@@ -740,6 +747,7 @@
                         <outlet property="vwToGetBlurEffect" destination="rvF-3d-qmB" id="QP6-Bl-92Y"/>
                         <outlet property="vwbookTickets" destination="buC-nK-pfG" id="Nw8-BV-g63"/>
                         <outlet property="vwcalendar" destination="zQq-ms-5tZ" id="sfW-Pr-dsc"/>
+                        <outlet property="vwcontainTktCount" destination="ban-s9-4xk" id="6Gr-H7-yCG"/>
                         <outlet property="vwmap" destination="5Yq-Z0-MAK" id="NDk-dN-EeC"/>
                         <outlet property="vwrating" destination="V0t-g1-cUR" id="t3g-Yx-zNJ"/>
                         <outlet property="vwsession" destination="b7t-oJ-WQV" id="fyj-hK-o2E"/>
@@ -753,6 +761,7 @@
     <resources>
         <image name="+" width="29.5" height="29.5"/>
         <image name="-" width="29.5" height="7.5"/>
+        <image name="bg" width="557.5" height="1086.5"/>
         <image name="cross" width="13.5" height="13.5"/>
         <image name="loc" width="10" height="12.5"/>
         <image name="minimalLeft2X" width="7.5" height="13.5"/>

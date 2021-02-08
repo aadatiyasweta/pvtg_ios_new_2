@@ -28,6 +28,7 @@ struct SessionDetailResult : Codable {
 	let bio : String?
 	let images : [Images]?
 	let all_date : [All_date]?
+    let currency : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -46,6 +47,7 @@ struct SessionDetailResult : Codable {
 		case bio = "bio"
 		case images = "images"
 		case all_date = "all_date"
+        case currency = "currency"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -65,6 +67,7 @@ struct SessionDetailResult : Codable {
 		bio = try values.decodeIfPresent(String.self, forKey: .bio)
 		images = try values.decodeIfPresent([Images].self, forKey: .images)
 		all_date = try values.decodeIfPresent([All_date].self, forKey: .all_date)
+        currency = try values.decodeIfPresent(String.self, forKey: .currency)
 	}
 
 }

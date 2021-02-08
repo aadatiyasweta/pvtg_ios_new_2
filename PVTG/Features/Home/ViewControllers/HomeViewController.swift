@@ -58,18 +58,21 @@ class HomeViewController: BaseViewController {
             self.userimg.layer.borderWidth = 0.5
             self.userimg.layer.cornerRadius = 10
             self.userimg.layer.borderColor = UIColor().coloWithHexString(hex: "#05d9bd").cgColor
-
+            self.userimg.image = UIImage(named: "more")
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadApi(categoryid: "\(id)")
-        guard let address = SaveToDefaults().getformattedAddress() else { return}
+        if let address = SaveToDefaults().getformattedAddress() {
+            self.lblLocn.text = address
+        }
+        SaveToDefaults().setformattedAddress(lat:  self.lblLocn.text ?? "")
         if let pic = SaveToDefaults().getProfilePic() {
         loadImage(pic, self.userimg, activity: nil, defaultImage: UIImage(named: "more"))
         }
-        self.lblLocn.text = address
+       
     }
     
     override func viewDidLayoutSubviews() {
@@ -293,7 +296,7 @@ extension HomeViewController: CLLocationManagerDelegate{
             
             coder.reverseGeocodeCoordinate(addressCoordinates) { response, error in
                 if let addrss = response?.firstResult() {
-                    var location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
+                    let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
                     self.lblLocn.text = addrss.locality
                     SaveToDefaults().setLatitude(lat: location.latitude)
                     SaveToDefaults().setLongtitude(lon: location.longitude)

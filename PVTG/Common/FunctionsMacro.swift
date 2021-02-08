@@ -151,7 +151,8 @@ func stringconvertIntoHourFormatted(inputDate: String)-> String {
     dateFormatter.dateFormat = "yyyy-mm-dd"
     
     let date = dateFormatter.date(from: dateAsString)
-    dateFormatter.dateFormat = "EEEE, MMMM d"
+    debugPrint("Date is \(date)")
+    dateFormatter.dateFormat = "EEEE, MMMM dd"
     let Date24 = dateFormatter.string(from: date ?? Date())
     debugPrint("24 hour formatted Date:",Date24)
     
@@ -342,13 +343,13 @@ extension UIView {
        }
     }
         func animShow(){
-            UIView.animate(withDuration: 2, delay: 0, options: [.curveEaseIn],
+            UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear],
                            animations: {
                             setVSViewShadow(radius: 10, color: .black, view: self, opacity: 0.12)
-                            self.center.y -= 10
+                            self.center.y -= 0
                             self.layoutIfNeeded()
             }, completion: {(_ completed: Bool) -> Void in
-                self.center.y = UIScreen.main.bounds.height - 100
+                self.center.y = UIScreen.main.bounds.height - 125
             })
             self.isHidden = false
         }

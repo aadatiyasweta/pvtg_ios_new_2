@@ -19,6 +19,7 @@ class RateUsVC: BaseViewController {
      //MARK:- variables
     private var vm = RateViewModel()
     var sessionid = ""
+    var bookingID = ""
     
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class RateUsVC: BaseViewController {
     @IBAction func BtnSubmitTap(_ sender: UIButton) {
         guard let userid = SaveToDefaults().getUserId() else {return}
         if self.vm.ratevalidation(rating: "\(self.vwRating.rating)", desc: self.txtView.text) {
-            self.vm.sessionRatingApi(user_id: userid, session_id: sessionid, rating: "\(self.vwRating.rating)", feedback: self.txtView.text)
+            self.vm.sessionRatingApi(user_id: userid, session_id: sessionid, rating: "\(self.vwRating.rating)", feedback: self.txtView.text, booking_id: self.bookingID)
         }
     }
     
