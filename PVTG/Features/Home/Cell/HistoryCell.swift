@@ -72,24 +72,17 @@ class HistoryCell: UITableViewCell {
         if let rating = data.rating {
             let noOfStar = Double(rating)
             self.vwRating.rating = noOfStar ?? 0.0
-            if noOfStar == 0.0{
-                
-                btnbigRate.isHidden = false
-            }else{
-                self.vwRated.isHidden = true
-                btnbigRate.isHidden = false
-            }
         }
         if let userRating = data.user_rating {
             if userRating == "0.00" {
                  btnbigRate.isHidden = false
-                self.vwRated.isHidden = false
+                self.vwRated.isHidden = true
                 
             } else {
                 btnbigRate.isHidden = true
                 self.vwRated.isHidden = false
                 self.vwRated.rating = Double(userRating)!
-                self.vwRated.settings.totalStars = Int(userRating) ?? 0
+                self.vwRated.settings.totalStars = Int(ceil(Double(userRating)!))
             }
         }
         if let place = data.city, let distance = data.distance {
