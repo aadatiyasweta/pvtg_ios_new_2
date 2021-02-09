@@ -74,6 +74,9 @@ class HistoryCell: UITableViewCell {
             self.vwRating.rating = noOfStar ?? 0.0
         }
        if let userRating = data.user_rating {
+        let noOfStar = Double(userRating)
+        self.vwRated.rating = noOfStar ?? 0.0
+
         if userRating == "0.00" {
         btnbigRate.isHidden = false
         btnRate.isHidden = false
@@ -81,7 +84,7 @@ class HistoryCell: UITableViewCell {
 
         } else {
         btnbigRate.isHidden = true
-        self.vwRated.isHidden = true
+       // self.vwRated.isHidden = true
         btnRate.isHidden = true
         }
         }

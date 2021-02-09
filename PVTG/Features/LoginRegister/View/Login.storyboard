@@ -668,16 +668,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXw-g7-abT">
-                                <rect key="frame" x="18" y="0.0" width="46" height="46"/>
+                                <rect key="frame" x="18" y="10" width="35" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="Hkb-cG-5rZ"/>
-                                    <constraint firstAttribute="width" constant="46" id="KxD-WJ-xC1"/>
+                                    <constraint firstAttribute="height" constant="35" id="Hkb-cG-5rZ"/>
+                                    <constraint firstAttribute="width" constant="35" id="KxD-WJ-xC1"/>
                                 </constraints>
                                 <state key="normal" image="minimalLeft2X"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="12"/>
+                                        <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -685,19 +685,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Forgot Password" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvX-Eo-IAe">
-                                <rect key="frame" x="64" y="12.5" width="157.5" height="21"/>
+                                <rect key="frame" x="53" y="17" width="157.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't worry just fill in your email and we will send an otp to reset your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxv-xf-3wX">
-                                <rect key="frame" x="24" y="76" width="272" height="29.5"/>
+                                <rect key="frame" x="24" y="75" width="272" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blF-Ut-kfs" customClass="WTFloatingTextfield" customModule="PVTG" customModuleProvider="target">
-                                <rect key="frame" x="22" y="140.5" width="276" height="45"/>
+                                <rect key="frame" x="22" y="139.5" width="276" height="45"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="tGY-9S-4Qa"/>
@@ -706,7 +706,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6C-pF-p3p">
-                                <rect key="frame" x="22" y="185.5" width="33.5" height="15"/>
+                                <rect key="frame" x="22" y="184.5" width="33.5" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -734,7 +734,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="dXw-g7-abT" firstAttribute="top" secondItem="A66-MX-T1i" secondAttribute="top" id="59C-gr-YsT"/>
+                            <constraint firstItem="dXw-g7-abT" firstAttribute="top" secondItem="A66-MX-T1i" secondAttribute="top" constant="10" id="59C-gr-YsT"/>
                             <constraint firstAttribute="bottom" secondItem="kEy-Az-P3B" secondAttribute="bottom" id="9FG-9K-PW5"/>
                             <constraint firstItem="A66-MX-T1i" firstAttribute="trailing" secondItem="fxv-xf-3wX" secondAttribute="trailing" constant="24" id="DVL-nw-RF3"/>
                             <constraint firstItem="blF-Ut-kfs" firstAttribute="top" secondItem="fxv-xf-3wX" secondAttribute="bottom" constant="35" id="Fjp-0z-sdz"/>
@@ -778,16 +778,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsz-Pw-W7B">
-                                <rect key="frame" x="18" y="0.0" width="46" height="46"/>
+                                <rect key="frame" x="18" y="10" width="35" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="QZi-xg-WdD"/>
-                                    <constraint firstAttribute="height" constant="46" id="o4X-XY-5s6"/>
+                                    <constraint firstAttribute="width" constant="35" id="QZi-xg-WdD"/>
+                                    <constraint firstAttribute="height" constant="35" id="o4X-XY-5s6"/>
                                 </constraints>
                                 <state key="normal" image="minimalLeft2X"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="12"/>
+                                        <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -795,13 +795,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Email Verification" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBm-8g-cuh">
-                                <rect key="frame" x="64" y="12.5" width="165" height="21"/>
+                                <rect key="frame" x="53" y="17" width="165" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I9-oz-OzX">
-                                <rect key="frame" x="22" y="63.5" width="276" height="33"/>
+                                <rect key="frame" x="22" y="68" width="276" height="33"/>
                                 <string key="text">Enter the verification sent to your number
 +91 876 908 25 11</string>
                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
@@ -809,7 +809,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMM-lE-yw2" customClass="SVPinView" customModule="SVPinView">
-                                <rect key="frame" x="22" y="131.5" width="276" height="60"/>
+                                <rect key="frame" x="22" y="136" width="276" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="mtk-eF-dQL"/>
@@ -834,13 +834,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Didn’t Receive?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOs-68-ZzW">
-                                <rect key="frame" x="61" y="213.5" width="99" height="16.5"/>
+                                <rect key="frame" x="61" y="218" width="99" height="16.5"/>
                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ER4-qz-GR7">
-                                <rect key="frame" x="162" y="207.5" width="86" height="29"/>
+                                <rect key="frame" x="162" y="212" width="86" height="29"/>
                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                                 <state key="normal" title="Resend Code">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -850,7 +850,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQe-pZ-Qwo">
-                                <rect key="frame" x="75" y="260" width="170" height="50"/>
+                                <rect key="frame" x="75" y="264.5" width="170" height="50"/>
                                 <color key="backgroundColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="GXn-8b-nkd"/>
@@ -886,7 +886,7 @@
                             <constraint firstItem="afo-GT-TTS" firstAttribute="leading" secondItem="1I9-oz-OzX" secondAttribute="leading" constant="-22" id="cAu-zL-MKi"/>
                             <constraint firstItem="hMM-lE-yw2" firstAttribute="top" secondItem="1I9-oz-OzX" secondAttribute="bottom" constant="35" id="dIP-Oc-Ijw"/>
                             <constraint firstItem="ER4-qz-GR7" firstAttribute="centerY" secondItem="WOs-68-ZzW" secondAttribute="centerY" id="fjF-0K-jD1"/>
-                            <constraint firstItem="rsz-Pw-W7B" firstAttribute="top" secondItem="afo-GT-TTS" secondAttribute="top" id="hQN-Za-kE9"/>
+                            <constraint firstItem="rsz-Pw-W7B" firstAttribute="top" secondItem="afo-GT-TTS" secondAttribute="top" constant="10" id="hQN-Za-kE9"/>
                             <constraint firstAttribute="bottom" secondItem="CIo-hE-s2f" secondAttribute="bottom" id="oVH-zh-Bqd"/>
                             <constraint firstItem="UBm-8g-cuh" firstAttribute="leading" secondItem="rsz-Pw-W7B" secondAttribute="trailing" id="rLH-i0-Qyo"/>
                             <constraint firstItem="WOs-68-ZzW" firstAttribute="top" secondItem="hMM-lE-yw2" secondAttribute="bottom" constant="22" id="uc3-cb-ZuJ"/>
@@ -920,16 +920,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKz-f3-ycK">
-                                <rect key="frame" x="18" y="0.0" width="46" height="46"/>
+                                <rect key="frame" x="18" y="10" width="35" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="PyM-KK-6Xo"/>
-                                    <constraint firstAttribute="height" constant="46" id="qhv-re-tlQ"/>
+                                    <constraint firstAttribute="width" constant="35" id="PyM-KK-6Xo"/>
+                                    <constraint firstAttribute="height" constant="35" id="qhv-re-tlQ"/>
                                 </constraints>
                                 <state key="normal" image="minimalLeft2X"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="12"/>
+                                        <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -937,13 +937,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Reset Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayN-KW-gEu">
-                                <rect key="frame" x="64" y="12.5" width="148.5" height="21"/>
+                                <rect key="frame" x="53" y="17" width="148.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="NcJ-d6-mi2">
-                                <rect key="frame" x="22" y="63.5" width="276" height="122"/>
+                                <rect key="frame" x="22" y="68" width="276" height="122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qj-Z4-ABA">
                                         <rect key="frame" x="0.0" y="0.0" width="276" height="55"/>
@@ -1040,7 +1040,7 @@
                             <constraint firstItem="a0J-Jb-8Qg" firstAttribute="leading" secondItem="NWw-k4-o3o" secondAttribute="leading" id="LXq-Nx-dg8"/>
                             <constraint firstItem="ayN-KW-gEu" firstAttribute="leading" secondItem="iKz-f3-ycK" secondAttribute="trailing" id="QaF-HG-2TU"/>
                             <constraint firstAttribute="bottom" secondItem="a0J-Jb-8Qg" secondAttribute="bottom" id="UKu-Sa-dx6"/>
-                            <constraint firstItem="iKz-f3-ycK" firstAttribute="top" secondItem="Z0Q-K2-lgp" secondAttribute="top" id="UUo-aw-jrl"/>
+                            <constraint firstItem="iKz-f3-ycK" firstAttribute="top" secondItem="Z0Q-K2-lgp" secondAttribute="top" constant="10" id="UUo-aw-jrl"/>
                             <constraint firstItem="NcJ-d6-mi2" firstAttribute="leading" secondItem="Z0Q-K2-lgp" secondAttribute="leading" constant="22" id="a4d-PS-c9K"/>
                             <constraint firstItem="Z0Q-K2-lgp" firstAttribute="trailing" secondItem="NcJ-d6-mi2" secondAttribute="trailing" constant="22" id="k8H-8J-Qtc"/>
                             <constraint firstItem="NcJ-d6-mi2" firstAttribute="top" secondItem="ayN-KW-gEu" secondAttribute="bottom" constant="30" id="rRH-UZ-A4B"/>

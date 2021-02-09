@@ -148,7 +148,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
                    if self.fromSignUp {
                        self.btnWidthConstrain.constant = 0
                    } else {
-                       self.btnWidthConstrain.constant = 45
+                       self.btnWidthConstrain.constant = 35
                    }
         let index = self.typeIndexx
         self.typeIndexx = index // Manually trigger didSet
@@ -235,7 +235,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
             self.selectedCategoryArr.append(SelectedInterest(category_image: self.vm.model?.result?[index].category_image ?? "", category_name: self.vm.model?.result?[index].category_name ?? "", category_id: self.vm.model?.result?[index].category_id ?? ""))
             colectionVw.reloadData()
             colectionVw.scrollToItem(at: IndexPath.init(row: selectedCategoryArr.count-1, section: 0), at: .centeredHorizontally, animated: true)
-            self.lblCount.text = "\(selectedCategoryArr.count)"
+           // self.lblCount.text = "\(selectedCategoryArr.count)"
         }else{
             
         }
@@ -293,7 +293,7 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
                 self.selectedCategoryArr.remove(at: indexPath.row)
                 self.colectionVw.reloadData()
                 self.colectionVw.scrollToItem(at: IndexPath.init(row: self.selectedCategoryArr.count-1, section: 0), at: .centeredHorizontally, animated: true)
-                self.lblCount.text = "\(self.selectedCategoryArr.count)"
+               // self.lblCount.text = "\(self.selectedCategoryArr.count)"
                 if self.selectedCategoryArr.count == 0{
                     self.btnDone.setTitle("Skip", for: .normal)
                 }else{
@@ -332,7 +332,7 @@ extension TransformerExampleViewController: LoadingCategory {
     }
     
     func reloaddata() {
-        lblCount.text = "\(self.vm.model?.selected_category?.count ?? 0)"
+        lblCount.text = "\(self.vm.model?.result?.count ?? 0)"
         for val in self.vm.model?.selected_category ?? []{
             self.selectedCategoryArr.append(SelectedInterest(category_image: val.category_image ?? "", category_name: val.category_name ?? "", category_id: val.category_id ?? ""))
         }

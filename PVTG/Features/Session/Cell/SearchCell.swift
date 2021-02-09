@@ -27,13 +27,13 @@ class SearchCell: UICollectionViewCell {
     }
     func setData(data: AllTimeResult?) {
         guard let data = data else {return}
-        if let date = data.from_time {
-                let strTime = conversioninampmFormat(inputDate: date)
-                if strTime.components(separatedBy: ":")[1] == "00 AM" || strTime.components(separatedBy: ":")[1] == "00 PM"{
-                    self.searchCategorylbl.text = strTime.components(separatedBy: ":")[0]+strTime.components(separatedBy: " ")[1].lowercased()
+        if let time1 = data.from_time, let toTime = data.to_time {
+            let time1Str = convertTimeIntoAmPmFormat(inputDate: time1)
+             let time2Str = convertTimeIntoAmPmFormat(inputDate: toTime)
+            self.searchCategorylbl.text = "\(time1Str) - \(time2Str)"
         }
     }
-}
+
     
     func setSearchData(data: CategoryResult?) {
          guard let data = data else {return}

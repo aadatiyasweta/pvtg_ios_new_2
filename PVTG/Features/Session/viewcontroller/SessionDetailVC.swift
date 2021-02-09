@@ -118,6 +118,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.selectedDate = formatter.string(from: self.today)
         if controllerId == 1{
             self.vwmap.isHidden = true
             self.vwcalendar.isHidden = true
@@ -293,7 +294,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         btnToPrev.setTitle("\(headerFormatter.string(from: prev))", for: .normal)
     }
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        if date .compare(Date()) == .orderedAscending {
+        if date.compare(Date()) == .orderedAscending {
             return false
         }
         else {
@@ -465,7 +466,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
        }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView==self.vwCollection {
-            return CGSize(width: 65, height: 65)
+            return CGSize(width: 135, height: 65)
         } else {
             return CGSize(width: SCREEN_WIDTH, height: self.colectnVwSessionImage.frame.height)
         }

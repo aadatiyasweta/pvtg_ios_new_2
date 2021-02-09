@@ -32,7 +32,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
         GMSPlacesClient.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
           FirebaseApp.configure()
-        // Messaging.messaging().delegate = self
+         Messaging.messaging().delegate = self
         //        let vc = LoginVC.navigation()
         
             //let vc =  TransformerExampleViewController.instance()

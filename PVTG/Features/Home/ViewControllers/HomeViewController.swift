@@ -48,10 +48,8 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.locationManager.startUpdatingLocation()
+        // self.locationManager.startUpdatingLocation()
         lblNoSession.text = ""
-        toDelegateSelf()
-        placesClient = GMSPlacesClient.shared()
         appDelegate.hitDeviceTokenApi()
         homevm.delegate = self
         DispatchQueue.main.async {
@@ -65,27 +63,31 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadApi(categoryid: "\(id)")
-        if let address = SaveToDefaults().getformattedAddress() {
+         let address = SaveToDefaults().getformattedAddress()
+        if address == "" {
+            toDelegateSelf()
+            placesClient = GMSPlacesClient.shared()
+        }else{
             self.lblLocn.text = address
+            SaveToDefaults().setformattedAddress(lat:  self.lblLocn.text ?? "")
         }
-        SaveToDefaults().setformattedAddress(lat:  self.lblLocn.text ?? "")
         if let pic = SaveToDefaults().getProfilePic() {
-        loadImage(pic, self.userimg, activity: nil, defaultImage: UIImage(named: "more"))
+            loadImage(pic, self.userimg, activity: nil, defaultImage: UIImage(named: "more"))
         }
-       
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
         setVSViewShadow(radius: 10, color: .black, view: self.btnSearch, opacity: 0.12)
         
     }
-
+    
     
     
     func loadApi(categoryid: String) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
-            homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "")
+            homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.lblLocn.text ?? "")
             
         }
     }
@@ -136,6 +138,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.ident, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
+        cell.lblCategory.numberOfLines = 3
         if indexPath.row == 0 {
             cell.leadingConstrain.constant = 22
             cell.trailingConstrainOuterview.constant = 0
@@ -186,22 +189,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
             cell.setdata(data:categoryArr[indexPath.row])
         }
-    
-       
+        
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-                let text = categoryArr[indexPath.row].name
+        let text = categoryArr[indexPath.row].name
         
-      //  let fontAttributes = [NSAttributedString.Key.font: UIFont.init(name: Fonts.regular.rawValue, size: 12)]
-      //  let new = (text as NSString).size(withAttributes: fontAttributes as [NSAttributedString.Key : Any])
-    
-             let label = UILabel(frame: CGRect.zero)
-                label.text = text
-                label.sizeToFit()
+        //  let fontAttributes = [NSAttributedString.Key.font: UIFont.init(name: Fonts.regular.rawValue, size: 12)]
+        //  let new = (text as NSString).size(withAttributes: fontAttributes as [NSAttributedString.Key : Any])
+        
+        let label = UILabel(frame: CGRect.zero)
+        label.text = text
+        label.sizeToFit()
         if indexPath.row == categoryArr.count-1 {
-             return CGSize(width: label.frame.size.width + 91, height: 65)
+            return CGSize(width: label.frame.size.width + 91, height: 65)
         }
         return CGSize(width: label.frame.size.width + 71, height: 65)
     }
@@ -209,107 +212,115 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         if self.categoryArr.count == 2{
             if self.categoryArr[1].image == ""{
                 if indexPath.row == 0{
-                      loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+                    loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
                 }else{
                     let vc = TransformerExampleViewController.instance()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }else{
                 if id == categoryArr[indexPath.row].id ?? "" {
-                    id = "-1"
                 } else {
                     id = categoryArr[indexPath.row].id ?? ""
+                    if id == "0" {
+                        loadApi(categoryid: "")
+                    }else {
+                        loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+                    }
+                    
                 }
-                loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+                
             }
             
         }else{
             if id == categoryArr[indexPath.row].id ?? "" {
-                id = "-1"
             } else {
                 id = categoryArr[indexPath.row].id ?? ""
+                if id == "0" {
+                    loadApi(categoryid: "")
+                }else {
+                    loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+                }
             }
-            loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
         }
         
-       
+        
     }
 }
 
 extension HomeViewController: CLLocationManagerDelegate{
     func toDelegateSelf(){
-         locationManager.requestWhenInUseAuthorization()
-              if CLLocationManager.locationServicesEnabled()
-              {
-                  locationManager.delegate = self
-                  locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                  locationManager.startUpdatingLocation()
-              }
-    }
-        //MARK: - CLLocation Delegate
-        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-            switch status {
-            case .authorizedWhenInUse :
-                break
-            case .restricted :
-                self.onDeniedLocatin()
-            case .denied :
-                self.onDeniedLocatin()
-            default :
-                break
-            }
-            
-        }
-        
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            guard let location = locations.last else {
-                return
-            }
-            self.userLocCoordinate = location.coordinate
-                requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
-            
-            locationManager.stopUpdatingLocation()
-            
-            
-        }
-        
-        
-        func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-            self.userLocCoordinate = position.target
-                requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
-        }
-//        func addCurrentLocationMarker() {
-//            currentLocationMarker?.map = nil
-//            currentLocationMarker = nil
-//            if let location = locationManager.location {
-//                currentLocationMarker = GMSMarker(position:userLocCoordinate)
-//                currentLocationMarker?.icon = UIImage(named:"pin")
-//                currentLocationMarker?.map = mapV
-//                self.mapV.settings.rotateGestures = false
-//                self.mapV.settings.tiltGestures = false
-//            }
-//        }
-        func requestToGetAddressFromLatLong(userloc:CLLocationCoordinate2D)
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled()
         {
-            let addressCoordinates = CLLocationCoordinate2DMake(userloc.latitude,userloc.longitude)
-            let coder = GMSGeocoder()
-            
-            coder.reverseGeocodeCoordinate(addressCoordinates) { response, error in
-                if let addrss = response?.firstResult() {
-                    let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
-                    self.lblLocn.text = addrss.locality
-                    SaveToDefaults().setLatitude(lat: location.latitude)
-                    SaveToDefaults().setLongtitude(lon: location.longitude)
-                    if let addressLineArray = addrss.lines{
-                        if addressLineArray.count>0{
-                           // self.txtAddress.text = getAddress
-                            
-                        }
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
+    //MARK: - CLLocation Delegate
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse :
+            break
+        case .restricted :
+            self.onDeniedLocatin()
+        case .denied :
+            self.onDeniedLocatin()
+        default :
+            break
+        }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else {
+            return
+        }
+        self.userLocCoordinate = location.coordinate
+        requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
+        
+        locationManager.stopUpdatingLocation()
+        
+        
+    }
+    
+    
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        self.userLocCoordinate = position.target
+        requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
+    }
+    //        func addCurrentLocationMarker() {
+    //            currentLocationMarker?.map = nil
+    //            currentLocationMarker = nil
+    //            if let location = locationManager.location {
+    //                currentLocationMarker = GMSMarker(position:userLocCoordinate)
+    //                currentLocationMarker?.icon = UIImage(named:"pin")
+    //                currentLocationMarker?.map = mapV
+    //                self.mapV.settings.rotateGestures = false
+    //                self.mapV.settings.tiltGestures = false
+    //            }
+    //        }
+    func requestToGetAddressFromLatLong(userloc:CLLocationCoordinate2D)
+    {
+        let addressCoordinates = CLLocationCoordinate2DMake(userloc.latitude,userloc.longitude)
+        let coder = GMSGeocoder()
+        
+        coder.reverseGeocodeCoordinate(addressCoordinates) { response, error in
+            if let addrss = response?.firstResult() {
+                let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
+                self.lblLocn.text = addrss.locality
+                SaveToDefaults().setLatitude(lat: location.latitude)
+                SaveToDefaults().setLongtitude(lon: location.longitude)
+                if let addressLineArray = addrss.lines{
+                    if addressLineArray.count>0{
+                        // self.txtAddress.text = getAddress
+                        
                     }
                 }
             }
         }
     }
+}
 
 extension HomeViewController: GetHomeData {
     func reloadData() {
@@ -317,13 +328,13 @@ extension HomeViewController: GetHomeData {
         self.categoryArr.append(Category(name: "Top Search", image: topSearch, id: "0"))
         guard let data = self.homevm.model?.all_category else { return }
         if data.count == 0{
-             self.categoryArr.append(Category(name: "Add Interests for more recommendations", image: "", id: ""))
+            self.categoryArr.append(Category(name: "Add Interests for more recommendations", image: "", id: ""))
         }else{
             for i in data{
                 self.categoryArr.append(Category(name: i.category_name ?? "", image: i.category_image ?? "", id: i.category_id ?? ""))
             }
         }
-       
+        
         if self.homevm.model?.all_result?.count == 0 {
             self.lblNoSession.text = "No sessions"
         } else {
@@ -332,9 +343,9 @@ extension HomeViewController: GetHomeData {
         self.colectionVw.reloadData()
         self.tblSession.reloadData()
         if self.homevm.model?.all_result?.count != 0{
-        self.tblSession.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
-    }
-    
+            self.tblSession.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
+        }
+        
     }
     
 }
@@ -375,44 +386,44 @@ extension HomeViewController {
     
     
     //MARK:- Re-enabel location permission
-      internal func checkAndEnabelLocationPermission() {
-          
-          if CLLocationManager.locationServicesEnabled() {
-              return
-          }
-          
-          let allow = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) { ( action) in
-              guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                  return
-              }
-              if UIApplication.shared.canOpenURL(settingsUrl) {
-                  UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
-              }
-          }
-          
-          let dontAllow = UIAlertAction(title: "Don't Allow", style: UIAlertAction.Style.default) { ( action) in
+    internal func checkAndEnabelLocationPermission() {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            return
+        }
+        
+        let allow = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) { ( action) in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+            }
+        }
+        
+        let dontAllow = UIAlertAction(title: "Don't Allow", style: UIAlertAction.Style.default) { ( action) in
             self.locationManager.startUpdatingLocation()
-          }
-          
-          let locationPermissionMessage = Bundle.main.locationPermissionMessage
-//          PISelectAddressViewController.showAlertView("Allow \"" + "\(Bundle.main.appName)" + "\" to access your location while you are using this app?", alertMessage: locationPermissionMessage, alertActionArr: [dontAllow, allow], presentingView: self)
-      }
+        }
+        
+        let locationPermissionMessage = Bundle.main.locationPermissionMessage
+        //          PISelectAddressViewController.showAlertView("Allow \"" + "\(Bundle.main.appName)" + "\" to access your location while you are using this app?", alertMessage: locationPermissionMessage, alertActionArr: [dontAllow, allow], presentingView: self)
+    }
 }
 
 extension Bundle {
-var version: String {
-return getVersion()
-}
-private func getVersion() -> String {
-return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-}
-
-var appName: String {
-return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
-}
-
-var locationPermissionMessage: String {
-return Bundle.main.infoDictionary?["NSLocationAlwaysAndWhenInUseUsageDescription"] as? String ?? ""
-}
-
+    var version: String {
+        return getVersion()
+    }
+    private func getVersion() -> String {
+        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    }
+    
+    var appName: String {
+        return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+    }
+    
+    var locationPermissionMessage: String {
+        return Bundle.main.infoDictionary?["NSLocationAlwaysAndWhenInUseUsageDescription"] as? String ?? ""
+    }
+    
 }

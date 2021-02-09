@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTM-Xb-VOP">
-                                <rect key="frame" x="18" y="0.0" width="35" height="35"/>
+                                <rect key="frame" x="18" y="10" width="35" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="WDT-lP-EKh"/>
@@ -37,7 +37,7 @@
                                 <state key="normal" image="minimalLeft2X"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -45,13 +45,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Privacy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyP-qo-IiI">
-                                <rect key="frame" x="53" y="7" width="214" height="21"/>
+                                <rect key="frame" x="53" y="17" width="214" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVT-iW-Zyg">
-                                <rect key="frame" x="0.0" y="50" width="320" height="518"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -60,7 +60,7 @@
                             <constraint firstItem="ZyP-qo-IiI" firstAttribute="centerY" secondItem="JTM-Xb-VOP" secondAttribute="centerY" id="2yQ-KH-g8s"/>
                             <constraint firstItem="MVT-iW-Zyg" firstAttribute="leading" secondItem="zRN-mF-IAN" secondAttribute="leading" id="8tK-xO-XBX"/>
                             <constraint firstItem="ZyP-qo-IiI" firstAttribute="centerX" secondItem="zRN-mF-IAN" secondAttribute="centerX" id="GGb-fL-AsL"/>
-                            <constraint firstItem="JTM-Xb-VOP" firstAttribute="top" secondItem="zRN-mF-IAN" secondAttribute="top" id="IIs-Bc-M8B"/>
+                            <constraint firstItem="JTM-Xb-VOP" firstAttribute="top" secondItem="zRN-mF-IAN" secondAttribute="top" constant="10" id="IIs-Bc-M8B"/>
                             <constraint firstItem="MVT-iW-Zyg" firstAttribute="top" secondItem="ZyP-qo-IiI" secondAttribute="bottom" constant="22" id="ZT9-xv-iyO"/>
                             <constraint firstItem="zRN-mF-IAN" firstAttribute="trailing" secondItem="MVT-iW-Zyg" secondAttribute="trailing" id="ZxY-M1-sns"/>
                             <constraint firstItem="zRN-mF-IAN" firstAttribute="bottom" secondItem="MVT-iW-Zyg" secondAttribute="bottom" id="b6c-3Z-L6I"/>
@@ -91,7 +91,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzr-js-Vex">
-                                <rect key="frame" x="18" y="0.0" width="35" height="35"/>
+                                <rect key="frame" x="18" y="10" width="35" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="ugd-MF-qQ4"/>
@@ -100,7 +100,7 @@
                                 <state key="normal" image="minimalLeft2X"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -108,13 +108,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Change Password" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cu-Sw-geT">
-                                <rect key="frame" x="53" y="7" width="214" height="21"/>
+                                <rect key="frame" x="53" y="17" width="214" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gis-2g-1Yo">
-                                <rect key="frame" x="18" y="93" width="280" height="189"/>
+                                <rect key="frame" x="18" y="103" width="280" height="189"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFI-yB-m1w">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="55"/>
@@ -217,7 +217,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AG8-d6-rz7">
-                                <rect key="frame" x="55" y="337" width="210" height="50"/>
+                                <rect key="frame" x="55" y="347" width="210" height="50"/>
                                 <color key="backgroundColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Re3-tJ-6MI"/>
@@ -242,7 +242,7 @@
                             <constraint firstItem="gis-2g-1Yo" firstAttribute="leading" secondItem="wzr-js-Vex" secondAttribute="leading" id="CqK-UA-wVj"/>
                             <constraint firstAttribute="trailing" secondItem="9lp-S3-HcQ" secondAttribute="trailing" id="D6V-gZ-AxF"/>
                             <constraint firstItem="3cu-Sw-geT" firstAttribute="centerX" secondItem="THd-2s-tu3" secondAttribute="centerX" id="D7X-aO-cXW"/>
-                            <constraint firstItem="wzr-js-Vex" firstAttribute="top" secondItem="THd-2s-tu3" secondAttribute="top" id="Faq-I7-nCO"/>
+                            <constraint firstItem="wzr-js-Vex" firstAttribute="top" secondItem="THd-2s-tu3" secondAttribute="top" constant="10" id="Faq-I7-nCO"/>
                             <constraint firstItem="9lp-S3-HcQ" firstAttribute="leading" secondItem="SxE-s8-gPD" secondAttribute="leading" id="I8n-Tw-z5T"/>
                             <constraint firstAttribute="bottom" secondItem="9lp-S3-HcQ" secondAttribute="bottom" id="NuC-nm-T1W"/>
                             <constraint firstItem="9lp-S3-HcQ" firstAttribute="top" secondItem="SxE-s8-gPD" secondAttribute="top" id="alT-Gy-C7Q"/>

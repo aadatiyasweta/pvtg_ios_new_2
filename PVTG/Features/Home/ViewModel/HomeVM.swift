@@ -14,8 +14,8 @@ class HomeVM: BaseVm {
     var model: HomeResult?
   weak var delegate: GetHomeData?
     
-    func getHomeApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, top_search: String) {
-        let prams : [String : Any] = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search]
+    func getHomeApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, top_search: String, city: String) {
+        let prams : [String : Any] = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search, "city": city]
         self.show()
         api_manager.POSTApi(gethome(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()

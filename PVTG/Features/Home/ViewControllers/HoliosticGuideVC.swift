@@ -52,12 +52,13 @@ class HoliosticGuideVC: BaseViewController {
         if let userid = SaveToDefaults().getUserId() {
         vm.getAllCategoryApi(user_id: userid)
         }
+        loadApi(categoryid: "\(catgryId)", search: "", isloader: true)
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadApi(categoryid: "1", search: "", isloader: true)
+        
     }
     
     func setShadowToView() {
@@ -129,6 +130,7 @@ extension HoliosticGuideVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SessionCell.ident, for: indexPath) as? SessionCell else { return UITableViewCell()}
+        cell.lblPlaceName.numberOfLines = 1
         cell.setData(data: self.vm.model?.result?[indexPath.row])
         return cell
     }
