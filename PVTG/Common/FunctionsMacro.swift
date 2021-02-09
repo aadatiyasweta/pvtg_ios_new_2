@@ -132,6 +132,17 @@ func convertampmformattohourformat(inputDate: String)-> String {
     }
     return inputDate
 }
+func convertTimeIntoAmPmFormat(inputDate: String)-> String {
+    let dateAsString = inputDate
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "h:mm"
+    guard let date1 = dateFormatter.date(from: dateAsString) else { return "01:10" }
+          dateFormatter.dateFormat = "h:mm a"
+    let Date24 = dateFormatter.string(from: date1)
+    debugPrint("24 hour formatted Date:",Date24)
+     return Date24
+          
+}
 func convertIntoHourFormatted(inputDate: Date)-> String {
    // let dateAsString = inputDate
     let dateFormatter = DateFormatter()

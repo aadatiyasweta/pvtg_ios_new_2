@@ -236,7 +236,6 @@ extension OnboardingVC: PaperOnboardingDataSource, PaperOnboardingDelegate {
                     self.index += 1
                     button1.setTitle("Skip", for: .normal)
                 }
-                
                 item.informationImageWidthConstraint?.constant = imageSize.width
                 item.informationImageHeightConstraint?.constant = imageSize.height
                 item.setNeedsUpdateConstraints()

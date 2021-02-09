@@ -38,9 +38,7 @@ class SearchLocationVC: BaseViewController {
     var name:String?
     var address: String?
     var vm = SearchLocationViewMpdel()
-    var SearchedLocation = [String]()
-     var arrLoc = [String]()
-    
+    var arr = [String]()
     private var tableView: UITableView?
     private var tableDataSource: GMSAutocompleteTableDataSource!
     
@@ -59,9 +57,13 @@ class SearchLocationVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let locArr = SaveToDefaults().getLocationArr() {
+            for i in locArr {
+                arr.append(i)
+            }
             if locArr.count>0 {
                 self.lblRecentSearch.isHidden = false
                 self.lblNoLocation.isHidden = true
+           //     SaveToDefaults().setLocationArr(loc: locArr)
             } else {
                 self.lblRecentSearch.isHidden = true
                 self.lblNoLocation.isHidden = false
@@ -218,8 +220,16 @@ extension SearchLocationVC: GMSAutocompleteTableDataSourceDelegate {
     print("Place attributions: \(place.attributions)")
     guard let address = place.formattedAddress else {return}
     self.txfSearch.text = address
-    arrLoc.append(self.txfSearch.text ?? "")
-    SaveToDefaults().setLocationArr(loc: arrLoc)
+    for i in arr {
+        if arr.contains(self.txfSearch.text ?? "") == false {
+            arr.append(self.txfSearch.text ?? "")
+        }
+    }
+    if arr.count == 0 {
+         arr.append(self.txfSearch.text ?? "")
+    }
+    
+    SaveToDefaults().setLocationArr(loc: arr)
     SaveToDefaults().setLatitude(lat: place.coordinate.latitude)
     SaveToDefaults().setLongtitude(lon: place.coordinate.longitude)
     SaveToDefaults().setformattedAddress(lat: address)

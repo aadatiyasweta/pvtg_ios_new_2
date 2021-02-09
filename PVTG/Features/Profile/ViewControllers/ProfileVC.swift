@@ -47,8 +47,6 @@ class ProfileVC: BaseViewController {
     func renderTheColorOfImage() {
           DispatchQueue.main.async {
             self.imgUser.layer.cornerRadius = 10
-            self.imgUser.layer.borderWidth = 1
-            self.imgUser.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
             self.imgUser.image = #imageLiteral(resourceName: "more")
               let myImage = UIImage(named: "logoWhite")
               let tintableImage = myImage?.withRenderingMode(.alwaysTemplate)

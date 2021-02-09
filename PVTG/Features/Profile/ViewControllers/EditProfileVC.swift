@@ -42,6 +42,7 @@ class EditProfileVC: BaseViewController {
     @IBOutlet weak var lblMobileerr: UILabel!
     @IBOutlet weak var lblMailErr: UILabel!
     
+    @IBOutlet weak var vwContainUserImg: UIView!
     
 //MARK:-Variables
     private var imageData = Data()
@@ -77,7 +78,7 @@ class EditProfileVC: BaseViewController {
         paddingTextfield(textfield: txfmobileNo)
         setVSViewShadow(radius: 10, color: .black, view: self.btnBack, opacity: 0.12)
 
-        setVSViewShadow(radius: 10, color: .black, view: self.imguser, opacity: 0.12)
+        setVSViewShadow(radius: 10, color: .black, view: self.vwContainUserImg, opacity: 0.12)
 
     }
 
