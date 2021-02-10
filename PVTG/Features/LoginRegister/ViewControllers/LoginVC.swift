@@ -97,6 +97,18 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
 }
 
 extension LoginVC: AfterLoginSuccess {
+    func forgotSuccess() {
+        debugPrint("forgotSuccess")
+    }
+    
+    func otpCheckSuccess() {
+        debugPrint("otpCheckSuccess")
+    }
+    
+    func changePaswdSucces() {
+        debugPrint("changePaswdSucces")
+    }
+    
     func createNewuser() {
         let vc = RegistrationvC.instance()
         vc.socialData = Socialdata

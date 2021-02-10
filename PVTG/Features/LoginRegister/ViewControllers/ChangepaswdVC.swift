@@ -25,9 +25,16 @@ class ChangepaswdVC: BaseViewController {
     @IBOutlet weak var lblPaswderr: UILabel!
     @IBOutlet weak var lblConfrmPaswdErr: UILabel!
     
+    var email = ""
+    var vm = LoginVM()
+    
     //    MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        vm.delegate = self
+        DispatchQueue.main.async {
+            self.setUptheTextfields()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +43,7 @@ class ChangepaswdVC: BaseViewController {
     
     override func viewWillLayoutSubviews() {
         self.view.layoutIfNeeded()
-        setUptheTextfields()
+        
     }
     
     //MARK:- IBActions
@@ -44,10 +51,8 @@ class ChangepaswdVC: BaseViewController {
     @IBAction func submitTap(_ sender: UIButton) {
         self.txfNewPaswd.resignFirstResponder()
         self.txfConfirmPaswd.resignFirstResponder()
-        if self.validPassworddetails(confrmPaswd: self.txfConfirmPaswd.text ?? "", paswd: self.txfConfirmPaswd.text ?? "") {
-            let vc = LoginVC.instance()
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+        if self.validPassworddetails(confrmPaswd: self.txfConfirmPaswd.text ?? "", paswd: self.txfNewPaswd.text ?? "") {
+            self.vm.changePasswordApi(email: self.email, password: txfNewPaswd.text ?? "")
         }
         
     }
@@ -92,7 +97,43 @@ extension ChangepaswdVC {
         txfNewPaswd.layer.borderColor = UIColor().coloWithHexString(hex: "#05d9bd").cgColor
         txfConfirmPaswd.layer.borderWidth = 0.3
         txfConfirmPaswd.layer.borderColor = UIColor().coloWithHexString(hex: "#05d9bd").cgColor
+        self.lblPaswderr.isHidden = true
+        self.lblConfrmPaswdErr.isHidden = true
+        txfNewPaswd.textColor = .black
+        txfConfirmPaswd.textColor = .black
+        txfNewPaswd.isSecureTextEntry = true
+        txfConfirmPaswd.isSecureTextEntry = true
 
     }
+    
+    
+}
+
+extension ChangepaswdVC: AfterLoginSuccess {
+    func loginSuccess() {
+        debugPrint("loginSuccess")
+    }
+    
+    func failure(msg: String) {
+        debugPrint("failure")
+    }
+    
+    func createNewuser() {
+        debugPrint("createNewuser")
+    }
+    
+    func forgotSuccess() {
+        debugPrint("forgotSuccess")
+    }
+    
+    func otpCheckSuccess() {
+        debugPrint("otpCheckSuccess")
+    }
+    
+    func changePaswdSucces() {
+        let vc = LoginVC.instance()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }

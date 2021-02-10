@@ -24,6 +24,19 @@ func forgotUrl()-> String {
     print("Userapi/forgot",url)
     return url
 }
+func otpCheckUrl(email:String, otp: String)-> String {
+    var  url = "http://52.27.53.102/pvtg/api/v1/Userapi/check_otp?email=\(email)&otp=\(otp)"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("Userapi/check_otp",url)
+    return url
+}
+func resetPasswordUrl()-> String {
+    var  url = "\(server)Userapi/reset_password"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("Userapi/reset_password",url)
+    return url
+}
+
 func registrationUrl()-> String {
     var  url = "\(server)Userapi/signup"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
