@@ -119,7 +119,7 @@ class LoginVM: BaseVm {
                        self.delegate?.otpCheckSuccess()
                    }
                    else {
-                       self.delegate?.failure(msg: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                    showAlert(strTitle: json["APICODERESULT"].stringValue)
                    }
                }else{
                    showAlert(strTitle: somethingWentWrongMessage)

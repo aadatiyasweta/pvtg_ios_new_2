@@ -24,7 +24,6 @@ class OTPVC: BaseViewController {
     
     //    MARK:- Variables
     var email = ""
-    var code = "+91"
     var otp = ""
     var otpTimer : Timer?
     var counter = 60
@@ -35,6 +34,7 @@ class OTPVC: BaseViewController {
         // initialtimer()
         setupPinView()
         self.vm.delegate = self
+        self.otpMobileLbL.text = "Enter the verification code sent to your email\n\(self.email)"
     }
     
     override func viewDidAppear(_ animated: Bool) {
