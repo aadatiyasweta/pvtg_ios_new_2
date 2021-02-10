@@ -354,25 +354,28 @@ extension UIView {
        }
     }
         func animShow(){
-            UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear],
-                           animations: {
-                            setVSViewShadow(radius: 10, color: .black, view: self, opacity: 0.12)
-                            self.center.y -= 0
-                            self.layoutIfNeeded()
-            }, completion: {(_ completed: Bool) -> Void in
-                self.center.y = UIScreen.main.bounds.height - 125
-            })
+//            UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear],
+//                           animations: {
+//                            setVSViewShadow(radius: 10, color: .black, view: self, opacity: 0.12)
+//                            self.center.y -= 0
+//                            self.layoutIfNeeded()
+//            }, completion: {(_ completed: Bool) -> Void in
+//                self.center.y = UIScreen.main.bounds.height - 125
+//            })
+            self.center.y = UIScreen.main.bounds.height - 125
             self.isHidden = false
         }
         func animHide(){
-            UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear],
-                           animations: {
-                            self.center.y += self.bounds.height
-                            self.layoutIfNeeded()
-
-            },  completion: {(_ completed: Bool) -> Void in
-            self.isHidden = true
-                })
+//            UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear],
+//                           animations: {
+//                            self.center.y += self.bounds.height
+//                            self.layoutIfNeeded()
+//
+//            },  completion: {(_ completed: Bool) -> Void in
+//
+//                })
+             self.isHidden = true
+            self.center.y += self.bounds.height
         }
     func addDashedBorder() {
         let color = UIColor().coloWithHexString(hex: "#ffffff").cgColor
@@ -987,7 +990,7 @@ extension Date{
     
     func dateInString()->String{
         let dateFromatter = DateFormatter.init()
-        dateFromatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFromatter.dateFormat = "yyyy-MM-dd HH:mm"
         return dateFromatter.string(from: self)
     }
     

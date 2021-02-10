@@ -33,10 +33,15 @@ class ApiManager {
                 switch dataResponse.result {
                 case .success( let value):
                     let json = JSON.init(value)
-                     debugPrint(json)
-                    if json["code"].isKeyPresent(){
-                        if json["code"].intValue == 401{
-                            //Add code for logout
+                    debugPrint(json)
+                    if json["statusCode"].isKeyPresent(){
+                        if json["statusCode"].intValue == 403{
+                            SaveToDefaults().setAccessToken(value: nil)
+                            SaveToDefaults().setLogindata(data: Data())
+                            defaults.synchronize()
+                            let vc = LoginVC.navigation()
+                            window?.rootViewController = vc
+                            window?.makeKeyAndVisible()
                         }
                     }
                     debugPrint(json)
@@ -55,15 +60,19 @@ class ApiManager {
         if isConnection(){
             AF.request(url, method: .get, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().responseJSON(completionHandler: { dataResponse in
                 SVProgressHUD.dismiss()
-                 print(String(data: dataResponse.data ?? Data(), encoding: String.Encoding.utf8) ?? nil)
+                print(String(data: dataResponse.data ?? Data(), encoding: String.Encoding.utf8) ?? nil)
                 switch dataResponse.result {
                 case .success( let value):
                     let json = JSON.init(value)
                     print(json)
-                    if json["code"].isKeyPresent(){
-                        if json["code"].intValue == 401{
-                            //Add LogOut Code
-                            
+                    if json["statusCode"].isKeyPresent(){
+                        if json["statusCode"].intValue == 403{
+                            SaveToDefaults().setAccessToken(value: nil)
+                            SaveToDefaults().setLogindata(data: Data())
+                            defaults.synchronize()
+                            let vc = LoginVC.navigation()
+                            window?.rootViewController = vc
+                            window?.makeKeyAndVisible()
                         }
                     }
                     completion(json , nil, dataResponse.response?.statusCode)
@@ -83,6 +92,16 @@ class ApiManager {
                 switch dataResponse.result {
                 case .success( let value):
                     let json = JSON.init(value)
+                    if json["statusCode"].isKeyPresent(){
+                        if json["statusCode"].intValue == 403{
+                            SaveToDefaults().setAccessToken(value: nil)
+                            SaveToDefaults().setLogindata(data: Data())
+                            defaults.synchronize()
+                            let vc = LoginVC.navigation()
+                            window?.rootViewController = vc
+                            window?.makeKeyAndVisible()
+                        }
+                    }
                     completion(json , nil, dataResponse.response?.statusCode)
                 case .failure(let err):
                     debugPrint(err.underlyingError)
@@ -132,6 +151,7 @@ class ApiManager {
                         })
                     }
                 }
+                
                 multiPart.append(data, withName: fileName, fileName: "file.png", mimeType: "image/png")
             }, to: url, method: .post, headers: head).responseJSON { (response) in
                 SVProgressHUD.dismiss()
@@ -140,8 +160,15 @@ class ApiManager {
                 switch response.result{
                 case .success(let data):
                     let json = JSON.init(data)
-                    if json["code"].intValue == 401{
-                        //Add LogOut Code
+                    if json["statusCode"].isKeyPresent(){
+                        if json["statusCode"].intValue == 403{
+                            SaveToDefaults().setAccessToken(value: nil)
+                            SaveToDefaults().setLogindata(data: Data())
+                            defaults.synchronize()
+                            let vc = LoginVC.navigation()
+                            window?.rootViewController = vc
+                            window?.makeKeyAndVisible()
+                        }
                     }
                     completion(nil , json, response.response?.statusCode)
                 case .failure(let err):

@@ -27,7 +27,9 @@ struct EventsResult : Codable {
 	let rating : String?
     let session_image : String?
     let user_rating : String?
-
+    let lat : String?
+    let long : String?
+    let currency : String?
 	enum CodingKeys: String, CodingKey {
 
 		case booking_id = "booking_id"
@@ -44,6 +46,9 @@ struct EventsResult : Codable {
 		case rating = "rating"
         case session_image = "session_image"
         case user_rating = "user_rating"
+        case lat = "latitude"
+        case long = "longitude"
+        case currency = "currency"
         
 	}
 
@@ -63,6 +68,9 @@ struct EventsResult : Codable {
 		rating = try values.decodeIfPresent(String.self, forKey: .rating)
         session_image = try values.decodeIfPresent(String.self, forKey: .session_image)
         user_rating = try values.decodeIfPresent(String.self, forKey: .user_rating)
+        long = try values.decodeIfPresent(String.self, forKey: .long)
+        lat = try values.decodeIfPresent(String.self, forKey: .lat)
+        currency = try values.decodeIfPresent(String.self, forKey: .currency)
 	}
 
 }

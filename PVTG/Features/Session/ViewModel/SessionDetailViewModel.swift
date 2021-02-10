@@ -14,6 +14,7 @@ protocol GetResponse: class{
     func bookingSuccess()
     func allTicketsSold()
     func reloadTime()
+    func sessionTimeDetail()
 }
 protocol GetBookingResponse: class{
       func bookingSuccess()
@@ -28,7 +29,8 @@ class SessionDetailViewModel: BaseVm {
 
     
     func sessionDtailApi(user_id: String, session_id: String, latitude: String, longitude: String, top_search: String) {
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "latitude": latitude, "longitude": longitude, "top_search": top_search]
+        let date = Date().dateInString()
+        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "latitude": latitude, "longitude": longitude, "top_search": top_search,"currentdatetime" : date]
         self.show()
         api_manager.GETApi(sessionDetailApi(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
@@ -40,7 +42,7 @@ class SessionDetailViewModel: BaseVm {
                     let model = try? jsonDecoder.decode(SessionDetailResult.self, from: data ?? Data())
                     self.model = model
                     self.delegate?.reloadData()
-                    self.delegate?.reloadTime()
+                   // self.delegate?.reloadTime()
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -103,7 +105,7 @@ class SessionDetailViewModel: BaseVm {
     
     //For gettingTime Of specific Date
     func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool) {
-        let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id]
+        let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id,"currenttimezone" : TimeZone.current.identifier]
         if isloader {
             self.dismiss()
         } else {
@@ -120,8 +122,8 @@ class SessionDetailViewModel: BaseVm {
                     let jsonDecoder = JSONDecoder()
                     let model = try? jsonDecoder.decode(AllTimeBase.self, from: json.rawData())
                     self.timeArr = model
-                    
-                    self.delegate?.reloadData()
+                    self.delegate?.sessionTimeDetail()
+                   // self.delegate?.reloadData()
                     
                 } else if json["statusCode"] == 400 {
                     self.delegate?.reloadTime()
@@ -136,7 +138,8 @@ class SessionDetailViewModel: BaseVm {
     }
     
     func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String) {
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points]
+
+        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? ""]
                    self.show()
                    api_manager.POSTApi(sessionBookingUrl(), param: prams, header: header()) { (response, err, code) in
                        self.dismiss()
@@ -154,5 +157,20 @@ class SessionDetailViewModel: BaseVm {
                        }
                    }
                }
+    func convertLocalToUTC(localTime: String) -> String? {
+
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "HH:mm"
+         dateFormatter.timeZone = NSTimeZone.local
+         let timeLocal = dateFormatter.date(from: localTime)
+
+         if timeLocal != nil {
+             dateFormatter.timeZone = TimeZone.init(abbreviation: "UTC")
+
+             let timeUTC = dateFormatter.string(from: timeLocal!)
+             return timeUTC
+         }
+         return nil
+     }
     
 }

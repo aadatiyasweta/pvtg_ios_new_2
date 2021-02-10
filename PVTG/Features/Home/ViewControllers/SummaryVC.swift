@@ -118,8 +118,10 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 points = "300"
             }
         }
+      
         self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: amount, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:points )
     }
+ 
     
     @IBAction func tapUseNow(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected

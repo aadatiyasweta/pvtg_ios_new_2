@@ -28,6 +28,8 @@ class ActiveEventCell: UICollectionViewCell {
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var vwCard: UIView!
     
+    @IBOutlet weak var mapBtn: UIButton!
+    var mapClosure : ()->() = {}
     //MARK:- Cell reuseIdentifier
       static let ident = "ActiveEventCell"
       class func nib()-> UINib {
@@ -44,7 +46,7 @@ class ActiveEventCell: UICollectionViewCell {
                self.lblSessionName.text = category
            }
            if let bookingId = data.booking_id {
-               self.lblBookingId.text = bookingId
+               self.lblBookingId.text = "Booking ID : \(bookingId)"
            }
            if let bookingDate = data.booking_date {
                let strDate = yyMMMddDate(date: bookingDate)
@@ -60,7 +62,7 @@ class ActiveEventCell: UICollectionViewCell {
             
         }
            if let paid = data.paid_amount {
-               self.lblFair.text = paid
+               self.lblFair.text = "\(data.currency ?? "") \(paid)"
            }
            if let sessionName = data.name_of_listing {
                self.lblPlace.text = sessionName
@@ -81,6 +83,9 @@ class ActiveEventCell: UICollectionViewCell {
 
        }
     
+    @IBAction func mapBtnTap(_ sender: UIButton) {
+        self.mapClosure()
+    }
     
 
 }

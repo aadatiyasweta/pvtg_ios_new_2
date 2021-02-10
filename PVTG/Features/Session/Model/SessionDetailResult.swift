@@ -26,6 +26,7 @@ struct SessionDetailResult : Codable {
 	let distance : String?
 	let rating : String?
 	let bio : String?
+    let vendorName : String?
 	let images : [Images]?
 	let all_date : [All_date]?
     let currency : String?
@@ -48,6 +49,7 @@ struct SessionDetailResult : Codable {
 		case images = "images"
 		case all_date = "all_date"
         case currency = "currency"
+        case vendorName = "name"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -68,6 +70,7 @@ struct SessionDetailResult : Codable {
 		images = try values.decodeIfPresent([Images].self, forKey: .images)
 		all_date = try values.decodeIfPresent([All_date].self, forKey: .all_date)
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
+         vendorName = try values.decodeIfPresent(String.self, forKey: .vendorName)
 	}
 
 }

@@ -154,41 +154,56 @@ extension EditProfileVC {
                 
                 if let image = info[.originalImage] as? UIImage{
                     self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
-                    self.selectedImage = image
-                    self.imguser.image = image
-                    if info[.referenceURL] != nil{
-                        if let url = info[.referenceURL] as? URL{
-                            getFileName(imageURL: url, completionHandler: { (file) in
-                                self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
-                                self.selectedImage = image
-                                self.imguser.image = image
-                            })
-                        }
-                    }else{
-                        UIImageWriteToSavedPhotosAlbum(self.imguser.image ?? UIImage(), self, #selector(self.saveImageInPhotos(_:didFinishSavingWithError:contextInfo:)), nil)
+                    DispatchQueue.main.async {
+                        self.selectedImage = image
+                        self.imguser.image = image
+                        
                     }
+                    
                 }
             }
+            
+            
+            
+//            if info[.originalImage] != nil {
+//
+//                if let image = info[.originalImage] as? UIImage{
+//                    self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
+//                    self.selectedImage = image
+//                    self.imguser.image = image
+//                    if info[.referenceURL] != nil{
+//                        if let url = info[.referenceURL] as? URL{
+//                            getFileName(imageURL: url, completionHandler: { (file) in
+//                                self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
+//                                self.selectedImage = image
+//                                self.imguser.image = image
+//                            })
+//                        }
+//                    }else{
+//                        UIImageWriteToSavedPhotosAlbum(self.imguser.image ?? UIImage(), self, #selector(self.saveImageInPhotos(_:didFinishSavingWithError:contextInfo:)), nil)
+//                    }
+//                }
+//            }
         }
     }
     
-    @objc func saveImageInPhotos(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
-        let orientation = self.selectedImage.imageOrientation
-        if orientation.hashValue == 3 {
-            if let cgImage = self.selectedImage.cgImage{
-                let image = UIImage.init(cgImage: cgImage, scale: self.imguser.image?.scale ?? 0.0, orientation: .leftMirrored)
-                print(image.imageOrientation.rawValue)
-                self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
-                self.selectedImage = image
-            }
-        }
-        
-    }
+//    @objc func saveImageInPhotos(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+//        self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
+//        let orientation = self.selectedImage.imageOrientation
+//        if orientation.hashValue == 3 {
+//            if let cgImage = self.selectedImage.cgImage{
+//                let image = UIImage.init(cgImage: cgImage, scale: self.imguser.image?.scale ?? 0.0, orientation: .leftMirrored)
+//                print(image.imageOrientation.rawValue)
+//                self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
+//                self.selectedImage = image
+//            }
+//        }
+//
+//    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.imageData = Data()
-        self.imguser.image = UIImage.init(data: self.imageData)
+//        self.imageData = Data()
+//        self.imguser.image = UIImage.init(data: self.imageData)
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -203,6 +218,8 @@ extension EditProfileVC {
 
 extension EditProfileVC: UpdateTheProfile {
     func updateProfile() {
+      
+       
         self.navigationController?.popViewController(animated: true)
     }
     
