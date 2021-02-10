@@ -45,7 +45,7 @@ class HomeViewController: BaseViewController {
     var placesClient: GMSPlacesClient!
     var categoryArr = [Category]()
     var id = "0"
-    
+    var city = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // self.locationManager.startUpdatingLocation()
@@ -62,18 +62,22 @@ class HomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadApi(categoryid: "\(id)")
+       
          let address = SaveToDefaults().getformattedAddress()
-        if address == "" {
+        if address ?? "" == "" {
             toDelegateSelf()
             placesClient = GMSPlacesClient.shared()
+           
         }else{
+            self.city = SaveToDefaults().getCity() ?? ""
             self.lblLocn.text = address
-            SaveToDefaults().setformattedAddress(lat:  self.lblLocn.text ?? "")
+           
+            loadApi(categoryid: "\(id)")
         }
-        if let pic = SaveToDefaults().getProfilePic() {
-            loadImage(pic, self.userimg, activity: nil, defaultImage: UIImage(named: "more"))
-        }
+//        if let pic = SaveToDefaults().getProfilePic() {
+//            loadImage(pic, self.userimg, activity: nil, defaultImage: UIImage(named: "more"))
+//        }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -87,8 +91,23 @@ class HomeViewController: BaseViewController {
     
     func loadApi(categoryid: String) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
-            homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.lblLocn.text ?? "")
-            
+            let value = self.lblLocn.text ?? ""
+           // let val = value.split(separator: ",")
+            if self.city == ""{
+                if categoryid == "0"{
+                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value)
+                }else{
+                     homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value)
+                }
+               
+            }else{
+                if categoryid == "0"{
+                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: self.city)
+                }
+                else{
+                    homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city)
+                }
+            }
         }
     }
     
@@ -203,7 +222,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let label = UILabel(frame: CGRect.zero)
         label.text = text
         label.sizeToFit()
-        if indexPath.row == categoryArr.count-1 {
+        if indexPath.row == categoryArr.count-1 || indexPath.row == 0 {
             return CGSize(width: label.frame.size.width + 91, height: 65)
         }
         return CGSize(width: label.frame.size.width + 71, height: 65)
@@ -212,7 +231,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         if self.categoryArr.count == 2{
             if self.categoryArr[1].image == ""{
                 if indexPath.row == 0{
-                    loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+                    loadApi(categoryid: "0")
                 }else{
                     let vc = TransformerExampleViewController.instance()
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -222,7 +241,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 } else {
                     id = categoryArr[indexPath.row].id ?? ""
                     if id == "0" {
-                        loadApi(categoryid: "")
+                         loadApi(categoryid: "0")
                     }else {
                         loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
                     }
@@ -236,7 +255,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             } else {
                 id = categoryArr[indexPath.row].id ?? ""
                 if id == "0" {
-                    loadApi(categoryid: "")
+                     loadApi(categoryid: "0")
                 }else {
                     loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
                 }
@@ -309,8 +328,10 @@ extension HomeViewController: CLLocationManagerDelegate{
             if let addrss = response?.firstResult() {
                 let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
                 self.lblLocn.text = addrss.locality
+                self.city = addrss.locality ?? ""
                 SaveToDefaults().setLatitude(lat: location.latitude)
                 SaveToDefaults().setLongtitude(lon: location.longitude)
+                self.loadApi(categoryid: "\(self.id)")
                 if let addressLineArray = addrss.lines{
                     if addressLineArray.count>0{
                         // self.txtAddress.text = getAddress
@@ -324,6 +345,7 @@ extension HomeViewController: CLLocationManagerDelegate{
 
 extension HomeViewController: GetHomeData {
     func reloadData() {
+        loadImage(self.homevm.model?.user_image ?? "", self.userimg , activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         self.categoryArr.removeAll()
         self.categoryArr.append(Category(name: "Top Search", image: topSearch, id: "0"))
         guard let data = self.homevm.model?.all_category else { return }
@@ -353,7 +375,7 @@ extension HomeViewController: GetHomeData {
 extension HomeViewController {
     func setProfilePic() {
         if let pic = SaveToDefaults().getProfilePic() {
-            loadImage(pic, self.userimg, activity: nil, defaultImage: nil)
+           // loadImage(pic, self.userimg, activity: nil, defaultImage: nil)
         }
     }
     func onDeniedLocatin(){

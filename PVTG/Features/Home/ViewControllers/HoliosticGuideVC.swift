@@ -72,6 +72,7 @@ class HoliosticGuideVC: BaseViewController {
     @IBAction func btnCloseTap(_ sender: UIButton) {
         self.txfSearch.resignFirstResponder()
         self.txfSearch.text = ""
+        loadApi(categoryid: "\(catgryId)", search: "", isloader: true)
         
     }
     
@@ -166,10 +167,12 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
         }
         if index == indexPath.row {
             cell.vwContainCatgry.backgroundColor = UIColor().coloWithHexString(hex: "#05D9BD")
+            cell.searchCategorylbl.textColor = .white
             cell.vwContainCatgry.border(width: 0.3, color: UIColor().coloWithHexString(hex: "#27FFE2"))
             self.colectionVwCategory.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: false)
         } else {
-            cell.vwContainCatgry.backgroundColor = UIColor().coloWithHexString(hex: "#9a9a9a")
+            cell.vwContainCatgry.backgroundColor = .white
+            cell.searchCategorylbl.textColor = UIColor().coloWithHexString(hex: "#9a9a9a")
             cell.vwContainCatgry.border(width: 0.3, color: UIColor().coloWithHexString(hex: "#9a9a9a"))
         }
         cell.setSearchData(data: self.vm.categorymodel?.result?[indexPath.row])
@@ -181,18 +184,23 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
         let label = UILabel(frame: CGRect.zero)
         label.text = text
         label.sizeToFit()
+        if indexPath.row == (self.vm.categorymodel?.result?.count ?? 0)-1{
+            return CGSize(width: label.frame.size.width + 48, height: 45)
+        }
         return CGSize(width: label.frame.size.width + 26, height: 45)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         self.txfSearch.text = ""
+        //  self.txfSearch.text = ""
         if index == indexPath.row {
-            index = -1
+            //  index = -1
         } else {
             index = indexPath.row
+            catgryId = Int(self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1") ?? 0
+            loadApi(categoryid: self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1", search: self.txfSearch.text ?? "", isloader: true)
+            self.colectionVwCategory.reloadData()
         }
-        catgryId = Int(self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1") ?? 0
-        loadApi(categoryid: self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1", search: "", isloader: true)
-        self.colectionVwCategory.reloadData()
+        
+        
     }
     
     func loadApi(categoryid: String, search: String, isloader: Bool) {

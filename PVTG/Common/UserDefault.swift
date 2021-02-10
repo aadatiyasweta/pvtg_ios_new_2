@@ -95,7 +95,12 @@ struct SaveToDefaults {
     func GetCurrentID() -> String? {
         return defaults.value(forKey: "phone") as? String
     }
-
+    func setLocationLateArr(loc: [[String:String]]) {
+        defaults.set(loc, forKey: "setLocationLateArr")
+    }
+    func getLocationLateArr()-> [[String:String]]? {
+        return defaults.array(forKey: "setLocationLateArr") as? [[String : String]]
+    }
     func setLogindata(data: Data) {
         defaults.set(data, forKey: ProfileInfoKeys.homeData1.rawValue)
     }

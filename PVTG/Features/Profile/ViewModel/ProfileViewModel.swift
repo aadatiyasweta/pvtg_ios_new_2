@@ -64,15 +64,19 @@ class ProfileViewModel: BaseVm {
            
            let prams : [String : Any] = ["user_id": user_id, "image": image, "email": email, "country_code": country_code, "phone": phone, "name": name]
            self.show()
-           api_manager.upload(editProfileUrl(), image, params: prams, "image", header: header()){ (err,response, code) in
+        var key = "image"
+        if image.count == 0{
+            key = ""
+        }
+           api_manager.upload(editProfileUrl(), image, params: prams, key, header: header()){ (err,response, code) in
                self.dismiss()
                if let json = response{
                    debugPrint(json)
                    if json["statusCode"] == 200 {
-                       let data = try? json["result"].rawData()
-                       let jsonDecoder = JSONDecoder()
-                       let model = try? jsonDecoder.decode(ProfileResult.self, from: data ?? Data())
-                       self.model = model
+                      
+                    SaveToDefaults().setProfilePic(value:  json["result"]["user_image"].stringValue)
+                      // let model = try? jsonDecoder.decode(ProfileResult.self, from: data ?? Data())
+                      // self.model = model
                      self.delegate?.updateProfile()
                        
                    }

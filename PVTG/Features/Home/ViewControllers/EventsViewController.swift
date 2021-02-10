@@ -71,6 +71,9 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActiveEventCell.ident, for: indexPath) as? ActiveEventCell else { return UICollectionViewCell() }
         cell.setData(data: self.vm.model?.result?[indexPath.row])
+        cell.mapClosure = {
+              self.directions(lat: self.vm.model?.result?[indexPath.row].lat ?? "" ,long: self.vm.model?.result?[indexPath.row].long ?? "")
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -97,7 +100,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         cell.selectedIndex = { tap in
-            self.directions()
+           self.directions(lat: self.vm.model?.history?[indexPath.row].lat ?? "" ,long: self.vm.model?.history?[indexPath.row].long ?? "")
         }
         cell.setData(data: self.vm.model?.history?[indexPath.row])
         return cell
@@ -155,34 +158,37 @@ extension EventsViewController {
         }
     
     //Open Google map App
-    func directions() {
+    func directions(lat : String , long : String) {
         // if GoogleMap installed
         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
             UIApplication.shared.openURL(NSURL(string:
-                "comgooglemaps://?saddr=&daddr=\(27.045),\(77.459)&directionsmode=driving")! as URL)
+                "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")! as URL)
 
         } else {
             // if GoogleMap App is not installed
             UIApplication.shared.openURL(NSURL(string:
-                "https://maps.google.com/?q=@\(27.045),\(77.459)")! as URL)
+                "https://maps.google.com/?q=@\(lat),\(long)")! as URL)
         }
         
     }
     ///Pagination
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-         if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
-             // increments the number of the page to request
-            if self.vm.model?.history?.count ?? 0 > 0{
-                 indexOfPageToRequest += 10
-                 let data = String(indexOfPageToRequest)
-                 loadApi(offset: data)
-                 print(data)
-                 
-             }else{
-                lblNoSession.isHidden = true
-                lblNoSession.text = ""
-             }
-         }
+        if scrollView != self.colectionVw{
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+                // increments the number of the page to request
+                if self.vm.model?.history?.count ?? 0 > 0{
+                    indexOfPageToRequest += 10
+                    let data = String(indexOfPageToRequest)
+                    loadApi(offset: data)
+                    print(data)
+                    
+                }else{
+                    lblNoSession.isHidden = true
+                    lblNoSession.text = ""
+                }
+            }
+        }
+      
      }
 
     
@@ -236,17 +242,17 @@ extension EventsViewController: LoadingEvents {
     }
     
     func tblReloadData() {
-        if self.vm.model?.result?.count == 0 || self.vm.model?.result?.count == nil{
-            self.lblNoSession.isHidden = false
-           
-            self.lblHistoryEvent.isHidden = true
-            self.lblUndrLine2.isHidden = true
-        } else {
-            self.lblNoSession.isHidden = true
-           
-            self.lblHistoryEvent.isHidden = false
-            self.lblUndrLine2.isHidden = false
-        }
+//        if self.vm.model?.result?.count == 0 || self.vm.model?.result?.count == nil{
+//            self.lblNoSession.isHidden = false
+//
+//            self.lblHistoryEvent.isHidden = true
+//            self.lblUndrLine2.isHidden = true
+//        } else {
+//            self.lblNoSession.isHidden = true
+//
+//            self.lblHistoryEvent.isHidden = false
+//            self.lblUndrLine2.isHidden = false
+//        }
 
        
     }

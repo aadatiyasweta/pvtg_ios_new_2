@@ -295,15 +295,19 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
                 self.colectionVw.scrollToItem(at: IndexPath.init(row: self.selectedCategoryArr.count-1, section: 0), at: .centeredHorizontally, animated: true)
                // self.lblCount.text = "\(self.selectedCategoryArr.count)"
                 if self.selectedCategoryArr.count == 0{
+                     self.lblNoInterest.isHidden = false
                     self.btnDone.setTitle("Skip", for: .normal)
                 }else{
+                     self.lblNoInterest.isHidden = true
                     self.btnDone.setTitle("Done", for: .normal)
                 }
             }
         }
         if self.selectedCategoryArr.count == 0{
+              self.lblNoInterest.isHidden = false
             self.btnDone.setTitle("Skip", for: .normal)
         }else{
+              self.lblNoInterest.isHidden = true
             self.btnDone.setTitle("Done", for: .normal)
         }
         return cell
@@ -338,8 +342,10 @@ extension TransformerExampleViewController: LoadingCategory {
         }
         if self.selectedCategoryArr.count == 0{
             //skip
+            self.lblNoInterest.isHidden = false
             self.btnDone.setTitle("Skip", for: .normal)
         }else{
+             self.lblNoInterest.isHidden = true
             self.btnDone.setTitle("Done", for: .normal)
         }
         colectionVw.reloadData()

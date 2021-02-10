@@ -39,6 +39,7 @@ class SearchLocationVC: BaseViewController {
     var address: String?
     var vm = SearchLocationViewMpdel()
     var arr = [String]()
+    var arrDict = [[String:String]]()
     private var tableView: UITableView?
     private var tableDataSource: GMSAutocompleteTableDataSource!
     
@@ -56,11 +57,12 @@ class SearchLocationVC: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let locArr = SaveToDefaults().getLocationArr() {
-            for i in locArr {
-                arr.append(i)
-            }
-            if locArr.count>0 {
+        if let locArr = SaveToDefaults().getLocationLateArr() {
+            self.arrDict = locArr
+//            for i in locArr {
+//                arr.append(i)
+//            }
+            if arrDict.count>0 {
                 self.lblRecentSearch.isHidden = false
                 self.lblNoLocation.isHidden = true
            //     SaveToDefaults().setLocationArr(loc: locArr)
@@ -72,7 +74,10 @@ class SearchLocationVC: BaseViewController {
             }
         }
     }
-    
+    override func clickOnBack() {
+        super.clickOnBack()
+       // SaveToDefaults().setformattedAddress(lat: self.txfSearch.text ?? "")
+    }
     func setShadowToView() {
            paddingTextfield(textfield: txfSearch)
            DispatchQueue.main.async {
@@ -101,22 +106,35 @@ class SearchLocationVC: BaseViewController {
 extension SearchLocationVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return self.vm.locationMode.count
-        guard let locArr = SaveToDefaults().getLocationArr() else {return 0}
-        return locArr.count
+       
+        return arrDict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchLocationCell.ident, for: indexPath) as? SearchLocationCell, let locArr = SaveToDefaults().getLocationArr() else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchLocationCell.ident, for: indexPath) as? SearchLocationCell else { return UITableViewCell() }
         //cell.lblCityNmae.text = self.vm.locationMode[indexPath.row].formattedAddress
-        cell.lblCityNmae.text = locArr[indexPath.row]
+    
+        cell.lblCityNmae.text = self.arrDict[indexPath.row]["name"]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let locArr = SaveToDefaults().getLocationArr() else {return}
-        self.txfSearch.text = locArr[indexPath.row]
+        self.txfSearch.text = self.arrDict[indexPath.row]["name"]
+        SaveToDefaults().setformattedAddress(lat: self.txfSearch.text ?? "")
+        SaveToDefaults().setCity(value: self.arrDict[indexPath.row]["city"])
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(self.txfSearch.text ?? "") {
+            placemarks, error in
+            let placemark = placemarks?.first
+            let lat = placemark?.location?.coordinate.latitude
+            let lon = placemark?.location?.coordinate.longitude
+            SaveToDefaults().setLatitude(lat: lat)
+            SaveToDefaults().setLongtitude(lon: lon)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
 }
@@ -215,6 +233,13 @@ extension SearchLocationVC: GMSAutocompleteTableDataSourceDelegate {
   func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didAutocompleteWith place: GMSPlace) {
    
     // Do something with the selected place.
+    var city = ""
+    for val in place.addressComponents ?? []{
+        if val.type == "locality"{
+            city = val.name
+        }
+    }
+    print(place)
     print("Place name: \(place.name)")
     print("Place address: \(place.formattedAddress)")
     print("Place attributions: \(place.attributions)")
@@ -228,6 +253,15 @@ extension SearchLocationVC: GMSAutocompleteTableDataSourceDelegate {
     if arr.count == 0 {
          arr.append(self.txfSearch.text ?? "")
     }
+    var dict : [String:String] = [:]
+     dict["name"] = address
+     dict["city"] = city
+    
+    if !self.arrDict.contains(dict){
+         self.arrDict.append(dict)
+    }
+    SaveToDefaults().setCity(value: dict["city"])
+    SaveToDefaults().setLocationLateArr(loc: self.arrDict)
     
     SaveToDefaults().setLocationArr(loc: arr)
     SaveToDefaults().setLatitude(lat: place.coordinate.latitude)

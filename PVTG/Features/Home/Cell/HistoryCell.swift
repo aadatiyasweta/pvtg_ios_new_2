@@ -48,7 +48,7 @@ class HistoryCell: UITableViewCell {
             self.lblYoganame.text = category
         }
         if let bookingId = data.booking_id {
-            self.lblBookingId.text = bookingId
+             self.lblBookingId.text = "Booking ID : \(bookingId)"
         }
         if let bookingDate = data.booking_date {
             let strDate = yyMMMddDate(date: bookingDate)
@@ -64,7 +64,7 @@ class HistoryCell: UITableViewCell {
             
         }
         if let paid = data.paid_amount {
-            self.lblFair.text = paid
+            self.lblFair.text = "\(data.currency ?? "") \(paid)"
         }
         if let sessionName = data.name_of_listing {
             self.lblPlaceName.text = sessionName
@@ -73,20 +73,20 @@ class HistoryCell: UITableViewCell {
             let noOfStar = Double(rating)
             self.vwRating.rating = noOfStar ?? 0.0
         }
-       if let userRating = data.user_rating {
-        let noOfStar = Double(userRating)
-        self.vwRated.rating = noOfStar ?? 0.0
-
-        if userRating == "0.00" {
-        btnbigRate.isHidden = false
-        btnRate.isHidden = false
-        self.vwRated.isHidden = true
-
-        } else {
-        btnbigRate.isHidden = true
-       // self.vwRated.isHidden = true
-        btnRate.isHidden = true
-        }
+        if let userRating = data.user_rating {
+            let noOfStar = Double(userRating)
+            self.vwRated.rating = noOfStar ?? 0.0
+            
+            if userRating == "0.00" {
+                btnbigRate.isHidden = false
+                btnRate.isHidden = false
+               // self.vwRated.isHidden = true
+                
+            } else {
+                btnbigRate.isHidden = true
+               // self.vwRated.isHidden = false
+                btnRate.isHidden = true
+            }
         }
         if let place = data.city, let distance = data.distance {
             let value = Double(distance) ?? 0.0

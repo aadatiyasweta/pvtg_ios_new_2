@@ -37,7 +37,7 @@ class ProfileVC: BaseViewController {
         super.viewDidLoad()
         renderTheColorOfImage()
         vm.delegate = self
-        setData()
+       // setData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -112,7 +112,7 @@ extension ProfileVC: UpdateTheProfile {
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
         loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         if let phone = data.user_profile?.phone {
-            self.lblMobNo.text = "+91 \(phone)"
+            self.lblMobNo.text = "\(phone)"
             
         }
         self.colectionVwinterest.reloadData()
@@ -140,7 +140,7 @@ extension ProfileVC {
         }
         self.lblName.text = data.user_profile?.name ?? ""
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
-        self.lblMobNo.text = "+91 \(data.user_profile?.phone ?? "")"
+        self.lblMobNo.text = "\(data.user_profile?.phone ?? "")"
     }
 }
 

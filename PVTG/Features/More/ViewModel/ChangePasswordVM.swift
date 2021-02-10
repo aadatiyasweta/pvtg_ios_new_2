@@ -23,11 +23,12 @@ class ChangePasswordVM: BaseVm {
         let prams : [String : Any] = ["user_id": user_id, "old_password": old_password, "new_password": new_password]
         self.show()
         api_manager.POSTApi(changePasswordUrl(), param: prams, header: header()) { (response, err, code) in
+            self.dismiss()
             if let json = response{
-                self.dismiss()
-                if json["success"].boolValue{
+              
+                if json["statusCode"].intValue == 200{
                     self.successfulMsg = json["message"].stringValue
-                    showAlert(strTitle: json["message"].stringValue)
+                   // showAlert(strTitle: json["message"].stringValue)
                     
                     self.delegateChangePassword?.getReponse()
                 }else{
