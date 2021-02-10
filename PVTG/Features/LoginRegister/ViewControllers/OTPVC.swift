@@ -23,16 +23,18 @@ class OTPVC: BaseViewController {
     @IBOutlet weak var btnBack: UIButton!
     
     //    MARK:- Variables
-    var mobNo = ""
+    var email = ""
     var code = "+91"
     var otp = ""
     var otpTimer : Timer?
     var counter = 60
+    var vm = LoginVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // initialtimer()
+        // initialtimer()
         setupPinView()
+        self.vm.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,7 +58,7 @@ class OTPVC: BaseViewController {
             self.counter -= 1
             self.resndBtn.alpha = 0
             self.donotReciveLbl.alpha = 0
-         //   self.timeLbl.text = "00:\(String(format: "%02d", counter)) "+sec
+            //   self.timeLbl.text = "00:\(String(format: "%02d", counter)) "+sec
         }else{
             otpTimer?.invalidate()
             self.resndBtn.alpha = 1
@@ -87,31 +89,53 @@ class OTPVC: BaseViewController {
         pinView.didFinishCallback = { [weak self] pin in
             self?.otp = pin
             self?.otpTimer?.invalidate()
-           // self?.otpVM.verifiedOtp(verificationCode: self?.otp ?? "", phone: "\((self?.code ?? "+91") + (self?.mobNo ?? ""))")
+            // self?.otpVM.verifiedOtp(verificationCode: self?.otp ?? "", phone: "\((self?.code ?? "+91") + (self?.mobNo ?? ""))")
         }
     }
     
     @IBAction func resendBtnTap(_ sender: UIButton) {
         self.pinView.clearPin()
-//        self.otpVM.getOtp(number: self.mobNo, code: self.code, isLoader: false)
-//        showMesssgeWindow(msg: resentOTP)
+        self.vm.forgotApi(email: self.email, is_resend: "1")
     }
     
     @IBAction func verifyBtnTap(_ sender: UIButton) {
-//        if self.otp == "" {
-//            showMesssgeWindow(msg: enterTheOTP)
-//        }else {
-//            self.otpTimer?.invalidate()
-//            otpVM.verifiedOtp(verificationCode: self.otp, phone: "\(self.code + self.mobNo)")
-//        }
-       // self.otpVM.validateCoach(username: self.mobNo, countryCode: self.code)
         if self.otp == "" {
             showAlertView(emptyOTP, title: "PVTG")
         } else {
-        let vc = ChangepaswdVC.instance()
-        self.navigationController?.pushViewController(vc, animated: true)
+            self.vm.otpCheckApi(email: self.email, otp: self.otp)
         }
     }
     
 }
 
+extension OTPVC: AfterLoginSuccess {
+    func changePaswdSucces() {
+         debugPrint("changePaswdSucces")
+    }
+    
+    func loginSuccess() {
+        debugPrint("loginSuccess")
+    }
+    
+    func failure(msg: String) {
+        debugPrint("failure")
+    }
+    
+    func createNewuser() {
+        debugPrint("createNewuser")
+    }
+    
+    func forgotSuccess() {
+        debugPrint("forgotSuccess")
+    }
+    
+    func otpCheckSuccess() {
+        let vc = ChangepaswdVC.instance()
+        vc.email = self.email
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+
+    }
+    
+    
+}

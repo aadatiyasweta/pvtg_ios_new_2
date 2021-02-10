@@ -43,7 +43,7 @@ class ForgotPaswordVC: BaseViewController {
     @IBAction func nextBtnTap(_ sender: UIButton) {
         self.txfEmail.resignFirstResponder()
         if validdetails(email: self.txfEmail.text ?? "") {
-            self.paswdVM.forgotApi(email: self.txfEmail.text ?? "")
+            self.paswdVM.forgotApi(email: self.txfEmail.text ?? "", is_resend: "0")
 //        let otp = OTPVC.instance()
 //        self.navigationController?.pushViewController(otp, animated: true)
         }
@@ -76,13 +76,26 @@ extension ForgotPaswordVC {
 }
 
 extension ForgotPaswordVC: AfterLoginSuccess {
+    func otpCheckSuccess() {
+        debugPrint("otpCheckSuccess")
+    }
+    
+    func changePaswdSucces() {
+        debugPrint("otpCheckSuccess")
+    }
+    
+    func forgotSuccess() {
+        let vc = OTPVC.instance()
+        vc.email = txfEmail.text ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
+    
     func createNewuser() {
         debugPrint("Create new User")
     }
     func loginSuccess() {
         debugPrint("Succes")
-        let vc = OTPVC.instance()
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func failure(msg: String) {

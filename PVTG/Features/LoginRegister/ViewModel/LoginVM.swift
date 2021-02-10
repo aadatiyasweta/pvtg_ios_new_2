@@ -11,6 +11,9 @@ protocol AfterLoginSuccess: class {
     func loginSuccess()
     func failure(msg: String)
     func createNewuser()
+    func forgotSuccess()
+    func otpCheckSuccess()
+    func changePaswdSucces()
     
 }
 class LoginVM: BaseVm {
@@ -81,8 +84,8 @@ class LoginVM: BaseVm {
     }
     
     //API to ForgotPassword
-    func forgotApi(email: String) {
-        let prams : [String : Any] = ["email": email]
+    func forgotApi(email: String, is_resend: String) {
+        let prams : [String : Any] = ["email": email, "is_resend": is_resend]
         print(prams)
         self.show()
         api_manager.POSTApi(forgotUrl(), param: prams, header: header()) { (response, err, code) in
@@ -90,17 +93,58 @@ class LoginVM: BaseVm {
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
-                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                    if is_resend == "1" {
+                        showAlert(strTitle:  json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                    }else {
+                    self.delegate?.forgotSuccess()
+                    }
                 }
                 else {
                     self.delegate?.failure(msg: json["APICODERESULT"].string ?? somethingWentWrongMessage)
                 }
             }else{
-                showMesssgeWindow(msg: somethingWentWrongMessage)
+                showAlert(strTitle: somethingWentWrongMessage)
             }
         }
     }
-    
+    func otpCheckApi(email: String, otp: String) {
+        let prams : [String : Any] = ["email": email, "otp": otp]
+           print(prams)
+           self.show()
+        api_manager.GETApi(otpCheckUrl(email: email, otp: otp), param: nil, header: header()) { (response, err, code) in
+               self.dismiss()
+               if let json = response{
+                   debugPrint(json)
+                   if json["statusCode"] == 200 {
+                       self.delegate?.otpCheckSuccess()
+                   }
+                   else {
+                       self.delegate?.failure(msg: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                   }
+               }else{
+                   showAlert(strTitle: somethingWentWrongMessage)
+               }
+           }
+       }
+    func changePasswordApi(email: String, password: String) {
+           let prams : [String : Any] = ["email": email, "password": password]
+              print(prams)
+              self.show()
+           api_manager.POSTApi(resetPasswordUrl(), param: prams, header: header()) { (response, err, code) in
+                  self.dismiss()
+                  if let json = response{
+                      debugPrint(json)
+                      if json["statusCode"] == 200 {
+                          self.delegate?.changePaswdSucces()
+                      }
+                      else {
+                          self.delegate?.failure(msg: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                      }
+                  }else{
+                       showAlert(strTitle: somethingWentWrongMessage)
+                  }
+              }
+          }
     
     func socialLoginApi(social_id: String, acc_type: String) {
         let prams : [String : Any] = ["social_id": social_id, "acc_type": acc_type]
