@@ -62,7 +62,7 @@ class HomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+         self.id = "0"
          let address = SaveToDefaults().getformattedAddress()
         if address ?? "" == "" {
             toDelegateSelf()
