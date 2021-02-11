@@ -18,6 +18,7 @@ class TabBarControllerViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        appDelegate.tabBarVc = self
         self.tabBar.items?[0].selectedImage = UIImage(named: "home")?.withRenderingMode(.alwaysOriginal)
               
               self.tabBar.items?[0].setTitleTextAttributes([NSAttributedString.Key.foregroundColor:UIColor().coloWithHexString(hex: "#05d9bd")], for: .selected)

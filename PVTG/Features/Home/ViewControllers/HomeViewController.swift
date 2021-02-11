@@ -329,6 +329,7 @@ extension HomeViewController: CLLocationManagerDelegate{
                 let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
                 self.lblLocn.text = addrss.locality
                 self.city = addrss.locality ?? ""
+                SaveToDefaults().setCity(value: self.city)
                 SaveToDefaults().setLatitude(lat: location.latitude)
                 SaveToDefaults().setLongtitude(lon: location.longitude)
                 self.loadApi(categoryid: "\(self.id)")

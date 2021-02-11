@@ -27,8 +27,9 @@ class ChangePasswordVM: BaseVm {
             if let json = response{
               
                 if json["statusCode"].intValue == 200{
-                    self.successfulMsg = json["message"].stringValue
-                   // showAlert(strTitle: json["message"].stringValue)
+                    self.successfulMsg = json["APICODERESULT"].stringValue
+                   
+            
                     
                     self.delegateChangePassword?.getReponse()
                 }else{

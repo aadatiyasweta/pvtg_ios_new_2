@@ -224,9 +224,9 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select interes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ol-qe-Dh0">
-                                <rect key="frame" x="98" y="110" width="124" height="15"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Interest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KN-Ax-CER">
+                                <rect key="frame" x="27" y="163" width="266.5" height="29.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -295,12 +295,11 @@
                             <constraint firstItem="crF-m2-F7f" firstAttribute="leading" secondItem="Agk-yh-Pm9" secondAttribute="trailing" id="9Cj-qc-Pmv"/>
                             <constraint firstItem="LAB-Q0-gzy" firstAttribute="trailing" secondItem="zXJ-65-iSK" secondAttribute="trailing" constant="20" id="C7d-kl-NaT"/>
                             <constraint firstItem="efH-Hw-rxl" firstAttribute="top" secondItem="bmK-Me-WYh" secondAttribute="top" id="CzB-QN-fqT"/>
-                            <constraint firstItem="8ol-qe-Dh0" firstAttribute="centerY" secondItem="EgR-BU-2Bl" secondAttribute="centerY" id="DBk-HU-CJl"/>
                             <constraint firstItem="crF-m2-F7f" firstAttribute="centerY" secondItem="Agk-yh-Pm9" secondAttribute="centerY" id="DhI-k3-sBM"/>
                             <constraint firstItem="LAB-Q0-gzy" firstAttribute="bottom" secondItem="vot-Gs-cGo" secondAttribute="bottom" id="EHM-Tj-y8e"/>
                             <constraint firstItem="Agk-yh-Pm9" firstAttribute="leading" secondItem="LAB-Q0-gzy" secondAttribute="leading" constant="18" id="GK5-sb-ZLq"/>
+                            <constraint firstItem="2KN-Ax-CER" firstAttribute="centerY" secondItem="EgR-BU-2Bl" secondAttribute="centerY" constant="60" id="QUa-Iz-6kp"/>
                             <constraint firstItem="ZQP-WF-ZTW" firstAttribute="top" secondItem="VYW-6m-f8C" secondAttribute="top" constant="33" id="SKn-vw-SJz"/>
-                            <constraint firstItem="8ol-qe-Dh0" firstAttribute="centerX" secondItem="EgR-BU-2Bl" secondAttribute="centerX" id="Tda-14-Yak"/>
                             <constraint firstItem="Agk-yh-Pm9" firstAttribute="top" secondItem="LAB-Q0-gzy" secondAttribute="top" constant="10" id="YrO-7g-UHu"/>
                             <constraint firstItem="VYW-6m-f8C" firstAttribute="top" secondItem="bmK-Me-WYh" secondAttribute="top" constant="155" id="YxK-TD-ZW6"/>
                             <constraint firstItem="bmK-Me-WYh" firstAttribute="centerX" secondItem="LAB-Q0-gzy" secondAttribute="centerX" id="ZqK-yq-pOs"/>
@@ -311,6 +310,7 @@
                             <constraint firstAttribute="trailing" secondItem="vot-Gs-cGo" secondAttribute="trailing" id="hgv-T3-AmM"/>
                             <constraint firstItem="EgR-BU-2Bl" firstAttribute="leading" secondItem="PDd-oj-Npn" secondAttribute="leading" id="i1s-iw-pRt"/>
                             <constraint firstItem="EgR-BU-2Bl" firstAttribute="top" secondItem="Agk-yh-Pm9" secondAttribute="bottom" constant="5" id="j6g-6H-d5V"/>
+                            <constraint firstItem="2KN-Ax-CER" firstAttribute="centerX" secondItem="EgR-BU-2Bl" secondAttribute="centerX" id="kcm-3p-gkN"/>
                             <constraint firstItem="zXJ-65-iSK" firstAttribute="centerY" secondItem="crF-m2-F7f" secondAttribute="centerY" id="qih-WQ-Nvc"/>
                             <constraint firstItem="efH-Hw-rxl" firstAttribute="trailing" secondItem="PDd-oj-Npn" secondAttribute="trailing" id="tVu-BZ-ynu"/>
                             <constraint firstItem="efH-Hw-rxl" firstAttribute="bottom" secondItem="LAB-Q0-gzy" secondAttribute="bottom" id="y5i-9F-SC1"/>
@@ -324,7 +324,7 @@
                         <outlet property="btnWidthConstrain" destination="QUe-hG-aqS" id="Qas-Lh-Y9v"/>
                         <outlet property="colectionVw" destination="EgR-BU-2Bl" id="fbT-we-N3j"/>
                         <outlet property="lblCount" destination="0TM-rB-C2t" id="Ph2-86-N0H"/>
-                        <outlet property="lblNoInterest" destination="8ol-qe-Dh0" id="gFC-S1-bkD"/>
+                        <outlet property="lblNoInterest" destination="2KN-Ax-CER" id="1zz-sa-J64"/>
                         <outlet property="pagerView" destination="efH-Hw-rxl" id="VaB-Ls-9Ug"/>
                         <outlet property="vw1" destination="bmK-Me-WYh" id="251-xr-DIA"/>
                         <outlet property="vw2" destination="VYW-6m-f8C" id="7ap-5P-fNx"/>

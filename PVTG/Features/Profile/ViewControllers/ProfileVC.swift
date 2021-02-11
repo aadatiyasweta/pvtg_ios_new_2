@@ -12,7 +12,9 @@ import MarqueeLabel
 class ProfileVC: BaseViewController {
     //MARK:- IBOutlets
     @IBOutlet weak var imgBg: UIImageView!
+    @IBOutlet weak var backBtn: UIButton!
     
+    @IBOutlet weak var mainScrolView: UIScrollView!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblPVTGPoints: UILabel!
@@ -35,6 +37,7 @@ class ProfileVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainScrolView.delegate = self
         renderTheColorOfImage()
         vm.delegate = self
        // setData()
@@ -101,7 +104,20 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         }
         return CGSize(width: 100, height: 105)
     }
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == self.mainScrolView{
+            if scrollView.contentOffset.y  < 0{
+                scrollView.contentOffset.y = 0
+                self.backBtn.isHidden = false
+            }else{
+                if scrollView.contentOffset.y > 55 {
+                    self.backBtn.isHidden = true
+                }else{
+                    self.backBtn.isHidden = false
+                }
+            }
+        }
+    }
 }
 
 extension ProfileVC: UpdateTheProfile {
@@ -110,13 +126,14 @@ extension ProfileVC: UpdateTheProfile {
         self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + " Purevibes pts"
         self.lblName.text = data.user_profile?.name ?? ""
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
+      
         loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         if let phone = data.user_profile?.phone {
             self.lblMobNo.text = "\(phone)"
             
         }
         self.colectionVwinterest.reloadData()
-       // self.lblAddress.text = data.user_profile.ad
+        self.lblAddress.text = SaveToDefaults().getCity() ?? ""
     }
     
     
@@ -134,10 +151,8 @@ extension ProfileVC {
         loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         SaveToDefaults().setProfilePic(value: data.user_profile?.user_image ?? "")
         self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + "Purevibes pts"
-        if let address = SaveToDefaults().getformattedAddress() {
-              self.lblAddress.text = address
-
-        }
+      
+        self.lblAddress.text = SaveToDefaults().getCity() ?? ""
         self.lblName.text = data.user_profile?.name ?? ""
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
         self.lblMobNo.text = "\(data.user_profile?.phone ?? "")"

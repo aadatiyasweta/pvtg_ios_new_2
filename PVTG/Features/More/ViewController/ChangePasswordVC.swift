@@ -125,7 +125,10 @@ extension ChangePasswordVC {
 
 extension ChangePasswordVC: ChangePassword {
     func getReponse() {
-        self.navigationController?.popViewController(animated: true)
+        self.showAlertWithConfirmation1("Password changed successfully.", withTitle: "PVTG", itsController: self) { (succss) in
+               self.navigationController?.popViewController(animated: true)
+        }
+    
     }
 }
 

@@ -32,10 +32,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="322" height="420"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zo-Zc-4db">
-                                <rect key="frame" x="8" y="15" width="87" height="25"/>
+                                <rect key="frame" x="8" y="15" width="87" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meditation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID7-IC-3sF">
-                                        <rect key="frame" x="10" y="5" width="67" height="15"/>
+                                        <rect key="frame" x="10" y="4.5" width="67" height="15"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,12 +51,12 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ID7-IC-3sF" secondAttribute="trailing" constant="10" id="DWs-gR-2X9"/>
                                     <constraint firstItem="ID7-IC-3sF" firstAttribute="leading" secondItem="7zo-Zc-4db" secondAttribute="leading" constant="10" id="Jp6-5N-0vm"/>
-                                    <constraint firstAttribute="height" constant="25" id="blW-cX-mJu"/>
+                                    <constraint firstAttribute="height" constant="24" id="blW-cX-mJu"/>
                                     <constraint firstItem="ID7-IC-3sF" firstAttribute="centerY" secondItem="7zo-Zc-4db" secondAttribute="centerY" id="nRJ-ec-9mI"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="17"/>
+                                        <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
