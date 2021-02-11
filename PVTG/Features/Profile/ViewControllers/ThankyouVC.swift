@@ -17,8 +17,8 @@ class ThankyouVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.pointsLbl.text = "Your \(name)  awaits you \nYou earned \(points)pts"
+        // Do any additional setup after loading the view.Your session has been booked. You have earned 20pts.
+        self.pointsLbl.text = "Your session has been booked. \nYou have earned \(self.points)pts."
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

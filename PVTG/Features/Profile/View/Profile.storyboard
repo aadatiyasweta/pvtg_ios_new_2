@@ -34,7 +34,7 @@
         <!--ProfileVC-->
         <scene sceneID="hP2-Gd-FIy">
             <objects>
-                <viewController storyboardIdentifier="ProfileVC" id="FUA-SD-AdJ" customClass="ProfileVC" customModule="PVTG" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" hidesBottomBarWhenPushed="YES" id="FUA-SD-AdJ" customClass="ProfileVC" customModule="PVTG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yf5-mX-Vrx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -363,7 +363,7 @@
         <!--Rate UsVC-->
         <scene sceneID="Eys-DC-AMh">
             <objects>
-                <viewController storyboardIdentifier="RateUsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fKr-Dx-bdo" customClass="RateUsVC" customModule="PVTG" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RateUsVC" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fKr-Dx-bdo" customClass="RateUsVC" customModule="PVTG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rt0-wO-cKy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -583,8 +583,8 @@ Rate and write a review to earn 2pts</string>
                                                     <action selector="clickOnBack" destination="3la-LE-5TG" eventType="touchUpInside" id="Tsj-um-Yst"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9w-Bq-rGL">
-                                                <rect key="frame" x="36" y="103" width="248.5" height="55"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THANK YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9w-Bq-rGL">
+                                                <rect key="frame" x="18" y="103" width="284" height="55"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="45"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -611,7 +611,7 @@ You earned 45pts</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58W-0g-2Jt">
-                                                <rect key="frame" x="55" y="519.5" width="210" height="55"/>
+                                                <rect key="frame" x="55" y="529.5" width="210" height="55"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="heh-Mx-CSL"/>
@@ -645,7 +645,7 @@ You earned 45pts</string>
                                             <constraint firstItem="ixy-Vh-01W" firstAttribute="centerX" secondItem="0wN-FM-Jue" secondAttribute="centerX" id="jag-6d-Usr"/>
                                             <constraint firstAttribute="trailing" secondItem="58W-0g-2Jt" secondAttribute="trailing" constant="55" id="tcv-um-fII"/>
                                             <constraint firstItem="j0s-Ox-bXt" firstAttribute="top" secondItem="gMG-XD-3Zu" secondAttribute="bottom" constant="15" id="vYa-BR-kTL"/>
-                                            <constraint firstAttribute="bottom" secondItem="58W-0g-2Jt" secondAttribute="bottom" constant="35" id="woY-6B-C9N"/>
+                                            <constraint firstAttribute="bottom" secondItem="58W-0g-2Jt" secondAttribute="bottom" constant="25" id="woY-6B-C9N"/>
                                             <constraint firstItem="gMG-XD-3Zu" firstAttribute="centerX" secondItem="0wN-FM-Jue" secondAttribute="centerX" id="yqe-1E-EmN"/>
                                         </constraints>
                                     </view>
@@ -1058,7 +1058,7 @@ You earned 45pts</string>
         <!--Search LocationVC-->
         <scene sceneID="Hu0-hc-W5R">
             <objects>
-                <viewController storyboardIdentifier="SearchLocationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eFf-Ms-n3g" customClass="SearchLocationVC" customModule="PVTG" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchLocationVC" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eFf-Ms-n3g" customClass="SearchLocationVC" customModule="PVTG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J3M-3P-vwi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1198,7 +1198,7 @@ You earned 45pts</string>
         <image name="bg-search" width="465.5" height="826.5"/>
         <image name="bgProfile" width="375" height="812"/>
         <image name="call" width="14.5" height="15"/>
-        <image name="cup" width="13.5" height="14"/>
+        <image name="cup" width="17.5" height="19"/>
         <image name="edit" width="16" height="16"/>
         <image name="mail" width="14.5" height="10.5"/>
         <image name="minimalLeft2X" width="7.5" height="13.5"/>

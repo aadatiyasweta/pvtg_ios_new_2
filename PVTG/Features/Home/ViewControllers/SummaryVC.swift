@@ -81,7 +81,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             let lat = Double(lat1)
             let long = Double(long1)
             let location = CLLocationCoordinate2D(latitude: lat , longitude: long )
-            let camera = GMSCameraPosition.camera(withLatitude: lat , longitude: long , zoom: 7, bearing: 0,
+            let camera = GMSCameraPosition.camera(withLatitude: lat , longitude: long , zoom: 15, bearing: 0,
                                                   viewingAngle: 40)
             mapView = GMSMapView.map(withFrame: self.vwmap.bounds, camera: camera)
             self.vwmap.addSubview(mapView ?? GMSMapView())

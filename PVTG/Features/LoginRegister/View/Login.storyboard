@@ -800,16 +800,14 @@
                                 <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I9-oz-OzX">
-                                <rect key="frame" x="22" y="68" width="276" height="59"/>
-                                <string key="text">Enter the verification sent to your number
-+91 876 908 25 11</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I9-oz-OzX">
+                                <rect key="frame" x="22" y="93" width="276" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMM-lE-yw2" customClass="SVPinView" customModule="SVPinView">
-                                <rect key="frame" x="22" y="162" width="276" height="60"/>
+                                <rect key="frame" x="22" y="128" width="276" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="mtk-eF-dQL"/>
@@ -834,13 +832,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Didn’t Receive?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOs-68-ZzW">
-                                <rect key="frame" x="50" y="244" width="110" height="17.5"/>
+                                <rect key="frame" x="50" y="210" width="110" height="17.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ER4-qz-GR7">
-                                <rect key="frame" x="162" y="238" width="96" height="30"/>
+                                <rect key="frame" x="162" y="204" width="96" height="30"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                 <state key="normal" title="Resend Code">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -850,7 +848,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQe-pZ-Qwo">
-                                <rect key="frame" x="75" y="291.5" width="170" height="50"/>
+                                <rect key="frame" x="75" y="257.5" width="170" height="50"/>
                                 <color key="backgroundColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="GXn-8b-nkd"/>
@@ -882,7 +880,7 @@
                             <constraint firstItem="afo-GT-TTS" firstAttribute="centerX" secondItem="WOs-68-ZzW" secondAttribute="trailing" id="L5B-ZZ-uot"/>
                             <constraint firstItem="afo-GT-TTS" firstAttribute="trailing" secondItem="1I9-oz-OzX" secondAttribute="trailing" constant="22" id="QyM-vx-Qlt"/>
                             <constraint firstItem="UBm-8g-cuh" firstAttribute="centerY" secondItem="rsz-Pw-W7B" secondAttribute="centerY" id="Raj-iw-hTB"/>
-                            <constraint firstItem="1I9-oz-OzX" firstAttribute="top" secondItem="UBm-8g-cuh" secondAttribute="bottom" constant="30" id="ZgC-Tw-qWZ"/>
+                            <constraint firstItem="1I9-oz-OzX" firstAttribute="top" secondItem="UBm-8g-cuh" secondAttribute="bottom" constant="55" id="ZgC-Tw-qWZ"/>
                             <constraint firstItem="afo-GT-TTS" firstAttribute="leading" secondItem="1I9-oz-OzX" secondAttribute="leading" constant="-22" id="cAu-zL-MKi"/>
                             <constraint firstItem="hMM-lE-yw2" firstAttribute="top" secondItem="1I9-oz-OzX" secondAttribute="bottom" constant="35" id="dIP-Oc-Ijw"/>
                             <constraint firstItem="ER4-qz-GR7" firstAttribute="centerY" secondItem="WOs-68-ZzW" secondAttribute="centerY" id="fjF-0K-jD1"/>

@@ -172,15 +172,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         if self.categoryArr.count == 2{
             if self.categoryArr[1].image == ""{
                 if indexPath.row == 0{
-                    cell.vwcategory.backgroundColor = .white
-                    cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#E2E2E2"))
-                    cell.lblCategory.textColor = .black
-                    cell.setdata(data:categoryArr[indexPath.row])
-                }else{
-                    cell.imgcategory.image = #imageLiteral(resourceName: "star")
-                    cell.lblCategory.textColor = .white
                     cell.vwcategory.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
                     cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#06d9bd"))
+                    cell.lblCategory.textColor = .white
+                    cell.setdata(data:categoryArr[indexPath.row])
+                }else{
+                    cell.imgcategory.image = #imageLiteral(resourceName: "star-grey")
+                    cell.lblCategory.textColor = .black
+                    cell.vwcategory.backgroundColor = UIColor().coloWithHexString(hex: "#ffffff")
+                    cell.vwcategory.border(width: 1, color: UIColor().coloWithHexString(hex: "#E2E2E2"))
                     cell.lblCategory.text = categoryArr[indexPath.row].name
                 }
                 

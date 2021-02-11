@@ -31,16 +31,16 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         IQKeyboardManager.shared.enable = true
         GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
         GMSPlacesClient.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
-          FirebaseApp.configure()
-         Messaging.messaging().delegate = self
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
         //        let vc = LoginVC.navigation()
         
-            //let vc =  TransformerExampleViewController.instance()
+        //let vc =  TransformerExampleViewController.instance()
         let vc = SplashVC.navigation()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         //       // checkLoginStatus()
-      //  checkLoginStatus()
+        //  checkLoginStatus()
         return true
     }
     
@@ -63,46 +63,46 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         }
     }
     
-     func remoteNotification(application:UIApplication) {
-           if #available(iOS 10.0, *) {
-               // For iOS 10 display notification (sent via APNS)
-               UNUserNotificationCenter.current().delegate = self
-               
-               let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-               UNUserNotificationCenter.current().requestAuthorization(
-                   options: authOptions,
-                   completionHandler: {_,_ in })
-           } else {
-               let settings: UIUserNotificationSettings =
-                   UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-               application.registerUserNotificationSettings(settings)
-           }
-           application.registerForRemoteNotifications()
-           self.instanceId()
-          
-       }
-       func instanceId(){
-           InstanceID.instanceID().instanceID { (result, error) in
-               if let error = error {
-                   print("Error fetching remote instance ID: \(error)")
-               } else if let result = result {
-                   print("Remote instance ID token: \(result.token)")
-                   SaveToDefaults().setFcmToken(token: result.token)
-               }
-           }
-       }
-          func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-              print("Firebase registration token: \(fcmToken)")
-              
-           SaveToDefaults().setFcmToken(token: "\(fcmToken)")
-              
-          }
-    
-       func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-            print("didRegisterForRemoteNotificationsWithDeviceToken")
-            Messaging.messaging().setAPNSToken(deviceToken, type: .sandbox)
-            Messaging.messaging().setAPNSToken(deviceToken, type: .prod)
+    func remoteNotification(application:UIApplication) {
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_,_ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
         }
+        application.registerForRemoteNotifications()
+        self.instanceId()
+        
+    }
+    func instanceId(){
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                SaveToDefaults().setFcmToken(token: result.token)
+            }
+        }
+    }
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        SaveToDefaults().setFcmToken(token: "\(fcmToken)")
+        
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("didRegisterForRemoteNotificationsWithDeviceToken")
+        Messaging.messaging().setAPNSToken(deviceToken, type: .sandbox)
+        Messaging.messaging().setAPNSToken(deviceToken, type: .prod)
+    }
     //MARK:- Function For Open URL
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
         let googleDidHandle = GIDSignIn.sharedInstance()?.handle(url)
@@ -113,8 +113,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-           print("didReceiveRemoteNotification",userInfo)
-       }
+        print("didReceiveRemoteNotification",userInfo)
+    }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -141,21 +141,21 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     }
     
     func hitDeviceTokenApi(isLogout : Bool? = false){
-          let param : [String:Any] = [
-              "deviceToken": !isLogout! ? SaveToDefaults().getFcmToken() ?? "" : "123",
-              "deviceType": "Ios",
-          ]
-          print(header() ?? [:])
-          api_manager.POSTApi(updateDeviceTokenUrl(), param: param, header: header()) { (response, err, stausCode) in
-              if isLogout!{
-                  // removeLoginDetails()
-                  DispatchQueue.main.async {
-                      
-                  }
-              }
-              print(response ?? "Nil")
-          }
-      }
-
+        let param : [String:Any] = [
+            "deviceToken": !isLogout! ? SaveToDefaults().getFcmToken() ?? "" : "123",
+            "deviceType": "Ios",
+        ]
+        print(header() ?? [:])
+        api_manager.POSTApi(updateDeviceTokenUrl(), param: param, header: header()) { (response, err, stausCode) in
+            if isLogout!{
+                // removeLoginDetails()
+                DispatchQueue.main.async {
+                    
+                }
+            }
+            print(response ?? "Nil")
+        }
+    }
+    
     
 }
