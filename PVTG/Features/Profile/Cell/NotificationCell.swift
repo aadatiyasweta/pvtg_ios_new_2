@@ -18,6 +18,8 @@ class NotificationCell: UITableViewCell {
     @IBOutlet weak var imgHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var imgNotificationDesc: UIImageView!
     
+    @IBOutlet weak var imgBottomconstraint: NSLayoutConstraint!
+    
     //MARK:-  Variables
 
     static let ident = "NotificationCell"
@@ -45,8 +47,10 @@ class NotificationCell: UITableViewCell {
         if let date = dateFormatter.date(from: date1) {
             self.lblDaysAgo.text = date.timeAgoSinceDate()
         }
-        self.lblHead.text = data.body ?? ""
-        let type = data.type ?? "normal"
+        if let title = data.title {
+        self.lblHead.text = title
+        }
+        //let type = data.type ?? "normal"
         let img = data.image ?? ""
         loadImage(img, self.imgNotificationDesc, activity: nil, defaultImage: nil)
 //        switch type{

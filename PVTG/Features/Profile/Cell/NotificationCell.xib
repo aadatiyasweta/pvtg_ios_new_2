@@ -32,9 +32,9 @@
                             <constraint firstAttribute="height" constant="45" id="RnT-fj-bPM"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qji-94-7im">
-                        <rect key="frame" x="82" y="19" width="239" height="41"/>
-                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zD-wh-tAH">
+                        <rect key="frame" x="82" y="27" width="239" height="25"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -64,29 +64,30 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="nMO-ID-SkR" firstAttribute="trailing" secondItem="Qji-94-7im" secondAttribute="trailing" id="11b-tp-nhv"/>
+                    <constraint firstItem="5zD-wh-tAH" firstAttribute="leading" secondItem="TaX-A8-Ifb" secondAttribute="trailing" constant="15" id="0hC-y2-zQ4"/>
+                    <constraint firstItem="5zD-wh-tAH" firstAttribute="centerY" secondItem="TaX-A8-Ifb" secondAttribute="centerY" constant="-3" id="27s-ga-omr"/>
                     <constraint firstItem="62o-ga-pym" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="8ns-9K-KFL"/>
                     <constraint firstAttribute="bottom" secondItem="nMO-ID-SkR" secondAttribute="bottom" id="Cy3-mM-9r9"/>
-                    <constraint firstItem="Qji-94-7im" firstAttribute="leading" secondItem="TaX-A8-Ifb" secondAttribute="trailing" constant="15" id="GhI-bq-Aq4"/>
                     <constraint firstItem="TaX-A8-Ifb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="LMC-j1-fLe"/>
-                    <constraint firstItem="yq0-IQ-69Y" firstAttribute="top" secondItem="Qji-94-7im" secondAttribute="bottom" id="OaA-Sx-Hmp"/>
+                    <constraint firstItem="5zD-wh-tAH" firstAttribute="trailing" secondItem="nMO-ID-SkR" secondAttribute="trailing" id="SEh-4u-Dso"/>
                     <constraint firstItem="nMO-ID-SkR" firstAttribute="top" secondItem="62o-ga-pym" secondAttribute="bottom" constant="15" id="X5O-CH-aOz"/>
-                    <constraint firstItem="Qji-94-7im" firstAttribute="centerY" secondItem="TaX-A8-Ifb" secondAttribute="centerY" constant="-3" id="aFe-Rn-aWH"/>
-                    <constraint firstItem="yq0-IQ-69Y" firstAttribute="leading" secondItem="Qji-94-7im" secondAttribute="leading" id="mrp-b9-wCW"/>
+                    <constraint firstItem="yq0-IQ-69Y" firstAttribute="top" secondItem="5zD-wh-tAH" secondAttribute="bottom" constant="8" id="fw0-6W-XD1"/>
+                    <constraint firstAttribute="trailing" secondItem="5zD-wh-tAH" secondAttribute="trailing" constant="20" id="hMd-ev-55S"/>
+                    <constraint firstItem="yq0-IQ-69Y" firstAttribute="leading" secondItem="5zD-wh-tAH" secondAttribute="leading" id="nZ2-He-Oqa"/>
                     <constraint firstItem="62o-ga-pym" firstAttribute="top" secondItem="yq0-IQ-69Y" secondAttribute="bottom" constant="15" id="s4q-6K-pIp"/>
                     <constraint firstItem="TaX-A8-Ifb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="uTC-yX-2GS"/>
-                    <constraint firstAttribute="trailing" secondItem="Qji-94-7im" secondAttribute="trailing" constant="20" id="xP0-VF-wfb"/>
                     <constraint firstItem="nMO-ID-SkR" firstAttribute="leading" secondItem="TaX-A8-Ifb" secondAttribute="leading" constant="25" id="yMf-Un-pyM"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="imgBottomconstraint" destination="X5O-CH-aOz" id="AUa-Ce-bz2"/>
                 <outlet property="imgHeightConstraint" destination="kI8-7Y-zP5" id="JA7-AO-XCF"/>
                 <outlet property="imgNotificationDesc" destination="62o-ga-pym" id="Wza-BU-wxp"/>
                 <outlet property="imgNotificatiuon" destination="TaX-A8-Ifb" id="Jz9-OV-r62"/>
                 <outlet property="lblDaysAgo" destination="yq0-IQ-69Y" id="Jlk-jS-a1R"/>
-                <outlet property="lblHead" destination="Qji-94-7im" id="yDO-zT-msx"/>
+                <outlet property="lblHead" destination="5zD-wh-tAH" id="qWN-5u-8BQ"/>
                 <outlet property="vwSeperator" destination="nMO-ID-SkR" id="U29-iJ-Xr3"/>
             </connections>
             <point key="canvasLocation" x="144.20289855072465" y="153.68303571428569"/>

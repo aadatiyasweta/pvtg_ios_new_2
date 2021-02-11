@@ -66,17 +66,16 @@ extension NotificationVC: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotificationCell.ident, for: indexPath) as? NotificationCell else {return UITableViewCell()}
         if self.notificationVM.model?.result?[indexPath.row].image != "" {
             cell.imgHeightConstraint.constant = 150
+            cell.imgBottomconstraint.constant = 15
         } else {
            cell.imgHeightConstraint.constant = 0
+            cell.imgBottomconstraint.constant = 0
         }
         cell.setData(data: self.notificationVM.model?.result?[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.notificationVM.model?.result?[indexPath.row].image != ""  {
-           return 250
-        }
-        return 85
+        return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         debugPrint("\(indexPath.row)")
