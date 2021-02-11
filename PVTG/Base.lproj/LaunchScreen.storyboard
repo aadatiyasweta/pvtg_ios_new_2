@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,15 +13,24 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="iFV-ue-QT2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spalshh" translatesAutoresizingMaskIntoConstraints="NO" id="iFV-ue-QT2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pureVibes" translatesAutoresizingMaskIntoConstraints="NO" id="p3r-yQ-dKx">
+                                <rect key="frame" x="40" y="22" width="240" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="6tV-YR-ci8"/>
+                                    <constraint firstAttribute="width" constant="240" id="UgI-pK-dyw"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="p3r-yQ-dKx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="20O-7Q-PFy"/>
+                            <constraint firstItem="p3r-yQ-dKx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="I0Q-GU-cph"/>
                             <constraint firstItem="iFV-ue-QT2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R5s-eQ-Ycb"/>
                             <constraint firstAttribute="bottom" secondItem="iFV-ue-QT2" secondAttribute="bottom" id="aoH-7B-q2Z"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iFV-ue-QT2" secondAttribute="trailing" id="fTs-yw-14O"/>
@@ -35,6 +45,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="160" height="284"/>
+        <image name="pureVibes" width="562.5" height="410.5"/>
+        <image name="spalshh" width="160" height="284"/>
     </resources>
 </document>
