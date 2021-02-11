@@ -482,38 +482,6 @@
             endingLineNumber = "270"
             landmarkName = "btnTapToRemoveFromSuperview(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BB019D84-1C14-4F62-BA56-E972B8CB88EB - b8a42a1e75b194d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.SessionDetailVC.btnTapToRemoveFromSuperview(__C.UIButton) -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/pvtg_ios_new_2/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "270"
-                  endingLineNumber = "270"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "BB019D84-1C14-4F62-BA56-E972B8CB88EB - b3b768c3763d7b6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in PVTG.SessionDetailVC.btnTapToRemoveFromSuperview(__C.UIButton) -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/pvtg_ios_new_2/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "271"
-                  endingLineNumber = "271"
-                  offsetFromSymbolStart = "55">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -535,32 +503,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B9065308-CEED-424D-B0CF-4E4EA4EB9123"
+            uuid = "57F11063-BAC3-4A0E-A513-1B58D24C31AC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Home/ViewControllers/HomeViewController.swift"
+            filePath = "PVTG/Features/Profile/Cell/NotificationCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "setData(data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3317937D-AF6D-4374-A46D-C14BC35C1955"
+            uuid = "E3862E59-D40B-45FE-9935-4E6F851B6E00"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Home/ViewControllers/HomeViewController.swift"
+            filePath = "PVTG/Features/Onboarding/ViewController/OnboardingVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "onboardingConfigurationItem(_:index:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E80A500-F561-435D-8E78-5587695E6374"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Onboarding/ViewController/OnboardingVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "onboardingConfigurationItem(_:index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

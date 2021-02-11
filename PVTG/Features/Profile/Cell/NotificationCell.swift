@@ -32,6 +32,8 @@ class NotificationCell: UITableViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.imgNotificatiuon.image = #imageLiteral(resourceName: "group-6")
+        self.imgNotificatiuon.contentMode = .scaleAspectFit
         setVSViewShadow(radius: 10, color: .black, view: self.imgNotificatiuon, opacity: 0.12)
     }
 
@@ -46,12 +48,12 @@ class NotificationCell: UITableViewCell {
         self.lblHead.text = data.body ?? ""
         let type = data.type ?? "normal"
         let img = data.image ?? ""
-        switch type{
-        case "normal":
-            loadImage(img, self.imgNotificationDesc, activity: nil, defaultImage: nil)
-        default:
-            print("nil")
-            break
-        }
+        loadImage(img, self.imgNotificationDesc, activity: nil, defaultImage: nil)
+//        switch type{
+//        case "normal".capitalized:
+//        default:
+//            print("nil")
+//            break
+//        }
     }
 }
