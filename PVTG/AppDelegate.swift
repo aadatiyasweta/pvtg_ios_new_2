@@ -142,11 +142,12 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     
     func hitDeviceTokenApi(isLogout : Bool? = false){
         let param : [String:Any] = [
-            "deviceToken": !isLogout! ? SaveToDefaults().getFcmToken() ?? "" : "123",
-            "deviceType": "Ios",
+            "device_token": !isLogout! ? SaveToDefaults().getFcmToken() ?? "" : "123",
+            "device_type": "Ios",
+            "user_id" : SaveToDefaults().getUserId() ?? ""
         ]
         print(header() ?? [:])
-        api_manager.POSTApi(updateDeviceTokenUrl(), param: param, header: header()) { (response, err, stausCode) in
+        api_manager.PUTApi(updateDeviceTokenUrl(), param: param, header: header()) { (response, err, stausCode) in
             if isLogout!{
                 // removeLoginDetails()
                 DispatchQueue.main.async {

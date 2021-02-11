@@ -708,11 +708,6 @@
                             <constraint firstItem="I2P-sg-1pI" firstAttribute="top" secondItem="ppg-q6-o72" secondAttribute="top" constant="22" id="zMu-25-SZE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ppg-q6-o72"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="dLw-t5-wPy"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="aboutView" destination="w51-r1-ZxC" id="hV8-1b-MhJ"/>

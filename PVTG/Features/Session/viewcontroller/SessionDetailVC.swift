@@ -252,17 +252,22 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         if count == Int(self.vm.availableTickets?.ticket_avilable ?? "") {
             self.btndecrease.isUserInteractionEnabled = true
            // self.btnIncrease.isUserInteractionEnabled = false
-            showAlert(strTitle: "only \(count) ticket left")
+            if count > 1{
+                showAlert(strTitle: "only \(count) tickets for this session are available.")
+            }else
+            {
+                showAlert(strTitle: "only \(count) ticket for this session are available.")
+            }
+            
         } else {
             count = (Int(lblTicketCount.text ?? "00") ?? 0)+1
         }
-        
+    
         self.lblTicketCount.text = String(format: "%02d", count)
     }
     
     @IBAction func btnContinueTap(_ sender: UIButton) {
         btnToRemove.isHidden = true
-        
         bookingApi()
     }
     
