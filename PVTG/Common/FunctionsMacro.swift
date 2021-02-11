@@ -1027,6 +1027,7 @@ extension Date{
 
 func loadImage(_ url :String , _ imageView:UIImageView , activity:UIActivityIndicatorView? , defaultImage:UIImage?){
     if url == ""{
+        imageView.contentMode = .scaleAspectFit
         imageView.image = defaultImage
     }else{
         imageView.sd_setImage(with: URL(string: url), placeholderImage: defaultImage, options: SDWebImageOptions.refreshCached)
