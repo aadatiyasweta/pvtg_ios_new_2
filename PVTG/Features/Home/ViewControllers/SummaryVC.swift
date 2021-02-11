@@ -231,8 +231,16 @@ extension SummaryVC {
 }
 extension SummaryVC : GetBookingResponse{
     func bookingSuccess() {
-      
-        self.navigationController?.popToRootViewController(animated: true)
-       //self.tabBarController?.selectedIndex = 1
+        let vc = ThankyouVC.instance()
+        if self.ticketModel?.user_booking ?? 0 == 0{
+           vc.points = "20"
+        }else{
+            vc.points = "10"
+        }
+        vc.name = self.bookingDetails?.name_of_listing ?? ""
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        //self.navigationController?.popToRootViewController(animated: true)
+        //
     }
 }

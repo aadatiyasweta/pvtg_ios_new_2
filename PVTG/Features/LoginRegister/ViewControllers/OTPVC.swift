@@ -64,7 +64,7 @@ class OTPVC: BaseViewController {
             self.resndBtn.alpha = 1
             self.donotReciveLbl.alpha = 1
             //self.timeLbl.text = "00:\(String(format: "%02d", counter)) "+sec
-            self.timeLbl.text = ""
+           // self.timeLbl.text = ""
         }
     }
     

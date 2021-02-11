@@ -10,12 +10,15 @@ import UIKit
 
 class ThankyouVC: BaseViewController {
 
+    @IBOutlet weak var pointsLbl: UILabel!
     @IBOutlet weak var btnBack: UIButton!
-    
+    var name = ""
+    var points = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.pointsLbl.text = "Your \(name)  awaits you \nYou earned \(points)pts"
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -29,6 +32,9 @@ class ThankyouVC: BaseViewController {
        }
     
     @IBAction func btnTapBooking(_ sender: UIButton) {
+         appDelegate.tabBarVc?.selectedIndex = 1
+        self.navigationController?.popToRootViewController(animated: true)
+       
     }
     
 }
