@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -18,14 +18,14 @@
             <objects>
                 <viewController storyboardIdentifier="OnboardingVC" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7S6-X4-nP2" customClass="OnboardingVC" customModule="PVTG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rbx-N6-rN6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tEJ-Dx-7CI">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bhp-Fl-diO">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
+                                <rect key="frame" x="0.0" y="-20" width="375" height="832"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Wrq-dV-mvU">
                                     <size key="itemSize" width="50" height="50"/>
@@ -36,7 +36,7 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naX-nE-bQV">
-                                <rect key="frame" x="205" y="13" width="89" height="31"/>
+                                <rect key="frame" x="260" y="57" width="89" height="31"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                 <state key="normal" title="Get Started">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,10 +46,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bQx-P2-w3Q">
-                                <rect key="frame" x="22" y="541" width="278" height="5"/>
+                                <rect key="frame" x="22" y="751" width="333" height="5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MhA-Ca-iKh">
-                                        <rect key="frame" x="0.0" y="0.0" width="43.5" height="5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="54.666666666666664" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="nGp-ll-jbg"/>
@@ -61,7 +61,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umC-oG-C8t">
-                                        <rect key="frame" x="58.5" y="0.0" width="43.5" height="5"/>
+                                        <rect key="frame" x="69.666666666666671" y="0.0" width="54.666666666666671" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="0Zt-Wm-6AS"/>
@@ -73,7 +73,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JC8-b5-Irj">
-                                        <rect key="frame" x="117" y="0.0" width="44" height="5"/>
+                                        <rect key="frame" x="139.33333333333334" y="0.0" width="54.333333333333343" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="kYh-QV-CQZ"/>
@@ -85,7 +85,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aok-JI-OSj">
-                                        <rect key="frame" x="176" y="0.0" width="43.5" height="5"/>
+                                        <rect key="frame" x="208.66666666666663" y="0.0" width="54.666666666666657" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="gsi-5Z-3ZE"/>
@@ -97,7 +97,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CqR-hu-FxR">
-                                        <rect key="frame" x="234.5" y="0.0" width="43.5" height="5"/>
+                                        <rect key="frame" x="278.33333333333331" y="0.0" width="54.666666666666686" height="5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="mXn-B5-lpj"/>
@@ -167,17 +167,26 @@
             <objects>
                 <viewController storyboardIdentifier="SplashVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JGm-Ge-N2f" customClass="SplashVC" customModule="PVTG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yYk-lv-30e">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="iO0-JS-yHW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spalshh" translatesAutoresizingMaskIntoConstraints="NO" id="iO0-JS-yHW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pureVibes" translatesAutoresizingMaskIntoConstraints="NO" id="GhG-gc-Rjl">
+                                <rect key="frame" x="67.666666666666686" y="66" width="240" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="3rK-DQ-zMf"/>
+                                    <constraint firstAttribute="width" constant="240" id="MdM-uA-1lA"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iO0-JS-yHW" firstAttribute="bottom" secondItem="yYk-lv-30e" secondAttribute="bottom" id="KvT-df-9EX"/>
+                            <constraint firstItem="GhG-gc-Rjl" firstAttribute="centerX" secondItem="di3-2j-Dss" secondAttribute="centerX" id="Vye-Y7-1gU"/>
                             <constraint firstAttribute="top" secondItem="iO0-JS-yHW" secondAttribute="top" id="cXL-Tx-oJx"/>
+                            <constraint firstItem="GhG-gc-Rjl" firstAttribute="top" secondItem="di3-2j-Dss" secondAttribute="top" constant="22" id="kyE-TH-42D"/>
                             <constraint firstItem="di3-2j-Dss" firstAttribute="leading" secondItem="iO0-JS-yHW" secondAttribute="leading" id="mxe-Ci-W12"/>
                             <constraint firstItem="iO0-JS-yHW" firstAttribute="trailing" secondItem="di3-2j-Dss" secondAttribute="trailing" id="wDe-8N-7HQ"/>
                         </constraints>
@@ -208,6 +217,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="160" height="284"/>
+        <image name="pureVibes" width="562.5" height="410.5"/>
+        <image name="spalshh" width="160" height="284"/>
     </resources>
 </document>
