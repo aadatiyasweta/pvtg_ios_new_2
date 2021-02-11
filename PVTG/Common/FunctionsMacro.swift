@@ -134,17 +134,17 @@ func convertampmformattohourformat(inputDate: String)-> String {
 }
 func convertTimeIntoAmPmFormat(inputDate: String)-> String {
     let dateAsString = inputDate
-           let dateFormatter = DateFormatter()
-           dateFormatter.dateFormat = "h:mm"
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "h:mm"
     guard let date1 = dateFormatter.date(from: dateAsString) else { return "01:10" }
-          dateFormatter.dateFormat = "h:mm a"
+    dateFormatter.dateFormat = "h:mm a"
     let Date24 = dateFormatter.string(from: date1)
     debugPrint("24 hour formatted Date:",Date24)
-     return Date24
-          
+    return Date24
+    
 }
 func convertIntoHourFormatted(inputDate: Date)-> String {
-   // let dateAsString = inputDate
+    // let dateAsString = inputDate
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-mm-dd"
     
@@ -291,7 +291,7 @@ func showMesssgeJustBelowView(view: UIView, msg:String){
     //window?.addSubview(view)
     DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
         lbl.removeFromSuperview()
-       // view.removeFromSuperview()
+        // view.removeFromSuperview()
     })
     
     
@@ -337,65 +337,65 @@ func setupLayerHorizonatal(view : UIView , color : [UIColor]){
 }
 
 extension UIView {
-        func addBlurEffect()
-           {
-            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-               let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.alpha = 0.8
-               blurEffectView.frame = self.bounds
-
-               blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-               self.addSubview(blurEffectView)
-           }
-    func removeBlurEffect() {
-       let blurredEffectViews = self.subviews.filter{$0 is UIVisualEffectView}
-       blurredEffectViews.forEach{ blurView in
-         blurView.removeFromSuperview()
-       }
+    func addBlurEffect()
+    {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = 0.8
+        blurEffectView.frame = self.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        self.addSubview(blurEffectView)
     }
-        func animShow(){
-//            UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear],
-//                           animations: {
-//                            setVSViewShadow(radius: 10, color: .black, view: self, opacity: 0.12)
-//                            self.center.y -= 0
-//                            self.layoutIfNeeded()
-//            }, completion: {(_ completed: Bool) -> Void in
-//                self.center.y = UIScreen.main.bounds.height - 125
-//            })
-            self.center.y = UIScreen.main.bounds.height - 125
-            self.isHidden = false
+    func removeBlurEffect() {
+        let blurredEffectViews = self.subviews.filter{$0 is UIVisualEffectView}
+        blurredEffectViews.forEach{ blurView in
+            blurView.removeFromSuperview()
         }
-        func animHide(){
-//            UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear],
-//                           animations: {
-//                            self.center.y += self.bounds.height
-//                            self.layoutIfNeeded()
-//
-//            },  completion: {(_ completed: Bool) -> Void in
-//
-//                })
-             self.isHidden = true
-            self.center.y += self.bounds.height
-        }
+    }
+    func animShow(){
+        //            UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear],
+        //                           animations: {
+        //                            setVSViewShadow(radius: 10, color: .black, view: self, opacity: 0.12)
+        //                            self.center.y -= 0
+        //                            self.layoutIfNeeded()
+        //            }, completion: {(_ completed: Bool) -> Void in
+        //                self.center.y = UIScreen.main.bounds.height - 125
+        //            })
+        self.center.y = UIScreen.main.bounds.height - 125
+        self.isHidden = false
+    }
+    func animHide(){
+        //            UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear],
+        //                           animations: {
+        //                            self.center.y += self.bounds.height
+        //                            self.layoutIfNeeded()
+        //
+        //            },  completion: {(_ completed: Bool) -> Void in
+        //
+        //                })
+        self.isHidden = true
+        self.center.y += self.bounds.height
+    }
     func addDashedBorder() {
         let color = UIColor().coloWithHexString(hex: "#ffffff").cgColor
-
-       let shapeLayer:CAShapeLayer = CAShapeLayer()
-       let frameSize = self.frame.size
-       let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
-
-       shapeLayer.bounds = shapeRect
-       shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
-       shapeLayer.fillColor = UIColor.clear.cgColor
-       shapeLayer.strokeColor = color
-       shapeLayer.lineWidth = 2
-       shapeLayer.cornerRadius = 0
-       shapeLayer.lineJoin = CAShapeLayerLineJoin.round
-       shapeLayer.lineDashPattern = [6,3]
-       shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 0).cgPath
-
-       self.layer.addSublayer(shapeLayer)
-       }
+        
+        let shapeLayer:CAShapeLayer = CAShapeLayer()
+        let frameSize = self.frame.size
+        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
+        
+        shapeLayer.bounds = shapeRect
+        shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = color
+        shapeLayer.lineWidth = 2
+        shapeLayer.cornerRadius = 0
+        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+        shapeLayer.lineDashPattern = [6,3]
+        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 0).cgPath
+        
+        self.layer.addSublayer(shapeLayer)
+    }
     func horizontalGredient(_ colors:[UIColor]) {
         var cgColor = [CGColor]()
         let gradientLayer = CAGradientLayer()
@@ -455,7 +455,7 @@ func setverticalGradient(view : UIView , colors : [UIColor]){
     gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-//    view.setBackgroundImage(image, for: .normal)
+    //    view.setBackgroundImage(image, for: .normal)
 }
 func setButtonBorder(button : UIButton , borderColor : UIColor , width : CGFloat = borderWidth ,  radius : CGFloat = cornerRadius){
     button.layer.borderWidth = width
@@ -558,15 +558,20 @@ func havePhotoAccess(completionHandler: @escaping (Bool)->Void) {
     if (status == PHAuthorizationStatus.authorized) {
         // Access has been granted.
         print("photo access allowed")
-        completionHandler(true)
+        DispatchQueue.main.async {
+            completionHandler(true)
+        }
+        
         
     }
         
     else if (status == PHAuthorizationStatus.denied) {
         // Access has been denied.
         print("photo access denied")
+        DispatchQueue.main.async {
+            completionHandler(false)
+        }
         
-        completionHandler(false)
     }
         
     else if (status == PHAuthorizationStatus.notDetermined) {
@@ -575,11 +580,15 @@ func havePhotoAccess(completionHandler: @escaping (Bool)->Void) {
         PHPhotoLibrary.requestAuthorization({ (newStatus) in
             
             if (newStatus == PHAuthorizationStatus.authorized) {
-                completionHandler(true)
+                DispatchQueue.main.async {
+                    completionHandler(true)
+                }
             }
                 
             else {
-                completionHandler(false)
+                DispatchQueue.main.async {
+                    completionHandler(false)
+                }
             }
         })
     }
@@ -591,7 +600,9 @@ func haveCameraAccess(completionHandler: @escaping (Bool)->Void) {
     {
         // Already Authorized
         print("camera permission already authorised")
-        completionHandler(true)
+        DispatchQueue.main.async {
+            completionHandler(true)
+        }
     }
     else
     {
@@ -600,11 +611,16 @@ func haveCameraAccess(completionHandler: @escaping (Bool)->Void) {
             {
                 // User granted
                 print("camera permission granted")
-                completionHandler(true)
+                DispatchQueue.main.async {
+                    completionHandler(true)
+                }
+                
             }
             else
             {
-                completionHandler(false)
+                DispatchQueue.main.async {
+                    completionHandler(false)
+                }
                 // User Rejected
                 
             }
@@ -1330,10 +1346,10 @@ func addRoundedLayer(radius:CGFloat , view :UIView) {
 }
 func setRightBottomShadow(view : UIView,color:UIColor,opacity : Float){
     view.layer.shadowColor = color.cgColor
-       view.layer.shadowOffset = CGSize.init(width: 0, height: 3)
-       view.layer.shadowOpacity = opacity
-       view.layer.shadowRadius = 1
-       view.layer.masksToBounds = false
+    view.layer.shadowOffset = CGSize.init(width: 0, height: 3)
+    view.layer.shadowOpacity = opacity
+    view.layer.shadowRadius = 1
+    view.layer.masksToBounds = false
 }
 
 extension UIView{
@@ -1346,35 +1362,35 @@ extension UIView{
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: radius).cgPath
     }
     func setGradient(strColor1:String,strColor2:String,roundedCornerRadius:CGFloat)
-       {
-           let gradient = CAGradientLayer()
-           gradient.frame =  CGRect(origin: CGPoint.zero, size: self.frame.size)
-           var layerToRemove = CAGradientLayer()
-           
-           if self.layer.sublayers != nil
-           {
-               for aLayer: CALayer in self.layer.sublayers! {
-                   if (aLayer is CAGradientLayer) {
-                       layerToRemove = (aLayer as? CAGradientLayer)!
-                       layerToRemove.removeFromSuperlayer()
-                   }
-               }
-           }
+    {
+        let gradient = CAGradientLayer()
+        gradient.frame =  CGRect(origin: CGPoint.zero, size: self.frame.size)
+        var layerToRemove = CAGradientLayer()
+        
+        if self.layer.sublayers != nil
+        {
+            for aLayer: CALayer in self.layer.sublayers! {
+                if (aLayer is CAGradientLayer) {
+                    layerToRemove = (aLayer as? CAGradientLayer)!
+                    layerToRemove.removeFromSuperlayer()
+                }
+            }
+        }
         gradient.colors = [UIColor().coloWithHexString(hex: strColor1).cgColor,UIColor().coloWithHexString(hex: strColor2).cgColor]
-           let shape = CAShapeLayer()
-           shape.lineWidth = 1
-           let boundsLocal = CGRect(x: self.bounds.origin.x+1, y: self.bounds.origin.y+1, width: self.bounds.size.width-2, height: self.bounds.size.height-2)
-           shape.path = UIBezierPath(roundedRect: boundsLocal, cornerRadius: roundedCornerRadius).cgPath
-           
-           shape.frame = gradient.bounds
-           shape.strokeColor = UIColor.black.cgColor
-           shape.fillColor = UIColor.clear.cgColor
-           
-           gradient.mask = shape
-           self.clipsToBounds = true
-           self.layer.insertSublayer(gradient, at: 0)
-           self.layer.borderColor = UIColor.clear.cgColor
-       }
+        let shape = CAShapeLayer()
+        shape.lineWidth = 1
+        let boundsLocal = CGRect(x: self.bounds.origin.x+1, y: self.bounds.origin.y+1, width: self.bounds.size.width-2, height: self.bounds.size.height-2)
+        shape.path = UIBezierPath(roundedRect: boundsLocal, cornerRadius: roundedCornerRadius).cgPath
+        
+        shape.frame = gradient.bounds
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        
+        gradient.mask = shape
+        self.clipsToBounds = true
+        self.layer.insertSublayer(gradient, at: 0)
+        self.layer.borderColor = UIColor.clear.cgColor
+    }
 }
 
 
@@ -1491,7 +1507,7 @@ extension UIImage {
     }
 }
 extension UIView {
-  
+    
     func makeSnapshot() -> UIImage? {
         if #available(iOS 10.0, *) {
             let renderer = UIGraphicsImageRenderer(size: frame.size)
@@ -1721,14 +1737,14 @@ func boldShadow(view: UIView, opacity: Float) {
     view.layer.shadowRadius = 0
     view.layer.shadowOffset = .zero
     view.layer.shadowOpacity = 0.2
-   let shadowOffsetX: CGFloat = 50
+    let shadowOffsetX: CGFloat = 50
     let shadowPath = UIBezierPath()
     shadowPath.move(to: CGPoint(x: 0, y: view.frame.height))
     shadowPath.addLine(to: CGPoint(x: view.frame.width, y: 0))
     shadowPath.addLine(to: CGPoint(x: view.frame.width + shadowOffsetX, y: 50))
     shadowPath.addLine(to: CGPoint(x: shadowOffsetX, y: 50))
     view.layer.shadowPath = shadowPath.cgPath
-
+    
 }
 func setRightShadowWithOffset(view : UIView,color:UIColor,opacity : Float, width: CGFloat, height: CGFloat, offsetX: CGFloat, offsetY: CGFloat){
     view.layer.shadowColor = color.cgColor
@@ -2059,7 +2075,7 @@ func showAlert(strTitle:String)
 {
     let alertViewController = UIAlertController(title: "PVTG", message: strTitle, preferredStyle: .alert)
     alertViewController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
-        appDelegate.window?.rootViewController?.present(alertViewController, animated: true, completion: nil)
+    appDelegate.window?.rootViewController?.present(alertViewController, animated: true, completion: nil)
 }
 func elevateCardFromBottom(cardView : UIView){
     cardView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
