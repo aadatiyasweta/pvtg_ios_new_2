@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,20 +26,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TaX-A8-Ifb">
-                        <rect key="frame" x="22" y="20" width="55" height="55"/>
+                        <rect key="frame" x="22" y="20" width="45" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="55" id="MlZ-WI-UNH"/>
-                            <constraint firstAttribute="height" constant="55" id="RnT-fj-bPM"/>
+                            <constraint firstAttribute="width" constant="45" id="MlZ-WI-UNH"/>
+                            <constraint firstAttribute="height" constant="45" id="RnT-fj-bPM"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have new recommendations for spiritual" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qji-94-7im">
-                        <rect key="frame" x="92" y="29" width="229" height="31"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qji-94-7im">
+                        <rect key="frame" x="82" y="19" width="239" height="41"/>
                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 min ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq0-IQ-69Y">
-                        <rect key="frame" x="92" y="60" width="57.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq0-IQ-69Y">
+                        <rect key="frame" x="82" y="60" width="0.0" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="VCa-4r-L22"/>
                         </constraints>
@@ -46,7 +47,7 @@
                         <color key="textColor" red="0.16862745098039217" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thankyouIllustrations" translatesAutoresizingMaskIntoConstraints="NO" id="62o-ga-pym">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="62o-ga-pym">
                         <rect key="frame" x="29.5" y="92" width="282" height="150"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="282" id="8Dd-jB-cHr"/>
@@ -91,7 +92,4 @@
             <point key="canvasLocation" x="144.20289855072465" y="153.68303571428569"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="thankyouIllustrations" width="182.5" height="198.5"/>
-    </resources>
 </document>

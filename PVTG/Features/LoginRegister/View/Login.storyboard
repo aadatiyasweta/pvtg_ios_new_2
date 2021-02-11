@@ -30,6 +30,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="descriptionImage" translatesAutoresizingMaskIntoConstraints="NO" id="s5v-9X-58f">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1k-vu-hea">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIk-Lj-ck4">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
@@ -286,6 +290,14 @@
                                             <constraint firstAttribute="trailing" secondItem="eJK-jn-yd4" secondAttribute="trailing" constant="55" id="zo2-gh-WQU"/>
                                             <constraint firstItem="Xem-gh-pc8" firstAttribute="centerX" secondItem="QhH-fQ-nZv" secondAttribute="centerX" id="zrj-8G-bRE"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -299,7 +311,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="v1k-vu-hea" firstAttribute="top" secondItem="gMx-TT-Lvm" secondAttribute="top" id="75P-0G-xPa"/>
                             <constraint firstAttribute="trailing" secondItem="PIk-Lj-ck4" secondAttribute="trailing" id="7xS-n3-Ajn"/>
+                            <constraint firstItem="v1k-vu-hea" firstAttribute="leading" secondItem="gMx-TT-Lvm" secondAttribute="leading" id="83h-y3-2tg"/>
+                            <constraint firstAttribute="bottom" secondItem="v1k-vu-hea" secondAttribute="bottom" id="8YI-bL-aTl"/>
                             <constraint firstAttribute="bottom" secondItem="PIk-Lj-ck4" secondAttribute="bottom" id="C3B-tw-puN"/>
                             <constraint firstItem="PIk-Lj-ck4" firstAttribute="top" secondItem="yLN-gr-zxv" secondAttribute="top" id="DFv-pz-Q2J"/>
                             <constraint firstItem="PIk-Lj-ck4" firstAttribute="leading" secondItem="gMx-TT-Lvm" secondAttribute="leading" id="Faf-hh-KyS"/>
@@ -307,6 +322,7 @@
                             <constraint firstItem="s5v-9X-58f" firstAttribute="leading" secondItem="gMx-TT-Lvm" secondAttribute="leading" id="Hk2-hz-hZC"/>
                             <constraint firstAttribute="bottom" secondItem="s5v-9X-58f" secondAttribute="bottom" id="h7N-YG-TQC"/>
                             <constraint firstItem="PIk-Lj-ck4" firstAttribute="centerX" secondItem="yLN-gr-zxv" secondAttribute="centerX" id="jBK-hw-3jR"/>
+                            <constraint firstAttribute="trailing" secondItem="v1k-vu-hea" secondAttribute="trailing" id="ngt-O2-get"/>
                             <constraint firstAttribute="trailing" secondItem="s5v-9X-58f" secondAttribute="trailing" id="xll-ls-vp3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yLN-gr-zxv"/>

@@ -221,7 +221,7 @@ extension OnboardingVC: PaperOnboardingDataSource, PaperOnboardingDelegate {
         item.titleLabel?.numberOfLines = 0
         item.titleLabel?.lineBreakMode = .byWordWrapping
         // item.descriptionLabel?.textAlignment = .left
-        
+        item.titleCenterConstraint?.constant = 5
         // allow for full width images
         // allow for full width images
         if !(imageArr[index].images != nil) {
@@ -236,8 +236,13 @@ extension OnboardingVC: PaperOnboardingDataSource, PaperOnboardingDelegate {
                     self.index += 1
                     button1.setTitle("Skip", for: .normal)
                 }
+                if (index == 3) && (UIScreen.main.nativeBounds.height == 1334){
+                    item.informationImageWidthConstraint?.constant = imageSize.width
+                    item.informationImageHeightConstraint?.constant = 360
+                }else {
                 item.informationImageWidthConstraint?.constant = imageSize.width
                 item.informationImageHeightConstraint?.constant = imageSize.height
+                }
                 item.setNeedsUpdateConstraints()
             }
         }
