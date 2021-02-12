@@ -634,7 +634,7 @@
                             <constraint firstAttribute="bottom" secondItem="q6n-MQ-HYB" secondAttribute="bottom" id="gzL-PY-H5E"/>
                             <constraint firstAttribute="trailing" secondItem="UMZ-mD-rR9" secondAttribute="trailing" id="h2n-o0-9kJ"/>
                             <constraint firstItem="q6n-MQ-HYB" firstAttribute="top" secondItem="z6p-sl-OVj" secondAttribute="top" id="kY5-8G-OTs"/>
-                            <constraint firstItem="UMZ-mD-rR9" firstAttribute="top" secondItem="z6p-sl-OVj" secondAttribute="top" id="qLF-QG-kNo"/>
+                            <constraint firstItem="UMZ-mD-rR9" firstAttribute="top" secondItem="tlw-rb-jPX" secondAttribute="top" id="qLF-QG-kNo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tlw-rb-jPX"/>
                     </view>
