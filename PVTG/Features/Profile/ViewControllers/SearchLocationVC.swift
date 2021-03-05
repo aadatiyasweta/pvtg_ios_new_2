@@ -256,7 +256,7 @@ extension SearchLocationVC: GMSAutocompleteTableDataSourceDelegate {
     var dict : [String:String] = [:]
      dict["name"] = address
      dict["city"] = city
-    
+   
     if !self.arrDict.contains(dict){
          self.arrDict.append(dict)
     }
