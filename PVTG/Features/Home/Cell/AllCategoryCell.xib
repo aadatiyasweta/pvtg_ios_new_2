@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -34,12 +35,12 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hevhevrevrvjebvhbe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dS-eV-B3X">
                                 <rect key="frame" x="4" y="94" width="74" height="30"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2dS-eV-B3X" secondAttribute="trailing" constant="4" id="5sl-ug-9T4"/>
                             <constraint firstItem="MxZ-zM-4Ml" firstAttribute="centerY" secondItem="B30-5M-hFO" secondAttribute="centerY" constant="-5" id="6PX-TV-4us"/>
@@ -68,6 +69,7 @@
                     </button>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="B30-5M-hFO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="E87-Rx-TkS"/>
                 <constraint firstAttribute="trailing" secondItem="B30-5M-hFO" secondAttribute="trailing" constant="12" id="EVg-Ls-Lqs"/>
@@ -76,7 +78,6 @@
                 <constraint firstItem="B30-5M-hFO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="Tnp-Er-TQ6"/>
                 <constraint firstAttribute="bottom" secondItem="B30-5M-hFO" secondAttribute="bottom" constant="3" id="o15-EV-kY6"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="96" height="147"/>
             <connections>
                 <outlet property="btnTapClose" destination="j4Q-mN-NWe" id="kBn-Kt-qAx"/>
@@ -91,5 +92,8 @@
     </objects>
     <resources>
         <image name="close" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

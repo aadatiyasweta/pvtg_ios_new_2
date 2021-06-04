@@ -23,6 +23,7 @@ class SessionCell: UITableViewCell {
     static let ident = "SessionCell"
     class func nib()-> UINib {
         return UINib.init(nibName: SessionCell.ident, bundle: nil)
+        
     }
     
     override func awakeFromNib() {

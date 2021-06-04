@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Dharma</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -11,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>Dharma</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -37,10 +39,6 @@
 			</array>
 		</dict>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-    <string>Your location is required for searching on map</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your location is required for searching on map</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
@@ -60,7 +58,11 @@
 	<key>NSAppleMusicUsageDescription</key>
 	<string>App would like access your media Library.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>App would like to access Camera for your profile photo upload.Your photos won&apos;t be shared without your permission.</string>
+	<string>App would like to access Camera for your profile photo upload.Your photos won't be shared without your permission.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is required for searching on map</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is required for searching on map</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>${PRODUCT_NAME} uses your microphone to capture audio which is shared with other room participants.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
