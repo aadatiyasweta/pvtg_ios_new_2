@@ -20,6 +20,8 @@ class NotificationCell: UITableViewCell {
     
     @IBOutlet weak var imgBottomconstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var lblnotificationMessage: UILabel!
+    
     //MARK:-  Variables
 
     static let ident = "NotificationCell"
@@ -49,6 +51,10 @@ class NotificationCell: UITableViewCell {
         }
         if let title = data.title {
         self.lblHead.text = title
+        }
+        if let body = data.body {
+           debugPrint(body)
+            self.lblnotificationMessage.text = body
         }
         //let type = data.type ?? "normal"
         let img = data.image ?? ""
