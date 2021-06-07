@@ -224,7 +224,9 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     
     @IBAction func cancelBtnTap(_ sender: UIButton) {
-        
+        showAlertWithConfirmation("Are you sure you want to cancel the booking", withTitle: Bundle.main.appName, itsController: self) { (succsss) in
+            
+        }
     }
     @IBAction func btnToTapPrev(_ sender: UIButton) {
         moveCurrentpage(value: true)

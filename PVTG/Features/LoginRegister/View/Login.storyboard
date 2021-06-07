@@ -360,7 +360,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jI-kd-FUl">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="792"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="725"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="MLA-1G-CHL">
                                                 <rect key="frame" x="60" y="22" width="200" height="100"/>
@@ -398,7 +398,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zlr-Rw-hiB">
-                                                <rect key="frame" x="22" y="327" width="274" height="323"/>
+                                                <rect key="frame" x="22" y="327" width="274" height="256"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbZ-Rn-srD">
                                                         <rect key="frame" x="0.0" y="0.0" width="274" height="55"/>
@@ -430,8 +430,8 @@
                                                             <constraint firstItem="q5N-0u-qqm" firstAttribute="top" secondItem="Oz5-xH-JbT" secondAttribute="bottom" id="nXm-jq-9vt"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKk-6n-nSf">
-                                                        <rect key="frame" x="0.0" y="67" width="274" height="55"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKk-6n-nSf">
+                                                        <rect key="frame" x="0.0" y="61" width="274" height="55"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile No" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QHI-pp-kVk">
                                                                 <rect key="frame" x="0.0" y="5" width="274" height="45"/>
@@ -461,7 +461,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6J-mb-CnG">
-                                                        <rect key="frame" x="0.0" y="134" width="274" height="55"/>
+                                                        <rect key="frame" x="0.0" y="67" width="274" height="55"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nd4-AL-cu4">
                                                                 <rect key="frame" x="0.0" y="5" width="274" height="45"/>
@@ -491,7 +491,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-WN-aEA">
-                                                        <rect key="frame" x="0.0" y="201" width="274" height="55"/>
+                                                        <rect key="frame" x="0.0" y="134" width="274" height="55"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QmZ-ET-rbc">
                                                                 <rect key="frame" x="0.0" y="5" width="274" height="45"/>
@@ -521,7 +521,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyI-8G-49v">
-                                                        <rect key="frame" x="0.0" y="268" width="274" height="55"/>
+                                                        <rect key="frame" x="0.0" y="201" width="274" height="55"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nkA-1a-3B4">
                                                                 <rect key="frame" x="0.0" y="5" width="274" height="45"/>
@@ -560,7 +560,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kr-7h-bf8">
-                                                <rect key="frame" x="55" y="680" width="210" height="50"/>
+                                                <rect key="frame" x="55" y="613" width="210" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="0Ee-au-w5L"/>
@@ -579,13 +579,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ao8-j4-9b6">
-                                                <rect key="frame" x="23" y="760" width="174" height="17.5"/>
+                                                <rect key="frame" x="23" y="693" width="174" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2S-fv-4rg">
-                                                <rect key="frame" x="202" y="754" width="77" height="30"/>
+                                                <rect key="frame" x="202" y="687" width="77" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Login Now!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

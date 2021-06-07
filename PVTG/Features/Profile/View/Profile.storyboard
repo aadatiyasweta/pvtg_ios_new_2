@@ -585,29 +585,29 @@ Rate and write a review to earn 2pts</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THANK YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9w-Bq-rGL">
-                                                <rect key="frame" x="18" y="95" width="284" height="55"/>
+                                                <rect key="frame" x="18" y="75" width="284" height="55"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="45"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thankyouIllustrations" translatesAutoresizingMaskIntoConstraints="NO" id="ixy-Vh-01W">
-                                                <rect key="frame" x="69" y="175" width="182.5" height="200"/>
+                                                <rect key="frame" x="69" y="155" width="182.5" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="9pZ-MY-Drc"/>
                                                     <constraint firstAttribute="width" constant="182.5" id="TeF-Ev-8Wx"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Confirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMG-XD-3Zu">
-                                                <rect key="frame" x="64" y="390" width="192" height="22"/>
+                                                <rect key="frame" x="64" y="370" width="192" height="22"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0s-Ox-bXt">
-                                                <rect key="frame" x="24" y="427" width="266" height="34.5"/>
+                                                <rect key="frame" x="24" y="407" width="266" height="41.5"/>
                                                 <string key="text">Your Holistic escape awaits you
 You earned 45pts</string>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -638,7 +638,7 @@ You earned 45pts</string>
                                             <constraint firstItem="B5i-H9-8Dc" firstAttribute="leading" secondItem="0wN-FM-Jue" secondAttribute="leading" constant="24" id="9vK-HO-kVe"/>
                                             <constraint firstItem="j0s-Ox-bXt" firstAttribute="leading" secondItem="B5i-H9-8Dc" secondAttribute="leading" id="MJO-Cx-lIM"/>
                                             <constraint firstItem="58W-0g-2Jt" firstAttribute="leading" secondItem="0wN-FM-Jue" secondAttribute="leading" constant="55" id="MZ5-uQ-fLv"/>
-                                            <constraint firstItem="ixy-Vh-01W" firstAttribute="centerY" secondItem="0wN-FM-Jue" secondAttribute="centerY" constant="-30" id="NNl-3n-k9f"/>
+                                            <constraint firstItem="ixy-Vh-01W" firstAttribute="centerY" secondItem="0wN-FM-Jue" secondAttribute="centerY" constant="-50" id="NNl-3n-k9f"/>
                                             <constraint firstAttribute="height" secondItem="B5i-H9-8Dc" secondAttribute="height" multiplier="13.5444" id="OEO-ve-1m2"/>
                                             <constraint firstItem="ixy-Vh-01W" firstAttribute="top" secondItem="I9w-Bq-rGL" secondAttribute="bottom" constant="25" id="TDo-yY-bOw"/>
                                             <constraint firstItem="I9w-Bq-rGL" firstAttribute="centerX" secondItem="0wN-FM-Jue" secondAttribute="centerX" id="W08-cL-wBW"/>
@@ -712,13 +712,13 @@ You earned 45pts</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-F1-SJu">
-                                <rect key="frame" x="53" y="17" width="122.5" height="21"/>
+                                <rect key="frame" x="53" y="17.5" width="105" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EJR-dj-ITb">
-                                <rect key="frame" x="0.0" y="73" width="320" height="495"/>
+                                <rect key="frame" x="0.0" y="72.5" width="320" height="495.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzv-Bg-zrg">
@@ -1204,7 +1204,7 @@ You earned 45pts</string>
         <image name="bg-search" width="465.5" height="826.5"/>
         <image name="bgProfile" width="375" height="812"/>
         <image name="call" width="14.5" height="15"/>
-        <image name="cup" width="17.5" height="19"/>
+        <image name="cup" width="13.5" height="14"/>
         <image name="edit" width="16" height="16"/>
         <image name="mail" width="14.5" height="10.5"/>
         <image name="minimalLeft2X" width="7.5" height="13.5"/>

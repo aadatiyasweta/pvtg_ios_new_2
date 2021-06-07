@@ -18,9 +18,6 @@ class RegistrationVM: BaseVm {
         if name == ""{
             showMesssgeWindow(msg: emptyNameMessage)
             return false
-        } else if mobile == "" {
-            showMesssgeWindow(msg: emptyPhone)
-            return false
         } else if email == "" {
             showMesssgeWindow(msg: emptyemail)
             return false
