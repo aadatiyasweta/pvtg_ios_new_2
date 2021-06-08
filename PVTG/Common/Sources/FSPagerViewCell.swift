@@ -123,7 +123,8 @@ open class FSPagerViewCell: UICollectionViewCell {
         
         if let imageView = _imageView {
            // imageView.frame = self.contentView.bounds
-            imageView.frame = CGRect(x: 10, y: 0, width: 50, height: 50)
+            imageView.frame = CGRect(x: 12, y: 0, width: 80, height: 80)
+            imageView.contentMode = .scaleAspectFit
         }
         
         

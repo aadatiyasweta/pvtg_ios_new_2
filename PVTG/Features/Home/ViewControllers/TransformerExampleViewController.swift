@@ -86,7 +86,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
             
             self.pagerView.transformer = FSPagerViewTransformer(type:.ferrisWheel)
             self.pagerView.interitemSpacing = 0
-            self.pagerView.itemSize = CGSize(width: 70, height: 70)
+            self.pagerView.itemSize = CGSize(width: 100, height: 120)
             pagerView.isInfinite = true
             self.pagerView.decelerationDistance = FSPagerView.automaticDistance
         }
@@ -234,7 +234,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         if !selectedCategoryArr.contains(where: {$0.category_id == id}){
             self.selectedCategoryArr.append(SelectedInterest(category_image: self.vm.model?.result?[index].category_image ?? "", category_name: self.vm.model?.result?[index].category_name ?? "", category_id: self.vm.model?.result?[index].category_id ?? ""))
             colectionVw.reloadData()
-            colectionVw.scrollToItem(at: IndexPath.init(row: selectedCategoryArr.count-1, section: 0), at: .centeredHorizontally, animated: true)
+            colectionVw.scrollToItem(at: IndexPath.init(row: selectedCategoryArr.count-1, section: 0), at: .bottom, animated: true)
            // self.lblCount.text = "\(selectedCategoryArr.count)"
         }else{
             
@@ -277,13 +277,7 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCategoryCell.ident, for: indexPath) as? AllCategoryCell else { return UICollectionViewCell() }
         cell.lblInterest.numberOfLines = 2
-        if indexPath.row == 0 {
-            cell.vwLeadingConstrain.constant = 18
-            cell.vwtraillingConstrain.constant = 12
-        } else {
-            cell.vwLeadingConstrain.constant = 0
-            cell.vwtraillingConstrain.constant = 12
-        }
+    
         loadImage(self.selectedCategoryArr[indexPath.row].category_image,  cell.imgInterest, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         cell.lblInterest.text = self.selectedCategoryArr[indexPath.row].category_name
         cell.tag = indexPath.row
@@ -313,14 +307,8 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = selectedCategoryArr[indexPath.row].category_name
-        let label = UILabel(frame: CGRect.zero)
-        label.text = text
-        label.sizeToFit()
-        if indexPath.row == 0{
-            return CGSize(width: 128, height: 132)
-        }
-        return CGSize(width: 110, height: 132)
+    
+        return CGSize(width: 140, height: 155)
     }
 }
 

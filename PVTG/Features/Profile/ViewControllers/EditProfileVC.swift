@@ -268,18 +268,18 @@ extension EditProfileVC: UITextFieldDelegate {
 
 extension EditProfileVC {
     private func validRegistrationetails()->Bool{
-        if txfmobileNo.text == "" {
-            self.lblMobileerr.isHidden = false
-            self.lblMobileerr.text = emptyPhone
-            return false
-        }
-           if txfmobileNo.text != "" {
-               if txfmobileNo.text?.count ?? 0 < 10 || txfmobileNo.text?.count ?? 0 > 10 {
-                   self.lblMobileerr.isHidden = false
-                   self.lblMobileerr.text = validNumber
-                   return false
-               }
-           }
+//        if txfmobileNo.text == "" {
+//            self.lblMobileerr.isHidden = false
+//            self.lblMobileerr.text = emptyPhone
+//            return false
+//        }
+//           if txfmobileNo.text != "" {
+//               if txfmobileNo.text?.count ?? 0 < 10 || txfmobileNo.text?.count ?? 0 > 10 {
+//                   self.lblMobileerr.isHidden = false
+//                   self.lblMobileerr.text = validNumber
+//                   return false
+//               }
+//           }
            if txfmail.text == "" {
                self.lblMailErr.isHidden = false
                self.lblMailErr.text = emptyemail

@@ -97,12 +97,12 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
-             return CGSize(width: 118, height: 105)
+             return CGSize(width: 144, height: 148)
         }
         else if indexPath.row == (self.vm.model?.selected_category!.count)! - 1{
-             return CGSize(width: 118, height: 105)
+             return CGSize(width: 144, height: 148)
         }
-        return CGSize(width: 100, height: 105)
+        return CGSize(width: 126, height: 148)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.mainScrolView{
@@ -129,7 +129,7 @@ extension ProfileVC: UpdateTheProfile {
       
         loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         if let phone = data.user_profile?.phone {
-            self.lblMobNo.text = "\(phone)"
+           // self.lblMobNo.text = "\(phone)"
             
         }
         self.colectionVwinterest.reloadData()
@@ -155,7 +155,7 @@ extension ProfileVC {
         self.lblAddress.text = SaveToDefaults().getCity() ?? ""
         self.lblName.text = data.user_profile?.name ?? ""
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
-        self.lblMobNo.text = "\(data.user_profile?.phone ?? "")"
+      //  self.lblMobNo.text = "\(data.user_profile?.phone ?? "")"
     }
 }
 

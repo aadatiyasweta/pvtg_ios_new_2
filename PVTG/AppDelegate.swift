@@ -157,6 +157,10 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
             print(response ?? "Nil")
         }
     }
-    
-    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        completionHandler(.newData)
+    }
 }

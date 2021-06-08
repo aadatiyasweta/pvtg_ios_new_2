@@ -15,8 +15,8 @@ class TabBarControllerViewController: UITabBarController {
         let singleTabWidth: CGFloat = self.tabBar.frame.size.width / CGFloat((self.tabBar.items?.count)!)
         let singleTabSize = CGSize(width:singleTabWidth , height: self.tabBar.frame.size.height)
 
-        let selectedTabBackgroundImage: UIImage = self.imageWithColor(color: #colorLiteral(red: 0.8075463176, green: 0.9306067824, blue: 0.9144846797, alpha: 1), size: singleTabSize)
-        self.tabBar.selectionIndicatorImage = selectedTabBackgroundImage
+//        let selectedTabBackgroundImage: UIImage = self.imageWithColor(color: #colorLiteral(red: 0.8075463176, green: 0.9306067824, blue: 0.9144846797, alpha: 1), size: singleTabSize)
+//        self.tabBar.selectionIndicatorImage = selectedTabBackgroundImage
 
     }
     

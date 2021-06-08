@@ -17,25 +17,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProfileInterestCell" customModule="PVTG" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="113" height="111"/>
+            <rect key="frame" x="0.0" y="0.0" width="113" height="168"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="113" height="111"/>
+                <rect key="frame" x="0.0" y="0.0" width="113" height="168"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aE1-pd-GeW">
-                        <rect key="frame" x="0.0" y="2" width="113" height="107"/>
+                        <rect key="frame" x="0.0" y="2" width="113" height="164"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Irc-2a-dL5">
-                                <rect key="frame" x="34" y="21" width="45" height="45"/>
+                                <rect key="frame" x="16.5" y="32" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="PbX-u8-rxs"/>
-                                    <constraint firstAttribute="height" constant="45" id="Ykd-6R-lwk"/>
+                                    <constraint firstAttribute="width" constant="80" id="PbX-u8-rxs"/>
+                                    <constraint firstAttribute="height" constant="80" id="Ykd-6R-lwk"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Electricals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZv-ju-vCy">
-                                <rect key="frame" x="0.0" y="78" width="113" height="16"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                <rect key="frame" x="2" y="124" width="109" height="17.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -44,8 +44,8 @@
                         <constraints>
                             <constraint firstItem="Irc-2a-dL5" firstAttribute="centerX" secondItem="aE1-pd-GeW" secondAttribute="centerX" id="9Bj-jg-gav"/>
                             <constraint firstItem="zZv-ju-vCy" firstAttribute="top" secondItem="Irc-2a-dL5" secondAttribute="bottom" constant="12" id="DFX-P7-luG"/>
-                            <constraint firstItem="zZv-ju-vCy" firstAttribute="leading" secondItem="aE1-pd-GeW" secondAttribute="leading" id="FeB-x5-Mmd"/>
-                            <constraint firstAttribute="trailing" secondItem="zZv-ju-vCy" secondAttribute="trailing" id="PrN-tt-zEs"/>
+                            <constraint firstItem="zZv-ju-vCy" firstAttribute="leading" secondItem="aE1-pd-GeW" secondAttribute="leading" constant="2" id="FeB-x5-Mmd"/>
+                            <constraint firstAttribute="trailing" secondItem="zZv-ju-vCy" secondAttribute="trailing" constant="2" id="PrN-tt-zEs"/>
                             <constraint firstItem="Irc-2a-dL5" firstAttribute="centerY" secondItem="aE1-pd-GeW" secondAttribute="centerY" constant="-10" id="QOu-v5-4sM"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -63,7 +63,7 @@
                 <constraint firstItem="aE1-pd-GeW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SXi-GM-Z98"/>
                 <constraint firstAttribute="trailing" secondItem="aE1-pd-GeW" secondAttribute="trailing" id="Wpe-Ra-Fhq"/>
             </constraints>
-            <size key="customSize" width="113" height="111"/>
+            <size key="customSize" width="113" height="168"/>
             <connections>
                 <outlet property="imgInterest" destination="Irc-2a-dL5" id="06w-Hz-cB9"/>
                 <outlet property="lblInterest" destination="zZv-ju-vCy" id="6gV-si-efv"/>
@@ -71,7 +71,7 @@
                 <outlet property="traillingconstarint" destination="Wpe-Ra-Fhq" id="MdY-iT-Loi"/>
                 <outlet property="vwContaininterest" destination="aE1-pd-GeW" id="f9m-QJ-CL7"/>
             </connections>
-            <point key="canvasLocation" x="180.43478260869566" y="122.87946428571428"/>
+            <point key="canvasLocation" x="180.43478260869566" y="141.96428571428569"/>
         </collectionViewCell>
     </objects>
     <resources>
