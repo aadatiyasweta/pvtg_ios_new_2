@@ -17,7 +17,7 @@ class EventViewModel: BaseVm {
     var model: EventsBase?
     weak var delegate: LoadingEvents?
     func getActiveEventApi(user_id: String, latitude: String, longitude: String, offset: String) {
-        let prams : [String : Any] = ["user_id": user_id, "latitude": latitude, "longitude": longitude, "offset": offset]
+        let prams : [String : Any] = ["user_id": user_id, "latitude": latitude, "longitude": longitude, "offset": offset,"language" : SaveToDefaults().getAppLang() ?? "en"]
           self.show()
           api_manager.GETApi(activeEventApi(), param: prams, header: header()) { (response, err, code) in
               self.dismiss()
@@ -41,7 +41,7 @@ class EventViewModel: BaseVm {
           }
       }
     func getHistoryEventApi(user_id: String, latitude: String, longitude: String) {
-             let prams : [String : Any] = ["user_id": user_id, "latitude": latitude, "longitude": longitude]
+             let prams : [String : Any] = ["user_id": user_id, "latitude": latitude, "longitude": longitude,"language" : SaveToDefaults().getAppLang() ?? "en"]
              self.show()
              api_manager.GETApi(historySessionApi(), param: prams, header: header()) { (response, err, code) in
                  self.dismiss()

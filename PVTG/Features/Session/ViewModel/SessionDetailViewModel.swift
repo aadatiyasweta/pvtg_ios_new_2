@@ -30,7 +30,7 @@ class SessionDetailViewModel: BaseVm {
     
     func sessionDtailApi(user_id: String, session_id: String, latitude: String, longitude: String, top_search: String) {
         let date = Date().dateInString()
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "latitude": latitude, "longitude": longitude, "top_search": top_search,"currentdatetime" : date]
+        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "latitude": latitude, "longitude": longitude, "top_search": top_search,"currentdatetime" : date,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
         api_manager.GETApi(sessionDetailApi(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
@@ -105,7 +105,7 @@ class SessionDetailViewModel: BaseVm {
     
     //For gettingTime Of specific Date
     func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool) {
-        let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id,"currenttimezone" : TimeZone.current.identifier]
+        let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id,"currenttimezone" : TimeZone.current.identifier,"language" : SaveToDefaults().getAppLang() ?? "en"]
         if isloader {
             self.dismiss()
         } else {
@@ -139,7 +139,7 @@ class SessionDetailViewModel: BaseVm {
     
     func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String) {
 
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? ""]
+        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en"]
                    self.show()
                    api_manager.POSTApi(sessionBookingUrl(), param: prams, header: header()) { (response, err, code) in
                        self.dismiss()

@@ -23,22 +23,29 @@ class SplashVC:UIViewController {
     }
 
     func checkLoginStatus() {
-           if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
-               if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
-                   let vc = OnboardingVC.navigation()
-                   window?.rootViewController = vc
-                   window?.makeKeyAndVisible()
-                   
-               } else{
-                   let vc = LoginVC.navigation()
-                   window?.rootViewController = vc
-                   window?.makeKeyAndVisible()
-               }
-           } else {
-               let vc = TabBarControllerViewController.navigation()
-               window?.rootViewController = vc
-               window?.makeKeyAndVisible()
-           }
+        if SaveToDefaults().getAppLang() ?? "en" == "en" || SaveToDefaults().getAppLang() == nil{
+            let vc = LanguageChnageVC.navigation()
+            window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+        }else{
+            if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
+                if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
+                    let vc = OnboardingVC.navigation()
+                    window?.rootViewController = vc
+                    window?.makeKeyAndVisible()
+                    
+                } else{
+                    let vc = LoginVC.navigation()
+                    window?.rootViewController = vc
+                    window?.makeKeyAndVisible()
+                }
+            } else {
+                let vc = TabBarControllerViewController.navigation()
+                window?.rootViewController = vc
+                window?.makeKeyAndVisible()
+            }
+        }
+          
        }
 
 }

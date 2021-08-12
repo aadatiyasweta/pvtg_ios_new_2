@@ -56,7 +56,7 @@ class LoginVM: BaseVm {
     
     //API to Login
     func loginApi(email: String, password: String) {
-        let prams : [String : Any] = ["email": email, "password": password]
+        let prams : [String : Any] = ["email": email, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
         print(prams)
         self.show()
         api_manager.POSTApi(loginUrl(), param: prams, header: header()) { (response, err, code) in
@@ -85,7 +85,7 @@ class LoginVM: BaseVm {
     
     //API to ForgotPassword
     func forgotApi(email: String, is_resend: String) {
-        let prams : [String : Any] = ["email": email, "is_resend": is_resend]
+        let prams : [String : Any] = ["email": email, "is_resend": is_resend,"language" : SaveToDefaults().getAppLang() ?? "en"]
         print(prams)
         self.show()
         api_manager.POSTApi(forgotUrl(), param: prams, header: header()) { (response, err, code) in
@@ -108,7 +108,7 @@ class LoginVM: BaseVm {
         }
     }
     func otpCheckApi(email: String, otp: String) {
-        let prams : [String : Any] = ["email": email, "otp": otp]
+        let prams : [String : Any] = ["email": email, "otp": otp,"language" : SaveToDefaults().getAppLang() ?? "en"]
            print(prams)
            self.show()
         api_manager.GETApi(otpCheckUrl(email: email, otp: otp), param: nil, header: header()) { (response, err, code) in
@@ -127,7 +127,7 @@ class LoginVM: BaseVm {
            }
        }
     func changePasswordApi(email: String, password: String) {
-           let prams : [String : Any] = ["email": email, "password": password]
+           let prams : [String : Any] = ["email": email, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
               print(prams)
               self.show()
            api_manager.POSTApi(resetPasswordUrl(), param: prams, header: header()) { (response, err, code) in
@@ -147,7 +147,7 @@ class LoginVM: BaseVm {
           }
     
     func socialLoginApi(social_id: String, acc_type: String) {
-        let prams : [String : Any] = ["social_id": social_id, "acc_type": acc_type]
+        let prams : [String : Any] = ["social_id": social_id, "acc_type": acc_type,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
         api_manager.POSTApi(socialLoginUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()

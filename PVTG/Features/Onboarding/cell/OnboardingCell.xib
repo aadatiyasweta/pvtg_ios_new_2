@@ -28,7 +28,7 @@
                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z7k-Ka-Npy">
                         <rect key="frame" x="0.0" y="0.0" width="367" height="515"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NSf-Xh-TPe">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3-1" translatesAutoresizingMaskIntoConstraints="NO" id="NSf-Xh-TPe">
                         <rect key="frame" x="16" y="55" width="335" height="315"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="315" id="1Jt-My-rMG"/>
@@ -89,6 +89,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="group3-1" width="498.5" height="383.5"/>
         <image name="play" width="256" height="256"/>
     </resources>
 </document>

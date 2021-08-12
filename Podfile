@@ -2,10 +2,12 @@
 # platform :ios, '9.0'
 
 target 'PVTG' do
+
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for PVTG
+
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'IQKeyboardManagerSwift'
@@ -24,6 +26,8 @@ target 'PVTG' do
   pod 'FBSDKLoginKit'
   pod 'paper-onboarding'
   pod 'MarqueeLabel'
+  pod 'R.swift'
+pod 'MercadoPagoSDK', '~> 4.7.0'
 
 
 

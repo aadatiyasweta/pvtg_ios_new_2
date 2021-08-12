@@ -36,6 +36,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         //        let vc = LoginVC.navigation()
         
         //let vc =  TransformerExampleViewController.instance()
+        
         let vc = SplashVC.navigation()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()

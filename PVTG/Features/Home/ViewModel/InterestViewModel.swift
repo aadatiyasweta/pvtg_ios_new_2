@@ -39,7 +39,7 @@ class InterestViewModel: BaseVm {
          }
     
     func userSelectedCategoryApi(user_id: String, selected_category: String) {
-        let prams : [String : Any] = ["user_id": user_id, "selected_category": selected_category]
+        let prams : [String : Any] = ["user_id": user_id, "selected_category": selected_category,"language" : SaveToDefaults().getAppLang() ?? "en"]
                 self.show()
                 api_manager.PUTApi(selectInterestUrl(), param: prams, header: header()) { (response, err, code) in
                     self.dismiss()

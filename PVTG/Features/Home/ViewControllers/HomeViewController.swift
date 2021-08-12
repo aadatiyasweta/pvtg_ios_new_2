@@ -348,10 +348,10 @@ extension HomeViewController: GetHomeData {
     func reloadData() {
         loadImage(self.homevm.model?.user_image ?? "", self.userimg , activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         self.categoryArr.removeAll()
-        self.categoryArr.append(Category(name: "Top Search", image: topSearch, id: "0"))
+        self.categoryArr.append(Category(name: R.string.localizable.topSearch(), image: topSearch, id: "0"))
         guard let data = self.homevm.model?.all_category else { return }
         if data.count == 0{
-            self.categoryArr.append(Category(name: "Add Interests for more recommendations", image: "", id: ""))
+            self.categoryArr.append(Category(name: R.string.localizable.addIntersetMoreRecommen(), image: "", id: ""))
         }else{
             for i in data{
                 self.categoryArr.append(Category(name: i.category_name ?? "", image: i.category_image ?? "", id: i.category_id ?? ""))
@@ -359,7 +359,7 @@ extension HomeViewController: GetHomeData {
         }
         
         if self.homevm.model?.all_result?.count == 0 {
-            self.lblNoSession.text = "No sessions"
+            self.lblNoSession.text = R.string.localizable.noSession()
         } else {
             self.lblNoSession.text = ""
         }
@@ -383,14 +383,14 @@ extension HomeViewController {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined, .restricted, .denied:
             let alertController = UIAlertController(
-                title: "Background Location Access Disabled",
-                message: "In order to be notified, please open this app's settings and set location access to 'Always'.",
+                title: R.string.localizable.backGroundLocationdDisabled(),
+                message: R.string.localizable.inOrderto(),
                 preferredStyle: .alert)
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+            let openAction = UIAlertAction(title: R.string.localizable.openSettings(), style: .default) { (action) in
                 UserDefaults.standard.set(true, forKey: "OpenSettings")
                 if let url = NSURL(string:UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
@@ -415,7 +415,7 @@ extension HomeViewController {
             return
         }
         
-        let allow = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) { ( action) in
+        let allow = UIAlertAction(title: R.string.localizable.allow(), style: UIAlertAction.Style.default) { ( action) in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
             }
@@ -424,7 +424,7 @@ extension HomeViewController {
             }
         }
         
-        let dontAllow = UIAlertAction(title: "Don't Allow", style: UIAlertAction.Style.default) { ( action) in
+        let dontAllow = UIAlertAction(title: R.string.localizable.donotAllow(), style: UIAlertAction.Style.default) { ( action) in
             self.locationManager.startUpdatingLocation()
         }
         

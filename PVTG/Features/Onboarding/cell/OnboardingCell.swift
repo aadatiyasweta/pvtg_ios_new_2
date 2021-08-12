@@ -15,6 +15,7 @@ class OnboardingCell: UICollectionViewCell {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     
+  
     @IBOutlet weak var lblInfo: UILabel!
     var playcall : ()->() = {}
     static let ident = "OnboardingCell"

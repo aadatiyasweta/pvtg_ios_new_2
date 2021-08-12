@@ -20,7 +20,7 @@ class ChangePasswordVM: BaseVm {
     var successfulMsg = ""
     
     func changePasswordApi(user_id: String, old_password: String, new_password: String) {
-        let prams : [String : Any] = ["user_id": user_id, "old_password": old_password, "new_password": new_password]
+        let prams : [String : Any] = ["user_id": user_id, "old_password": old_password, "new_password": new_password,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
         api_manager.POSTApi(changePasswordUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()

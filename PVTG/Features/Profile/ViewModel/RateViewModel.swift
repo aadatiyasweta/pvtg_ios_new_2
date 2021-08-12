@@ -28,7 +28,7 @@ class RateViewModel: BaseVm {
     }
     
     func sessionRatingApi(user_id: String, session_id: String, rating: String, feedback: String, booking_id: String) {
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "rating": rating, "feedback": feedback, "booking_id": booking_id]
+        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "rating": rating, "feedback": feedback, "booking_id": booking_id,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
         api_manager.POSTApi(sessionRatingUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()

@@ -22,6 +22,15 @@ extension OnboardingVC {
            return onboarding.instantiateViewController(withIdentifier: "onboarding") as! UINavigationController
        }
 }
+extension LanguageChnageVC {
+    class func instance()-> LanguageChnageVC {
+           return onboarding.instantiateViewController(withIdentifier: "LanguageChnageVC") as! LanguageChnageVC
+       }
+    class func navigation()-> UINavigationController{
+           return onboarding.instantiateViewController(withIdentifier: "lang") as! UINavigationController
+       }
+}
+
 extension SplashVC {
     class func instance()-> SplashVC {
            return onboarding.instantiateViewController(withIdentifier: "SplashVC") as! SplashVC

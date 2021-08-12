@@ -34,7 +34,7 @@ class OTPVC: BaseViewController {
         // initialtimer()
         setupPinView()
         self.vm.delegate = self
-        self.otpMobileLbL.text = "Enter the verification code sent to your email\n\(self.email)"
+        self.otpMobileLbL.text = R.string.localizable.entertheverificationcode(self.email)
     }
     
     override func viewDidAppear(_ animated: Bool) {

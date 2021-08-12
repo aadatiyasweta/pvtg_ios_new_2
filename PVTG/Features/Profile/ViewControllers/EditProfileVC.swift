@@ -105,12 +105,12 @@ extension EditProfileVC {
         
         alertSheet.view.tintColor = .black
         
-        let photoAction = UIAlertAction.init(title: "Pick from Camera Roll", style: .default) { (camera) in
+        let photoAction = UIAlertAction.init(title: R.string.localizable.pickfromCameraRoll(), style: .default) { (camera) in
             havePhotoAccess(completionHandler: { (isAuthorized) in
                 if isAuthorized {
                     self.openImagePicker(sourceType: .photoLibrary)
                 }else{
-                    self.showOpenSettingAlert(title: "Take a Photo", message: photosPermissionNeededMessage, completion: {
+                    self.showOpenSettingAlert(title: R.string.localizable.takePhoto(), message: photosPermissionNeededMessage, completion: {
                         
                     })
                 }
@@ -118,19 +118,19 @@ extension EditProfileVC {
             
         }
         
-        let cameraAction = UIAlertAction.init(title: "Take a Photo", style: .default) { (camera) in
+        let cameraAction = UIAlertAction.init(title: R.string.localizable.takePhoto(), style: .default) { (camera) in
             haveCameraAccess(completionHandler: { (isAuthorized) in
                 if isAuthorized {
                     self.openImagePicker(sourceType: .camera)
                 }else{
-                    self.showOpenSettingAlert(title: "Camera Access Denied", message: cameraPermissionNeededMessage, completion: {
+                    self.showOpenSettingAlert(title: R.string.localizable.cameraAccessDenied(), message: cameraPermissionNeededMessage, completion: {
                         
                     })
                 }
             })
             
         }
-        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction.init(title: R.string.localizable.cancel(), style: .cancel, handler: nil)
         alertSheet.addAction(cameraAction)
         alertSheet.addAction(photoAction)
         alertSheet.addAction(cancelAction)

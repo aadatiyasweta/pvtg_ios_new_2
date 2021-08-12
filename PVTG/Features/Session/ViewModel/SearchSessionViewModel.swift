@@ -18,7 +18,7 @@ class SearchSessionViewModel: BaseVm {
     var categorymodel: CategoryBase?
     
     func getAllCategoryApi(user_id: String) {
-             let prams : [String : Any] = ["user_id": user_id]
+             let prams : [String : Any] = ["user_id": user_id,"language" : SaveToDefaults().getAppLang() ?? "en"]
              self.show()
              api_manager.GETApi(sessionallCategoryUrl(), param: prams, header: header()) { (response, err, code) in
                  self.dismiss()
@@ -43,7 +43,7 @@ class SearchSessionViewModel: BaseVm {
 
     
     func searchSessionApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, isLoader: Bool) {
-        let prams : [String : Any] = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search]
+        let prams : [String : Any] = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search,"language" : SaveToDefaults().getAppLang() ?? "en"]
         if isLoader {
         self.show()
         } else {

@@ -18,7 +18,7 @@ class ThankyouVC: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.Your session has been booked. You have earned 20pts.
-        self.pointsLbl.text = "Your session has been booked. \nYou have earned \(self.points)pts."
+        self.pointsLbl.text = R.string.localizable.yourSessionHasBeen(self.points)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

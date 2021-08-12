@@ -17,7 +17,7 @@ class NotificationViewModel: BaseVm {
     weak var delegate: AfterGettingNotificationList?
     
     func getCoachNotificationListApi(user_id: String, offset: String) {
-        let prams : [String : Any] = ["user_id": user_id, "offset": offset]
+        let prams : [String : Any] = ["user_id": user_id, "offset": offset,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
         api_manager.GETApi(getCoachNotificationList(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()

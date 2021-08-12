@@ -129,21 +129,21 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             self.vwAdddashedBordr.isHidden = false
             self.btnUseNow.isHidden = false
             if Int(self.ticketModel?.total_point ?? "0")! < 300{
-                self.Discount.text = "50 % Discount"
+                self.Discount.text = "50 % \(R.string.localizable.discount())"
                 self.lblPoints.text = "200"
                 let val = Int(self.ticketModel?.total_point ?? "0")! - 200
-                self.btnAvlblPoints.setTitle("\(val) pts available", for: .normal)
+                self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
             }else{
                 self.Discount.text = "Free"
                 self.lblPoints.text = "300"
                 let val = Int(self.ticketModel?.total_point ?? "0")! - 300
-                self.btnAvlblPoints.setTitle("\(val) pts available", for: .normal)
+                self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
             }
         }else{
             self.vwAdddashedBordr.isHidden = true
             self.btnUseNow.isHidden = true
             let val = (self.ticketModel?.total_point)!
-            self.btnAvlblPoints.setTitle("\(val) pts available", for: .normal)
+            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
         }
        
         
@@ -169,7 +169,7 @@ extension SummaryVC {
             self.vwRating.rating = Double(rating)!
             let value = Double(dist) ?? 0.0
             let doubleStr = String(format: "%.2f", value)
-            let str = place + " (\(doubleStr) km away)"
+            let str = place + " " + R.string.localizable.kmaway(doubleStr)
             self.lblPlacewithDistance.text = str
             self.toatalTickets.text = self.totalTkt
             if let tkt = Int(self.totalTkt), let pr = Int(price){
@@ -181,11 +181,11 @@ extension SummaryVC {
             }else{
                  self.usePvtBtn.isUserInteractionEnabled = true
             }
-            self.btnAvlblPoints.setTitle("\(pt ?? 0) pts available", for: .normal)
+            self.btnAvlblPoints.setTitle("\(pt ?? 0) \(R.string.localizable.ptsavailable())", for: .normal)
             if self.ticketModel?.user_booking ?? 0 == 0{
-                self.rewardedString.text = "You will be rewarded 20pts on booking the session"
+                self.rewardedString.text = R.string.localizable.youWillBeRewarded("20")
             }else{
-                 self.rewardedString.text = "You will be rewarded 10pts on booking the session"
+                 self.rewardedString.text = R.string.localizable.youWillBeRewarded("10")
             }
         }
     }

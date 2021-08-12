@@ -123,7 +123,7 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
 extension ProfileVC: UpdateTheProfile {
     func updateProfile() {
         guard let data = self.vm.model else {return}
-        self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + " Purevibes pts"
+        self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + " \(R.string.localizable.purevibesPts())"
         self.lblName.text = data.user_profile?.name ?? ""
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
       
@@ -150,7 +150,7 @@ extension ProfileVC {
         guard let data = self.vm.getDataFromLocal() else {return}
         loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         SaveToDefaults().setProfilePic(value: data.user_profile?.user_image ?? "")
-        self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + "Purevibes pts"
+        self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + R.string.localizable.purevibesPts()
       
         self.lblAddress.text = SaveToDefaults().getCity() ?? ""
         self.lblName.text = data.user_profile?.name ?? ""

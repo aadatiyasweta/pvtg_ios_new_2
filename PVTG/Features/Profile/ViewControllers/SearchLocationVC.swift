@@ -52,7 +52,7 @@ class SearchLocationVC: BaseViewController {
         self.vwShowGoogleLocation.backgroundColor = .clear
         self.lblRecentSearch.isHidden = true
         self.lblNoLocation.isHidden = false
-        self.lblNoLocation.text = "No Location searched yet."
+        self.lblNoLocation.text = R.string.localizable.noLocationsearchedyet()
         self.lblNoLocation.textColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +69,7 @@ class SearchLocationVC: BaseViewController {
             } else {
                 self.lblRecentSearch.isHidden = true
                 self.lblNoLocation.isHidden = false
-                self.lblNoLocation.text = "No Location searched yet."
+                self.lblNoLocation.text = R.string.localizable.noLocationsearchedyet()
                 self.lblNoLocation.textColor = .white
             }
         }

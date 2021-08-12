@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  PVTG
+
+  Created by Techugo on 06/08/21.
+  Copyright © 2021 ShubhamMacmini. All rights reserved.
+*/
+"ExploreHolisticEvents" = "Explore Holistic Events";
+"SelectYourInterests" = "Select Your Interests";
+"EarnUseRewardss" = "Rewards";
+"PointAccumulation" = "Point Accumulation";
+"Rewards" = "Way to Earn & \nUse Rewards";
+"onbaordingFisrtMsg" = "Select your holistic preferences using our holistic therapy wheel.\nOr\nBypass the selection and go straight to our Holistic Directory.";
+"onbaordingSecondMsg" = "Be connected to Holistic Practitioners, specializing in Yoga, Reiki, Mediation and much more .\n\n Once connected, book your Holistic sessions to truly escape the mental pressures and anxiety of this world.";
+"onbaordingThirdMsg" = "1.Book and Complete a Session\n\n2.Submitting a review\n\n3.Use your points for 30% Discounts and \n\nFREE Sessions";
+"onbaordingFourthMsg" = "First Login: 5 pts\nFirst Booking: 15 pts\nBookings: 10 pts\nReviews/Rate: 2 pts\nView Token Notification: 2 pts\nIf Vendor Cancels: Booking points +5: 15 pts";
+"onbaordingFiftMsg" = "First Milestone: PVG 30% discount- 100 pts\n\nSecond Milestone: Free service- 200 pts";
+"Skip" = "Skip";
+"GetStarted" = "Get Started";
+"done" = "Done";
+"Entertheverificationcode"  = "Enter the verification code sent to your email\n %@";
+"logHolisticTravel" = "Log Into Your Holistic Travel Guide";
+"emptyOTP" = "Enter the OTP";
+"emptyNameMessage" = "Please enter name.";
+"emptyconfirmMsg" = "*Please enter confirm password";
+"matchconfrmpaswdMsg" = "*Password and confirm password do not match";
+"validEmailMessage" = "*Please enter a valid email address.";
+"emailExistsMessage" = "This email-id already exists";
+"mobileExistsMessage" = "This mobile number already exists";
+"passwordRuleMessage" = "Please enter valid password.";
+"emptyPhone" = "Please enter phone number.";
+"validNumber" = "*Please enter valid phone Number";
+"emptypaswd" = "*Please enter password.";
+"emptyNewpaswd" = "*Please enter new password.";
+"emptyOldPaswd" = "Please enter old password";
+"emptyStar" = "Please rate our services.";
+"emptyReview" = "Please give your feedback.";
+"invalidPaswd" = "*Password should be of atleast 8 character";
+"emptyemail" = "*Please enter email.";
+"kmaway" = "%@ km away";
+"BookingID" = "Booking ID";
+"Tickets" = "Tickets";
+"Ticket" = "Ticket";
+"TopSearch" = "Top Search";
+"addIntersetMoreRecommen" = "Add Interests for more recommendations";
+"NoSession" = "No Session";
+"Allow" = "Allow";
+"DonotAllow" = "Don't Allow";
+"backGroundLocationdDisabled" = "Background Location Access Disabled";
+"inOrderto" = "In order to be notified, please open this app's settings and set location access to 'Always'";
+"cancel" = "Cancel";
+"OpenSettings" = "Open Settings";
+"Notifications" = "Notifications";
+"ChangePassword" = "Change Password";
+"FAQs" = "FAQs";
+"PrivacyPolicy" = "Privacy Policy";
+"TermsConditions" = "Terms & Conditions";
+"AboutUs" = "About Us";
+"RateUs" = "Rate Us";
+"HowItWorks" = "How It Works";
+"Signout" = "Signout";
+"Areyousureyouwant" = "Are you sure you want to signout?";
+"ok" = "OK";
+"Discount" = "Discount";
+"ptsavailable" = "pts available";
+"youWillBeRewarded" = "You will be rewarded %@pts on booking the session";
+"PleaseSelecttime" = "Please Select time";
+"CancelTheBooking" = "Are you sure you want to cancel the booking";
+"onlyTickets" = "only %@ tickets for this session are available.";
+"onlyTicket" = "only %@ ticket for this session are available.";
+"NoAvailableTimeFordate" = "No available time for date.";
+"Noticketavailable" = "No ticket available";
+"AboutVendor" = "About Vendor";
+"passwrdChangedSuccess" = "Password changed successfully.";
+"NoNotifications" = "No Notifications";
+"PurevibesPts" = "Purevibes pts";
+"yourSessionHasBeen" = "Your session has been booked. \nYou have earned %@ pts.";
+"PickfromCameraRoll" = "Pick from Camera Roll";
+"TakePhoto" = "Take a Photo";
+"CameraAccessDenied" = "Camera Access Denied";
+"NoLocationsearchedyet" = "No Location searched yet.";

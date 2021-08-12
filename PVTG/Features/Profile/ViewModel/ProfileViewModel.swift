@@ -36,7 +36,7 @@ class ProfileViewModel: BaseVm {
             }
     
     func getUserProfileApi(user_id: String) {
-        let prams : [String : Any] = ["user_id": user_id]
+        let prams : [String : Any] = ["user_id": user_id,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
         api_manager.GETApi(user_profileApi(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
@@ -62,7 +62,7 @@ class ProfileViewModel: BaseVm {
     
     func updateProfileApi(user_id: String, image: Data, email: String, country_code: String, phone: String, name: String){
            
-           let prams : [String : Any] = ["user_id": user_id, "image": image, "email": email, "country_code": country_code, "phone": phone, "name": name]
+           let prams : [String : Any] = ["user_id": user_id, "image": image, "email": email, "country_code": country_code, "phone": phone, "name": name,"language" : SaveToDefaults().getAppLang() ?? "en"]
            self.show()
         var key = "image"
         if image.count == 0{

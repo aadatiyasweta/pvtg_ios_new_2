@@ -11,7 +11,7 @@ let faq = "http://52.27.53.102/pvtg/faq.html"
 let privacy = "http://52.27.53.102/pvtg/privacy_policy.html"
 let server = testingServer
 let googlePlacesSearchApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=noida&key=AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k"
-
+let appLanguage = SaveToDefaults().getAppLang() ?? "en"
 func loginUrl()-> String {
     var  url = "\(server)Userapi/normal_login"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

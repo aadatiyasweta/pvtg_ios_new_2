@@ -217,7 +217,7 @@ extension EventsViewController: LoadingEvents {
              self.collectionHeightCons.constant = 440
         }
         if self.vm.model?.history?.count ?? 0 == 0 &&  self.vm.model?.result?.count ?? 0 == 0{
-             self.lblNoSession.text = "No Session"
+             self.lblNoSession.text = R.string.localizable.noSession()
              self.lblNoSession.isHidden = false
         }else{
              self.lblNoSession.text = ""

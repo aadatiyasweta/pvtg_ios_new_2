@@ -48,7 +48,7 @@ class HistoryCell: UITableViewCell {
             self.lblYoganame.text = category
         }
         if let bookingId = data.booking_id {
-             self.lblBookingId.text = "Booking ID : \(bookingId)"
+             self.lblBookingId.text = "\(R.string.localizable.bookingID()) : \(bookingId)"
         }
         if let bookingDate = data.booking_date {
             let strDate = yyMMMddDate(date: bookingDate)
@@ -56,10 +56,10 @@ class HistoryCell: UITableViewCell {
         }
         if let tkts = data.ticket {
             if tkts == "1"{
-                self.lblNoOfTickets.text = "\(tkts) Ticket"
+                self.lblNoOfTickets.text = "\(tkts) \(R.string.localizable.ticket())"
             }
             else{
-                self.lblNoOfTickets.text = "\(tkts) Tickets"
+                self.lblNoOfTickets.text = "\(tkts) \(R.string.localizable.tickets())"
             }
             
         }
@@ -91,7 +91,7 @@ class HistoryCell: UITableViewCell {
         if let place = data.city, let distance = data.distance {
             let value = Double(distance) ?? 0.0
             let doubleStr = String(format: "%.2f", value)
-            let str = place + " (\(doubleStr) km away)"
+            let str = place + " " + R.string.localizable.kmaway(doubleStr)
             self.lblFromLocation.text = str
         }
         if let img = data.session_image {

@@ -213,7 +213,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     @IBAction func btnSubmit(_ sender: UIButton) {
         if id == -1 {
-            showAlert(strTitle: "Please Select time")
+            showAlert(strTitle: R.string.localizable.pleaseSelecttime())
         } else {
             self.vwbookTickets.animShow()
             self.vwToGetBlurEffect.addBlurEffect()
@@ -224,7 +224,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     
     @IBAction func cancelBtnTap(_ sender: UIButton) {
-        showAlertWithConfirmation("Are you sure you want to cancel the booking", withTitle: Bundle.main.appName, itsController: self) { (succsss) in
+        showAlertWithConfirmation(R.string.localizable.cancelTheBooking(), withTitle: Bundle.main.appName, itsController: self) { (succsss) in
             
         }
     }
@@ -255,10 +255,10 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btndecrease.isUserInteractionEnabled = true
            // self.btnIncrease.isUserInteractionEnabled = false
             if count > 1{
-                showAlert(strTitle: "only \(count) tickets for this session are available.")
+                showAlert(strTitle: R.string.localizable.onlyTickets("\(count)"))
             }else
             {
-                showAlert(strTitle: "only \(count) ticket for this session are available.")
+                showAlert(strTitle: R.string.localizable.onlyTicket("\(count)"))
             }
             
         } else {
@@ -410,7 +410,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         if self.controllerId == 0 || self.controllerId == 2{
             if self.timeArr.count == 0 {
                 self.lblNoTime.isHidden = false
-                self.lblNoTime.text = "No available time for date."
+                self.lblNoTime.text = R.string.localizable.noAvailableTimeFordate()
             } else {
                 self.lblNoTime.isHidden = true
                 self.lblNoTime.text = ""
@@ -557,7 +557,7 @@ extension SessionDetailVC: GetResponse {
     }
     
     func allTicketsSold() {
-        showAlert(strTitle: "No ticket available")
+        showAlert(strTitle: R.string.localizable.noticketavailable())
         self.btnToRemove.isHidden = false
     }
     
@@ -602,7 +602,7 @@ extension SessionDetailVC: GetResponse {
             self.aboutView.isHidden = true
             vendorNameLbl.text = data.vendorName ?? ""
         } else {
-            self.lblAboutVendor.text = "About Vendor"
+            self.lblAboutVendor.text = R.string.localizable.aboutVendor()
             vendorNameLbl.text = data.vendorName ?? ""
             self.aboutViewBottomCons.constant = 22
             self.aboutView.isHidden = false
@@ -612,11 +612,11 @@ extension SessionDetailVC: GetResponse {
             self.lblNoTime.text = ""
         } else {
             self.lblNoTime.isHidden = false
-            self.lblNoTime.text = "No available time for date."
+            self.lblNoTime.text = R.string.localizable.noAvailableTimeFordate()
         }
         let value = Double(data.distance ?? "")!
         let doubleStr = String(format: "%.2f", value)
-        let str = (data.city ?? "") + " (\(doubleStr) km away)"
+        let str = (data.city ?? "") + " " + R.string.localizable.kmaway(doubleStr)
         self.lblsessionPrice.text = (data.currency ?? "$")+(data.ticket_price ?? "")
         self.lblSessionname.text = data.category_name ?? ""
         self.vwrating.rating = Double(data.rating ?? "")!

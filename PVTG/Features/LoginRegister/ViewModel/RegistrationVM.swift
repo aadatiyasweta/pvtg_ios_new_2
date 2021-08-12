@@ -39,7 +39,7 @@ class RegistrationVM: BaseVm {
     
     ///API for registration
     func signupApi(email: String, password: String, name: String, country_code: String, phone: String, acc_type: String, social_id: String, pictureData: Data) {
-        let prams : [String : Any] = ["name" : name, "email": email, "country_code": country_code, "phone": phone, "acc_type": acc_type, "social_id": social_id, "password": password]
+        let prams : [String : Any] = ["name" : name, "email": email, "country_code": country_code, "phone": phone, "acc_type": acc_type, "social_id": social_id, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
         print(prams)
         self.show()
         api_manager.POSTApi(registrationUrl(), param: prams, header: header()) { (response, err, code) in
@@ -67,7 +67,7 @@ class RegistrationVM: BaseVm {
     
     ///API for checking email/phone existence Userapi/check_email_phone
     func checkinEmailPhoneApi(email: String, country_code: String, phone: String, password: String, name: String, acc_type: String, social_id: String, pictureData: Data) {
-        let prams : [String : Any] = ["email": email, "country_code": country_code, "phone": phone]
+        let prams : [String : Any] = ["email": email, "country_code": country_code, "phone": phone,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
         api_manager.POSTApi(checkEmailPhoneUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()

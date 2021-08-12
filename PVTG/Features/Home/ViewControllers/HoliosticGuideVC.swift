@@ -222,7 +222,7 @@ extension HoliosticGuideVC: GetSearchSessionData {
             self.lblNoSession.text = ""
             self.lblNoSession.isHidden = true
         } else {
-            self.lblNoSession.text = "No Session"
+            self.lblNoSession.text = R.string.localizable.noSession()
             self.lblNoSession.isHidden = false
 
         }

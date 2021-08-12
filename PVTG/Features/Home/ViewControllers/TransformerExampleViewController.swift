@@ -290,19 +290,19 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
                // self.lblCount.text = "\(self.selectedCategoryArr.count)"
                 if self.selectedCategoryArr.count == 0{
                      self.lblNoInterest.isHidden = false
-                    self.btnDone.setTitle("Skip", for: .normal)
+                    self.btnDone.setTitle(R.string.localizable.skip(), for: .normal)
                 }else{
                      self.lblNoInterest.isHidden = true
-                    self.btnDone.setTitle("Done", for: .normal)
+                    self.btnDone.setTitle(R.string.localizable.done(), for: .normal)
                 }
             }
         }
         if self.selectedCategoryArr.count == 0{
               self.lblNoInterest.isHidden = false
-            self.btnDone.setTitle("Skip", for: .normal)
+            self.btnDone.setTitle(R.string.localizable.skip(), for: .normal)
         }else{
               self.lblNoInterest.isHidden = true
-            self.btnDone.setTitle("Done", for: .normal)
+            self.btnDone.setTitle(R.string.localizable.done(), for: .normal)
         }
         return cell
     }
@@ -331,10 +331,10 @@ extension TransformerExampleViewController: LoadingCategory {
         if self.selectedCategoryArr.count == 0{
             //skip
             self.lblNoInterest.isHidden = false
-            self.btnDone.setTitle("Skip", for: .normal)
+            self.btnDone.setTitle(R.string.localizable.skip(), for: .normal)
         }else{
              self.lblNoInterest.isHidden = true
-            self.btnDone.setTitle("Done", for: .normal)
+            self.btnDone.setTitle(R.string.localizable.done(), for: .normal)
         }
         colectionVw.reloadData()
         pagerView.reloadData()

@@ -126,10 +126,10 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     
     func showAlertWithConfirmation(_ message: String, withTitle title: String, itsController controller: UIViewController, completion completionBlock: @escaping (_ success: Bool) -> Void) {
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: {(_ alert: UIAlertAction) -> Void in
+        let ok = UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: {(_ alert: UIAlertAction) -> Void in
             completionBlock(true)
         })
-        let Cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+        let Cancel = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
             completionBlock(false)
         })
         
@@ -147,7 +147,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     
     func showAlertWithConfirmation1(_ message: String, withTitle title: String, itsController controller: UIViewController, completion completionBlock: @escaping (_ success: Bool) -> Void) {
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .cancel, handler: {(_ alert: UIAlertAction) -> Void in
+        let ok = UIAlertAction(title: R.string.localizable.ok(), style: .cancel, handler: {(_ alert: UIAlertAction) -> Void in
             completionBlock(true)
         })
         

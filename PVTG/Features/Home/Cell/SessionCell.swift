@@ -51,7 +51,7 @@ class SessionCell: UITableViewCell {
         if let place = data.city, let distance = data.distance {
             let value = Double(distance) ?? 0.0
             let doubleStr = String(format: "%.2f", value)
-            let str = place + " (\(doubleStr) km away)"
+            let str = place + " " + R.string.localizable.kmaway(doubleStr)
             self.lblFromLocation.text = str
         }
         if let sessionImg = data.session_image {
@@ -73,7 +73,7 @@ class SessionCell: UITableViewCell {
            if let place = data.city, let distance = data.distance {
                let value = Double(distance) ?? 0.0
                let doubleStr = String(format: "%.2f", value)
-               let str = place + " (\(doubleStr) km away)"
+               let str = place + " " + R.string.localizable.kmaway(doubleStr)
                self.lblFromLocation.text = str
            }
            if let sessionImg = data.session_image {

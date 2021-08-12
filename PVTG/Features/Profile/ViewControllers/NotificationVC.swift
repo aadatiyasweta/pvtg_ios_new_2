@@ -100,7 +100,7 @@ extension NotificationVC: AfterGettingNotificationList {
             self.lbvlNoNotification.text = ""
 
         } else {
-            self.lbvlNoNotification.text = "No Notifications"
+            self.lbvlNoNotification.text = R.string.localizable.noNotifications()
         }
         self.tblNotication.reloadData()
         
