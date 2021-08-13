@@ -413,6 +413,10 @@
                                     <constraint firstItem="g9D-1j-WGH" firstAttribute="top" secondItem="jYZ-JV-Bpe" secondAttribute="top" id="nyP-n7-hHP"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mQm-LL-Utn">
+                                <rect key="frame" x="0.0" y="207.5" width="320" height="311.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore new places and meet new people." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixV-HJ-68N">
                                 <rect key="frame" x="22" y="78" width="278" height="46.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -420,6 +424,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOZ-Na-ORO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1803921568627451" green="0.40392156862745099" blue="0.85098039215686272" alpha="0.48951198630136988" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hIj-iU-W3i">
                                 <rect key="frame" x="0.0" y="132.5" width="320" height="75"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -434,10 +443,6 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mQm-LL-Utn">
-                                <rect key="frame" x="0.0" y="207.5" width="320" height="311.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2N-dH-gRq">
                                 <rect key="frame" x="138" y="353.5" width="44.5" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -476,6 +481,7 @@
                         <outlet property="colectionVw" destination="hIj-iU-W3i" id="zie-Gf-InU"/>
                         <outlet property="lblLocn" destination="5R7-sM-hoy" id="dga-GS-pin"/>
                         <outlet property="lblNoSession" destination="y2N-dH-gRq" id="XKP-bB-Uye"/>
+                        <outlet property="priceBlckView" destination="hOZ-Na-ORO" id="iBT-mJ-YKH"/>
                         <outlet property="tblSession" destination="mQm-LL-Utn" id="FAS-TV-G7L"/>
                         <outlet property="userimg" destination="jYZ-JV-Bpe" id="vvF-px-AWB"/>
                     </connections>

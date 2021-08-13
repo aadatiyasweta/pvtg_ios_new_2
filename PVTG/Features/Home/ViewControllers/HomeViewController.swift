@@ -15,6 +15,7 @@ import CoreLocation
 class HomeViewController: BaseViewController {
     //MARK:- IBOutlets
     
+    @IBOutlet weak var priceBlckView: UIView!
     @IBOutlet weak var lblNoSession: UILabel!
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var userimg: UIImageView!
@@ -58,6 +59,11 @@ class HomeViewController: BaseViewController {
             self.userimg.layer.borderColor = UIColor().coloWithHexString(hex: "#05d9bd").cgColor
             self.userimg.image = UIImage(named: "more")
         }
+       
+        self.priceBlckView.alpha = 0
+        let priceView = PriceView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        priceView?.topViewCons.constant = self.colectionVw.frame.maxY
+        appDelegate.window?.addSubview(priceView!)
     }
     
     override func viewWillAppear(_ animated: Bool) {

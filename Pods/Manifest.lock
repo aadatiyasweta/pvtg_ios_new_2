@@ -222,6 +222,7 @@ PODS:
   - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
+  - RangeSeekSlider (1.8.0)
   - ReachabilitySwift (5.0.0)
   - SDWebImage (5.8.4):
     - SDWebImage/Core (= 5.8.4)
@@ -246,6 +247,7 @@ DEPENDENCIES:
   - MercadoPagoSDK (~> 4.7.0)
   - paper-onboarding
   - R.swift
+  - RangeSeekSlider
   - ReachabilitySwift
   - SDWebImage
   - SVPinView (~> 1.0)
@@ -287,6 +289,7 @@ SPEC REPOS:
     - Protobuf
     - R.swift
     - R.swift.Library
+    - RangeSeekSlider
     - ReachabilitySwift
     - SDWebImage
     - SVPinView
@@ -327,12 +330,13 @@ SPEC CHECKSUMS:
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   SVPinView: 3dd47f5cd5ee67520ab1319a780cc0664735fafe
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: adbfdb5bde63a6e28ef7eb9f48b68cf54f9e07d9
+PODFILE CHECKSUM: a31181b2bb95f0e98d708a047fc80d16d91d446c
 
 COCOAPODS: 1.10.1

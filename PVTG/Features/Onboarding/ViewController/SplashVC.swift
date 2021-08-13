@@ -23,7 +23,7 @@ class SplashVC:UIViewController {
     }
 
     func checkLoginStatus() {
-        if SaveToDefaults().getAppLang() ?? "en" == "en" || SaveToDefaults().getAppLang() == nil{
+        if SaveToDefaults().getAppLang() ?? "" == "" || SaveToDefaults().getAppLang() == nil{
             let vc = LanguageChnageVC.navigation()
             window?.rootViewController = vc
             window?.makeKeyAndVisible()

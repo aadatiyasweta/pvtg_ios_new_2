@@ -42,7 +42,7 @@ class LanguageChnageVC: UIViewController {
         if spanishBtn.isSelected{
             SaveToDefaults().setAppLang(value: "es")
         }else{
-            SaveToDefaults().setAppLang(value: "es")
+            SaveToDefaults().setAppLang(value: "en")
         }
         if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
             if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {

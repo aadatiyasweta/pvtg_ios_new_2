@@ -28,7 +28,7 @@ target 'PVTG' do
   pod 'MarqueeLabel'
   pod 'R.swift'
 pod 'MercadoPagoSDK', '~> 4.7.0'
-
+pod 'RangeSeekSlider'
 
 
 end

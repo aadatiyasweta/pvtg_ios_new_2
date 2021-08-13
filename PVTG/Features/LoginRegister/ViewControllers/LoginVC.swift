@@ -38,7 +38,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.logintoYouAcLbl.text = R.string.localizable.logHolisticTravel()
+       // self.logintoYouAcLbl.text = R.string.localizable.logHolisticTravel()
         self.lblEmailErr.isHidden = true
         self.lblPaswdErr.isHidden = true
         loginVM.delegate = self
