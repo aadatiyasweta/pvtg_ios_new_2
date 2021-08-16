@@ -21,7 +21,7 @@ class HoliosticGuideVC: BaseViewController {
             self.colectionVwCategory.dataSource = self
             self.colectionVwCategory.delegate = self
             self.colectionVwCategory.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
-            
+            self.colectionVwCategory.register(PriceCollCell.nib(), forCellWithReuseIdentifier: PriceCollCell.ident)
         }
         
     }
@@ -149,21 +149,30 @@ extension HoliosticGuideVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0{
+            return 1
+        }
         return self.vm.categorymodel?.result?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0{
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollCell.ident, for: indexPath) as! PriceCollCell
+            cell.priceView.layer.cornerRadius = 17
+            return cell
+        }else{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
         if indexPath.row == 0 {
-            cell.leadingConstarintVw.constant = -22
+            cell.leadingConstarintVw.constant = -5
             cell.traillingConstarintVw.constant = 0
-        } else if indexPath.row == (self.vm.categorymodel?.result?.count ?? 0)-1 {
-            cell.leadingConstarintVw.constant = 0
-            cell.traillingConstarintVw.constant = -22
-        } else {
+        } else{
             cell.leadingConstarintVw.constant = 0
             cell.traillingConstarintVw.constant = 0
+            
         }
         if index == indexPath.row {
             cell.vwContainCatgry.backgroundColor = UIColor().coloWithHexString(hex: "#05D9BD")
@@ -177,19 +186,29 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
         }
         cell.setSearchData(data: self.vm.categorymodel?.result?[indexPath.row])
         cell.vwContainCatgry.layer.cornerRadius = 17
-        return cell    }
+        return cell
+        }
+        }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = self.vm.categorymodel?.result?[indexPath.row].category_name
-        let label = UILabel(frame: CGRect.zero)
-        label.text = text
-        label.sizeToFit()
-        if indexPath.row == (self.vm.categorymodel?.result?.count ?? 0)-1{
-            return CGSize(width: label.frame.size.width + 48, height: 45)
+        if indexPath.section == 0{
+            return CGSize(width: 120, height: 34)
+        }else{
+            let text = self.vm.categorymodel?.result?[indexPath.row].category_name
+            let label = UILabel(frame: CGRect.zero)
+            label.text = text
+            label.sizeToFit()
+            if indexPath.row == 0{
+                return CGSize(width: label.frame.size.width + 36, height: 45)
+            }
+            return CGSize(width: label.frame.size.width + 26, height: 45)
         }
-        return CGSize(width: label.frame.size.width + 26, height: 45)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0{
+            let priceView = PriceView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+            appDelegate.window?.addSubview(priceView!)
+        }else{
         //  self.txfSearch.text = ""
         if index == indexPath.row {
             //  index = -1
@@ -200,7 +219,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
             self.colectionVwCategory.reloadData()
         }
         
-        
+        }
     }
     
     func loadApi(categoryid: String, search: String, isloader: Bool) {

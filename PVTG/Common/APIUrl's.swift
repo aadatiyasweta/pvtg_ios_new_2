@@ -92,42 +92,47 @@ func gethome()-> String {
     return url
 }
 func sessionDetailApi()-> String {
-    var  url = "\(server)Sessionapi/session_detail/language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Sessionapi/session_detail"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/session_detail",url)
     return url
 }
+///language=\(SaveToDefaults().getAppLang() ?? "en")
 func check_ticketApi(user_id: String, ticket: String, schedule_time_id: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/check_ticket?user_id=\(user_id)&ticket=\(ticket)&schedule_time_id=\(schedule_time_id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/check_ticket?user_id=\(user_id)&ticket=\(ticket)&schedule_time_id=\(schedule_time_id)"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/check_ticket",url)
     return url
 }
-
+//&language=\(SaveToDefaults().getAppLang() ?? "en")
 func ticketDataApi(user_id: String, session_id: String, schedule_time_id: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/ticket_data?user_id=\(user_id)&session_id=\(session_id)&schedule_time_id=\(schedule_time_id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/ticket_data?user_id=\(user_id)&session_id=\(session_id)&schedule_time_id=\(schedule_time_id)"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/ticket_data",url)
     return url
 }
+//&language=\(SaveToDefaults().getAppLang() ?? "en")
 func activeEventApi()-> String {
-    var  url = "\(server)Sessionapi/active_event/language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Sessionapi/active_event"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/active_event",url)
     return url
 }
+///language=\(SaveToDefaults().getAppLang() ?? "en")
 func historySessionApi()-> String {
-    var  url = "\(server)Sessionapi/history_event/language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Sessionapi/history_event"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/history_event",url)
     return url
 }
+///language=\(SaveToDefaults().getAppLang() ?? "en")
 func user_profileApi()-> String {
-    var  url = "\(server)Userapi/user_profile/language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Userapi/user_profile"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/user_profile",url)
     return url
 }
+///language=\(SaveToDefaults().getAppLang() ?? "en")
 func updateProfileUrl()-> String {
     var  url = "\(server)Userapi/update_user_profile"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -149,11 +154,12 @@ func updateDeviceTokenUrl()-> String {
 }
 
 func session_time_detail()-> String {
-    var  url = "\(testingServer)Sessionapi/session_time_detail/language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(testingServer)Sessionapi/session_time_detail"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/session_time_detail",url)
     return url
 }
+///language=\(SaveToDefaults().getAppLang() ?? "en")
 func reviewUser()-> String {
     var  url = "\(server)reviewUser"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -174,11 +180,12 @@ func searchPlacesApi(text: String)-> String {
 
 }
 func allCategoryUrl(userid: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Userapi/all_category?user_id=\(userid)&language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "http://52.27.53.102/pvtg/api/v1/Userapi/all_category?user_id=\(userid)"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print(" Userapi/all_categoryUrl",url)
     return url
 }
+//&language=\(SaveToDefaults().getAppLang() ?? "en")
 func searchSessionUrl()-> String {
     var  url = "\(testingServer)Sessionapi/search"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -186,11 +193,12 @@ func searchSessionUrl()-> String {
     return url
 }
 func sessionallCategoryUrl()-> String {
-    var  url = "\(testingServer)Sessionapi/all_category/language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(testingServer)Sessionapi/all_category"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/all_category",url)
     return url
 }
+///language=\(SaveToDefaults().getAppLang() ?? "en")
 func sessionBookingUrl()-> String {
     var  url = "\(testingServer)Sessionapi/session_booking"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

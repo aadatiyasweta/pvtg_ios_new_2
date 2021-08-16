@@ -22,7 +22,7 @@ class SearchSessionVC: BaseViewController {
             self.colectionVwCategory.dataSource = self
             self.colectionVwCategory.delegate = self
             self.colectionVwCategory.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
-
+            
         }
         
     }

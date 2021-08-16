@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PriceCollCell" customModule="PVTG" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="114" height="77"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="114" height="77"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iua-45-5QQ">
+                        <rect key="frame" x="5" y="44" width="109" height="33"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$50-$100" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-k9-eJk">
+                                <rect key="frame" x="16" y="9" width="73" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrrow" translatesAutoresizingMaskIntoConstraints="NO" id="svE-16-R5I">
+                                <rect key="frame" x="89" y="10.5" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="Pgg-fO-Ku3"/>
+                                    <constraint firstAttribute="width" constant="12" id="gYM-3R-TDq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.37647058823529411" green="0.40392156862745099" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="svE-16-R5I" firstAttribute="leading" secondItem="CKI-k9-eJk" secondAttribute="trailing" id="0m8-he-vgE"/>
+                            <constraint firstItem="svE-16-R5I" firstAttribute="centerY" secondItem="iua-45-5QQ" secondAttribute="centerY" id="3n2-Bz-e7X"/>
+                            <constraint firstItem="CKI-k9-eJk" firstAttribute="leading" secondItem="iua-45-5QQ" secondAttribute="leading" constant="16" id="4Bp-35-BqU"/>
+                            <constraint firstItem="CKI-k9-eJk" firstAttribute="centerY" secondItem="svE-16-R5I" secondAttribute="centerY" id="lug-Th-aws"/>
+                            <constraint firstAttribute="trailing" secondItem="svE-16-R5I" secondAttribute="trailing" constant="8" id="lvM-Nr-LCD"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="iua-45-5QQ" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="3kR-DL-Gak"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="iua-45-5QQ" secondAttribute="leading" constant="-5" id="6fA-od-pQK"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="iua-45-5QQ" secondAttribute="top" id="DAA-wt-gQw"/>
+                <constraint firstItem="iua-45-5QQ" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="re8-mK-WHg"/>
+            </constraints>
+            <size key="customSize" width="114" height="77"/>
+            <connections>
+                <outlet property="priceLbl" destination="CKI-k9-eJk" id="ju0-Zs-D7Z"/>
+                <outlet property="priceView" destination="iua-45-5QQ" id="oWS-fr-BTR"/>
+            </connections>
+            <point key="canvasLocation" x="184.05797101449278" y="74.665178571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="arrrow" width="6.5" height="3.5"/>
+    </resources>
+</document>

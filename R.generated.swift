@@ -364,12 +364,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 60 images.
+  /// This `R.image` struct is generated, and contains static references to 61 images.
   struct image {
     /// Image `Bg-3`.
     static let bg3 = Rswift.ImageResource(bundle: R.hostingBundle, name: "Bg-3")
     /// Image `apple`.
     static let apple = Rswift.ImageResource(bundle: R.hostingBundle, name: "apple")
+    /// Image `arrrow`.
+    static let arrrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrrow")
     /// Image `bg-search`.
     static let bgSearch = Rswift.ImageResource(bundle: R.hostingBundle, name: "bg-search")
     /// Image `bgProfile`.
@@ -498,6 +500,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "apple", bundle: ..., traitCollection: ...)`
     static func apple(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.apple, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "arrrow", bundle: ..., traitCollection: ...)`
+    static func arrrow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.arrrow, compatibleWith: traitCollection)
     }
     #endif
 
@@ -910,7 +919,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 19 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 20 nibs.
   struct nib {
     /// Nib `ActiveEventCell`.
     static let activeEventCell = _R.nib._ActiveEventCell()
@@ -940,6 +949,8 @@ struct R: Rswift.Validatable {
     static let notificationCell = _R.nib._NotificationCell()
     /// Nib `OnboardingCell`.
     static let onboardingCell = _R.nib._OnboardingCell()
+    /// Nib `PriceCollCell`.
+    static let priceCollCell = _R.nib._PriceCollCell()
     /// Nib `PriceView`.
     static let priceView = _R.nib._PriceView()
     /// Nib `ProfileInterestCell`.
@@ -1064,6 +1075,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "PriceCollCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.priceCollCell) instead")
+    static func priceCollCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.priceCollCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "PriceView", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.priceView) instead")
     static func priceView(_: Void = ()) -> UIKit.UINib {
@@ -1157,6 +1176,10 @@ struct R: Rswift.Validatable {
 
     static func onboardingCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OnboardingCell? {
       return R.nib.onboardingCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OnboardingCell
+    }
+
+    static func priceCollCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PriceCollCell? {
+      return R.nib.priceCollCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PriceCollCell
     }
 
     static func priceView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PriceView? {
@@ -4503,6 +4526,7 @@ struct _R: Rswift.Validatable {
       try _HistoryCell.validate()
       try _InterCell.validate()
       try _OnboardingCell.validate()
+      try _PriceCollCell.validate()
       try _PriceView.validate()
       try _SearchLocationCell.validate()
       try _SessionCell.validate()
@@ -4697,6 +4721,23 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "group3-1", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'group3-1' is used in nib 'OnboardingCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "play", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'play' is used in nib 'OnboardingCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _PriceCollCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "PriceCollCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PriceCollCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PriceCollCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "arrrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrrow' is used in nib 'PriceCollCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

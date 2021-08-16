@@ -16,6 +16,7 @@ import AVKit
 class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     //MARK:- IBOutlets
     
+    @IBOutlet weak var offeredCollView: UICollectionView!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var vendorNameLbl: UILabel!
     @IBOutlet weak var mainScrollview: UIScrollView!
@@ -63,6 +64,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     @IBOutlet weak var vwContainfee: UIView!
     @IBOutlet weak var vwsession: UIView!
+    @IBOutlet weak var langView: UIView!
     @IBOutlet weak var btnToRemove: UIButton!
     
     @IBOutlet weak var vwcontainTktCount: UIView!
@@ -120,6 +122,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var controllerId = 0
     var timer : Timer?
     var isFromSelection = false
+    var offeredIndex = -1
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +130,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
          vwcalendar.appearance.todayColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         vwcalendar.appearance.todaySelectionColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         self.selectedDate = formatter.string(from: self.today)
+        offeredCollView.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
         if controllerId == 1{
             self.vwmap.isHidden = false
             self.vwcalendar.isHidden = true
@@ -184,6 +188,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setVSViewShadow(radius: 10, color: .black, view: self.vwcontainTktCount, opacity: 0.12)
+       // setVSViewShadow(radius: 10, color: .black, view: self.vwcontainTktCount, opacity: 0.12)
     }
 //    //essionapi/ticket_data http://52.27.53.102/pvtg/api/v1/Sessionapi/ticket_data?user_id=7&session_id=1&schedule_time_id=11
 //    Token -------->>>>>> UTQT9zsaNX
@@ -401,9 +406,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView==colectnVwSessionImage{
             return self.vm.model?.images?.count ?? 0
-        }else {
-            return self.timeArr.count
+        }else if collectionView == self.offeredCollView{
+            return 5
         }
+        return self.timeArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -446,7 +452,20 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             cell.layoutSubviews()
             cell.setData(data: self.timeArr[indexPath.row])
             return cell
-        } else {
+        }
+        else if collectionView == self.offeredCollView{
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
+            cell.searchCategorylbl.text = "Studio"
+            if offeredIndex == indexPath.row {
+                cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.01960784314, green: 0.8509803922, blue: 0.7411764706, alpha: 1)
+            } else {
+                cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
+            }
+            cell.vwContainCatgry.layer.cornerRadius = 10
+            
+            return cell
+        }
+        else {
             guard let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.ident, for: indexPath) as? OnboardingCell else { return UICollectionViewCell() }
             cell1.imgDetailView.isHidden = false
             cell1.lblInfo.isHidden = true
@@ -486,7 +505,11 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView==self.vwCollection {
             return CGSize(width: 150, height: 65)
-        } else {
+        }
+        else if collectionView==self.offeredCollView{
+            return CGSize(width: 150, height: 65)
+        }
+        else {
             return CGSize(width: SCREEN_WIDTH, height: self.colectnVwSessionImage.frame.height)
         }
     }
@@ -500,6 +523,9 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
         }
         self.vwCollection.reloadData()
+        }else if collectionView == self.offeredCollView{
+            self.offeredIndex = indexPath.row
+            collectionView.reloadData()
         }
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -547,7 +573,7 @@ extension SessionDetailVC: GetResponse {
                 self.timeArr.removeAll()
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                     self.scrollViewBotmconstarint.constant = 0
-                    self.btnBooknow.isHidden = true
+                    //self.btnBooknow.isHidden = true
                 }, completion: nil)
                 
             }
@@ -723,6 +749,7 @@ extension SessionDetailVC {
         DispatchQueue.main.async {
             setRightShadow(view: self.vwContainfee, color: #colorLiteral(red: 0.4522080421, green: 0.4990295768, blue: 0.8806897998, alpha: 1), opacity: 0.7, width: 5, height: 4)
             setRightShadowWithOffset(view: self.vwsession, color: #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), opacity: 0.2, width: 5, height: 5, offsetX: 10, offsetY: 20)
+            setRightShadowWithOffset(view: self.langView, color: #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), opacity: 0.2, width: 5, height: 5, offsetX: 10, offsetY: 20)
             // setRightShadow(view: self.vwsession, color: #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), opacity: 0.7, width: 5, height: 555)
             
         }

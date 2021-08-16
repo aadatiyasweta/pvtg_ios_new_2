@@ -15,7 +15,7 @@ import CoreLocation
 class HomeViewController: BaseViewController {
     //MARK:- IBOutlets
     
-    @IBOutlet weak var priceBlckView: UIView!
+  
     @IBOutlet weak var lblNoSession: UILabel!
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var userimg: UIImageView!
@@ -24,6 +24,7 @@ class HomeViewController: BaseViewController {
         didSet{
             colectionVw.dataSource = self
             colectionVw.delegate = self
+            self.colectionVw.register(PriceCollCell.nib(), forCellWithReuseIdentifier: PriceCollCell.ident)
             self.colectionVw.register(CategoryCell.nib(), forCellWithReuseIdentifier: CategoryCell.ident)
         }
     }
@@ -60,10 +61,6 @@ class HomeViewController: BaseViewController {
             self.userimg.image = UIImage(named: "more")
         }
        
-        self.priceBlckView.alpha = 0
-        let priceView = PriceView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
-        priceView?.topViewCons.constant = self.colectionVw.frame.maxY
-        appDelegate.window?.addSubview(priceView!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,24 +154,36 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0{
+            return 1
+        }
         return categoryArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollCell.ident, for: indexPath) as! PriceCollCell
+            return cell
+        }
+        else{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.ident, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
         cell.lblCategory.numberOfLines = 3
-        if indexPath.row == 0 {
-            cell.leadingConstrain.constant = 22
-            cell.trailingConstrainOuterview.constant = 0
-        } else {
+//        if indexPath.row == 0 {
+//            cell.leadingConstrain.constant = 22
+//            cell.trailingConstrainOuterview.constant = 0
+//        } else {
             cell.leadingConstrain.constant = 5
-            if indexPath.row == categoryArr.count-1 {
-                cell.trailingConstrainOuterview.constant = 20
-            } else {
-                cell.trailingConstrainOuterview.constant = 0
-            }
-        }
+            cell.trailingConstrainOuterview.constant = 0
+//            if indexPath.row == categoryArr.count-1 {
+//                cell.trailingConstrainOuterview.constant = 20
+//            } else {
+//                cell.trailingConstrainOuterview.constant = 0
+//            }
+        //}
         if self.categoryArr.count == 2{
             if self.categoryArr[1].image == ""{
                 if indexPath.row == 0{
@@ -218,8 +227,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         return cell
     }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0{
+            return CGSize(width: 140, height: 65)
+        }
         let text = categoryArr[indexPath.row].name
         
         //  let fontAttributes = [NSAttributedString.Key.font: UIFont.init(name: Fonts.regular.rawValue, size: 12)]
@@ -228,12 +241,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let label = UILabel(frame: CGRect.zero)
         label.text = text
         label.sizeToFit()
-        if indexPath.row == categoryArr.count-1 || indexPath.row == 0 {
-            return CGSize(width: label.frame.size.width + 91, height: 65)
-        }
+//        if indexPath.row == categoryArr.count-1 || indexPath.row == 0 {
+//            return CGSize(width: label.frame.size.width + 91, height: 65)
+//        }
         return CGSize(width: label.frame.size.width + 71, height: 65)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0{
+              let priceView = PriceView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+              appDelegate.window?.addSubview(priceView!)
+        }else{
         if self.categoryArr.count == 2{
             if self.categoryArr[1].image == ""{
                 if indexPath.row == 0{
@@ -267,7 +284,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 }
             }
         }
-        
+        }
         
     }
 }
