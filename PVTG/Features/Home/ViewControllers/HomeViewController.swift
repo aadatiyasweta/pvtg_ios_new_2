@@ -48,6 +48,10 @@ class HomeViewController: BaseViewController {
     var categoryArr = [Category]()
     var id = "0"
     var city = ""
+    var minimUmPrice = 0
+    var maximimPrice = 0
+    var origiMinPrice = 0
+    var origiMaxPrice = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // self.locationManager.startUpdatingLocation()
@@ -92,23 +96,23 @@ class HomeViewController: BaseViewController {
     
     
     
-    func loadApi(categoryid: String) {
+    func loadApi(categoryid: String , minPrice : Int? = 0 , maxPrice : Int? = 0) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
             let value = self.lblLocn.text ?? ""
            // let val = value.split(separator: ",")
             if self.city == ""{
                 if categoryid == "0"{
-                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value)
+                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value,minPrice: minPrice , maxprice: maxPrice)
                 }else{
-                     homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value)
+                     homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minPrice , maxprice: maxPrice)
                 }
                
             }else{
                 if categoryid == "0"{
-                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: self.city)
+                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: self.city,minPrice: minPrice , maxprice: maxPrice)
                 }
                 else{
-                    homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city)
+                    homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city,minPrice: minPrice , maxprice: maxPrice)
                 }
             }
         }
@@ -158,7 +162,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         return 2
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if section == 0{
+            if self.categoryArr.count == 0{
+                return 0
+            }
             return 1
         }
         return categoryArr.count
@@ -167,6 +175,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollCell.ident, for: indexPath) as! PriceCollCell
+            cell.priceLbl.text = "$\(self.minimUmPrice)-$\(self.maximimPrice)"
             return cell
         }
         else{
@@ -248,12 +257,20 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0{
+           // let checkout = MercadoPagoCheckout.init(builder: MercadoPagoCheckoutBuilder.init(publicKey: "your_public_key", preferenceId: "your_checkout_preference_id"))
+
               let priceView = PriceView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+            priceView?.delegate = self
+            priceView?.seekView.minValue = CGFloat(self.origiMinPrice)
+            priceView?.seekView.maxValue = CGFloat(self.origiMaxPrice)
+            priceView?.seekView.selectedMaxValue = CGFloat(self.maximimPrice)
+            priceView?.seekView.selectedMinValue = CGFloat(self.minimUmPrice)
               appDelegate.window?.addSubview(priceView!)
         }else{
         if self.categoryArr.count == 2{
             if self.categoryArr[1].image == ""{
                 if indexPath.row == 0{
+                    id = "0"
                     loadApi(categoryid: "0")
                 }else{
                     let vc = TransformerExampleViewController.instance()
@@ -369,6 +386,10 @@ extension HomeViewController: CLLocationManagerDelegate{
 
 extension HomeViewController: GetHomeData {
     func reloadData() {
+        self.minimUmPrice = self.homevm.model?.min_val ?? 0
+        self.maximimPrice = self.homevm.model?.max_val ?? 0
+        self.origiMinPrice = self.homevm.model?.min_price ?? 0
+        self.origiMaxPrice = self.homevm.model?.max_price ?? 0
         loadImage(self.homevm.model?.user_image ?? "", self.userimg , activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         self.categoryArr.removeAll()
         self.categoryArr.append(Category(name: R.string.localizable.topSearch(), image: topSearch, id: "0"))
@@ -396,7 +417,14 @@ extension HomeViewController: GetHomeData {
     
 }
 
-extension HomeViewController {
+extension HomeViewController : getPriceSliderValues{
+    func slidermaxMinValue(min: Int, max: Int) {
+        self.maximimPrice = max
+        self.minimUmPrice = min
+        self.loadApi(categoryid: id,minPrice: min , maxPrice: max)
+       
+    }
+
     func setProfilePic() {
         if let pic = SaveToDefaults().getProfilePic() {
            // loadImage(pic, self.userimg, activity: nil, defaultImage: nil)

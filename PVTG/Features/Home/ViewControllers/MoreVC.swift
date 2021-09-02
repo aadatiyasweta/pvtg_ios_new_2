@@ -123,16 +123,20 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
 //        let check = PXCheckoutPreference.init(siteId: "MCO", payerEmail: "info@mydharma.app", items: items)
 //        let paymentProcessor : PXPaymentProcessor = CustomPaymentProcessor()
 //        let payment = PXPaymentConfiguration.init(paymentProcessor: paymentProcessor)
-        let builder = MercadoPagoCheckoutBuilder(publicKey: "TEST-6ca94e5d-05cc-4365-9091-d63a3065b877", preferenceId: "747633178-714bdcea-6f63-482a-b52b-610591cc6fb2")
+        let builder = MercadoPagoCheckoutBuilder(publicKey: "TEST-55326d65-65a3-4561-a7fd-176149c86680", preferenceId: "790689138-4d215891-5304-46c4-9148-ec5be8540720")
+        builder.setLanguage("es-AR")
         let checkout = MercadoPagoCheckout(builder: builder)
         let config = PXAdvancedConfiguration()
            builder.setAdvancedConfiguration(config: config)
            builder.setColor(checkoutColor: .green)
-        builder.setPrivateKey(key: "TEST-8427147478159404-042220-786a65b03356764d1acbfed864a5bb10-747633178")
+        builder.setPrivateKey(key: "TEST-7488660032626366-081021-6e581c702a1f21140901508fa58446dd-790689138")
         if let myNavigationController = navigationController {
             checkout.start(navigationController: myNavigationController)
         }
     }
+    /*   publicKeyTextField.text = "APP_USR-88bd636f-ef87-441d-a018-def0c3a3741a"
+    preferenceIdTextField.text = "566676612-3bbb117b-1f3f-49c9-915d-565a785837d0"
+    accessTokenTextField.text = "APP_USR-7092-060212-76d203ae7f1945924284191b71d5f01b-578132250"*/
     
 }
 

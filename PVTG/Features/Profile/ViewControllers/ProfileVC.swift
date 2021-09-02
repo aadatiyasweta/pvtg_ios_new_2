@@ -51,10 +51,10 @@ class ProfileVC: BaseViewController {
           DispatchQueue.main.async {
             self.imgUser.layer.cornerRadius = 10
             self.imgUser.image = #imageLiteral(resourceName: "more")
-              let myImage = UIImage(named: "logoWhite")
-              let tintableImage = myImage?.withRenderingMode(.alwaysTemplate)
-              self.imageLogo.image = tintableImage
-              self.imageLogo.tintColor = UIColor().coloWithHexString(hex: "#05d9bd")
+//              let myImage = UIImage(named: "logoWhite")
+//              let tintableImage = myImage?.withRenderingMode(.alwaysTemplate)
+//              self.imageLogo.image = tintableImage
+//              self.imageLogo.tintColor = UIColor().coloWithHexString(hex: "#05d9bd")
           }
       }
     

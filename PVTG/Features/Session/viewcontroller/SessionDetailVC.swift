@@ -16,12 +16,16 @@ import AVKit
 class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     //MARK:- IBOutlets
     
+    
+    @IBOutlet weak var offeredHeightCons: NSLayoutConstraint!
+    @IBOutlet weak var offerdView: UIView!
     @IBOutlet weak var offeredCollView: UICollectionView!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var vendorNameLbl: UILabel!
     @IBOutlet weak var mainScrollview: UIScrollView!
     @IBOutlet weak var imgSession: UIImageView!
     @IBOutlet weak var lblsessionPrice: UILabel!
+    @IBOutlet weak var languageLbl: UILabel!
     @IBOutlet weak var lblSessionname: UILabel!
     @IBOutlet weak var lblSessionPlaceName: UILabel!
     @IBOutlet weak var vwrating: CosmosView!
@@ -141,6 +145,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
             self.btnBooknow.isHidden = true
+            self.lblsessionPrice.isHidden = true
             self.cancelBtn.isHidden = false
             self.completedBtn.isHidden = true
         } else if controllerId == 2 {
@@ -153,6 +158,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = false
             self.lblNoTime.isHidden = false
              self.btnBooknow.isHidden = true
+            self.lblsessionPrice.isHidden = true
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
         }else if controllerId == 3 {
@@ -165,6 +171,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
             self.btnBooknow.isHidden = true
+            self.lblsessionPrice.isHidden = true
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = false
         }else {
@@ -179,6 +186,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = false
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
+            self.lblsessionPrice.isHidden = false
         }
         loadApi(top_search: "")
         vm.delegate = self
@@ -345,6 +353,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                     self.scrollViewBotmconstarint.constant = 0
                     self.btnBooknow.isHidden = true
+                    self.lblsessionPrice.isHidden = true
                 }, completion: nil)
                 
             }
@@ -407,12 +416,14 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         if collectionView==colectnVwSessionImage{
             return self.vm.model?.images?.count ?? 0
         }else if collectionView == self.offeredCollView{
-            return 5
+            return self.vm.model?.session_type?.count ?? 0
         }
         return self.timeArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print(self.timeArr.count)
+        print(vwCollection.isHidden)
         if self.controllerId == 0 || self.controllerId == 2{
             if self.timeArr.count == 0 {
                 self.lblNoTime.isHidden = false
@@ -427,7 +438,8 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
            self.lblNoTime.isHidden = true
         }
         
-        if collectionView==vwCollection {
+        if collectionView == self.vwCollection {
+   
             var remainingTkt = 0
             if  let totalTkt = Int(self.timeArr[indexPath.row].total_ticket ?? ""), let soldTkt = Int(self.timeArr[indexPath.row].sold_ticket ?? "") {
                 remainingTkt =  totalTkt-soldTkt
@@ -449,13 +461,14 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 cell.vwContainCatgry.layer.cornerRadius = 10
             }
             
-            cell.layoutSubviews()
+          //  cell.layoutSubviews()
             cell.setData(data: self.timeArr[indexPath.row])
             return cell
         }
         else if collectionView == self.offeredCollView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
-            cell.searchCategorylbl.text = "Studio"
+            cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
+            self.lblsessionPrice.text = "\(self.vm.model?.session_type?[indexPath.row].price ?? "" )$"
             if offeredIndex == indexPath.row {
                 cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.01960784314, green: 0.8509803922, blue: 0.7411764706, alpha: 1)
             } else {
@@ -470,7 +483,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             cell1.imgDetailView.isHidden = false
             cell1.lblInfo.isHidden = true
             cell1.descLabel.isHidden = true
-           
             self.setuptimer()
             if self.vm.model?.images?[indexPath.row].type ?? "" == "image"{
                  cell1.playBtn.isHidden = true
@@ -504,10 +516,14 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
        }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView==self.vwCollection {
-            return CGSize(width: 150, height: 65)
+            return CGSize(width: 150, height: 55)
         }
         else if collectionView==self.offeredCollView{
-            return CGSize(width: 150, height: 65)
+            let text = self.vm.model?.session_type?[indexPath.row].session_type
+            let label = UILabel(frame: CGRect.zero)
+            label.text = text
+            label.sizeToFit()
+            return CGSize(width: label.frame.size.width+22, height: 55)
         }
         else {
             return CGSize(width: SCREEN_WIDTH, height: self.colectnVwSessionImage.frame.height)
@@ -544,9 +560,11 @@ extension SessionDetailVC: GetResponse {
         if self.controllerId != 1{
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
+                self.lblsessionPrice.isHidden = true
                 self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
+                self.lblsessionPrice.isHidden = false
                 self.scrollViewBotmconstarint.constant = 97
                 if  self.isFromSelection{
                     let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
@@ -557,6 +575,7 @@ extension SessionDetailVC: GetResponse {
             }
         }
         self.vwCollection.reloadData()
+        self.offeredCollView.reloadData()
     }
     func reloadTime() {
         guard let alldate = self.vm.model?.all_date else {return}
@@ -614,9 +633,11 @@ extension SessionDetailVC: GetResponse {
         if self.controllerId != 1{
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
+                self.lblsessionPrice.isHidden = true
                 self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
+                self.lblsessionPrice.isHidden = false
                 self.scrollViewBotmconstarint.constant = 97
             }
         }
@@ -648,16 +669,26 @@ extension SessionDetailVC: GetResponse {
         self.vwrating.rating = Double(data.rating ?? "")!
         self.lblPlaceName.text = str
         self.txtVw.text = data.bio
-       
+        self.languageLbl.text = data.session_language
         let lat = Double(lat1); let lng = Double(lang1)
         SaveToDefaults().seSessiontLatitude(lat: lat)
         SaveToDefaults().seSessiontLongitude(lat: lng)
         //        self.lblDayWithDate.text = convertIntoHourFormatted(inputDate: data.all_date?[0].schedule_date ?? "")
         self.lblSessionPlaceName.text = data.name_of_listing
         self.lblsessiondetail.text = data.description
+        if self.vm.model?.session_type?.count ?? 0 == 0{
+            self.offerdView.isHidden = true
+            self.offeredHeightCons.constant = 0
+            self.offeredIndex = -1
+        }else{
+            self.offerdView.isHidden = false
+            self.offeredHeightCons.constant = 116
+            self.offeredIndex = 0
+        }
         self.vwCollection.reloadData()
         self.vwcalendar.reloadData()
         self.colectnVwSessionImage.reloadData()
+        self.offeredCollView.reloadData()
         self.timer?.invalidate()
         setuptimer()
         guard let alldate = self.vm.model?.all_date else {return}
@@ -680,6 +711,7 @@ extension SessionDetailVC: GetResponse {
                 
             }
         }
+       
     }
     
     

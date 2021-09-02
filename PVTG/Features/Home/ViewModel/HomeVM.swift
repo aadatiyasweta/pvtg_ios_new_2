@@ -14,8 +14,14 @@ class HomeVM: BaseVm {
     var model: HomeResult?
   weak var delegate: GetHomeData?
     
-    func getHomeApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, top_search: String, city: String) {
-        let prams : [String : Any] = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search, "city": city,"language" : SaveToDefaults().getAppLang() ?? "en"]
+    func getHomeApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, top_search: String, city: String,minPrice : Int? = 0 , maxprice : Int? = 0) {
+        var prams = [String : Any]()
+        if minPrice == 0 && maxprice == 0{
+            prams = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search, "city": city,"language" : SaveToDefaults().getAppLang() ?? "en"]
+        }else{
+            prams = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search, "city": city,"language" : SaveToDefaults().getAppLang() ?? "en", "min_price" : minPrice ?? 0 , "max_price" : maxprice ?? 0]
+        }
+         
         self.show()
         api_manager.POSTApi(gethome(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()

@@ -25,11 +25,11 @@ class ThankyouVC: BaseViewController {
          renderTheColorOfImage()
     }
     func renderTheColorOfImage() {
-               let myImage = UIImage(named: "minimalLeft2X")
-               let tintableImage = myImage?.withRenderingMode(.alwaysTemplate)
+        let myImage = UIImage(named: "minimalLeft2X")
+        let tintableImage = myImage?.withRenderingMode(.alwaysTemplate)
         self.btnBack.setImage(tintableImage, for: .normal)
         self.btnBack.tintColor = .white
-       }
+    }
     
     @IBAction func btnTapBooking(_ sender: UIButton) {
          appDelegate.tabBarVc?.selectedIndex = 1

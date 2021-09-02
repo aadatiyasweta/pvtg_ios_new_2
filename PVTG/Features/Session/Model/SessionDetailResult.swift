@@ -30,7 +30,8 @@ struct SessionDetailResult : Codable {
 	let images : [Images]?
 	let all_date : [All_date]?
     let currency : String?
-
+    let session_type : [SessionTypeModel]?
+    let session_language : String?
 	enum CodingKeys: String, CodingKey {
 
 		case session_id = "session_id"
@@ -50,6 +51,8 @@ struct SessionDetailResult : Codable {
 		case all_date = "all_date"
         case currency = "currency"
         case vendorName = "name"
+        case session_type = "session_type"
+        case session_language = "session_language"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -71,6 +74,27 @@ struct SessionDetailResult : Codable {
 		all_date = try values.decodeIfPresent([All_date].self, forKey: .all_date)
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
          vendorName = try values.decodeIfPresent(String.self, forKey: .vendorName)
+        session_language = try values.decodeIfPresent(String.self, forKey: .session_language)
+        session_type = try values.decodeIfPresent([SessionTypeModel].self, forKey: .session_type)
 	}
 
+}
+struct SessionTypeModel : Codable {
+    let session_type : String?
+    let session_type_id : String?
+    let price : String?
+    enum CodingKeys: String, CodingKey {
+
+        case session_type = "session_type"
+        case session_type_id = "session_type_id"
+        case price = "price"
+        
+    }
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        session_type = try values.decodeIfPresent(String.self, forKey: .session_type)
+        session_type_id = try values.decodeIfPresent(String.self, forKey: .session_type_id)
+        price = try values.decodeIfPresent(String.self, forKey: .price)
+        
+    }
 }

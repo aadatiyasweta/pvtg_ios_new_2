@@ -18,6 +18,7 @@ struct CategoryBase : Codable {
 	let total_Category : Int?
 	let result : [CategoryResult]?
     let selected_category : [CategoryResult]?
+    let min_max_price : MinMaxPricModel?
 	enum CodingKeys: String, CodingKey {
 
 		case statusCode = "statusCode"
@@ -25,6 +26,7 @@ struct CategoryBase : Codable {
 		case total_Category = "total_Category"
 		case result = "result"
         case selected_category = "selected_category"
+        case min_max_price = "min_max_price"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -34,6 +36,11 @@ struct CategoryBase : Codable {
 		total_Category = try values.decodeIfPresent(Int.self, forKey: .total_Category)
 		result = try values.decodeIfPresent([CategoryResult].self, forKey: .result)
         selected_category = try values.decodeIfPresent([CategoryResult].self, forKey: .selected_category)
+        min_max_price = try values.decodeIfPresent(MinMaxPricModel.self, forKey: .min_max_price)
 	}
 
+}
+struct MinMaxPricModel : Codable {
+    let min_price : Int?
+    let max_price : Int?
 }

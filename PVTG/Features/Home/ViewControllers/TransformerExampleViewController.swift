@@ -308,7 +308,7 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-        return CGSize(width: 140, height: 155)
+        return CGSize(width: SCREEN_WIDTH/3-10, height: 155)
     }
 }
 

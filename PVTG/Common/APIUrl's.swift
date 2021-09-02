@@ -212,3 +212,9 @@ func selectInterestUrl()-> String{
     print("Userapi/user_interest_category",url)
     return url
 }
+func getSplashPointsUrl()-> String{
+    var  url = "\(testingServer)Userapi/getSplashPoints"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("getSplashPointsUrl",url)
+    return url
+}

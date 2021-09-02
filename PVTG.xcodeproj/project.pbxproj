@@ -166,6 +166,11 @@
 		D6D522B726CA67EB00CF9E95 /* PriceCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D522B526CA67EB00CF9E95 /* PriceCollCell.xib */; };
 		D6DBB14E2681B4840061DC05 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBB14D2681B4840061DC05 /* PaymentVC.swift */; };
 		D6E9764E26C5457B00204246 /* LanguageChnageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E9764D26C5457B00204246 /* LanguageChnageVC.swift */; };
+		D6F0342F26DF3E6D00E353F2 /* OnboardingVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0342E26DF3E6D00E353F2 /* OnboardingVm.swift */; };
+		D6F0343626DF413700E353F2 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0343126DF413600E353F2 /* OnboardingModel.swift */; };
+		D6F0343726DF413700E353F2 /* Rewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0343226DF413600E353F2 /* Rewards.swift */; };
+		D6F0343926DF413700E353F2 /* Earn_reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0343426DF413700E353F2 /* Earn_reward.swift */; };
+		D6F0343A26DF413700E353F2 /* Point_accumulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0343526DF413700E353F2 /* Point_accumulation.swift */; };
 		D6FFDC3F26BC0AA900321F04 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FFDC4126BC0AA900321F04 /* Onboarding.storyboard */; };
 		D6FFDC4A26BC0B1C00321F04 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FFDC4C26BC0B1C00321F04 /* Login.storyboard */; };
 		D6FFDC5326BC0BA200321F04 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6FFDC5526BC0BA200321F04 /* SessionCell.xib */; };
@@ -349,6 +354,11 @@
 		D6D522B526CA67EB00CF9E95 /* PriceCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceCollCell.xib; sourceTree = "<group>"; };
 		D6DBB14D2681B4840061DC05 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 		D6E9764D26C5457B00204246 /* LanguageChnageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageChnageVC.swift; sourceTree = "<group>"; };
+		D6F0342E26DF3E6D00E353F2 /* OnboardingVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVm.swift; sourceTree = "<group>"; };
+		D6F0343126DF413600E353F2 /* OnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		D6F0343226DF413600E353F2 /* Rewards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rewards.swift; sourceTree = "<group>"; };
+		D6F0343426DF413700E353F2 /* Earn_reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Earn_reward.swift; sourceTree = "<group>"; };
+		D6F0343526DF413700E353F2 /* Point_accumulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point_accumulation.swift; sourceTree = "<group>"; };
 		D6FFDC4026BC0AA900321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		D6FFDC4526BC0ACE00321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Onboarding.strings; sourceTree = "<group>"; };
 		D6FFDC4826BC0B0500321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Onboarding.strings; sourceTree = "<group>"; };
@@ -363,8 +373,6 @@
 		D6FFDC6B26BC0D7800321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/HistoryCell.strings; sourceTree = "<group>"; };
 		D6FFDC6D26BC0D9900321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/HistoryCell.strings; sourceTree = "<group>"; };
 		D6FFDC6F26BC0FCE00321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
-		D6FFDC7226BC0FDC00321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
-		D6FFDC7426BC107500321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Home.strings; sourceTree = "<group>"; };
 		D6FFDC7626BC10D800321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Session.storyboard; sourceTree = "<group>"; };
 		D6FFDC7926BC10E600321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Session.strings; sourceTree = "<group>"; };
 		D6FFDC7B26BC111900321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Session.strings; sourceTree = "<group>"; };
@@ -372,8 +380,6 @@
 		D6FFDC8126BC115300321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/More.strings; sourceTree = "<group>"; };
 		D6FFDC8326BC118600321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/More.strings; sourceTree = "<group>"; };
 		D6FFDC8526BC1F9300321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
-		D6FFDC8A26BC1FC100321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Profile.strings; sourceTree = "<group>"; };
-		D6FFDC8C26BC201A00321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Profile.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +427,7 @@
 		184D963125AC3C7600C90BDF /* Viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				D6F0342E26DF3E6D00E353F2 /* OnboardingVm.swift */,
 			);
 			path = Viewmodel;
 			sourceTree = "<group>";
@@ -438,6 +445,10 @@
 		184D963325AC3C9500C90BDF /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D6F0343426DF413700E353F2 /* Earn_reward.swift */,
+				D6F0343526DF413700E353F2 /* Point_accumulation.swift */,
+				D6F0343126DF413600E353F2 /* OnboardingModel.swift */,
+				D6F0343226DF413600E353F2 /* Rewards.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1149,6 +1160,7 @@
 				1831DCFD25AD9CE200A1570B /* HomeVM.swift in Sources */,
 				18525A55259994410042046C /* InterestCell.swift in Sources */,
 				184D962E25AC014700C90BDF /* MoreVM.swift in Sources */,
+				D6F0342F26DF3E6D00E353F2 /* OnboardingVm.swift in Sources */,
 				18B184BA25B93A7900B83A6B /* CategoryBase.swift in Sources */,
 				1854F7E7259DF1BD00702FA0 /* SessionDetailVC.swift in Sources */,
 				180534D725933C6C00625B53 /* RegistrationVM.swift in Sources */,
@@ -1205,6 +1217,7 @@
 				18708BEE25A42292001439CA /* ProfileVC.swift in Sources */,
 				18BD585A259C63500035FFA8 /* MoreCell.swift in Sources */,
 				18B4D65B25A5B922006C554D /* NotificationVC.swift in Sources */,
+				D6F0343726DF413700E353F2 /* Rewards.swift in Sources */,
 				184D963C25AC409300C90BDF /* ChangePasswordVC.swift in Sources */,
 				1896C3BD25B7FF780053EC45 /* NotificationListResult.swift in Sources */,
 				18CB0A2625B9E33B00AA10E8 /* GetTicketBase.swift in Sources */,
@@ -1239,9 +1252,11 @@
 				186968BF25C2909C00DAAE24 /* SearchLocationViewMpdel.swift in Sources */,
 				18A765E8259CA49200E71FF9 /* SearchCell.swift in Sources */,
 				18BFA63D259C834200368A11 /* SearchSessionVC.swift in Sources */,
+				D6F0343926DF413700E353F2 /* Earn_reward.swift in Sources */,
 				18629C1A25A435F9008027EC /* ProfileInterestCell.swift in Sources */,
 				187F3E77258CCB58008FB2CB /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				187F3E7C258CCB58008FB2CB /* Utils.swift in Sources */,
+				D6F0343A26DF413700E353F2 /* Point_accumulation.swift in Sources */,
 				18C5A3C525920D42008487FB /* HomeViewController.swift in Sources */,
 				186AC27E25C7BAA600C97842 /* Northeast.swift in Sources */,
 				18CB0A2025B9BFF600AA10E8 /* ChangePasswordVM.swift in Sources */,
@@ -1266,6 +1281,7 @@
 				185DEBC625B2B8BB00318D87 /* AllTimeBase.swift in Sources */,
 				188C108C25B17FA600A326FE /* User_profile.swift in Sources */,
 				1831523125A6CEB4006CA85A /* SearchLocationCell.swift in Sources */,
+				D6F0343626DF413700E353F2 /* OnboardingModel.swift in Sources */,
 				184DCB172593795400EB148D /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1342,8 +1358,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6FFDC6F26BC0FCE00321F04 /* Base */,
-				D6FFDC7226BC0FDC00321F04 /* en */,
-				D6FFDC7426BC107500321F04 /* es */,
 			);
 			name = Home.storyboard;
 			sourceTree = "<group>";
@@ -1372,8 +1386,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6FFDC8526BC1F9300321F04 /* Base */,
-				D6FFDC8A26BC1FC100321F04 /* en */,
-				D6FFDC8C26BC201A00321F04 /* es */,
 			);
 			name = Profile.storyboard;
 			sourceTree = "<group>";
@@ -1505,6 +1517,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = WSC8P4799K;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1528,6 +1541,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development: Mikhail Davis (723339856Z)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WSC8P4799K;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

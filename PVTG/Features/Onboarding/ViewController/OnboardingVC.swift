@@ -20,16 +20,20 @@ class OnboardingVC: UIViewController {
     
     //    MARK:- Variables
     let headingArr = [R.string.localizable.pointAccumulation(),R.string.localizable.earnUseRewardss(), R.string.localizable.rewards()]
-    let titleArr = [R.string.localizable.onbaordingFourthMsg(),R.string.localizable.onbaordingFiftMsg(),R.string.localizable.onbaordingThirdMsg()]
+    var titleArr = ["" , "" , R.string.localizable.onbaordingThirdMsg()]
+    //R.string.localizable.onbaordingFourthMsg(),R.string.localizable.onbaordingFiftMsg(),R.string.localizable.onbaordingThirdMsg()
     let imageArr : [UIImage] = [#imageLiteral(resourceName: "group3-2"), #imageLiteral(resourceName: "group3-1"), #imageLiteral(resourceName: "group3")]
     var index : Int = 0
     var controllerId = 0
     let onboarding1 = PaperOnboarding()
     let button1 = UIButton()
-    
+    var vm = OnboardingVm()
     override func viewDidLoad() {
         super.viewDidLoad()
-        forCreateCustomOnboarding()
+  
+        self.vm.delegate = self
+        self.vm.hitOnboaridngApi()
+       // forCreateCustomOnboarding()
         self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle3Copy")
         self.vw1.backgroundColor = .white
         self.vw2.backgroundColor = .white
@@ -242,5 +246,20 @@ extension OnboardingVC: PaperOnboardingDataSource, PaperOnboardingDelegate {
             }
         }
         
+    }
+}
+extension OnboardingVC : getOnboardingResponse{
+    func getOnboardingData() {
+        let str = R.string.localizable.onbaordingFourthMsg(self.vm.model?.point_accumulation?.first_login_point ?? "", self.vm.model?.point_accumulation?.first_booking_point ?? "", self.vm.model?.point_accumulation?.bookings ?? "", self.vm.model?.point_accumulation?.review_rate ?? "", self.vm.model?.point_accumulation?.view_token_notification ?? "", self.vm.model?.point_accumulation?.vendor_cancel_booking_points ?? "")
+        self.titleArr[0] = str
+         
+        if self.vm.model?.rewards?.count ?? 0 > 1{
+            let str1 = R.string.localizable.onbaordingFiftMsg("\(self.vm.model?.rewards?[0].discount ?? "-")%",self.vm.model?.rewards?[0].points ?? "" , self.vm.model?.rewards?[1].discount ?? "", self.vm.model?.rewards?[1].points ?? "")
+            self.titleArr[1] = str1
+            self.titleArr[2] = R.string.localizable.onbaordingThirdMsg()
+         }
+        
+        self.collecView.reloadData()
+        self.forCreateCustomOnboarding()
     }
 }

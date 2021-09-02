@@ -41,7 +41,10 @@ class HoliosticGuideVC: BaseViewController {
     var vm = SearchSessionViewModel()
     var catgryId = 1
     var index = 0
-    
+    var minimUmPrice = 0
+    var maximimPrice = 0
+    var origiMinPrice = 0
+    var origiMaxPrice = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
@@ -154,6 +157,9 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0{
+            if self.vm.categorymodel?.result?.count ?? 0 == 0{
+                return 0
+            }
             return 1
         }
         return self.vm.categorymodel?.result?.count ?? 0
@@ -162,6 +168,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollCell.ident, for: indexPath) as! PriceCollCell
+            cell.priceLbl.text = "$\(self.minimUmPrice)-$\(self.maximimPrice)"
             cell.priceView.layer.cornerRadius = 17
             return cell
         }else{
@@ -178,7 +185,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
             cell.vwContainCatgry.backgroundColor = UIColor().coloWithHexString(hex: "#05D9BD")
             cell.searchCategorylbl.textColor = .white
             cell.vwContainCatgry.border(width: 0.3, color: UIColor().coloWithHexString(hex: "#27FFE2"))
-            self.colectionVwCategory.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: false)
+           
         } else {
             cell.vwContainCatgry.backgroundColor = .white
             cell.searchCategorylbl.textColor = UIColor().coloWithHexString(hex: "#9a9a9a")
@@ -207,6 +214,11 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0{
             let priceView = PriceView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+            priceView?.delegate = self
+            priceView?.seekView.minValue = CGFloat(self.origiMinPrice)
+            priceView?.seekView.maxValue = CGFloat(self.origiMaxPrice)
+            priceView?.seekView.selectedMaxValue = CGFloat(self.maximimPrice)
+            priceView?.seekView.selectedMinValue = CGFloat(self.minimUmPrice)
             appDelegate.window?.addSubview(priceView!)
         }else{
         //  self.txfSearch.text = ""
@@ -217,14 +229,15 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
             catgryId = Int(self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1") ?? 0
             loadApi(categoryid: self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1", search: self.txfSearch.text ?? "", isloader: true)
             self.colectionVwCategory.reloadData()
+            //self.colectionVwCategory.scrollToItem(at: IndexPath(row: index, section: 1), at: .centeredHorizontally, animated: false)
         }
         
         }
     }
     
-    func loadApi(categoryid: String, search: String, isloader: Bool) {
+    func loadApi(categoryid: String, search: String, isloader: Bool,minPrice : Int? = 0 , maxprice : Int? = 0) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
-            vm.searchSessionApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: search, isLoader: isloader)
+            vm.searchSessionApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: search, isLoader: isloader,minPrice : minPrice , maxprice : maxprice)
             
         }
     }
@@ -233,6 +246,10 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
 
 extension HoliosticGuideVC: GetSearchSessionData {
     func colecnreloadData() {
+        self.origiMaxPrice = self.vm.categorymodel?.min_max_price?.max_price ?? 0
+        self.origiMinPrice = self.vm.categorymodel?.min_max_price?.min_price ?? 0
+        self.minimUmPrice = self.vm.categorymodel?.min_max_price?.min_price ?? 0
+        self.maximimPrice = self.vm.categorymodel?.min_max_price?.max_price ?? 0
         self.colectionVwCategory.reloadData()
     }
     
@@ -249,4 +266,14 @@ extension HoliosticGuideVC: GetSearchSessionData {
     }
     
     
+}
+extension HoliosticGuideVC : getPriceSliderValues{
+    func slidermaxMinValue(min: Int, max: Int) {
+        self.maximimPrice = max
+        self.minimUmPrice = min
+        self.colectionVwCategory.reloadData()
+        loadApi(categoryid: "\(self.catgryId)", search: self.txfSearch.text ?? "", isloader: true)
+    }
+    
+   
 }

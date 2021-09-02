@@ -54,7 +54,7 @@
                                                     <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="100"/>
+                                                    <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="handleImage" value="sliderThumb"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">

@@ -5,7 +5,9 @@
 //  Created by Techugo on 13/08/21.
 //  Copyright © 2021 ShubhamMacmini. All rights reserved.
 //
-
+protocol getPriceSliderValues : class{
+    func slidermaxMinValue(min : Int , max : Int)
+}
 import Foundation
 import UIKit
 import RangeSeekSlider
@@ -17,6 +19,9 @@ class PriceView : UIView{
     @IBOutlet weak var subbView: UIView!
     
     @IBOutlet weak var collView: UICollectionView!
+    var minimumValue = 0
+    var maxValue = 0
+    weak var delegate : getPriceSliderValues?
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -29,6 +34,7 @@ class PriceView : UIView{
     
     @IBAction func rightBtnTao(_ sender: UIButton) {
         self.removeFromSuperview()
+        self.delegate?.slidermaxMinValue(min: self.minimumValue, max: self.maxValue)
     }
     func setUp(){
         self.collView.register(LineMeasureCell.nib(), forCellWithReuseIdentifier: LineMeasureCell.ident)
@@ -39,6 +45,7 @@ class PriceView : UIView{
         seekView.maxLabelColor = .white
         self.collView.delegate = self
         self.collView.dataSource = self
+       
     }
     
     @IBAction func removeBtnTap(_ sender: UIButton) {
@@ -47,7 +54,10 @@ class PriceView : UIView{
 }
 extension PriceView : RangeSeekSliderDelegate{
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
-       
+        let upMin = minValue.rounded(.up)
+        let upMax = maxValue.rounded(.up)
+        self.minimumValue = Int(upMin)
+        self.maxValue = Int(upMax)
     }
   
 }
