@@ -9,6 +9,7 @@ let terms =  "http://52.27.53.102/pvtg/terms_condition.html"
 let aboutUs = "http://52.27.53.102/pvtg/about_us.html"
 let faq = "http://52.27.53.102/pvtg/faq.html"
 let privacy = "http://52.27.53.102/pvtg/privacy_policy.html"
+let cancelPolicy = "http://52.27.53.102/pvtg/cancel_policy.html"
 let server = testingServer
 let googlePlacesSearchApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=noida&key=AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k"
 let appLanguage = SaveToDefaults().getAppLang() ?? "en"
@@ -56,7 +57,7 @@ func socialLoginUrl()-> String {
     return url
 }
 func logOutUrl()-> String {
-    var  url = "\(server)Userapi/logout/language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Userapi/logout?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/logout",url)
     return url
@@ -97,37 +98,37 @@ func sessionDetailApi()-> String {
     print("Sessionapi/session_detail",url)
     return url
 }
-///language=\(SaveToDefaults().getAppLang() ?? "en")
+///
 func check_ticketApi(user_id: String, ticket: String, schedule_time_id: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/check_ticket?user_id=\(user_id)&ticket=\(ticket)&schedule_time_id=\(schedule_time_id)"
+    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/check_ticket?user_id=\(user_id)&ticket=\(ticket)&schedule_time_id=\(schedule_time_id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/check_ticket",url)
     return url
 }
-//&language=\(SaveToDefaults().getAppLang() ?? "en")
+//
 func ticketDataApi(user_id: String, session_id: String, schedule_time_id: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/ticket_data?user_id=\(user_id)&session_id=\(session_id)&schedule_time_id=\(schedule_time_id)"
+    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/ticket_data?user_id=\(user_id)&session_id=\(session_id)&schedule_time_id=\(schedule_time_id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/ticket_data",url)
     return url
 }
-//&language=\(SaveToDefaults().getAppLang() ?? "en")
+//
 func activeEventApi()-> String {
-    var  url = "\(server)Sessionapi/active_event"
+    var  url = "\(server)Sessionapi/active_event?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/active_event",url)
     return url
 }
-///language=\(SaveToDefaults().getAppLang() ?? "en")
+///
 func historySessionApi()-> String {
-    var  url = "\(server)Sessionapi/history_event"
+    var  url = "\(server)Sessionapi/history_event?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/history_event",url)
     return url
 }
-///language=\(SaveToDefaults().getAppLang() ?? "en")
+///
 func user_profileApi()-> String {
-    var  url = "\(server)Userapi/user_profile"
+    var  url = "\(server)Userapi/user_profile?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/user_profile",url)
     return url
@@ -159,15 +160,15 @@ func session_time_detail()-> String {
     print("Sessionapi/session_time_detail",url)
     return url
 }
-///language=\(SaveToDefaults().getAppLang() ?? "en")
+///
 func reviewUser()-> String {
-    var  url = "\(server)reviewUser"
+    var  url = "\(server)reviewUser?anguage=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("reviewUser",url)
     return url
 }
 func getCoachNotificationList()-> String {
-    var  url = "\(server)Userapi/notification_list/language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Userapi/notification_list?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/notification_list",url)
     return url
@@ -187,7 +188,7 @@ func allCategoryUrl(userid: String)-> String {
 }
 //&language=\(SaveToDefaults().getAppLang() ?? "en")
 func searchSessionUrl()-> String {
-    var  url = "\(testingServer)Sessionapi/search"
+    var  url = "\(testingServer)Sessionapi/search?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/search",url)
     return url
@@ -216,5 +217,43 @@ func getSplashPointsUrl()-> String{
     var  url = "\(testingServer)Userapi/getSplashPoints"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("getSplashPointsUrl",url)
+    return url
+}
+func getCurrencyDataUrl(id:String)-> String{
+    var  url = "\(testingServer)Sessionapi/get_currency?user_id=\(id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("getCurrencyDataUrl",url)
+    return url
+}
+
+func getPrefrenceIdUrl()-> String{
+    var  url = "https://api.mercadopago.com/checkout/preferences"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("getPrefrenceIdUrl",url)
+    return url
+    
+}
+func sessionCancelApiUrl()-> String{
+    var  url = "\(testingServer)Sessionapi/session_cancellation"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("sessionCancelApiUrl",url)
+    return url
+}
+func partialRefundApiUrl()-> String{
+    var  url = "\(testingServer)Sessionapi/mecardo_partial_payment"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("partialRefundApiUrl",url)
+    return url
+}
+func fullRefundApiUrl()-> String{
+    var  url = "\(testingServer)Sessionapi/mecardo_payment_refund"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("fullRefundApiUrl",url)
+    return url
+}
+func attendingSession()-> String{
+    var  url = "\(testingServer)Sessionapi/confirm_booking"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("attendingSession",url)
     return url
 }

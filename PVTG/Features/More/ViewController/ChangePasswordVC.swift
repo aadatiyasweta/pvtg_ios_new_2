@@ -125,7 +125,7 @@ extension ChangePasswordVC {
 //so first of call before we start let me introduce first baghpat
 extension ChangePasswordVC: ChangePassword {
     func getReponse() {
-        self.showAlertWithConfirmation1(R.string.localizable.passwrdChangedSuccess(), withTitle: "PVTG", itsController: self) { (succss) in
+        self.showAlertWithConfirmation1(R.string.localizable.passwrdChangedSuccess(), withTitle: appName, itsController: self) { (succss) in
                self.navigationController?.popViewController(animated: true)
         }
     

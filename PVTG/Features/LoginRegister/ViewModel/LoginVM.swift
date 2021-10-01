@@ -69,6 +69,7 @@ class LoginVM: BaseVm {
                     let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
                     self.model = responseModel
                     self.setDataInLocal()
+                    SaveToDefaults().setEmail(value: self.model?.email)
                     SaveToDefaults().setUserId(id: self.model?.user_id)
                     SaveToDefaults().setAccessToken(value: self.model?.user_token)
                     self.delegate?.loginSuccess()
@@ -153,14 +154,21 @@ class LoginVM: BaseVm {
             self.dismiss()
             if let json = response{
                 debugPrint(json)
+                let data = try? json["result"].rawData()
+                let jsonDecoder = JSONDecoder()
+                let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
+                self.model = responseModel
                 if json["statusCode"] == 200 {
+                  
                     self.setDataInLocal()
                     SaveToDefaults().setUserId(id: self.model?.user_id)
                     SaveToDefaults().setAccessToken(value: self.model?.user_token)
+                    SaveToDefaults().setEmail(value: self.model?.email)
                     self.delegate?.loginSuccess()
                     
                 }else if json["statusCode"] == 202{
                     self.setDataInLocal()
+                    SaveToDefaults().setEmail(value: self.model?.email)
                     SaveToDefaults().setUserId(id: self.model?.user_id)
                     SaveToDefaults().setAccessToken(value: self.model?.user_token)
                     self.delegate?.createNewuser()

@@ -1,39 +1,48 @@
-
 /* Class = "UILabel"; text = "01"; ObjectID = "1mG-TN-p3i"; */
 "1mG-TN-p3i.text" = "01";
 
+/* Class = "UILabel"; text = "Session offered in:"; ObjectID = "4sM-6U-VCV"; */
+"4sM-6U-VCV.text" = "Sesión ofrecida en:";
+
 /* Class = "UILabel"; text = "Thursday , July 3"; ObjectID = "BNd-Rq-Ks7"; */
-"BNd-Rq-Ks7.text" = "Thursday , July 3";
+"BNd-Rq-Ks7.text" = "Miercoles , Julio 3";
 
 /* Class = "UILabel"; text = " "; ObjectID = "DEh-eV-Xtq"; */
 "DEh-eV-Xtq.text" = " ";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OLw-1C-Gok"; */
-"OLw-1C-Gok.normalTitle" = "Cancel";
+"OLw-1C-Gok.normalTitle" = "Cancelar";
 
 /* Class = "UILabel"; text = "How many tickets do you need ?"; ObjectID = "Oxe-xS-5Rq"; */
-"Oxe-xS-5Rq.text" = "How many tickets do you need ?";
+"Oxe-xS-5Rq.text" = "’¿Cuántos tiquetes necesitas?";
 
 /* Class = "UIButton"; normalTitle = "Feb 2020"; ObjectID = "WcS-ub-aqW"; */
 "WcS-ub-aqW.normalTitle" = "Feb 2020";
 
+/* Class = "UILabel"; text = "English"; ObjectID = "WkH-UE-bpI"; */
+"WkH-UE-bpI.text" = "Ingles";
+
 /* Class = "UIButton"; normalTitle = "Completed"; ObjectID = "d9t-Lb-S6p"; */
-"d9t-Lb-S6p.normalTitle" = "Completed";
+"d9t-Lb-S6p.normalTitle" = "Completado";
 
 /* Class = "UILabel"; text = "About Vendor"; ObjectID = "doD-ms-D5q"; */
-"doD-ms-D5q.text" = "About Vendor";
+"doD-ms-D5q.text" = "Sobre el vendedor";
 
 /* Class = "UIButton"; normalTitle = "BOOK NOW"; ObjectID = "iJP-br-t1e"; */
-"iJP-br-t1e.normalTitle" = "BOOK NOW";
+"iJP-br-t1e.normalTitle" = "RESERVAR AHORA";
 
 /* Class = "UITextField"; placeholder = "Search any keyword"; ObjectID = "jhS-vy-LER"; */
-"jhS-vy-LER.placeholder" = "Search any keyword";
+"jhS-vy-LER.placeholder" = "Busca cualquier palabra clave";
 
 /* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "oZc-hY-dzJ"; */
-"oZc-hY-dzJ.normalTitle" = "CONTINUE";
+"oZc-hY-dzJ.normalTitle" = "CONTINUAR";
+
+/* Class = "UILabel"; text = "12$"; ObjectID = "p7v-VY-6P1"; */
+"p7v-VY-6P1.text" = "12$";
 
 /* Class = "UIButton"; normalTitle = "Feb 2020"; ObjectID = "uxS-PF-csy"; */
 "uxS-PF-csy.normalTitle" = "Feb 2020";
 
 /* Class = "UIButton"; normalTitle = "Feb 2020"; ObjectID = "wIx-f8-pvJ"; */
 "wIx-f8-pvJ.normalTitle" = "Feb 2020";
+

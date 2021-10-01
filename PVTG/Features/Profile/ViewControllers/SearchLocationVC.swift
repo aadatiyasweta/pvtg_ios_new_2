@@ -143,13 +143,14 @@ extension SearchLocationVC: UITextFieldDelegate {
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
                if string == "" {
                    if textField.text?.count ?? 0 == 1 {
-                    self.tableView?.removeFromSuperview()
+                  //  self.tableView?.removeFromSuperview()
                     self.vwShowGoogleLocation.isHidden = true
                    // self.vm.locationApi(query: string)
                       //  searchVendor_API(searchText: string)
                    }
                    else {
                        if textField.text?.count ?? 0 > 0 {
+                        self.vwShowGoogleLocation.isHidden = false
                         tableDataSource.sourceTextHasChanged(textField.text! + string)
                         // self.vm.locationApi(query: textField.text! + string)
                          //  searchVendor_API(searchText: textField.text! + string)
@@ -162,12 +163,14 @@ extension SearchLocationVC: UITextFieldDelegate {
                }
                else {
                    if textField.text?.count ?? 0 > 0 {
+                    self.vwShowGoogleLocation.isHidden = false
                     tableDataSource.sourceTextHasChanged((textField.text ?? "") + string)
                    // self.vm.locationApi(query: (textField.text ?? "") + string)
 
                   //  PlacesApi(text: textField.text! + string)
                       // searchVendor_API(searchText: textField.text! + string)
                    } else {
+                    self.vwShowGoogleLocation.isHidden = true
                     tableDataSource.sourceTextHasChanged(string)
                     // self.vm.locationApi(query: string)
                       // searchVendor_API(searchText: string)
@@ -176,30 +179,30 @@ extension SearchLocationVC: UITextFieldDelegate {
                return true
            }
            
-           func textFieldDidBeginEditing(_ textField: UITextField) {
-            self.txfSearch.text = ""
-            self.vwShowGoogleLocation.isHidden = false
-            self.vwShowGoogleLocation.backgroundColor = .clear
-            tableDataSource = GMSAutocompleteTableDataSource()
-            tableDataSource.delegate = self
-            tableDataSource.tableCellBackgroundColor = .white
-            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.vwShowGoogleLocation.frame.size.width, height: self.vwShowGoogleLocation.frame.size.height))
-            tableView?.delegate = tableDataSource
-            tableView?.dataSource = tableDataSource
-
-            vwShowGoogleLocation.addSubview(tableView ?? UITableView())
-
-
-              // self.vm.locationApi(query: (textField.text ?? ""))
-               //searchVendor_API(searchText: textField.text ?? "")
-           }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.txfSearch.text = ""
+        self.vwShowGoogleLocation.isHidden = false
+        self.vwShowGoogleLocation.backgroundColor = .clear
+        tableDataSource = GMSAutocompleteTableDataSource()
+        tableDataSource.delegate = self
+        tableDataSource.tableCellBackgroundColor = .white
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.vwShowGoogleLocation.frame.size.width, height: self.vwShowGoogleLocation.frame.size.height))
+        tableView?.delegate = tableDataSource
+        tableView?.dataSource = tableDataSource
+        
+        vwShowGoogleLocation.addSubview(tableView ?? UITableView())
+        
+        
+        // self.vm.locationApi(query: (textField.text ?? ""))
+        //searchVendor_API(searchText: textField.text ?? "")
+    }
            func textFieldDidEndEditing(_ textField: UITextField) {
             tableDataSource.sourceTextHasChanged(textField.text ?? "")
               // self.vm.locationApi(query: (textField.text ?? ""))
               // searchVendor_API(searchText: textField.text ?? "")
            }
            func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            self.tableView?.removeFromSuperview()
+         //   self.tableView?.removeFromSuperview()
             self.vwShowGoogleLocation.isHidden = true
                textField.resignFirstResponder()
                return true

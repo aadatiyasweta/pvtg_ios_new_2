@@ -127,6 +127,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var timer : Timer?
     var isFromSelection = false
     var offeredIndex = -1
+    var bookingId = ""
+    
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,8 +200,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         setVSViewShadow(radius: 10, color: .black, view: self.vwcontainTktCount, opacity: 0.12)
        // setVSViewShadow(radius: 10, color: .black, view: self.vwcontainTktCount, opacity: 0.12)
     }
-//    //essionapi/ticket_data http://52.27.53.102/pvtg/api/v1/Sessionapi/ticket_data?user_id=7&session_id=1&schedule_time_id=11
-//    Token -------->>>>>> UTQT9zsaNX
+
     func SetMap(){
         if let lat1 = self.vm.model?.latitude, let long1 = self.vm.model?.longitude{
             let lat = Double(lat1)
@@ -238,7 +239,30 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     @IBAction func cancelBtnTap(_ sender: UIButton) {
         showAlertWithConfirmation(R.string.localizable.cancelTheBooking(), withTitle: Bundle.main.appName, itsController: self) { (succsss) in
-            
+            if succsss{
+                let time = self.vm.model?.booking_date ?? ""
+                let fromattter1 = DateFormatter()
+                fromattter1.dateFormat = "yyyy-MM-dd HH:mm"
+                fromattter1.timeZone =  NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
+                let endDate = fromattter1.date(from: time) ?? Date()
+                let hours = getMinutesDifferenceFromTwoDates(start: getCurrentLocalDate(), end: endDate).hour ?? 0
+                if hours < 2{
+                    if let id = SaveToDefaults().getUserId(){
+                        let ammount = self.vm.model?.paid_amount ?? ""
+                        if let n = NumberFormatter().number(from: ammount) {
+                          let floatPrice = CGFloat(truncating: n)
+                            let fiftenPercent = CGFloat((floatPrice*15)/100)
+                            let finalPrice = floatPrice-fiftenPercent
+                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.vm.model?.payment_id ?? "", ammount: "\(finalPrice)")
+                        }
+                    }
+                }else{
+                    if let id = SaveToDefaults().getUserId(){
+                        self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
+                    }
+                    
+                }
+            }
         }
     }
     @IBAction func btnToTapPrev(_ sender: UIButton) {
@@ -468,7 +492,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         else if collectionView == self.offeredCollView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
             cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
-            self.lblsessionPrice.text = "\(self.vm.model?.session_type?[indexPath.row].price ?? "" )$"
+            if offeredIndex != -1{
+                self.lblsessionPrice.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
+            }
+           
             if offeredIndex == indexPath.row {
                 cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.01960784314, green: 0.8509803922, blue: 0.7411764706, alpha: 1)
             } else {
@@ -550,11 +577,12 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             self.pageCtrl.currentPage = indexPath.row
         }
     }
-    
-    
 }
 
 extension SessionDetailVC: GetResponse {
+    func refundAPiResponse(){
+        self.navigationController?.popViewController(animated: true)
+    }
     func sessionTimeDetail(){
         self.timeArr = self.vm.timeArr?.result ?? []
         if self.controllerId != 1{
@@ -570,8 +598,6 @@ extension SessionDetailVC: GetResponse {
                     let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
                     mainScrollview.setContentOffset(bottomOffset, animated: true)
                 }
-              
-                
             }
         }
         self.vwCollection.reloadData()
@@ -585,7 +611,6 @@ extension SessionDetailVC: GetResponse {
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false)
                     self.scrollViewBotmconstarint.constant = 97
-                  
                 }
                 break
             } else {
@@ -597,8 +622,6 @@ extension SessionDetailVC: GetResponse {
                 
             }
         }
-        
-        
     }
     
     func allTicketsSold() {
@@ -661,6 +684,8 @@ extension SessionDetailVC: GetResponse {
             self.lblNoTime.isHidden = false
             self.lblNoTime.text = R.string.localizable.noAvailableTimeFordate()
         }
+        self.vm.sessionName =  data.name_of_listing ?? ""
+        self.vm.sessionDesc = data.description ?? ""
         let value = Double(data.distance ?? "")!
         let doubleStr = String(format: "%.2f", value)
         let str = (data.city ?? "") + " " + R.string.localizable.kmaway(doubleStr)
@@ -681,9 +706,19 @@ extension SessionDetailVC: GetResponse {
             self.offeredHeightCons.constant = 0
             self.offeredIndex = -1
         }else{
+//            for value in 0..<(self.vm.model?.session_type!.count)!{
+//                if self.vm.model?.session_type?[value].session_type_id == self.vm.model?.booking_session_type{
+//                    self.vm.model?.session_type = [self.vm.model?.session_type?[value]]
+//                    self.offeredIndex = 0
+//                    break
+//                }
+//            }
+            if self.offeredIndex == -1{
+                self.offeredIndex = 0
+            }
             self.offerdView.isHidden = false
             self.offeredHeightCons.constant = 116
-            self.offeredIndex = 0
+            
         }
         self.vwCollection.reloadData()
         self.vwcalendar.reloadData()
@@ -764,13 +799,21 @@ extension SessionDetailVC {
     //Api Integration
     private func loadApi(top_search: String) {
         guard let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude()  else {return}
-        self.vm.sessionDtailApi(user_id: userid, session_id: sessionId, latitude: "\(lat)", longitude: "\(lng)", top_search: top_search)
+        self.vm.sessionDtailApi(user_id: userid, session_id: sessionId, latitude: "\(lat)", longitude: "\(lng)", top_search: top_search,bookingId: self.bookingId)
         
     }
     private func bookingApi() {
         guard let userid = SaveToDefaults().getUserId() else {return}
-        if let id = self.vm.model?.session_id, let amt = self.vm.model?.ticket_price, let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude()  {
-            self.vm.checkTicketAvailabilityApi(user_id: userid, session_id: id, latitude: "\(lat)", longitude: "\(lng)", ticket: self.lblTicketCount.text ?? "", booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", paid_amount: amt, schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")")
+        if let id = self.vm.model?.session_id, let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude()  {
+            var amt = ""
+            var offeredTypeId = ""
+            if self.offeredIndex != -1{
+                offeredTypeId = self.vm.model?.session_type?[self.offeredIndex].session_type_id ?? ""
+                amt = self.vm.model?.session_type?[self.offeredIndex].price ?? ""
+            }else{
+                return
+            }
+            self.vm.checkTicketAvailabilityApi(user_id: userid, session_id: id, latitude: "\(lat)", longitude: "\(lng)", ticket: self.lblTicketCount.text ?? "", booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", paid_amount: amt, schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", offeredTypeId: offeredTypeId)
             }
 //            self.vm.sessionBookingApi(user_id: userid, session_id: id, ticket: "\(tempTkt)", booking_date: self.selectedDate, booking_from_time: fromtime, booking_to_time: toTime, paid_amount: amt, schedule_time_id: timeId)
         }

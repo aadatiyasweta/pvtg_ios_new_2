@@ -54,6 +54,8 @@ class EditProfileVC: BaseViewController {
         super.viewDidLoad()
         vm.delegate = self
         setData()
+        
+
     }
     
     override func viewWillLayoutSubviews() {

@@ -79,6 +79,7 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SessionDetailVC.instance()
         vc.controllerId = 1
+        vc.bookingId = self.vm.model?.result?[indexPath.row].booking_id ?? ""
         vc.sessionId = self.vm.model?.result?[indexPath.row].session_id ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -1210,7 +1210,7 @@ You earned 45pts</string>
         <image name="bg" width="557.5" height="1086.5"/>
         <image name="bg-search" width="465.5" height="826.5"/>
         <image name="bgProfile" width="375" height="812"/>
-        <image name="cup" width="17.5" height="19"/>
+        <image name="cup" width="13.5" height="14"/>
         <image name="edit" width="16" height="16"/>
         <image name="logoLi" width="97.5" height="98"/>
         <image name="mail" width="14.5" height="10.5"/>

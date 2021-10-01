@@ -79,6 +79,7 @@ extension NotificationVC: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         debugPrint("\(indexPath.row)")
+        
     }
     
 }

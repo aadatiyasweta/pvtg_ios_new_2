@@ -1,3 +1,25 @@
 
+
+/* Class = "UIButton"; normalTitle = "Spanish"; ObjectID = "CmG-uN-wAt"; */
+"CmG-uN-wAt.normalTitle" = "Español";
+
+/* Class = "UIButton"; selectedTitle = "Spanish"; ObjectID = "CmG-uN-wAt"; */
+"CmG-uN-wAt.selectedTitle" = "Español";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "TA4-RI-a8L"; */
+"TA4-RI-a8L.normalTitle" = "Siguiente";
+
+/* Class = "UILabel"; text = "No More Bad Karma"; ObjectID = "Ymr-FC-7cz"; */
+"Ymr-FC-7cz.text" = " No Más Mal Karma ";
+
+/* Class = "UILabel"; text = "Select Language"; ObjectID = "Zhr-bB-ea6"; */
+"Zhr-bB-ea6.text" = "Selecciona un lenguaje";
+
 /* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "naX-nE-bQV"; */
-"naX-nE-bQV.normalTitle" = "Get Started";
+"naX-nE-bQV.normalTitle" = "Empezar";
+
+/* Class = "UIButton"; normalTitle = "English"; ObjectID = "uaa-hI-mNv"; */
+"uaa-hI-mNv.normalTitle" = "English";
+
+/* Class = "UIButton"; selectedTitle = "English"; ObjectID = "uaa-hI-mNv"; */
+"uaa-hI-mNv.selectedTitle" = "English";

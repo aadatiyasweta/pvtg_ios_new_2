@@ -79,3 +79,16 @@
 "TakePhoto" = "Take a Photo";
 "CameraAccessDenied" = "Camera Access Denied";
 "NoLocationsearchedyet" = "No Location searched yet.";
+"cancelPolicy" = "Cancellation Policy";
+"FirstLogin" = "First Login:";
+"FirstBooking" = "First Booking:";
+"Bookings" = "Bookings:";
+"ReviewsRate" = "Reviews/Rate:";
+"ViewTokenNotification" = "View Token Notification:";
+"IfVendorCancelBooking points" = "If Vendor Cancels: Booking points +5:";
+"pts" = "Pts";
+"changeLanguage" = "Change Language";
+"yes" = "Yes";
+"no" = "No";
+"willYouAttending" = "Will you be attending %@ session?";
+"notificationtitle" = "Reminder";

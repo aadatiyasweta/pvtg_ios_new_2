@@ -42,7 +42,7 @@ class RegistrationVM: BaseVm {
         let prams : [String : Any] = ["name" : name, "email": email, "country_code": country_code, "phone": phone, "acc_type": acc_type, "social_id": social_id, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
         print(prams)
         self.show()
-        api_manager.POSTApi(registrationUrl(), param: prams, header: header()) { (response, err, code) in
+        api_manager.upload(registrationUrl(), pictureData, params: prams, "image", header: header(), completion: { (err, response, code) in
             self.dismiss()
             if let json = response{
                 debugPrint(json)
@@ -51,10 +51,11 @@ class RegistrationVM: BaseVm {
                     let jsonDecoder = JSONDecoder()
                     let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
                     self.model = responseModel
+                    self.setDataInLocal()
+                    SaveToDefaults().setEmail(value: self.model?.email)
                     SaveToDefaults().setUserId(id: self.model?.user_id)
                     SaveToDefaults().setAccessToken(value: self.model?.user_token)
                     self.delegate?.successRegisteration()
-                    
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -62,7 +63,14 @@ class RegistrationVM: BaseVm {
             }else{
                 showAlert(strTitle: somethingWentWrongMessage)
             }
+        })
         }
+    func setDataInLocal(){
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(self.model) {
+            SaveToDefaults().setLogindata(data: encodedData)
+        }
+        defaults.synchronize()
     }
     
     ///API for checking email/phone existence Userapi/check_email_phone

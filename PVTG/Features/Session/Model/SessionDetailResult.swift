@@ -32,6 +32,11 @@ struct SessionDetailResult : Codable {
     let currency : String?
     let session_type : [SessionTypeModel]?
     let session_language : String?
+    let booking_session_type : String?
+    let booking_date : String?
+    let payment_id : String?
+    let paid_amount : String?
+
 	enum CodingKeys: String, CodingKey {
 
 		case session_id = "session_id"
@@ -53,6 +58,10 @@ struct SessionDetailResult : Codable {
         case vendorName = "name"
         case session_type = "session_type"
         case session_language = "session_language"
+        case booking_session_type = "booking_session_type"
+        case booking_date = "booking_date"
+        case payment_id = "payment_id"
+        case paid_amount = "paid_amount"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -74,8 +83,12 @@ struct SessionDetailResult : Codable {
 		all_date = try values.decodeIfPresent([All_date].self, forKey: .all_date)
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
          vendorName = try values.decodeIfPresent(String.self, forKey: .vendorName)
+        booking_session_type = try values.decodeIfPresent(String.self, forKey: .booking_session_type)
         session_language = try values.decodeIfPresent(String.self, forKey: .session_language)
         session_type = try values.decodeIfPresent([SessionTypeModel].self, forKey: .session_type)
+        booking_date = try values.decodeIfPresent(String.self, forKey: .booking_date)
+        payment_id = try values.decodeIfPresent(String.self, forKey: .payment_id)
+        paid_amount = try values.decodeIfPresent(String.self, forKey: .paid_amount)
 	}
 
 }

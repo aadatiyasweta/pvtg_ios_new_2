@@ -14,12 +14,12 @@ class HomeVM: BaseVm {
     var model: HomeResult?
   weak var delegate: GetHomeData?
     
-    func getHomeApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, top_search: String, city: String,minPrice : Int? = 0 , maxprice : Int? = 0) {
+    func getHomeApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, top_search: String, city: String,minPrice : Int? = 0 , maxprice : Int? = 0,currency : String) {
         var prams = [String : Any]()
         if minPrice == 0 && maxprice == 0{
             prams = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search, "city": city,"language" : SaveToDefaults().getAppLang() ?? "en"]
         }else{
-            prams = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search, "city": city,"language" : SaveToDefaults().getAppLang() ?? "en", "min_price" : minPrice ?? 0 , "max_price" : maxprice ?? 0]
+            prams = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search, "city": city,"language" : SaveToDefaults().getAppLang() ?? "en", "min_price" : minPrice ?? 0 , "max_price" : maxprice ?? 0,"selected_currency" : currency]
         }
          
         self.show()

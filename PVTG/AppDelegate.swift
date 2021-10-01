@@ -26,16 +26,17 @@ import FirebaseAuth
 class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
     var window: UIWindow?
     var tabBarVc : UITabBarController?
+    var currentVC : UIViewController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
         GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
-        GMSPlacesClient.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
+        GMSPlacesClient.provideAPIKey("AIzaSyCcR9sGmXLeCBwVXIOH2ciEsGlgmHIik98")
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        //        let vc = LoginVC.navigation()
-        
-        //let vc =  TransformerExampleViewController.instance()
+        remoteNotification(application: application)
+  
+        Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
         
         let vc = SplashVC.navigation()
         window?.rootViewController = vc
@@ -149,19 +150,62 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         ]
         print(header() ?? [:])
         api_manager.PUTApi(updateDeviceTokenUrl(), param: param, header: header()) { (response, err, stausCode) in
-            if isLogout!{
-                // removeLoginDetails()
-                DispatchQueue.main.async {
-                    
-                }
-            }
+//            if isLogout!{
+//                // removeLoginDetails()
+//                DispatchQueue.main.async {
+//                    
+//                }
+//            }
             print(response ?? "Nil")
         }
     }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
+        let userInfo = response.notification.request.content.userInfo
+        print("didReceive")
+        if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
+            print(session_id,session_name)
+            if SaveToDefaults().getAccessToken() != nil{
+                if UIApplication.shared.applicationState == .inactive{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
+                        self.performAttendingAlert(name: session_name, id: session_id)
+                    }
+                }else{
+                    self.performAttendingAlert(name: session_name, id: session_id)
+                }
+               
+            }
+        }
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("userInfo",userInfo)
+    
+        if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
+            print(session_id,session_name)
+            if SaveToDefaults().getAccessToken() != nil{
+                if application.applicationState == .active{
+                    self.performAttendingAlert(name: session_name, id: session_id)
+                }
+            }
+        }
         completionHandler(.newData)
+    }
+    func performAttendingAlert(name : String, id : String){
+        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        viewObj?.id = id
+        viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
+        viewObj?.delegate = self
+        window?.addSubview(viewObj!)
+    }
+    func hitApi(id : String){
+        let param : [String:String] = ["user_id" : SaveToDefaults().getUserId() ?? "" , "session_id":id ]
+        api_manager.POSTApi(attendingSession(), param: param, header: header()) { (json, err, statusCode) in
+            
+        }
+    }
+}
+extension AppDelegate : ReminderViewYesProtocol{
+    func getYesCallback(id:String) {
+        self.hitApi(id: id)
     }
 }

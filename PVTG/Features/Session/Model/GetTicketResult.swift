@@ -44,7 +44,10 @@ struct CustomBokingModel {
     var booking_to_time: String?
     var paid_amount: String?
     var schedule_time_id: String?
-    init(user_id: String, session_id: String, latitude: String, longitude: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String) {
+    var offeredTypeId: String?
+    var sessionName: String?
+    var sessionDesc: String?
+    init(user_id: String, session_id: String, latitude: String, longitude: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,offeredTypeId : String,sessionName: String,sessionDesc : String) {
         self.user_id = user_id
         self.session_id = session_id
         self.latitude = latitude
@@ -54,6 +57,9 @@ struct CustomBokingModel {
         self.booking_to_time = booking_to_time
         self.paid_amount = paid_amount
         self.schedule_time_id = schedule_time_id
+        self.offeredTypeId = offeredTypeId
+        self.sessionName = sessionName
+        self.sessionDesc = sessionDesc
         
     }
 }

@@ -20,7 +20,9 @@ struct HomeResult : Codable {
     let max_price : Int?
     let min_val : Int?
     let max_val : Int?
-
+    let currency_data : [String]?
+    let selected_currency : String?
+    
 	enum CodingKeys: String, CodingKey {
 
 		case all_result = "all_result"
@@ -30,6 +32,8 @@ struct HomeResult : Codable {
         case max_price = "max_price"
         case min_val = "min_val"
         case max_val = "max_val"
+        case currency_data = "currency_data"
+        case selected_currency = "selected_currency"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -41,6 +45,8 @@ struct HomeResult : Codable {
         max_price = try values.decodeIfPresent(Int.self, forKey: .max_price)
         min_val = try values.decodeIfPresent(Int.self, forKey: .min_val)
         max_val = try values.decodeIfPresent(Int.self, forKey: .max_val)
+        currency_data = try values.decodeIfPresent([String].self, forKey: .currency_data)
+        selected_currency = try values.decodeIfPresent(String.self, forKey: .selected_currency)
 	}
 
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 
 protocol GetResponse: class{
     func reloadData()
@@ -15,22 +15,27 @@ protocol GetResponse: class{
     func allTicketsSold()
     func reloadTime()
     func sessionTimeDetail()
+    func refundAPiResponse()
 }
 protocol GetBookingResponse: class{
-      func bookingSuccess()
+    func bookingSuccess()
+    func getPrefrenceId(id : String)
+  
+   
 }
 class SessionDetailViewModel: BaseVm {
     var model: SessionDetailResult?
     weak var delegate: GetResponse?
-     weak var bookingDelegate: GetBookingResponse?
+    weak var bookingDelegate: GetBookingResponse?
     var timeArr: AllTimeBase?
     var availableTickets: GetTicketResult?
     var customModel : CustomBokingModel?
-
+    var sessionName = ""
+    var sessionDesc = ""
     
-    func sessionDtailApi(user_id: String, session_id: String, latitude: String, longitude: String, top_search: String) {
+    func sessionDtailApi(user_id: String, session_id: String, latitude: String, longitude: String, top_search: String,bookingId : String) {
         let date = Date().dateInString()
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "latitude": latitude, "longitude": longitude, "top_search": top_search,"currentdatetime" : date,"language" : SaveToDefaults().getAppLang() ?? "en"]
+        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "latitude": latitude, "longitude": longitude, "top_search": top_search,"currentdatetime" : date,"language" : SaveToDefaults().getAppLang() ?? "en","booking_id" : bookingId]
         self.show()
         api_manager.GETApi(sessionDetailApi(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
@@ -54,15 +59,15 @@ class SessionDetailViewModel: BaseVm {
     }
     
     //Api Ticket Avilability (user_id: userid, session_id: id, ticket: "\(tempTkt)", booking_date: self.selectedDate, booking_from_time: fromtime, booking_to_time: toTime, paid_amount: amt, schedule_time_id: timeId)
-    func checkTicketAvailabilityApi(user_id: String, session_id: String, latitude: String, longitude: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String) {
+    func checkTicketAvailabilityApi(user_id: String, session_id: String, latitude: String, longitude: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,offeredTypeId : String) {
         self.show()
-        api_manager.GETApi(check_ticketApi(user_id: user_id, ticket: ticket, schedule_time_id: schedule_time_id), param: nil, header: header()) { (response, err, code) in
+        api_manager.GETApi(check_ticketApi(user_id: user_id, ticket: ticket, schedule_time_id: schedule_time_id), param: nil, header: header()) { [self] (response, err, code) in
             self.dismiss()
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
                  
-                    self.customModel = CustomBokingModel.init(user_id: user_id, session_id: session_id, latitude: latitude, longitude: longitude, booking_date: booking_date, booking_from_time: booking_from_time, booking_to_time: booking_to_time, paid_amount: paid_amount, schedule_time_id: schedule_time_id)
+                    self.customModel = CustomBokingModel.init(user_id: user_id, session_id: session_id, latitude: latitude, longitude: longitude, booking_date: booking_date, booking_from_time: booking_from_time, booking_to_time: booking_to_time, paid_amount: paid_amount, schedule_time_id: schedule_time_id, offeredTypeId: offeredTypeId,sessionName: self.sessionName,sessionDesc: self.sessionDesc)
                        self.delegate?.bookingSuccess()
                     
                 //    self.sessionBookingApi(user_id: user_id, session_id: session_id, ticket: ticket, booking_date: booking_date, booking_from_time: booking_from_time, booking_to_time: booking_to_time, paid_amount: paid_amount, schedule_time_id: schedule_time_id)
@@ -136,27 +141,108 @@ class SessionDetailViewModel: BaseVm {
             }
         }
     }
-    
-    func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String) {
 
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en"]
-                   self.show()
-                   api_manager.POSTApi(sessionBookingUrl(), param: prams, header: header()) { (response, err, code) in
-                       self.dismiss()
-                       if let json = response{
-                           debugPrint(json)
-                           if json["statusCode"] == 200 {
+    func getPrefrenceIdApi(price : CGFloat,name : String,desc: String,currency : String){
+   
+        let itemsArr : [[String:Any]] = [[ "title": name,
+                                           "quantity": 1,
+                                           "unit_price": price]]
         
-                             self.bookingDelegate?.bookingSuccess()
-                               
-                           }
-                           else {
-                           }
-                       }else{
-                           showAlert(strTitle: somethingWentWrongMessage)
-                       }
-                   }
-               }
+        
+        let payer : [String:Any] = ["email":SaveToDefaults().getEmail() ?? ""]
+        let param :[String:Any] = ["payer" : payer,"items":itemsArr]
+        let headerPrefrence : [String:String] = ["Authorization" : "Bearer TEST-7488660032626366-081021-6e581c702a1f21140901508fa58446dd-790689138",
+            "Content-Type" : "application/json"]
+        self.show()
+        api_manager.POSTApi(getPrefrenceIdUrl(), param: param, header: headerPrefrence,encoding: JSONEncoding.default) { (json, err, statusCode) in
+            self.dismiss()
+            if let response = json{
+                let id = response["id"].stringValue
+                self.bookingDelegate?.getPrefrenceId(id: id)
+            }
+        }
+    }
+    func sessionCancelApi(user_id: String, session_id: String,booking_id : String,isFromPartial : Bool , paymentId: String,ammount : String) {
+         self.show()
+        let param : [String:Any] = ["user_id" : user_id , "session_id" : session_id,"booking_id":booking_id]
+        api_manager.POSTApi(sessionCancelApiUrl(), param: param, header: header()) { (response, err, code) in
+            self.dismiss()
+            if let json = response{
+                debugPrint(json)
+                if json["statusCode"] == 200 {
+                    if isFromPartial{
+                        self.partialRefundApi(user_id: user_id, paymentId: paymentId, ammount: ammount)
+                    }else{
+                        self.fullRefundApi(user_id: user_id, paymentId: paymentId)
+                    }
+                }
+                else {
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                }
+            }else{
+                showAlert(strTitle: somethingWentWrongMessage)
+            }
+        }
+    }
+    func partialRefundApi(user_id: String, paymentId: String,ammount : String) {
+         self.show()
+        let param : [String:Any] = ["user_id" : user_id , "payment_id" : paymentId,"amount":ammount]
+        api_manager.POSTApi(partialRefundApiUrl(), param: param, header: header()) { (response, err, code) in
+            self.dismiss()
+            if let json = response{
+                debugPrint(json)
+                if json["statusCode"] == 200 {
+                    self.delegate?.refundAPiResponse()
+                }
+                else {
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                }
+            }else{
+                showAlert(strTitle: somethingWentWrongMessage)
+            }
+        }
+    }
+    func fullRefundApi(user_id: String, paymentId: String) {
+         self.show()
+        let param : [String:Any] = ["user_id" : user_id , "payment_id" : paymentId]
+        api_manager.POSTApi(fullRefundApiUrl(), param: param, header: header()) { (response, err, code) in
+            self.dismiss()
+            if let json = response{
+                debugPrint(json)
+                if json["statusCode"] == 200 {
+                    self.delegate?.refundAPiResponse()
+                }
+                else {
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                }
+            }else{
+                showAlert(strTitle: somethingWentWrongMessage)
+            }
+        }
+    }
+    
+    func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String,session_type_id : String? = "",paymentId : String) {
+        var prams = [String : Any]()
+        if session_type_id ?? "" == ""{
+            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","payment_id" : paymentId]
+        }else{
+            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","session_type_id" : session_type_id ?? "","payment_id" : paymentId]
+        }
+        self.show()
+        api_manager.POSTApi(sessionBookingUrl(), param: prams, header: header()) { (response, err, code) in
+            self.dismiss()
+            if let json = response{
+                debugPrint(json)
+                if json["statusCode"] == 200 {
+                    self.bookingDelegate?.bookingSuccess()
+                }
+                else {
+                }
+            }else{
+                showAlert(strTitle: somethingWentWrongMessage)
+            }
+        }
+    }
     func convertLocalToUTC(localTime: String) -> String? {
 
          let dateFormatter = DateFormatter()

@@ -152,7 +152,7 @@ class ApiManager {
                     }
                 }
                 
-                multiPart.append(data, withName: fileName, fileName: "file.png", mimeType: "image/png")
+                multiPart.append(data, withName: fileName, fileName: "\(getCurrentLocalDate()).png", mimeType: "image/png")
             }, to: url, method: .post, headers: head).responseJSON { (response) in
                 SVProgressHUD.dismiss()
                 debugPrint(response.request)

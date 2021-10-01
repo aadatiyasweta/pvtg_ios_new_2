@@ -2,6 +2,9 @@
 /* Class = "UILabel"; text = "01"; ObjectID = "1mG-TN-p3i"; */
 "1mG-TN-p3i.text" = "01";
 
+/* Class = "UILabel"; text = "Session offered in:"; ObjectID = "4sM-6U-VCV"; */
+"4sM-6U-VCV.text" = "Session offered in:";
+
 /* Class = "UILabel"; text = "Thursday , July 3"; ObjectID = "BNd-Rq-Ks7"; */
 "BNd-Rq-Ks7.text" = "Thursday , July 3";
 
@@ -17,6 +20,9 @@
 /* Class = "UIButton"; normalTitle = "Feb 2020"; ObjectID = "WcS-ub-aqW"; */
 "WcS-ub-aqW.normalTitle" = "Feb 2020";
 
+/* Class = "UILabel"; text = "English"; ObjectID = "WkH-UE-bpI"; */
+"WkH-UE-bpI.text" = "English";
+
 /* Class = "UIButton"; normalTitle = "Completed"; ObjectID = "d9t-Lb-S6p"; */
 "d9t-Lb-S6p.normalTitle" = "Completed";
 
@@ -31,6 +37,9 @@
 
 /* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "oZc-hY-dzJ"; */
 "oZc-hY-dzJ.normalTitle" = "CONTINUE";
+
+/* Class = "UILabel"; text = "12$"; ObjectID = "p7v-VY-6P1"; */
+"p7v-VY-6P1.text" = "12$";
 
 /* Class = "UIButton"; normalTitle = "Feb 2020"; ObjectID = "uxS-PF-csy"; */
 "uxS-PF-csy.normalTitle" = "Feb 2020";

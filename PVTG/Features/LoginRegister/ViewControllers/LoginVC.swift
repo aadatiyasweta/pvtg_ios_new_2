@@ -291,7 +291,7 @@ extension LoginVC {
     
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if #available(iOS 13.0, *) {
+        
             if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
                 let appleId = appleIDCredential.user
                 let appleUserFirstName = appleIDCredential.fullName?.givenName
@@ -303,11 +303,9 @@ extension LoginVC {
                  Socialdata["Social_type"] = "apple"
                  makeRequestToSocialSignup(accountType: "apple", social_id: appleId )
             }
-        } else {
-            // Fallback on earlier versions
         }
 
-        }
+
 
     //Mark:-GoogleSignup
     func googleLogin() {

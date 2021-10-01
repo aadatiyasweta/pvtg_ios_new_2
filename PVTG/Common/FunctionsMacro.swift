@@ -2009,14 +2009,14 @@ extension CGPoint {
     }
 }
 func AttriButedcolor(str1 : String , str2 : String) -> NSAttributedString{
-    let color1 = #colorLiteral(red: 0.431372549, green: 0.431372549, blue: 0.431372549, alpha: 1)
-    let color2 = #colorLiteral(red: 0.9450980392, green: 0.2078431373, blue: 0.2078431373, alpha: 1)
+    let color1 = UIColor.white
+    let color2 =  UIColor.white
     let attrStr1 = NSMutableAttributedString.init(string: str1)
     attrStr1.addAttribute(NSAttributedString.Key.foregroundColor, value: color1, range: NSMakeRange(0, attrStr1.length))
     attrStr1.addAttribute(NSAttributedString.Key.font, value: getFont(Fonts.regular.rawValue, 14)!, range: NSMakeRange(0, attrStr1.length))
     let attrStr2 = NSMutableAttributedString.init(string: str2)
     attrStr2.addAttribute(NSAttributedString.Key.foregroundColor, value: color2, range: NSMakeRange(0, attrStr2.length))
-    attrStr2.addAttribute(NSAttributedString.Key.font, value: getFont(Fonts.regular.rawValue, 14)!, range: NSMakeRange(0, attrStr2.length))
+    attrStr2.addAttribute(NSAttributedString.Key.font, value: getFont(Fonts.semiBold.rawValue, 14)!, range: NSMakeRange(0, attrStr2.length))
     attrStr1.append(attrStr2)
     return attrStr1
 }
@@ -2073,7 +2073,7 @@ func isNtworkReachable() -> Bool {
 }
 func showAlert(strTitle:String)
 {
-    let alertViewController = UIAlertController(title: "PVTG", message: strTitle, preferredStyle: .alert)
+    let alertViewController = UIAlertController(title: appName, message: strTitle, preferredStyle: .alert)
     alertViewController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
     appDelegate.window?.rootViewController?.present(alertViewController, animated: true, completion: nil)
 }

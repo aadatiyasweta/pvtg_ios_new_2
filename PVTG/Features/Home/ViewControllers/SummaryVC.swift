@@ -9,7 +9,7 @@
 import UIKit
 import Cosmos
 import GoogleMaps
-
+import MercadoPagoSDK
 
 
 
@@ -46,7 +46,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     var vm = SessionDetailViewModel()
      var mapView:GMSMapView?
     var customModel : CustomBokingModel?
-    
+    var ammountPayment = ""
+    var pointsPayent = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.vm.bookingDelegate = self
@@ -103,8 +104,13 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         var amount = ""
         var points = ""
         var price = 0
-        if let tkt = Int(self.totalTkt), let pr = Int(self.ticketModel?.ticket_price ?? "0"){
-            price = tkt*pr
+        var flaotPrice : CGFloat = 0.0
+        if let n = NumberFormatter().number(from: self.customModel?.paid_amount ?? "") {
+            flaotPrice = CGFloat(truncating: n)
+            
+        }
+        if let tkt = Int(self.totalTkt){
+            price = tkt*Int(flaotPrice)
             amount = "\(price)"
         }
         if self.usePvtBtn.isSelected{
@@ -118,8 +124,14 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 points = "300"
             }
         }
+        if let n = NumberFormatter().number(from: amount) {
+            flaotPrice = CGFloat(truncating: n)
+            
+        }
+        self.ammountPayment = amount
+        self.pointsPayent = points
+        self.vm.getPrefrenceIdApi(price: flaotPrice, name: self.customModel?.sessionName ?? "", desc: self.customModel?.sessionDesc ?? "", currency: "$")
       
-        self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: amount, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:points )
     }
  
     
@@ -154,7 +166,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 
 extension SummaryVC {
     func setDta() {
-        if let name = self.bookingDetails?.name_of_listing, let rating = self.bookingDetails?.rating, let place = self.bookingDetails?.city, let dist = self.bookingDetails?.distance, let price = self.ticketModel?.ticket_price{
+        if let name = self.bookingDetails?.name_of_listing, let rating = self.bookingDetails?.rating, let place = self.bookingDetails?.city, let dist = self.bookingDetails?.distance, let price = self.customModel?.paid_amount{
             let pt = Int(self.ticketModel?.total_point ?? "0")
             var url = ""
             for val in self.bookingDetails?.images ?? []{
@@ -172,8 +184,14 @@ extension SummaryVC {
             let str = place + " " + R.string.localizable.kmaway(doubleStr)
             self.lblPlacewithDistance.text = str
             self.toatalTickets.text = self.totalTkt
-            if let tkt = Int(self.totalTkt), let pr = Int(price){
-                self.totalFare.text = "$\(tkt*pr)"
+            var flaotPrice : CGFloat = 0.0
+            if let n = NumberFormatter().number(from: price) {
+                flaotPrice = CGFloat(truncating: n)
+                
+            }
+            
+            if let tkt = Int(self.totalTkt){
+                self.totalFare.text = "$\(tkt*Int(flaotPrice))"
 
             }
             if pt ?? 0 < 200{
@@ -228,8 +246,74 @@ extension SummaryVC {
       })
       task.resume()
   }
+    func doPayment(id : String){
+        print(id)
+        let builder = MercadoPagoCheckoutBuilder(publicKey: "TEST-55326d65-65a3-4561-a7fd-176149c86680", preferenceId: id)
+        builder.setLanguage("es")
+        let checkout = MercadoPagoCheckout(builder: builder)
+        let config = PXAdvancedConfiguration()
+        config.expressEnabled = true
+        builder.setAdvancedConfiguration(config: config)
+        builder.setColor(checkoutColor: .green)
+       builder.setPrivateKey(key: "TEST-7488660032626366-081021-6e581c702a1f21140901508fa58446dd-790689138")
+        if let myNavigationController = navigationController {
+            checkout.start(navigationController: myNavigationController, lifeCycleProtocol: self)
+    
+        }
+    }
+
+    /*
+     Public Key
+     APP_USR-98d88762-c632-470d-83e1-3b2b519bdcec
+
+     Access Token
+     APP_USR-7488660032626366-081021-f6a853662803b7ae35548fb1c44b7b5b-790689138 */
+
+}
+
+//TEST-TEST-7488660032626366-081021-6e581c702a1f21140901508fa58446dd-790689138
+//TEST-TEST-55326d65-65a3-4561-a7fd-176149c86680
+// MARK: Optional Lifecycle protocol implementation example.
+extension SummaryVC: PXLifeCycleProtocol , PXPaymentProcessor{
+    func paymentProcessorViewController() -> UIViewController? {
+        print("px - paymentProcessorViewController")
+        return nil
+    }
+    
+    func support() -> Bool {
+        return false
+    }
+    
+    func finishCheckout() -> ((_ payment: PXResult?) -> Void)? {
+        print("finishCheckout1")
+        return ({ (_ payment: PXResult?) in
+            print("finishCheckout")
+            if payment?.getStatus() ?? "" == "approved"{
+                self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: self.ammountPayment, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:self.pointsPayent,session_type_id: self.customModel?.offeredTypeId ?? "",paymentId: payment?.getPaymentId() ?? "")
+            }
+            else{
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        })
+    }
+    func cancelCheckout() -> (() -> Void)? {
+        print("px - cancelCheckout")
+        return nil
+    }
+
+    func changePaymentMethodTapped() -> (() -> Void)? {
+        return { () in
+            print("px - changePaymentMethodTapped")
+        }
+    }
 }
 extension SummaryVC : GetBookingResponse{
+   
+    func getPrefrenceId(id: String) {
+        print(id)
+        self.doPayment(id: id)
+    }
     func bookingSuccess() {
         let vc = ThankyouVC.instance()
         if self.ticketModel?.user_booking ?? 0 == 0{

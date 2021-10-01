@@ -19,14 +19,19 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     override func viewDidLoad() {
         super.viewDidLoad()
        // self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-       
+      //  NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("reminderNotification"), object: nil)
     }
     
-    
+    @objc func methodOfReceivedNotification(notification: Notification) {
+        let info = notification.userInfo
+        
+        appDelegate.performAttendingAlert(name : info?["name"] as? String ?? "", id : info?["session_id"] as? String ?? "")
+    }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
        // self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
        // hideLoadingView()
+      //  NotificationCenter.default.removeObserver(self, name: Notification.Name("reminderNotification"), object: nil)
     }
 
     func addSwipeGesture() {
@@ -48,6 +53,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        
        // addSwipeGesture()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -124,7 +130,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func showAlertWithConfirmation(_ message: String, withTitle title: String, itsController controller: UIViewController, completion completionBlock: @escaping (_ success: Bool) -> Void) {
+    func showAlertWithConfirmation(_ message: String, withTitle title: String, itsController controller: UIViewController,okBtn : String? = R.string.localizable.ok(),cancelBtn : String? = R.string.localizable.cancel(),completion completionBlock: @escaping (_ success: Bool) -> Void) {
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: {(_ alert: UIAlertAction) -> Void in
             completionBlock(true)

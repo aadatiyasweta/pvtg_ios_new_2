@@ -41,13 +41,14 @@ class RegistrationvC: BaseViewController {
     @IBOutlet weak var lblPaswdErr: UILabel!
     @IBOutlet weak var lblConfrmPaswdErr: UILabel!
     @IBOutlet weak var lblmobileErr: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
     
     //MARK:- Variables
     var regVM = RegistrationVM()
     var loginVM = LoginVM()
     var imageData = Data()
     var socialData = [String: String]()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextfield()
@@ -63,6 +64,12 @@ class RegistrationvC: BaseViewController {
     }
     
     //MARK:- IBActions
+    
+    
+    @IBAction func profilePicBtnTap(_ sender: UIButton) {
+        self.showSheet()
+    }
+    
     @IBAction func tapSubmit(_ sender: UIButton) {
         self.txfEmail.resignFirstResponder()
         self.txfPassword.resignFirstResponder()
@@ -71,7 +78,12 @@ class RegistrationvC: BaseViewController {
         self.txfMobileNo.resignFirstResponder()
             if validRegistrationetails() {
                 SaveToDefaults().setIsNew(isNew: true)
-                self.regVM.checkinEmailPhoneApi(email: self.txfEmail.text ?? "", country_code: "+91", phone: self.txfMobileNo.text ?? "", password: self.txfPassword.text ?? "", name: self.txffullName.text ?? "", acc_type: "normal", social_id: "", pictureData: imageData)
+                if self.socialData.isEmpty{
+                    self.regVM.checkinEmailPhoneApi(email: self.txfEmail.text ?? "", country_code: "+91", phone: self.txfMobileNo.text ?? "", password: self.txfPassword.text ?? "", name: self.txffullName.text ?? "", acc_type: "normal", social_id: "", pictureData: imageData)
+                }else{
+                    self.regVM.checkinEmailPhoneApi(email: self.txfEmail.text ?? "", country_code: "+91", phone: self.txfMobileNo.text ?? "", password: self.txfPassword.text ?? "", name: self.txffullName.text ?? "", acc_type: self.socialData["Social_type"] ?? "normal", social_id: self.socialData["id"] ?? "", pictureData: imageData)
+                }
+              
             }
             
         }
@@ -84,8 +96,7 @@ class RegistrationvC: BaseViewController {
 }
 
 extension RegistrationvC: AfterRegistration{
-    
-    
+  
     func successRegisteration() {
       
         let vc = TransformerExampleViewController.instance()
@@ -231,4 +242,80 @@ extension RegistrationvC {
     
     
     
+}
+extension RegistrationvC {
+    func showSheet() {
+        let alertSheet = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertSheet.view.tintColor = .black
+        
+        let photoAction = UIAlertAction.init(title: R.string.localizable.pickfromCameraRoll(), style: .default) { (camera) in
+            havePhotoAccess(completionHandler: { (isAuthorized) in
+                if isAuthorized {
+                    self.openImagePicker(sourceType: .photoLibrary)
+                }else{
+                    self.showOpenSettingAlert(title: R.string.localizable.takePhoto(), message: photosPermissionNeededMessage, completion: {
+                        
+                    })
+                }
+            })
+            
+        }
+        
+        let cameraAction = UIAlertAction.init(title: R.string.localizable.takePhoto(), style: .default) { (camera) in
+            haveCameraAccess(completionHandler: { (isAuthorized) in
+                if isAuthorized {
+                    self.openImagePicker(sourceType: .camera)
+                }else{
+                    self.showOpenSettingAlert(title: R.string.localizable.cameraAccessDenied(), message: cameraPermissionNeededMessage, completion: {
+                        
+                    })
+                }
+            })
+            
+        }
+        let cancelAction = UIAlertAction.init(title: R.string.localizable.cancel(), style: .cancel, handler: nil)
+        alertSheet.addAction(cameraAction)
+        alertSheet.addAction(photoAction)
+        alertSheet.addAction(cancelAction)
+        self.present(alertSheet, animated: true, completion: nil)
+    }
+    func openImagePicker(sourceType:UIImagePickerController.SourceType){
+        
+        DispatchQueue.main.async {
+            let imagePicker = UIImagePickerController.init()
+            imagePicker.sourceType = sourceType
+            imagePicker.allowsEditing = false
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print(info)
+        picker.dismiss(animated: true) {
+            if info[.originalImage] != nil {
+                
+                if let image = info[.originalImage] as? UIImage{
+                    self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
+                    DispatchQueue.main.async {
+                        
+                        self.userImage.image = image
+                        self.userImage.contentMode = .scaleAspectFill
+                        
+                        
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+  
 }

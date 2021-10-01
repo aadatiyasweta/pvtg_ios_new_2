@@ -45,6 +45,8 @@ class HoliosticGuideVC: BaseViewController {
     var maximimPrice = 0
     var origiMinPrice = 0
     var origiMaxPrice = 0
+    var selectedCurrency = ""
+    var isOpenPopUp = false
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
@@ -52,16 +54,16 @@ class HoliosticGuideVC: BaseViewController {
         self.btnClose.isHidden = false
         self.colectionVwCategory.isPagingEnabled = true
         
-        if let userid = SaveToDefaults().getUserId() {
-        vm.getAllCategoryApi(user_id: userid)
-        }
-        loadApi(categoryid: "\(catgryId)", search: "", isloader: true)
+        
+     
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        if let userid = SaveToDefaults().getUserId() {
+            vm.getAllCategoryApi(user_id: userid)
+        }
     }
     
     func setShadowToView() {
@@ -168,7 +170,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollCell.ident, for: indexPath) as! PriceCollCell
-            cell.priceLbl.text = "$\(self.minimUmPrice)-$\(self.maximimPrice)"
+            cell.priceLbl.text = "\(self.selectedCurrency)\(self.minimUmPrice)-\(self.selectedCurrency)\(self.maximimPrice)"
             cell.priceView.layer.cornerRadius = 17
             return cell
         }else{
@@ -219,7 +221,19 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
             priceView?.seekView.maxValue = CGFloat(self.origiMaxPrice)
             priceView?.seekView.selectedMaxValue = CGFloat(self.maximimPrice)
             priceView?.seekView.selectedMinValue = CGFloat(self.minimUmPrice)
+            priceView?.maxValue = self.maximimPrice
+            priceView?.minimumValue = self.minimUmPrice
+            priceView?.selectCurrencyFiled.text = self.selectedCurrency
+            priceView?.currencyArr = self.vm.categorymodel?.currency_data ?? []
             appDelegate.window?.addSubview(priceView!)
+            for val in 0..<(self.vm.categorymodel?.currency_data!.count)!{
+                if self.vm.categorymodel?.currency_data?[val] == self.selectedCurrency{
+                    priceView?.currentIndex = val
+                    priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
+                    priceView?.pickerView.reloadAllComponents()
+                    break
+                }
+            }
         }else{
         //  self.txfSearch.text = ""
         if index == indexPath.row {
@@ -227,7 +241,13 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
         } else {
             index = indexPath.row
             catgryId = Int(self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1") ?? 0
-            loadApi(categoryid: self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1", search: self.txfSearch.text ?? "", isloader: true)
+            //
+            if self.isOpenPopUp{
+                loadApi(categoryid: "\(self.catgryId)", search: "", isloader: true,minPrice: self.minimUmPrice,maxprice: self.maximimPrice)
+            }else{
+                loadApi(categoryid: self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1", search: self.txfSearch.text ?? "", isloader: true)
+            }
+            
             self.colectionVwCategory.reloadData()
             //self.colectionVwCategory.scrollToItem(at: IndexPath(row: index, section: 1), at: .centeredHorizontally, animated: false)
         }
@@ -237,7 +257,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
     
     func loadApi(categoryid: String, search: String, isloader: Bool,minPrice : Int? = 0 , maxprice : Int? = 0) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
-            vm.searchSessionApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: search, isLoader: isloader,minPrice : minPrice , maxprice : maxprice)
+            vm.searchSessionApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: search, isLoader: isloader,minPrice : minPrice , maxprice : maxprice,currency: self.selectedCurrency)
             
         }
     }
@@ -250,7 +270,17 @@ extension HoliosticGuideVC: GetSearchSessionData {
         self.origiMinPrice = self.vm.categorymodel?.min_max_price?.min_price ?? 0
         self.minimUmPrice = self.vm.categorymodel?.min_max_price?.min_price ?? 0
         self.maximimPrice = self.vm.categorymodel?.min_max_price?.max_price ?? 0
+        if self.vm.categorymodel?.currency_data?.count ?? 0 > 0{
+            self.selectedCurrency =  self.vm.categorymodel?.currency_data?[0] ?? ""
+        }
+     
         self.colectionVwCategory.reloadData()
+        if self.vm.categorymodel?.result?.count ?? 0 > 0{
+
+            self.catgryId = Int(self.vm.categorymodel?.result?[0].category_id ?? "1") ?? 0
+            loadApi(categoryid: "\(self.catgryId)", search: "", isloader: true,minPrice: 0,maxprice: 0)
+        }
+       
     }
     
     func reloadData() {
@@ -268,11 +298,14 @@ extension HoliosticGuideVC: GetSearchSessionData {
     
 }
 extension HoliosticGuideVC : getPriceSliderValues{
-    func slidermaxMinValue(min: Int, max: Int) {
+    func slidermaxMinValue(min: Int, max: Int, currency: String) {
+   
         self.maximimPrice = max
         self.minimUmPrice = min
+        self.selectedCurrency = currency
         self.colectionVwCategory.reloadData()
-        loadApi(categoryid: "\(self.catgryId)", search: self.txfSearch.text ?? "", isloader: true)
+        loadApi(categoryid: "\(self.catgryId)", search: self.txfSearch.text ?? "", isloader: true,minPrice: min,maxprice: max)
+        self.isOpenPopUp = true
     }
     
    

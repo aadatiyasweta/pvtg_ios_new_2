@@ -46,12 +46,13 @@ class HomeViewController: BaseViewController {
     var lngitude: Double?
     var placesClient: GMSPlacesClient!
     var categoryArr = [Category]()
-    var id = "0"
+    var id = "-1"
     var city = ""
     var minimUmPrice = 0
     var maximimPrice = 0
     var origiMinPrice = 0
     var origiMaxPrice = 0
+    var selectedCurrency = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // self.locationManager.startUpdatingLocation()
@@ -64,12 +65,15 @@ class HomeViewController: BaseViewController {
             self.userimg.layer.borderColor = UIColor().coloWithHexString(hex: "#05d9bd").cgColor
             self.userimg.image = UIImage(named: "more")
         }
-       
+//        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+//        viewObj?.id = id
+//        window?.addSubview(viewObj!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         self.id = "0"
+        // self.id = "-1"
+        appDelegate.currentVC = self
          let address = SaveToDefaults().getformattedAddress()
         if address ?? "" == "" {
             toDelegateSelf()
@@ -79,7 +83,7 @@ class HomeViewController: BaseViewController {
             self.city = SaveToDefaults().getCity() ?? ""
             self.lblLocn.text = address
            
-            loadApi(categoryid: "\(id)")
+            loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
         }
 //        if let pic = SaveToDefaults().getProfilePic() {
 //            loadImage(pic, self.userimg, activity: nil, defaultImage: UIImage(named: "more"))
@@ -96,24 +100,32 @@ class HomeViewController: BaseViewController {
     
     
     
-    func loadApi(categoryid: String , minPrice : Int? = 0 , maxPrice : Int? = 0) {
+    func loadApi(categoryid: String , minPrice : Int? = 0 , maxPrice : Int? = 0,currency : String) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
             let value = self.lblLocn.text ?? ""
            // let val = value.split(separator: ",")
             if self.city == ""{
-                if categoryid == "0"{
-                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value,minPrice: minPrice , maxprice: maxPrice)
+                if  self.id == "-1"{
+                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
                 }else{
-                     homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minPrice , maxprice: maxPrice)
+                    if categoryid == "0"{
+                        homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                    }else{
+                         homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                    }
+                }
+            }else{
+                if self.id == "-1"{
+                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                }else{
+                    if categoryid == "0"{
+                        homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: self.city,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                    }
+                    else{
+                        homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                    }
                 }
                
-            }else{
-                if categoryid == "0"{
-                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: self.city,minPrice: minPrice , maxprice: maxPrice)
-                }
-                else{
-                    homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city,minPrice: minPrice , maxprice: maxPrice)
-                }
             }
         }
     }
@@ -175,7 +187,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollCell.ident, for: indexPath) as! PriceCollCell
-            cell.priceLbl.text = "$\(self.minimUmPrice)-$\(self.maximimPrice)"
+            cell.priceLbl.text = "\(self.selectedCurrency)\(self.minimUmPrice)-\(self.selectedCurrency)\(self.maximimPrice)"
             return cell
         }
         else{
@@ -253,7 +265,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 //        if indexPath.row == categoryArr.count-1 || indexPath.row == 0 {
 //            return CGSize(width: label.frame.size.width + 91, height: 65)
 //        }
-        return CGSize(width: label.frame.size.width + 71, height: 65)
+        return CGSize(width: label.frame.size.width + 74, height: 65)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0{
@@ -265,13 +277,27 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             priceView?.seekView.maxValue = CGFloat(self.origiMaxPrice)
             priceView?.seekView.selectedMaxValue = CGFloat(self.maximimPrice)
             priceView?.seekView.selectedMinValue = CGFloat(self.minimUmPrice)
-              appDelegate.window?.addSubview(priceView!)
+            priceView?.maxValue = self.maximimPrice
+            priceView?.minimumValue = self.minimUmPrice
+            priceView?.currencyArr = self.homevm.model?.currency_data ?? []
+            priceView?.selectCurrencyFiled.text = self.selectedCurrency
+         
+            appDelegate.window?.addSubview(priceView!)
+            for val in 0..<(self.homevm.model?.currency_data!.count)!{
+                if self.homevm.model?.currency_data?[val] == self.selectedCurrency{
+                    priceView?.currentIndex = val
+                    priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
+                    priceView?.pickerView.reloadAllComponents()
+                    break
+                }
+            }
+           
         }else{
         if self.categoryArr.count == 2{
             if self.categoryArr[1].image == ""{
                 if indexPath.row == 0{
                     id = "0"
-                    loadApi(categoryid: "0")
+                    loadApi(categoryid: "0", currency: self.selectedCurrency)
                 }else{
                     let vc = TransformerExampleViewController.instance()
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -281,9 +307,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 } else {
                     id = categoryArr[indexPath.row].id ?? ""
                     if id == "0" {
-                         loadApi(categoryid: "0")
+                        loadApi(categoryid: "0", currency: self.selectedCurrency)
                     }else {
-                        loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+                        loadApi(categoryid: categoryArr[indexPath.row].id ?? "", currency: self.selectedCurrency)
                     }
                     
                 }
@@ -292,12 +318,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             
         }else{
             if id == categoryArr[indexPath.row].id ?? "" {
+                
             } else {
                 id = categoryArr[indexPath.row].id ?? ""
                 if id == "0" {
-                     loadApi(categoryid: "0")
+                    loadApi(categoryid: "0", currency: self.selectedCurrency)
                 }else {
-                    loadApi(categoryid: categoryArr[indexPath.row].id ?? "")
+                    loadApi(categoryid: categoryArr[indexPath.row].id ?? "", currency: self.selectedCurrency)
                 }
             }
         }
@@ -372,7 +399,7 @@ extension HomeViewController: CLLocationManagerDelegate{
                 SaveToDefaults().setCity(value: self.city)
                 SaveToDefaults().setLatitude(lat: location.latitude)
                 SaveToDefaults().setLongtitude(lon: location.longitude)
-                self.loadApi(categoryid: "\(self.id)")
+                self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
                 if let addressLineArray = addrss.lines{
                     if addressLineArray.count>0{
                         // self.txtAddress.text = getAddress
@@ -401,7 +428,7 @@ extension HomeViewController: GetHomeData {
                 self.categoryArr.append(Category(name: i.category_name ?? "", image: i.category_image ?? "", id: i.category_id ?? ""))
             }
         }
-        
+        self.selectedCurrency = self.homevm.model?.selected_currency ?? "$"
         if self.homevm.model?.all_result?.count == 0 {
             self.lblNoSession.text = R.string.localizable.noSession()
         } else {
@@ -418,10 +445,11 @@ extension HomeViewController: GetHomeData {
 }
 
 extension HomeViewController : getPriceSliderValues{
-    func slidermaxMinValue(min: Int, max: Int) {
+    func slidermaxMinValue(min: Int, max: Int, currency: String) {
+        self.selectedCurrency = currency
         self.maximimPrice = max
         self.minimUmPrice = min
-        self.loadApi(categoryid: id,minPrice: min , maxPrice: max)
+        self.loadApi(categoryid: id,minPrice: min , maxPrice: max, currency: currency)
        
     }
 

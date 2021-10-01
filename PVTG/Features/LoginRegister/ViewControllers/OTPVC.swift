@@ -100,7 +100,7 @@ class OTPVC: BaseViewController {
     
     @IBAction func verifyBtnTap(_ sender: UIButton) {
         if self.otp == "" {
-            showAlertView(emptyOTP, title: "PVTG")
+            showAlertView(emptyOTP, title: appName)
         } else {
             self.vm.otpCheckApi(email: self.email, otp: self.otp)
         }

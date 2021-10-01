@@ -154,17 +154,23 @@
 		18EACC4B25A58C0D00B1F959 /* RateUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EACC4A25A58C0D00B1F959 /* RateUsVC.swift */; };
 		18F4DE6925A8465E00E7827A /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4DE6825A8465D00E7827A /* UPCarouselFlowLayout.swift */; };
 		62DEB8BD2B65508163B88D08 /* Pods_PVTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */; };
-		D62D731226C6754500DFD0DA /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D731126C6754500DFD0DA /* PriceView.xib */; };
+		D6072A3B26E8BB1B003BC668 /* OnboardingFirstPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */; };
+		D6072A9226E8C8AE003BC668 /* OnboardingSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */; };
 		D62D733E26C67C3B00DFD0DA /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D733D26C67C3B00DFD0DA /* PriceView.swift */; };
 		D62D734326C68DA700DFD0DA /* LineMeasureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */; };
 		D62D734426C68DA700DFD0DA /* LineMeasureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */; };
 		D6573BF525CCF02500CB64DD /* CircularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6573BF325CCF02500CB64DD /* CircularCell.swift */; };
 		D6573BF625CCF02500CB64DD /* CircularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6573BF425CCF02500CB64DD /* CircularCell.xib */; };
+		D69176472705976C0005C572 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69176462705976C0005C572 /* ReminderView.swift */; };
+		D69176782705ADF10005C572 /* ReminderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D691767A2705ADF10005C572 /* ReminderView.xib */; };
 		D6C95FD926BD4AE400DC5719 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C95FD826BD4AE400DC5719 /* R.generated.swift */; };
 		D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C95FE026BD4BA000DC5719 /* Localizable.strings */; };
 		D6D522B626CA67EB00CF9E95 /* PriceCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D522B426CA67EB00CF9E95 /* PriceCollCell.swift */; };
 		D6D522B726CA67EB00CF9E95 /* PriceCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D522B526CA67EB00CF9E95 /* PriceCollCell.xib */; };
 		D6DBB14E2681B4840061DC05 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBB14D2681B4840061DC05 /* PaymentVC.swift */; };
+		D6DC8D8226F36E23009E61EC /* OnboardingFirstPointsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8D8426F36E23009E61EC /* OnboardingFirstPointsCell.xib */; };
+		D6DC8D8A26F36E75009E61EC /* OnboardingSecondCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8D8C26F36E75009E61EC /* OnboardingSecondCell.xib */; };
+		D6DC8D9F26F3707A009E61EC /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8DA126F3707A009E61EC /* PriceView.xib */; };
 		D6E9764E26C5457B00204246 /* LanguageChnageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E9764D26C5457B00204246 /* LanguageChnageVC.swift */; };
 		D6F0342F26DF3E6D00E353F2 /* OnboardingVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0342E26DF3E6D00E353F2 /* OnboardingVm.swift */; };
 		D6F0343626DF413700E353F2 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0343126DF413600E353F2 /* OnboardingModel.swift */; };
@@ -341,18 +347,42 @@
 		558B74FBCF5C95B718FAB54C /* Pods-PVTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.release.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.release.xcconfig"; sourceTree = "<group>"; };
 		5FAAD99D1247D339D5164761 /* Pods-PVTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.debug.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.debug.xcconfig"; sourceTree = "<group>"; };
 		9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PVTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D62D731126C6754500DFD0DA /* PriceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceView.xib; sourceTree = "<group>"; };
+		D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstPointsCell.swift; sourceTree = "<group>"; };
+		D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondCell.swift; sourceTree = "<group>"; };
 		D62D733D26C67C3B00DFD0DA /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineMeasureCell.swift; sourceTree = "<group>"; };
 		D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineMeasureCell.xib; sourceTree = "<group>"; };
 		D6573BF325CCF02500CB64DD /* CircularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCell.swift; sourceTree = "<group>"; };
 		D6573BF425CCF02500CB64DD /* CircularCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularCell.xib; sourceTree = "<group>"; };
+		D69176462705976C0005C572 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		D69176792705ADF10005C572 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReminderView.xib; sourceTree = "<group>"; };
+		D691767D2705ADF50005C572 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReminderView.strings; sourceTree = "<group>"; };
+		D691767F2705ADF70005C572 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ReminderView.strings; sourceTree = "<group>"; };
 		D6C95FD826BD4AE400DC5719 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D6C95FDF26BD4BA000DC5719 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6C95FE126BD4BA400DC5719 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6D522B426CA67EB00CF9E95 /* PriceCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollCell.swift; sourceTree = "<group>"; };
 		D6D522B526CA67EB00CF9E95 /* PriceCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceCollCell.xib; sourceTree = "<group>"; };
 		D6DBB14D2681B4840061DC05 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
+		D6DC8D8326F36E23009E61EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OnboardingFirstPointsCell.xib; sourceTree = "<group>"; };
+		D6DC8D8626F36E28009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OnboardingFirstPointsCell.strings; sourceTree = "<group>"; };
+		D6DC8D8826F36E2A009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/OnboardingFirstPointsCell.strings; sourceTree = "<group>"; };
+		D6DC8D8B26F36E75009E61EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OnboardingSecondCell.xib; sourceTree = "<group>"; };
+		D6DC8D9026F36E78009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OnboardingSecondCell.strings; sourceTree = "<group>"; };
+		D6DC8D9226F36E7A009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/OnboardingSecondCell.strings; sourceTree = "<group>"; };
+		D6DC8D9426F36ED4009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Onboarding.strings; sourceTree = "<group>"; };
+		D6DC8D9626F36EDB009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Onboarding.strings; sourceTree = "<group>"; };
+		D6DC8D9826F36F3C009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
+		D6DC8D9A26F36F7B009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Login.strings; sourceTree = "<group>"; };
+		D6DC8D9C26F36FCF009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
+		D6DC8D9E26F37002009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Home.strings; sourceTree = "<group>"; };
+		D6DC8DA026F3707A009E61EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PriceView.xib; sourceTree = "<group>"; };
+		D6DC8DA426F37081009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PriceView.strings; sourceTree = "<group>"; };
+		D6DC8DA626F37083009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PriceView.strings; sourceTree = "<group>"; };
+		D6DC8DA826F370BA009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Session.strings; sourceTree = "<group>"; };
+		D6DC8DAA26F370EC009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Session.strings; sourceTree = "<group>"; };
+		D6DC8DAC26F37158009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Profile.strings; sourceTree = "<group>"; };
+		D6DC8DAE26F37188009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Profile.strings; sourceTree = "<group>"; };
 		D6E9764D26C5457B00204246 /* LanguageChnageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageChnageVC.swift; sourceTree = "<group>"; };
 		D6F0342E26DF3E6D00E353F2 /* OnboardingVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVm.swift; sourceTree = "<group>"; };
 		D6F0343126DF413600E353F2 /* OnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
@@ -360,8 +390,6 @@
 		D6F0343426DF413700E353F2 /* Earn_reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Earn_reward.swift; sourceTree = "<group>"; };
 		D6F0343526DF413700E353F2 /* Point_accumulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point_accumulation.swift; sourceTree = "<group>"; };
 		D6FFDC4026BC0AA900321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
-		D6FFDC4526BC0ACE00321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Onboarding.strings; sourceTree = "<group>"; };
-		D6FFDC4826BC0B0500321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Onboarding.strings; sourceTree = "<group>"; };
 		D6FFDC4B26BC0B1C00321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		D6FFDC5426BC0BA200321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SessionCell.xib; sourceTree = "<group>"; };
 		D6FFDC5826BC0BB500321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SessionCell.strings; sourceTree = "<group>"; };
@@ -374,8 +402,6 @@
 		D6FFDC6D26BC0D9900321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/HistoryCell.strings; sourceTree = "<group>"; };
 		D6FFDC6F26BC0FCE00321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		D6FFDC7626BC10D800321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Session.storyboard; sourceTree = "<group>"; };
-		D6FFDC7926BC10E600321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Session.strings; sourceTree = "<group>"; };
-		D6FFDC7B26BC111900321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Session.strings; sourceTree = "<group>"; };
 		D6FFDC7D26BC113200321F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/More.storyboard; sourceTree = "<group>"; };
 		D6FFDC8126BC115300321F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/More.strings; sourceTree = "<group>"; };
 		D6FFDC8326BC118600321F04 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/More.strings; sourceTree = "<group>"; };
@@ -458,6 +484,10 @@
 			children = (
 				184D963725AC3D5E00C90BDF /* OnboardingCell.swift */,
 				184D963825AC3D5E00C90BDF /* OnboardingCell.xib */,
+				D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */,
+				D6DC8D8426F36E23009E61EC /* OnboardingFirstPointsCell.xib */,
+				D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */,
+				D6DC8D8C26F36E75009E61EC /* OnboardingSecondCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -717,6 +747,7 @@
 		187F3E84258CCC81008FB2CB /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D6917641270587050005C572 /* ReminderView */,
 				184D962F25AC3C1F00C90BDF /* Onboarding */,
 				18C5A3CC2592123C008487FB /* LoginRegister */,
 				18C5A3BF2591E1E0008487FB /* Home */,
@@ -785,7 +816,7 @@
 			isa = PBXGroup;
 			children = (
 				D6FFDC7026BC0FCE00321F04 /* Home.storyboard */,
-				D62D731126C6754500DFD0DA /* PriceView.xib */,
+				D6DC8DA126F3707A009E61EC /* PriceView.xib */,
 				D62D733D26C67C3B00DFD0DA /* PriceView.swift */,
 				D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */,
 				D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */,
@@ -951,6 +982,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D6917641270587050005C572 /* ReminderView */ = {
+			isa = PBXGroup;
+			children = (
+				D691767A2705ADF10005C572 /* ReminderView.xib */,
+				D69176462705976C0005C572 /* ReminderView.swift */,
+			);
+			path = ReminderView;
+			sourceTree = "<group>";
+		};
 		D6C95FD726BD4ACE00DC5719 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -1029,11 +1069,14 @@
 				187F3E44258CC802008FB2CB /* LaunchScreen.storyboard in Resources */,
 				187F3E41258CC802008FB2CB /* Assets.xcassets in Resources */,
 				187F3E78258CCB58008FB2CB /* Splash.json in Resources */,
+				D6DC8D8226F36E23009E61EC /* OnboardingFirstPointsCell.xib in Resources */,
 				18A2CB2025BAE8D5000480E3 /* InterCell.xib in Resources */,
 				D6D522B726CA67EB00CF9E95 /* PriceCollCell.xib in Resources */,
 				D6FFDC6E26BC0FCE00321F04 /* Home.storyboard in Resources */,
+				D69176782705ADF10005C572 /* ReminderView.xib in Resources */,
 				18BD585B259C63500035FFA8 /* MoreCell.xib in Resources */,
 				18B4D65925A5B904006C554D /* NotificationCell.xib in Resources */,
+				D6DC8D8A26F36E75009E61EC /* OnboardingSecondCell.xib in Resources */,
 				187F3E81258CCB58008FB2CB /* CountryCodeCell.xib in Resources */,
 				18A08E7C25C13B9500BE7C09 /* GoogleService-Info.plist in Resources */,
 				18629C1B25A435F9008027EC /* ProfileInterestCell.xib in Resources */,
@@ -1061,7 +1104,7 @@
 				D6FFDC5326BC0BA200321F04 /* SessionCell.xib in Resources */,
 				D6FFDC7526BC10D800321F04 /* Session.storyboard in Resources */,
 				18A765E9259CA49200E71FF9 /* SearchCell.xib in Resources */,
-				D62D731226C6754500DFD0DA /* PriceView.xib in Resources */,
+				D6DC8D9F26F3707A009E61EC /* PriceView.xib in Resources */,
 				187F3E72258CCB58008FB2CB /* appleTone.wav in Resources */,
 				D6FFDC5E26BC0CA400321F04 /* ActiveEventCell.xib in Resources */,
 				D6FFDC7C26BC113200321F04 /* More.storyboard in Resources */,
@@ -1171,6 +1214,7 @@
 				18A2CB1F25BAE8D5000480E3 /* InterCell.swift in Sources */,
 				1851713E25930BAA00F4BF4B /* LoginVC.swift in Sources */,
 				18D31C4B25A75600003D4AEF /* SearchLocationVC.swift in Sources */,
+				D6072A3B26E8BB1B003BC668 /* OnboardingFirstPointsCell.swift in Sources */,
 				1831523725A6D734006CA85A /* OTPVC.swift in Sources */,
 				1850253125C170EB00C90AF0 /* SearchBase.swift in Sources */,
 				187FAF3C25B14208008A196A /* EventViewModel.swift in Sources */,
@@ -1220,6 +1264,7 @@
 				D6F0343726DF413700E353F2 /* Rewards.swift in Sources */,
 				184D963C25AC409300C90BDF /* ChangePasswordVC.swift in Sources */,
 				1896C3BD25B7FF780053EC45 /* NotificationListResult.swift in Sources */,
+				D6072A9226E8C8AE003BC668 /* OnboardingSecondCell.swift in Sources */,
 				18CB0A2625B9E33B00AA10E8 /* GetTicketBase.swift in Sources */,
 				1852FF0C25C90EC2002CAF9E /* FSPageControl.swift in Sources */,
 				18C5A3CB25920D9D008487FB /* MoreVC.swift in Sources */,
@@ -1231,6 +1276,7 @@
 				184DCB13259375AE00EB148D /* SessionCell.swift in Sources */,
 				18B2A50025AEEDAC0028073E /* SessionDetailBase.swift in Sources */,
 				18C5A3C325920CEE008487FB /* TabBarControllerViewController.swift in Sources */,
+				D69176472705976C0005C572 /* ReminderView.swift in Sources */,
 				D6DBB14E2681B4840061DC05 /* PaymentVC.swift in Sources */,
 				18B2A51425AF092C0028073E /* HomeResult.swift in Sources */,
 				180534D3259320F000625B53 /* RegistrationvC.swift in Sources */,
@@ -1297,6 +1343,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		D691767A2705ADF10005C572 /* ReminderView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D69176792705ADF10005C572 /* Base */,
+				D691767D2705ADF50005C572 /* en */,
+				D691767F2705ADF70005C572 /* es */,
+			);
+			name = ReminderView.xib;
+			sourceTree = "<group>";
+		};
 		D6C95FE026BD4BA000DC5719 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1306,12 +1362,42 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		D6DC8D8426F36E23009E61EC /* OnboardingFirstPointsCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6DC8D8326F36E23009E61EC /* Base */,
+				D6DC8D8626F36E28009E61EC /* en */,
+				D6DC8D8826F36E2A009E61EC /* es */,
+			);
+			name = OnboardingFirstPointsCell.xib;
+			sourceTree = "<group>";
+		};
+		D6DC8D8C26F36E75009E61EC /* OnboardingSecondCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6DC8D8B26F36E75009E61EC /* Base */,
+				D6DC8D9026F36E78009E61EC /* en */,
+				D6DC8D9226F36E7A009E61EC /* es */,
+			);
+			name = OnboardingSecondCell.xib;
+			sourceTree = "<group>";
+		};
+		D6DC8DA126F3707A009E61EC /* PriceView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6DC8DA026F3707A009E61EC /* Base */,
+				D6DC8DA426F37081009E61EC /* en */,
+				D6DC8DA626F37083009E61EC /* es */,
+			);
+			name = PriceView.xib;
+			sourceTree = "<group>";
+		};
 		D6FFDC4126BC0AA900321F04 /* Onboarding.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D6FFDC4026BC0AA900321F04 /* Base */,
-				D6FFDC4526BC0ACE00321F04 /* en */,
-				D6FFDC4826BC0B0500321F04 /* es */,
+				D6DC8D9426F36ED4009E61EC /* en */,
+				D6DC8D9626F36EDB009E61EC /* es */,
 			);
 			name = Onboarding.storyboard;
 			sourceTree = "<group>";
@@ -1320,6 +1406,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6FFDC4B26BC0B1C00321F04 /* Base */,
+				D6DC8D9826F36F3C009E61EC /* en */,
+				D6DC8D9A26F36F7B009E61EC /* es */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -1358,6 +1446,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6FFDC6F26BC0FCE00321F04 /* Base */,
+				D6DC8D9C26F36FCF009E61EC /* en */,
+				D6DC8D9E26F37002009E61EC /* es */,
 			);
 			name = Home.storyboard;
 			sourceTree = "<group>";
@@ -1366,8 +1456,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6FFDC7626BC10D800321F04 /* Base */,
-				D6FFDC7926BC10E600321F04 /* en */,
-				D6FFDC7B26BC111900321F04 /* es */,
+				D6DC8DA826F370BA009E61EC /* en */,
+				D6DC8DAA26F370EC009E61EC /* es */,
 			);
 			name = Session.storyboard;
 			sourceTree = "<group>";
@@ -1386,6 +1476,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6FFDC8526BC1F9300321F04 /* Base */,
+				D6DC8DAC26F37158009E61EC /* en */,
+				D6DC8DAE26F37188009E61EC /* es */,
 			);
 			name = Profile.storyboard;
 			sourceTree = "<group>";

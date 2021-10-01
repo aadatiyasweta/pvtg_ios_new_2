@@ -47,6 +47,7 @@ class ProfileViewModel: BaseVm {
                     let jsonDecoder = JSONDecoder()
                     let model = try? jsonDecoder.decode(ProfileResult.self, from: data ?? Data())
                     self.setDataInLocal()
+                    SaveToDefaults().setEmail(value: self.model?.user_profile?.email)
                     self.model = model
                   self.delegate?.updateProfile()
                     
