@@ -391,7 +391,7 @@ extension UIView {
         shapeLayer.lineWidth = 2
         shapeLayer.cornerRadius = 0
         shapeLayer.lineJoin = CAShapeLayerLineJoin.round
-        shapeLayer.lineDashPattern = [6,3]
+        shapeLayer.lineDashPattern = [3,3]
         shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 0).cgPath
         
         self.layer.addSublayer(shapeLayer)
@@ -1606,7 +1606,7 @@ func header()->[String:String]?{
         print("Token -------->>>>>>",token)
         let header : [String: String] = [
             // "Content-Type" : "application/x-www-form-urlencoded",
-            "HTTP_APPKEY": "\(token)"
+            "APPKEY": "\(token)"
         ]
         print("Header :---: ",header)
         return header

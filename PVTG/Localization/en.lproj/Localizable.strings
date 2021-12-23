@@ -14,7 +14,7 @@
 "onbaordingSecondMsg" = "Be connected to Holistic Practitioners, specializing in Yoga, Reiki, Mediation and much more .\n\n Once connected, book your Holistic sessions to truly escape the mental pressures and anxiety of this world.";
 "onbaordingThirdMsg" = "1.Book and Complete a Session\n\n2.Submitting a review\n\n3.Use your points for 30% Discounts and \n\nFREE Sessions";
 "onbaordingFourthMsg" = "First Login: %@ pts\nFirst Booking: %@  pts\nBookings: %@  pts\nReviews/Rate: %@  pts\nView Token Notification: %@ pts\nIf Vendor Cancels: Booking points +5: %@  pts";
-"onbaordingFiftMsg" = "First Milestone: PVG %@ discount- %@ pts\n\nSecond Milestone: %@ - %@  pts";
+"onbaordingFiftMsg" = "First Milestone- %@ discount- %@ pts\n\nSecond Milestone- %@ - %@  pts";
 "Skip" = "Skip";
 "GetStarted" = "Get Started";
 "done" = "Done";
@@ -62,7 +62,7 @@
 "Areyousureyouwant" = "Are you sure you want to signout?";
 "ok" = "OK";
 "Discount" = "Discount";
-"ptsavailable" = "pts available";
+"ptsavailable" = "Dharma pts available";
 "youWillBeRewarded" = "You will be rewarded %@pts on booking the session";
 "PleaseSelecttime" = "Please Select time";
 "CancelTheBooking" = "Are you sure you want to cancel the booking";
@@ -90,5 +90,10 @@
 "changeLanguage" = "Change Language";
 "yes" = "Yes";
 "no" = "No";
-"willYouAttending" = "Will you be attending %@ session?";
+"willYouAttending" = "Will you still be attending your %@ session?";
 "notificationtitle" = "Reminder";
+"free" = "free";
+"doNotWorry" = "And don't worry you can always cancel 2 hours \nbefore a session for a full refund!";
+"FreeService" = "Free Service";
+"PriceFilter" = "Price Filter";
+"bookingdate" = "Booking Date :";

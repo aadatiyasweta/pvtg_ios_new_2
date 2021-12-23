@@ -16,12 +16,14 @@ struct CategoryResult : Codable {
 	let category_id : String?
 	let category_name : String?
 	let category_image : String?
-
+    let total_session : String?
+    
 	enum CodingKeys: String, CodingKey {
 
 		case category_id = "category_id"
 		case category_name = "category_name"
 		case category_image = "category_image"
+        case total_session = "total_session"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -29,6 +31,7 @@ struct CategoryResult : Codable {
 		category_id = try values.decodeIfPresent(String.self, forKey: .category_id)
 		category_name = try values.decodeIfPresent(String.self, forKey: .category_name)
 		category_image = try values.decodeIfPresent(String.self, forKey: .category_image)
+        total_session = try values.decodeIfPresent(String.self, forKey: .total_session)
 	}
 
 }

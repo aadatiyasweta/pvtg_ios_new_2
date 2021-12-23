@@ -8,8 +8,8 @@
 /* Class = "UIButton"; normalTitle = "PAY NOW"; ObjectID = "Fri-Sx-ywP"; */
 "Fri-Sx-ywP.normalTitle" = "PAY NOW";
 
-/* Class = "UILabel"; text = "And don't worry you can always cancel 2 hours before a session for a full refund!"; ObjectID = "Fvp-bu-f3O"; */
-"Fvp-bu-f3O.text" = "And don't worry you can always cancel 2 hours before a session for a full refund!";
+/* Class = "UILabel"; text = "And don't worry you can always cancel 2 hours"; ObjectID = "Fvp-bu-f3O"; */
+"Fvp-bu-f3O.text" = "And don't worry you can always cancel 2 hours";
 
 /* Class = "UILabel"; text = "You will be rewarded 45pts on booking the session"; ObjectID = "K4D-8J-yAO"; */
 "K4D-8J-yAO.text" = "You will be rewarded 45pts on booking the session";
@@ -27,10 +27,10 @@
 "SHI-lC-CLn.title" = "Events";
 
 /* Class = "UIButton"; normalTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
-"STU-Np-GOX.normalTitle" = "Use PVTG Points";
+"STU-Np-GOX.normalTitle" = "Use Dharma Points";
 
 /* Class = "UIButton"; selectedTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
-"STU-Np-GOX.selectedTitle" = "Use PVTG Points";
+"STU-Np-GOX.selectedTitle" = "Use Dharma Points";
 
 /* Class = "UILabel"; text = "Total Fare"; ObjectID = "UNq-AZ-pHi"; */
 "UNq-AZ-pHi.text" = "Total Fare";
@@ -53,11 +53,17 @@
 /* Class = "UILabel"; text = "History"; ObjectID = "jJE-dL-dnz"; */
 "jJE-dL-dnz.text" = "History";
 
+/* Class = "UILabel"; text = "before a session for a full refund!"; ObjectID = "k0g-jZ-Hlr"; */
+"k0g-jZ-Hlr.text" = "before a session for a full refund!";
+
 /* Class = "UITabBarItem"; title = "Holistic Guide"; ObjectID = "kLW-Rg-3Z1"; */
 "kLW-Rg-3Z1.title" = "Holistic Guide";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "kb9-c5-pvM"; */
 "kb9-c5-pvM.title" = "Home";
+
+/* Class = "UIButton"; normalTitle = "View Cancellation Policy"; ObjectID = "lA0-dA-EXL"; */
+"lA0-dA-EXL.normalTitle" = "View Cancellation Policy";
 
 /* Class = "UILabel"; text = "Total Tickets "; ObjectID = "ltp-zh-9Ak"; */
 "ltp-zh-9Ak.text" = "Total Tickets ";

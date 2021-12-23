@@ -108,13 +108,13 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         if scrollView == self.mainScrolView{
             if scrollView.contentOffset.y  < 0{
                 scrollView.contentOffset.y = 0
-                self.backBtn.isHidden = false
+               // self.backBtn.isHidden = false
             }else{
-                if scrollView.contentOffset.y > 55 {
-                    self.backBtn.isHidden = true
-                }else{
-                    self.backBtn.isHidden = false
-                }
+//                if scrollView.contentOffset.y > 55 {
+//                    self.backBtn.isHidden = true
+//                }else{
+//                    self.backBtn.isHidden = false
+//                }
             }
         }
     }

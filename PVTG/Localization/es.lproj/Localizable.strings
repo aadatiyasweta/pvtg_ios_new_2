@@ -55,7 +55,7 @@
 "Areyousureyouwant" = "¿Estás seguro de querer cerrar sesión?";
 "ok" = "Ok";
 "Discount" = "Descuento";
-"ptsavailable" = "pts disponibles";
+"ptsavailable" = "Dharma pts disponibles";
 "youWillBeRewarded" = "Serás recompensado con %@pts al reservar la sesión";
 "PleaseSelecttime" = "Por favor selecciona la hora";
 "CancelTheBooking" = "¿Estás seguro de querer cancelar la sesión?";
@@ -83,5 +83,10 @@
 "changeLanguage" = "Cambiar el lenguaje";
 "yes" = "sí";
 "no" = "No";
-"willYouAttending" = "¿Asistirás a la sesión de %@?";
+"willYouAttending" = "¿Seguirás asistiendo a tu sesión %@?";
 "notificationtitle" = "Recordatorio";
+"free" = "gratis";
+"doNotWorry" = "¡Y no se preocupe, siempre puede cancelar 2 horas \nantes de una sesión para obtener un reembolso completo!";
+"FreeService" = "Servicio gratuito";
+"PriceFilter" = "Filtro de precio";
+"bookingdate" = "Fecha para registrarse :";

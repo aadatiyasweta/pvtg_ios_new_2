@@ -49,7 +49,7 @@ class ActiveEventCell: UICollectionViewCell {
             self.lblBookingId.text = "\(R.string.localizable.bookingID()) : \(bookingId)"
            }
            if let bookingDate = data.booking_date {
-               let strDate = yyMMMddDate(date: bookingDate)
+               let strDate = changeDateFormatForReminder(date: bookingDate, fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a")
                self.lblDate.text = strDate
            }
         if let tkts = data.ticket {

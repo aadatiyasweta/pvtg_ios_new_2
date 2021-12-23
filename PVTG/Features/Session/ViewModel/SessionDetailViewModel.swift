@@ -150,8 +150,14 @@ class SessionDetailViewModel: BaseVm {
         
         
         let payer : [String:Any] = ["email":SaveToDefaults().getEmail() ?? ""]
+//        var dictArr = [[String:String]]()
+//        let dict : [String:String] = ["id":"debit_card"]
+//        dictArr.append(dict)
+//        let paymentMethods : [String:Any] = ["excluded_payment_methods":dictArr]
+
+      
         let param :[String:Any] = ["payer" : payer,"items":itemsArr]
-        let headerPrefrence : [String:String] = ["Authorization" : "Bearer TEST-7488660032626366-081021-6e581c702a1f21140901508fa58446dd-790689138",
+        let headerPrefrence : [String:String] = ["Authorization" : "Bearer APP_USR-7488660032626366-081021-f6a853662803b7ae35548fb1c44b7b5b-790689138",
             "Content-Type" : "application/json"]
         self.show()
         api_manager.POSTApi(getPrefrenceIdUrl(), param: param, header: headerPrefrence,encoding: JSONEncoding.default) { (json, err, statusCode) in

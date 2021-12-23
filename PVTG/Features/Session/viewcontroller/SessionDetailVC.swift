@@ -17,6 +17,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     //MARK:- IBOutlets
     
     
+    @IBOutlet weak var bookingDateLbl: UILabel!
     @IBOutlet weak var offeredHeightCons: NSLayoutConstraint!
     @IBOutlet weak var offerdView: UIView!
     @IBOutlet weak var offeredCollView: UICollectionView!
@@ -175,7 +176,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = true
             self.lblsessionPrice.isHidden = true
             self.cancelBtn.isHidden = true
-            self.completedBtn.isHidden = false
+            self.completedBtn.isHidden = true
         }else {
             self.vwmap.isHidden = false
             self.vwcalendar.isHidden = false
@@ -206,7 +207,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             let lat = Double(lat1)
             let long = Double(long1)
             let location = CLLocationCoordinate2D(latitude: lat ?? 0.0, longitude: long ?? 0.0)
-            let camera = GMSCameraPosition.camera(withLatitude: lat ?? 0.0, longitude: long ?? 0.0, zoom: 5, bearing: 0,
+            let camera = GMSCameraPosition.camera(withLatitude: lat ?? 0.0, longitude: long ?? 0.0, zoom: 15, bearing: 0,
                                               viewingAngle: 40)
         mapView = GMSMapView.map(withFrame: self.vwmap.bounds, camera: camera)
         self.vwmap.addSubview(mapView ?? GMSMapView())
@@ -288,8 +289,9 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     @IBAction func btnIncreaseTicketTap(_ sender: UIButton) {
         var count = (Int(lblTicketCount.text ?? "01") ?? 0)
+        self.btndecrease.isUserInteractionEnabled = true
         if count == Int(self.vm.availableTickets?.ticket_avilable ?? "") {
-            self.btndecrease.isUserInteractionEnabled = true
+            
            // self.btnIncrease.isUserInteractionEnabled = false
             if count > 1{
                 showAlert(strTitle: R.string.localizable.onlyTickets("\(count)"))
@@ -637,7 +639,6 @@ extension SessionDetailVC: GetResponse {
         let vc = SummaryVC.instance()
         vc.bookingDetails = self.vm.model
         vc.totalTkt = self.lblTicketCount.text ?? ""
-        vc.sessionTimeId = "\(self.id)"
         vc.ticketModel = self.vm.availableTickets
         vc.customModel = self.vm.customModel
         self.navigationController?.pushViewController(vc, animated: true)
@@ -666,6 +667,11 @@ extension SessionDetailVC: GetResponse {
         }
         
         guard let data = self.vm.model, let lat1 = self.vm.model?.latitude, let lang1 = self.vm.model?.longitude else {return}
+        if data.booking_date ?? "" == ""{
+            self.bookingDateLbl.text = ""
+        }else{
+            self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a"))"
+        }
         if data.bio == "" {
             self.lblAboutVendor.text = ""
             self.aboutViewBottomCons.constant = 0

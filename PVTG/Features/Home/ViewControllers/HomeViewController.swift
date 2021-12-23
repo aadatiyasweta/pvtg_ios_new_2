@@ -52,7 +52,8 @@ class HomeViewController: BaseViewController {
     var maximimPrice = 0
     var origiMinPrice = 0
     var origiMaxPrice = 0
-    var selectedCurrency = ""
+    var selectedCurrency = "COP"
+    var isSelectedFromFilter = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // self.locationManager.startUpdatingLocation()
@@ -187,7 +188,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollCell.ident, for: indexPath) as! PriceCollCell
-            cell.priceLbl.text = "\(self.selectedCurrency)\(self.minimUmPrice)-\(self.selectedCurrency)\(self.maximimPrice)"
+            if self.isSelectedFromFilter{
+                cell.priceLbl.text = "\(self.selectedCurrency)\(self.minimUmPrice)-\(self.selectedCurrency)\(self.maximimPrice)"
+            }else{
+                cell.priceLbl.text = R.string.localizable.priceFilter()
+            }
+           
             return cell
         }
         else{
@@ -252,7 +258,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0{
-            return CGSize(width: 140, height: 65)
+            let label = UILabel(frame: CGRect.zero)
+            if self.isSelectedFromFilter{
+                label.text = "\(self.selectedCurrency)\(self.minimUmPrice)-\(self.selectedCurrency)\(self.maximimPrice)"
+            }else{
+                label.text = R.string.localizable.priceFilter()
+            }
+            
+            label.sizeToFit()
+            return CGSize(width: label.frame.size.width + 30, height: 65)
+           
         }
         let text = categoryArr[indexPath.row].name
         
@@ -280,17 +295,17 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             priceView?.maxValue = self.maximimPrice
             priceView?.minimumValue = self.minimUmPrice
             priceView?.currencyArr = self.homevm.model?.currency_data ?? []
-            priceView?.selectCurrencyFiled.text = self.selectedCurrency
+           
          
             appDelegate.window?.addSubview(priceView!)
-            for val in 0..<(self.homevm.model?.currency_data!.count)!{
-                if self.homevm.model?.currency_data?[val] == self.selectedCurrency{
-                    priceView?.currentIndex = val
-                    priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
-                    priceView?.pickerView.reloadAllComponents()
-                    break
-                }
-            }
+//            for val in 0..<(self.homevm.model?.currency_data!.count)!{
+//                if self.homevm.model?.currency_data?[val] == self.selectedCurrency{
+//                    priceView?.currentIndex = val
+//                    priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
+//                    priceView?.pickerView.reloadAllComponents()
+//                    break
+//                }
+//            }
            
         }else{
         if self.categoryArr.count == 2{
@@ -413,8 +428,11 @@ extension HomeViewController: CLLocationManagerDelegate{
 
 extension HomeViewController: GetHomeData {
     func reloadData() {
-        self.minimUmPrice = self.homevm.model?.min_val ?? 0
-        self.maximimPrice = self.homevm.model?.max_val ?? 0
+        if self.maximimPrice == 0{
+            self.minimUmPrice = self.homevm.model?.min_val ?? 0
+            self.maximimPrice = self.homevm.model?.max_val ?? 0
+           
+        }
         self.origiMinPrice = self.homevm.model?.min_price ?? 0
         self.origiMaxPrice = self.homevm.model?.max_price ?? 0
         loadImage(self.homevm.model?.user_image ?? "", self.userimg , activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
@@ -428,7 +446,7 @@ extension HomeViewController: GetHomeData {
                 self.categoryArr.append(Category(name: i.category_name ?? "", image: i.category_image ?? "", id: i.category_id ?? ""))
             }
         }
-        self.selectedCurrency = self.homevm.model?.selected_currency ?? "$"
+        self.selectedCurrency = self.homevm.model?.selected_currency ?? "COP"
         if self.homevm.model?.all_result?.count == 0 {
             self.lblNoSession.text = R.string.localizable.noSession()
         } else {
@@ -445,7 +463,8 @@ extension HomeViewController: GetHomeData {
 }
 
 extension HomeViewController : getPriceSliderValues{
-    func slidermaxMinValue(min: Int, max: Int, currency: String) {
+    func slidermaxMinValue(min: Int, max: Int, currency: String,isSelectedFromFilter : Bool) {
+        self.isSelectedFromFilter = isSelectedFromFilter
         self.selectedCurrency = currency
         self.maximimPrice = max
         self.minimUmPrice = min

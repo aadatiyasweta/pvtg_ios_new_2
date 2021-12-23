@@ -29,6 +29,6 @@ target 'PVTG' do
   pod 'R.swift'
 pod 'MercadoPagoSDK', '~> 4.7.0'
 pod 'RangeSeekSlider'
-pod 'MercadoPagoSDK', '3.7.2'
+
 
 end

@@ -8,8 +8,9 @@
 "Fri-Sx-ywP.normalTitle" = "PAGA AHORA";
 
 /* Class = "UILabel"; text = "And don't worry you can always cancel 2 hours before a session for a full refund!"; ObjectID = "Fvp-bu-f3O"; */
-"Fvp-bu-f3O.text" = " ¡Y no se preocupe, siempre puede cancelar 2 horas antes de una sesión para obtener un reembolso completo!";
-
+"Fvp-bu-f3O.text" = "¡Y no se preocupe, siempre puede cancelar 2 horas antes";
+/* Class = "UILabel"; text = "before a session for a full refund!"; ObjectID = "k0g-jZ-Hlr"; */
+"k0g-jZ-Hlr.text" = "de una sesión para obtener un reembolso completo!";
 /* Class = "UILabel"; text = "You will be rewarded 45pts on booking the session"; ObjectID = "K4D-8J-yAO"; */
 "K4D-8J-yAO.text" = "Serás recompensado con 45pts al reservar la sesión";
 
@@ -26,10 +27,10 @@
 "SHI-lC-CLn.title" = "Eventos";
 
 /* Class = "UIButton"; normalTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
-"STU-Np-GOX.normalTitle" = "Usar PVTG Puntos";
+"STU-Np-GOX.normalTitle" = "Usar Dharma Puntos";
 
 /* Class = "UIButton"; selectedTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
-"STU-Np-GOX.selectedTitle" = "Usar PVTG Puntos";
+"STU-Np-GOX.selectedTitle" = "Usar Dharma Puntos";
 
 /* Class = "UILabel"; text = "Total Fare"; ObjectID = "UNq-AZ-pHi"; */
 "UNq-AZ-pHi.text" = "Tarifa total";
@@ -75,3 +76,6 @@
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "zXJ-65-iSK"; */
 "zXJ-65-iSK.normalTitle" = "Realizado";
+
+/* Class = "UIButton"; normalTitle = "View Cancellation Policy"; ObjectID = "lA0-dA-EXL"; */
+"lA0-dA-EXL.normalTitle" = "Ver política de cancelación";

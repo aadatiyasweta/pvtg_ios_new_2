@@ -9,8 +9,8 @@
 import UIKit
 
 class SearchCell: UICollectionViewCell {
-    @IBOutlet weak var searchCategorylbl: UILabel!
     
+    @IBOutlet weak var searchCategorylbl: UILabel!
     @IBOutlet weak var vwContainCatgry: UIView!
     @IBOutlet weak var leadingConstarintVw: NSLayoutConstraint!
     @IBOutlet weak var traillingConstarintVw: NSLayoutConstraint!
@@ -38,7 +38,12 @@ class SearchCell: UICollectionViewCell {
     func setSearchData(data: CategoryResult?) {
          guard let data = data else {return}
         if let name = data.category_name {
-            self.searchCategorylbl.text = name
+            if data.total_session ?? "" == ""{
+                self.searchCategorylbl.text = name
+            }else{
+                self.searchCategorylbl.text = "\(name) (\(data.total_session ?? ""))"
+            }
+           
         }
     }
 }

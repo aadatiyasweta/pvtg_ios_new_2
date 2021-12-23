@@ -123,7 +123,11 @@ extension OnboardingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIC
             cell.iconImageView.image = UIImage.init(named: "group3")
             cell.backgroundColor = #colorLiteral(red: 0.3817746043, green: 0.4064786732, blue: 0.8502063155, alpha: 1)
             cell.titleLbl.text = R.string.localizable.rewards()
-            cell.descLbl.text = R.string.localizable.onbaordingThirdMsg()
+            var str = [String]()
+            for val in 0..<(self.vm.model?.earn_reward!.count)!{
+                str.append("\(val+1). \(self.vm.model?.earn_reward?[val].message ?? "")")
+            }
+            cell.descLbl.text = str.joined(separator: "\n\n")
             return cell
         }
     

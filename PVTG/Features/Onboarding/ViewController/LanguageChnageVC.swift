@@ -20,13 +20,20 @@ class LanguageChnageVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-//        self.englishText.text = flag(from: "UK")
-//        self.spainshLbl.text = flag(from: "ES")
         self.backBtn.isHidden = !self.isFromProfile
-        self.engBtn.isSelected = true
         sethorizontalGradient(view: self.gradBtn, colors: [#colorLiteral(red: 0, green: 0.8823529412, blue: 0.7254901961, alpha: 1),#colorLiteral(red: 0.3411764706, green: 0.3411764706, blue: 1, alpha: 1)])
         self.spanishBtn.alpha = 0.5
+        if SaveToDefaults().getAppLang() ?? "en" == "en"{
+            self.spanishBtn.alpha = 0.5
+            self.engBtn.alpha = 1
+            self.spanishBtn.isSelected = false
+            self.engBtn.isSelected = true
+        }else{
+            self.engBtn.alpha = 0.5
+            self.spanishBtn.alpha = 1
+            self.engBtn.isSelected = false
+            spanishBtn.isSelected = true
+        }
     }
     
     @IBAction func engBtnTap(_ sender: UIButton) {

@@ -144,7 +144,6 @@
 		18C5A3C925920D8F008487FB /* HoliosticGuideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5A3C825920D8F008487FB /* HoliosticGuideVC.swift */; };
 		18C5A3CB25920D9D008487FB /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5A3CA25920D9D008487FB /* MoreVC.swift */; };
 		18CB0A2025B9BFF600AA10E8 /* ChangePasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB0A1F25B9BFF600AA10E8 /* ChangePasswordVM.swift */; };
-		18CB0A2225B9D51800AA10E8 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB0A2125B9D51800AA10E8 /* SummaryViewModel.swift */; };
 		18CB0A2525B9E33B00AA10E8 /* GetTicketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB0A2325B9E33B00AA10E8 /* GetTicketResult.swift */; };
 		18CB0A2625B9E33B00AA10E8 /* GetTicketBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB0A2425B9E33B00AA10E8 /* GetTicketBase.swift */; };
 		18D31C4B25A75600003D4AEF /* SearchLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D31C4A25A75600003D4AEF /* SearchLocationVC.swift */; };
@@ -163,6 +162,7 @@
 		D6573BF625CCF02500CB64DD /* CircularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6573BF425CCF02500CB64DD /* CircularCell.xib */; };
 		D69176472705976C0005C572 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69176462705976C0005C572 /* ReminderView.swift */; };
 		D69176782705ADF10005C572 /* ReminderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D691767A2705ADF10005C572 /* ReminderView.xib */; };
+		D6A257422747D36B0031B75D /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8DA126F3707A009E61EC /* PriceView.xib */; };
 		D6C95FD926BD4AE400DC5719 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C95FD826BD4AE400DC5719 /* R.generated.swift */; };
 		D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C95FE026BD4BA000DC5719 /* Localizable.strings */; };
 		D6D522B626CA67EB00CF9E95 /* PriceCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D522B426CA67EB00CF9E95 /* PriceCollCell.swift */; };
@@ -170,7 +170,6 @@
 		D6DBB14E2681B4840061DC05 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBB14D2681B4840061DC05 /* PaymentVC.swift */; };
 		D6DC8D8226F36E23009E61EC /* OnboardingFirstPointsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8D8426F36E23009E61EC /* OnboardingFirstPointsCell.xib */; };
 		D6DC8D8A26F36E75009E61EC /* OnboardingSecondCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8D8C26F36E75009E61EC /* OnboardingSecondCell.xib */; };
-		D6DC8D9F26F3707A009E61EC /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8DA126F3707A009E61EC /* PriceView.xib */; };
 		D6E9764E26C5457B00204246 /* LanguageChnageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E9764D26C5457B00204246 /* LanguageChnageVC.swift */; };
 		D6F0342F26DF3E6D00E353F2 /* OnboardingVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0342E26DF3E6D00E353F2 /* OnboardingVm.swift */; };
 		D6F0343626DF413700E353F2 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0343126DF413600E353F2 /* OnboardingModel.swift */; };
@@ -335,7 +334,6 @@
 		18C5A3C825920D8F008487FB /* HoliosticGuideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoliosticGuideVC.swift; sourceTree = "<group>"; };
 		18C5A3CA25920D9D008487FB /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		18CB0A1F25B9BFF600AA10E8 /* ChangePasswordVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordVM.swift; sourceTree = "<group>"; };
-		18CB0A2125B9D51800AA10E8 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
 		18CB0A2325B9E33B00AA10E8 /* GetTicketResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTicketResult.swift; sourceTree = "<group>"; };
 		18CB0A2425B9E33B00AA10E8 /* GetTicketBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTicketBase.swift; sourceTree = "<group>"; };
 		18D31C4A25A75600003D4AEF /* SearchLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationVC.swift; sourceTree = "<group>"; };
@@ -352,12 +350,15 @@
 		D62D733D26C67C3B00DFD0DA /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineMeasureCell.swift; sourceTree = "<group>"; };
 		D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineMeasureCell.xib; sourceTree = "<group>"; };
+		D64D0357270F2EB100C9A7D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
 		D6573BF325CCF02500CB64DD /* CircularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCell.swift; sourceTree = "<group>"; };
 		D6573BF425CCF02500CB64DD /* CircularCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularCell.xib; sourceTree = "<group>"; };
 		D69176462705976C0005C572 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 		D69176792705ADF10005C572 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReminderView.xib; sourceTree = "<group>"; };
 		D691767D2705ADF50005C572 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReminderView.strings; sourceTree = "<group>"; };
 		D691767F2705ADF70005C572 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ReminderView.strings; sourceTree = "<group>"; };
+		D6A2573F2747C41D0031B75D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PriceView.strings; sourceTree = "<group>"; };
+		D6A257412747C4220031B75D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PriceView.strings; sourceTree = "<group>"; };
 		D6C95FD826BD4AE400DC5719 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D6C95FDF26BD4BA000DC5719 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6C95FE126BD4BA400DC5719 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -374,11 +375,8 @@
 		D6DC8D9626F36EDB009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Onboarding.strings; sourceTree = "<group>"; };
 		D6DC8D9826F36F3C009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
 		D6DC8D9A26F36F7B009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Login.strings; sourceTree = "<group>"; };
-		D6DC8D9C26F36FCF009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
 		D6DC8D9E26F37002009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Home.strings; sourceTree = "<group>"; };
 		D6DC8DA026F3707A009E61EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PriceView.xib; sourceTree = "<group>"; };
-		D6DC8DA426F37081009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PriceView.strings; sourceTree = "<group>"; };
-		D6DC8DA626F37083009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PriceView.strings; sourceTree = "<group>"; };
 		D6DC8DA826F370BA009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Session.strings; sourceTree = "<group>"; };
 		D6DC8DAA26F370EC009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Session.strings; sourceTree = "<group>"; };
 		D6DC8DAC26F37158009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Profile.strings; sourceTree = "<group>"; };
@@ -848,7 +846,6 @@
 				1831DCFC25AD9CE200A1570B /* HomeVM.swift */,
 				187FAF3B25B14208008A196A /* EventViewModel.swift */,
 				18B184B625B93A4100B83A6B /* InterestViewModel.swift */,
-				18CB0A2125B9D51800AA10E8 /* SummaryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1063,6 +1060,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6A257422747D36B0031B75D /* PriceView.xib in Resources */,
 				1855F4962592377B009396E6 /* Montserrat-Light.ttf in Resources */,
 				18525A56259994410042046C /* InterestCell.xib in Resources */,
 				1855F49D2592377B009396E6 /* Montserrat-SemiBold.ttf in Resources */,
@@ -1104,7 +1102,6 @@
 				D6FFDC5326BC0BA200321F04 /* SessionCell.xib in Resources */,
 				D6FFDC7526BC10D800321F04 /* Session.storyboard in Resources */,
 				18A765E9259CA49200E71FF9 /* SearchCell.xib in Resources */,
-				D6DC8D9F26F3707A009E61EC /* PriceView.xib in Resources */,
 				187F3E72258CCB58008FB2CB /* appleTone.wav in Resources */,
 				D6FFDC5E26BC0CA400321F04 /* ActiveEventCell.xib in Resources */,
 				D6FFDC7C26BC113200321F04 /* More.storyboard in Resources */,
@@ -1289,7 +1286,6 @@
 				187F3E83258CCB58008FB2CB /* VariablesMacro.swift in Sources */,
 				184DCB0F2593555300EB148D /* Loginbase.swift in Sources */,
 				18C5A3C725920D55008487FB /* EventsViewController.swift in Sources */,
-				18CB0A2225B9D51800AA10E8 /* SummaryViewModel.swift in Sources */,
 				18B2A51525AF092C0028073E /* All_result.swift in Sources */,
 				D6C95FD926BD4AE400DC5719 /* R.generated.swift in Sources */,
 				187F3E6B258CCB58008FB2CB /* Messages.swift in Sources */,
@@ -1386,8 +1382,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6DC8DA026F3707A009E61EC /* Base */,
-				D6DC8DA426F37081009E61EC /* en */,
-				D6DC8DA626F37083009E61EC /* es */,
+				D6A2573F2747C41D0031B75D /* en */,
+				D6A257412747C4220031B75D /* es */,
 			);
 			name = PriceView.xib;
 			sourceTree = "<group>";
@@ -1446,8 +1442,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				D6FFDC6F26BC0FCE00321F04 /* Base */,
-				D6DC8D9C26F36FCF009E61EC /* en */,
 				D6DC8D9E26F37002009E61EC /* es */,
+				D64D0357270F2EB100C9A7D3 /* en */,
 			);
 			name = Home.storyboard;
 			sourceTree = "<group>";

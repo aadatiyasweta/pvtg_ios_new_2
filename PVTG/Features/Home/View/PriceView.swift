@@ -6,7 +6,7 @@
 //  Copyright © 2021 ShubhamMacmini. All rights reserved.
 //
 protocol getPriceSliderValues : class{
-    func slidermaxMinValue(min : Int , max : Int,currency : String)
+    func slidermaxMinValue(min : Int , max : Int,currency : String,isSelectedFromFilter : Bool)
 }
 import Foundation
 import UIKit
@@ -15,7 +15,6 @@ import RangeSeekSlider
 class PriceView : UIView{
     
     @IBOutlet weak var seekView: RangeSeekSlider!
-    @IBOutlet weak var selectCurrencyFiled: UITextField!
     @IBOutlet weak var subbView: UIView!
     @IBOutlet weak var collView: UICollectionView!
     var minimumValue = 0
@@ -36,15 +35,15 @@ class PriceView : UIView{
     
     @IBAction func rightBtnTao(_ sender: UIButton) {
         self.removeFromSuperview()
-        self.delegate?.slidermaxMinValue(min: self.minimumValue, max: self.maxValue, currency: self.selectCurrencyFiled.text!)
+        self.delegate?.slidermaxMinValue(min: self.minimumValue, max: self.maxValue, currency: "COP", isSelectedFromFilter: true)
     }
     func setUp(){
         self.collView.register(LineMeasureCell.nib(), forCellWithReuseIdentifier: LineMeasureCell.ident)
         self.seekView.delegate = self
-        self.selectCurrencyFiled.inputView = self.pickerView
+      //  self.selectCurrencyFiled.inputView = self.pickerView
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
-        self.getCurrencyArr()
+       // self.getCurrencyArr()
         seekView.colorBetweenHandles = #colorLiteral(red: 0, green: 0.8693377376, blue: 0.7882207632, alpha: 1)
         seekView.tintColor = .white
         seekView.minLabelColor = .white
@@ -59,7 +58,7 @@ class PriceView : UIView{
     }
     
     @IBAction func fieldEndEditing(_ sender: UITextField) {
-        self.selectCurrencyFiled.text = self.currencyArr[currentIndex]
+    
     }
 }
 extension PriceView : RangeSeekSliderDelegate{
@@ -95,7 +94,7 @@ extension PriceView : UIPickerViewDelegate,UIPickerViewDataSource{
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.currentIndex = row
-        self.selectCurrencyFiled.text = self.currencyArr[row]
+       
     }
 }
 extension PriceView{
@@ -107,14 +106,14 @@ extension PriceView{
                 let arr = try? jsonDecoder.decode([String].self, from: data ?? Data())
                 self.currencyArr = arr ?? self.currencyArr
                 self.pickerView.reloadAllComponents()
-                for val in 0..<(self.currencyArr.count){
-                    if self.currencyArr[val] == self.selectCurrencyFiled.text{
-                        self.currentIndex = val
-                        self.pickerView.selectRow(self.currentIndex, inComponent: 0, animated: true)
-                        self.pickerView.reloadAllComponents()
-                        break
-                    }
-                }
+//                for val in 0..<(self.currencyArr.count){
+//                    if self.currencyArr[val] == self.selectCurrencyFiled.text{
+//                        self.currentIndex = val
+//                        self.pickerView.selectRow(self.currentIndex, inComponent: 0, animated: true)
+//                        self.pickerView.reloadAllComponents()
+//                        break
+//                    }
+//                }
             }
         }
     }

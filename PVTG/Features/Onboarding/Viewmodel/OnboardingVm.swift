@@ -23,7 +23,6 @@ class OnboardingVm : BaseVm {
                     let jsonDecoder = JSONDecoder()
                     let data = try? json["result"].rawData()
                     self.model = try? jsonDecoder.decode(OnboardingModel.self, from: data!)
-                    print(self.model?.rewards?.count)
                     self.delegate?.getOnboardingData()
                 }
                 else {

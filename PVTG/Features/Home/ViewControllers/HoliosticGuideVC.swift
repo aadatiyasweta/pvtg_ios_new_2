@@ -45,8 +45,9 @@ class HoliosticGuideVC: BaseViewController {
     var maximimPrice = 0
     var origiMinPrice = 0
     var origiMaxPrice = 0
-    var selectedCurrency = ""
+    var selectedCurrency = "COP"
     var isOpenPopUp = false
+    var isSelectedFromFilter = false
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
@@ -170,7 +171,13 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollCell.ident, for: indexPath) as! PriceCollCell
-            cell.priceLbl.text = "\(self.selectedCurrency)\(self.minimUmPrice)-\(self.selectedCurrency)\(self.maximimPrice)"
+            if self.isSelectedFromFilter{
+                cell.priceLbl.text = "\(self.selectedCurrency)\(self.minimUmPrice)-\(self.selectedCurrency)\(self.maximimPrice)"
+            }else{
+                cell.priceLbl.text = R.string.localizable.priceFilter()
+            }
+
+           
             cell.priceView.layer.cornerRadius = 17
             return cell
         }else{
@@ -201,7 +208,15 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0{
-            return CGSize(width: 120, height: 34)
+            let label = UILabel(frame: CGRect.zero)
+            if self.isSelectedFromFilter{
+                label.text = "\(self.selectedCurrency)\(self.minimUmPrice)-\(self.selectedCurrency)\(self.maximimPrice)"
+            }else{
+                label.text = R.string.localizable.priceFilter()
+            }
+        
+            label.sizeToFit()
+            return CGSize(width: label.frame.size.width + 40, height: 34)
         }else{
             let text = self.vm.categorymodel?.result?[indexPath.row].category_name
             let label = UILabel(frame: CGRect.zero)
@@ -223,17 +238,17 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
             priceView?.seekView.selectedMinValue = CGFloat(self.minimUmPrice)
             priceView?.maxValue = self.maximimPrice
             priceView?.minimumValue = self.minimUmPrice
-            priceView?.selectCurrencyFiled.text = self.selectedCurrency
+           // priceView?.selectCurrencyFiled.text = self.selectedCurrency
             priceView?.currencyArr = self.vm.categorymodel?.currency_data ?? []
             appDelegate.window?.addSubview(priceView!)
-            for val in 0..<(self.vm.categorymodel?.currency_data!.count)!{
-                if self.vm.categorymodel?.currency_data?[val] == self.selectedCurrency{
-                    priceView?.currentIndex = val
-                    priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
-                    priceView?.pickerView.reloadAllComponents()
-                    break
-                }
-            }
+//            for val in 0..<(self.vm.categorymodel?.currency_data!.count)!{
+//                if self.vm.categorymodel?.currency_data?[val] == self.selectedCurrency{
+//                    priceView?.currentIndex = val
+//                    priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
+//                    priceView?.pickerView.reloadAllComponents()
+//                    break
+//                }
+//            }
         }else{
         //  self.txfSearch.text = ""
         if index == indexPath.row {
@@ -276,7 +291,6 @@ extension HoliosticGuideVC: GetSearchSessionData {
      
         self.colectionVwCategory.reloadData()
         if self.vm.categorymodel?.result?.count ?? 0 > 0{
-
             self.catgryId = Int(self.vm.categorymodel?.result?[0].category_id ?? "1") ?? 0
             loadApi(categoryid: "\(self.catgryId)", search: "", isloader: true,minPrice: 0,maxprice: 0)
         }
@@ -298,8 +312,7 @@ extension HoliosticGuideVC: GetSearchSessionData {
     
 }
 extension HoliosticGuideVC : getPriceSliderValues{
-    func slidermaxMinValue(min: Int, max: Int, currency: String) {
-   
+    func slidermaxMinValue(min: Int, max: Int, currency: String, isSelectedFromFilter: Bool) {
         self.maximimPrice = max
         self.minimUmPrice = min
         self.selectedCurrency = currency

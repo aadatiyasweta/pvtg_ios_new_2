@@ -15,6 +15,8 @@ import MercadoPagoSDK
 
 class SummaryVC: BaseViewController, GMSMapViewDelegate {
     
+    
+    @IBOutlet weak var discountViewHeightCons: NSLayoutConstraint!
     @IBOutlet weak var imgLocn: UIImageView!
     @IBOutlet weak var vwAdddashedBordr: UIView!
     
@@ -36,30 +38,33 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var lblPoints: UILabel!
     
     @IBOutlet weak var vwmap: UIView!
-    
     @IBOutlet weak var usePvtBtn: UIButton!
     @IBOutlet weak var rewardedString: UILabel!
+    var onboardingVm = OnboardingVm()
     var bookingDetails: SessionDetailResult?
     var ticketModel : GetTicketResult?
     var totalTkt = ""
-    var sessionTimeId = ""
     var vm = SessionDetailViewModel()
-     var mapView:GMSMapView?
+    var mapView:GMSMapView?
     var customModel : CustomBokingModel?
     var ammountPayment = ""
     var pointsPayent = ""
+    var firstPointDiscount = 0
+    var secondPointDiscount = 0
+    var firstPoints = 0
+    var secondPoins = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.discountViewHeightCons.constant = 0
+        self.onboardingVm.delegate = self
         self.vm.bookingDelegate = self
-      DispatchQueue.main.async {
-//            if let sessionImg = SaveToDefaults().getSessionImage(){
-//            loadImage(sessionImg, self.imgSession, activity: nil, defaultImage: nil)
-//            }
+        DispatchQueue.main.async {
             self.SetMap()
-            if let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude(), let dstlat = SaveToDefaults().getSessionLatitude(), let distlng = SaveToDefaults().getSessionLongitude() {
-                self.draw(src: CLLocationCoordinate2D(latitude:lat , longitude: lng ), dst: CLLocationCoordinate2D(latitude: dstlat , longitude: distlng ))
-            }
+//            if let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude(), let dstlat = SaveToDefaults().getSessionLatitude(), let distlng = SaveToDefaults().getSessionLongitude() {
+//                self.draw(src: CLLocationCoordinate2D(latitude:lat , longitude: lng ), dst: CLLocationCoordinate2D(latitude: dstlat , longitude: distlng ))
+//            }
        }
+        self.onboardingVm.hitOnboaridngApi()
         btnAvlblPoints.isUserInteractionEnabled = false
         self.setDta()
         // Do any additional setup after loading the view.
@@ -78,11 +83,11 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         
     }
     func SetMap(){
-        if let lat1 = SaveToDefaults().getLatitude(), let long1 = SaveToDefaults().getLongtitude(){
+        if let lat1 = self.bookingDetails?.latitude , let long1 = self.bookingDetails?.longitude{
             let lat = Double(lat1)
             let long = Double(long1)
-            let location = CLLocationCoordinate2D(latitude: lat , longitude: long )
-            let camera = GMSCameraPosition.camera(withLatitude: lat , longitude: long , zoom: 15, bearing: 0,
+            let location = CLLocationCoordinate2D(latitude: lat! , longitude: long! )
+            let camera = GMSCameraPosition.camera(withLatitude: lat! , longitude: long! , zoom: 15, bearing: 0,
                                                   viewingAngle: 40)
             mapView = GMSMapView.map(withFrame: self.vwmap.bounds, camera: camera)
             self.vwmap.addSubview(mapView ?? GMSMapView())
@@ -115,13 +120,21 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         }
         if self.usePvtBtn.isSelected{
             
-            if Int(self.ticketModel?.total_point ?? "0")! < 300{
-                amount = "\(price/2)"
-                points = "200"
+            if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
+                let perctange = (price*self.firstPointDiscount)/100
+                amount = "\(price-perctange)"
+                points = "\(self.firstPoints)"
             }
             else{
-                amount = "0"
-                points = "300"
+                if self.secondPointDiscount == 0{
+                    amount = "0"
+                    points = "\(self.secondPoins)"
+                }else{
+                    let perctange = (price*self.secondPointDiscount)/100
+                    amount = "\(price-perctange)"
+                    points = "\(self.secondPoins)"
+                }
+               
             }
         }
         if let n = NumberFormatter().number(from: amount) {
@@ -135,25 +148,40 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     }
  
     
+    @IBAction func viewCancelPolicyBtntap(_ sender: UIButton) {
+        let vc = PrivacyPolicyVC.instance()
+        vc.type = R.string.localizable.cancelPolicy()
+        vc.url = cancelPolicy
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
     @IBAction func tapUseNow(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected{
             self.vwAdddashedBordr.isHidden = false
             self.btnUseNow.isHidden = false
-            if Int(self.ticketModel?.total_point ?? "0")! < 300{
-                self.Discount.text = "50 % \(R.string.localizable.discount())"
-                self.lblPoints.text = "200"
-                let val = Int(self.ticketModel?.total_point ?? "0")! - 200
+            self.discountViewHeightCons.constant = 50
+            if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
+                self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
+                self.lblPoints.text = "\(self.firstPoints) \(R.string.localizable.pts())"
+                let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints
                 self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
             }else{
-                self.Discount.text = "Free"
-                self.lblPoints.text = "300"
-                let val = Int(self.ticketModel?.total_point ?? "0")! - 300
+                if self.secondPointDiscount == 0{
+                    self.Discount.text = R.string.localizable.free()
+                   
+                }else{
+                    self.Discount.text = "\(self.secondPointDiscount)%"
+                }
+                self.lblPoints.text = "\(self.secondPoins) \(R.string.localizable.pts())"
+                let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins
                 self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+               
             }
         }else{
             self.vwAdddashedBordr.isHidden = true
             self.btnUseNow.isHidden = true
+            self.discountViewHeightCons.constant = 0
             let val = (self.ticketModel?.total_point)!
             self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
         }
@@ -191,20 +219,11 @@ extension SummaryVC {
             }
             
             if let tkt = Int(self.totalTkt){
-                self.totalFare.text = "$\(tkt*Int(flaotPrice))"
+                self.totalFare.text = "\(self.bookingDetails?.currency ?? "COP")\(tkt*Int(flaotPrice))"
 
             }
-            if pt ?? 0 < 200{
-                self.usePvtBtn.isUserInteractionEnabled = false
-            }else{
-                 self.usePvtBtn.isUserInteractionEnabled = true
-            }
             self.btnAvlblPoints.setTitle("\(pt ?? 0) \(R.string.localizable.ptsavailable())", for: .normal)
-            if self.ticketModel?.user_booking ?? 0 == 0{
-                self.rewardedString.text = R.string.localizable.youWillBeRewarded("20")
-            }else{
-                 self.rewardedString.text = R.string.localizable.youWillBeRewarded("10")
-            }
+           
         }
     }
     
@@ -248,14 +267,15 @@ extension SummaryVC {
   }
     func doPayment(id : String){
         print(id)
-        let builder = MercadoPagoCheckoutBuilder(publicKey: "TEST-55326d65-65a3-4561-a7fd-176149c86680", preferenceId: id)
+        let builder = MercadoPagoCheckoutBuilder(publicKey: "APP_USR-98d88762-c632-470d-83e1-3b2b519bdcec", preferenceId: id)
         builder.setLanguage("es")
         let checkout = MercadoPagoCheckout(builder: builder)
         let config = PXAdvancedConfiguration()
+        
         config.expressEnabled = true
         builder.setAdvancedConfiguration(config: config)
         builder.setColor(checkoutColor: .green)
-       builder.setPrivateKey(key: "TEST-7488660032626366-081021-6e581c702a1f21140901508fa58446dd-790689138")
+        builder.setPrivateKey(key: "APP_USR-7488660032626366-081021-f6a853662803b7ae35548fb1c44b7b5b-790689138")
         if let myNavigationController = navigationController {
             checkout.start(navigationController: myNavigationController, lifeCycleProtocol: self)
     
@@ -308,8 +328,35 @@ extension SummaryVC: PXLifeCycleProtocol , PXPaymentProcessor{
         }
     }
 }
-extension SummaryVC : GetBookingResponse{
-   
+extension SummaryVC : GetBookingResponse,getOnboardingResponse{
+    func getOnboardingData() {
+        if self.onboardingVm.model?.rewards?.count == 2{
+            self.firstPoints = Int(self.onboardingVm.model?.rewards?[0].points ?? "0") ?? 0
+            self.secondPoins = Int(self.onboardingVm.model?.rewards?[1].points ?? "0") ?? 0
+            let str = self.onboardingVm.model?.rewards?[0].discount ?? "0"
+            if str.contains("%"){
+                let first = str.split(separator: "%")[0].description
+                self.firstPointDiscount = Int(first) ?? 0
+            }
+            let str1 = self.onboardingVm.model?.rewards?[1].discount ?? "0"
+            if str1.contains("%"){
+                let first = str1.split(separator: "%")[0].description
+                self.secondPointDiscount = Int(first) ?? 0
+            }
+        }
+        let pt = Int(self.ticketModel?.total_point ?? "0")
+        if pt ?? 0 < firstPoints{
+            self.usePvtBtn.isUserInteractionEnabled = false
+        }else{
+             self.usePvtBtn.isUserInteractionEnabled = true
+        }
+        if self.ticketModel?.user_booking ?? 0 == 0{
+            self.rewardedString.text = R.string.localizable.youWillBeRewarded(self.onboardingVm.model?.point_accumulation?.first_booking_point ?? "")
+        }else{
+             self.rewardedString.text = R.string.localizable.youWillBeRewarded(self.onboardingVm.model?.point_accumulation?.bookings ?? "")
+        }
+    }
+
     func getPrefrenceId(id: String) {
         print(id)
         self.doPayment(id: id)
@@ -317,9 +364,9 @@ extension SummaryVC : GetBookingResponse{
     func bookingSuccess() {
         let vc = ThankyouVC.instance()
         if self.ticketModel?.user_booking ?? 0 == 0{
-           vc.points = "20"
+            vc.points = self.onboardingVm.model?.point_accumulation?.first_booking_point ?? ""
         }else{
-            vc.points = "10"
+            vc.points = self.onboardingVm.model?.point_accumulation?.bookings ?? ""
         }
         vc.name = self.bookingDetails?.name_of_listing ?? ""
         

@@ -1,11 +1,3 @@
-/* Class = "UILabel"; text = "Price in Dollars"; ObjectID = "GwA-ZW-jmN"; */
-"GwA-ZW-jmN.text" = "Precio en dolares";
 
-/* Class = "UILabel"; text = "min"; ObjectID = "Zra-ip-j52"; */
-"Zra-ip-j52.text" = "min";
-
-/* Class = "UITextField"; placeholder = "Select Currency"; ObjectID = "vb2-0K-f1t"; */
-"vb2-0K-f1t.placeholder" = "Seleccionar moneda";
-
-/* Class = "UILabel"; text = "Price Filter"; ObjectID = "vjY-v3-9mw"; */
-"vjY-v3-9mw.text" = "Filtro de precio";
+/* Class = "UILabel"; text = "Price Filter (In COP)"; ObjectID = "vjY-v3-9mw"; */
+"vjY-v3-9mw.text" = "Filtro de precios (en COP)";

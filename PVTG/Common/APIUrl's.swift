@@ -3,13 +3,13 @@ import Foundation
 import UIKit
 
 
-let topSearch = "http://52.27.53.102/pvtg/admin_assets/img/topsearch.png"
-let testingServer = "http://52.27.53.102/pvtg/api/v1/"
+let topSearch = "http://54.245.144.158/pvtg_dev/admin_assets/img/topsearch.png"
+let testingServer = "http://54.245.144.158/pvtg_dev/api/v1/"
 let terms =  "http://52.27.53.102/pvtg/terms_condition.html"
 let aboutUs = "http://52.27.53.102/pvtg/about_us.html"
 let faq = "http://52.27.53.102/pvtg/faq.html"
 let privacy = "http://52.27.53.102/pvtg/privacy_policy.html"
-let cancelPolicy = "http://52.27.53.102/pvtg/cancel_policy.html"
+let cancelPolicy = "http://54.245.144.158/pvtg_dev/cancel_policy.html"
 let server = testingServer
 let googlePlacesSearchApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=noida&key=AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k"
 let appLanguage = SaveToDefaults().getAppLang() ?? "en"
@@ -19,6 +19,7 @@ func loginUrl()-> String {
     print("Userapi/normal_login",url)
     return url
 }
+
 func forgotUrl()-> String {
     var  url = "\(server)Userapi/forgot"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -100,14 +101,14 @@ func sessionDetailApi()-> String {
 }
 ///
 func check_ticketApi(user_id: String, ticket: String, schedule_time_id: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/check_ticket?user_id=\(user_id)&ticket=\(ticket)&schedule_time_id=\(schedule_time_id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Sessionapi/check_ticket?user_id=\(user_id)&ticket=\(ticket)&schedule_time_id=\(schedule_time_id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/check_ticket",url)
     return url
 }
 //
 func ticketDataApi(user_id: String, session_id: String, schedule_time_id: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Sessionapi/ticket_data?user_id=\(user_id)&session_id=\(session_id)&schedule_time_id=\(schedule_time_id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Sessionapi/ticket_data?user_id=\(user_id)&session_id=\(session_id)&schedule_time_id=\(schedule_time_id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/ticket_data",url)
     return url
@@ -181,7 +182,7 @@ func searchPlacesApi(text: String)-> String {
 
 }
 func allCategoryUrl(userid: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Userapi/all_category?user_id=\(userid)"
+    var  url = "\(server)Userapi/all_category?user_id=\(userid)"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print(" Userapi/all_categoryUrl",url)
     return url
@@ -214,7 +215,7 @@ func selectInterestUrl()-> String{
     return url
 }
 func getSplashPointsUrl()-> String{
-    var  url = "\(testingServer)Userapi/getSplashPoints"
+    var  url = "\(testingServer)Userapi/getSplashPoints?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("getSplashPointsUrl",url)
     return url

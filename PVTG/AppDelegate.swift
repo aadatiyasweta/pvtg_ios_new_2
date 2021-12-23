@@ -129,11 +129,13 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        application.applicationIconBadgeNumber = 0
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
@@ -163,11 +165,12 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         print("didReceive")
+        if userInfo["gcm.notification.type"] as? String == "reminder"{
         if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
             print(session_id,session_name)
             if SaveToDefaults().getAccessToken() != nil{
                 if UIApplication.shared.applicationState == .inactive{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                         self.performAttendingAlert(name: session_name, id: session_id)
                     }
                 }else{
@@ -176,18 +179,21 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
                
             }
         }
+        }
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("userInfo",userInfo)
-    
-        if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
-            print(session_id,session_name)
-            if SaveToDefaults().getAccessToken() != nil{
-                if application.applicationState == .active{
-                    self.performAttendingAlert(name: session_name, id: session_id)
+        if userInfo["gcm.notification.type"] as? String == "reminder"{
+            if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
+                print(session_id,session_name)
+                if SaveToDefaults().getAccessToken() != nil{
+                    if application.applicationState == .active{
+                        self.performAttendingAlert(name: session_name, id: session_id)
+                    }
                 }
             }
         }
+      
         completionHandler(.newData)
     }
     func performAttendingAlert(name : String, id : String){
