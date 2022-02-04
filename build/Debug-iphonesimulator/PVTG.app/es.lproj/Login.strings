@@ -1,0 +1,127 @@
+
+/* Class = "UILabel"; text = "Login to your account"; ObjectID = "0pk-2H-HMD"; */
+"0pk-2H-HMD.text" = "Ingresa a tu cuenta";
+
+/* Class = "UITextField"; placeholder = "Email address"; ObjectID = "2eb-uq-YP5"; */
+"2eb-uq-YP5.placeholder" = "Dirección de correo electrónico";
+
+/* Class = "UIButton"; normalTitle = "SUBMIT"; ObjectID = "2kr-7h-bf8"; */
+"2kr-7h-bf8.normalTitle" = "ENVIAR";
+
+/* Class = "UILabel"; text = "Dont have an account?"; ObjectID = "32E-Aw-Y92"; */
+"32E-Aw-Y92.text" = "¿No tienes una cuenta?";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5Ri-VB-NAS"; */
+"5Ri-VB-NAS.text" = " Etiqueta";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "AjF-sU-bYM"; */
+"AjF-sU-bYM.text" = " Etiqueta";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "AnO-yQ-U2R"; */
+"AnO-yQ-U2R.text" = " Etiqueta";
+
+/* Class = "UILabel"; text = "Already have an account?"; ObjectID = "Ao8-j4-9b6"; */
+"Ao8-j4-9b6.text" = "¿Ya tienes una cuenta?";
+
+/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "B8R-NP-UBv"; */
+"B8R-NP-UBv.placeholder" = "Nueva contraseña";
+
+/* Class = "UIButton"; normalTitle = "Resend Code"; ObjectID = "ER4-qz-GR7"; */
+"ER4-qz-GR7.normalTitle" = "Reenviar el código";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Jbg-rJ-HPi"; */
+"Jbg-rJ-HPi.text" = "Etiqueta";
+
+/* Class = "UIButton"; normalTitle = "Login Now!"; ObjectID = "K2S-fv-4rg"; */
+"K2S-fv-4rg.normalTitle" = "Ingresa Ahora!";
+
+/* Class = "UIButton"; normalTitle = "Sign in with Google"; ObjectID = "Lcz-kc-Swy"; */
+"Lcz-kc-Swy.normalTitle" = "Ingresa con Google";
+
+/* Class = "UITextField"; placeholder = "*Email address"; ObjectID = "Nd4-AL-cu4"; */
+"Nd4-AL-cu4.placeholder" = "*Dirección de correo electrónico";
+
+/* Class = "UITextField"; placeholder = "Full Name"; ObjectID = "Oz5-xH-JbT"; */
+"Oz5-xH-JbT.placeholder" = "Nombre Completo";
+
+/* Class = "UITextField"; placeholder = "Mobile No"; ObjectID = "QHI-pp-kVk"; */
+"QHI-pp-kVk.placeholder" = "No moviles";
+
+/* Class = "UITextField"; placeholder = "*Password"; ObjectID = "QmZ-ET-rbc"; */
+"QmZ-ET-rbc.placeholder" = "*Contraseña";
+
+/* Class = "UILabel"; text = "or"; ObjectID = "SX0-Cg-NSr"; */
+"SX0-Cg-NSr.text" = "o";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "Sb2-eV-s3d"; */
+"Sb2-eV-s3d.normalTitle" = "Enviar";
+
+/* Class = "UILabel"; text = "  Email Verification"; ObjectID = "UBm-8g-cuh"; */
+"UBm-8g-cuh.text" = "  Verificación de correo";
+
+/* Class = "UILabel"; text = "Didn’t Receive?"; ObjectID = "WOs-68-ZzW"; */
+"WOs-68-ZzW.text" = "¿No recibiste?";
+
+/* Class = "UILabel"; text = "Lets create your account"; ObjectID = "XSh-I1-R21"; */
+"XSh-I1-R21.text" = "Vamos a crear tu cuenta";
+
+/* Class = "UIButton"; normalTitle = "Sign in with Facebook"; ObjectID = "Xem-gh-pc8"; */
+"Xem-gh-pc8.normalTitle" = "Ingresa con Facebook";
+
+/* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Xyq-sY-ekZ"; */
+"Xyq-sY-ekZ.placeholder" = "Confirma la nueva contraseña";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "YC0-ly-5Us"; */
+"YC0-ly-5Us.text" = "Etiqueta";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Z6C-pF-p3p"; */
+"Z6C-pF-p3p.text" = " Etiqueta ";
+
+/* Class = "UIButton"; normalTitle = "Register Now!"; ObjectID = "arx-vc-6JW"; */
+"arx-vc-6JW.normalTitle" = "Registrarse Ahora!";
+
+/* Class = "UILabel"; text = "  Reset Password"; ObjectID = "ayN-KW-gEu"; */
+"ayN-KW-gEu.text" = "  Restablecer la contraseña";
+
+/* Class = "UITextField"; placeholder = "Enter Email"; ObjectID = "blF-Ut-kfs"; */
+"blF-Ut-kfs.placeholder" = "Ingresa un correo electrónico";
+
+/* Class = "UILabel"; text = "  Forgot Password"; ObjectID = "dvX-Eo-IAe"; */
+"dvX-Eo-IAe.text" = "  Olvide la contraseña";
+
+/* Class = "UIButton"; normalTitle = "SUBMIT"; ObjectID = "eJK-jn-yd4"; */
+"eJK-jn-yd4.normalTitle" = "ENVIAR";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password ?"; ObjectID = "esW-29-ROl"; */
+"esW-29-ROl.normalTitle" = "¿Olvidaste la contraseña?";
+
+/* Class = "UILabel"; text = "Don't worry just fill in your email and we will send an otp to reset your password"; ObjectID = "fxv-xf-3wX"; */
+"fxv-xf-3wX.text" = " No te preocupes, solo complete su correo electrónico y le enviaremos un OTP para restablecer su contraseña ";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "hRL-4P-Lif"; */
+"hRL-4P-Lif.placeholder" = "Contraseña";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lQc-XV-EHw"; */
+"lQc-XV-EHw.text" = "Etiqueta";
+
+/* Class = "UIButton"; normalTitle = "Verify"; ObjectID = "lQe-pZ-Qwo"; */
+"lQe-pZ-Qwo.normalTitle" = "Verificar";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mOi-7Z-Mn1"; */
+"mOi-7Z-Mn1.text" = "Etiqueta";
+
+/* Class = "UITextField"; placeholder = "*Confirm Password"; ObjectID = "nkA-1a-3B4"; */
+"nkA-1a-3B4.placeholder" = "*Confirmar contraseña";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "q5N-0u-qqm"; */
+"q5N-0u-qqm.text" = "Etiqueta";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "slg-CE-MMV"; */
+"slg-CE-MMV.normalTitle" = "Enviar";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "t4c-mr-rgO"; */
+"t4c-mr-rgO.text" = "Etiqueta";
+
+/* Class = "UIButton"; normalTitle = "Sign in with Apple"; ObjectID = "zQ6-13-q4t"; */
+"zQ6-13-q4t.normalTitle" = "Ingresa con Apple";
+

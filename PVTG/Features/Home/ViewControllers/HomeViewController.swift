@@ -59,6 +59,7 @@ class HomeViewController: BaseViewController {
         // self.locationManager.startUpdatingLocation()
         lblNoSession.text = ""
         appDelegate.hitDeviceTokenApi()
+
         homevm.delegate = self
         DispatchQueue.main.async {
             self.userimg.layer.borderWidth = 0.5
@@ -81,7 +82,8 @@ class HomeViewController: BaseViewController {
             placesClient = GMSPlacesClient.shared()
            
         }else{
-            self.city = SaveToDefaults().getCity() ?? ""
+//            self.city = SaveToDefaults().getCity() ?? ""
+         self.city = "Noida"
             self.lblLocn.text = address
            
             loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
@@ -102,7 +104,9 @@ class HomeViewController: BaseViewController {
     
     
     func loadApi(categoryid: String , minPrice : Int? = 0 , maxPrice : Int? = 0,currency : String) {
-        if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
+      
+        if let userid = SaveToDefaults().getUserId(), var lat = SaveToDefaults().getLatitude(), var lng = SaveToDefaults().getLongtitude() {
+      
             let value = self.lblLocn.text ?? ""
            // let val = value.split(separator: ",")
             if self.city == ""{
@@ -381,7 +385,6 @@ extension HomeViewController: CLLocationManagerDelegate{
         requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
         
         locationManager.stopUpdatingLocation()
-        
         
     }
     

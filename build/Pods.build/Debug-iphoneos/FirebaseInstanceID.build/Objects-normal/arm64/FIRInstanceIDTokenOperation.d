@@ -1,0 +1,33 @@
+dependencies: \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/Firebase/InstanceID/FIRInstanceIDTokenOperation.m \
+  /Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphoneos/FirebaseInstanceID.build/module.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/Firebase/InstanceID/FIRInstanceIDTokenOperation.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/kcdata.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/uuid.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/netinet6.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/machine.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/device.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach_debug.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach_machine.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/bank.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/darwin_posix_sys_types.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/netinet.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/net.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/darwin_cdefs.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach-o/dyld.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/FirebaseInstallations/Source/Library/Private/FirebaseInstallationsInternal.h \
+  /Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphoneos/FirebaseInstallations.build/module.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FIRInstallationsVersion.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FIRInstallationsErrors.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FIRInstallationsAuthTokenResult.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FIRInstallations.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations.h \
+  /Users/kashish/Documents/PVTG/Pods/Target\ Support\ Files/FirebaseInstallations/FirebaseInstallations-umbrella.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/Firebase/InstanceID/Private/FIRInstanceIDCheckinPreferences.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/Firebase/InstanceID/FIRInstanceIDLogger.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/Firebase/InstanceID/FIRIMessageCode.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/Firebase/InstanceID/FIRInstanceIDURLQueryItem.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/Firebase/InstanceID/FIRInstanceIDUtilities.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseInstanceID/Firebase/InstanceID/NSError+FIRInstanceID.h

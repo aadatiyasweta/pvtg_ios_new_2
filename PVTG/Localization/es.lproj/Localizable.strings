@@ -50,7 +50,8 @@
 "TermsConditions" = "Términos y condiciones";
 "AboutUs" = "Sobre Nosotros";
 "RateUs" = "Califícanos";
-"HowItWorks" = "Como funciona";
+//"HowItWorks" = "Como funciona";
+"HowItWorks" = "Recompensas del Dharma";
 "Signout" = "Cerrar sesión";
 "Areyousureyouwant" = "¿Estás seguro de querer cerrar sesión?";
 "ok" = "Ok";

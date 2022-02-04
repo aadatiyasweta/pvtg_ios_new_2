@@ -1,0 +1,45 @@
+dependencies: \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageManager.m \
+  /Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphoneos/SDWebImage.build/module.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/Target\ Support\ Files/SDWebImage/SDWebImage-prefix.pch \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/kcdata.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/uuid.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/netinet6.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/machine.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/device.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach_debug.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach_machine.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/bank.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/darwin_posix_sys_types.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/netinet.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/net.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/darwin_cdefs.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach-o/dyld.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageManager.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageCompat.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageOperation.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDImageCacheDefine.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageDefine.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDImageLoader.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDImageTransformer.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/UIImage+Transform.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageCacheKeyFilter.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageCacheSerializer.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageOptionsProcessor.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDImageCache.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDImageCacheConfig.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDMemoryCache.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDDiskCache.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageDownloader.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageDownloaderConfig.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageDownloaderRequestModifier.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageDownloaderResponseModifier.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageDownloaderDecryptor.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/UIImage+Metadata.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/NSData+ImageContentType.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Private/SDAssociatedObject.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Core/SDWebImageError.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Private/SDInternalMacros.h \
+  /Users/kashish/Documents/PVTG/Pods/SDWebImage/SDWebImage/Private/SDmetamacros.h

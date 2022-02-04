@@ -1,0 +1,6 @@
+framework module Pods_PVTG {
+  umbrella header "Pods-PVTG-umbrella.h"
+
+  export *
+  module * { export * }
+}

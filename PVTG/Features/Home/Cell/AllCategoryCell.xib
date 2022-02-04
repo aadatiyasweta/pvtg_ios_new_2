@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hevhevrevrvjebvhbe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dS-eV-B3X">
-                                <rect key="frame" x="4" y="111.5" width="74" height="12.5"/>
+                                <rect key="frame" x="4" y="111.5" width="74" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,7 +44,6 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2dS-eV-B3X" secondAttribute="trailing" constant="4" id="5sl-ug-9T4"/>
                             <constraint firstItem="MxZ-zM-4Ml" firstAttribute="centerY" secondItem="B30-5M-hFO" secondAttribute="centerY" constant="-5" id="6PX-TV-4us"/>
-                            <constraint firstAttribute="bottom" secondItem="2dS-eV-B3X" secondAttribute="bottom" constant="5" id="T4P-kf-Lfd"/>
                             <constraint firstItem="2dS-eV-B3X" firstAttribute="leading" secondItem="B30-5M-hFO" secondAttribute="leading" constant="4" id="U1T-Ws-f1c"/>
                             <constraint firstItem="2dS-eV-B3X" firstAttribute="top" secondItem="MxZ-zM-4Ml" secondAttribute="bottom" constant="12" id="X8Y-M9-5Sc"/>
                             <constraint firstItem="2dS-eV-B3X" firstAttribute="centerX" secondItem="MxZ-zM-4Ml" secondAttribute="centerX" id="Y8c-ri-JjN"/>

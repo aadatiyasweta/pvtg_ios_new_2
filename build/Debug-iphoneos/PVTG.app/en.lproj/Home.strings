@@ -1,0 +1,84 @@
+
+/* Class = "UILabel"; text = "Please Select Interest"; ObjectID = "2KN-Ax-CER"; */
+"2KN-Ax-CER.text" = "Please Select Interest";
+
+/* Class = "UILabel"; text = "200pts"; ObjectID = "A5V-63-iUD"; */
+"A5V-63-iUD.text" = "200pts";
+
+/* Class = "UIButton"; normalTitle = "PAY NOW"; ObjectID = "Fri-Sx-ywP"; */
+"Fri-Sx-ywP.normalTitle" = "PAY NOW";
+
+/* Class = "UILabel"; text = "And don't worry you can always cancel 2 hours"; ObjectID = "Fvp-bu-f3O"; */
+"Fvp-bu-f3O.text" = "And don't worry you can always cancel 2 hours";
+
+/* Class = "UILabel"; text = "You will be rewarded 45pts on booking the session"; ObjectID = "K4D-8J-yAO"; */
+"K4D-8J-yAO.text" = "You will be rewarded 45pts on booking the session";
+
+/* Class = "UIButton"; normalTitle = "Use Now"; ObjectID = "LzX-H3-Abf"; */
+"LzX-H3-Abf.normalTitle" = "Use Now";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Pri-4U-OYz"; */
+"Pri-4U-OYz.text" = "Label";
+
+/* Class = "UILabel"; text = "50 % Discount"; ObjectID = "QXQ-TX-RIj"; */
+"QXQ-TX-RIj.text" = "50 % Discount";
+
+/* Class = "UITabBarItem"; title = "Events"; ObjectID = "SHI-lC-CLn"; */
+"SHI-lC-CLn.title" = "Events";
+
+/* Class = "UIButton"; normalTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
+"STU-Np-GOX.normalTitle" = "Use Dharma Points";
+
+/* Class = "UIButton"; selectedTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
+"STU-Np-GOX.selectedTitle" = "Use Dharma Points";
+
+/* Class = "UILabel"; text = "Total Fare"; ObjectID = "UNq-AZ-pHi"; */
+"UNq-AZ-pHi.text" = "Total Fare";
+
+/* Class = "UITabBarItem"; title = "More"; ObjectID = "ZCK-U4-egh"; */
+"ZCK-U4-egh.title" = "More";
+
+/* Class = "UILabel"; text = "  Select Interest"; ObjectID = "crF-m2-F7f"; */
+"crF-m2-F7f.text" = "  Select Interest";
+
+/* Class = "UILabel"; text = "Your Location"; ObjectID = "g9D-1j-WGH"; */
+"g9D-1j-WGH.text" = "Your Location";
+
+/* Class = "UILabel"; text = "Explore new places and meet new people."; ObjectID = "ixV-HJ-68N"; */
+"ixV-HJ-68N.text" = "Explore new places and meet new people.";
+
+/* Class = "UITextField"; placeholder = "Search any keyword"; ObjectID = "jAj-D3-SvC"; */
+"jAj-D3-SvC.placeholder" = "Search any keyword";
+
+/* Class = "UILabel"; text = "History"; ObjectID = "jJE-dL-dnz"; */
+"jJE-dL-dnz.text" = "History";
+
+/* Class = "UILabel"; text = "before a session for a full refund!"; ObjectID = "k0g-jZ-Hlr"; */
+"k0g-jZ-Hlr.text" = "before a session for a full refund!";
+
+/* Class = "UITabBarItem"; title = "Holistic Guide"; ObjectID = "kLW-Rg-3Z1"; */
+"kLW-Rg-3Z1.title" = "Holistic Guide";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "kb9-c5-pvM"; */
+"kb9-c5-pvM.title" = "Home";
+
+/* Class = "UIButton"; normalTitle = "View Cancellation Policy"; ObjectID = "lA0-dA-EXL"; */
+"lA0-dA-EXL.normalTitle" = "View Cancellation Policy";
+
+/* Class = "UILabel"; text = "Total Tickets "; ObjectID = "ltp-zh-9Ak"; */
+"ltp-zh-9Ak.text" = "Total Tickets ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oDE-A2-Egb"; */
+"oDE-A2-Egb.text" = "Label";
+
+/* Class = "UILabel"; text = "Active Events"; ObjectID = "qbx-Xx-QFc"; */
+"qbx-Xx-QFc.text" = "Active Events";
+
+/* Class = "UILabel"; text = "More"; ObjectID = "wmd-O0-6CY"; */
+"wmd-O0-6CY.text" = "More";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "y2N-dH-gRq"; */
+"y2N-dH-gRq.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "zXJ-65-iSK"; */
+"zXJ-65-iSK.normalTitle" = "Done";

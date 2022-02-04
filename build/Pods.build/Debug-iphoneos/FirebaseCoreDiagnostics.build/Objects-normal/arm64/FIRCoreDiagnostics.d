@@ -1,0 +1,53 @@
+dependencies: \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseCoreDiagnostics/Firebase/CoreDiagnostics/FIRCDLibrary/FIRCoreDiagnostics.m \
+  /Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphoneos/FirebaseCoreDiagnostics.build/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/kcdata.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/uuid.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/netinet6.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/machine.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/device.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach_debug.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach_machine.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/bank.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/darwin_posix_sys_types.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/netinet.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/net.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/darwin_cdefs.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseCoreDiagnostics/GoogleDataTransport/GDTCORLibrary/Internal/GoogleDataTransportInternal.h \
+  /Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphoneos/GoogleDataTransport.build/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach-o/dyld.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORTransport.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORUploader.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORStorageEventSelector.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORStorageProtocol.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORRegistrar.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORReachability.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORPlatform.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORLifecycle.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCOREventTransformer.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORTargets.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCOREventDataObject.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCOREvent.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORClock.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORConsoleLogger.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleDataTransport/GoogleDataTransport/GDTCORLibrary/Public/GDTCORAssert.h \
+  /Users/kashish/Documents/PVTG/Pods/Target\ Support\ Files/GoogleDataTransport/GoogleDataTransport-umbrella.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseCoreDiagnostics/GoogleUtilities/Environment/Private/GULAppEnvironmentUtil.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseCoreDiagnostics/GoogleUtilities/Environment/Private/GULHeartbeatDateStorage.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseCoreDiagnostics/GoogleUtilities/Logger/Private/GULLogger.h \
+  /Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphoneos/GoogleUtilities.build/module.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/GoogleUtilities/GoogleUtilities/NSData+zlib/Public/GULNSData+zlib.h \
+  /Users/kashish/Documents/PVTG/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GULLoggerLevel.h \
+  /Users/kashish/Documents/PVTG/Pods/Target\ Support\ Files/GoogleUtilities/GoogleUtilities-umbrella.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseCoreDiagnostics/Interop/CoreDiagnostics/Public/FIRCoreDiagnosticsData.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseCoreDiagnostics/Interop/CoreDiagnostics/Public/FIRCoreDiagnosticsInterop.h \
+  /Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphoneos/nanopb.build/module.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/nanopb/pb_encode.h \
+  /Users/kashish/Documents/PVTG/Pods/nanopb/pb_decode.h \
+  /Users/kashish/Documents/PVTG/Pods/nanopb/pb_common.h \
+  /Users/kashish/Documents/PVTG/Pods/nanopb/pb.h \
+  /Users/kashish/Documents/PVTG/Pods/Target\ Support\ Files/nanopb/nanopb-umbrella.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseCoreDiagnostics/Firebase/CoreDiagnostics/FIRCDLibrary/Protogen/nanopb/firebasecore.nanopb.h

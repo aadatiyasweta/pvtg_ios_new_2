@@ -1,0 +1,22 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "a6cecef5a6ed667d1fad877a54cdc510e52b751cee87173da0877fd64ec60b17"
+build_start_time: [1643962169, 486310005]
+build_end_time: [1643962170, 352954864]
+inputs:
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift": [1643866670, 504205465]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift": [1643866670, 504553794]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift": [1643866670, 504894495]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift": [1643866670, 505235910]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift": [1643866670, 505620479]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift": [1643866670, 506094932]
+  ? "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift"
+  : [1643866670, 506473302]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQKeyboardManager.swift": [1643866670, 508278369]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift": [1643866670, 508979320]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQTextView/IQTextView.swift": [1643866670, 509864330]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift": [1643866670, 510406494]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQToolbar/IQInvocation.swift": [1643866670, 510877609]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift": [1643866670, 511352539]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift": [1643866670, 512065172]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift": [1643866670, 512455463]
+  "/Users/kashish/Documents/PVTG/Pods/IQKeyboardManagerSwift/IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift": [1643866670, 513129711]

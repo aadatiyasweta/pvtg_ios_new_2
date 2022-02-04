@@ -1,0 +1,11 @@
+framework module AMShimmer {
+  umbrella header "AMShimmer-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module AMShimmer.Swift {
+    header "AMShimmer-Swift.h"
+    requires objc
+}

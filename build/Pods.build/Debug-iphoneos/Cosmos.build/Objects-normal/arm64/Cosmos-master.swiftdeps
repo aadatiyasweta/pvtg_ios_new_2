@@ -1,0 +1,20 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "a6cecef5a6ed667d1fad877a54cdc510e52b751cee87173da0877fd64ec60b17"
+build_start_time: [1643962169, 601274013]
+build_end_time: [1643962170, 85123062]
+inputs:
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosAccessibility.swift": [1643866665, 828589439]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosDefaultSettings.swift": [1643866665, 828804731]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosLayerHelper.swift": [1643866665, 829025745]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosLayers.swift": [1643866665, 829332351]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosLocalizedRating.swift": [1643866665, 829615116]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosRating.swift": [1643866665, 829869747]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosSettings.swift": [1643866665, 830084323]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosSize.swift": [1643866665, 830383777]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosText.swift": [1643866665, 830608367]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosTouch.swift": [1643866665, 830814599]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosView.swift": [1643866665, 831049919]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/Helpers/CosmosTouchTarget.swift": [1643866665, 831530809]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/Helpers/RightToLeft.swift": [1643866665, 831784009]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/StarFillMode.swift": [1643866665, 831999778]
+  "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/StarLayer.swift": [1643866665, 832236289]

@@ -31,7 +31,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var lblSessionPlaceName: UILabel!
     @IBOutlet weak var vwrating: CosmosView!
     @IBOutlet weak var lblPlaceName: UILabel!
-    
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var vwmap: UIView!
     @IBOutlet weak var lblsessiondetail: UILabel!
     @IBOutlet weak var btnToPrev: UIButton!
@@ -133,6 +133,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+//     self.tabBarController?.tabBar.addBadge(index: 3)
         self.mainScrollview.delegate = self
          vwcalendar.appearance.todayColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         vwcalendar.appearance.todaySelectionColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
@@ -148,7 +149,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
             self.btnBooknow.isHidden = true
-            self.lblsessionPrice.isHidden = true
+         self.priceLabel.isHidden = true
+//            self.lblsessionPrice.isHidden = true
             self.cancelBtn.isHidden = false
             self.completedBtn.isHidden = true
         } else if controllerId == 2 {
@@ -161,7 +163,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = false
             self.lblNoTime.isHidden = false
              self.btnBooknow.isHidden = true
-            self.lblsessionPrice.isHidden = true
+         self.priceLabel.isHidden = true
+//            self.lblsessionPrice.isHidden = true
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
         }else if controllerId == 3 {
@@ -174,7 +177,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
             self.btnBooknow.isHidden = true
-            self.lblsessionPrice.isHidden = true
+         self.priceLabel.isHidden = true
+//            self.lblsessionPrice.isHidden = true
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
         }else {
@@ -189,7 +193,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = false
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
-            self.lblsessionPrice.isHidden = false
+         self.priceLabel.isHidden = false
+//            self.lblsessionPrice.isHidden = false
         }
         loadApi(top_search: "")
         vm.delegate = self
@@ -266,6 +271,10 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             }
         }
     }
+ 
+ 
+
+ 
     @IBAction func btnToTapPrev(_ sender: UIButton) {
         moveCurrentpage(value: true)
     }
@@ -333,6 +342,10 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         self.vwcalendar.setCurrentPage(self.currentpage ?? Date(), animated: true)
         
     }
+ 
+   func minimumDate(for calendar: FSCalendar) -> Date {
+     return Date()
+    }
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         setHeaderMonth(date: calendar.currentPage.toLocalTime())
     }
@@ -348,6 +361,8 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         btnToNext.setTitle("\(headerFormatter.string(from: next))", for: .normal)
         btnToPrev.setTitle("\(headerFormatter.string(from: prev))", for: .normal)
     }
+ 
+
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         
         if date.compare(Date.yesterday) == .orderedAscending {
@@ -379,7 +394,8 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                     self.scrollViewBotmconstarint.constant = 0
                     self.btnBooknow.isHidden = true
-                    self.lblsessionPrice.isHidden = true
+                 self.priceLabel.isHidden = true
+//                  self.lblsessionPrice.isHidden = true
                 }, completion: nil)
                 
             }
@@ -495,7 +511,8 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
             cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
             if offeredIndex != -1{
-                self.lblsessionPrice.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
+//                self.lblsessionPrice.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
+             self.priceLabel.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
             }
            
             if offeredIndex == indexPath.row {
@@ -590,11 +607,13 @@ extension SessionDetailVC: GetResponse {
         if self.controllerId != 1{
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
-                self.lblsessionPrice.isHidden = true
+//                self.lblsessionPrice.isHidden = true
+             self.priceLabel.isHidden = true
                 self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
-                self.lblsessionPrice.isHidden = false
+             self.priceLabel.isHidden = false
+//                self.lblsessionPrice.isHidden = false
                 self.scrollViewBotmconstarint.constant = 97
                 if  self.isFromSelection{
                     let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
@@ -657,11 +676,13 @@ extension SessionDetailVC: GetResponse {
         if self.controllerId != 1{
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
-                self.lblsessionPrice.isHidden = true
+               self.priceLabel.isHidden = true
+//                self.lblsessionPrice.isHidden = true
                 self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
-                self.lblsessionPrice.isHidden = false
+             self.priceLabel.isHidden = false
+//                self.lblsessionPrice.isHidden = false
                 self.scrollViewBotmconstarint.constant = 97
             }
         }
@@ -695,7 +716,7 @@ extension SessionDetailVC: GetResponse {
         let value = Double(data.distance ?? "")!
         let doubleStr = String(format: "%.2f", value)
         let str = (data.city ?? "") + " " + R.string.localizable.kmaway(doubleStr)
-        self.lblsessionPrice.text = (data.currency ?? "$")+(data.ticket_price ?? "")
+//        self.lblsessionPrice.text = (data.currency ?? "$")+(data.ticket_price ?? "")
         self.lblSessionname.text = data.category_name ?? ""
         self.vwrating.rating = Double(data.rating ?? "")!
         self.lblPlaceName.text = str

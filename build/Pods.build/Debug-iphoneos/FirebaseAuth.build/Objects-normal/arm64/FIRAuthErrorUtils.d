@@ -1,0 +1,30 @@
+dependencies: \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthErrorUtils.m \
+  /Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphoneos/FirebaseAuth.build/module.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthErrorUtils.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/kcdata.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/uuid.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/netinet6.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/machine.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/device.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach_debug.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach_machine.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/bank.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/darwin_posix_sys_types.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/netinet.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/net.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/darwin_cdefs.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/mach-o/dyld.modulemap \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRMultiFactorInfo.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthInternalErrors.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRAuthErrors.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRAuthCredential.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/MultiFactor/FIRMultiFactorResolver+Internal.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRMultiFactorResolver.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRMultiFactor.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRAuth.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRAuthAPNSTokenType.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRMultiFactorAssertion.h \
+  /Users/kashish/Documents/PVTG/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FIRMultiFactorSession.h

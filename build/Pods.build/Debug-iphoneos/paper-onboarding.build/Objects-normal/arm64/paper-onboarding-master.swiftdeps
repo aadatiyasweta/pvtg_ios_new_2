@@ -1,0 +1,17 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "a6cecef5a6ed667d1fad877a54cdc510e52b751cee87173da0877fd64ec60b17"
+build_start_time: [1643962168, 343374013]
+build_end_time: [1643962169, 138604164]
+inputs:
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/FillAnimationView/FillAnimationView.swift": [1643866670, 744696617]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/GestureControl/GestureControl.swift": [1643866670, 745025157]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/Helpers/Configuring.swift": [1643866670, 745305061]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/Helpers/ConstraintsHelper.swift": [1643866670, 745645046]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/OnboardingContentView/Item/OnboardingContantViewItem.swift": [1643866670, 746097326]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/OnboardingContentView/OnboardingContentView.swift": [1643866670, 746342182]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/PageView/Item/PageViewItem.swift": [1643866670, 746870040]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/PageView/PageContainerView/PageContainer.swift": [1643866670, 748034954]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/PageView/PageView.swift": [1643866670, 748339414]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/PaperOnboarding.swift": [1643866670, 748796463]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/PaperOnboardingDataSource.swift": [1643866670, 749173641]
+  "/Users/kashish/Documents/PVTG/Pods/paper-onboarding/Source/PaperOnboardingDelegate.swift": [1643866670, 749528884]

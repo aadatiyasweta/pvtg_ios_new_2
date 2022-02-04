@@ -20,6 +20,7 @@ import GooglePlaces
 import GoogleMaps
 import GoogleSignIn
 import FirebaseAuth
+import Stripe
 
 
 @UIApplicationMain
@@ -31,10 +32,18 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
         GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
+//     GMSServices.provideAPIKey("AIzaSyCz9l1ZKpCvUXFlkT4sopsN8OKi6plvBmk")
+
+//     GMSPlacesClient.provideAPIKey("AIzaSyCz9l1ZKpCvUXFlkT4sopsN8OKi6plvBmk")
+//
         GMSPlacesClient.provideAPIKey("AIzaSyCcR9sGmXLeCBwVXIOH2ciEsGlgmHIik98")
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         remoteNotification(application: application)
+     Stripe.setDefaultPublishableKey("pk_test_51KLVfEFKDEQWO0TJyXCr934HPHv6W2pl1kBJiVZnYBIti9OXCMbt3gt5Wzen5wg2tRaCikH81qLI2TFiAMH5WLSf009SjBYjnl")
+//     StripeAPI.defaultPublishableKey = "pk_test_51J7DFrIWyJFFO2dYlvl6aDAVF17ajBQLHCiimifuVEjo9ilhPWr51KglkxPb1oqY7W8w0Lttrrj9IYti0ol1RaKP00Wwya2QRY"
+//     StripeAPI.defaultPublishableKey("pk_test_51J7DFrIWyJFFO2dYlvl6aDAVF17ajBQLHCiimifuVEjo9ilhPWr51KglkxPb1oqY7W8w0Lttrrj9IYti0ol1RaKP00Wwya2QRY")
+//     Stripe.setDefaultPublishableKey("pk_test_51J7DFrIWyJFFO2dYlvl6aDAVF17ajBQLHCiimifuVEjo9ilhPWr51KglkxPb1oqY7W8w0Lttrrj9IYti0ol1RaKP00Wwya2QRY")
   
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
         

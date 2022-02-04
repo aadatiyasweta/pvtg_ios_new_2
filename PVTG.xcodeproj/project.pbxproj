@@ -111,7 +111,6 @@
 		1896C3BE25B7FF780053EC45 /* NotificationListBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896C3BC25B7FF780053EC45 /* NotificationListBase.swift */; };
 		1896C3C025B800880053EC45 /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896C3BF25B800880053EC45 /* Facebook.swift */; };
 		1896C3C225B801FB0053EC45 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896C3C125B801FB0053EC45 /* NotificationViewModel.swift */; };
-		18A08E7C25C13B9500BE7C09 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A08E7B25C13B9400BE7C09 /* GoogleService-Info.plist */; };
 		18A2CB1F25BAE8D5000480E3 /* InterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A2CB1D25BAE8D5000480E3 /* InterCell.swift */; };
 		18A2CB2025BAE8D5000480E3 /* InterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A2CB1E25BAE8D5000480E3 /* InterCell.xib */; };
 		18A765E8259CA49200E71FF9 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A765E6259CA49200E71FF9 /* SearchCell.swift */; };
@@ -153,6 +152,8 @@
 		18EACC4B25A58C0D00B1F959 /* RateUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EACC4A25A58C0D00B1F959 /* RateUsVC.swift */; };
 		18F4DE6925A8465E00E7827A /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4DE6825A8465D00E7827A /* UPCarouselFlowLayout.swift */; };
 		62DEB8BD2B65508163B88D08 /* Pods_PVTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */; };
+		A4507ECB27ABB17200F2405D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4507ECA27ABB17200F2405D /* GoogleService-Info.plist */; };
+		A4AADCBB27AD42100067BF9F /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AADCBA27AD42100067BF9F /* UITabBar+Extension.swift */; };
 		D6072A3B26E8BB1B003BC668 /* OnboardingFirstPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */; };
 		D6072A9226E8C8AE003BC668 /* OnboardingSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */; };
 		D62D733E26C67C3B00DFD0DA /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D733D26C67C3B00DFD0DA /* PriceView.swift */; };
@@ -300,7 +301,6 @@
 		1896C3BC25B7FF780053EC45 /* NotificationListBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListBase.swift; sourceTree = "<group>"; };
 		1896C3BF25B800880053EC45 /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
 		1896C3C125B801FB0053EC45 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
-		18A08E7B25C13B9400BE7C09 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18A2CB1D25BAE8D5000480E3 /* InterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterCell.swift; sourceTree = "<group>"; };
 		18A2CB1E25BAE8D5000480E3 /* InterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterCell.xib; sourceTree = "<group>"; };
 		18A765E6259CA49200E71FF9 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
@@ -345,6 +345,8 @@
 		558B74FBCF5C95B718FAB54C /* Pods-PVTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.release.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.release.xcconfig"; sourceTree = "<group>"; };
 		5FAAD99D1247D339D5164761 /* Pods-PVTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.debug.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.debug.xcconfig"; sourceTree = "<group>"; };
 		9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PVTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4507ECA27ABB17200F2405D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A4AADCBA27AD42100067BF9F /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
 		D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstPointsCell.swift; sourceTree = "<group>"; };
 		D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondCell.swift; sourceTree = "<group>"; };
 		D62D733D26C67C3B00DFD0DA /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 		187F3E36258CC7FD008FB2CB /* PVTG */ = {
 			isa = PBXGroup;
 			children = (
+				A4507ECA27ABB17200F2405D /* GoogleService-Info.plist */,
 				D6C95FD726BD4ACE00DC5719 /* Localization */,
 				18B184C225B953DD00B83A6B /* PVTG.entitlements */,
 				1855F47F2592377A009396E6 /* Font */,
@@ -691,7 +694,6 @@
 				187F3E4B258CCB58008FB2CB /* Common */,
 				187F3E40258CC802008FB2CB /* Assets.xcassets */,
 				187F3E42258CC802008FB2CB /* LaunchScreen.storyboard */,
-				18A08E7B25C13B9400BE7C09 /* GoogleService-Info.plist */,
 				187F3E45258CC802008FB2CB /* Info.plist */,
 			);
 			path = PVTG;
@@ -752,6 +754,7 @@
 				1865F466259C7EF400669618 /* Session */,
 				18BD585C259C7BFE0035FFA8 /* More */,
 				18708BE625A41A8C001439CA /* Profile */,
+				A4AADCBA27AD42100067BF9F /* UITabBar+Extension.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1062,6 +1065,7 @@
 			files = (
 				D6A257422747D36B0031B75D /* PriceView.xib in Resources */,
 				1855F4962592377B009396E6 /* Montserrat-Light.ttf in Resources */,
+				A4507ECB27ABB17200F2405D /* GoogleService-Info.plist in Resources */,
 				18525A56259994410042046C /* InterestCell.xib in Resources */,
 				1855F49D2592377B009396E6 /* Montserrat-SemiBold.ttf in Resources */,
 				187F3E44258CC802008FB2CB /* LaunchScreen.storyboard in Resources */,
@@ -1076,7 +1080,6 @@
 				18B4D65925A5B904006C554D /* NotificationCell.xib in Resources */,
 				D6DC8D8A26F36E75009E61EC /* OnboardingSecondCell.xib in Resources */,
 				187F3E81258CCB58008FB2CB /* CountryCodeCell.xib in Resources */,
-				18A08E7C25C13B9500BE7C09 /* GoogleService-Info.plist in Resources */,
 				18629C1B25A435F9008027EC /* ProfileInterestCell.xib in Resources */,
 				187F3E6F258CCB58008FB2CB /* CountryCode.json in Resources */,
 				D62D734426C68DA700DFD0DA /* LineMeasureCell.xib in Resources */,
@@ -1225,6 +1228,7 @@
 				1831DCF325AD621E00A1570B /* FaqSupport_VC.swift in Sources */,
 				18B2A50325AEEDAC0028073E /* All_date.swift in Sources */,
 				18DB86B825B1556D0035084F /* EventsResult.swift in Sources */,
+				A4AADCBB27AD42100067BF9F /* UITabBar+Extension.swift in Sources */,
 				1831DCF625AD633300A1570B /* FaqSectionCell.swift in Sources */,
 				187F3E73258CCB58008FB2CB /* ApiManager.swift in Sources */,
 				D6D522B626CA67EB00CF9E95 /* PriceCollCell.swift in Sources */,
@@ -1601,10 +1605,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Mikhail Davis (723339856Z)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = WSC8P4799K;
+				DEVELOPMENT_TEAM = 34PB6447D9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1612,9 +1616,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PVTG.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.pmu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = PVTG_Main;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1626,9 +1630,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Mikhail Davis (723339856Z)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = WSC8P4799K;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 34PB6447D9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1636,9 +1640,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PVTG.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.pmu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = PVTG_Main;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

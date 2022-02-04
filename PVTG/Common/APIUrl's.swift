@@ -258,3 +258,10 @@ func attendingSession()-> String{
     print("attendingSession",url)
     return url
 }
+
+func makePaymentUsingStripe()-> String{
+    var  url = "http://54.245.144.158/pvtg_dev/public/Stripe_IOS/stripe_payment.php"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("makePayment",url)
+    return url
+}

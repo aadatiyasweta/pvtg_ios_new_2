@@ -57,7 +57,8 @@
 "TermsConditions" = "Terms & Conditions";
 "AboutUs" = "About Us";
 "RateUs" = "Rate Us";
-"HowItWorks" = "How It Works";
+//"HowItWorks" = "How It Works";
+"HowItWorks" = "Dharma Rewards";
 "Signout" = "Signout";
 "Areyousureyouwant" = "Are you sure you want to signout?";
 "ok" = "OK";

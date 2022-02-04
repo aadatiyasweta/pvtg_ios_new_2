@@ -2257,6 +2257,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, es
       static let changePassword = Rswift.StringResource(key: "ChangePassword", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Dharma Rewards
+      ///
+      /// Locales: en, es
+      static let howItWorks = Rswift.StringResource(key: "HowItWorks", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
       /// en translation: Dharma pts
       ///
       /// Locales: en, es
@@ -2317,10 +2321,6 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, es
       static let getStarted = Rswift.StringResource(key: "GetStarted", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
-      /// en translation: How It Works
-      ///
-      /// Locales: en, es
-      static let howItWorks = Rswift.StringResource(key: "HowItWorks", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
       /// en translation: If Vendor Cancels: Booking points +5:
       ///
       /// Locales: en, es
@@ -2925,6 +2925,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("ChangePassword", bundle: bundle, comment: "")
       }
 
+      /// en translation: Dharma Rewards
+      ///
+      /// Locales: en, es
+      static func howItWorks(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("HowItWorks", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "HowItWorks"
+        }
+
+        return NSLocalizedString("HowItWorks", bundle: bundle, comment: "")
+      }
+
       /// en translation: Dharma pts
       ///
       /// Locales: en, es
@@ -3154,21 +3169,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("GetStarted", bundle: bundle, comment: "")
-      }
-
-      /// en translation: How It Works
-      ///
-      /// Locales: en, es
-      static func howItWorks(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("HowItWorks", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "HowItWorks"
-        }
-
-        return NSLocalizedString("HowItWorks", bundle: bundle, comment: "")
       }
 
       /// en translation: If Vendor Cancels: Booking points +5:

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Stripe
 
 protocol GetResponse: class{
     func reloadData()
@@ -107,6 +108,28 @@ class SessionDetailViewModel: BaseVm {
             }
         }
     }
+ 
+ 
+ //MARK: - MAKE PAYMENT FROM STRIPE
+ func makePAymentStripe(user_id: String, stripeytoken: STPToken,ammount : String,currency:String,email:String,token:String) {
+      self.show()
+  let param : [String:Any] = ["user_id" : user_id,"amount":ammount,"stripeytoken":stripeytoken,"currency":currency,"email":email,"token":token]
+     api_manager.POSTApi(makePaymentUsingStripe(), param: param, header: header()) { (response, err, code) in
+         self.dismiss()
+         if let json = response{
+             debugPrint(json)
+             if json["statusCode"] == 200 {
+               print(json)
+//                 self.delegate?.refundAPiResponse()
+             }
+             else {
+                 showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+             }
+         }else{
+             showAlert(strTitle: somethingWentWrongMessage)
+         }
+     }
+ }
     
     //For gettingTime Of specific Date
     func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool) {

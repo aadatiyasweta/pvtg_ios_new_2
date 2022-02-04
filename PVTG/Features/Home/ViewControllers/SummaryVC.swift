@@ -10,6 +10,7 @@ import UIKit
 import Cosmos
 import GoogleMaps
 import MercadoPagoSDK
+import Stripe
 
 
 
@@ -33,7 +34,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var totalFare: UILabel!
     @IBOutlet weak var toatalTickets: UILabel!
     @IBOutlet weak var lblPlacewithDistance: UILabel!
-    
+    @IBOutlet weak var paymentCardTextField = STPPaymentCardTextField()
     @IBOutlet weak var btnUseNow: UIButton!
     @IBOutlet weak var lblPoints: UILabel!
     
@@ -267,20 +268,42 @@ extension SummaryVC {
   }
     func doPayment(id : String){
         print(id)
-        let builder = MercadoPagoCheckoutBuilder(publicKey: "APP_USR-98d88762-c632-470d-83e1-3b2b519bdcec", preferenceId: id)
-        builder.setLanguage("es")
-        let checkout = MercadoPagoCheckout(builder: builder)
-        let config = PXAdvancedConfiguration()
-        
-        config.expressEnabled = true
-        builder.setAdvancedConfiguration(config: config)
-        builder.setColor(checkoutColor: .green)
-        builder.setPrivateKey(key: "APP_USR-7488660032626366-081021-f6a853662803b7ae35548fb1c44b7b5b-790689138")
-        if let myNavigationController = navigationController {
-            checkout.start(navigationController: myNavigationController, lifeCycleProtocol: self)
-    
-        }
+     let config = STPPaymentConfiguration.shared()
+     config.requiredBillingAddressFields = .full
+     let viewController = STPAddCardViewController(configuration: config, theme: STPTheme.default())
+     viewController.delegate = self
+     let navigationController = UINavigationController(rootViewController: viewController)
+     present(navigationController, animated: true, completion: nil)
+//        let builder = MercadoPagoCheckoutBuilder(publicKey: "APP_USR-98d88762-c632-470d-83e1-3b2b519bdcec", preferenceId: id)
+//        builder.setLanguage("es")
+//        let checkout = MercadoPagoCheckout(builder: builder)
+//        let config = PXAdvancedConfiguration()
+//
+//        config.expressEnabled = true
+//        builder.setAdvancedConfiguration(config: config)
+//        builder.setColor(checkoutColor: .green)
+//        builder.setPrivateKey(key: "APP_USR-7488660032626366-081021-f6a853662803b7ae35548fb1c44b7b5b-790689138")
+//        if let myNavigationController = navigationController {
+//            checkout.start(navigationController: myNavigationController, lifeCycleProtocol: self)
+//
+//        }
     }
+ 
+ //MARK: - MAKE PAYMENT FROM STRIPE
+  func makePayment(stripetoken:STPToken){
+  let email = SaveToDefaults().getEmail() ?? ""
+  let acessToken = SaveToDefaults().getAccessToken() ?? ""
+  if let id = SaveToDefaults().getUserId(){
+   let currency = self.bookingDetails?.currency ?? "COP"
+//   let currency = self.vm.model?.currency ?? ""
+   let amount = self.customModel?.paid_amount ?? ""
+   print(amount)
+   self.vm.makePAymentStripe(user_id: id, stripeytoken: stripetoken, ammount: "2000", currency: "usd", email: email, token: acessToken)
+//      self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
+  }
+ }
+ 
+ 
 
     /*
      Public Key
@@ -375,3 +398,39 @@ extension SummaryVC : GetBookingResponse,getOnboardingResponse{
         //
     }
 }
+
+extension SummaryVC : STPAddCardViewControllerDelegate
+{
+ 
+ 
+ func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+  print("abc")
+ }
+// func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken) async throws {
+//
+// }
+ func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
+  print(token)
+  dismiss(animated: false, completion: nil)
+  self.makePayment(stripetoken: token)
+ 
+  
+ }
+
+// add(<#T##STPAddCardViewController#>, didCreateToken: <#T##STPToken#>, completion: <#T##STPErrorBlock#>)
+// add(<#T##STPAddCardViewController#>, didCreateToken: <#T##STPToken#>, completion: <#T##STPErrorBlock#>)private
+// func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreatePaymentMethod paymentMethod: STPPaymentMethod, completion: @escaping STPErrorBlock) {
+//  print("abc")
+//  print(paymentMethod)
+//  print(paymentMethod.customerId)
+//  print(paymentMethod.stripeId)
+// dismiss(animated: false, completion: nil)
+// }
+//
+//
+//didCreateToken
+//
+
+}
+
+
