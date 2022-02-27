@@ -955,10 +955,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 23 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 24 nibs.
   struct nib {
     /// Nib `ActiveEventCell`.
     static let activeEventCell = _R.nib._ActiveEventCell()
+    /// Nib `ActiveEventCollectionViewCell`.
+    static let activeEventCollectionViewCell = _R.nib._ActiveEventCollectionViewCell()
     /// Nib `AllCategoryCell`.
     static let allCategoryCell = _R.nib._AllCategoryCell()
     /// Nib `CategoryCell`.
@@ -1009,6 +1011,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.activeEventCell) instead")
     static func activeEventCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.activeEventCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ActiveEventCollectionViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.activeEventCollectionViewCell) instead")
+    static func activeEventCollectionViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.activeEventCollectionViewCell)
     }
     #endif
 
@@ -1192,6 +1202,10 @@ struct R: Rswift.Validatable {
       return R.nib.activeEventCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ActiveEventCell
     }
 
+    static func activeEventCollectionViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ActiveEventCollectionViewCell? {
+      return R.nib.activeEventCollectionViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ActiveEventCollectionViewCell
+    }
+
     static func allCategoryCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AllCategoryCell? {
       return R.nib.allCategoryCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AllCategoryCell
     }
@@ -1283,8 +1297,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `ActiveEventCollectionViewCell`.
+    static let activeEventCollectionViewCell: Rswift.ReuseIdentifier<ActiveEventCollectionViewCell> = Rswift.ReuseIdentifier(identifier: "ActiveEventCollectionViewCell")
     /// Reuse identifier `FaqSupport_TVC`.
     static let faqSupport_TVC: Rswift.ReuseIdentifier<FaqSupport_TVC> = Rswift.ReuseIdentifier(identifier: "FaqSupport_TVC")
 
@@ -1719,7 +1735,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: es, en
       static let g9D1jWGHText = Rswift.StringResource(key: "g9D-1j-WGH.text", tableName: "Home", bundle: R.hostingBundle, locales: ["es", "en"], comment: nil)
-      /// en translation: before a session for a full refund!
+      /// en translation: before a session begins for a full refund!
       ///
       /// Locales: es, en
       static let k0gJZHlrText = Rswift.StringResource(key: "k0g-jZ-Hlr.text", tableName: "Home", bundle: R.hostingBundle, locales: ["es", "en"], comment: nil)
@@ -2129,7 +2145,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("g9D-1j-WGH.text", tableName: "Home", bundle: bundle, comment: "")
       }
 
-      /// en translation: before a session for a full refund!
+      /// en translation: before a session begins for a full refund!
       ///
       /// Locales: es, en
       static func k0gJZHlrText(preferredLanguages: [String]? = nil) -> String {
@@ -2147,7 +2163,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 92 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 93 localization keys.
     struct localizable {
       /// en translation: %@ km away
       ///
@@ -2205,7 +2221,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, es
       static let allow = Rswift.StringResource(key: "Allow", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
-      /// en translation: And don't worry you can always cancel 2 hours  before a session for a full refund!
+      /// en translation: And don't worry you can always cancel 2 hours  before a session begins for a full refund!
       ///
       /// Locales: en, es
       static let doNotWorry = Rswift.StringResource(key: "doNotWorry", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
@@ -2249,6 +2265,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, es
       static let cancelPolicy = Rswift.StringResource(key: "cancelPolicy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
+      /// en translation: Cancellation Policy
+      ///
+      /// Locales: en, es
+      static let cancellationPolicy = Rswift.StringResource(key: "CancellationPolicy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
       /// en translation: Change Language
       ///
       /// Locales: en, es
@@ -2489,7 +2509,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, es
       static let rewards = Rswift.StringResource(key: "Rewards", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
-      /// en translation: Will you still be attending your %@ session?
+      /// en translation: Will you still be attending your %@ session?.If not, please cancel to avoid late cancellation fee.
       ///
       /// Locales: en, es
       static let willYouAttending = Rswift.StringResource(key: "willYouAttending", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
@@ -2497,7 +2517,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, es
       static let yes = Rswift.StringResource(key: "yes", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
-      /// en translation: You will be rewarded %@pts on booking the session
+      /// en translation: You will be rewarded %@pts for booking this session
       ///
       /// Locales: en, es
       static let youWillBeRewarded = Rswift.StringResource(key: "youWillBeRewarded", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
@@ -2730,7 +2750,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Allow", bundle: bundle, comment: "")
       }
 
-      /// en translation: And don't worry you can always cancel 2 hours  before a session for a full refund!
+      /// en translation: And don't worry you can always cancel 2 hours  before a session begins for a full refund!
       ///
       /// Locales: en, es
       static func doNotWorry(preferredLanguages: [String]? = nil) -> String {
@@ -2893,6 +2913,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("cancelPolicy", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Cancellation Policy
+      ///
+      /// Locales: en, es
+      static func cancellationPolicy(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("CancellationPolicy", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "CancellationPolicy"
+        }
+
+        return NSLocalizedString("CancellationPolicy", bundle: bundle, comment: "")
       }
 
       /// en translation: Change Language
@@ -3801,7 +3836,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Rewards", bundle: bundle, comment: "")
       }
 
-      /// en translation: Will you still be attending your %@ session?
+      /// en translation: Will you still be attending your %@ session?.If not, please cancel to avoid late cancellation fee.
       ///
       /// Locales: en, es
       static func willYouAttending(_ value1: String, preferredLanguages: [String]? = nil) -> String {
@@ -3833,7 +3868,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("yes", bundle: bundle, comment: "")
       }
 
-      /// en translation: You will be rewarded %@pts on booking the session
+      /// en translation: You will be rewarded %@pts for booking this session
       ///
       /// Locales: en, es
       static func youWillBeRewarded(_ value1: String, preferredLanguages: [String]? = nil) -> String {
@@ -5186,12 +5221,12 @@ struct R: Rswift.Validatable {
 
     /// This `R.string.priceView` struct is generated, and contains static references to 1 localization keys.
     struct priceView {
-      /// en translation: Price Filter (In COP)
+      /// en translation: Price Filter
       ///
       /// Locales: en, es
       static let vjYV39mwText = Rswift.StringResource(key: "vjY-v3-9mw.text", tableName: "PriceView", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
 
-      /// en translation: Price Filter (In COP)
+      /// en translation: Price Filter
       ///
       /// Locales: en, es
       static func vjYV39mwText(preferredLanguages: [String]? = nil) -> String {
@@ -5303,7 +5338,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, es
       static let j0sOxBXtText = Rswift.StringResource(key: "j0s-Ox-bXt.text", tableName: "Profile", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
-      /// en translation: Your work is to discover your world and thenwith all your heart give yourself to it -Buddha
+      /// en translation: Your work is to discover your world and then with all your heart give yourself to it -Buddha
       ///
       /// Locales: en, es
       static let kbASdLeBText = Rswift.StringResource(key: "KbA-Sd-leB.text", tableName: "Profile", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
@@ -5657,7 +5692,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("j0s-Ox-bXt.text", tableName: "Profile", bundle: bundle, comment: "")
       }
 
-      /// en translation: Your work is to discover your world and thenwith all your heart give yourself to it -Buddha
+      /// en translation: Your work is to discover your world and then with all your heart give yourself to it -Buddha
       ///
       /// Locales: en, es
       static func kbASdLeBText(preferredLanguages: [String]? = nil) -> String {
@@ -6199,11 +6234,22 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "bgProfile", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bgProfile' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "loc", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'loc' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "map", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'map' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "shape6Copy", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shape6Copy' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "shape7Copy", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shape7Copy' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "shape8Copy", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shape8Copy' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _ActiveEventCollectionViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = ActiveEventCollectionViewCell
+
+      let bundle = R.hostingBundle
+      let identifier = "ActiveEventCollectionViewCell"
+      let name = "ActiveEventCollectionViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ActiveEventCollectionViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ActiveEventCollectionViewCell
       }
 
       fileprivate init() {}
@@ -6442,6 +6488,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "dropDown", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dropDown' is used in nib 'PriceView', but couldn't be loaded.") }
         if UIKit.UIImage(named: "rightTick", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rightTick' is used in nib 'PriceView', but couldn't be loaded.") }
         if UIKit.UIImage(named: "sliderThumb", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'sliderThumb' is used in nib 'PriceView', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {

@@ -30,9 +30,11 @@ class SessionDetailViewModel: BaseVm {
     weak var bookingDelegate: GetBookingResponse?
     var timeArr: AllTimeBase?
     var availableTickets: GetTicketResult?
+ var arrPayments:[GetAllPaymentDetailsData]?
     var customModel : CustomBokingModel?
     var sessionName = ""
     var sessionDesc = ""
+    var chargeId = ""
     
     func sessionDtailApi(user_id: String, session_id: String, latitude: String, longitude: String, top_search: String,bookingId : String) {
         let date = Date().dateInString()
@@ -98,6 +100,7 @@ class SessionDetailViewModel: BaseVm {
                      let data = try? json["result"].rawData()
                     let jsonDecoder = JSONDecoder()
                     let model = try? jsonDecoder.decode(GetTicketResult.self, from: data ?? Data())
+                 
                     self.availableTickets = model
                 }
                 else {
@@ -109,18 +112,22 @@ class SessionDetailViewModel: BaseVm {
         }
     }
  
- 
- //MARK: - MAKE PAYMENT FROM STRIPE
- func makePAymentStripe(user_id: String, stripeytoken: STPToken,ammount : String,currency:String,email:String,token:String) {
-      self.show()
-  let param : [String:Any] = ["user_id" : user_id,"amount":ammount,"stripeytoken":stripeytoken,"currency":currency,"email":email,"token":token]
-     api_manager.POSTApi(makePaymentUsingStripe(), param: param, header: header()) { (response, err, code) in
+ //MARK: - METHOD TO
+ func getAllPayments(user_id: String,completionHandler:@escaping()->()) {
+    //self.show()
+     api_manager.GETApi(getAllPaymentDetailsUrl(user_id: user_id), param: nil, header: header()) { (response, err, code) in
          self.dismiss()
          if let json = response{
              debugPrint(json)
              if json["statusCode"] == 200 {
-               print(json)
-//                 self.delegate?.refundAPiResponse()
+                  let data = try? json["result"].rawData()
+                 let jsonDecoder = JSONDecoder()
+                 let model = try? jsonDecoder.decode([GetAllPaymentDetailsData].self, from: data ?? Data())
+              self.arrPayments = model
+              if(self.arrPayments?.count != 0){
+               completionHandler()
+              }
+
              }
              else {
                  showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -130,6 +137,32 @@ class SessionDetailViewModel: BaseVm {
          }
      }
  }
+ 
+ 
+ //MARK: - MAKE PAYMENT FROM STRIPE
+ func makePAymentStripe(user_id: String, stripeytoken: String,ammount : String,currency:String,email:String,token:String,sessionId:String,completionHandler:@escaping(String)->()) {
+  self.show()
+  let param : [String:Any] = ["user_id" : user_id,"amount":ammount,"stripeytoken":stripeytoken,"currency":currency,"email":email,"token":token,"session_id":sessionId]
+  api_manager.POSTApi(makePaymentUsingStripe(), param: param, header: header()) { (response, err, code) in
+   self.dismiss()
+   if let json = response{
+    debugPrint(json)
+    if json["statusCode"] == 200 {
+     print(json)
+     completionHandler(json["transaction_id"].string ?? "")
+     //                 self.delegate?.refundAPiResponse()
+    }
+    else {
+     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+    }
+   }else{
+    showAlert(strTitle: somethingWentWrongMessage)
+   }
+  }
+ }
+ 
+
+
     
     //For gettingTime Of specific Date
     func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool) {
@@ -199,11 +232,12 @@ class SessionDetailViewModel: BaseVm {
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
-                    if isFromPartial{
-                        self.partialRefundApi(user_id: user_id, paymentId: paymentId, ammount: ammount)
-                    }else{
-                        self.fullRefundApi(user_id: user_id, paymentId: paymentId)
-                    }
+                 self.stripeRefundAPI(chargeID: self.chargeId)
+//                    if isFromPartial{
+//                        self.partialRefundApi(user_id: user_id, paymentId: paymentId, ammount: ammount)
+//                    }else{
+//                        self.fullRefundApi(user_id: user_id, paymentId: paymentId)
+//                    }
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -213,6 +247,29 @@ class SessionDetailViewModel: BaseVm {
             }
         }
     }
+ 
+ func stripeRefundAPI(chargeID:String) {
+  self.show()
+  let  headers = [
+   "Authorization": "Bearer \(stripeSecretKey)",
+  ]
+  let param : [String:Any] = ["charge" : chargeID]
+  api_manager.POSTApi(refundPaymentUsingStripe(), param: param, header: headers) { (response, err, code) in
+   self.dismiss()
+   if let json = response{
+    debugPrint(json)
+    if json["status"] == "succeeded" {
+     print("success")
+     self.delegate?.refundAPiResponse()
+    }
+    else {
+     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+    }
+   }else{
+    showAlert(strTitle: somethingWentWrongMessage)
+   }
+  }
+ }
     func partialRefundApi(user_id: String, paymentId: String,ammount : String) {
          self.show()
         let param : [String:Any] = ["user_id" : user_id , "payment_id" : paymentId,"amount":ammount]
@@ -257,6 +314,8 @@ class SessionDetailViewModel: BaseVm {
         }else{
             prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","session_type_id" : session_type_id ?? "","payment_id" : paymentId]
         }
+     
+     print(prams)
         self.show()
         api_manager.POSTApi(sessionBookingUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
@@ -266,6 +325,8 @@ class SessionDetailViewModel: BaseVm {
                     self.bookingDelegate?.bookingSuccess()
                 }
                 else {
+                 showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                 
                 }
             }else{
                 showAlert(strTitle: somethingWentWrongMessage)

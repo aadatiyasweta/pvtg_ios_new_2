@@ -84,10 +84,11 @@
 "changeLanguage" = "Cambiar el lenguaje";
 "yes" = "sí";
 "no" = "No";
-"willYouAttending" = "¿Seguirás asistiendo a tu sesión %@?";
+"willYouAttending" = "¿Seguirás asistiendo a tu sesión %@?.De lo contrario, cancele para evitar el cargo por cancelación tardía.";
 "notificationtitle" = "Recordatorio";
 "free" = "gratis";
 "doNotWorry" = "¡Y no se preocupe, siempre puede cancelar 2 horas \nantes de una sesión para obtener un reembolso completo!";
 "FreeService" = "Servicio gratuito";
 "PriceFilter" = "Filtro de precio";
 "bookingdate" = "Fecha para registrarse :";
+"CancellationPolicy" = "Política de cancelación";

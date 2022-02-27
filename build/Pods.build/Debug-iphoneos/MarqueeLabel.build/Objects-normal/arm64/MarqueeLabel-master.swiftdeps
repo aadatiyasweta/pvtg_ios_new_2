@@ -1,6 +1,6 @@
 version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
 options: "099ab06a75047a4f0d5e0353aeadad66b41a967b13aca620f04d19b38fb38560"
-build_start_time: [1643962169, 159224033]
-build_end_time: [1643962169, 603396892]
+build_start_time: [1645786052, 371654033]
+build_end_time: [1645786061, 332770824]
 inputs:
   "/Users/kashish/Documents/PVTG/Pods/MarqueeLabel/Sources/MarqueeLabel.swift": [1643866670, 516811847]

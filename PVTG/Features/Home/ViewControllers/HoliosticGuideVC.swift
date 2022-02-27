@@ -54,9 +54,7 @@ class HoliosticGuideVC: BaseViewController {
         setShadowToView()
         self.btnClose.isHidden = false
         self.colectionVwCategory.isPagingEnabled = true
-        
-        
-     
+
         // Do any additional setup after loading the view.
     }
     
@@ -232,23 +230,28 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
         if indexPath.section == 0{
             let priceView = PriceView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
             priceView?.delegate = self
+         if(self.selectedCurrency == "USD"){
+          priceView?.seekView.maxValue = CGFloat(300)
+         }else {
+          priceView?.seekView.maxValue = CGFloat(600000)
+         }
             priceView?.seekView.minValue = CGFloat(self.origiMinPrice)
-            priceView?.seekView.maxValue = CGFloat(self.origiMaxPrice)
+//            priceView?.seekView.maxValue = CGFloat(self.origiMaxPrice)
             priceView?.seekView.selectedMaxValue = CGFloat(self.maximimPrice)
             priceView?.seekView.selectedMinValue = CGFloat(self.minimUmPrice)
             priceView?.maxValue = self.maximimPrice
             priceView?.minimumValue = self.minimUmPrice
-           // priceView?.selectCurrencyFiled.text = self.selectedCurrency
+//            priceView?.selectCurrencyFiled.text = self.selectedCurrency
             priceView?.currencyArr = self.vm.categorymodel?.currency_data ?? []
             appDelegate.window?.addSubview(priceView!)
-//            for val in 0..<(self.vm.categorymodel?.currency_data!.count)!{
-//                if self.vm.categorymodel?.currency_data?[val] == self.selectedCurrency{
-//                    priceView?.currentIndex = val
-//                    priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
-//                    priceView?.pickerView.reloadAllComponents()
-//                    break
-//                }
-//            }
+            for val in 0..<(self.vm.categorymodel?.currency_data!.count)!{
+                if self.vm.categorymodel?.currency_data?[val] == self.selectedCurrency{
+                    priceView?.currentIndex = val
+                    priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
+                    priceView?.pickerView.reloadAllComponents()
+                    break
+                }
+            }
         }else{
         //  self.txfSearch.text = ""
         if index == indexPath.row {
@@ -321,5 +324,10 @@ extension HoliosticGuideVC : getPriceSliderValues{
         self.isOpenPopUp = true
     }
     
+ func resetFilter() {
+  if let userid = SaveToDefaults().getUserId() {
+      vm.getAllCategoryApi(user_id: userid)
+  }
+ }
    
 }

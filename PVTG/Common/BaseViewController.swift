@@ -150,6 +150,27 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         alrt.addAction(Cancel)
         controller.present(alrt, animated: true, completion: nil)
     }
+ 
+ func showAlertWithConfirmation2(_ message: String, withTitle title: String, itsController controller: UIViewController,okBtn : String? = R.string.localizable.yes(),cancelBtn : String? = R.string.localizable.no(),completion completionBlock: @escaping (_ success: Bool) -> Void) {
+     let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
+     let ok = UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: {(_ alert: UIAlertAction) -> Void in
+         completionBlock(true)
+     })
+     let Cancel = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+         completionBlock(false)
+     })
+     
+     let attributedTitle = NSAttributedString.init(string: title, attributes: [NSAttributedString.Key.font:getFont(Fonts.semiBold.rawValue, 16)!])
+     
+     let attributedMessage = NSAttributedString.init(string: message, attributes: [NSAttributedString.Key.font:getFont(Fonts.regular.rawValue, 14)!])
+     
+     alrt.setValue(attributedTitle, forKey: "attributedTitle")
+     alrt.setValue(attributedMessage, forKey: "attributedMessage")
+     
+     alrt.addAction(ok)
+     alrt.addAction(Cancel)
+     controller.present(alrt, animated: true, completion: nil)
+ }
     
     func showAlertWithConfirmation1(_ message: String, withTitle title: String, itsController controller: UIViewController, completion completionBlock: @escaping (_ success: Bool) -> Void) {
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)

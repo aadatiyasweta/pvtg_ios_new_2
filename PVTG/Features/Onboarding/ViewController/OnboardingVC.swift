@@ -104,7 +104,7 @@ extension OnboardingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIC
         if self.vm.model?.point_accumulation == nil{
             return 1
         }
-        return 3
+        return 2
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0{
@@ -162,7 +162,11 @@ extension OnboardingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIC
                 btnSkip.setTitle(R.string.localizable.getStarted(), for: .normal)
             }
         } else {
-            btnSkip.setTitle(R.string.localizable.skip(), for: .normal)
+         if(index == 0){
+          btnSkip.setTitle("", for: .normal)
+         }else {
+          btnSkip.setTitle(R.string.localizable.done(), for: .normal)
+         }
         }
     }
 }

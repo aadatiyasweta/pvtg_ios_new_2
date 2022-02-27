@@ -129,7 +129,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var isFromSelection = false
     var offeredIndex = -1
     var bookingId = ""
-    
+    var arrPayments = [GetAllPaymentDetailsData]()
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -244,7 +244,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     
     @IBAction func cancelBtnTap(_ sender: UIButton) {
-        showAlertWithConfirmation(R.string.localizable.cancelTheBooking(), withTitle: Bundle.main.appName, itsController: self) { (succsss) in
+        showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: Bundle.main.appName, itsController: self) { (succsss) in
             if succsss{
                 let time = self.vm.model?.booking_date ?? ""
                 let fromattter1 = DateFormatter()
@@ -335,7 +335,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         return 1
     }
     private func moveCurrentpage(value: Bool) {
-        let calendar = Calendar.current
+     let calendar = Calendar(identifier: .gregorian)
         var dateComponents = DateComponents()
         dateComponents.month = value ? -1 : 1
         self.currentpage = calendar.date(byAdding: dateComponents, to: self.currentpage ?? self.today)
@@ -350,7 +350,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         setHeaderMonth(date: calendar.currentPage.toLocalTime())
     }
     private func setHeaderMonth(date:Date) {
-        let calendar = Calendar.current
+     let calendar = Calendar(identifier: .gregorian)
         yearVal = calendar.component(.year, from: date)
         monthVal = calendar.component(.month, from: date)
         self.currentpage = date
@@ -512,7 +512,24 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
             if offeredIndex != -1{
 //                self.lblsessionPrice.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
-             self.priceLabel.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
+             
+             let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
+//             let myDouble = Double(12000)
+             
+             let currencyFormatter = NumberFormatter()
+             currencyFormatter.usesGroupingSeparator = true
+             currencyFormatter.numberStyle = .currency
+//             currencyFormatter.currencyCode = "COP"
+             currencyFormatter.locale = Locale.current
+
+            let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+            
+            
+             let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+             if let currency = self.vm.model?.currency {
+              self.priceLabel.text = replaced + " " +  currency
+             }
+//             self.priceLabel.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
             }
            
             if offeredIndex == indexPath.row {
@@ -748,6 +765,13 @@ extension SessionDetailVC: GetResponse {
             
         }
         self.vwCollection.reloadData()
+     if(data.session_booking_status == "2" ||  data.session_booking_status == "3"){
+      self.cancelBtn.isEnabled = false
+      self.cancelBtn.setTitle("Cancelled", for: .normal)
+     }else {
+      self.cancelBtn.isEnabled = true
+      self.cancelBtn.setTitle("Cancel", for: .normal)
+     }
         self.vwcalendar.reloadData()
         self.colectnVwSessionImage.reloadData()
         self.offeredCollView.reloadData()
@@ -773,11 +797,25 @@ extension SessionDetailVC: GetResponse {
                 
             }
         }
-       
+     self.getAllPaymentDetails()
     }
-    
-    
-}
+   
+ //MARK: - METHOD TO GET ALL PAYMENT DETAILS
+ 
+ func getAllPaymentDetails() {
+  if let userid = SaveToDefaults().getUserId(){
+   vm.getAllPayments(user_id: userid){
+    if let arrPayments = self.vm.arrPayments {
+     self.arrPayments = arrPayments
+     let dict =   self.arrPayments .filter{ ($0.session_id!) == self.sessionId }.first
+     if let dict = dict{
+      self.vm.chargeId = dict.charge_id ?? ""
+     }
+    }
+   }
+  }
+  
+ }}
 
 extension SessionDetailVC {
     //MARK:- Function to automatic Scroll

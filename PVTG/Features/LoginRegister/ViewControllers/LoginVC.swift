@@ -30,7 +30,8 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     @IBOutlet weak var lblEmailErr: UILabel!
     @IBOutlet weak var lblPaswdErr: UILabel!
     
-    //MARK:- Variables
+ @IBOutlet weak var stackViewWidthConst: NSLayoutConstraint!
+ //MARK:- Variables
     var loginVM = LoginVM()
     var Socialdata = [String:String]()
     var fbHelper   = Facebook()
@@ -38,6 +39,11 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     if(SaveToDefaults().getAppLang() == "en"){
+      stackViewWidthConst.constant = 266
+     }else {
+      stackViewWidthConst.constant = 310
+     }
        // self.logintoYouAcLbl.text = R.string.localizable.logHolisticTravel()
         self.lblEmailErr.isHidden = true
         self.lblPaswdErr.isHidden = true

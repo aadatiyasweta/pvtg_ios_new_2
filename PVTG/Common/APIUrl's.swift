@@ -5,10 +5,14 @@ import UIKit
 
 let topSearch = "http://54.245.144.158/pvtg_dev/admin_assets/img/topsearch.png"
 let testingServer = "http://54.245.144.158/pvtg_dev/api/v1/"
-let terms =  "http://52.27.53.102/pvtg/terms_condition.html"
-let aboutUs = "http://52.27.53.102/pvtg/about_us.html"
-let faq = "http://52.27.53.102/pvtg/faq.html"
-let privacy = "http://52.27.53.102/pvtg/privacy_policy.html"
+let stripeTestPublishableKey = "pk_test_51KLVfEFKDEQWO0TJyXCr934HPHv6W2pl1kBJiVZnYBIti9OXCMbt3gt5Wzen5wg2tRaCikH81qLI2TFiAMH5WLSf009SjBYjnl"
+let stripeSecretKey = "sk_test_51KLVfEFKDEQWO0TJrKqJfkq4CRtvcEwStccSrsYhM8tWaFxNAfX7VcepIXpbcUA0xAbPlReKxnuCcZEnFc9M5Uhd00PrDGpCFT"
+let stripePaymentAPI = "http://54.245.144.158/pvtg_dev/public/Stripe_IOS/stripe_payment.php"
+let stripeRefundAPI = "https://api.stripe.com/v1/refunds"
+let terms =  "http://54.245.144.158/pvtg_dev/terms_condition.html"
+let aboutUs = "http://54.245.144.158/pvtg_dev/about_us.html"
+let faq = "http://54.245.144.158/pvtg_dev/faq.html"
+let privacy = "http://54.245.144.158/pvtg_dev/privacy_policy.html"
 let cancelPolicy = "http://54.245.144.158/pvtg_dev/cancel_policy.html"
 let server = testingServer
 let googlePlacesSearchApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=noida&key=AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k"
@@ -27,7 +31,7 @@ func forgotUrl()-> String {
     return url
 }
 func otpCheckUrl(email:String, otp: String)-> String {
-    var  url = "http://52.27.53.102/pvtg/api/v1/Userapi/check_otp?email=\(email)&otp=\(otp)&language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "http://54.245.144.158/pvtg_dev/api/v1/Userapi/check_otp?email=\(email)&otp=\(otp)&language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/check_otp",url)
     return url
@@ -260,8 +264,29 @@ func attendingSession()-> String{
 }
 
 func makePaymentUsingStripe()-> String{
-    var  url = "http://54.245.144.158/pvtg_dev/public/Stripe_IOS/stripe_payment.php"
+    var  url = stripePaymentAPI
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("makePayment",url)
+    return url
+}
+
+func refundPaymentUsingStripe()-> String{
+    var  url = stripeRefundAPI
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("refundPayment",url)
+    return url
+}
+
+func getAllPaymentDetailsUrl(user_id: String)-> String{
+    var  url = "\(server)Userapi/all_payments?user_id=\(user_id)"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("getAllPayments",url)
+    return url
+}
+
+func updateNotificationStatusUrl()-> String{
+    var  url = "\(testingServer)Userapi/update_read_status"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("Userapi/user_interest_category",url)
     return url
 }

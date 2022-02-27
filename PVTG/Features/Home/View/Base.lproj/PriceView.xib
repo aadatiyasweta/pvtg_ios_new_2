@@ -12,6 +12,9 @@
         <array key="Montserrat-Bold.ttf">
             <string>Montserrat-Bold</string>
         </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -27,7 +30,7 @@
                             <rect key="frame" x="0.0" y="327" width="375" height="340"/>
                             <subviews>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lj-pv-dFI">
-                                    <rect key="frame" x="16" y="98" width="343" height="120"/>
+                                    <rect key="frame" x="16" y="127" width="343" height="120"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qg-0v-9TZ">
                                             <rect key="frame" x="298" y="37.5" width="33" height="25"/>
@@ -91,21 +94,63 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Filter (In COP)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjY-v3-9mw">
-                                    <rect key="frame" x="100" y="22" width="175" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Filter " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjY-v3-9mw">
+                                    <rect key="frame" x="144.5" y="22" width="86" height="30"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                     <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mrU-86-fAC">
+                                    <rect key="frame" x="16" y="57" width="343" height="55"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="55" id="qQt-Xk-Qwk"/>
+                                    </constraints>
+                                    <color key="textColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropDown" translatesAutoresizingMaskIntoConstraints="NO" id="dzC-aw-nvP">
+                                    <rect key="frame" x="327" y="72" width="18" height="18"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="1TT-mc-nmC"/>
+                                        <constraint firstAttribute="width" constant="18" id="2xO-aU-ZWy"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qy0-Ev-sMY">
+                                    <rect key="frame" x="293" y="22" width="67" height="30"/>
+                                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="67" id="CEv-Eb-gAP"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="15"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="RESET">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="resetButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="rSg-ie-dTA"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="6lj-pv-dFI" firstAttribute="top" secondItem="vjY-v3-9mw" secondAttribute="bottom" constant="55" id="F9b-lo-DB6"/>
+                                <constraint firstItem="Qy0-Ev-sMY" firstAttribute="top" secondItem="Y0o-uD-rCV" secondAttribute="top" constant="22" id="1xt-um-rkS"/>
+                                <constraint firstItem="6lj-pv-dFI" firstAttribute="top" secondItem="mrU-86-fAC" secondAttribute="bottom" constant="15" id="HXr-pW-DTF"/>
+                                <constraint firstItem="mrU-86-fAC" firstAttribute="top" secondItem="vjY-v3-9mw" secondAttribute="bottom" constant="5" id="HgH-rS-A4j"/>
+                                <constraint firstItem="mrU-86-fAC" firstAttribute="top" secondItem="Qy0-Ev-sMY" secondAttribute="bottom" constant="5" id="IZz-Ys-z2g"/>
                                 <constraint firstItem="6lj-pv-dFI" firstAttribute="leading" secondItem="Y0o-uD-rCV" secondAttribute="leading" constant="16" id="NLM-BN-25B"/>
                                 <constraint firstAttribute="trailing" secondItem="6lj-pv-dFI" secondAttribute="trailing" constant="16" id="RQP-bi-3hv"/>
+                                <constraint firstAttribute="trailing" secondItem="dzC-aw-nvP" secondAttribute="trailing" constant="30" id="Tga-VI-9fA"/>
+                                <constraint firstItem="dzC-aw-nvP" firstAttribute="top" secondItem="Y0o-uD-rCV" secondAttribute="top" constant="72" id="bnt-YU-KvG"/>
                                 <constraint firstItem="vjY-v3-9mw" firstAttribute="top" secondItem="Y0o-uD-rCV" secondAttribute="top" constant="22" id="h6a-8w-7mf"/>
                                 <constraint firstAttribute="height" constant="340" id="j0P-f8-2Se"/>
+                                <constraint firstAttribute="trailing" secondItem="Qy0-Ev-sMY" secondAttribute="trailing" constant="15" id="mtt-gj-RuO"/>
                                 <constraint firstItem="vjY-v3-9mw" firstAttribute="centerX" secondItem="Y0o-uD-rCV" secondAttribute="centerX" id="o9K-Np-FCG"/>
+                                <constraint firstAttribute="trailing" secondItem="mrU-86-fAC" secondAttribute="trailing" constant="16" id="uTM-c2-xdq"/>
+                                <constraint firstItem="mrU-86-fAC" firstAttribute="leading" secondItem="Y0o-uD-rCV" secondAttribute="leading" constant="16" id="w3X-0e-t2x"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJo-Cp-rRu">
@@ -138,16 +183,21 @@
             <connections>
                 <outlet property="collView" destination="qTP-vd-8oX" id="Ulf-Y7-HD6"/>
                 <outlet property="seekView" destination="YMM-Ne-vcf" id="Gcz-Gh-WMt"/>
+                <outlet property="selectCurrencyFiled" destination="mrU-86-fAC" id="jwy-tZ-B1T"/>
                 <outlet property="subbView" destination="Y0o-uD-rCV" id="YWM-cI-vBs"/>
             </connections>
             <point key="canvasLocation" x="157.59999999999999" y="266.71664167916043"/>
         </view>
     </objects>
     <resources>
+        <image name="dropDown" width="11.5" height="6.5"/>
         <image name="rightTick" width="19.5" height="14.5"/>
         <image name="sliderThumb" width="18" height="18"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

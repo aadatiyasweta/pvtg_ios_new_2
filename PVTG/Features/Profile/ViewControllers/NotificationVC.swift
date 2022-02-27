@@ -30,6 +30,7 @@ class NotificationVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     self.tabBarController?.removeBadgeSubview()
         self.notificationVM.delegate = self
         loadApi(offset: "0")
         self.tblNotication.register(NotificationCell.nib(), forCellReuseIdentifier: NotificationCell.ident)
@@ -104,6 +105,11 @@ extension NotificationVC: AfterGettingNotificationList {
             self.lbvlNoNotification.text = R.string.localizable.noNotifications()
         }
         self.tblNotication.reloadData()
-        
-    }
+        loadUpdateNotificationStatusAPI()
+     }
+ 
+ private func loadUpdateNotificationStatusAPI() {
+     guard let userid = SaveToDefaults().getUserId() else {return}
+  self.notificationVM.updateNotificationStatus(user_Id: userid)
+ }
 }

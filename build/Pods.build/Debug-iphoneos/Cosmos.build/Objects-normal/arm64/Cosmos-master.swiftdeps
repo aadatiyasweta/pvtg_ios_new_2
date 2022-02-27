@@ -1,7 +1,7 @@
 version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
 options: "a6cecef5a6ed667d1fad877a54cdc510e52b751cee87173da0877fd64ec60b17"
-build_start_time: [1643962169, 601274013]
-build_end_time: [1643962170, 85123062]
+build_start_time: [1645786087, 688202857]
+build_end_time: [1645786092, 229019165]
 inputs:
   "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosAccessibility.swift": [1643866665, 828589439]
   "/Users/kashish/Documents/PVTG/Pods/Cosmos/Cosmos/CosmosDefaultSettings.swift": [1643866665, 828804731]

@@ -1,7 +1,7 @@
 version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
 options: "a6cecef5a6ed667d1fad877a54cdc510e52b751cee87173da0877fd64ec60b17"
-build_start_time: [1643962169, 821331977]
-build_end_time: [1643962170, 707010030]
+build_start_time: [1645786155, 574532985]
+build_end_time: [1645786175, 484003067]
 inputs:
   "/Users/kashish/Documents/PVTG/Pods/Alamofire/Source/AFError.swift": [1643866665, 784062147]
   "/Users/kashish/Documents/PVTG/Pods/Alamofire/Source/Alamofire.swift": [1643866665, 784415721]

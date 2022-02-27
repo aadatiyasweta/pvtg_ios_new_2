@@ -25,6 +25,7 @@ struct SessionDetailResult : Codable {
 	let category_name : String?
 	let distance : String?
 	let rating : String?
+ let session_booking_status : String?
 	let bio : String?
     let vendorName : String?
 	let images : [Images]?
@@ -62,6 +63,8 @@ struct SessionDetailResult : Codable {
         case booking_date = "booking_date"
         case payment_id = "payment_id"
         case paid_amount = "paid_amount"
+  case session_booking_status = "session_booking_status"
+
 	}
 
 	init(from decoder: Decoder) throws {
@@ -89,6 +92,8 @@ struct SessionDetailResult : Codable {
         booking_date = try values.decodeIfPresent(String.self, forKey: .booking_date)
         payment_id = try values.decodeIfPresent(String.self, forKey: .payment_id)
         paid_amount = try values.decodeIfPresent(String.self, forKey: .paid_amount)
+  session_booking_status = try values.decodeIfPresent(String.self, forKey: .session_booking_status)
+
 	}
 
 }

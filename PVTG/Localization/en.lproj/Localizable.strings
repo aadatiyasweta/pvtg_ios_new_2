@@ -64,7 +64,7 @@
 "ok" = "OK";
 "Discount" = "Discount";
 "ptsavailable" = "Dharma pts available";
-"youWillBeRewarded" = "You will be rewarded %@pts on booking the session";
+"youWillBeRewarded" = "You will be rewarded %@pts for booking this session";
 "PleaseSelecttime" = "Please Select time";
 "CancelTheBooking" = "Are you sure you want to cancel the booking";
 "onlyTickets" = "only %@ tickets for this session are available.";
@@ -91,10 +91,11 @@
 "changeLanguage" = "Change Language";
 "yes" = "Yes";
 "no" = "No";
-"willYouAttending" = "Will you still be attending your %@ session?";
+"willYouAttending" = "Will you still be attending your %@ session?.If not, please cancel to avoid late cancellation fee.";
 "notificationtitle" = "Reminder";
 "free" = "free";
-"doNotWorry" = "And don't worry you can always cancel 2 hours \nbefore a session for a full refund!";
+"doNotWorry" = "And don't worry you can always cancel 2 hours \nbefore a session begins for a full refund!";
 "FreeService" = "Free Service";
 "PriceFilter" = "Price Filter";
 "bookingdate" = "Booking Date :";
+"CancellationPolicy" = "Cancellation Policy";

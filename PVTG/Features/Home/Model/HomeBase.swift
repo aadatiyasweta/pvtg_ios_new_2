@@ -16,12 +16,14 @@ struct HomeBase : Codable {
 	let statusCode : Int?
 	let aPICODERESULT : String?
 	let result : HomeResult?
+ let unread_notification:Int?
 
 	enum CodingKeys: String, CodingKey {
 
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case result = "result"
+  case unread_notification = "unread_notification"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -29,6 +31,7 @@ struct HomeBase : Codable {
 		statusCode = try values.decodeIfPresent(Int.self, forKey: .statusCode)
 		aPICODERESULT = try values.decodeIfPresent(String.self, forKey: .aPICODERESULT)
 		result = try values.decodeIfPresent(HomeResult.self, forKey: .result)
+  unread_notification = try values.decodeIfPresent(Int.self, forKey: .unread_notification)
 	}
 
 }

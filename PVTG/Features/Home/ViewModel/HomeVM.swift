@@ -8,7 +8,7 @@
 
 import UIKit
 protocol GetHomeData: class {
-    func reloadData()
+ func reloadData(unreadNotificationCount:Int)
 }
 class HomeVM: BaseVm {
     var model: HomeResult?
@@ -29,10 +29,11 @@ class HomeVM: BaseVm {
                 debugPrint(json)
                 if json["statusCode"] == 200 {
                     let data = try? json["result"].rawData()
+                 let unreadCount = json["unread_notification"].int
                     let jsonDecoder = JSONDecoder()
                     let model = try? jsonDecoder.decode(HomeResult.self, from: data ?? Data())
                     self.model = model
-                    self.delegate?.reloadData()
+                 self.delegate?.reloadData(unreadNotificationCount: unreadCount ?? 0)
                     
                 }
                 else {

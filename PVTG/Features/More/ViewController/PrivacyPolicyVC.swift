@@ -41,7 +41,6 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         setVSViewShadow(radius: 10, color: .black, view: self.btnBack, opacity: 0.12)
-        
 
     }
   

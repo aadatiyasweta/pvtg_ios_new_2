@@ -9,7 +9,6 @@
 import UIKit
 import Cosmos
 import GoogleMaps
-import MercadoPagoSDK
 import Stripe
 
 
@@ -70,6 +69,10 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         self.setDta()
         // Do any additional setup after loading the view.
     }
+ 
+ override func viewWillAppear(_ animated: Bool) {
+//  self.showUseNow()
+ }
     override func viewWillLayoutSubviews() {
         self.view.layoutIfNeeded()
         self.lblPoints.layer.cornerRadius = 22
@@ -105,7 +108,48 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             marker.map = mapView
         }
     }
+ 
+ @IBAction func useNow(_ sender: Any) {
+  let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "%", with: "") ?? ""
+  let intDiscountWithOUtPercent = Int(strDiscountWithoutPercent) ?? 0
+  let discountGiven = Double(intDiscountWithOUtPercent) / Double(100)
+//  prin
+//  let discountGiven = self.firstPointDiscount / 100
+  if let price = self.customModel?.paid_amount {
+   if let tkt = Int(self.totalTkt){
+    print("ticket\(self.totalTkt)")
+    print("booking currency\(String(describing: self.bookingDetails?.currency))")
+   
+    var priceString = ""
+
+    var myDouble  = Double(price) ?? 0.0
+    myDouble = myDouble * Double(tkt)
+    let totalPrice = myDouble
+    print(myDouble)
+    let totalDiscount   = myDouble * discountGiven
     
+    let priceAfterDiscount = totalPrice - totalDiscount
+    print(myDouble)
+    
+    let currencyFormatter = NumberFormatter()
+    currencyFormatter.usesGroupingSeparator = true
+    currencyFormatter.numberStyle = .currency
+//    currencyFormatter.currencyCode = "COP"
+    currencyFormatter.locale = Locale.current
+    priceString = currencyFormatter.string(from: NSNumber(value: priceAfterDiscount ))!
+   
+   
+    let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+    self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
+    print(replaced)
+    self.vwAdddashedBordr.isHidden = true
+    self.btnUseNow.isHidden = true
+    self.discountViewHeightCons.constant = 0
+  
+ }
+ 
+  }
+ }
     @IBAction func tapPaynow(_ sender: UIButton) {
         var amount = ""
         var points = ""
@@ -177,7 +221,6 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 self.lblPoints.text = "\(self.secondPoins) \(R.string.localizable.pts())"
                 let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins
                 self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
-               
             }
         }else{
             self.vwAdddashedBordr.isHidden = true
@@ -185,13 +228,81 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             self.discountViewHeightCons.constant = 0
             let val = (self.ticketModel?.total_point)!
             self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+         self.setOriginalPriceWithOutDiscount()
+
         }
-       
         
     }
+ 
+ private func setOriginalPriceWithOutDiscount(){
+  let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "%", with: "") ?? ""
+  let intDiscountWithOUtPercent = Int(strDiscountWithoutPercent) ?? 0
+  let discountGiven = Double(intDiscountWithOUtPercent) / Double(100)
+//  prin
+//  let discountGiven = self.firstPointDiscount / 100
+  if let price = self.customModel?.paid_amount {
+   if let tkt = Int(self.totalTkt){
+    print("ticket\(self.totalTkt)")
+    print("booking currency\(String(describing: self.bookingDetails?.currency))")
+   
+    var priceString = ""
+
+    var myDouble  = Double(price) ?? 0.0
+    myDouble = myDouble * Double(tkt)
+    let totalPrice = myDouble
+    print(myDouble)
+//    let totalDiscount   = myDouble * discountGiven
+//
+//    let priceAfterDiscount = totalPrice - totalDiscount
+//    print(myDouble)
     
+    let currencyFormatter = NumberFormatter()
+    currencyFormatter.usesGroupingSeparator = true
+    currencyFormatter.numberStyle = .currency
+//    currencyFormatter.currencyCode = "COP"
+    currencyFormatter.locale = Locale.current
+    priceString = currencyFormatter.string(from: NSNumber(value: totalPrice ))!
+   
+   
+    let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+    self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
+    print(replaced)
+    self.vwAdddashedBordr.isHidden = true
+    self.btnUseNow.isHidden = true
+    self.discountViewHeightCons.constant = 0
+  
+ }
+ 
+  }
+
+  
+ }
+ 
+ private func showUseNow(){
+  self.vwAdddashedBordr.isHidden = false
+  self.btnUseNow.isHidden = false
+  self.discountViewHeightCons.constant = 50
+  if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
+      self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
+      self.lblPoints.text = "\(self.firstPoints) \(R.string.localizable.pts())"
+      let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints
+      self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+  }else{
+      if self.secondPointDiscount == 0{
+          self.Discount.text = R.string.localizable.free()
+         
+      }else{
+          self.Discount.text = "\(self.secondPointDiscount)%"
+      }
+      self.lblPoints.text = "\(self.secondPoins) \(R.string.localizable.pts())"
+      let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins
+      self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+ }
     
 }
+
+}
+
 
 extension SummaryVC {
     func setDta() {
@@ -219,13 +330,33 @@ extension SummaryVC {
                 
             }
             
-            if let tkt = Int(self.totalTkt){
-                self.totalFare.text = "\(self.bookingDetails?.currency ?? "COP")\(tkt*Int(flaotPrice))"
+         if let tkt = Int(self.totalTkt){
+          print("ticket\(self.totalTkt)")
+          print("booking currency\(String(describing: self.bookingDetails?.currency))")
+         
+          var priceString = ""
+     
+          var myDouble  = Double(price) ?? 0.0
+          myDouble = myDouble * Double(tkt)
+          
+          let currencyFormatter = NumberFormatter()
+          currencyFormatter.usesGroupingSeparator = true
+          currencyFormatter.numberStyle = .currency
+          currencyFormatter.locale = Locale.current
+//          currencyFormatter.currencyCode = "COP"
+          priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+         
+          let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+          self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
+          print(replaced)
+          print(flaotPrice)
+//                self.totalFare.text = "\(self.bookingDetails?.currency ?? "COP")\(tkt*Int(flaotPrice))"
 
-            }
+         }
             self.btnAvlblPoints.setTitle("\(pt ?? 0) \(R.string.localizable.ptsavailable())", for: .normal)
            
         }
+//     self.showUseNow()
     }
     
  func draw(src: CLLocationCoordinate2D, dst: CLLocationCoordinate2D){
@@ -269,7 +400,7 @@ extension SummaryVC {
     func doPayment(id : String){
         print(id)
      let config = STPPaymentConfiguration.shared()
-     config.requiredBillingAddressFields = .full
+     config.requiredBillingAddressFields = .none
      let viewController = STPAddCardViewController(configuration: config, theme: STPTheme.default())
      viewController.delegate = self
      let navigationController = UINavigationController(rootViewController: viewController)
@@ -290,20 +421,59 @@ extension SummaryVC {
     }
  
  //MARK: - MAKE PAYMENT FROM STRIPE
-  func makePayment(stripetoken:STPToken){
-  let email = SaveToDefaults().getEmail() ?? ""
-  let acessToken = SaveToDefaults().getAccessToken() ?? ""
-  if let id = SaveToDefaults().getUserId(){
-   let currency = self.bookingDetails?.currency ?? "COP"
-//   let currency = self.vm.model?.currency ?? ""
-   let amount = self.customModel?.paid_amount ?? ""
-   print(amount)
-   self.vm.makePAymentStripe(user_id: id, stripeytoken: stripetoken, ammount: "2000", currency: "usd", email: email, token: acessToken)
-//      self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
+ func makePayment(stripetoken:STPToken){
+ let email = SaveToDefaults().getEmail() ?? ""
+  print(stripetoken.tokenId)
+  
+ let acessToken = SaveToDefaults().getAccessToken() ?? ""
+ if let id = SaveToDefaults().getUserId(){
+  var currency = self.bookingDetails?.currency ?? "COP"
+  if(currency == "$"){
+   currency = "USD"
   }
+  
+  let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "%", with: "") ?? ""
+  let intDiscountWithOUtPercent = Int(strDiscountWithoutPercent) ?? 0
+  let discountGiven = Double(intDiscountWithOUtPercent) / Double(100)
+  
+  let amount = self.customModel?.paid_amount ?? ""
+  print(amount)
+  if let price = self.customModel?.paid_amount {
+   if let tkt = Int(self.totalTkt){
+    print("ticket\(self.totalTkt)")
+    print("booking currency\(String(describing: self.bookingDetails?.currency))")
+   
+    var priceString = ""
+
+    var myDouble  = Double(price) ?? 0.0
+    myDouble = myDouble * Double(tkt)
+    let totalPrice = myDouble
+    print(myDouble)
+    let totalDiscount   = myDouble * discountGiven
+    
+    let priceAfterDiscount = totalPrice - totalDiscount
+    
+//    let floatAmount = Float(amount) ?? 0.0
+    let strAmount = String(Int(priceAfterDiscount.rounded(.toNearestOrEven)))
+    self.vm.makePAymentStripe(user_id: id, stripeytoken: stripetoken.tokenId, ammount: strAmount, currency: currency, email: email, token: acessToken,sessionId: self.customModel?.session_id ?? ""){ data in
+     if(data != ""){
+      self.bookSession(transactionID: data)
+     }
+   }
+  }
+
+  }
+//      self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
  }
+}
+
  
  
+ //MARK: - METHOD TO HIT SESSION BOOKING API
+ 
+ private func bookSession(transactionID:String) {
+  self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: self.ammountPayment, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:self.pointsPayent,session_type_id: self.customModel?.offeredTypeId ?? "",paymentId: transactionID)
+ }
 
     /*
      Public Key
@@ -317,40 +487,40 @@ extension SummaryVC {
 //TEST-TEST-7488660032626366-081021-6e581c702a1f21140901508fa58446dd-790689138
 //TEST-TEST-55326d65-65a3-4561-a7fd-176149c86680
 // MARK: Optional Lifecycle protocol implementation example.
-extension SummaryVC: PXLifeCycleProtocol , PXPaymentProcessor{
-    func paymentProcessorViewController() -> UIViewController? {
-        print("px - paymentProcessorViewController")
-        return nil
-    }
-    
-    func support() -> Bool {
-        return false
-    }
-    
-    func finishCheckout() -> ((_ payment: PXResult?) -> Void)? {
-        print("finishCheckout1")
-        return ({ (_ payment: PXResult?) in
-            print("finishCheckout")
-            if payment?.getStatus() ?? "" == "approved"{
-                self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: self.ammountPayment, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:self.pointsPayent,session_type_id: self.customModel?.offeredTypeId ?? "",paymentId: payment?.getPaymentId() ?? "")
-            }
-            else{
-                self.navigationController?.popViewController(animated: true)
-            }
-            
-        })
-    }
-    func cancelCheckout() -> (() -> Void)? {
-        print("px - cancelCheckout")
-        return nil
-    }
-
-    func changePaymentMethodTapped() -> (() -> Void)? {
-        return { () in
-            print("px - changePaymentMethodTapped")
-        }
-    }
-}
+//extension SummaryVC: PXLifeCycleProtocol , PXPaymentProcessor{
+//    func paymentProcessorViewController() -> UIViewController? {
+//        print("px - paymentProcessorViewController")
+//        return nil
+//    }
+//
+//    func support() -> Bool {
+//        return false
+//    }
+//
+//    func finishCheckout() -> ((_ payment: PXResult?) -> Void)? {
+//        print("finishCheckout1")
+//        return ({ (_ payment: PXResult?) in
+//            print("finishCheckout")
+//            if payment?.getStatus() ?? "" == "approved"{
+//                self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: self.ammountPayment, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:self.pointsPayent,session_type_id: self.customModel?.offeredTypeId ?? "",paymentId: payment?.getPaymentId() ?? "")
+//            }
+//            else{
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//
+//        })
+//    }
+//    func cancelCheckout() -> (() -> Void)? {
+//        print("px - cancelCheckout")
+//        return nil
+//    }
+//
+//    func changePaymentMethodTapped() -> (() -> Void)? {
+//        return { () in
+//            print("px - changePaymentMethodTapped")
+//        }
+//    }
+//}
 extension SummaryVC : GetBookingResponse,getOnboardingResponse{
     func getOnboardingData() {
         if self.onboardingVm.model?.rewards?.count == 2{
@@ -372,6 +542,8 @@ extension SummaryVC : GetBookingResponse,getOnboardingResponse{
             self.usePvtBtn.isUserInteractionEnabled = false
         }else{
              self.usePvtBtn.isUserInteractionEnabled = true
+            self.showUseNow()
+         self.usePvtBtn.isSelected = true
         }
         if self.ticketModel?.user_booking ?? 0 == 0{
             self.rewardedString.text = R.string.localizable.youWillBeRewarded(self.onboardingVm.model?.point_accumulation?.first_booking_point ?? "")
@@ -404,18 +576,20 @@ extension SummaryVC : STPAddCardViewControllerDelegate
  
  
  func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
-  print("abc")
+  dismiss(animated: false, completion: nil)
  }
 // func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken) async throws {
 //
 // }
+ 
+ 
  func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
   print(token)
   dismiss(animated: false, completion: nil)
   self.makePayment(stripetoken: token)
+  }
  
-  
- }
+
 
 // add(<#T##STPAddCardViewController#>, didCreateToken: <#T##STPToken#>, completion: <#T##STPErrorBlock#>)
 // add(<#T##STPAddCardViewController#>, didCreateToken: <#T##STPToken#>, completion: <#T##STPErrorBlock#>)private

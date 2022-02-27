@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -345,6 +345,7 @@
                             <constraint firstItem="7l0-0D-MO6" firstAttribute="top" secondItem="cA6-mP-eFf" secondAttribute="bottom" constant="13" id="Oxs-wJ-Pdp"/>
                             <constraint firstItem="cA6-mP-eFf" firstAttribute="leading" secondItem="42k-gT-Wef" secondAttribute="leading" constant="8" id="PJN-ZI-HL7"/>
                             <constraint firstItem="mAM-ye-rMx" firstAttribute="leading" secondItem="cA6-mP-eFf" secondAttribute="leading" id="WJf-ti-sSk"/>
+                            <constraint firstItem="7l0-0D-MO6" firstAttribute="leading" secondItem="42k-gT-Wef" secondAttribute="leading" constant="8" id="b27-D6-rAD"/>
                             <constraint firstItem="7uc-3d-EXn" firstAttribute="centerY" secondItem="fYQ-DF-9pC" secondAttribute="centerY" id="d31-dw-F1q"/>
                             <constraint firstItem="fYQ-DF-9pC" firstAttribute="centerY" secondItem="GoL-p3-lYq" secondAttribute="centerY" id="eEL-2n-F2K"/>
                             <constraint firstAttribute="trailing" secondItem="S7Q-RY-GeF" secondAttribute="trailing" constant="8" id="hDS-Hy-4Pc"/>

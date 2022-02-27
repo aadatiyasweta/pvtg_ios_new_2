@@ -4,6 +4,14 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>ActiveEventCollectionViewCell.nib/objects-12.3+.nib</key>
+		<data>
+		flBMSHWtd++ak5ldyS5hxYoJuzs=
+		</data>
+		<key>ActiveEventCollectionViewCell.nib/runtime.nib</key>
+		<data>
+		vSkIEllCqqsmZJdnveptLGIaJrM=
+		</data>
 		<key>AllCategoryCell.nib/objects-12.3+.nib</key>
 		<data>
 		m0To1UtUbEZ6EdvcnSTax0oYbN0=
@@ -22,19 +30,19 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		BLzKnZ3MQrXpUvY+4771YHgaTz0=
+		QMdn91yXdWbZ2H6xQHRbTxfJp9s=
 		</data>
 		<key>Base.lproj/ActiveEventCell.nib/objects-12.3+.nib</key>
 		<data>
-		cEROTDvH8nbt3pagN4B+cVd3lq0=
+		yRDFS4JTjp9GTMqiKzpHHlAeF6o=
 		</data>
 		<key>Base.lproj/ActiveEventCell.nib/runtime.nib</key>
 		<data>
-		oWfwV0Esnopg5W5nHYUYUY2Zo44=
+		tr5lCDuNK/SXAuBBqU53/645E18=
 		</data>
 		<key>Base.lproj/HistoryCell.nib</key>
 		<data>
-		kC0kI204SGbIQ5DI6bTFk/lWyJA=
+		YBLJD921uosDJDykC/Yo0yMAsXA=
 		</data>
 		<key>Base.lproj/Home.storyboardc/1Rn-vd-xbq-view-dQl-og-Cz6.nib</key>
 		<data>
@@ -42,7 +50,7 @@
 		</data>
 		<key>Base.lproj/Home.storyboardc/A3S-49-eub-view-PDd-oj-Npn.nib</key>
 		<data>
-		y4kDIZfbgZf2MkTeW1AVvIC2BXY=
+		SPOo+jwLnf6yocRbX3fm41xkhJE=
 		</data>
 		<key>Base.lproj/Home.storyboardc/EventsViewController.nib</key>
 		<data>
@@ -82,7 +90,7 @@
 		</data>
 		<key>Base.lproj/Home.storyboardc/XBb-8H-gMQ-view-smc-it-fhR.nib</key>
 		<data>
-		SeId/Nr7xQp79NfHQLlOTl8laLw=
+		smau1coPga3xyaX/2E7SfYYNhhE=
 		</data>
 		<key>Base.lproj/Home.storyboardc/home.nib</key>
 		<data>
@@ -110,11 +118,11 @@
 		</data>
 		<key>Base.lproj/Login.storyboardc/6Jf-mC-L8Y-view-lR9-DR-HW5.nib</key>
 		<data>
-		Yb/pfn1Dw9d4HdxJPy37XPhnilg=
+		xJ22GZGJLNeSODsLdKac+bhjBms=
 		</data>
 		<key>Base.lproj/Login.storyboardc/AIa-Ro-UXS-view-z6p-sl-OVj.nib</key>
 		<data>
-		P6ayeWhghbObuzr88YVxLAT0Q6I=
+		H/6hCKMaNCx4Q2Vh7lM4qmjbaE8=
 		</data>
 		<key>Base.lproj/Login.storyboardc/ChangepaswdVC.nib</key>
 		<data>
@@ -142,7 +150,7 @@
 		</data>
 		<key>Base.lproj/Login.storyboardc/aIR-Vo-oeX-view-r4O-XX-6rq.nib</key>
 		<data>
-		12tWco9UsDEqZxc3+SPgNFKyLY0=
+		BMJixQItnQJDlrOVQMaTl93s7T0=
 		</data>
 		<key>Base.lproj/Login.storyboardc/login.nib</key>
 		<data>
@@ -150,11 +158,11 @@
 		</data>
 		<key>Base.lproj/Login.storyboardc/tjy-Z3-Pce-view-NWw-k4-o3o.nib</key>
 		<data>
-		F8rFiuooGgpIaB8bp9uCHcngouI=
+		iTGQehWHoMJ/y2NkMPJfb+1fYwE=
 		</data>
 		<key>Base.lproj/Login.storyboardc/uwE-2u-AJS-view-gMx-TT-Lvm.nib</key>
 		<data>
-		wXz+pzgC7oNJqia83vgLyz8Lhms=
+		1abhBN806Ur5CXG4RlTg8KrZpCg=
 		</data>
 		<key>Base.lproj/More.storyboardc/ChangePasswordVC.nib</key>
 		<data>
@@ -186,7 +194,7 @@
 		</data>
 		<key>Base.lproj/Onboarding.storyboardc/7S6-X4-nP2-view-rbx-N6-rN6.nib</key>
 		<data>
-		vgE3x1lSxdDRFK+hVzRa+x5DIrc=
+		tps89YgRI6QCxoi3Siv+Vstcgyc=
 		</data>
 		<key>Base.lproj/Onboarding.storyboardc/Info.plist</key>
 		<data>
@@ -194,7 +202,7 @@
 		</data>
 		<key>Base.lproj/Onboarding.storyboardc/JGm-Ge-N2f-view-yYk-lv-30e.nib</key>
 		<data>
-		ZonxpNsY+KikXZpZiY+Brph6kWE=
+		LCEBeagJaLv4m8933AoYePcJrjQ=
 		</data>
 		<key>Base.lproj/Onboarding.storyboardc/LanguageChnageVC.nib</key>
 		<data>
@@ -242,15 +250,15 @@
 		</data>
 		<key>Base.lproj/PriceView.nib</key>
 		<data>
-		SPzOit7SzYdDMLB+oiSeDKc2liY=
+		CSC51aQX6a4i/9ebLvtgnChqW4g=
 		</data>
 		<key>Base.lproj/Profile.storyboardc/3la-LE-5TG-view-cod-t1-cVr.nib</key>
 		<data>
-		ZHYdp0TfEHoO9qiuW7wv+FS27c0=
+		8cEJ3gm2+N8I/wrEvwe8POfJeGs=
 		</data>
 		<key>Base.lproj/Profile.storyboardc/ELE-ym-YIW-view-HAT-wN-EuH.nib</key>
 		<data>
-		v/uhaXqI9kP5R1qm3rLRb3YbVBQ=
+		CuUCn3UwQyv+DXO6IsbDAHajXiQ=
 		</data>
 		<key>Base.lproj/Profile.storyboardc/EditProfileVC.nib</key>
 		<data>
@@ -258,7 +266,7 @@
 		</data>
 		<key>Base.lproj/Profile.storyboardc/FUA-SD-AdJ-view-Yf5-mX-Vrx.nib</key>
 		<data>
-		8fqVYYrjE4pE4Vp/hVbzJ+ZBSTs=
+		A6HpxRrxAlhOSVmv5Hi5xgFUcZA=
 		</data>
 		<key>Base.lproj/Profile.storyboardc/Info.plist</key>
 		<data>
@@ -274,7 +282,7 @@
 		</data>
 		<key>Base.lproj/Profile.storyboardc/QIu-J9-mbc-view-ryG-GI-M3m.nib</key>
 		<data>
-		FpXfwTUFCT5Mpxc2kdjj/xwmpZg=
+		zOaEqrqCzpqsxHae6yeKu5EN6Vc=
 		</data>
 		<key>Base.lproj/Profile.storyboardc/RateUsVC.nib</key>
 		<data>
@@ -290,11 +298,11 @@
 		</data>
 		<key>Base.lproj/Profile.storyboardc/eFf-Ms-n3g-view-J3M-3P-vwi.nib</key>
 		<data>
-		DqRcPEUXw61NwG5K9JcG3c/DSNs=
+		txKA/WSLJkftTv9D9aXxOB5AqKk=
 		</data>
 		<key>Base.lproj/Profile.storyboardc/fKr-Dx-bdo-view-Rt0-wO-cKy.nib</key>
 		<data>
-		Ie/3WiJ0aKH3+q0e+LInpu3XnHI=
+		ZhvE+II24VhCwhCMGZ6BgM10MZg=
 		</data>
 		<key>Base.lproj/ReminderView.nib</key>
 		<data>
@@ -318,7 +326,7 @@
 		</data>
 		<key>Base.lproj/Session.storyboardc/g4N-T8-DGB-view-2Oi-Ft-hyQ.nib</key>
 		<data>
-		yH47vAK3bLQ59qManu8IqzwhlHE=
+		V+YV4yYZhDusxXGiZIiLWLvQyOQ=
 		</data>
 		<key>Base.lproj/SessionCell.nib</key>
 		<data>
@@ -358,7 +366,7 @@
 		</data>
 		<key>Frameworks/AMShimmer.framework/AMShimmer</key>
 		<data>
-		VOcRMPPEdZQ0M4IvRvrWDNDZfDo=
+		Y30Y4VEVkuHuZM1ffSrsFrLtcx8=
 		</data>
 		<key>Frameworks/AMShimmer.framework/Info.plist</key>
 		<data>
@@ -370,7 +378,7 @@
 		</data>
 		<key>Frameworks/Alamofire.framework/Alamofire</key>
 		<data>
-		2gTJ9ibEPqGltkrxwZI41+ZuJTE=
+		5AdUzo1IRl3qLj4Sl74vA59aaxY=
 		</data>
 		<key>Frameworks/Alamofire.framework/Info.plist</key>
 		<data>
@@ -382,7 +390,7 @@
 		</data>
 		<key>Frameworks/AppAuth.framework/AppAuth</key>
 		<data>
-		AhKifwbUVMszuT2UP02pePLDFWE=
+		dfm0CnxQ2QZSg7mHWbTjPvkT8/4=
 		</data>
 		<key>Frameworks/AppAuth.framework/Info.plist</key>
 		<data>
@@ -394,7 +402,7 @@
 		</data>
 		<key>Frameworks/Cosmos.framework/Cosmos</key>
 		<data>
-		wwvWXPiwW1B5En17aW6EExu4da0=
+		hWXvQnHfll2lSWQofCuDxMjUyss=
 		</data>
 		<key>Frameworks/Cosmos.framework/Info.plist</key>
 		<data>
@@ -406,7 +414,7 @@
 		</data>
 		<key>Frameworks/FBLPromises.framework/FBLPromises</key>
 		<data>
-		juXrLT7TKmpjDDJtuJEpUp2nMfw=
+		XLEBDuRng64LO4sQUDugPajxZWc=
 		</data>
 		<key>Frameworks/FBLPromises.framework/Info.plist</key>
 		<data>
@@ -418,7 +426,7 @@
 		</data>
 		<key>Frameworks/FBSDKCoreKit.framework/FBSDKCoreKit</key>
 		<data>
-		DSrBPdgwUttX9uLPSWZtmLo3jRs=
+		rC0aaNWp36HC+09yvd8+fgJ8/wg=
 		</data>
 		<key>Frameworks/FBSDKCoreKit.framework/FacebookSDKStrings.bundle/Resources/af.lproj/FacebookSDK.strings</key>
 		<dict>
@@ -826,7 +834,7 @@
 		</data>
 		<key>Frameworks/FBSDKLoginKit.framework/FBSDKLoginKit</key>
 		<data>
-		MohkXCb8LCn621Wd/7Okp4sSO94=
+		JILM6PMObyyYbyC5lhlaG+R/pzw=
 		</data>
 		<key>Frameworks/FBSDKLoginKit.framework/Info.plist</key>
 		<data>
@@ -838,7 +846,7 @@
 		</data>
 		<key>Frameworks/FSCalendar.framework/FSCalendar</key>
 		<data>
-		Z5bAWw7sgx5HUfBH+aps0ud2zm8=
+		7Vbt7a3SF8w6M1ZTU6FOKFlGGe0=
 		</data>
 		<key>Frameworks/FSCalendar.framework/Info.plist</key>
 		<data>
@@ -848,21 +856,9 @@
 		<data>
 		zOFT6dZGh1TI3N7KHt0SPMXjYV4=
 		</data>
-		<key>Frameworks/FXBlurView.framework/FXBlurView</key>
-		<data>
-		WJA6fnPT5MvKyXCyyEvmQHfltOI=
-		</data>
-		<key>Frameworks/FXBlurView.framework/Info.plist</key>
-		<data>
-		0RTdvHsghQoKAqrNQkg3lNozxww=
-		</data>
-		<key>Frameworks/FXBlurView.framework/_CodeSignature/CodeResources</key>
-		<data>
-		z8BTuS4eXXNwKDjr5bFkyPfhM+s=
-		</data>
 		<key>Frameworks/GTMAppAuth.framework/GTMAppAuth</key>
 		<data>
-		p1ig768Dvxgq+vYjsRVruI9R6KA=
+		N/JNlt9H9HnMNt0IpvFPO+wAjJE=
 		</data>
 		<key>Frameworks/GTMAppAuth.framework/Info.plist</key>
 		<data>
@@ -874,7 +870,7 @@
 		</data>
 		<key>Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher</key>
 		<data>
-		MctAPhw67DdmqZ1fgQaz5t2X+v4=
+		mZ0jZ2nyPcfPeu4qDMdIxTw/384=
 		</data>
 		<key>Frameworks/GTMSessionFetcher.framework/Info.plist</key>
 		<data>
@@ -886,7 +882,7 @@
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/GoogleUtilities</key>
 		<data>
-		Z7QGks47qY3g7XRFxWOi4LytR6k=
+		Yhtu7guGTGKVGZgiDVF/A4Zu1B0=
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/Info.plist</key>
 		<data>
@@ -898,7 +894,7 @@
 		</data>
 		<key>Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift</key>
 		<data>
-		RdWvgN6qwNzuJOzY7Rz74LvJ3c8=
+		of7AoSW9ya0VTaXkKRd9jcSr6vk=
 		</data>
 		<key>Frameworks/IQKeyboardManagerSwift.framework/Info.plist</key>
 		<data>
@@ -908,456 +904,25 @@
 		<data>
 		6/ZVUv2fvcz0rbL5WAwU5hUzizQ=
 		</data>
-		<key>Frameworks/JRSwizzle.framework/Info.plist</key>
-		<data>
-		XwhdNavyJ2jmP1jwfLOeFuZbqTU=
-		</data>
-		<key>Frameworks/JRSwizzle.framework/JRSwizzle</key>
-		<data>
-		Ha1w5lDLIO2RIWNi/mVHPusYrno=
-		</data>
-		<key>Frameworks/JRSwizzle.framework/_CodeSignature/CodeResources</key>
-		<data>
-		H0yjm1DiiWQngfQNj2w1KPDHjSM=
-		</data>
-		<key>Frameworks/MLUI.framework/Assets.car</key>
-		<data>
-		YUAHy2e5B07yOeGKZrshlTMyYf0=
-		</data>
-		<key>Frameworks/MLUI.framework/Info.plist</key>
-		<data>
-		Mom5QQM6NrmYZNQQYvDwNvzaXho=
-		</data>
-		<key>Frameworks/MLUI.framework/MLFullscreenModal.nib</key>
-		<data>
-		9XHgsZ00OPKI0vM67BWBn8djghM=
-		</data>
-		<key>Frameworks/MLUI.framework/MLFullscreenModalHeader.nib</key>
-		<data>
-		Dvc6Jq+Dq3gTfIypvkDhs34S1f4=
-		</data>
-		<key>Frameworks/MLUI.framework/MLGenericErrorView.nib</key>
-		<data>
-		UfWPiwYDOxGdkKZph5LFfyeUz+4=
-		</data>
-		<key>Frameworks/MLUI.framework/MLModal.nib/objects-11.0+.nib</key>
-		<data>
-		hza3yJMURCrxm2r09c2N1c1vKBg=
-		</data>
-		<key>Frameworks/MLUI.framework/MLModal.nib/runtime.nib</key>
-		<data>
-		49PW2mUMnCBB8mUPpYXZHq077lo=
-		</data>
-		<key>Frameworks/MLUI.framework/MLSnackbar.nib</key>
-		<data>
-		nTRdd62tgHnJafrIlfnMtrJSztc=
-		</data>
-		<key>Frameworks/MLUI.framework/MLSpinner.nib</key>
-		<data>
-		WTMxIlScmheUzchSErA8E6ADlyg=
-		</data>
-		<key>Frameworks/MLUI.framework/MLSwitch.nib</key>
-		<data>
-		X5xXpCaaLJ7hy72ilKmI1aP/lrY=
-		</data>
-		<key>Frameworks/MLUI.framework/MLTextView.nib</key>
-		<data>
-		/93bSQ/p+Mq5Beu3qyFJs37xRsc=
-		</data>
-		<key>Frameworks/MLUI.framework/MLTitledLineTextField.nib</key>
-		<data>
-		c0Fklg24wzkmVsxVdQZrBk50qyQ=
-		</data>
-		<key>Frameworks/MLUI.framework/MLUI</key>
-		<data>
-		Y6nhtBbtOqpG4O3RZP4lZgE36Fg=
-		</data>
-		<key>Frameworks/MLUI.framework/MLUIHeader.nib/objects-11.0+.nib</key>
-		<data>
-		PO5OiyMwf2dJMTQkWnpoe72CNmY=
-		</data>
-		<key>Frameworks/MLUI.framework/MLUIHeader.nib/runtime.nib</key>
-		<data>
-		r52mxzdXg+YRpL9qjuare/k5Log=
-		</data>
-		<key>Frameworks/MLUI.framework/MLUIPriceView.nib</key>
-		<data>
-		j1wlxF41AiqdGvc6yaOP8llVd0I=
-		</data>
-		<key>Frameworks/MLUI.framework/MLUISnackBarView.nib</key>
-		<data>
-		2c4WRKn8d8V8HFT54pljKAwAELM=
-		</data>
-		<key>Frameworks/MLUI.framework/_CodeSignature/CodeResources</key>
-		<data>
-		PcN14NlqoGp3ZvUEYYr/i6SYTKM=
-		</data>
-		<key>Frameworks/MLUI.framework/en.lproj/MLTitledSingleLineTextField.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			eiQbPjdMtqn3R/G94oXh1SjdUwo=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MLUI.framework/es.lproj/MLTitledSingleLineTextField.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			eiQbPjdMtqn3R/G94oXh1SjdUwo=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MLUI.framework/pt.lproj/MLTitledSingleLineTextField.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			eiQbPjdMtqn3R/G94oXh1SjdUwo=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
 		<key>Frameworks/MarqueeLabel.framework/Info.plist</key>
 		<data>
 		U2VzR29hZWeI5jleljIZ6RFv3x0=
 		</data>
 		<key>Frameworks/MarqueeLabel.framework/MarqueeLabel</key>
 		<data>
-		J0p+meP1LgZ21t8u1R7TvjShQdE=
+		uGKpIZpd9gbTCU2Pbm5zHc9b2y8=
 		</data>
 		<key>Frameworks/MarqueeLabel.framework/_CodeSignature/CodeResources</key>
 		<data>
 		8x+LDRPSx1qFzgxTo0ivDEgH8vk=
 		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/AdditionalStepCardTableViewCell.nib</key>
-		<data>
-		ipFGLlEhj4xRcZhSPdWX3XEQ5OA=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/AdditionalStepTitleTableViewCell.nib</key>
-		<data>
-		stcFjci1C4c2Va3UNXc9JGTYrsA=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/AdditionalStepViewController.nib</key>
-		<data>
-		V0ij/RApF5/rWiGJEpB7iw+VBz8=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/Assets.car</key>
-		<data>
-		gQBvuJbAYjnV7/iH0yQfVQImtUQ=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/AvailableCardsViewController.nib</key>
-		<data>
-		QB1TU8Sz1CKow/SZGw+dEni3qnc=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/BackView.nib</key>
-		<data>
-		fk7ktpG8mnWBNVTHDWlSY3Q/ibA=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/BankInsterestTableViewCell.nib</key>
-		<data>
-		Pf5qLsc5bgom4N6Qu2U3/Pgr5A0=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/CardBackView.nib</key>
-		<data>
-		jwp48D/dJgU28Jhhq59cwQEjA1A=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/CardFormViewController.nib</key>
-		<data>
-		occx8N2f9hSZwj7R2+TvzjC+OsI=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/CardFrontView.nib</key>
-		<data>
-		4h/3d98ELE/v9K1x01zpMopIf3k=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/CardTypeTableViewCell.nib</key>
-		<data>
-		he1JwvQ1istYFpWj7FZnRo7wB9g=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/CardsAdminViewController.nib</key>
-		<data>
-		i+WaIfa0McWInRoxdHIQwnzOjaE=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/EntityTypeTableViewCell.nib</key>
-		<data>
-		ZF3ub8ATaR/7N8rNyiL/IMJHTt8=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/EntityTypes.plist</key>
-		<data>
-		f6gzai31TQOMPkI2MVOItA0jk+Q=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/ErrorViewController.nib</key>
-		<data>
-		7lewolLaiP6kvZPMgJyjFN/rX90=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/FinancialInstitutionTableViewCell.nib</key>
-		<data>
-		hMHc9QZjrPPnb9WSQuuH0Ev8BfI=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/FrontView.nib</key>
-		<data>
-		fHNx6FAiEUUQrC2h79LnKiDUfLE=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/IdentificationCardView.nib</key>
-		<data>
-		SEWMUBtCAOADchRJOUuMNx1TXKs=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/IdentificationTypes.plist</key>
-		<data>
-		Of4pz17TsTvmRhtAandXMXCLRmA=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/IdentificationViewController.nib</key>
-		<data>
-		oSeGuDU69n7L6LHT+KB/awav1+4=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/Info.plist</key>
-		<data>
-		VRfdRRRGQyNL/pKsSy/8jodwmx4=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/IssuerRowTableViewCell.nib</key>
-		<data>
-		+j3ghDOOpWrmCJtyfn8YKFdl55M=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/MercadoPagoSDK</key>
-		<data>
-		5LL77d3MF+zKm17msozZWgjNOqQ=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PXCardSliderPagerCell.nib/objects-12.3+.nib</key>
-		<data>
-		m3Bo+Ai7XUCeNZqKOPBQo3zSilM=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PXCardSliderPagerCell.nib/runtime.nib</key>
-		<data>
-		3DulNigK2tj3K5fD8+I5N9KqW1s=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PXOneTapSummaryModalViewController.nib</key>
-		<data>
-		HF8Ki179ZEbpKbYcJhxgKazGS24=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PXOneTapSummaryRowView.nib</key>
-		<data>
-		+nhZfM3jpPex6T37JVWax6d/pBI=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PayerCostCFTTableViewCell.nib</key>
-		<data>
-		TPa4VxjpWh/mOOrqHZAicnLqJJo=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PayerCostPreferences.plist</key>
-		<data>
-		0MZoVFz94xHOkPbYTwIEGuMuJxA=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PayerCostRowTableViewCell.nib</key>
-		<data>
-		FPe3SRrb6cID+CqXulUJUbOSsAg=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentMethod.plist</key>
-		<data>
-		cJoCYGjtMlZ4CHJK8Hge6gAtMqc=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentMethodSearch.plist</key>
-		<data>
-		irZcbIWHewUtcd+TS4pzLMsmaB4=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentSearchCollectionViewCell.nib/objects-12.3+.nib</key>
-		<data>
-		tTM2BvmDrHHqy+q4EzFz0/aLqXQ=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentSearchCollectionViewCell.nib/runtime.nib</key>
-		<data>
-		s4TblkgsouKPgRM5JUDt2kB0898=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentVaultTitleCollectionViewCell.nib/objects-12.3+.nib</key>
-		<data>
-		cQa6dOLovT9Us7sXBLx+DzADMqU=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentVaultTitleCollectionViewCell.nib/runtime.nib</key>
-		<data>
-		TN0V9TcAe5csw7suEwH3Ym2Eeos=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentVaultViewController.nib</key>
-		<data>
-		fiC4pqYf3UhLyPBhH2kEmX+OmzU=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/PurchaseDetailTableViewCell.nib</key>
-		<data>
-		VgBENhtHhPo5tAZ+wvQckRU1BY4=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/SecurityCodeViewController.nib</key>
-		<data>
-		3LjpXUBzSqPsXHPj8/znIhMfphY=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/TotalPayerCostRowTableViewCell.nib</key>
-		<data>
-		+sy9YgTok6HCRzQNJlqPNODaFEc=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/UnlockCardLinks.plist</key>
-		<data>
-		ox4vo1FGz6lNdqqNecLpSvJPxhE=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/_CodeSignature/CodeResources</key>
-		<data>
-		mQQBNsPWEJIhLreBUstCul1GNts=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/en.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			fxwbxwcFztVVmFyU1uJbXQ6MsOM=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/en.lproj/Localizable_en.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			NsrWxYYiGNUpEAT1+kleSHrHOW4=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-CO.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			H74SZGZu1raJnlLHFywtT2Hyl4U=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-CO.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			zmV6UqBSo6r1NOz798vd5O4zTBA=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-MX.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			AzU1pVdJtkKND41SizKf7aIjdbE=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-MX.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			zmV6UqBSo6r1NOz798vd5O4zTBA=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-PE.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			pJiYMPoIzUf6sms6OR6EhgYQlII=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-PE.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			zmV6UqBSo6r1NOz798vd5O4zTBA=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-UY.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			pJiYMPoIzUf6sms6OR6EhgYQlII=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-UY.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			zmV6UqBSo6r1NOz798vd5O4zTBA=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-VE.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			pJiYMPoIzUf6sms6OR6EhgYQlII=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-VE.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			zmV6UqBSo6r1NOz798vd5O4zTBA=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			3jeABJNx7dy7sJy5XxTNJXtfhZQ=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			nQ6rhFnwHhUFC6ZdUy9eaksjDbM=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/mpsdk_settings.plist</key>
-		<data>
-		1uwhtZ+qNjmn6v6uqvE6qhFBx+4=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/mpx_tracking_settings.plist</key>
-		<data>
-		WYYJuM8BofijBuyskVkhEOHNXms=
-		</data>
-		<key>Frameworks/MercadoPagoSDK.framework/pt.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			iMU/B1dK7u7ZbwjUVDD+PyaIIuw=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/pt.lproj/Localizable_pt.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			jVptUdYhhRJPuZbmFJtaDDDhjfY=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
 		<key>Frameworks/Protobuf.framework/Info.plist</key>
 		<data>
 		E0Hw2GEj3T+/1q47CtyURJzgzGY=
 		</data>
 		<key>Frameworks/Protobuf.framework/Protobuf</key>
 		<data>
-		VhKhLjGCP88pC8PM068pkZL8wZs=
+		CYgGEk0eF+A6HvK35OVNqyT1ONU=
 		</data>
 		<key>Frameworks/Protobuf.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1369,7 +934,7 @@
 		</data>
 		<key>Frameworks/RangeSeekSlider.framework/RangeSeekSlider</key>
 		<data>
-		4fnpoai2mPdHS1oF5GzRqPaWDNI=
+		OzxXOu87AuhKYuYsK+Z+9jq0BVg=
 		</data>
 		<key>Frameworks/RangeSeekSlider.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1381,7 +946,7 @@
 		</data>
 		<key>Frameworks/Reachability.framework/Reachability</key>
 		<data>
-		cBjXehWImq0xbibgEh2E/9JbVfE=
+		Di9yUorFjHQD+T67a1A20bC7Y/Q=
 		</data>
 		<key>Frameworks/Reachability.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1393,7 +958,7 @@
 		</data>
 		<key>Frameworks/Rswift.framework/Rswift</key>
 		<data>
-		ihhVosj+yoYgq38EqBEWkOyTMKM=
+		gWcmfWW41Pet4EikYxUWp9Z3f8c=
 		</data>
 		<key>Frameworks/Rswift.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1405,7 +970,7 @@
 		</data>
 		<key>Frameworks/SDWebImage.framework/SDWebImage</key>
 		<data>
-		A9HMcqbgcx7pnbtn5ENdlKNpoow=
+		nFvcZwu6SMSCHbtpY2k35pHo+7k=
 		</data>
 		<key>Frameworks/SDWebImage.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -1425,7 +990,7 @@
 		</data>
 		<key>Frameworks/SVPinView.framework/SVPinView</key>
 		<data>
-		XIG25cFzH2oUyXo9wctFxEV12eg=
+		4rcLT4VTZOrdr3uxU6t3hjuHzJs=
 		</data>
 		<key>Frameworks/SVPinView.framework/SVPinView.nib</key>
 		<data>
@@ -1441,7 +1006,7 @@
 		</data>
 		<key>Frameworks/SVProgressHUD.framework/SVProgressHUD</key>
 		<data>
-		a+L7niP3hP7XRkX6331LgMVwfKA=
+		Xz5KZG/86PNBM9kjTd1r2XrXocs=
 		</data>
 		<key>Frameworks/SVProgressHUD.framework/SVProgressHUD.bundle/angle-mask.png</key>
 		<data>
@@ -1501,7 +1066,7 @@
 		</data>
 		<key>Frameworks/Stripe.framework/Stripe</key>
 		<data>
-		HH+Xj0zUkvM3KPSc8bL4xgzSGCQ=
+		MEZAyWe4nxrSZhSbQTIYhQSJ69U=
 		</data>
 		<key>Frameworks/Stripe.framework/Stripe.bundle/Images/stp_card_amex.png</key>
 		<data>
@@ -2503,7 +2068,7 @@
 		</data>
 		<key>Frameworks/SwiftyJSON.framework/SwiftyJSON</key>
 		<data>
-		ox0mMvZkERILr4Coo2/qMNYgPb8=
+		FWo1ZELtECNoUtF7EpmvidT6iMg=
 		</data>
 		<key>Frameworks/SwiftyJSON.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -2519,7 +2084,7 @@
 		</data>
 		<key>Frameworks/nanopb.framework/nanopb</key>
 		<data>
-		EWnW0C6Yc+Q+cxFucgJ2rDQPqTw=
+		ffkQT+DWk2bR8BkhlCOadX8FgA0=
 		</data>
 		<key>Frameworks/paper_onboarding.framework/Info.plist</key>
 		<data>
@@ -2531,7 +2096,7 @@
 		</data>
 		<key>Frameworks/paper_onboarding.framework/paper_onboarding</key>
 		<data>
-		i9VyE/R3Gjj7U0DK8V1Gjq7L21I=
+		J0nNEPQblViyJ6YsYhZ6T3KboK4=
 		</data>
 		<key>GoogleMaps.bundle/GMSCacheStorage.momd/Storage.mom</key>
 		<data>
@@ -4013,7 +3578,7 @@
 		</dict>
 		<key>Info.plist</key>
 		<data>
-		9RjaiGmU9+DYfY4flTF3lxHKpxU=
+		XcU9blmcO+aioOlFD2fu8zclYjI=
 		</data>
 		<key>InterCell.nib/objects-12.3+.nib</key>
 		<data>
@@ -4133,7 +3698,7 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		sOVTb901yfxHZ0KQByq2BD7hn8o=
+		puUUkLY/s9OSY7gFnbV3ZJ49xHc=
 		</data>
 		<key>en.lproj/ActiveEventCell.strings</key>
 		<dict>
@@ -4157,7 +3722,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cM9d0TTWtCkVQia0h1V91HbM9G4=
+			N4H8TmXDuUVKb3w80OBgEaaM9N8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -4166,7 +3731,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			N5n1f628YfcMdDnxSd4FoL9OHXQ=
+			AjXNOqkX7lnonml7QQH0SMYpKkg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -4220,7 +3785,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EWl9Dr8ZxTmQBBcqU6ELld/FpRU=
+			Os68mOqIMzJAicy5v/+wUu1cfV0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -4229,7 +3794,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			weU0MslRMAbkPVXBpM10/88vIoE=
+			n2X+kumsh814nZv/9HONaWT6o8o=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -4292,7 +3857,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			P+Ih6eE7lZ76gJwhINN6ZX4GHXQ=
+			8+Ck2whGtz0rz5cqZFLVEbtUMZ4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -4346,7 +3911,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			q+53ZrdToeE839lT1TDGea/xEZ4=
+			MSxkpefTW7lnrwi6krye/hZpYfk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -4390,6 +3955,20 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>ActiveEventCollectionViewCell.nib/objects-12.3+.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DhR3iByl70IVNj2v9J2hEY3pscx6q3EKl6QqQL5Wie0=
+			</data>
+		</dict>
+		<key>ActiveEventCollectionViewCell.nib/runtime.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1lEuK3dZpCuBULKJVRu9+l3laRxXUCOjjB6mqvAxIH4=
+			</data>
+		</dict>
 		<key>AllCategoryCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash2</key>
@@ -4422,28 +4001,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			x6KFNmF22Dp67uq4IoF3hncw9X+6ud22N+Wwc9q9F5g=
+			0lpHYdsWQVxgDyiCGaVNOTyUKnS1wDpcoBpvzPp5Hds=
 			</data>
 		</dict>
 		<key>Base.lproj/ActiveEventCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kYDLRNQCjJXAMKeHoHYM8L73LjwW0tjt7hMvEGZdfW8=
+			5/a/CTMZh+zAIh9qZfrRORKUn3ti1rNrMjqEtV1HBHQ=
 			</data>
 		</dict>
 		<key>Base.lproj/ActiveEventCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hwRxHItBniuKyblhWo7DURc/5ImbtrMx3npdp3bDKY4=
+			4GrdHJKEqb0MlrR31W3TcflTvzAhcn0JwFDv/+RZmMQ=
 			</data>
 		</dict>
 		<key>Base.lproj/HistoryCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j3nzPqSjJwsB47WaV0Z5k3kx9fB1INeT1dS0Zz+SpGI=
+			sfYp22o+0WrHZHs/VBphvVcuibgQe4nbQqDT2F/v5/E=
 			</data>
 		</dict>
 		<key>Base.lproj/Home.storyboardc/1Rn-vd-xbq-view-dQl-og-Cz6.nib</key>
@@ -4457,7 +4036,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KHdqKObh8neNBKseoZrhlwNkW89IwPTftMmshccVuZw=
+			iytuKkmiK1IoIH4nN2G6cdraQYR/dw+5c11SISOo3Ys=
 			</data>
 		</dict>
 		<key>Base.lproj/Home.storyboardc/EventsViewController.nib</key>
@@ -4527,7 +4106,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eQw7QVZ4XvgvgwauU+ZsEaYZQCMyJo4CLJMAHO9Wrhs=
+			dQpMNbsMwmZZefJOLwFuVe1+L2rm55CGs3Gz0HHoz3M=
 			</data>
 		</dict>
 		<key>Base.lproj/Home.storyboardc/home.nib</key>
@@ -4576,14 +4155,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ozB2ZFsF3rzdD5LcvsRIJBn6QErspTvIywx1hpVmKoU=
+			qhtlQ+b+oCI0tXWB276KlqUOu/UT5fQz0RvaJmH2vZU=
 			</data>
 		</dict>
 		<key>Base.lproj/Login.storyboardc/AIa-Ro-UXS-view-z6p-sl-OVj.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tsQbbaeDLiN1ISAe6jZG+DJOx+NdFPSlKvjoL5t6YCo=
+			pWG/3DHGNugus78zrq9PCEXHPrKIPHuFwPkJJXS5DoY=
 			</data>
 		</dict>
 		<key>Base.lproj/Login.storyboardc/ChangepaswdVC.nib</key>
@@ -4632,7 +4211,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CNeXNdA3+HT4RZ8Ad0iBHGoJDu8ytK3oXU+mfFgjPIY=
+			JtN6WDp8jRuolJqXviqTiK4XxcsYx1qEY071Jh5yAmc=
 			</data>
 		</dict>
 		<key>Base.lproj/Login.storyboardc/login.nib</key>
@@ -4646,14 +4225,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fNOM5O5eKm5J4LGr6re4LsOmCQbvo+/qq3KlSQbFpAU=
+			pUbcqzUowg6j8AmW3MDNVqnKlvQPTgsSpnpTWkUD6UE=
 			</data>
 		</dict>
 		<key>Base.lproj/Login.storyboardc/uwE-2u-AJS-view-gMx-TT-Lvm.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			s03WXNuOGPn/emWJNLzskPWLh4hsJVrBO65a35G2iII=
+			t7yw5tvk1edNtUtZpe+uC6+7lQGKgoLIeRYW7TTJe7I=
 			</data>
 		</dict>
 		<key>Base.lproj/More.storyboardc/ChangePasswordVC.nib</key>
@@ -4709,7 +4288,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			utD2Lf+b0sDYSgrwN+03JxIoMPHJmP38KL1CzAzKOfA=
+			37BvKS8PwzVLMt5UQCz3SkRn3n5ZR4sLq70Dm8/ZgDs=
 			</data>
 		</dict>
 		<key>Base.lproj/Onboarding.storyboardc/Info.plist</key>
@@ -4723,7 +4302,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			M9GQcmO9lP+dEGNKse4dqM5wz3nX7qsoRyq/L1iTgvY=
+			WcuMQJB6plqnb7zOjR9oNc3f50q4c/CO7EwPQpB7EyE=
 			</data>
 		</dict>
 		<key>Base.lproj/Onboarding.storyboardc/LanguageChnageVC.nib</key>
@@ -4807,21 +4386,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FTt7zj+KQ6bFMpOdb1W0LMAuQHfRNBA29CSC7Ss9Zs0=
+			P3Am2lDRB7MKjNuComIrine2ekYFMbcoOvAW4G9xf3U=
 			</data>
 		</dict>
 		<key>Base.lproj/Profile.storyboardc/3la-LE-5TG-view-cod-t1-cVr.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GltfMRmfdO8lnys1bDV26YT+qh/YC6c0355LlXdiVws=
+			tTM84Fa/1D2FXsoprGsLbVtgJpXZFvKuo1kGAHiRspY=
 			</data>
 		</dict>
 		<key>Base.lproj/Profile.storyboardc/ELE-ym-YIW-view-HAT-wN-EuH.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jxLmbrpRC/ZRsmCZlncdDjaEvgLHlhq8E4wov74n6dc=
+			u9wm1Nc/oeSZKr2fTw5Rvl86xemjlXPJsEunnrl6tEo=
 			</data>
 		</dict>
 		<key>Base.lproj/Profile.storyboardc/EditProfileVC.nib</key>
@@ -4835,7 +4414,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+mVA+kUDxYvsReB0+JNf+VPWwo82NpsWiatitZVkaaI=
+			JPbJxlSeXtsyMZ6PHVzjeZ/DJDR/Eg0jcep31uw/sTw=
 			</data>
 		</dict>
 		<key>Base.lproj/Profile.storyboardc/Info.plist</key>
@@ -4863,7 +4442,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vVBlgXSgOaeIPHHAUt9C6MNtZ73cRAHxSj+9lQNmw2A=
+			fR2IJrdT7jREKqELM18lcI+6+adyip3OuJzcwQHXAJo=
 			</data>
 		</dict>
 		<key>Base.lproj/Profile.storyboardc/RateUsVC.nib</key>
@@ -4891,14 +4470,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AFK6iY7HbvO3OV26nGEtovvOh8zFrjEHjaC9Qa2RGmw=
+			LIpy7T9/VtMrMlaAdsK2Da8xW0tectxTuyqmWgZaKNU=
 			</data>
 		</dict>
 		<key>Base.lproj/Profile.storyboardc/fKr-Dx-bdo-view-Rt0-wO-cKy.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sUy5LFTVWzt+fYN7mYH24b1RDv3QDMqdStjzPg960mI=
+			rkzJkKbFf1miv1rlvH+KrwTZh0t8pzzEUeKHPLNCrhc=
 			</data>
 		</dict>
 		<key>Base.lproj/ReminderView.nib</key>
@@ -4940,7 +4519,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pf1tJwXO0sBYceKiMRurHYeXuagyIWEJSZlPQhn2Dr0=
+			vk9JPaO9P/xGGWIgzUgVH2m0qYR2SJpno/PwBEgn/ew=
 			</data>
 		</dict>
 		<key>Base.lproj/SessionCell.nib</key>
@@ -5010,7 +4589,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			50V4YDYmNbq+tkKoJzRP1WUhD5NO9D8ebd+n11ebSXQ=
+			//GS2d5Qvy/xni4jYFlmJ79nmbhBZS3G6Vtnm1Ysi/Y=
 			</data>
 		</dict>
 		<key>Frameworks/AMShimmer.framework/Info.plist</key>
@@ -5031,7 +4610,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bHjkji1Z1TaIvEcw7A5nRbO0hiEU8p/RW95C84MCzJM=
+			rtYnDLXRB0U10HESP49yw1lxrHTzrIsctByxLaxO8Gg=
 			</data>
 		</dict>
 		<key>Frameworks/Alamofire.framework/Info.plist</key>
@@ -5052,7 +4631,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			aYrQ3I88VpTtUooZJvCg1FJF8k7rYX3HZVmmRRC8eeQ=
+			mvvb5bUPdloTQm0TWyZL4diQgzgJ2a69Us+fGVbuLc4=
 			</data>
 		</dict>
 		<key>Frameworks/AppAuth.framework/Info.plist</key>
@@ -5073,7 +4652,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zf1yvWi61+6YKoaHOoJfLUqxbdT+UtkEXqWf72oQv/4=
+			9r+0HVmj/6+zFgFa6//62t6CUM/8e7xvd6jompY3TpQ=
 			</data>
 		</dict>
 		<key>Frameworks/Cosmos.framework/Info.plist</key>
@@ -5094,7 +4673,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PCMxCeFd8Ct/3tLgKw33QsJi5gUo2KTrVxkiH2FbI2A=
+			WG5ZjS1CIqRu8i4E3st7jT6xQkhmpVqHUxNfiT0gHJM=
 			</data>
 		</dict>
 		<key>Frameworks/FBLPromises.framework/Info.plist</key>
@@ -5115,7 +4694,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			D1BLUzfgn2uVGOqzPDXwvKmVCNYzaVzZJz3y1Z+nwJE=
+			PTA+6XRcIbe3LKVDqFRF33H4KjsD8sRioauXdNsX5Us=
 			</data>
 		</dict>
 		<key>Frameworks/FBSDKCoreKit.framework/FacebookSDKStrings.bundle/Resources/af.lproj/FacebookSDK.strings</key>
@@ -5532,7 +5111,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6IHDq66pkYFQDIkmZl4nmQLYPL+2bJMmcTI47Dcq5EM=
+			9dNxTyE2WmuaYVSocLq/tBhi6c4ZH/7s1ZTiMq+ZUXQ=
 			</data>
 		</dict>
 		<key>Frameworks/FBSDKLoginKit.framework/Info.plist</key>
@@ -5553,7 +5132,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WtHJfArZYbcSqDxuKFWQQYsWuMPnAQBfDFUqUTVLiLE=
+			gDAo/5I61zlzK/L3RqbL7OQYUnQWC2g/X+lNTTit7kQ=
 			</data>
 		</dict>
 		<key>Frameworks/FSCalendar.framework/Info.plist</key>
@@ -5570,32 +5149,11 @@
 			HvQHzWKK58LdtifmyW4KflB8hp2AQUpbWWWHxWTUhaY=
 			</data>
 		</dict>
-		<key>Frameworks/FXBlurView.framework/FXBlurView</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			GQ6d1y9ZPidFkPCnFlBZJFTpYI01wQTSopZYGoYRT3c=
-			</data>
-		</dict>
-		<key>Frameworks/FXBlurView.framework/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			MTSqQOeRb4+pGF7Q/+nZ1ghO2+RJRgsGM3j9YkeRyJk=
-			</data>
-		</dict>
-		<key>Frameworks/FXBlurView.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			4naVYw7dSILN6nx2IWXoBo0YWo0cF1ORrLbY1yv4PpI=
-			</data>
-		</dict>
 		<key>Frameworks/GTMAppAuth.framework/GTMAppAuth</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lqgePMTQr1RZ5UjUyimvzbO04MuuyRYA02zdDCKk1JE=
+			aVny6oe5b63G37e7raAJnjQFmcv42M51x7MPHiZuttc=
 			</data>
 		</dict>
 		<key>Frameworks/GTMAppAuth.framework/Info.plist</key>
@@ -5616,7 +5174,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Dgal2fO8Ip10X1JncTQ7k2NAeSIOo8QWZ6YbaR4/W3s=
+			LU/iuIEJrwKFiLT16mwKQSlnTfQJ7dMt/Nv7nykpcj0=
 			</data>
 		</dict>
 		<key>Frameworks/GTMSessionFetcher.framework/Info.plist</key>
@@ -5637,7 +5195,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ixkfe0V8BO6L9hhf/kQhlBYKNwWvbbY3vDuSMep4QsE=
+			kwFvHWvZpL2qDjzPevoBzRHApK8rpJyUv91cpTj1xgE=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleUtilities.framework/Info.plist</key>
@@ -5658,7 +5216,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Vzunyr7e+1opfvXuaGwMpSo+BlgmWfExKhKf5fjWefs=
+			KKDg+w6BrzzkxwAVpIDwNby7D92Q2Gp1gPjNb9ZxJPo=
 			</data>
 		</dict>
 		<key>Frameworks/IQKeyboardManagerSwift.framework/Info.plist</key>
@@ -5675,180 +5233,6 @@
 			2+Oj4Wv94Mxrg6JxE4PYVr/qehafhGq/WjB0uSUEWP4=
 			</data>
 		</dict>
-		<key>Frameworks/JRSwizzle.framework/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			5mXM5LCV1s64c0pP/QLcw+Pz+K/AwzrBwDnaFCNtHt4=
-			</data>
-		</dict>
-		<key>Frameworks/JRSwizzle.framework/JRSwizzle</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			54TL7zWeNb3LYuGOOctxxjxhSDOtp2WUjq7FYTw+KFg=
-			</data>
-		</dict>
-		<key>Frameworks/JRSwizzle.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			QM/t9VElpgebdPgQDl0vNL4/tFMB8LeF7/e6AZuwkdU=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/Assets.car</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			fWAJ7TeTMCpxZGt43aE4ERlEhzgnx/BFsO6TR9MCUgE=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Boe/Bpj0RwmWeuSlWqhbqtUBhZFmr3q9a19zFOvyb2I=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLFullscreenModal.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			l2ILAesIqqeQy++xXzBvMt3Yej1FbQ5ysKt9yKu4S2g=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLFullscreenModalHeader.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			odOtT3xTkr6RAUjY5yOUPu9qi9x/qQWP0WiYUcbdZRY=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLGenericErrorView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			e5lmeR5aV04zLQebwZ5jh0ZYigT2JjP+cJqUVGc0Zks=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLModal.nib/objects-11.0+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			+OpqTd5RUxDr56vjQbsthdDCLehG+GXsb1YttcagTmQ=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLModal.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			RIE0eo22KqhUqY5r4uvOpp/EG08eM9/mEElciCEucbo=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLSnackbar.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			C9yjf31/yaLHgBB9f4mLdF/S08q8YRbDzIm3hJVkre0=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLSpinner.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			AW1KNDN1IPUU6I8lZ+ZoAnVSM8IZh1q0EsHUKcggxNw=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLSwitch.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			2ytm4LFZQOEPmCvER/K99NINOilOFqtgFhWBppVk0sc=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLTextView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			0RcurA5Xv1JS/G1PxV6KkpH6D7+B8gZ4tdz3eP77PG4=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLTitledLineTextField.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Efc3Qv/e/uk97Ry+Pb8pnIDMjEZUQxv/hrAxwuCCCg4=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLUI</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			lznKfUhAoGdpwWJRFszzTdVvuktelx/SYXTXsnhsRuE=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLUIHeader.nib/objects-11.0+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			H6+z0YxQwX6zhFZFVhjEhujaqquR4nAugUNOuu2eWzg=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLUIHeader.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Dbk03lSfiQpx9ZmI9m1GBaAZH4UNrksNe1eghWJ7PQ0=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLUIPriceView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			nP8yGR5lndc2opqNZaF1Kf9Wi06bj5UptOpoDg6s7+s=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/MLUISnackBarView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			mQwZkelrh1A/UjDx9oxyTIoBtVjFZ/cjitIIQZAFPH0=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6j7wtPBM3slVJixcC2f3guzUJCZTluMlUeLPcZKi3Ec=
-			</data>
-		</dict>
-		<key>Frameworks/MLUI.framework/en.lproj/MLTitledSingleLineTextField.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			covq8tc+f13oIAiJ5XsfLZzAp/FoHnVhax191+srg+o=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MLUI.framework/es.lproj/MLTitledSingleLineTextField.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			covq8tc+f13oIAiJ5XsfLZzAp/FoHnVhax191+srg+o=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MLUI.framework/pt.lproj/MLTitledSingleLineTextField.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			covq8tc+f13oIAiJ5XsfLZzAp/FoHnVhax191+srg+o=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
 		<key>Frameworks/MarqueeLabel.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -5860,7 +5244,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Db6+SvkPKl6+N6P3HtvFZagKjKMMPKQ4Ad3sjcBVl9k=
+			L7l/KbepVGAfUSTGpM9WN5QBe30gMs5wB/NzMWlUFco=
 			</data>
 		</dict>
 		<key>Frameworks/MarqueeLabel.framework/_CodeSignature/CodeResources</key>
@@ -5869,458 +5253,6 @@
 			<data>
 			F2C4qIcAE7+2Iv28/WqEakRP55U8NxiCzSso3gpvK2I=
 			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/AdditionalStepCardTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Wru/UvmDoJ7My0DFO849j3YvNv67l4PYP7XlKVBxLCA=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/AdditionalStepTitleTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Rd774HuYdK67rEIRui4PHRLVfnCnGWEgEVUHo+DkNzQ=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/AdditionalStepViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			p6FBiumqu1sFOnQPd6sJDqmOug8dGld/ZLp8ZRUEyYM=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/Assets.car</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			f40DqCZ0kuMn7PN0F3msz44zpL+R751+sgz3gyCWgKo=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/AvailableCardsViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			UbhwLYg1AmjOEMSc/aaQGNxxfRLAwi6nJKUPf3VOPKs=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/BackView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			MEYrw+EqBtHjUlCuUYp7Vs4GTZrzMjtHkPEqdjQK1Rg=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/BankInsterestTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			CUNr8ocAneo+HKQ8Qfk64bSlp00ULQOZWZsWcgkr3tA=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/CardBackView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			nH73wGhZ8Pk+KJ0u0PR9labFPRcv3EE1umH9Jc8wFN8=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/CardFormViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ig5b1Ayc9faCt8c4HV/YnTZryzb1pvYi5YoU9cY22/o=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/CardFrontView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			FsWOKxpIJoik4Uu4RRoXot977pjiIy3XRUPMgQD2+7Q=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/CardTypeTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			c2672wUzsnN2PoAkc/3venwPd2vc2sbG85v1LAFtwbs=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/CardsAdminViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			sbTwkaHT59gS/cjFgrMfkNMCik8n6fiQFynbSQkqL/0=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/EntityTypeTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			c4MKJ2dnKt0zxU3icNs1pX6U8igIrQmZ88ogANtaiYs=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/EntityTypes.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			MwOJciLBQjNnFFl3PPXFHRvF27IaUHIhjGTtX6lb2jU=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/ErrorViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			VZ3wzHHxu5XXyFsN57ioFemYMRY5jWgFOJ8Ey+QCu9k=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/FinancialInstitutionTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			J0bT4woZgAMRkYioB4L7mwwMc5gc94/P9c0gziUx8to=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/FrontView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			foFYluGfbT1q+g+kozN4BcnVlJE+yIcF5jfTuTALWKE=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/IdentificationCardView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			doaOyV4XPzXs9mfg2XjpiYTQj/yiJjb5vqUCrYIkJS8=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/IdentificationTypes.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			q5hLlFDUtAMESywacEo2Hhq1gimy52xafipIlw6bCP0=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/IdentificationViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			uogdyXdjW/YhkOLrN01Knf/ik3KqGTfHchRsbKSGhB8=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			WnGOUxkTz8qeVwJXTV87cD7UZmLJPX4CmMuyYcbcigI=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/IssuerRowTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			hC4GdOW/zfMXcDWPNI/Pzx4624OLBZxa1OS5/vo5D80=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/MercadoPagoSDK</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			X7RIiEtKVn8nn42XX4GJjiIb1pvBSeUaFz92UFwPwMQ=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PXCardSliderPagerCell.nib/objects-12.3+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			7eyVzY1dX0JNzXol8CV9ShxnrY/pZrkLP811jcaWARk=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PXCardSliderPagerCell.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			B7gv7KoZszebitvX5XN2S3kEryk62J52sVWP2FvRxh0=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PXOneTapSummaryModalViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			YfCvOFyi/KMfli9i/lSlMVN0IF0kAgYvBvB2CqiNk0A=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PXOneTapSummaryRowView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			4eWYLEzoQaZeybEueRGoPN6z3TfuFkvku2TWgM1PK+4=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PayerCostCFTTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			HCIuLbvnl1aqFR07/JtBXcMRb+aGeANZjAW9/DeuFHU=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PayerCostPreferences.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6N1D1a/31pTvfzjlUXQy9hlFXoRnfuC2BWj8/b2/jkk=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PayerCostRowTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			7Bov/GQz1f+jZ0SlrK3fSzNqJyzfwmp9AvAmTxqiWOo=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentMethod.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			STf9N7opZHsovMbFDKbP9EjVhHlfZSuKi6HFu7xlAvw=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentMethodSearch.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			CXUyf+1tt7K1JXwavVypu1b3bBk6Js0cDGII5ON66vA=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentSearchCollectionViewCell.nib/objects-12.3+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			NsTvFXkwCqUpYw3GlzTIM1OIzEov5AytdiAnYeGHKDI=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentSearchCollectionViewCell.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			MlVeHkOeyKnElYvprqX5hJZ9EQiTrIAKyf/yIk+CZQ8=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentVaultTitleCollectionViewCell.nib/objects-12.3+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			M8I4YDDCE5+xwvEfrznkLFuzqhy43AXZEScKAj3vA+I=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentVaultTitleCollectionViewCell.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Tj+6ntM6FU3ts0USQixVgykkF8TuYrfP9AWuBJFUwAQ=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PaymentVaultViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			1vQzJdQW1IB4xqyTRXTFhwofagfOCCtwf5hg118b6S4=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/PurchaseDetailTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			rQHjKyRRJGXStQNHlqV0j4leD9sXkiT/FM0prVCvrc4=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/SecurityCodeViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			D4oAmD3okZeqaG7wxvAjKAd3P9ZQ42rtNNPhg4u22TU=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/TotalPayerCostRowTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			TZEexFOJzwmixyOJw1W4DhucBPhfB8dCqO7zhCcSkPE=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/UnlockCardLinks.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			oO9Grv+G3B2QkAKnCAhwzgc2hiJGCMu836H9PNFixaE=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			pEAEyYbO/hgaEHm2Xr/BTJXOj1hMTojPdiWeL3VY3U8=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/en.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			/I+QBKrnJuwlQHfrV86UJtUAsGZ423XgKZLApHCq+vM=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/en.lproj/Localizable_en.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			VkXpjOXwAYj/uEIScj5rASKXO/Y/DsEohvupoemRmCU=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-CO.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			lYPIEB/G+eiCiS5n3H2TAXyXbBwu3oUldeNQ7y2h6Tw=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-CO.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			kmHsztpgjvF0JW5f3HdMHm49z1M0CcG8OT1JDQHHE/E=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-MX.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			CtB8YSPstFAaFvvKJXU4yTi1VMK1inLgDMWCuoOBFMA=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-MX.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			kmHsztpgjvF0JW5f3HdMHm49z1M0CcG8OT1JDQHHE/E=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-PE.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			pKKjVcdyYQYWCIpFryEq/N34DBti3C/UTmMpCFcXUoc=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-PE.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			kmHsztpgjvF0JW5f3HdMHm49z1M0CcG8OT1JDQHHE/E=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-UY.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			pKKjVcdyYQYWCIpFryEq/N34DBti3C/UTmMpCFcXUoc=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-UY.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			kmHsztpgjvF0JW5f3HdMHm49z1M0CcG8OT1JDQHHE/E=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-VE.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			pKKjVcdyYQYWCIpFryEq/N34DBti3C/UTmMpCFcXUoc=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es-VE.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			kmHsztpgjvF0JW5f3HdMHm49z1M0CcG8OT1JDQHHE/E=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			jBzzeOEaeZUo73CTTlzJzqriv72KtoI7mYnvSg2+DVM=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/es.lproj/Localizable_es.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			UWxQeaFtqIyQXCxFUDQhRC9zhbHXUX7aYKxL30oiqT4=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/mpsdk_settings.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			DfatZN7hon0i5TpIfV03th559TsVsdLr3P/p+tUKjdA=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/mpx_tracking_settings.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9NwU6CV8VJ2Ad0BMO7JkqftmxFCeefaFo4pGduUpMYg=
-			</data>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/pt.lproj/Localizable.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			YK1KqgVQXvUt4ghSFtRTL5QqH4H/mAg8k1zcNN3oNGU=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/MercadoPagoSDK.framework/pt.lproj/Localizable_pt.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			X3nYjZ64pVDU/PpobFlbKHmEP7TpWF1ZUT4LECS6QjQ=
-			</data>
-			<key>optional</key>
-			<true/>
 		</dict>
 		<key>Frameworks/Protobuf.framework/Info.plist</key>
 		<dict>
@@ -6333,7 +5265,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+cy3A1i15ZKJZuSXevecaQ+9VGD5ONVqAf4eyk7e7Ww=
+			a2H1nqszSOPnffqtOp39J5Dktw86hkGVetxButsjpGM=
 			</data>
 		</dict>
 		<key>Frameworks/Protobuf.framework/_CodeSignature/CodeResources</key>
@@ -6354,7 +5286,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rz6LLXSSuev+WqUbm6dqR1MBTMWFhgWlMFPsNLICHes=
+			pWtDyWZ7lRHzZJDdM8z1ErwcowZvPy6VPnwZ63HH2ls=
 			</data>
 		</dict>
 		<key>Frameworks/RangeSeekSlider.framework/_CodeSignature/CodeResources</key>
@@ -6375,7 +5307,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4z0k6p0NzUkAk41U6l2Lfgd+n6HdccpwdiM8TIIGDYE=
+			vM9qW//7GTAV3Jk5GykOw55Qd/3d0TsnY5gg0UAC/98=
 			</data>
 		</dict>
 		<key>Frameworks/Reachability.framework/_CodeSignature/CodeResources</key>
@@ -6396,7 +5328,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			22ubKpGVTBXx91cpaO5C9gamZ3EmCWygb8MgJW6mvvg=
+			1h2aZQURNTTPMrfyN1ZnILrAzkj3S7eirJfhMm0IBJc=
 			</data>
 		</dict>
 		<key>Frameworks/Rswift.framework/_CodeSignature/CodeResources</key>
@@ -6417,7 +5349,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			shxmK2GdpopH+p4AcQrwkYa+jGoJud/awnGKg3Za+Zc=
+			86kXmry3PLNqY0GFyhoFixTYkc4qvQsH4uIAehc6F1E=
 			</data>
 		</dict>
 		<key>Frameworks/SDWebImage.framework/_CodeSignature/CodeResources</key>
@@ -6452,7 +5384,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3zKouCX4mj4qHh2spjyowuncaE5zl9FeTdLOvEvaGXM=
+			WR+anxyDJrIvS3UiQr3WssJyDkHODphY3swzRK/MXic=
 			</data>
 		</dict>
 		<key>Frameworks/SVPinView.framework/SVPinView.nib</key>
@@ -6480,7 +5412,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2BKaMTiH1n53tI9wEONm07sQtoLGDKLRT+YHk2PpCDI=
+			dnzxw6unHm5Vt/bDUtRkYgW/rRcab6LgVyKSnI/BP1c=
 			</data>
 		</dict>
 		<key>Frameworks/SVProgressHUD.framework/SVProgressHUD.bundle/angle-mask.png</key>
@@ -6585,7 +5517,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9LLcQQZEh7USmwF9Rd1bwSDJMhuS73NaXC/X90hnZsk=
+			ywX9oDChUITH4OsifMJDBpLLUTQZdonNY4Z/Wt5tcAM=
 			</data>
 		</dict>
 		<key>Frameworks/Stripe.framework/Stripe.bundle/Images/stp_card_amex.png</key>
@@ -8109,7 +7041,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CUe5shmmdtQxDw6QcbZw8/Em7V5t5zBDd94zVSBM66Q=
+			R8FRJJxpMnZmi/RnpDP/HtgUmycg3AFX5vMTewzWsmg=
 			</data>
 		</dict>
 		<key>Frameworks/SwiftyJSON.framework/_CodeSignature/CodeResources</key>
@@ -8137,7 +7069,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2lhBNAmLWoYKUeu0oZYUGD/zkjmKSV1BD2MiTUr1/g8=
+			/1aA9X+1rqOoSYIBUBzjatkSenV78Kt6dZ4q/unHsbk=
 			</data>
 		</dict>
 		<key>Frameworks/paper_onboarding.framework/Info.plist</key>
@@ -8158,7 +7090,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z/t3JIlOKA9ocXd2D4dlqkaXweBz1i+T4vLAbRWUXiI=
+			fUJ96Ge6zKqWSFkWLWRI4rpW2CGIUXFRlTM5mnzYg54=
 			</data>
 		</dict>
 		<key>GoogleMaps.bundle/GMSCacheStorage.momd/Storage.mom</key>
@@ -10097,7 +9029,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tCK/7ucqdxcRKdoaNw06RJcjvry/f20A4eW6QVCajUs=
+			tqF7r87SlH0xYORpNMLDIOgShhWs5zRJPXM6SByzUYo=
 			</data>
 		</dict>
 		<key>en.lproj/ActiveEventCell.strings</key>
@@ -10122,7 +9054,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			n+uzvSRFoqFUSypsZMyu1dD8ofcoegL+2k/RKd0DORo=
+			KB+2qAUYCKEARjkakdGHu9N4yqJxv6gxyUPPQJt8yJc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -10131,7 +9063,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			30DaI1llnbAjatbV92GzcK7GlzPkHh40l3FNeXhYP6Y=
+			XbL6wtpijuzkSoQgc62LJtNS1X1N5plm8OZ1EnDpu9s=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -10185,7 +9117,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vz3QP8bbx/isVoo/Umc08HpWPgXDsfbH4FKIwOqKWP4=
+			XuOGOMzVmlo3lSElDKFnkZN2UFfoAcI0AwyJnQRaagQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -10194,7 +9126,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			J+YONKVP+UcVIlJEY/20KP+H53AhqmrTELSY6A9mL44=
+			7rAJKM/KlgnYOjOSogGRbyR2RfmmzzBNPoeY0m8HKGY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -10257,7 +9189,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zoggRTvCsoOD1sf6FeOSw5fLZA8K/1HV/516V96vwzE=
+			4G6lsy6J42BUmNhWXIffb4hpCyEqPseu4XX/TzzifA4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -10311,7 +9243,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6fkZRsnARm8nMV5G97Tb/OsB89OFjUglupwEgyuR5K8=
+			OjDvzxdvJZm5mcB5RtRZOH8+ZM4nXh6y0pYmR6zGzBc=
 			</data>
 			<key>optional</key>
 			<true/>

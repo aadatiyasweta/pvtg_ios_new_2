@@ -40,4 +40,27 @@ class NotificationViewModel: BaseVm {
         }
     }
 
+ func updateNotificationStatus(user_Id:String) {
+     self.show()
+  let prams : [String : Any] = ["user_id": user_Id]
+     api_manager.GETApi(updateNotificationStatusUrl(), param: prams, header: header()) { (response, err, code) in
+         self.dismiss()
+         if let json = response{
+             debugPrint(json)
+             if json["statusCode"] == 200 {
+                 let jsonDecoder = JSONDecoder()
+                 let data = try? json["result"].rawData()
+               let model = try? jsonDecoder.decode(NotificationListBase.self, from: data ?? Data())
+               self.model = model
+
+             }
+             else {
+                 showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+             }
+         }else{
+             showAlert(strTitle: somethingWentWrongMessage)
+         }
+     }
+ }
+ 
 }
