@@ -12,7 +12,7 @@
 "DEh-eV-Xtq.text" = " ";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OLw-1C-Gok"; */
-"OLw-1C-Gok.normalTitle" = "Cancel";
+"OLw-1C-Gok.normalTitle" = "No";
 
 /* Class = "UILabel"; text = "How many tickets do you need ?"; ObjectID = "Oxe-xS-5Rq"; */
 "Oxe-xS-5Rq.text" = "How many tickets do you need ?";

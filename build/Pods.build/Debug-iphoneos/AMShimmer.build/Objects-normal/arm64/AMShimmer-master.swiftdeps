@@ -1,6 +1,6 @@
 version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
 options: "099ab06a75047a4f0d5e0353aeadad66b41a967b13aca620f04d19b38fb38560"
-build_start_time: [1645786155, 648710012]
-build_end_time: [1645786158, 9263992]
+build_start_time: [1648015457, 12861013]
+build_end_time: [1648015458, 973298072]
 inputs:
   "/Users/kashish/Documents/PVTG/Pods/AMShimmer/AMShimmer/Classes/AMShimmer.swift": [1643866665, 782476902]

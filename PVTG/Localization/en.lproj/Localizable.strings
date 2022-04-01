@@ -48,7 +48,7 @@
 "DonotAllow" = "Don't Allow";
 "backGroundLocationdDisabled" = "Background Location Access Disabled";
 "inOrderto" = "In order to be notified, please open this app's settings and set location access to 'Always'";
-"cancel" = "Cancel";
+"cancel" = "No";
 "OpenSettings" = "Open Settings";
 "Notifications" = "Notifications";
 "ChangePassword" = "Change Password";
@@ -61,10 +61,10 @@
 "HowItWorks" = "Dharma Rewards";
 "Signout" = "Signout";
 "Areyousureyouwant" = "Are you sure you want to signout?";
-"ok" = "OK";
+"ok" = "Yes";
 "Discount" = "Discount";
 "ptsavailable" = "Dharma pts available";
-"youWillBeRewarded" = "You will be rewarded %@pts for booking this session";
+"youWillBeRewarded" = "You will be rewarded %@ pts for booking this session, ";
 "PleaseSelecttime" = "Please Select time";
 "CancelTheBooking" = "Are you sure you want to cancel the booking";
 "onlyTickets" = "only %@ tickets for this session are available.";
@@ -94,7 +94,7 @@
 "willYouAttending" = "Will you still be attending your %@ session?.If not, please cancel to avoid late cancellation fee.";
 "notificationtitle" = "Reminder";
 "free" = "free";
-"doNotWorry" = "And don't worry you can always cancel 2 hours \nbefore a session begins for a full refund!";
+"doNotWorry" = "and don't worry you can always cancel up to 2 hours before a session begins for a Full Refund!";
 "FreeService" = "Free Service";
 "PriceFilter" = "Price Filter";
 "bookingdate" = "Booking Date :";

@@ -41,7 +41,8 @@
 "DonotAllow" = "No permitir";
 "backGroundLocationdDisabled" = "Acceso a la ubicación en segundo plano deshabilitado";
 "inOrderto" = " Para ser notificado, abra la configuración de esta aplicación y configure el acceso a la ubicación en 'Siempre'";
-"cancel" = "Cancelar";
+//"cancel" = "Cancelar";
+"cancel" = "No";
 "OpenSettings" = "Abrir configuraciones";
 "Notifications" = "Notificaciones";
 "ChangePassword" = "Cambiar la contraseña";
@@ -54,7 +55,7 @@
 "HowItWorks" = "Recompensas del Dharma";
 "Signout" = "Cerrar sesión";
 "Areyousureyouwant" = "¿Estás seguro de querer cerrar sesión?";
-"ok" = "Ok";
+"ok" = "Yes";
 "Discount" = "Descuento";
 "ptsavailable" = "Dharma pts disponibles";
 "youWillBeRewarded" = "Serás recompensado con %@pts al reservar la sesión";

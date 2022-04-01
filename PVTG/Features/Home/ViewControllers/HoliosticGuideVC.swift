@@ -47,6 +47,7 @@ class HoliosticGuideVC: BaseViewController {
     var origiMaxPrice = 0
     var selectedCurrency = "COP"
     var isOpenPopUp = false
+    var indexPathRow = 0
     var isSelectedFromFilter = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -227,6 +228,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     
         if indexPath.section == 0{
             let priceView = PriceView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
             priceView?.delegate = self
@@ -258,11 +260,13 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
             //  index = -1
         } else {
             index = indexPath.row
+         self.indexPathRow = indexPath.row
             catgryId = Int(self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1") ?? 0
             //
             if self.isOpenPopUp{
                 loadApi(categoryid: "\(self.catgryId)", search: "", isloader: true,minPrice: self.minimUmPrice,maxprice: self.maximimPrice)
             }else{
+                print("category id is",self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1")
                 loadApi(categoryid: self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1", search: self.txfSearch.text ?? "", isloader: true)
             }
             
@@ -294,7 +298,8 @@ extension HoliosticGuideVC: GetSearchSessionData {
      
         self.colectionVwCategory.reloadData()
         if self.vm.categorymodel?.result?.count ?? 0 > 0{
-            self.catgryId = Int(self.vm.categorymodel?.result?[0].category_id ?? "1") ?? 0
+            self.catgryId = Int(self.vm.categorymodel?.result?[indexPathRow].category_id ?? "1") ?? 0
+            print("category id is",Int(self.vm.categorymodel?.result?[0].category_id ?? "1") ?? 0)
             loadApi(categoryid: "\(self.catgryId)", search: "", isloader: true,minPrice: 0,maxprice: 0)
         }
        
@@ -325,6 +330,8 @@ extension HoliosticGuideVC : getPriceSliderValues{
     }
     
  func resetFilter() {
+  self.maximimPrice = 600000
+  self.minimUmPrice = 0
   if let userid = SaveToDefaults().getUserId() {
       vm.getAllCategoryApi(user_id: userid)
   }

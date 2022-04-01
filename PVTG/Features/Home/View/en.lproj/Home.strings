@@ -9,7 +9,7 @@
 "Fri-Sx-ywP.normalTitle" = "PAY NOW";
 
 /* Class = "UILabel"; text = "And don't worry you can always cancel 2 hours"; ObjectID = "Fvp-bu-f3O"; */
-"Fvp-bu-f3O.text" = "And don't worry you can always cancel 2 hours";
+"Fvp-bu-f3O.text" = "and don't worry you can always cancel up to 2 hours";
 
 /* Class = "UILabel"; text = "You will be rewarded 45pts on booking the session"; ObjectID = "K4D-8J-yAO"; */
 "K4D-8J-yAO.text" = "You will be rewarded 45pts on booking the session";
@@ -54,7 +54,7 @@
 "jJE-dL-dnz.text" = "History";
 
 /* Class = "UILabel"; text = "before a session for a full refund!"; ObjectID = "k0g-jZ-Hlr"; */
-"k0g-jZ-Hlr.text" = "before a session begins for a full refund!";
+"k0g-jZ-Hlr.text" = "before a session begins for a Full Refund!";
 
 /* Class = "UITabBarItem"; title = "Holistic Guide"; ObjectID = "kLW-Rg-3Z1"; */
 "kLW-Rg-3Z1.title" = "Holistic Guide";

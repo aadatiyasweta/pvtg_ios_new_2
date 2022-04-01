@@ -137,6 +137,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         self.mainScrollview.delegate = self
          vwcalendar.appearance.todayColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         vwcalendar.appearance.todaySelectionColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
+//     vwcalendar.formatter.timeZone = TimeZone.current
         self.selectedDate = formatter.string(from: self.today)
         offeredCollView.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
         if controllerId == 1{
@@ -347,7 +348,8 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
      return Date()
     }
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        setHeaderMonth(date: calendar.currentPage.toLocalTime())
+//     calendar.formatter.timeZone = TimeZone.current
+     setHeaderMonth(date: calendar.currentPage)
     }
     private func setHeaderMonth(date:Date) {
      let calendar = Calendar(identifier: .gregorian)
@@ -402,6 +404,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         }
         
         self.vwCollection.reloadData()
+     print(self.timeArr)
         self.colectnVwSessionImage.reloadData()
     }
     
@@ -429,7 +432,9 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         debugPrint(data)
         debugPrint(strDate)
         for allDate in data{
+         
             if allDate.schedule_date == strDate{
+             
                 if allDate.is_avilable=="1"{
                     return [.green]
                 } else {
@@ -460,6 +465,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }else if collectionView == self.offeredCollView{
             return self.vm.model?.session_type?.count ?? 0
         }
+     print("time is ",self.timeArr)
         return self.timeArr.count
     }
     
@@ -513,14 +519,27 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             if offeredIndex != -1{
 //                self.lblsessionPrice.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
              
-             let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
+             print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
+             var myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
+             let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
+//             myDouble = 150000000.00
 //             let myDouble = Double(12000)
              
              let currencyFormatter = NumberFormatter()
              currencyFormatter.usesGroupingSeparator = true
              currencyFormatter.numberStyle = .currency
-//             currencyFormatter.currencyCode = "COP"
-             currencyFormatter.locale = Locale.current
+             currencyFormatter.locale =  Locale(identifier: "en_US")
+             let num = Int(strPrice);
+                if num != nil {
+                 currencyFormatter.minimumFractionDigits = 0
+                    print("Valid Integer")
+                }
+                else {
+                 currencyFormatter.minimumFractionDigits = 2
+                    print("Not Valid Integer")
+                }
+             //             currencyFormatter.currencyCode = "COP"
+//             currencyFormatter.locale = Locale.current
 
             let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
             

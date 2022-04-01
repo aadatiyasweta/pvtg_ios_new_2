@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "Booking ID : 112334"; ObjectID = "7l0-0D-MO6"; */
+"7l0-0D-MO6.text" = "Booking ID : 112334";
+
+/* Class = "UILabel"; text = "Completed"; ObjectID = "Deg-ov-2uT"; */
+"Deg-ov-2uT.text" = "Completed";
+
+/* Class = "UILabel"; text = "$ 456"; ObjectID = "Dng-eM-coa"; */
+"Dng-eM-coa.text" = "$ 456";
+
+/* Class = "UILabel"; text = "15 Nov,2019"; ObjectID = "I3O-AR-RHa"; */
+"I3O-AR-RHa.text" = "15 Nov,2019";
+
+/* Class = "UILabel"; text = "Meditation"; ObjectID = "Isv-mo-pbM"; */
+"Isv-mo-pbM.text" = "Meditation";
+
+/* Class = "UIButton"; normalTitle = "Rate this trip"; ObjectID = "SW5-67-aL2"; */
+"SW5-67-aL2.normalTitle" = "Rate this trip";
+
+/* Class = "UILabel"; text = "Medellin (5km away)"; ObjectID = "V06-HY-Co9"; */
+"V06-HY-Co9.text" = "Medellin (5km away)";
+
+/* Class = "UILabel"; text = "2 Tickets"; ObjectID = "eBl-7Y-5hY"; */
+"eBl-7Y-5hY.text" = "2 Tickets";
+
+/* Class = "UILabel"; text = "Holistic Sessions Italy"; ObjectID = "mAM-ye-rMx"; */
+"mAM-ye-rMx.text" = "Holistic Sessions Italy";

@@ -53,6 +53,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     var secondPointDiscount = 0
     var firstPoints = 0
     var secondPoins = 0
+    var isPointsUsed = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.discountViewHeightCons.constant = 0
@@ -110,12 +111,14 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     }
  
  @IBAction func useNow(_ sender: Any) {
+  isPointsUsed = true
   let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "%", with: "") ?? ""
   let intDiscountWithOUtPercent = Int(strDiscountWithoutPercent) ?? 0
   let discountGiven = Double(intDiscountWithOUtPercent) / Double(100)
 //  prin
 //  let discountGiven = self.firstPointDiscount / 100
   if let price = self.customModel?.paid_amount {
+   print(price)
    if let tkt = Int(self.totalTkt){
     print("ticket\(self.totalTkt)")
     print("booking currency\(String(describing: self.bookingDetails?.currency))")
@@ -130,12 +133,21 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     
     let priceAfterDiscount = totalPrice - totalDiscount
     print(myDouble)
+    let strPrice = self.customModel?.paid_amount ?? ""
+    
     
     let currencyFormatter = NumberFormatter()
     currencyFormatter.usesGroupingSeparator = true
     currencyFormatter.numberStyle = .currency
+    currencyFormatter.locale =  Locale(identifier: "en_US")
+    let intPrice = Int(strPrice)
+    if(intPrice != nil){
+     currencyFormatter.minimumFractionDigits = 0
+    }else {
+     currencyFormatter.minimumFractionDigits = 2
+    }
 //    currencyFormatter.currencyCode = "COP"
-    currencyFormatter.locale = Locale.current
+//    currencyFormatter.locale = Locale.current
     priceString = currencyFormatter.string(from: NSNumber(value: priceAfterDiscount ))!
    
    
@@ -163,7 +175,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             price = tkt*Int(flaotPrice)
             amount = "\(price)"
         }
-        if self.usePvtBtn.isSelected{
+        if self.isPointsUsed == true{
             
             if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
                 let perctange = (price*self.firstPointDiscount)/100
@@ -241,6 +253,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 //  prin
 //  let discountGiven = self.firstPointDiscount / 100
   if let price = self.customModel?.paid_amount {
+   print("Price is",price);
    if let tkt = Int(self.totalTkt){
     print("ticket\(self.totalTkt)")
     print("booking currency\(String(describing: self.bookingDetails?.currency))")
@@ -251,16 +264,21 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     myDouble = myDouble * Double(tkt)
     let totalPrice = myDouble
     print(myDouble)
-//    let totalDiscount   = myDouble * discountGiven
-//
-//    let priceAfterDiscount = totalPrice - totalDiscount
-//    print(myDouble)
-    
     let currencyFormatter = NumberFormatter()
     currencyFormatter.usesGroupingSeparator = true
     currencyFormatter.numberStyle = .currency
 //    currencyFormatter.currencyCode = "COP"
-    currencyFormatter.locale = Locale.current
+    currencyFormatter.locale =  Locale(identifier: "en_US")
+
+    let strPrice = self.customModel?.paid_amount ?? ""
+    let intPrice = Int(strPrice)
+    if(intPrice !=  nil){
+     currencyFormatter.minimumFractionDigits = 0
+    }else {
+     currencyFormatter.minimumFractionDigits = 2
+
+    }
+
     priceString = currencyFormatter.string(from: NSNumber(value: totalPrice ))!
    
    
@@ -342,7 +360,16 @@ extension SummaryVC {
           let currencyFormatter = NumberFormatter()
           currencyFormatter.usesGroupingSeparator = true
           currencyFormatter.numberStyle = .currency
-          currencyFormatter.locale = Locale.current
+          
+          let intPrice = Int(price)
+          if(intPrice !=  nil){
+           currencyFormatter.minimumFractionDigits = 0
+          }else {
+           currencyFormatter.minimumFractionDigits = 2
+
+          }
+          
+          currencyFormatter.locale =  Locale(identifier: "en_US")
 //          currencyFormatter.currencyCode = "COP"
           priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
          
@@ -453,8 +480,15 @@ extension SummaryVC {
     
     let priceAfterDiscount = totalPrice - totalDiscount
     
-//    let floatAmount = Float(amount) ?? 0.0
-    let strAmount = String(Int(priceAfterDiscount.rounded(.toNearestOrEven)))
+    var strAmount = ""
+    if(self.isPointsUsed ==  true){
+     strAmount = String(Int(priceAfterDiscount.rounded(.toNearestOrEven)))
+    }else {
+     strAmount = String(Int(totalPrice.rounded(.toNearestOrEven)))
+    }
+    
+////    let floatAmount = Float(amount) ?? 0.0
+//    let strAmount =
     self.vm.makePAymentStripe(user_id: id, stripeytoken: stripetoken.tokenId, ammount: strAmount, currency: currency, email: email, token: acessToken,sessionId: self.customModel?.session_id ?? ""){ data in
      if(data != ""){
       self.bookSession(transactionID: data)

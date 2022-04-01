@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/kashish/Documents/PVTG/build/Debug-iphonesimulator/MarqueeLabel/MarqueeLabel.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/kashish/Documents/PVTG/build/Pods.build/Debug-iphonesimulator/MarqueeLabel.build/unextended-module.modulemap",
+    }]
+  }]
+}

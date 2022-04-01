@@ -95,6 +95,7 @@ class PriceView : UIView{
  
  @IBAction func resetButton(_ sender: UIButton) {
   self.removeFromSuperview()
+  self.maxValue = 600000
   self.delegate?.resetFilter()
  }
  

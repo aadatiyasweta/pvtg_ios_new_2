@@ -500,12 +500,18 @@ extension HomeViewController : getPriceSliderValues{
  }
  
  func resetFilter() {
+ 
   self.isSelectedFromFilter = false
+  self.maximimPrice = 600000
+  self.minimUmPrice = 0
+//  loadApi(categoryid: <#T##String#>, currency: <#T##String#>)
+//  loadApi(categoryid:"\(id)" , minPrice: 0, maxPrice: 600000, currency: self.selectedCurrency)
   loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
  }
  
  
  func setProfilePic() {
+  
   if let pic = SaveToDefaults().getProfilePic() {
    // loadImage(pic, self.userimg, activity: nil, defaultImage: nil)
   }
