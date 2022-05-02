@@ -132,31 +132,31 @@ class Facebook: NSObject
     
     func getUserInformation()
     {
-        if((AccessToken.current) != nil)
-        {
-            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, gender, picture,email,friends"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error == nil)
-                {
-                    print("fetched user %@",result ?? "")
-                    if let delegate = self.delegate
-                    {
-                        delegate.fbUserInfoSuccess(result: result as AnyObject)
-                        let id = (result as! NSDictionary).object(forKey: "id")
-                        self.getFacebookFriends(userId: id as! String)
-                        
-                    }
-
-                }
-                else
-                {
-                    if let delegate = self.delegate
-                    {
-                        delegate.fbUserInfoFail(err: error! as NSError)
-                    }
-                }
-            })
-           
-        }
+//        if((AccessToken.current) != nil)
+//        {
+//            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, gender, picture,email,friends"]).start(completionHandler: { (connection, result, error) -> Void in
+//                if (error == nil)
+//                {
+//                    print("fetched user %@",result ?? "")
+//                    if let delegate = self.delegate
+//                    {
+//                        delegate.fbUserInfoSuccess(result: result as AnyObject)
+//                        let id = (result as! NSDictionary).object(forKey: "id")
+//                        self.getFacebookFriends(userId: id as! String)
+//
+//                    }
+//
+//                }
+//                else
+//                {
+//                    if let delegate = self.delegate
+//                    {
+//                        delegate.fbUserInfoFail(err: error! as NSError)
+//                    }
+//                }
+//            })
+//
+//        }
     }
     
     func getFacebookFriends(userId:String)

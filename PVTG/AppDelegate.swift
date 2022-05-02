@@ -13,7 +13,7 @@ import AuthenticationServices
 import UserNotifications
 import FirebaseMessaging
 import FirebaseCore
-import FirebaseInstanceID
+//import FirebaseInstanceID
 import SVProgressHUD
 import AVFoundation
 import GooglePlaces
@@ -89,23 +89,24 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
             application.registerUserNotificationSettings(settings)
         }
         application.registerForRemoteNotifications()
-        self.instanceId()
+//        self.instanceId()
         
     }
-    func instanceId(){
-        InstanceID.instanceID().instanceID { (result, error) in
-            if let error = error {
-                print("Error fetching remote instance ID: \(error)")
-            } else if let result = result {
-                print("Remote instance ID token: \(result.token)")
-                SaveToDefaults().setFcmToken(token: result.token)
-            }
-        }
-    }
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("Firebase registration token: \(fcmToken)")
+//    func instanceId(){
+//        InstanceID.instanceID().instanceID { (result, error) in
+//            if let error = error {
+//                print("Error fetching remote instance ID: \(error)")
+//            } else if let result = result {
+//                print("Remote instance ID token: \(result.token)")
+//                SaveToDefaults().setFcmToken(token: result.token)
+//            }
+//        }
+//    }
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("Firebase registration token: \(String(describing: fcmToken))")
         
-        SaveToDefaults().setFcmToken(token: "\(fcmToken)")
+        SaveToDefaults().setFcmToken(token: "\(String(describing: fcmToken))")
+        
         
     }
     
@@ -113,13 +114,20 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         print("didRegisterForRemoteNotificationsWithDeviceToken")
         Messaging.messaging().setAPNSToken(deviceToken, type: .sandbox)
         Messaging.messaging().setAPNSToken(deviceToken, type: .prod)
+//        Messaging.messaging().token { (token, error) in
+//               if let error = error {
+//                   print("Error fetching remote instance ID: \(error.localizedDescription)")
+//               } else if let token = token {
+//                   print("Token is \(token)")
+//               }
+//           }
     }
     //MARK:- Function For Open URL
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
-        let googleDidHandle = GIDSignIn.sharedInstance()?.handle(url)
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url)
         let facebookDidHandle = appDelegate.application(app, open: url, options: options)
         Auth.auth().canHandle(url)
-        return  facebookDidHandle || googleDidHandle!
+        return  facebookDidHandle || googleDidHandle
         //return googleDidHandle!
     }
     

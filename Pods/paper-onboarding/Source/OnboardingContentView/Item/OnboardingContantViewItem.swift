@@ -165,7 +165,7 @@ private extension OnboardingContentViewItem {
     }
 
     func createImage(_ onView: UIView) -> UIImageView {
-        var imageView = Init(UIImageView(frame: CGRect.zero)) {
+        let imageView = Init(UIImageView(frame: CGRect.zero)) {
             $0.contentMode = .scaleAspectFit
             $0.translatesAutoresizingMaskIntoConstraints = false
         }

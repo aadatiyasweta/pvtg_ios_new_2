@@ -17,12 +17,15 @@ target 'PVTG' do
   pod 'AMShimmer'
   pod 'Firebase/Messaging'
   pod 'Cosmos', '~> 22.1'
-  pod 'Firebase/Auth'
+  pod "Firebase/Auth", "= 8.10.0"
+#  pod 'Firebase/Auth'
   pod 'FSCalendar'
   pod 'SVPinView', '~> 1.0'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  pod 'GoogleSignIn'
+  pod 'GoogleSignIn', '~> 5.0'
+
+#  pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
   pod 'paper-onboarding'
   pod 'MarqueeLabel'
@@ -30,6 +33,7 @@ target 'PVTG' do
 #  pod 'MercadoPagoSDK', '~> 4.7.0'
   pod 'RangeSeekSlider'
   pod 'Stripe', '~> 15.0.1'
+  pod 'R.swift'
   
 #  pod 'Stripe'
   
