@@ -91,7 +91,7 @@
 "changeLanguage" = "Change Language";
 "yes" = "Yes";
 "no" = "No";
-"willYouAttending" = "Will you still be attending your %@ session?.If not, please cancel to avoid late cancellation fee.";
+"willYouAttending" = "Will you still be attending your %@ session? If not, please cancel to avoid late cancellation fee.";
 "notificationtitle" = "Reminder";
 "free" = "free";
 "doNotWorry" = "and don't worry you can always cancel up to 2 hours before a session begins for a Full Refund!";

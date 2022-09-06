@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>213231135715-4bt41406ei6um842vpd6ntolaap3j0p4.apps.googleusercontent.com</string>
+	<string>213231135715-6tq4dmpkanreubpk3krueo47hvedluco.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.213231135715-4bt41406ei6um842vpd6ntolaap3j0p4</string>
+	<string>com.googleusercontent.apps.213231135715-6tq4dmpkanreubpk3krueo47hvedluco</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAc8SaD87FWScy0X-1FpjK6RLRMrbXF3x4</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.PVTG.app</string>
+	<string>app.mydharma.dharma</string>
 	<key>PROJECT_ID</key>
 	<string>pvtg-43f57</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:213231135715:ios:2243a8c0c219c7bde14ed6</string>
+	<string>1:213231135715:ios:d7bed0d3479a9e21e14ed6</string>
 </dict>
 </plist>

@@ -7,64 +7,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E74EDEDD-0731-4929-AE4C-2AB0E2AE7B99"
+            uuid = "073A51BE-C3B7-4F78-A890-96E79ECE440D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Home/ViewModel/HomeVM.swift"
+            filePath = "PVTG/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "getHomeApi(user_id:category_id:latitude:longitude:search:top_search:city:minPrice:maxprice:currency:)"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "hitDeviceTokenApi(isLogout:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A9E9EC13-5477-4B38-BBDE-D85E4C4F6905"
+            uuid = "738C655A-F37A-4CEC-88C6-786E96F133BD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Home/ViewControllers/HomeViewController.swift"
+            filePath = "PVTG/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
-            landmarkName = "reloadData(unreadNotificationCount:)"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "hitDeviceTokenApi(isLogout:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0F3B1840-4A21-4E57-80B5-EBAF8B4D7E80"
+            uuid = "80D68396-7A26-4002-BE5B-262089C37F75"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Home/ViewControllers/HomeViewController.swift"
+            filePath = "PVTG/Features/ReminderView/ReminderView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
-            landmarkName = "reloadData(unreadNotificationCount:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "yesBtnTao(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4DB9CF5C-D38A-4CC3-825A-2E2B81EC3356"
+            uuid = "FB39A784-E755-46FA-9056-AD1C256CDA4B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Home/ViewControllers/HomeViewController.swift"
+            filePath = "PVTG/Features/Profile/Cell/ProfileInterestCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "setMarquee(label:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A164E5E-8ACD-4C97-9606-56B4A822C89E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Profile/Cell/ProfileInterestCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "setMarquee(label:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "71BF685F-7178-44F7-94A9-8CFF2E9D6922"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Profile/Cell/ProfileInterestCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "setMarquee(label:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

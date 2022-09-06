@@ -30,12 +30,10 @@ target 'PVTG' do
   pod 'paper-onboarding'
   pod 'MarqueeLabel'
   pod 'R.swift'
-#  pod 'MercadoPagoSDK', '~> 4.7.0'
   pod 'RangeSeekSlider'
   pod 'Stripe', '~> 15.0.1'
   pod 'R.swift'
   
-#  pod 'Stripe'
   
 
 

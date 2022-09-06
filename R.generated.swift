@@ -2501,7 +2501,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, es
       static let rewards = Rswift.StringResource(key: "Rewards", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
-      /// en translation: Will you still be attending your %@ session?.If not, please cancel to avoid late cancellation fee.
+      /// en translation: Will you still be attending your %@ session? If not, please cancel to avoid late cancellation fee.
       ///
       /// Locales: en, es
       static let willYouAttending = Rswift.StringResource(key: "willYouAttending", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
@@ -3806,7 +3806,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Rewards", bundle: bundle, comment: "")
       }
 
-      /// en translation: Will you still be attending your %@ session?.If not, please cancel to avoid late cancellation fee.
+      /// en translation: Will you still be attending your %@ session? If not, please cancel to avoid late cancellation fee.
       ///
       /// Locales: en, es
       static func willYouAttending(_ value1: String, preferredLanguages: [String]? = nil) -> String {
@@ -5727,7 +5727,7 @@ struct R: Rswift.Validatable {
 
     /// This `R.string.reminderView` struct is generated, and contains static references to 4 localization keys.
     struct reminderView {
-      /// en translation: No
+      /// en translation: Ok
       ///
       /// Locales: en, es
       static let ncBHgTjLNormalTitle = Rswift.StringResource(key: "NcB-hg-tjL.normalTitle", tableName: "ReminderView", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
@@ -5744,7 +5744,7 @@ struct R: Rswift.Validatable {
       /// Locales: en, es
       static let unYVALriNormalTitle = Rswift.StringResource(key: "UnY-vA-Lri.normalTitle", tableName: "ReminderView", bundle: R.hostingBundle, locales: ["en", "es"], comment: nil)
 
-      /// en translation: No
+      /// en translation: Ok
       ///
       /// Locales: en, es
       static func ncBHgTjLNormalTitle(preferredLanguages: [String]? = nil) -> String {

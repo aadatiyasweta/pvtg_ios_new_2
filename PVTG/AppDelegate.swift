@@ -104,6 +104,10 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
 //    }
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("Firebase registration token: \(String(describing: fcmToken))")
+        if let  fcmTokenn = fcmToken {
+            UserDefaults.standard.set(fcmToken, forKey:"deviceToken")
+//            UserDefaults.deviceToken = fcmTokenn
+        }
         
         SaveToDefaults().setFcmToken(token: "\(String(describing: fcmToken))")
         
@@ -114,13 +118,14 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         print("didRegisterForRemoteNotificationsWithDeviceToken")
         Messaging.messaging().setAPNSToken(deviceToken, type: .sandbox)
         Messaging.messaging().setAPNSToken(deviceToken, type: .prod)
-//        Messaging.messaging().token { (token, error) in
-//               if let error = error {
-//                   print("Error fetching remote instance ID: \(error.localizedDescription)")
-//               } else if let token = token {
-//                   print("Token is \(token)")
-//               }
-//           }
+        Messaging.messaging().token { (token, error) in
+               if let error = error {
+                   print("Error fetching remote instance ID: \(error.localizedDescription)")
+               } else if let token = token {
+                   UserDefaults.standard.set(token, forKey:"deviceToken")
+                   print("Token is \(token)")
+               }
+           }
     }
     //MARK:- Function For Open URL
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
@@ -162,8 +167,14 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     }
     
     func hitDeviceTokenApi(isLogout : Bool? = false){
+//        let deviceToken = SaveToDefaults().getFcmToken()
+//        print(deviceToken)
+//        guard let deviceToooken = deviceToken else {return}
+        
+        let deviceToken = UserDefaults.standard.object(forKey: "deviceToken") ?? ""
+        print(deviceToken)
         let param : [String:Any] = [
-            "device_token": !isLogout! ? SaveToDefaults().getFcmToken() ?? "" : "123",
+            "device_token": !isLogout! ? deviceToken : "123",
             "device_type": "Ios",
             "user_id" : SaveToDefaults().getUserId() ?? ""
         ]
@@ -177,6 +188,13 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
 //            }
             print(response ?? "Nil")
         }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options:   UNNotificationPresentationOptions) -> Void) {
+        print(notification.request.content.userInfo)
+        let userInfo = notification.request.content.userInfo
+
+        completionHandler([.alert, .badge, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

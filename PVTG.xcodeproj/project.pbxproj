@@ -152,7 +152,6 @@
 		18EACC4B25A58C0D00B1F959 /* RateUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EACC4A25A58C0D00B1F959 /* RateUsVC.swift */; };
 		18F4DE6925A8465E00E7827A /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4DE6825A8465D00E7827A /* UPCarouselFlowLayout.swift */; };
 		62DEB8BD2B65508163B88D08 /* Pods_PVTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */; };
-		A4507ECB27ABB17200F2405D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4507ECA27ABB17200F2405D /* GoogleService-Info.plist */; };
 		A466878827B236500073A15F /* TabBarBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466878727B236500073A15F /* TabBarBadge.swift */; };
 		A466878B27B262B10073A15F /* ActiveEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466878927B262B10073A15F /* ActiveEventCollectionViewCell.swift */; };
 		A466878C27B262B10073A15F /* ActiveEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A466878A27B262B10073A15F /* ActiveEventCollectionViewCell.xib */; };
@@ -167,6 +166,7 @@
 		D6573BF625CCF02500CB64DD /* CircularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6573BF425CCF02500CB64DD /* CircularCell.xib */; };
 		D69176472705976C0005C572 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69176462705976C0005C572 /* ReminderView.swift */; };
 		D69176782705ADF10005C572 /* ReminderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D691767A2705ADF10005C572 /* ReminderView.xib */; };
+		D6A02D8D28BCC2D3009889D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6A02D8C28BCC2D3009889D9 /* GoogleService-Info.plist */; };
 		D6A257422747D36B0031B75D /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8DA126F3707A009E61EC /* PriceView.xib */; };
 		D6C95FD926BD4AE400DC5719 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C95FD826BD4AE400DC5719 /* R.generated.swift */; };
 		D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C95FE026BD4BA000DC5719 /* Localizable.strings */; };
@@ -349,7 +349,6 @@
 		558B74FBCF5C95B718FAB54C /* Pods-PVTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.release.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.release.xcconfig"; sourceTree = "<group>"; };
 		5FAAD99D1247D339D5164761 /* Pods-PVTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.debug.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.debug.xcconfig"; sourceTree = "<group>"; };
 		9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PVTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4507ECA27ABB17200F2405D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A466878727B236500073A15F /* TabBarBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBadge.swift; sourceTree = "<group>"; };
 		A466878927B262B10073A15F /* ActiveEventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEventCollectionViewCell.swift; sourceTree = "<group>"; };
 		A466878A27B262B10073A15F /* ActiveEventCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveEventCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -367,6 +366,7 @@
 		D69176792705ADF10005C572 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReminderView.xib; sourceTree = "<group>"; };
 		D691767D2705ADF50005C572 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReminderView.strings; sourceTree = "<group>"; };
 		D691767F2705ADF70005C572 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ReminderView.strings; sourceTree = "<group>"; };
+		D6A02D8C28BCC2D3009889D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6A2573F2747C41D0031B75D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PriceView.strings; sourceTree = "<group>"; };
 		D6A257412747C4220031B75D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PriceView.strings; sourceTree = "<group>"; };
 		D6C95FD826BD4AE400DC5719 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -694,7 +694,7 @@
 		187F3E36258CC7FD008FB2CB /* PVTG */ = {
 			isa = PBXGroup;
 			children = (
-				A4507ECA27ABB17200F2405D /* GoogleService-Info.plist */,
+				D6A02D8C28BCC2D3009889D9 /* GoogleService-Info.plist */,
 				D6C95FD726BD4ACE00DC5719 /* Localization */,
 				18B184C225B953DD00B83A6B /* PVTG.entitlements */,
 				1855F47F2592377A009396E6 /* Font */,
@@ -1077,7 +1077,6 @@
 			files = (
 				D6A257422747D36B0031B75D /* PriceView.xib in Resources */,
 				1855F4962592377B009396E6 /* Montserrat-Light.ttf in Resources */,
-				A4507ECB27ABB17200F2405D /* GoogleService-Info.plist in Resources */,
 				18525A56259994410042046C /* InterestCell.xib in Resources */,
 				1855F49D2592377B009396E6 /* Montserrat-SemiBold.ttf in Resources */,
 				187F3E44258CC802008FB2CB /* LaunchScreen.storyboard in Resources */,
@@ -1120,6 +1119,7 @@
 				18A765E9259CA49200E71FF9 /* SearchCell.xib in Resources */,
 				187F3E72258CCB58008FB2CB /* appleTone.wav in Resources */,
 				D6FFDC5E26BC0CA400321F04 /* ActiveEventCell.xib in Resources */,
+				D6A02D8D28BCC2D3009889D9 /* GoogleService-Info.plist in Resources */,
 				D6FFDC7C26BC113200321F04 /* More.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1537,7 +1537,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1598,7 +1598,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1624,9 +1624,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 34PB6447D9;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1634,7 +1634,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.techugo.pvtgtemp;
+				PRODUCT_BUNDLE_IDENTIFIER = app.mydharma.dharma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1649,8 +1649,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34PB6447D9;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1658,7 +1658,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.techugo.pvtgtemp;
+				PRODUCT_BUNDLE_IDENTIFIER = app.mydharma.dharma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
