@@ -19,7 +19,6 @@ struct Photos : Codable {
 	let width : Int?
 
 	enum CodingKeys: String, CodingKey {
-
 		case height = "height"
 		case html_attributions = "html_attributions"
 		case photo_reference = "photo_reference"
@@ -33,5 +32,4 @@ struct Photos : Codable {
 		photo_reference = try values.decodeIfPresent(String.self, forKey: .photo_reference)
 		width = try values.decodeIfPresent(Int.self, forKey: .width)
 	}
-
 }

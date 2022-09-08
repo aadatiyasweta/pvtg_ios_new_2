@@ -9,19 +9,23 @@
 import UIKit
 
 class CategoryCell: UICollectionViewCell {
+    
+    //MARK: - Outlets
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var imgcategory: UIImageView!
     @IBOutlet weak var vwcategory: UIView!
     @IBOutlet weak var trailingConstrainOuterview: NSLayoutConstraint!
     @IBOutlet weak var leadingConstrain: NSLayoutConstraint!
-    //MARK:- Cell reuseIdentifier
+    
+    //MARK: - CELL REUSE IDENTIFIER METHOD
     static let ident = "CategoryCell"
     class func nib()-> UINib {
         return UINib.init(nibName: CategoryCell.ident, bundle: nil)
     }
+    
+    //MARK: - LifeCycle Method
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func layoutSubviews() {

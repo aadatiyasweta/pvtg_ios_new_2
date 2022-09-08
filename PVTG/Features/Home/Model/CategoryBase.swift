@@ -22,7 +22,6 @@ struct CategoryBase : Codable {
     let currency_data : [String]?
     let selected_currency : String?
 	enum CodingKeys: String, CodingKey {
-
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case total_Category = "total_Category"
@@ -44,8 +43,8 @@ struct CategoryBase : Codable {
         currency_data = try values.decodeIfPresent([String].self, forKey: .currency_data)
         selected_currency = try values.decodeIfPresent(String.self, forKey: .selected_currency)
 	}
-
 }
+
 struct MinMaxPricModel : Codable {
     let min_price : Int?
     let max_price : Int?

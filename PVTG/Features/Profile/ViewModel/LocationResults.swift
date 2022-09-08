@@ -23,7 +23,6 @@ struct LocationResults : Codable {
 	let types : [String]?
 
 	enum CodingKeys: String, CodingKey {
-
 		case formatted_address = "formatted_address"
 		case geometry = "geometry"
 		case icon = "icon"
@@ -45,5 +44,4 @@ struct LocationResults : Codable {
 		reference = try values.decodeIfPresent(String.self, forKey: .reference)
 		types = try values.decodeIfPresent([String].self, forKey: .types)
 	}
-
 }

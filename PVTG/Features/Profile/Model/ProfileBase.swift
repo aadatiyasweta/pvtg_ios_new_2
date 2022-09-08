@@ -18,7 +18,6 @@ struct ProfileBase : Codable {
 	let result : ProfileResult?
 
 	enum CodingKeys: String, CodingKey {
-
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case result = "result"

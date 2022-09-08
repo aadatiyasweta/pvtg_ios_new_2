@@ -24,9 +24,13 @@ protocol CallBackForLocationList {
 }
 
 class SearchLocationViewMpdel: BaseVm {
+    
+    //MARK: - Properties
     var locationMode = [LocationList]()
     var model: LocationBase?
     var delegate: CallBackForLocationList?
+    
+    //MARK: - LOCATION API METHOD
     func locationApi(query: String) {
           self.show()
         api_manager.GETApi(searchPlacesApi(text: query), param: nil, header: nil) { (response, err, code) in
@@ -52,6 +56,4 @@ class SearchLocationViewMpdel: BaseVm {
               }
           }
       }
-    
-
 }

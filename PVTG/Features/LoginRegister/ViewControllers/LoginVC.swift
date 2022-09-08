@@ -12,8 +12,8 @@ import GoogleSignIn
 import AuthenticationServices
 
 class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    //MARK:- IBOutlets
     
+    //MARK: - Outlets
     @IBOutlet weak var txfPassword: UITextField!{
         didSet{
             self.txfPassword.delegate = self
@@ -29,29 +29,29 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var lblEmailErr: UILabel!
     @IBOutlet weak var lblPaswdErr: UILabel!
+    @IBOutlet weak var stackViewWidthConst: NSLayoutConstraint!
     
- @IBOutlet weak var stackViewWidthConst: NSLayoutConstraint!
- //MARK:- Variables
+    //MARK: - Properties
     var loginVM = LoginVM()
     var Socialdata = [String:String]()
     var fbHelper   = Facebook()
-
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-     if(SaveToDefaults().getAppLang() == "en"){
-      stackViewWidthConst.constant = 266
-     }else {
-      stackViewWidthConst.constant = 310
-     }
-       // self.logintoYouAcLbl.text = R.string.localizable.logHolisticTravel()
+        if(SaveToDefaults().getAppLang() == "en"){
+            stackViewWidthConst.constant = 266
+        }else {
+            stackViewWidthConst.constant = 310
+        }
         self.lblEmailErr.isHidden = true
         self.lblPaswdErr.isHidden = true
         loginVM.delegate = self
         setTextfield()
         googleLogin()
     }
-    //MARK:- Textfield properties
+    
+    //MARK: - SET TEXTFIELD
     private func setTextfield() {
         paddingTextfield(textfield: txfEmail)
         paddingTextfield(textfield: txfPassword)
@@ -64,7 +64,8 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
         btnSubmit.layer.borderWidth = 0.5
         btnSubmit.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
     }
-    //MARK:- IBActions
+    
+    //MARK: - BUTTON ACTION
     @IBAction func tapForgotPassword(_ sender: UIButton) {
         let vc = ForgotPaswordVC.instance()
         self.navigationController?.pushViewController(vc, animated: true)
@@ -74,15 +75,15 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
         self.txfEmail.resignFirstResponder()
         self.txfPassword.resignFirstResponder()
         if self.validLogindetails(email: self.txfEmail.text ?? "", paswd: self.txfPassword.text ?? "") {
-             SaveToDefaults().setIsNew(isNew: true)
-//            let vc = TabBarControllerViewController.instance()
-//                   self.navigationController?.pushViewController(vc, animated: true)
-            self.loginVM.loginApi(email: self.txfEmail.text ?? "", password: self.txfPassword.text ?? "")
-        } 
+            SaveToDefaults().setIsNew(isNew: true)
+                  self.loginVM.loginApi(email: self.txfEmail.text ?? "", password: self.txfPassword.text ?? "")
+        }
     }
+    
     @IBAction func tapLoginWithFb(_ sender: UIButton) {
         doCodeForFacebookLogin()
     }
+    
     @IBAction func tapLoginWithGoogle(_ sender: UIButton) {
         GIDSignIn.sharedInstance().signIn()
     }
@@ -91,9 +92,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
         if #available(iOS 13.0, *) {
             handleAppleIdRequest()
         } else {
-            // Fallback on earlier versions
         }
-
     }
     
     @IBAction func tapRegiterNow(_ sender: UIButton) {
@@ -102,6 +101,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     }
 }
 
+//MARK: - AFTER LOGIN SUCCESS DELEGATE
 extension LoginVC: AfterLoginSuccess {
     func forgotSuccess() {
         debugPrint("forgotSuccess")
@@ -125,16 +125,14 @@ extension LoginVC: AfterLoginSuccess {
         showAlert(strTitle: msg)
     }
     
-    
     func loginSuccess() {
         SaveToDefaults().setIsNew(isNew: true)
         let vc = TabBarControllerViewController.instance()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
 }
 
+//MARK: - TEXT FIELD DELEGATE
 extension LoginVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.lblEmailErr.isHidden = true
@@ -144,6 +142,7 @@ extension LoginVC: UITextFieldDelegate {
     }
 }
 
+//MARK: - GOOGLE AND FACEBOOK DELEGATES
 extension LoginVC: GIDSignInDelegate, FacebookDelegate{
     //MARK: - Google SignIn
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
@@ -171,28 +170,26 @@ extension LoginVC: GIDSignInDelegate, FacebookDelegate{
             print("\(error.localizedDescription)")
         }
     }
+    
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!)
     {
-        // Perform any operations when the user disconnects from app here.
     }
     
     func sign(inWillDispatch signIn: GIDSignIn!, error: Error!)
     {
-        
-        //testing========
     }
+    
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!)
     {
-        
         self.present(viewController, animated: true, completion: nil)
-        
     }
+    
     func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!)
     {
         self.dismiss(animated: true, completion: nil)
     }
     
-    //MARK:-FacebookLogIn
+    //MARK: - FACEBOOK LOGIN
     func doCodeForFacebookLogin()
     {
         fbHelper = Facebook()
@@ -200,27 +197,29 @@ extension LoginVC: GIDSignInDelegate, FacebookDelegate{
         fbHelper.delegate = self
         fbHelper.doLoginWithFacebook()
     }
+    
     func fbUserInfoFail(err: NSError) {
-        
     }
+    
     func fbLoginSuccess()
     {
         fbHelper.getUserInformation()
     }
+    
     func fbLoginCancelled()
     {
     }
+    
     func fbLoginFail(error err:NSError)
     {
         print(fbLoginFail)
     }
+    
     func fbUserInfoSuccess(result:AnyObject)
     {
-        
         var social_Username = ""
         var email:String = ""
         var fid:String = ""
-        
         
         if  let result1 = result as? NSDictionary
         {
@@ -246,13 +245,14 @@ extension LoginVC: GIDSignInDelegate, FacebookDelegate{
             makeRequestToSocialSignup(accountType: "fb", social_id: fid )
         }
     }
-    
 }
+
+//MARK: - VIEW CONTROLLER EXTENSION
 extension LoginVC {
     func makeRequestToSocialSignup(accountType: String, social_id: String ){
         self.loginVM.socialLoginApi(social_id: social_id, acc_type: accountType)
     }
-
+    
     private func validLogindetails(email : String , paswd : String)->Bool{
         if email == "" {
             self.lblEmailErr.isHidden = false
@@ -276,19 +276,19 @@ extension LoginVC {
     
     @available(iOS 13.0, *)
     func handleAppleIdRequest() {
-         let appleIDProvider = ASAuthorizationAppleIDProvider()
-              let request = appleIDProvider.createRequest()
-              request.requestedScopes = [.fullName, .email]
-              let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-              authorizationController.delegate = self
-              authorizationController.presentationContextProvider = self
-              authorizationController.performRequests()
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
     
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-           print(error.localizedDescription)
-       }
+        print(error.localizedDescription)
+    }
     
     @available(iOS 13.0, *)
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
@@ -298,22 +298,20 @@ extension LoginVC {
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
-            if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-                let appleId = appleIDCredential.user
-                let appleUserFirstName = appleIDCredential.fullName?.givenName
-                let appleUserLastName = appleIDCredential.fullName?.familyName
-                let appleUserEmail = appleIDCredential.email
-                 Socialdata["id"] = appleId
-                 Socialdata["FullName"] = "\(appleUserFirstName ?? "") \(appleUserLastName ?? "")"
-                 Socialdata["Email_Id"] = appleUserEmail
-                 Socialdata["Social_type"] = "apple"
-                 makeRequestToSocialSignup(accountType: "apple", social_id: appleId )
-            }
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let appleId = appleIDCredential.user
+            let appleUserFirstName = appleIDCredential.fullName?.givenName
+            let appleUserLastName = appleIDCredential.fullName?.familyName
+            let appleUserEmail = appleIDCredential.email
+            Socialdata["id"] = appleId
+            Socialdata["FullName"] = "\(appleUserFirstName ?? "") \(appleUserLastName ?? "")"
+            Socialdata["Email_Id"] = appleUserEmail
+            Socialdata["Social_type"] = "apple"
+            makeRequestToSocialSignup(accountType: "apple", social_id: appleId )
         }
-
-
-
-    //Mark:-GoogleSignup
+    }
+    
+    //MARK: - Google Signup Method
     func googleLogin() {
         GIDSignIn.sharedInstance().clientID = "213231135715-4bt41406ei6um842vpd6ntolaap3j0p4.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self

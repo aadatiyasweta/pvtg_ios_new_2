@@ -5,7 +5,7 @@
 //  Created by Techugo on 30/09/21.
 //  Copyright © 2021 ShubhamMacmini. All rights reserved.
 //
-protocol ReminderViewYesProtocol : class{
+protocol ReminderViewYesProtocol : AnyObject{
     func getYesCallback(id : String)
 }
 import Foundation

@@ -55,6 +55,8 @@ class ApiManager {
             showMesssgeWindow(msg: internetConnectionMessage)
         }
     }
+    
+    
     func GETApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
         print(param ?? [:])
         if isConnection(){
@@ -85,6 +87,7 @@ class ApiManager {
             showMesssgeWindow(msg: internetConnectionMessage)
         }
     }
+    
     func PUTApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
         print(param ?? [:])
         if isConnection(){
@@ -104,7 +107,7 @@ class ApiManager {
                     }
                     completion(json , nil, dataResponse.response?.statusCode)
                 case .failure(let err):
-                    debugPrint(err.underlyingError)
+                    debugPrint(err.underlyingError ?? "")
                     completion(nil , err.underlyingError, dataResponse.response?.statusCode)
                 }
             })
@@ -113,6 +116,7 @@ class ApiManager {
             showMesssgeWindow(msg: internetConnectionMessage)
         }
     }
+    
     func DeleteApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
         print(param ?? [:])
         AF.request(url, method: .delete, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().responseJSON(completionHandler: { dataResponse in
@@ -125,12 +129,12 @@ class ApiManager {
             }
         })
     }
+    
     func upload(_ url :String , _ data:Data,params : [String:Any]?, _ fileName:String , header:[String:String]? , completion:@escaping (_ error:Error? , _ responce:JSON?,_ statuscode :Int?)->()) {
         if isConnection(){
             let head = HTTPHeaders.init(header ?? [:])
             AF.upload(multipartFormData: { (multiPart) in
                 debugPrint(params)
-                
                 for (key, value) in params ?? [:] {
                     if let temp = value as? String {
                         multiPart.append(temp.data(using: .utf8)!, withName: key)

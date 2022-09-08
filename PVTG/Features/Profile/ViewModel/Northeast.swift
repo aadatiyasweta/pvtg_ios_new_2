@@ -17,7 +17,6 @@ struct Northeast : Codable {
 	let lng : Double?
 
 	enum CodingKeys: String, CodingKey {
-
 		case lat = "lat"
 		case lng = "lng"
 	}
@@ -27,5 +26,4 @@ struct Northeast : Codable {
 		lat = try values.decodeIfPresent(Double.self, forKey: .lat)
 		lng = try values.decodeIfPresent(Double.self, forKey: .lng)
 	}
-
 }

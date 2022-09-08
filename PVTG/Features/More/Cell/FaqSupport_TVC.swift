@@ -10,12 +10,13 @@ import UIKit
 
 class FaqSupport_TVC: UITableViewCell {
 
+    //MARK: - Outlets
     @IBOutlet weak var img_dropdown: UIImageView!
     @IBOutlet weak var vw_ContainCellInfo: UIView!
     @IBOutlet weak var lbl_question: UILabel!
     @IBOutlet weak var lbl_Answers: UILabel!
     
-    
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -27,10 +28,5 @@ class FaqSupport_TVC: UITableViewCell {
         vw_ContainCellInfo.setGradient(strColor1: "#00c78c", strColor2: "#03babb", roundedCornerRadius: 20)
         vw_ContainCellInfo.setShadowView()
     }
-//    func toSetQuery(data: Faq){
-//        if let question = data.question{
-//            lbl_question.text = question
-//        
-//        }
-//    }
+
 }

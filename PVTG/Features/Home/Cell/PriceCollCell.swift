@@ -9,19 +9,21 @@
 import UIKit
 
 class PriceCollCell: UICollectionViewCell {
-
+    
+    //MARK: - Outlets
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var priceView: UIView!
     
-    //MARK:- Cell reuseIdentifier
+    //MARK: - CELL REUSEIDENTIFIER
     static let ident = "PriceCollCell"
     class func nib()-> UINib {
         return UINib.init(nibName: PriceCollCell.ident, bundle: nil)
     }
     
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

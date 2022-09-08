@@ -10,7 +10,8 @@ import UIKit
 import Cosmos
 
 class SessionCell: UITableViewCell {
-    //MARK:- IBoutlets
+    
+    //MARK: - Outlets
     @IBOutlet weak var lblYoganame: UILabel!
     @IBOutlet weak var lblPlaceName: UILabel!
     @IBOutlet weak var vwRating: CosmosView!
@@ -19,24 +20,21 @@ class SessionCell: UITableViewCell {
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var sessionImg: UIImageView!
     
-    //MARK:- Cell reuseIdentifier
+    //MARK: - CELL REUSEIDENTIFIER
     static let ident = "SessionCell"
     class func nib()-> UINib {
         return UINib.init(nibName: SessionCell.ident, bundle: nil)
-        
     }
     
+    //MARK: - LifeCycle
     override func awakeFromNib() {
-        
         super.awakeFromNib()
-        // Initialization code
-    }
-    override func layoutSubviews() {
-//        DispatchQueue.main.async {
-//            self.vwCard.layer.cornerRadius = 12
-//        }
     }
     
+    override func layoutSubviews() {
+    }
+    
+    //MARK: - METHOD TO SET DATE
     func setData(data: SearchResult?) {
         guard let data = data else {return}
         if let category = data.category_name {
@@ -59,6 +57,7 @@ class SessionCell: UITableViewCell {
         }
     }
     
+    //MARK: - METHOD TO SET HOME DATA
     func setHomeData(data: All_result?) {
            guard let data = data else {return}
            if let category = data.category_name {
@@ -80,5 +79,4 @@ class SessionCell: UITableViewCell {
                loadImage(sessionImg, self.sessionImg, activity: nil, defaultImage: nil)
            }
        }
-    
 }

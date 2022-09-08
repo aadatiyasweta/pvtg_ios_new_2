@@ -10,13 +10,13 @@ import UIKit
 
 class LineMeasureCell: UICollectionViewCell {
 
-    //MARK:- Cell reuseIdentifier
+    //MARK: - Cell reuseIdentifier
     static let ident = "LineMeasureCell"
     class func nib()-> UINib {
         return UINib.init(nibName: LineMeasureCell.ident, bundle: nil)
-        
     }
     
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

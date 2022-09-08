@@ -19,7 +19,6 @@ struct CategoryResult : Codable {
     let total_session : String?
     
 	enum CodingKeys: String, CodingKey {
-
 		case category_id = "category_id"
 		case category_name = "category_name"
 		case category_image = "category_image"
@@ -33,9 +32,7 @@ struct CategoryResult : Codable {
 		category_image = try values.decodeIfPresent(String.self, forKey: .category_image)
         total_session = try values.decodeIfPresent(String.self, forKey: .total_session)
 	}
-
 }
-
 
 struct SelectedCtaegory {
     var category_id = ""

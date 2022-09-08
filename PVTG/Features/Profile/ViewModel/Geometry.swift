@@ -17,7 +17,6 @@ struct Geometry : Codable {
 	let viewport : Viewport?
 
 	enum CodingKeys: String, CodingKey {
-
 		case location = "location"
 		case viewport = "viewport"
 	}

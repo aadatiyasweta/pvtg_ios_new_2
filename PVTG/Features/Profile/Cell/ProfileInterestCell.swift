@@ -10,28 +10,32 @@ import UIKit
 import MarqueeLabel
 
 class ProfileInterestCell: UICollectionViewCell {
+    
+    //MARK: - Outlets
     @IBOutlet weak var imgInterest: UIImageView!
     @IBOutlet weak var lblInterest: UILabel!
     @IBOutlet weak var vwContaininterest: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var traillingconstarint: NSLayoutConstraint!
     
-    //MARK:- Cell reuseIdentifier
-      static let ident = "ProfileInterestCell"
-      class func nib()-> UINib {
-          return UINib.init(nibName: ProfileInterestCell.ident, bundle: nil)
-      }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-         vwContaininterest.layer.borderWidth = 0.7
-               vwContaininterest.layer.borderColor = UIColor().coloWithHexString(hex: "#e2e2e2").cgColor
-        
+    //MARK: - CELL REUSE IDENTIFIER
+    static let ident = "ProfileInterestCell"
+    class func nib()-> UINib {
+        return UINib.init(nibName: ProfileInterestCell.ident, bundle: nil)
     }
     
+    //MARK: - LifeCycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        vwContaininterest.layer.borderWidth = 0.7
+        vwContaininterest.layer.borderColor = UIColor().coloWithHexString(hex: "#e2e2e2").cgColor
+    }
+    
+    //MARK: - SET DATA METHOD
     func setData(interest: Selected_category?) {
         guard let interest = interest else {return}
         if let img = interest.category_image {
@@ -43,13 +47,13 @@ class ProfileInterestCell: UICollectionViewCell {
     }
     
     func setMarquee(label:MarqueeLabel) {
-                  label.type = .continuous
-              label.speed = .duration(4.0)
-              label.animationCurve = .linear
-              label.fadeLength = 0.0
-              label.leadingBuffer = 10.0
-              label.trailingBuffer = 30.0
-              label.restartLabel()
-          }
-
+        label.type = .continuous
+        label.speed = .duration(4.0)
+        label.animationCurve = .linear
+        label.fadeLength = 0.0
+        label.leadingBuffer = 10.0
+        label.trailingBuffer = 30.0
+        label.restartLabel()
+    }
+    
 }

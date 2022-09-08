@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "star-min.png",
       "idiom" : "universal",
-      "filename" : "star.png",
       "scale" : "1x"
     },
     {
+      "filename" : "group2@2x-min.png",
       "idiom" : "universal",
-      "filename" : "group2@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "group2@3x-min.png",
       "idiom" : "universal",
-      "filename" : "group2@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

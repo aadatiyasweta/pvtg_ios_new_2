@@ -10,17 +10,20 @@ import UIKit
 
 class CountryCodeCell: UITableViewCell {
     
+    //MARK: - Outlets
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var codeLbl: UILabel!
+    
+    //MARK: - Properties
     static let ident = "CountryCodeCell"
     class func nib()->UINib {
         return UINib.init(nibName: CountryCodeCell.ident, bundle: nil)
     }
+    
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    
-    
+
 }

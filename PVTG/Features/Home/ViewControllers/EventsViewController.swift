@@ -10,8 +10,8 @@ import UIKit
 
 class EventsViewController: BaseViewController {
     
+    //MARK: - Outlets
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var collectionHeightCons: NSLayoutConstraint!
     @IBOutlet weak var collectionVwLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var colectionVw: UICollectionView!{
@@ -31,38 +31,32 @@ class EventsViewController: BaseViewController {
     }
     
     @IBOutlet weak var lblActiveEvent: UILabel!
-    
     @IBOutlet weak var lblUndrLine1: UILabel!
-    
     @IBOutlet weak var lblUndrLine2: UILabel!
-    
     @IBOutlet weak var lblHistoryEvent: UILabel!
-    
     @IBOutlet weak var lblNoSession: UILabel!
     
-    //MARK:-  Variables
+    //MARK: - Properties
     private var indexOfCellBeforeDragging = 0
     private var currentPage: Int = 0
     var vm = EventViewModel()
     var indexOfPageToRequest = 0
-       var ispageEnabled = false
+    var ispageEnabled = false
     
-    //MARK:- View Life Cycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
         self.setCollectionVw()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadApi(offset: "0")
     }
-    
-  
 }
 
+//MARK: - COLLECTION VIEW DELEGATES AND DATASOURCE
 extension EventsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.vm.model?.result?.count ?? 0
@@ -76,6 +70,7 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
         }
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SessionDetailVC.instance()
         vc.controllerId = 1
@@ -83,10 +78,9 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
         vc.sessionId = self.vm.model?.result?[indexPath.row].session_id ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
-
+//MARK: - TABLE VIEW DELEGATES AND DATASOURCE
 extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.vm.model?.history?.count ?? 0
@@ -106,9 +100,11 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setData(data: self.vm.model?.history?[indexPath.row])
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = SessionDetailVC.instance()
         vc.controllerId = 3
@@ -116,9 +112,9 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
-    
 }
 
+//MARK: - VIEW CONTROLLER EXTENSION
 extension EventsViewController {
         func setCollectionVw() {
             self.colectionVw.showsHorizontalScrollIndicator = false
@@ -136,12 +132,12 @@ extension EventsViewController {
             floawLayout.spacingMode = .fixed(spacing: 10)
             colectionVw.collectionViewLayout = floawLayout
         }
+    
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
             let layout = self.colectionVw.collectionViewLayout as! UPCarouselFlowLayout
             let pageSide = (layout.scrollDirection == .horizontal) ? self.pageSize.width : self.pageSize.height
             let offset = (layout.scrollDirection == .horizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y
             currentPage = Int(floor((offset - pageSide / 2) / pageSide) + 1)
-            //self.setData(model: planArr[currentPage])
             self.view.updateConstraints()
             self.view.layoutIfNeeded()
             debugPrint(currentPage)
@@ -158,21 +154,19 @@ extension EventsViewController {
             return pageSize
         }
     
-    //Open Google map App
+    //MARK: - OPEN GOOGLE MAP APP
     func directions(lat : String , long : String) {
         // if GoogleMap installed
         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
-            UIApplication.shared.openURL(NSURL(string:
-                "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")! as URL)
-
+            UIApplication.shared.open(NSURL(string:
+                                                "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")! as URL, options: [:], completionHandler: nil)
         } else {
             // if GoogleMap App is not installed
-            UIApplication.shared.openURL(NSURL(string:
-                "https://maps.google.com/?q=@\(lat),\(long)")! as URL)
+            UIApplication.shared.open(NSURL(string:
+                                                "https://maps.google.com/?q=@\(lat),\(long)")! as URL, options: [:], completionHandler: nil)
         }
-        
     }
-    ///Pagination
+    //MARK: - PAGINATION
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView != self.colectionVw{
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
@@ -189,22 +183,18 @@ extension EventsViewController {
                 }
             }
         }
-      
      }
-
     
-    //Loading API
-    
+    //MARK: - LOADING API
     private func loadApi(offset: String) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
             self.vm.getActiveEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)", offset: offset)
             //self.vm.getHistoryEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)")
         }
     }
-      
-    
 }
 
+//MARK: - LOADING EVENTS DELEGATE
 extension EventsViewController: LoadingEvents {
     func colecnreloaddata() {
         if self.vm.model?.result?.count ?? 0 == 0{
@@ -217,6 +207,7 @@ extension EventsViewController: LoadingEvents {
             self.lblUndrLine1.isHidden = false
              self.collectionHeightCons.constant = 440
         }
+        
         if self.vm.model?.history?.count ?? 0 == 0 &&  self.vm.model?.result?.count ?? 0 == 0{
              self.lblNoSession.text = R.string.localizable.noSession()
              self.lblNoSession.isHidden = false
@@ -224,14 +215,15 @@ extension EventsViewController: LoadingEvents {
              self.lblNoSession.text = ""
              self.lblNoSession.isHidden = true
         }
+        
         if self.vm.model?.history?.count == 0 || self.vm.model?.history?.count == nil{
-    
             self.lblHistoryEvent.isHidden = true
             self.lblUndrLine2.isHidden = true
         } else {
             self.lblHistoryEvent.isHidden = false
             self.lblUndrLine2.isHidden = false
         }
+        
         let tableHeight = (self.vm.model?.history?.count ?? 0) * 225
         constraintHeight.constant = CGFloat(tableHeight + (self.vm.model?.history?.count ?? 0) * 70)
         self.updateViewConstraints()
@@ -239,26 +231,10 @@ extension EventsViewController: LoadingEvents {
         self.view.layoutIfNeeded()
         self.TblVwHistory.reloadData()
         self.colectionVw.reloadData()
-        
     }
     
     func tblReloadData() {
-//        if self.vm.model?.result?.count == 0 || self.vm.model?.result?.count == nil{
-//            self.lblNoSession.isHidden = false
-//
-//            self.lblHistoryEvent.isHidden = true
-//            self.lblUndrLine2.isHidden = true
-//        } else {
-//            self.lblNoSession.isHidden = true
-//
-//            self.lblHistoryEvent.isHidden = false
-//            self.lblUndrLine2.isHidden = false
-//        }
-
-       
     }
-    
-    
 }
 
 

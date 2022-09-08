@@ -17,7 +17,6 @@ struct ProfileResult : Codable {
 	let selected_category : [Selected_category]?
 
 	enum CodingKeys: String, CodingKey {
-
 		case user_profile = "user_profile"
 		case selected_category = "selected_category"
 	}

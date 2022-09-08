@@ -24,7 +24,6 @@ struct HomeResult : Codable {
     let selected_currency : String?
     
 	enum CodingKeys: String, CodingKey {
-
 		case all_result = "all_result"
 		case all_category = "all_category"
         case user_image = "user_image"

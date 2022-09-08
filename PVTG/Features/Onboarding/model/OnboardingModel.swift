@@ -18,7 +18,6 @@ struct OnboardingModel : Codable {
 	let earn_reward : [Earn_rewardModel]?
 
 	enum CodingKeys: String, CodingKey {
-
 		case rewards = "rewards"
 		case point_accumulation = "point_accumulation"
 		case earn_reward = "earn_reward"

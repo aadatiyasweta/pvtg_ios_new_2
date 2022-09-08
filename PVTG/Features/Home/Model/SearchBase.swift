@@ -18,7 +18,6 @@ struct SearchBase : Codable {
 	let result : [SearchResult]?
 
 	enum CodingKeys: String, CodingKey {
-
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case result = "result"
@@ -30,5 +29,4 @@ struct SearchBase : Codable {
 		aPICODERESULT = try values.decodeIfPresent(String.self, forKey: .aPICODERESULT)
 		result = try values.decodeIfPresent([SearchResult].self, forKey: .result)
 	}
-
 }

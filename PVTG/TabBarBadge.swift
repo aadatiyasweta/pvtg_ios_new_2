@@ -46,7 +46,7 @@ extension UITabBarController {
     let itemPosition = CGFloat(index + 1)
     let itemWidth: CGFloat = tabBar.frame.width / CGFloat(tabBarItems.count)
 
-    let bgColor = color
+//    let bgColor = color
 
     let xOffset: CGFloat = 12
     let yOffset: CGFloat = -9

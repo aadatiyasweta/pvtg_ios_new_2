@@ -18,7 +18,6 @@ struct All_category : Codable {
 	let category_image : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case category_id = "category_id"
 		case category_name = "category_name"
 		case category_image = "category_image"
@@ -30,7 +29,6 @@ struct All_category : Codable {
 		category_name = try values.decodeIfPresent(String.self, forKey: .category_name)
 		category_image = try values.decodeIfPresent(String.self, forKey: .category_image)
 	}
-
 }
 
 struct Category {

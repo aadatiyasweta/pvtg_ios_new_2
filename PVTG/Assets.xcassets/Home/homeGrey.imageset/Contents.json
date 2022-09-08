@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "homeGrey-min.png",
       "idiom" : "universal",
-      "filename" : "homeGrey.png",
       "scale" : "1x"
     },
     {
+      "filename" : "homeGrey@2x-min.png",
       "idiom" : "universal",
-      "filename" : "homeGrey@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "homeGrey@3x-min.png",
       "idiom" : "universal",
-      "filename" : "homeGrey@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

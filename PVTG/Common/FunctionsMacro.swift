@@ -11,25 +11,17 @@ import UserNotifications
 import AVFoundation
 import SDWebImage
 import Reachability
-
 import SwiftyJSON
 import SVProgressHUD
-
 
 let documentsURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 var downloadURL = try! FileManager().url(for: .documentDirectory,
                                          in: .userDomainMask,
                                          appropriateFor: nil,
                                          create: true)
-
-
-
 let window = UIApplication.shared.keyWindow
-
 let defaults = UserDefaults.standard
 let rupee = "₹"
-
-
 let fontName  = "Fonts-Reg"
 let borderWidth : CGFloat = 1.0
 let borderColor  : UIColor =  #colorLiteral(red: 0.06274509804, green: 0.5411764706, blue: 0.6941176471, alpha: 1)
@@ -38,20 +30,16 @@ let date = NSDate()
 var isAuthrized:HKAuthorizationStatus!
 let dateFormatter = DateFormatter()
 
-
-
-
 enum PackType : String{
     case text
     case phone
     case video
 }
+
 enum Consultation {
     case selfConsultation
     case familyConsultation
 }
-
-
 
 func rateApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
     guard let url = URL(string : "itms-apps://itunes.apple.com/app/" + appId) else {
@@ -64,7 +52,6 @@ func rateApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
     }
     UIApplication.shared.open(url, options: [:], completionHandler: completion)
 }
-
 
 enum FileType:Int{
     case ImageType = 0
@@ -97,16 +84,12 @@ func heightForView(_ text: Any, font:UIFont, width:CGFloat) -> CGFloat {
     return estimatedFrame.size.height
 }
 
-
-
 func widthForView(_ text: Any, font:UIFont, width:CGFloat) -> CGFloat {
     let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
     let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
     let estimatedFrame = NSString(string: text as! String).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: font], context: nil)
     return estimatedFrame.size.width
 }
-
-
 
 func applyShadowForView(_ view :UIView, shadowColor: CGColor, ShadowOffset: CGSize, shadowOpacity: Float, shadowRadius: CGFloat) {
     view.layer.shadowColor = shadowColor
@@ -121,17 +104,15 @@ func convertampmformattohourformat(inputDate: String)-> String {
         let dateAsString = inputDate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
-        
         let date = dateFormatter.date(from: dateAsString)
         dateFormatter.dateFormat = "HH:mm:ss"
-        
         let Date24 = dateFormatter.string(from: date!)
         debugPrint("24 hour formatted Date:",Date24)
-        
         return Date24
     }
     return inputDate
 }
+
 func convertTimeIntoAmPmFormat(inputDate: String)-> String {
     let dateAsString = inputDate
     let dateFormatter = DateFormatter()
@@ -141,48 +122,37 @@ func convertTimeIntoAmPmFormat(inputDate: String)-> String {
     let Date24 = dateFormatter.string(from: date1)
     debugPrint("24 hour formatted Date:",Date24)
     return Date24
-    
 }
+
 func convertIntoHourFormatted(inputDate: Date)-> String {
-    // let dateAsString = inputDate
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-mm-dd"
-    
-    //let date = dateFormatter.date(from: dateAsString)
     dateFormatter.dateFormat = "EEEE, MMMM d"
     let Date24 = dateFormatter.string(from: inputDate)
     debugPrint("24 hour formatted Date:",Date24)
-    
     return Date24
-    
 }
+
 func stringconvertIntoHourFormatted(inputDate: String)-> String {
     let dateAsString = inputDate
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-mm-dd"
-    
     let date = dateFormatter.date(from: dateAsString)
-    debugPrint("Date is \(date)")
+    debugPrint("Date is \(String(describing: date))")
     dateFormatter.dateFormat = "EEEE, MMMM dd"
     let Date24 = dateFormatter.string(from: date ?? Date())
     debugPrint("24 hour formatted Date:",Date24)
-    
     return Date24
-    
 }
-
 
 func conversioninampmFormat(inputDate: String)-> String {
     let dateAsString = inputDate
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "HH:mm"
-    
     let date = dateFormatter.date(from: dateAsString)
     dateFormatter.dateFormat = "h:mm a"
-    
     let Date24 = dateFormatter.string(from: date!)
     debugPrint("12 hour formatted Date:",Date24)
-    
     return Date24
 }
 
@@ -202,8 +172,6 @@ func applyShadow(view:UIView , radius:CGFloat) {
     view.layer.shadowRadius = 2
     view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
 }
-
-
 
 func getFileType(_ url:String)->(Int? , String?){
     if let fileURL = URL.init(string: url){
@@ -242,8 +210,6 @@ func getRectForImage(_ imageView:UIImageView)->CGRect?{
     return CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: height)
 }
 
-
-
 func showAlert(msg:String , title:String , sender:UIViewController){
     let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: 64*widthFactor))
     view.backgroundColor = #colorLiteral(red: 1, green: 0.7939705253, blue: 0, alpha: 1)
@@ -258,8 +224,6 @@ func showAlert(msg:String , title:String , sender:UIViewController){
         lbl.removeFromSuperview()
         view.removeFromSuperview()
     })
-    
-    
 }
 
 func showMesssgeWindow(msg:String){
@@ -276,9 +240,8 @@ func showMesssgeWindow(msg:String){
         lbl.removeFromSuperview()
         view.removeFromSuperview()
     })
-    
-    
 }
+
 func showMesssgeJustBelowView(view: UIView, msg:String){
     let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: 64*widthFactor))
     view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
@@ -291,10 +254,7 @@ func showMesssgeJustBelowView(view: UIView, msg:String){
     //window?.addSubview(view)
     DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
         lbl.removeFromSuperview()
-        // view.removeFromSuperview()
     })
-    
-    
 }
 
 func paddingTextfield(textfield: UITextField) {
@@ -328,6 +288,7 @@ func setupGradientLayer(view:UIView , upperColor:UIColor, lowerColor:UIColor) {
     }
     view.layer.addSublayer(gradientLayer)
 }
+
 func setupLayerHorizonatal(view : UIView , color : [UIColor]){
     let gradientLayer = CAGradientLayer()
     gradientLayer.frame = view.bounds
@@ -335,6 +296,8 @@ func setupLayerHorizonatal(view : UIView , color : [UIColor]){
     gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
     view.layer.addSublayer(gradientLayer)
 }
+
+//MARK: - UIVIEW EXTENSION
 
 extension UIView {
     func addBlurEffect()
@@ -354,36 +317,20 @@ extension UIView {
         }
     }
     func animShow(){
-        //            UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear],
-        //                           animations: {
-        //                            setVSViewShadow(radius: 10, color: .black, view: self, opacity: 0.12)
-        //                            self.center.y -= 0
-        //                            self.layoutIfNeeded()
-        //            }, completion: {(_ completed: Bool) -> Void in
-        //                self.center.y = UIScreen.main.bounds.height - 125
-        //            })
         self.center.y = UIScreen.main.bounds.height - 125
         self.isHidden = false
     }
+    
     func animHide(){
-        //            UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear],
-        //                           animations: {
-        //                            self.center.y += self.bounds.height
-        //                            self.layoutIfNeeded()
-        //
-        //            },  completion: {(_ completed: Bool) -> Void in
-        //
-        //                })
         self.isHidden = true
         self.center.y += self.bounds.height
     }
+    
     func addDashedBorder() {
         let color = UIColor().coloWithHexString(hex: "#ffffff").cgColor
-        
         let shapeLayer:CAShapeLayer = CAShapeLayer()
         let frameSize = self.frame.size
         let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
-        
         shapeLayer.bounds = shapeRect
         shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
         shapeLayer.fillColor = UIColor.clear.cgColor
@@ -393,9 +340,9 @@ extension UIView {
         shapeLayer.lineJoin = CAShapeLayerLineJoin.round
         shapeLayer.lineDashPattern = [3,3]
         shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 0).cgPath
-        
         self.layer.addSublayer(shapeLayer)
     }
+    
     func horizontalGredient(_ colors:[UIColor]) {
         var cgColor = [CGColor]()
         let gradientLayer = CAGradientLayer()
@@ -406,7 +353,6 @@ extension UIView {
             cgColor.append(val.cgColor)
         }
         gradientLayer.colors = cgColor
-        
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         UIGraphicsBeginImageContext(gradientLayer.bounds.size)
@@ -418,6 +364,7 @@ extension UIView {
         imageView.image = image
     }
 }
+
 func sethorizontalGradient(view : UIButton , colors : [UIColor]){
     var cgColor = [CGColor]()
     let gradientLayer = CAGradientLayer()
@@ -428,7 +375,6 @@ func sethorizontalGradient(view : UIButton , colors : [UIColor]){
         cgColor.append(val.cgColor)
     }
     gradientLayer.colors = cgColor
-    
     gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
     gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
     UIGraphicsBeginImageContext(gradientLayer.bounds.size)
@@ -453,10 +399,9 @@ func setverticalGradient(view : UIView , colors : [UIColor]){
     gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
     UIGraphicsBeginImageContext(gradientLayer.bounds.size)
     gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    //    view.setBackgroundImage(image, for: .normal)
 }
+
 func setButtonBorder(button : UIButton , borderColor : UIColor , width : CGFloat = borderWidth ,  radius : CGFloat = cornerRadius){
     button.layer.borderWidth = width
     button.layer.borderColor = borderColor.cgColor
@@ -477,6 +422,7 @@ func getPoppinsFont(style:FontStyle , size:CGFloat)->UIFont?{
         return UIFont(name: "Raleway-Light", size: size)
     }
 }
+
 let imageHeight = Int(0.61 * SCREEN_WIDTH)
 
 func heightForViewForAttributedCondition(_ text: Any, fontSize:CGFloat, width:CGFloat,numberOfLines : Int,isAtrributedString : Bool) -> CGFloat{
@@ -498,61 +444,27 @@ func heightForViewForAttributedCondition(_ text: Any, fontSize:CGFloat, width:CG
     }
 }
 
-
-
 func convertDate(fromFormat : String = "HH:mm:ss", toFormat : String = "h:mm a", time : String)->String?{
-    
     let formatter = DateFormatter()
     formatter.locale = Locale.current
-    
-    
     formatter.dateFormat = "HH:00:00"
     if let date = formatter.date(from: time){
-        //print("date : \(date)")
         formatter.dateFormat = "h:mm a"
-        
         let string = formatter.string(from: date)
-        //print(string)
         return string
-        
     }
     else {
         formatter.dateFormat = fromFormat
-        
         if  let date = formatter.date(from: time) {
-            //print("date : \(date)")
-            
             formatter.dateFormat = toFormat
-            
             let string = formatter.string(from: date)
             return string
         }
     }
-    
     return nil
 }
 
-
-
-func getFileName(imageURL : URL, completionHandler : @escaping (String)->Void){
-    var name : String?
-    let assetslibrary = ALAssetsLibrary()
-    assetslibrary.asset(for: imageURL, resultBlock: { (imageAsset) in
-        if let imageRep = imageAsset?.defaultRepresentation(){
-            name  = imageRep.filename()!
-            completionHandler(name!.lowercased())
-        }else{
-            completionHandler("")
-        }
-        
-    }, failureBlock: nil)
-    
-    
-}
-
-
 func havePhotoAccess(completionHandler: @escaping (Bool)->Void) {
-    
     let status = PHPhotoLibrary.authorizationStatus()
     print(status)
     if (status == PHAuthorizationStatus.authorized) {
@@ -561,30 +473,22 @@ func havePhotoAccess(completionHandler: @escaping (Bool)->Void) {
         DispatchQueue.main.async {
             completionHandler(true)
         }
-        
-        
     }
-        
     else if (status == PHAuthorizationStatus.denied) {
         // Access has been denied.
         print("photo access denied")
         DispatchQueue.main.async {
             completionHandler(false)
         }
-        
     }
-        
     else if (status == PHAuthorizationStatus.notDetermined) {
-        
         // Access has not been determined.
         PHPhotoLibrary.requestAuthorization({ (newStatus) in
-            
             if (newStatus == PHAuthorizationStatus.authorized) {
                 DispatchQueue.main.async {
                     completionHandler(true)
                 }
             }
-                
             else {
                 DispatchQueue.main.async {
                     completionHandler(false)
@@ -592,7 +496,6 @@ func havePhotoAccess(completionHandler: @escaping (Bool)->Void) {
             }
         })
     }
-    
 }
 
 func haveCameraAccess(completionHandler: @escaping (Bool)->Void) {
@@ -609,33 +512,24 @@ func haveCameraAccess(completionHandler: @escaping (Bool)->Void) {
         AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted :Bool) -> Void in
             if granted == true
             {
-                // User granted
                 print("camera permission granted")
                 DispatchQueue.main.async {
                     completionHandler(true)
                 }
-                
             }
             else
             {
                 DispatchQueue.main.async {
                     completionHandler(false)
                 }
-                // User Rejected
-                
             }
         });
     }
-    
-    
 }
-
 
 func getTimeStamp()-> Double{
     return Date().timeIntervalSince1970
 }
-
-
 
 func getWeekDay(date : Date)-> Int{
     let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
@@ -713,23 +607,20 @@ extension Date{
     }
 }
 
-
 func endNotificationDate(days : Int,date : Date)-> Date{
     let interval = TimeInterval(60 * 60 * 24 * days)
     let newDate = date.addingTimeInterval(interval)
     return newDate as Date
 }
+
 func removeNotification(){
-    
     if #available(iOS 10.0, *) {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     } else {
         UIApplication.shared.cancelAllLocalNotifications()
     }
-    
 }
-
 
 func getdateArryFromWeekdays(_ date: Date, onWeekdaysForNotify weekdays:[Int]) -> [Date]{
     var correctedDate: [Date] = [Date]()
@@ -772,8 +663,8 @@ func getdateArryFromWeekdays(_ date: Date, onWeekdaysForNotify weekdays:[Int]) -
         }
         return correctedDate
     }
-    
 }
+
 func formattedDaysInThisWeek(date : Date , arr : [Int]) -> [Date] {
     var arrDate = [Date]()
     let value = getWeekDay(date: date)
@@ -785,11 +676,13 @@ func formattedDaysInThisWeek(date : Date , arr : [Int]) -> [Date] {
     }
     return arrDate
 }
+
 func correctSecondComponent(date: Date, calendar: Calendar = Calendar(identifier: Calendar.Identifier.gregorian))->Date {
     let second = calendar.component(.second, from: date)
     let d = (calendar as NSCalendar).date(byAdding: NSCalendar.Unit.second, value: -second, to: date, options:.matchStrictly)!
     return d
 }
+
 enum weekdaysComparisonResult {
     case before
     case same
@@ -846,7 +739,8 @@ func showOpenSettingAlert(sender : UIViewController){
             return
         }
         if UIApplication.shared.canOpenURL(settingsUrl) {
-            UIApplication.shared.openURL(settingsUrl)
+            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+//            UIApplication.shared.openURL(settingsUrl)
         }
     })
     alrt.addAction(ok)
@@ -855,7 +749,6 @@ func showOpenSettingAlert(sender : UIViewController){
 }
 
 func changeDateFormatForReminder(date : String,fromFormat : String = "dd-MMMM-yyyy", toFormat : String = "yyyy-MM-dd")-> String{
-    
     dateFormatter.dateFormat = fromFormat
     let date1 = dateFormatter.date(from: date)
     dateFormatter.dateFormat = toFormat
@@ -864,10 +757,7 @@ func changeDateFormatForReminder(date : String,fromFormat : String = "dd-MMMM-yy
         return str
     }
     return "Nil"
-    
 }
-
-
 
 func weekDayarr(days : String)->[Int]{
     var weekDayArr = [Int]()
@@ -892,15 +782,9 @@ func weekDayarr(days : String)->[Int]{
         default:
             print("")
         }
-        
     }
     return weekDayArr
-    
-    
 }
-
-
-
 
 func isValidPhone(_ phoneNumber: String) -> Bool {
     let mobileNumberPattern = "[123456789][0-9]{9}"
@@ -909,13 +793,8 @@ func isValidPhone(_ phoneNumber: String) -> Bool {
 }
 
 func isValidName(Input:String) -> Bool {
-    
-    
     let predicateTest = NSPredicate(format: "SELF MATCHES %@", "^(([^ ]?)(^[a-zA-Z].*[a-zA-Z]$)([^ ]?))$")
     return predicateTest.evaluate(with: Input)
-    //    let RegEx = "\\A\\w{7,18}\\z"
-    //    let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
-    //    return Test.evaluate(with: Input)
 }
 
 func getUrlOfImage(completion: @escaping (_ localIdentifier: URL?) -> Void) {
@@ -941,23 +820,15 @@ func getUrlOfImage(completion: @escaping (_ localIdentifier: URL?) -> Void) {
     else{
         completion(nil)
     }
-    
 }
-
-
 
 func setOffTintSwictBtn(btn : UISwitch){
     btn.tintColor = lightTextColor
     btn.layer.cornerRadius = 16
     btn.backgroundColor = lightTextColor
-    
 }
+
 func trackingScreenForGoogleAnalytics(screenName : String){
-    
-    //    guard let tracker = GAI.sharedInstance().defaultTracker else { return }
-    //    tracker.set(kGAIScreenName, value: screenName)
-    //    guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
-    //    tracker.send(builder.build() as [NSObject : AnyObject])
 }
 
 func isConnection()->Bool{
@@ -969,15 +840,9 @@ func isConnection()->Bool{
     
 }
 
-
-
-
-
+//MARK: - DATE EXTENSION
 extension Date{
-    
-    
-    
-    func dayAgo()->String{
+      func dayAgo()->String{
         let weekday = getWeekDay(date: self)
         switch weekday {
         case 1:
@@ -1002,14 +867,12 @@ extension Date{
     var ticks: UInt64 {
         return UInt64((self.timeIntervalSince1970 + 62_135_596_800) * 10_000_000)
     }
-    
-    
+
     func dateInString()->String{
         let dateFromatter = DateFormatter.init()
         dateFromatter.dateFormat = "yyyy-MM-dd HH:mm"
         return dateFromatter.string(from: self)
     }
-    
     
     func dateInStringWithAmPm()->String{
         let dateFromatter = DateFormatter.init()
@@ -1022,11 +885,13 @@ extension Date{
         dateFromatter.dateFormat = "hh:mm a"
         return dateFromatter.string(from: self)
     }
+    
     func HHInTime()->String{
         let dateFromatter = DateFormatter.init()
         dateFromatter.dateFormat = "HH:mm"
         return dateFromatter.string(from: self)
     }
+    
     func dateInMedium()->String{
         let dateFromatter = DateFormatter.init()
         dateFromatter.dateStyle = .medium
@@ -1038,7 +903,6 @@ extension Date{
         dateFromatter.dateFormat = "hh:mm a"
         return dateFromatter.string(from: self)
     }
-    
 }
 
 func loadImage(_ url :String , _ imageView:UIImageView , activity:UIActivityIndicatorView? , defaultImage:UIImage?){
@@ -1049,17 +913,14 @@ func loadImage(_ url :String , _ imageView:UIImageView , activity:UIActivityIndi
         imageView.sd_setImage(with: URL(string: url), placeholderImage: defaultImage, options: SDWebImageOptions.refreshCached)
     }
     print("IMAGE URL--->>>>" , url)
-    
 }
 
 func loadProfilePic(_ url :String , _ imageView:UIImageView , activity:UIActivityIndicatorView? , name:String){
     print("IMAGE URL--->>>>" , url)
-    
     imageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "name"), options: SDWebImageOptions.refreshCached)
 }
 
 func downloadImage(_ url :String , _ imageView:UIImageView , activity:UIActivityIndicatorView? , defaultImage:UIImage?){
-    //print("IMAGE URL--->>>>" , url)
     activity?.startAnimating()
     let urlStr = URL.init(string: url)
     let manager = SDWebImageDownloader.shared
@@ -1074,18 +935,6 @@ func downloadImage(_ url :String , _ imageView:UIImageView , activity:UIActivity
     }
 }
 
-//func isConnection()->Bool{
-//
-//   do let reachability = Reachability.init()
-//    let status = reachability.connection
-//    if status == .none{
-//        return false
-//    }
-//    return true
-//}
-
-
-
 func JSONtoString(_ data:[String:Any])->String?{
     do {
         let data = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
@@ -1097,7 +946,6 @@ func JSONtoString(_ data:[String:Any])->String?{
     return nil
 }
 
-
 func StringtoJSON(_ strin :String) {
     let data = strin.data(using: .utf8)
     do {
@@ -1108,18 +956,13 @@ func StringtoJSON(_ strin :String) {
     }
 }
 
-//func convertToJSON(_ strin :String) ->JSON{
-//    let data = strin.data(using: .utf8)
-//    let json = JSON.init(data: data!)
-//    return json
-//}
-
 func isValidEmail(testStr:String) -> Bool {
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
     return emailTest.evaluate(with: testStr)
 }
 
+//MARK: - VIEW CONTROLLER EXTENSION
 extension UIViewController {
     func showInternetAlert(){
         let alert = UIAlertController.init(title: "Error", message: "It seems there is no Internet connection.", preferredStyle: .alert)
@@ -1168,6 +1011,7 @@ func currentUserDevice()->DeviceType {
         return .iPhone7
     }
 }
+
 func yyMMMddDate(date: String)->String?{
     let dateFormatterGet = DateFormatter()
     dateFormatterGet.dateFormat = "yyyy-MM-dd"
@@ -1179,27 +1023,17 @@ func yyMMMddDate(date: String)->String?{
     print(dateFormatterPrint.string(from: date))
     return dateFormatterPrint.string(from: date)
 }
+
 func timeDifference(time1: String, time2: String)-> String {
-    
     let formatter = DateFormatter()
     formatter.dateFormat = "h:mma"
-    
     let date1 = formatter.date(from: time1)!
     let date2 = formatter.date(from: time2)!
-    
     let elapsedTime = date2.timeIntervalSince(date1)
-    
-    // convert from seconds to hours, rounding down to the nearest hour
     let hours = floor(elapsedTime / 60 / 60)
-    
-    // we have to subtract the number of seconds in hours from minutes to get
-    // the remaining minutes, rounding down to the nearest minute (in case you
-    // want to get seconds down the road)
     let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
-    
     debugPrint("\(Int(hours)) hr and \(Int(minutes)) min")
     return "\(Int(hours))"
-    
 }
 
 func currentTime()-> String {
@@ -1208,41 +1042,37 @@ func currentTime()-> String {
     dateFormatter.timeStyle = .short
     debugPrint(dateFormatter.string(from: currentDate))
     return dateFormatter.string(from: currentDate)
-    
 }
 
+//MARK: - STRING EXTENSION
 extension String {
-    
     func date()->Date?{
         let dateFormatter = DateFormatter.init()
         dateFormatter.dateFormat = shortTimeFormat
-        //print(dateFormatter.date(from: self))
         return dateFormatter.date(from: self)
     }
-    
+
     func HHtime()->Date?{
         let dateFormatter = DateFormatter.init()
         dateFormatter.dateFormat = "hh:mm"
-        //print(dateFormatter.date(from: self))
         return dateFormatter.date(from: self)
     }
+    
     func yyMMddDate()->Date?{
         let dateFormatter = DateFormatter.init()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        //print(dateFormatter.date(from: self))
         return dateFormatter.date(from: self)
     }
     
     func yyMMddThhmmssDate()->Date?{
         let dateFormatter = DateFormatter.init()
         dateFormatter.dateFormat = "yyyy-MM-ddThh:mm:ss"
-        //print(dateFormatter.date(from: self))
         return dateFormatter.date(from: self)
     }
+    
     func yyMMdd_HH_mm_a_Date()->Date?{
         let dateFormatter = DateFormatter.init()
         dateFormatter.dateFormat = TimeFormat
-        //print(dateFormatter.date(from: self))
         return dateFormatter.date(from: self)
     }
     
@@ -1255,7 +1085,6 @@ extension String {
     func fullDate()->Date?{
         let dateFormatter = DateFormatter.init()
         dateFormatter.dateFormat = WholeDayFormat
-        //print(dateFormatter.date(from: self))
         return dateFormatter.date(from: self)
     }
     
@@ -1278,7 +1107,6 @@ extension String {
     }
 }
 
-
 func randomString(length: Int) -> String {
     let letters : NSString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     let len = UInt32(letters.length)
@@ -1291,29 +1119,20 @@ func randomString(length: Int) -> String {
     return randomString
 }
 
-
-
-
 func AttriButedText(str1 : String,color1:UIColor ,str2 : String,color2:UIColor) -> NSAttributedString{
-    
     let attrStr1 = NSMutableAttributedString.init(string: str1)
     attrStr1.addAttribute(NSAttributedString.Key.foregroundColor, value: color1, range: NSMakeRange(0, attrStr1.length))
     attrStr1.addAttribute(NSAttributedString.Key.font, value: getPoppinsFont(style: .Regular, size: 11)!, range: NSMakeRange(0, attrStr1.length))
-    
     let attrStr2 = NSMutableAttributedString.init(string: str2)
-    
     attrStr2.addAttribute(NSAttributedString.Key.font, value: getPoppinsFont(style: .SemiBold, size: 11)!, range: NSMakeRange(0, attrStr2.length))
     attrStr1.append(attrStr2)
-    
     return attrStr1
 }
 
 func AttriButedTextFirstBold(_ str1 : String, _ color1:UIColor, _ font1:UIFont , _ str2 : String, _ color2:UIColor , _ font2:UIFont) -> NSAttributedString{
-    
     let attrStr1 = NSMutableAttributedString.init(string: str1)
     attrStr1.addAttribute(NSAttributedString.Key.foregroundColor, value: color1, range: NSMakeRange(0, attrStr1.length))
     attrStr1.addAttribute(NSAttributedString.Key.font, value: font1, range: NSMakeRange(0, attrStr1.length))
-    
     let attrStr2 = NSMutableAttributedString.init(string: str2)
     
     attrStr2.addAttribute(NSAttributedString.Key.font, value: font2, range: NSMakeRange(0, attrStr2.length))
@@ -1331,10 +1150,8 @@ func AttriButedTextWithLastIsBold(str1 : String,color1:UIColor ,str2 : String,co
     attrStr2.addAttribute(NSAttributedString.Key.foregroundColor, value: color2, range: NSMakeRange(0, attrStr2.length))
     attrStr2.addAttribute(NSAttributedString.Key.font, value: getFont(Fonts.regular.rawValue, 12)!, range: NSMakeRange(0, attrStr2.length))
     attrStr1.append(attrStr2)
-    
     return attrStr1
 }
-
 
 func addRoundedLayer(radius:CGFloat , view :UIView) {
     view.clipsToBounds = false
@@ -1344,6 +1161,7 @@ func addRoundedLayer(radius:CGFloat , view :UIView) {
     view.layer.shadowRadius = 2
     view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
 }
+
 func setRightBottomShadow(view : UIView,color:UIColor,opacity : Float){
     view.layer.shadowColor = color.cgColor
     view.layer.shadowOffset = CGSize.init(width: 0, height: 3)
@@ -1393,7 +1211,6 @@ extension UIView{
     }
 }
 
-
 func addRoundedLightLayer(radius:CGFloat , view :UIView) {
     view.clipsToBounds = false
     view.layer.shadowColor = UIColor.lightGray.cgColor
@@ -1435,7 +1252,6 @@ extension UITextField {
     }
 }
 
-
 func getFont(_ name:String, _ size:CGFloat)->UIFont? {
     return UIFont.init(name: name, size: size*widthFactor)
 }
@@ -1446,6 +1262,7 @@ func addBottomShadow(view:UIView) {
     view.layer.shadowColor = UIColor.lightGray.cgColor
     view.layer.shadowOpacity = 0.5
 }
+
 func getStringToDate(date : String , formater : String) -> Date {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = formater
@@ -1453,6 +1270,7 @@ func getStringToDate(date : String , formater : String) -> Date {
     let dateAsString = dateFormatter.date(from: date)
     return dateAsString ?? Date()
 }
+
 func getCurrentLocalDate()-> Date {
     var now = Date()
     var nowComponents = DateComponents()
@@ -1467,6 +1285,7 @@ func getCurrentLocalDate()-> Date {
     now = calendar.date(from: nowComponents)!
     return now as Date
 }
+
 func getMinutesDifferenceFromTwoDates(start: Date, end: Date) -> (hour: Int?, minute: Int?, second: Int?,day: Int?)
 {
     let day = Calendar.current.dateComponents([.day], from: start, to: end).day
@@ -1477,6 +1296,7 @@ func getMinutesDifferenceFromTwoDates(start: Date, end: Date) -> (hour: Int?, mi
     return (hour: hour, minute: minute, second: second,day: day)
     
 }
+
 func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int , Int) {
     return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
 }
@@ -1500,14 +1320,15 @@ func isValidRefreshToken()->Bool{
     }
     return true
 }
+
 extension UIImage {
     convenience init?(snapshotOf view: UIView) {
         guard let image = view.makeSnapshot(), let cgImage = image.cgImage else { return nil }
         self.init(cgImage: cgImage, scale: image.scale, orientation: image.imageOrientation)
     }
 }
+
 extension UIView {
-    
     func makeSnapshot() -> UIImage? {
         if #available(iOS 10.0, *) {
             let renderer = UIGraphicsImageRenderer(size: frame.size)
@@ -1517,8 +1338,8 @@ extension UIView {
         }
     }
 }
+
 extension UIApplication {
-    
     func getKeyWindow() -> UIWindow? {
         if #available(iOS 13, *) {
             return windows.first { $0.isKeyWindow }
@@ -1526,10 +1347,8 @@ extension UIApplication {
             return keyWindow
         }
     }
-    
     func makeSnapshot() -> UIImage? { return getKeyWindow()?.layer.makeSnapshot() }
 }
-
 
 extension CALayer {
     func makeSnapshot() -> UIImage? {
@@ -1542,63 +1361,6 @@ extension CALayer {
         return screenshot
     }
 }
-//let refreshQueue = DispatchQueue(label: "com.refresh", qos: .userInitiated)
-//func refreshTokenCall(completionHandler: @escaping (Error?,Int?,Bool)->Void){
-//
-//    print("********************** refreshTokenCall ************************")
-//    let obj = SaveToDefaults()
-//    SVProgressHUD.show()
-//    if let header = header(), let url = refTokenUrl(){
-//
-//        api_manager.POSTApi(url, param: nil, header: header, completion: { (result, error, statuscode) in
-//            DispatchQueue.main.async {
-//                SVProgressHUD.dismiss()
-//                print(result)
-//                if let statuscode = statuscode, statuscode == 200{
-//                    let details = TokenModel(json: result!)
-//                    obj.setAccessToken(value: details.access_token)
-//                    obj.setRefreshToken(value: details.refresh_token)
-//                    obj.setExpiresIn(value: details.expires_in)
-//                    obj.setTokenTimeStamp(getTimeStamp())
-//                    print("******** updated access token value \(String(describing: obj.getAccessToken())) **************")
-//                    completionHandler(error, statuscode, true)
-//
-//                } else {
-//                    completionHandler(error, statuscode, false)
-//                }
-//            }
-//        })
-//
-//    }
-//
-//    else{
-//        SVProgressHUD.dismiss()
-//       // MyLoader.hideLoadingView()
-//        completionHandler(nil , nil, false)
-//    }
-//
-//}
-//
-//func  loginStatus(_ completionHandler : ((Error?,Int?,Bool)->Void)?){
-//    if  SaveToDefaults().getAccessToken() != nil{
-//
-//        if isValidRefreshToken() == false{
-//            refreshTokenCall(completionHandler: { (error, statuscode,value) in
-//                DispatchQueue.main.async {
-//                    completionHandler?(error, statuscode,value)
-//                }
-//            })
-//        }
-//        else{
-//            DispatchQueue.main.async {
-//                completionHandler?(nil, nil,true)
-//            }
-//        }
-//    }
-//    else{
-//        completionHandler?(nil, nil, true)
-//    }
-//}
 
 /*::---------::*/
 func header()->[String:String]?{
@@ -1614,7 +1376,6 @@ func header()->[String:String]?{
     return nil
 }
 
-
 extension UIViewController {
     
     func showOpenSettingAlert(title:String , message :String , completion:@escaping ()->Void){
@@ -1627,7 +1388,7 @@ extension UIViewController {
                 return
             }
             if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.openURL(settingsUrl)
+                UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
         })
         
@@ -1650,7 +1411,7 @@ extension UIViewController {
                 return
             }
             if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.openURL(settingsUrl)
+                UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
         })
         
@@ -1730,9 +1491,8 @@ func setVSViewShadow(radius : CGFloat , color : UIColor , view : UIView , opacit
     view.layer.shadowOffset = CGSize.init(width: 0.0, height: 3.0)
     view.layer.shadowRadius = radius
     view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
-    // view.layer.shouldRasterize = true
-    
 }
+
 func boldShadow(view: UIView, opacity: Float) {
     view.layer.shadowRadius = 0
     view.layer.shadowOffset = .zero
@@ -1744,8 +1504,8 @@ func boldShadow(view: UIView, opacity: Float) {
     shadowPath.addLine(to: CGPoint(x: view.frame.width + shadowOffsetX, y: 50))
     shadowPath.addLine(to: CGPoint(x: shadowOffsetX, y: 50))
     view.layer.shadowPath = shadowPath.cgPath
-    
 }
+
 func setRightShadowWithOffset(view : UIView,color:UIColor,opacity : Float, width: CGFloat, height: CGFloat, offsetX: CGFloat, offsetY: CGFloat){
     view.layer.shadowColor = color.cgColor
     view.layer.shadowOffset = CGSize.init(width: width, height: height)
@@ -1762,8 +1522,8 @@ func setRightShadow(view : UIView,color:UIColor,opacity : Float, width: CGFloat,
     view.layer.shadowRadius = 6
     view.layer.masksToBounds = false
 }
+
 func setCardViewShadow(radius : CGFloat , color : UIColor , view : UIView , opacity : Float){
-    
     view.clipsToBounds = false
     view.layer.shadowColor = color.cgColor
     view.layer.shadowOpacity = opacity
@@ -1771,18 +1531,14 @@ func setCardViewShadow(radius : CGFloat , color : UIColor , view : UIView , opac
     view.layer.shadowRadius = radius
     view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
     view.layer.shouldRasterize = true
-    
-    
 }
+
 func setShadowView(_ vwMaster:UIView,color : UIColor){
     let ambientShadow = CAShapeLayer()
     let ambientShadowrMaskPath = UIBezierPath(roundedRect: vwMaster.bounds,
                                               byRoundingCorners: [.allCorners],
                                               cornerRadii: CGSize(width: 0, height: 0))
-    
-    
     ambientShadow.name = "ambientShadow"
-    
     ambientShadow.frame = vwMaster.bounds
     ambientShadow.fillColor = UIColor.white.cgColor
     ambientShadow.path = ambientShadowrMaskPath.cgPath
@@ -1793,6 +1549,8 @@ func setShadowView(_ vwMaster:UIView,color : UIColor){
     ambientShadow.needsDisplayOnBoundsChange = true
     vwMaster.layer.insertSublayer(ambientShadow, at: 0)
 }
+
+
 func loginSignUpForgotShadow(cardView : UIView){
     cardView.clipsToBounds = false
     cardView.layer.shadowColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
@@ -1800,8 +1558,9 @@ func loginSignUpForgotShadow(cardView : UIView){
     cardView.layer.shadowOffset = CGSize.init(width: 0.0, height: 10.0)
     cardView.layer.shadowRadius = 10
     cardView.layer.shadowPath = UIBezierPath(roundedRect: cardView.bounds, cornerRadius: 10).cgPath
-    
 }
+
+
 func AttriButedLeaderBoard(str1 : String , str2 : String , str3:String,str4 : String , str5 : String , str6:String,str7 : String , str8 : String , str9:String , str10:String) -> NSAttributedString{
     let color1 = UIColor.black
     let color2 = themeColor
@@ -1819,7 +1578,6 @@ func AttriButedLeaderBoard(str1 : String , str2 : String , str3:String,str4 : St
     attrStr3.addAttribute(NSAttributedString.Key.foregroundColor, value: color1, range: NSMakeRange(0, attrStr3.length))
     attrStr3.addAttribute(NSAttributedString.Key.font, value: getFont(Fonts.regular.rawValue, 12)!, range: NSMakeRange(0, attrStr3.length))
     attrStr1.append(attrStr3)
-    
     
     let attrStr4 = NSMutableAttributedString.init(string: str4)
     attrStr4.addAttribute(NSAttributedString.Key.foregroundColor, value: color2, range: NSMakeRange(0, attrStr4.length))
@@ -1853,24 +1611,25 @@ func AttriButedLeaderBoard(str1 : String , str2 : String , str3:String,str4 : St
     attrStr9.addAttribute(NSAttributedString.Key.font, value: getFont(Fonts.regular.rawValue, 12)!, range: NSMakeRange(0, attrStr9.length))
     attrStr1.append(attrStr9)
     
-    
     let attrStr10 = NSMutableAttributedString.init(string: str10)
     attrStr10.addAttribute(NSAttributedString.Key.foregroundColor, value: color2, range: NSMakeRange(0, attrStr10.length))
     attrStr10.addAttribute(NSAttributedString.Key.font, value: getFont(Fonts.bold.rawValue, 12)!, range: NSMakeRange(0, attrStr10.length))
     attrStr1.append(attrStr10)
-    
     return attrStr1
 }
-
 
 func directions(lat:Double? ,long:Double?) {
     if lat != nil && long != nil{
         if UIApplication.shared.canOpenURL(URL.init(string: "comgooglemaps://")!){
-            UIApplication.shared.openURL(NSURL(string:
-                "comgooglemaps://?saddr=&daddr=\(String(describing: lat!)),\(String(describing: long!))&directionsmode=driving")! as URL)
+            UIApplication.shared.open(NSURL(string:
+                                                "comgooglemaps://?saddr=&daddr=\(String(describing: lat!)),\(String(describing: long!))&directionsmode=driving")! as URL, options: [:], completionHandler: nil)
+//            UIApplication.shared.openURL(NSURL(string:
+//                "comgooglemaps://?saddr=&daddr=\(String(describing: lat!)),\(String(describing: long!))&directionsmode=driving")! as URL)
         }else{
-            UIApplication.shared.openURL(NSURL(string:
-                "https://www.google.co.in/maps/dir/?saddr=&daddr=\(String(describing: lat!)),\(String(describing: long!))")! as URL)
+            UIApplication.shared.open(NSURL(string:
+                                                "https://www.google.co.in/maps/dir/?saddr=&daddr=\(String(describing: lat!)),\(String(describing: long!))")! as URL, options: [:], completionHandler: nil)
+//            UIApplication.shared.openURL(NSURL(string:
+//                "https://www.google.co.in/maps/dir/?saddr=&daddr=\(String(describing: lat!)),\(String(describing: long!))")! as URL)
         }
     }
 }
@@ -1911,6 +1670,7 @@ extension UIView {
     }
 }
 
+
 extension String {
     func underline() ->NSAttributedString{
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
@@ -1939,6 +1699,7 @@ func labelLines(width:CGFloat , font:UIFont , text:String)->CGFloat{
     label.sizeToFit()
     return label.frame.height
 }
+
 extension UIView {
     
     func showGradientColors(_ colors: [UIColor]) {
@@ -1949,10 +1710,7 @@ extension UIView {
         gradientLayer.bounds = self.bounds
         gradientLayer.anchorPoint = CGPoint.zero
         self.layer.addSublayer(gradientLayer)
-        
-        
     }
-    
 }
 func years(from date: Date) -> Int {
     return Calendar.current.dateComponents([.year], from: date, to: Date()).year ?? 0
@@ -1990,9 +1748,6 @@ func setRightCornerCircle(height : CGFloat,view : UIView,width : CGFloat){
     view.layer.mask = maskLayer
 }
 
-
-
-
 extension CGPoint {
     static func subtractPoint(pointA: CGPoint?, withPoint pointB: CGPoint?) -> CGPoint {
         if let pointA = pointA, let pointB = pointB {
@@ -2008,6 +1763,7 @@ extension CGPoint {
         return CGPoint.zero
     }
 }
+
 func AttriButedcolor(str1 : String , str2 : String) -> NSAttributedString{
     let color1 = UIColor.white
     let color2 =  UIColor.white
@@ -2020,6 +1776,8 @@ func AttriButedcolor(str1 : String , str2 : String) -> NSAttributedString{
     attrStr1.append(attrStr2)
     return attrStr1
 }
+
+
 extension UITapGestureRecognizer {
     
     func didTapAttributedTextInLabel(label: UILabel, inRange targetRange: NSRange) -> Bool {
@@ -2104,7 +1862,6 @@ func decodeObject<Y: Decodable>(data: Data, completion: @escaping (Y) -> ()) {
 }
 
 extension UIView {
-    
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
@@ -2171,7 +1928,7 @@ extension UIView {
     }
 }
 
-//MARK:-EXtension For UIColours
+//MARK: - UICOLOR EXTENSION
 extension UIColor
 {
     func coloWithHexString(hex:String)->UIColor
@@ -2206,48 +1963,40 @@ class CustomUITextField: UITextField {
 extension Date {
     
     func timeAgoSinceDate() -> String {
-        
         // From Time
         let fromDate = self
         
         // To Time
         let toDate = Date()
-        
         // Estimation
         // Year
         if let interval = Calendar.current.dateComponents([.year], from: fromDate, to: toDate).year, interval > 0  {
-            
             return interval == 1 ? "\(interval)" + " " + "years ago" : "\(interval)" + " " + "years ago"
         }
-        
         // Month
         if let interval = Calendar.current.dateComponents([.month], from: fromDate, to: toDate).month, interval > 0  {
-            
             return interval == 1 ? "\(interval)" + " " + "months ago" : "\(interval)" + " " + "months ago"
         }
         
         // Day
         if let interval = Calendar.current.dateComponents([.day], from: fromDate, to: toDate).day, interval > 0  {
-            
             return interval == 1 ? "\(interval)" + " " + "days ago" : "\(interval)" + " " + "days ago"
         }
         
         // Hours
         if let interval = Calendar.current.dateComponents([.hour], from: fromDate, to: toDate).hour, interval > 0 {
-            
             return interval == 1 ? "\(interval)" + " " + "hours ago" : "\(interval)" + " " + "hours ago"
         }
         
         // Minute
         if let interval = Calendar.current.dateComponents([.minute], from: fromDate, to: toDate).minute, interval > 0 {
-            
             return interval == 1 ? "\(interval)" + " " + "minutes ago" : "\(interval)" + " " + "minutes ago"
         }
-        
         return "a moment ago"
     }
 }
 
+//MARK: - IMAGE EXTENSION
 extension UIImage {
     func toBase64() -> String? {
         guard let imageData = self.pngData() else { return nil }

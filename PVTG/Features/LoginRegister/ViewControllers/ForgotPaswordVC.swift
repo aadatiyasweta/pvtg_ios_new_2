@@ -9,22 +9,22 @@
 import UIKit
 
 class ForgotPaswordVC: BaseViewController {
-    //    MARK:- IBOutlets
+    
+   //MARK: - Outlets
     @IBOutlet weak var txfEmail: UITextField!{
         didSet {
             txfEmail.delegate = self
         }
     }
-    
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var lblemailError: UILabel!
     
-    
-    //    MARK:- Variable
+    //MARK: - Properties
     let id = 2
     var paswdVM = LoginVM()
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.paswdVM.delegate = self
@@ -38,19 +38,16 @@ class ForgotPaswordVC: BaseViewController {
         txfEmail.layer.borderColor = UIColor().coloWithHexString(hex: "#05d9bd").cgColor
     }
     
-    
-    
+    //MARK: - BUTTON ACTION
     @IBAction func nextBtnTap(_ sender: UIButton) {
         self.txfEmail.resignFirstResponder()
         if validdetails(email: self.txfEmail.text ?? "") {
             self.paswdVM.forgotApi(email: self.txfEmail.text ?? "", is_resend: "0")
-//        let otp = OTPVC.instance()
-//        self.navigationController?.pushViewController(otp, animated: true)
         }
     }
-    
 }
 
+//MARK: - TEXT FIELD DELEGATES
 extension ForgotPaswordVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.lblemailError.isHidden = true
@@ -58,6 +55,7 @@ extension ForgotPaswordVC: UITextFieldDelegate {
     }
 }
 
+//MARK: - VIEW CONTROLLER EXTENSION
 extension ForgotPaswordVC {
         private func validdetails(email : String)->Bool{
             if email == "" {
@@ -71,36 +69,29 @@ extension ForgotPaswordVC {
             }
             return true
         }
-        
-
 }
 
+//MARK: - CUSTOM DELEGATE
 extension ForgotPaswordVC: AfterLoginSuccess {
     func otpCheckSuccess() {
-        debugPrint("otpCheckSuccess")
     }
     
     func changePaswdSucces() {
-        debugPrint("otpCheckSuccess")
     }
     
     func forgotSuccess() {
         let vc = OTPVC.instance()
         vc.email = txfEmail.text ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
-
     }
     
     func createNewuser() {
-        debugPrint("Create new User")
     }
+    
     func loginSuccess() {
-        debugPrint("Succes")
     }
     
     func failure(msg: String) {
         showAlert(strTitle: msg)
     }
-    
-    
 }

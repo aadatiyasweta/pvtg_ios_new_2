@@ -13,11 +13,11 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct Viewport : Codable {
+    
 	let northeast : Northeast?
 	let southwest : Southwest?
 
 	enum CodingKeys: String, CodingKey {
-
 		case northeast = "northeast"
 		case southwest = "southwest"
 	}
@@ -27,5 +27,4 @@ struct Viewport : Codable {
 		northeast = try values.decodeIfPresent(Northeast.self, forKey: .northeast)
 		southwest = try values.decodeIfPresent(Southwest.self, forKey: .southwest)
 	}
-
 }

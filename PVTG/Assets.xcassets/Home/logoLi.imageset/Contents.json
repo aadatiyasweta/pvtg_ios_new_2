@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "logoLi.png",
+      "filename" : "logoLi-min.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "logoLi@2x.png",
+      "filename" : "logoLi@2x-min.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "logoLi@3x.png",
+      "filename" : "logoLi@3x-min.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -10,18 +10,20 @@ import UIKit
 
 class InterCell: FSPagerViewCell {
     
+    //MARK: - Outlets
     @IBOutlet weak var lbl: UILabel!
     @IBOutlet weak var img: UIImageView!
-
-    //MARK:- Cell reuseIdentifier
-      static let ident = "InterCell"
-      class func nib()-> UINib {
-          return UINib.init(nibName: InterCell.ident, bundle: nil)
-      }
-
+    
+    //MARK: - CELL REUSEIDENTIFIER
+    static let ident = "InterCell"
+    class func nib()-> UINib {
+        return UINib.init(nibName: InterCell.ident, bundle: nil)
+    }
+    
+    //MARK: - LIFECYCLE
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

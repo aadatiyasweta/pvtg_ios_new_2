@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol GetSearchSessionData: class {
+protocol GetSearchSessionData: AnyObject {
     func reloadData()
     func colecnreloadData()
 }
@@ -17,31 +17,31 @@ class SearchSessionViewModel: BaseVm {
     weak var delegate: GetSearchSessionData?
     var categorymodel: CategoryBase?
     
+    //MARK: - GET ALL CATEGORY API
     func getAllCategoryApi(user_id: String) {
-             let prams : [String : Any] = ["user_id": user_id,"language" : SaveToDefaults().getAppLang() ?? "en"]
-             self.show()
-             api_manager.GETApi(sessionallCategoryUrl(), param: prams, header: header()) { (response, err, code) in
-                 self.dismiss()
-                 if let json = response{
-                     debugPrint(json)
-                     if json["statusCode"] == 200 {
-                         let data = try? json.rawData()
-                         let jsonDecoder = JSONDecoder()
-                         let model = try? jsonDecoder.decode(CategoryBase.self, from: data ?? Data())
-                         self.categorymodel = model
-                       self.delegate?.colecnreloadData()
-                         
-                     }
-                     else {
-                         showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
-                     }
-                 }else{
-                     showAlert(strTitle: somethingWentWrongMessage)
-                 }
-             }
-         }
-
+        let prams : [String : Any] = ["user_id": user_id,"language" : SaveToDefaults().getAppLang() ?? "en"]
+        self.show()
+        api_manager.GETApi(sessionallCategoryUrl(), param: prams, header: header()) { (response, err, code) in
+            self.dismiss()
+            if let json = response{
+                debugPrint(json)
+                if json["statusCode"] == 200 {
+                    let data = try? json.rawData()
+                    let jsonDecoder = JSONDecoder()
+                    let model = try? jsonDecoder.decode(CategoryBase.self, from: data ?? Data())
+                    self.categorymodel = model
+                    self.delegate?.colecnreloadData()
+                }
+                else {
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                }
+            }else{
+                showAlert(strTitle: somethingWentWrongMessage)
+            }
+        }
+    }
     
+    //MARK: - SEARCH SESSION API
     func searchSessionApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, isLoader: Bool,minPrice : Int? = 0 , maxprice : Int? = 0,currency : String) {
         var prams = [String : Any]()
         if minPrice == 0 && maxprice == 0{
@@ -50,7 +50,7 @@ class SearchSessionViewModel: BaseVm {
             prams = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search,"language" : SaveToDefaults().getAppLang() ?? "en", "min_price" : minPrice ?? 0 , "max_price" : maxprice ?? 0,"selected_currency" : currency]
         }
         if isLoader {
-        self.show()
+            self.show()
         } else {
             self.dismiss()
         }
@@ -74,6 +74,5 @@ class SearchSessionViewModel: BaseVm {
             }
         }
     }
-    
     
 }

@@ -9,32 +9,36 @@
 import UIKit
 
 class ChangePasswordVC: BaseViewController {
-    //MARK:- IBOutlets
+    
+    //MARK: - Outlets
     @IBOutlet weak var txfOldpasswd: UITextField!{
         didSet {
             txfOldpasswd.delegate = self
         }
     }
+    
     @IBOutlet weak var txfNewPaswd: UITextField!{
             didSet {
                 txfNewPaswd.delegate = self
             }
         }
+    
     @IBOutlet weak var txfConfirmPaswd: UITextField!{
         didSet {
                       txfConfirmPaswd.delegate = self
                   }
     }
+    
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var lblConfrmErr: UILabel!
     @IBOutlet weak var lblNewErr: UILabel!
     @IBOutlet weak var lblOldErr: UILabel!
     @IBOutlet weak var btnBack: UIButton!
     
-    //    MARK:- Variables
+    //MARK: - Properties
     var changPaswrdVM = ChangePasswordVM()
    
-    //MARK:- ViewLifeCycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         changPaswrdVM.delegateChangePassword = self
@@ -49,8 +53,7 @@ class ChangePasswordVC: BaseViewController {
            uiSetupofTextfields()
        }
    
-    //MARK:- IBActions
-    
+    //MARK: - BUTTON ACTION
     @IBAction func submitTap(_ sender: UIButton) {
         self.txfOldpasswd.resignFirstResponder()
         self.txfNewPaswd.resignFirstResponder()
@@ -61,6 +64,7 @@ class ChangePasswordVC: BaseViewController {
     }
 }
 
+//MARK: - TEXT FIELD DELEGATES
 extension ChangePasswordVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.lblOldErr.isHidden = true
@@ -72,6 +76,8 @@ extension ChangePasswordVC: UITextFieldDelegate {
 
     }
 }
+
+//MARK: - VIEW CONTROLLER EXTENSION
 extension ChangePasswordVC {
     private func validPassword(confrmPaswd : String , paswdNew : String, paswdOld:String)->Bool{
         if paswdOld == "" {
@@ -122,7 +128,8 @@ extension ChangePasswordVC {
     }
     
 }
-//so first of call before we start let me introduce first baghpat
+
+//MARK: -  CUSTOM DELEGATE
 extension ChangePasswordVC: ChangePassword {
     func getReponse() {
         self.showAlertWithConfirmation1(R.string.localizable.passwrdChangedSuccess(), withTitle: appName, itsController: self) { (succss) in

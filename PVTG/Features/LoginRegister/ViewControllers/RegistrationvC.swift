@@ -9,46 +9,52 @@
 import UIKit
 
 class RegistrationvC: BaseViewController {
-    //MARK:- IBOutlets
+
+    //MARK: - Outlets
     @IBOutlet weak var txffullName: UITextField!{
         didSet {
             txffullName.delegate = self
         }
     }
+    
     @IBOutlet weak var txfEmail: UITextField!{
         didSet {
             txfEmail.delegate = self
         }
     }
+    
     @IBOutlet weak var txfMobileNo: UITextField! {
         didSet {
             txfMobileNo.delegate = self
         }
     }
+    
     @IBOutlet weak var txfPassword: UITextField!{
         didSet {
             txfPassword.delegate = self
         }
     }
+    
     @IBOutlet weak var txfconfirmpaswd: UITextField!{
         didSet {
             txfconfirmpaswd.delegate = self
         }
     }
-    @IBOutlet weak var btnSubmit: UIButton!
     
+    @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var lblEmailErr: UILabel!
     @IBOutlet weak var lblPaswdErr: UILabel!
     @IBOutlet weak var lblConfrmPaswdErr: UILabel!
     @IBOutlet weak var lblmobileErr: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
-    //MARK:- Variables
+    //MARK: - Properties
     var regVM = RegistrationVM()
     var loginVM = LoginVM()
     var imageData = Data()
     var socialData = [String: String]()
    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextfield()
@@ -63,9 +69,7 @@ class RegistrationvC: BaseViewController {
         
     }
     
-    //MARK:- IBActions
-    
-    
+    //MARK: - BUTTON ACTION
     @IBAction func profilePicBtnTap(_ sender: UIButton) {
         self.showSheet()
     }
@@ -83,27 +87,26 @@ class RegistrationvC: BaseViewController {
                 }else{
                     self.regVM.checkinEmailPhoneApi(email: self.txfEmail.text ?? "", country_code: "+91", phone: self.txfMobileNo.text ?? "", password: self.txfPassword.text ?? "", name: self.txffullName.text ?? "", acc_type: self.socialData["Social_type"] ?? "normal", social_id: self.socialData["id"] ?? "", pictureData: imageData)
                 }
-              
             }
-            
         }
 
     @IBAction func tapLoginNow(_ sender: UIButton) {
         let vc = LoginVC.instance()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
+//MARK: - AFTER REGISTRATION DELEGATE
 extension RegistrationvC: AfterRegistration{
   
     func successRegisteration() {
-      
         let vc = TransformerExampleViewController.instance()
         vc.fromSignUp = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+//MARK: - TEXT FIELD DELEGATES
 
 extension RegistrationvC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -127,6 +130,7 @@ extension RegistrationvC: UITextFieldDelegate {
             debugPrint("Nothing")
         }
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let maxLength = 30
         var newString = NSString()
@@ -135,21 +139,18 @@ extension RegistrationvC: UITextFieldDelegate {
             let filtered = string.components(separatedBy: cs).joined(separator: "")
             let currentString: NSString = (textField.text ?? "") as NSString
             newString = currentString.replacingCharacters(in: range, with: string) as NSString
-
             return (string == filtered) && newString.length <= maxLength
-
         }
         
         if textField == self.txfMobileNo {
             let length = (textField.text?.count ?? 0) + (string.count - range.length) <= 10
             return length
-            
         }
-        
         return newString.length <= maxLength
     }
 }
 
+//MARK: - VIEW CONTROLLER EXTENSION
 extension RegistrationvC {
     private func validRegistrationetails()->Bool{
         if txfMobileNo.text != "" {
@@ -239,16 +240,13 @@ extension RegistrationvC {
             self.txfEmail.isUserInteractionEnabled = false
         }
     }
-    
-    
-    
 }
+
+
 extension RegistrationvC {
     func showSheet() {
         let alertSheet = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
-        
         alertSheet.view.tintColor = .black
-        
         let photoAction = UIAlertAction.init(title: R.string.localizable.pickfromCameraRoll(), style: .default) { (camera) in
             havePhotoAccess(completionHandler: { (isAuthorized) in
                 if isAuthorized {
@@ -280,6 +278,7 @@ extension RegistrationvC {
         alertSheet.addAction(cancelAction)
         self.present(alertSheet, animated: true, completion: nil)
     }
+    
     func openImagePicker(sourceType:UIImagePickerController.SourceType){
         
         DispatchQueue.main.async {
@@ -299,11 +298,8 @@ extension RegistrationvC {
                 if let image = info[.originalImage] as? UIImage{
                     self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
                     DispatchQueue.main.async {
-                        
                         self.userImage.image = image
                         self.userImage.contentMode = .scaleAspectFill
-                        
-                        
                     }
                     
                 }
@@ -312,10 +308,7 @@ extension RegistrationvC {
         }
     }
 
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
-  
 }

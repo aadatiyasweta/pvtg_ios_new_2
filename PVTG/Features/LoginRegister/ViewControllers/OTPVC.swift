@@ -9,11 +9,9 @@
 import UIKit
 import SVPinView
 
-
-
 class OTPVC: BaseViewController {
     
-    //MARK:-  IBOutlets
+    //MARK: - Outlets
     @IBOutlet weak var otpMobileLbL: UILabel!
     @IBOutlet weak var resndBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
@@ -22,16 +20,16 @@ class OTPVC: BaseViewController {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var btnBack: UIButton!
     
-    //    MARK:- Variables
+    //MARK: - Properties
     var email = ""
     var otp = ""
     var otpTimer : Timer?
     var counter = 60
     var vm = LoginVM()
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // initialtimer()
         setupPinView()
         self.vm.delegate = self
         self.otpMobileLbL.text = R.string.localizable.entertheverificationcode(self.email)
@@ -45,29 +43,26 @@ class OTPVC: BaseViewController {
         self.view.layoutIfNeeded()
         setVSViewShadow(radius: 10, color: .black, view: self.btnBack, opacity: 0.12)
     }
-    //MARK:- Timer
+  
+    //MARK:  - INITIAL TIMER
     func initialtimer(){
         self.resndBtn.alpha = 0
         self.donotReciveLbl.alpha = 0
         self.otpTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerAction), userInfo: nil, repeats: true)
     }
     
-    
+    //MARK: - TIMER ACTION
     @objc func timerAction() {
         if(counter > 0){
             self.counter -= 1
             self.resndBtn.alpha = 0
             self.donotReciveLbl.alpha = 0
-            //   self.timeLbl.text = "00:\(String(format: "%02d", counter)) "+sec
         }else{
             otpTimer?.invalidate()
             self.resndBtn.alpha = 1
             self.donotReciveLbl.alpha = 1
-            //self.timeLbl.text = "00:\(String(format: "%02d", counter)) "+sec
-           // self.timeLbl.text = ""
-        }
+         }
     }
-    
     
     func setupPinView() {
         pinView.pinLength = 4
@@ -84,12 +79,11 @@ class OTPVC: BaseViewController {
         pinView.keyboardType = .phonePad
         pinView.becomeFirstResponderAtIndex = 0
         pinView.didChangeCallback = { [weak self] pin in
-            debugPrint(pin)
+            print(pin)
         }
         pinView.didFinishCallback = { [weak self] pin in
             self?.otp = pin
             self?.otpTimer?.invalidate()
-            // self?.otpVM.verifiedOtp(verificationCode: self?.otp ?? "", phone: "\((self?.code ?? "+91") + (self?.mobNo ?? ""))")
         }
     }
     
@@ -108,6 +102,7 @@ class OTPVC: BaseViewController {
     
 }
 
+//MARK: - CUSTOM DELEGATE
 extension OTPVC: AfterLoginSuccess {
     func changePaswdSucces() {
          debugPrint("changePaswdSucces")
@@ -133,9 +128,5 @@ extension OTPVC: AfterLoginSuccess {
         let vc = ChangepaswdVC.instance()
         vc.email = self.email
         self.navigationController?.pushViewController(vc, animated: true)
-        
-
     }
-    
-    
 }

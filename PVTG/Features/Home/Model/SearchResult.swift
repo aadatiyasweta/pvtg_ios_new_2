@@ -25,7 +25,6 @@ struct SearchResult : Codable {
 	let distance : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case session_id = "session_id"
 		case name_of_listing = "name_of_listing"
 		case session_image = "session_image"
@@ -51,5 +50,4 @@ struct SearchResult : Codable {
 		rating = try values.decodeIfPresent(String.self, forKey: .rating)
 		distance = try values.decodeIfPresent(String.self, forKey: .distance)
 	}
-
 }

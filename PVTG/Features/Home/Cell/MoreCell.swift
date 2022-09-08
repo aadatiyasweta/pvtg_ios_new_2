@@ -9,23 +9,24 @@
 import UIKit
 
 class MoreCell: UITableViewCell {
-    //MARK:- IBOutlets
+
+    //MARK: - Outlets
     @IBOutlet weak var lblMore: UILabel!
-    
     @IBOutlet weak var vwSeperator: UIView!
     
-    //MARK:- Cell reuseIdentifier
+    //MARK: - CELL REUSEIDENTIFIER
     static let ident = "MoreCell"
     class func nib()-> UINib {
         return UINib.init(nibName: MoreCell.ident, bundle: nil)
     }
 
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    //SetData
+    //MARK: - SET DATA METHOD
     func setMoreOptions(options: String) {
         self.lblMore.text = options
     }

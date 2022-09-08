@@ -19,7 +19,6 @@ struct NotificationListBase : Codable {
 	let result : [NotificationListResult]?
 
 	enum CodingKeys: String, CodingKey {
-
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case unread_count = "unread_count"

@@ -5,16 +5,20 @@
 //  Created by Techugo on 01/09/21.
 //  Copyright © 2021 ShubhamMacmini. All rights reserved.
 //
-protocol getOnboardingResponse : class {
+protocol getOnboardingResponse : AnyObject {
     func getOnboardingData()
 }
+
 import Foundation
 class OnboardingVm : BaseVm {
+    
+    //MARK: - Properties
     var model : OnboardingModel?
     weak var delegate : getOnboardingResponse?
+    
+    //MARK: - HIT ONBOARDING API METHOD
     func hitOnboaridngApi() {
         self.show()
-        
         api_manager.GETApi(getSplashPointsUrl(), param: nil, header: nil) { (response, err, code) in
             self.dismiss()
             if let json = response{

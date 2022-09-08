@@ -7,7 +7,6 @@ import SVProgressHUD
 class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate , UIGestureRecognizerDelegate{
     
     var emptyView:UIView!
-    
     @IBOutlet weak var navBarView:UIView!
     var apiType = ""
     static let loaderView:UIView = {
@@ -15,11 +14,11 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         view.backgroundColor = .clear
         return view
     }()
+    
     let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-      //  NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("reminderNotification"), object: nil)
     }
     
     @objc func methodOfReceivedNotification(notification: Notification) {
@@ -27,11 +26,9 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         
         appDelegate.performAttendingAlert(name : info?["name"] as? String ?? "", id : info?["session_id"] as? String ?? "")
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-       // self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-       // hideLoadingView()
-      //  NotificationCenter.default.removeObserver(self, name: Notification.Name("reminderNotification"), object: nil)
     }
 
     func addSwipeGesture() {
@@ -40,11 +37,9 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     }
     
     @objc func hidePlusButton() {
-        // appDelegate.exploreTabVC?.plusButon.isHidden = true
     }
     
     @objc func showPlusButton() {
-        // appDelegate.exploreTabVC?.plusButon.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,21 +48,18 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-       // addSwipeGesture()
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-
     }
     
     func setupLayers(){
-        
     }
     
     func drawLayers() {
-        
     }
+    
     func showWithTouch(){
            if isConnection(){
                SVProgressHUD.show()
@@ -77,24 +69,26 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
            SVProgressHUD.dismiss()
        }
     
-   
-    
     func showDisableLoadingView() {
         self.view.addSubview(BaseViewController.loaderView)
         SVProgressHUD.show()
     }
+    
     func hideDisableLoadingView() {
         BaseViewController.loaderView.removeFromSuperview()
         SVProgressHUD.dismiss()
     }
+    
     func addRefresControl(tblView : UITableView){
         refreshControl.tintColor = #colorLiteral(red: 0.7369757891, green: 0.3353089094, blue: 0.2299287617, alpha: 1)
         refreshControl.addTarget(self, action: #selector(refreshControllChanged), for: .valueChanged)
         tblView.refreshControl = refreshControl
     }
+    
     @objc func refreshControllChanged(refreshControl: UIRefreshControl) {
         debugPrint("Hello World!")
     }
+    
     func getBackNavigationItem()->UIBarButtonItem{
         let backButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(clickOnBackButton))
         backButton.tintColor = .white
@@ -119,7 +113,6 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     }
     
     @objc func clickOnBookmarkButton(){
-        
     }
     
     func showAlertView(_ msg: Any, title: String)  {
@@ -188,10 +181,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         alrt.addAction(ok)
         controller.present(alrt, animated: true, completion: nil)
     }
-    
-    
 }
-
 
 @IBDesignable class UIViewX:UIButton {
     
@@ -216,6 +206,5 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         self.layer.borderColor = borderColour.cgColor
         self.clipsToBounds = true
         self.layer.cornerRadius = self.frame.height/2
-    
     }
 }

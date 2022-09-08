@@ -10,7 +10,8 @@ import UIKit
 import GooglePlaces
 
 class SearchLocationVC: BaseViewController {
-
+    
+    //MARK: - Outlets
     @IBOutlet weak var vwContainSearch: UIView!
     @IBOutlet weak var lblRecentSearch: UILabel!
     @IBOutlet weak var txfSearch: UITextField!{
@@ -28,12 +29,11 @@ class SearchLocationVC: BaseViewController {
     }
     
     @IBOutlet weak var imgSearchIcon: UIImageView!
-    
     @IBOutlet weak var lblNoLocation: UILabel!
     @IBOutlet weak var btnBack: UIButton!
-    
     @IBOutlet weak var vwShowGoogleLocation: UIView!
     
+    //MARK: - Properties
     private var placesClient: GMSPlacesClient!
     var name:String?
     var address: String?
@@ -43,6 +43,7 @@ class SearchLocationVC: BaseViewController {
     private var tableView: UITableView?
     private var tableDataSource: GMSAutocompleteTableDataSource!
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
@@ -55,17 +56,14 @@ class SearchLocationVC: BaseViewController {
         self.lblNoLocation.text = R.string.localizable.noLocationsearchedyet()
         self.lblNoLocation.textColor = .white
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let locArr = SaveToDefaults().getLocationLateArr() {
             self.arrDict = locArr
-//            for i in locArr {
-//                arr.append(i)
-//            }
             if arrDict.count>0 {
                 self.lblRecentSearch.isHidden = false
                 self.lblNoLocation.isHidden = true
-           //     SaveToDefaults().setLocationArr(loc: locArr)
             } else {
                 self.lblRecentSearch.isHidden = true
                 self.lblNoLocation.isHidden = false
@@ -74,18 +72,20 @@ class SearchLocationVC: BaseViewController {
             }
         }
     }
+    
     override func clickOnBack() {
         super.clickOnBack()
-       // SaveToDefaults().setformattedAddress(lat: self.txfSearch.text ?? "")
     }
+    
+    //MARK: - LifeCycle
     func setShadowToView() {
-           paddingTextfield(textfield: txfSearch)
-           DispatchQueue.main.async {
-               setVSViewShadow(radius: 10, color: .black, view: self.vwContainSearch, opacity: 0.12)
-                       setVSViewShadow(radius: 10, color: .black, view: self.vwShowGoogleLocation, opacity: 0.12)
-                       
-           }
-       }
+        paddingTextfield(textfield: txfSearch)
+        DispatchQueue.main.async {
+            setVSViewShadow(radius: 10, color: .black, view: self.vwContainSearch, opacity: 0.12)
+            setVSViewShadow(radius: 10, color: .black, view: self.vwShowGoogleLocation, opacity: 0.12)
+            
+        }
+    }
     
     func renderTheColorOfImage() {
         DispatchQueue.main.async {
@@ -95,31 +95,30 @@ class SearchLocationVC: BaseViewController {
             self.imgSearchIcon.tintColor = UIColor().coloWithHexString(hex: "#525252")
             
             let backImg = UIImage(named: "minimalLeft2X")
-             let tintableImageBack = backImg?.withRenderingMode(.alwaysTemplate)
+            let tintableImageBack = backImg?.withRenderingMode(.alwaysTemplate)
             self.btnBack.setImage(tintableImageBack, for: .normal)
             self.btnBack.tintColor = .white
         }
     }
-
+    
 }
 
+//MARK: - TABLE VIEW DELEGATES AND DATA SOURCE
 extension SearchLocationVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.vm.locationMode.count
-       
         return arrDict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchLocationCell.ident, for: indexPath) as? SearchLocationCell else { return UITableViewCell() }
-        //cell.lblCityNmae.text = self.vm.locationMode[indexPath.row].formattedAddress
-    
         cell.lblCityNmae.text = self.arrDict[indexPath.row]["name"]
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.txfSearch.text = self.arrDict[indexPath.row]["name"]
         SaveToDefaults().setformattedAddress(lat: self.txfSearch.text ?? "")
@@ -134,51 +133,37 @@ extension SearchLocationVC: UITableViewDataSource, UITableViewDelegate {
             SaveToDefaults().setLongtitude(lon: lon)
             self.navigationController?.popViewController(animated: true)
         }
-        
     }
-    
 }
 
+//MARK: - TEXT FIELD DELEGATES
 extension SearchLocationVC: UITextFieldDelegate {
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-               if string == "" {
-                   if textField.text?.count ?? 0 == 1 {
-                  //  self.tableView?.removeFromSuperview()
-                    self.vwShowGoogleLocation.isHidden = true
-                   // self.vm.locationApi(query: string)
-                      //  searchVendor_API(searchText: string)
-                   }
-                   else {
-                       if textField.text?.count ?? 0 > 0 {
-                        self.vwShowGoogleLocation.isHidden = false
-                        tableDataSource.sourceTextHasChanged(textField.text! + string)
-                        // self.vm.locationApi(query: textField.text! + string)
-                         //  searchVendor_API(searchText: textField.text! + string)
-                       } else {
-                        tableDataSource.sourceTextHasChanged(string)
-                         //self.vm.locationApi(query: string)
-                           //searchVendor_API(searchText: string)
-                       }
-                   }
-               }
-               else {
-                   if textField.text?.count ?? 0 > 0 {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            if textField.text?.count ?? 0 == 1 {
+                self.vwShowGoogleLocation.isHidden = true
+            }
+            else {
+                if textField.text?.count ?? 0 > 0 {
                     self.vwShowGoogleLocation.isHidden = false
-                    tableDataSource.sourceTextHasChanged((textField.text ?? "") + string)
-                   // self.vm.locationApi(query: (textField.text ?? "") + string)
-
-                  //  PlacesApi(text: textField.text! + string)
-                      // searchVendor_API(searchText: textField.text! + string)
-                   } else {
-                    self.vwShowGoogleLocation.isHidden = true
+                    tableDataSource.sourceTextHasChanged(textField.text! + string)
+                } else {
                     tableDataSource.sourceTextHasChanged(string)
-                    // self.vm.locationApi(query: string)
-                      // searchVendor_API(searchText: string)
-                   }
-               }
-               return true
-           }
-           
+                }
+            }
+        }
+        else {
+            if textField.text?.count ?? 0 > 0 {
+                self.vwShowGoogleLocation.isHidden = false
+                tableDataSource.sourceTextHasChanged((textField.text ?? "") + string)
+            } else {
+                self.vwShowGoogleLocation.isHidden = true
+                tableDataSource.sourceTextHasChanged(string)
+            }
+        }
+        return true
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.txfSearch.text = ""
         self.vwShowGoogleLocation.isHidden = false
@@ -189,102 +174,89 @@ extension SearchLocationVC: UITextFieldDelegate {
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.vwShowGoogleLocation.frame.size.width, height: self.vwShowGoogleLocation.frame.size.height))
         tableView?.delegate = tableDataSource
         tableView?.dataSource = tableDataSource
-        
         vwShowGoogleLocation.addSubview(tableView ?? UITableView())
-        
-        
-        // self.vm.locationApi(query: (textField.text ?? ""))
-        //searchVendor_API(searchText: textField.text ?? "")
     }
-           func textFieldDidEndEditing(_ textField: UITextField) {
-            tableDataSource.sourceTextHasChanged(textField.text ?? "")
-              // self.vm.locationApi(query: (textField.text ?? ""))
-              // searchVendor_API(searchText: textField.text ?? "")
-           }
-           func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-         //   self.tableView?.removeFromSuperview()
-            self.vwShowGoogleLocation.isHidden = true
-               textField.resignFirstResponder()
-               return true
-           }
-        
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        tableDataSource.sourceTextHasChanged(textField.text ?? "")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //   self.tableView?.removeFromSuperview()
+        self.vwShowGoogleLocation.isHidden = true
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
 
 extension SearchLocationVC: CallBackForLocationList {
     func loadLoactionList() {
         self.tblSearchLocn.reloadData()
     }
-    
-    
 }
 
 extension SearchLocationVC: GMSAutocompleteTableDataSourceDelegate {
-  func didUpdateAutocompletePredictions(for tableDataSource: GMSAutocompleteTableDataSource) {
-    // Turn the network activity indicator off.
-    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    // Reload table data.
-    tableView?.reloadData()
-  }
-
-  func didRequestAutocompletePredictions(for tableDataSource: GMSAutocompleteTableDataSource) {
-    // Turn the network activity indicator on.
-    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    // Reload table data.
-    tableView?.reloadData()
-  }
-
-  func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didAutocompleteWith place: GMSPlace) {
-   
-    // Do something with the selected place.
-    var city = ""
-    for val in place.addressComponents ?? []{
-        if val.type == "locality"{
-            city = val.name
-        }
+    func didUpdateAutocompletePredictions(for tableDataSource: GMSAutocompleteTableDataSource) {
+        // Turn the network activity indicator off.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        // Reload table data.
+        tableView?.reloadData()
     }
-    print(place)
-    print("Place name: \(place.name)")
-    print("Place address: \(place.formattedAddress)")
-    print("Place attributions: \(place.attributions)")
-    guard let address = place.formattedAddress else {return}
-    self.txfSearch.text = address
-    for i in arr {
-        if arr.contains(self.txfSearch.text ?? "") == false {
+    
+    func didRequestAutocompletePredictions(for tableDataSource: GMSAutocompleteTableDataSource) {
+        // Turn the network activity indicator on.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        // Reload table data.
+        tableView?.reloadData()
+    }
+    
+    func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didAutocompleteWith place: GMSPlace) {
+        var city = ""
+        for val in place.addressComponents ?? []{
+            if val.type == "locality"{
+                city = val.name
+            }
+        }
+        print(place)
+        print("Place name: \(String(describing: place.name))")
+        print("Place address: \(String(describing: place.formattedAddress))")
+        print("Place attributions: \(String(describing: place.attributions))")
+        guard let address = place.formattedAddress else {return}
+        self.txfSearch.text = address
+        for i in arr {
+            if arr.contains(self.txfSearch.text ?? "") == false {
+                arr.append(self.txfSearch.text ?? "")
+            }
+        }
+        if arr.count == 0 {
             arr.append(self.txfSearch.text ?? "")
         }
+        var dict : [String:String] = [:]
+        dict["name"] = address
+        dict["city"] = city
+        
+        if !self.arrDict.contains(dict){
+            self.arrDict.append(dict)
+        }
+        SaveToDefaults().setCity(value: dict["city"])
+        SaveToDefaults().setLocationLateArr(loc: self.arrDict)
+        SaveToDefaults().setLocationArr(loc: arr)
+        SaveToDefaults().setLatitude(lat: place.coordinate.latitude)
+        SaveToDefaults().setLongtitude(lon: place.coordinate.longitude)
+        SaveToDefaults().setformattedAddress(lat: address)
+        self.tblSearchLocn.reloadData()
+        txfSearch.resignFirstResponder()
+        self.tableView?.removeFromSuperview()
+        self.vwShowGoogleLocation.isHidden = true
+        self.navigationController?.popViewController(animated: true)
     }
-    if arr.count == 0 {
-         arr.append(self.txfSearch.text ?? "")
+    
+    func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didFailAutocompleteWithError error: Error) {
+        print("Error: \(error.localizedDescription)")
     }
-    var dict : [String:String] = [:]
-     dict["name"] = address
-     dict["city"] = city
-   
-    if !self.arrDict.contains(dict){
-         self.arrDict.append(dict)
+    
+    func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didSelect prediction: GMSAutocompletePrediction) -> Bool {
+        return true
     }
-    SaveToDefaults().setCity(value: dict["city"])
-    SaveToDefaults().setLocationLateArr(loc: self.arrDict)
-    
-    SaveToDefaults().setLocationArr(loc: arr)
-    SaveToDefaults().setLatitude(lat: place.coordinate.latitude)
-    SaveToDefaults().setLongtitude(lon: place.coordinate.longitude)
-    SaveToDefaults().setformattedAddress(lat: address)
-    self.tblSearchLocn.reloadData()
-    txfSearch.resignFirstResponder()
-    self.tableView?.removeFromSuperview()
-    self.vwShowGoogleLocation.isHidden = true
-    self.navigationController?.popViewController(animated: true)
-  }
-
-  func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didFailAutocompleteWithError error: Error) {
-    // Handle the error.
-    print("Error: \(error.localizedDescription)")
-  }
-
-  func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didSelect prediction: GMSAutocompletePrediction) -> Bool {
-    return true
-  }
-    
-    
 }

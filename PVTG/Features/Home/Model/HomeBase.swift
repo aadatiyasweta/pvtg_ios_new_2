@@ -16,14 +16,13 @@ struct HomeBase : Codable {
 	let statusCode : Int?
 	let aPICODERESULT : String?
 	let result : HomeResult?
- let unread_notification:Int?
+    let unread_notification:Int?
 
 	enum CodingKeys: String, CodingKey {
-
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case result = "result"
-  case unread_notification = "unread_notification"
+        case unread_notification = "unread_notification"
 	}
 
 	init(from decoder: Decoder) throws {

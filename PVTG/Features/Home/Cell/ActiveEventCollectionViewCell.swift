@@ -11,17 +11,14 @@ import UIKit
 class ActiveEventCollectionViewCell: UICollectionViewCell {
  
  //MARK: - Properties
- 
  static let reusablIdentifier = "ActiveEventCollectionViewCell"
  
  //MARK: - Outlets
- 
  @IBOutlet weak var activeEventLabel: UILabel!
  @IBOutlet weak var activeEventImageView: UIImageView!
  @IBOutlet weak var containerView: UIView!
  
- //MARK :- LifeCycle
- 
+ //MARK: -  LifeCycle
  override func awakeFromNib() {
   super.awakeFromNib()
   // Initialization code
@@ -30,12 +27,11 @@ class ActiveEventCollectionViewCell: UICollectionViewCell {
  override func layoutSubviews() {
   containerView.layer.cornerRadius = 12
   containerView.layer.masksToBounds = true
-
  }
  
+//MARK: - METHOD TO CONFIGURE UI
  func configureUI(with items:String,imageName:String){
   activeEventLabel.text = items
   activeEventImageView.image = UIImage(named: imageName)
-  
  }
 }

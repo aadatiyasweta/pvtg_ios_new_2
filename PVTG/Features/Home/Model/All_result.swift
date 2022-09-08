@@ -25,7 +25,6 @@ struct All_result : Codable {
     let address_id : String?
     
     enum CodingKeys: String, CodingKey {
-        
         case session_id = "session_id"
         case name_of_listing = "name_of_listing"
         case session_image = "session_image"
@@ -51,5 +50,4 @@ struct All_result : Codable {
         address = try values.decodeIfPresent(String.self, forKey: .address)
         address_id = try values.decodeIfPresent(String.self, forKey: .address_id)
     }
-    
 }

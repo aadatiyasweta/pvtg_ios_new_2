@@ -10,12 +10,13 @@ import UIKit
 
 class SearchCell: UICollectionViewCell {
     
+    //MARK: - Outlets
     @IBOutlet weak var searchCategorylbl: UILabel!
     @IBOutlet weak var vwContainCatgry: UIView!
     @IBOutlet weak var leadingConstarintVw: NSLayoutConstraint!
     @IBOutlet weak var traillingConstarintVw: NSLayoutConstraint!
     
-    //MARK:- Cell reuseIdentifier
+    //MARK: - CELL REUSEIDENTIFIER
     static let ident = "SearchCell"
     class func nib()-> UINib {
         return UINib.init(nibName: SearchCell.ident, bundle: nil)
@@ -23,8 +24,9 @@ class SearchCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+    
+    //MARK: - SET DATA
     func setData(data: AllTimeResult?) {
         guard let data = data else {return}
         if let time1 = data.from_time, let toTime = data.to_time {
@@ -34,7 +36,6 @@ class SearchCell: UICollectionViewCell {
         }
     }
 
-    
     func setSearchData(data: CategoryResult?) {
          guard let data = data else {return}
         if let name = data.category_name {
@@ -43,7 +44,6 @@ class SearchCell: UICollectionViewCell {
             }else{
                 self.searchCategorylbl.text = "\(name) (\(data.total_session ?? ""))"
             }
-           
         }
     }
 }

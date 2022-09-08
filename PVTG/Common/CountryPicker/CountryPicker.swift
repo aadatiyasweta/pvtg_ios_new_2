@@ -13,18 +13,23 @@ import UIKit
 
 class CountryPicker: UIView ,UITableViewDelegate,UITableViewDataSource{
     
-    
+    //MARK: - Outlets
     @IBOutlet weak var lineView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var countryField: UITextField!
+    
+    //MARK: - Properties
     var isSearching = false
     var filterCountry = [Country]()
     var country = [Country]()
     var countryCode = "+91"
     weak var delegateObj:SelectCountryProtocol?
+    
+    //MARK: - LifeCycle
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
+    
     class func initWith(frame: CGRect)->CountryPicker? {
         let view = Bundle.main.loadNibNamed("CountryPicker", owner: self, options: nil)?[0] as? CountryPicker
         view?.frame = frame
@@ -38,6 +43,7 @@ class CountryPicker: UIView ,UITableViewDelegate,UITableViewDataSource{
         self.tableView.register(CountryCodeCell.nib(), forCellReuseIdentifier: CountryCodeCell.ident)
         self.setUpCountryCodes()
     }
+    
     func setUpCountryCodes(){
         let bundle: Bundle = Bundle.main
         let resource: String = "CountryCode"
@@ -56,13 +62,13 @@ class CountryPicker: UIView ,UITableViewDelegate,UITableViewDataSource{
                     let counObj = Country.init(code: code, name: name, phoneCode: phoneCode, flag: flag(from: code ?? ""))
                     self.country.append(counObj)
                     self.tableView.reloadData()
-                    
                 }
             }
         } catch let error {
             assertionFailure(error.localizedDescription)
         }
     }
+    
     func flag(from country:String) -> String {
         let base : UInt32 = 127397
         var s = ""
@@ -71,6 +77,8 @@ class CountryPicker: UIView ,UITableViewDelegate,UITableViewDataSource{
         }
         return s
     }
+    
+    //MARK: - BUTTON ACTION
     @IBAction func searchFieldChnaged(_ sender: UITextField) {
         self.lineView.backgroundColor = #colorLiteral(red: 0.9376444221, green: 0.4206438661, blue: 0.3777168989, alpha: 1)
         if sender.isEmpty(){
@@ -90,12 +98,15 @@ class CountryPicker: UIView ,UITableViewDelegate,UITableViewDataSource{
     @IBAction func cancelBtnTap(_ sender: UIButton) {
         self.removeFromSuperview()
     }
+    
+    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        if self.isSearching{
            return self.filterCountry.count
        }
        return self.country.count
    }
+    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCodeCell") as! CountryCodeCell
        if !self.isSearching{
@@ -108,25 +119,23 @@ class CountryPicker: UIView ,UITableViewDelegate,UITableViewDataSource{
        }
        return cell
    }
+    
    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return UITableView.automaticDimension
    }
+    
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if !self.isSearching{
            self.countryCode = self.country[indexPath.row].phoneCode!
-           
        }
        else{
            self.countryCode = self.filterCountry[indexPath.row].phoneCode!
-           
        }
        self.delegateObj?.getAddressValues(code: self.countryCode)
        self.removeFromSuperview()
-      
-      
    }
-    
 }
+
 struct Country {
     var code: String?
     var name: String?
@@ -138,5 +147,4 @@ struct Country {
         self.phoneCode = phoneCode
         self.flag = flag
     }
-    
 }

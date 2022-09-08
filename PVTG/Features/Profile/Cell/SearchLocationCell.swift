@@ -9,17 +9,19 @@
 import UIKit
 
 class SearchLocationCell: UITableViewCell {
+    
+    //MARK: - Outlets
     @IBOutlet weak var lblCityNmae: UILabel!
     
-    //MARK:- Cell reuseIdentifier
-      static let ident = "SearchLocationCell"
-      class func nib()-> UINib {
-          return UINib.init(nibName: SearchLocationCell.ident, bundle: nil)
-      }
-
+    //MARK: - Cell reuseIdentifier
+    static let ident = "SearchLocationCell"
+    class func nib()-> UINib {
+        return UINib.init(nibName: SearchLocationCell.ident, bundle: nil)
+    }
+    
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
 }

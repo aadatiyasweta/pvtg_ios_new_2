@@ -9,7 +9,8 @@
 import UIKit
 
 class ChangepaswdVC: BaseViewController {
-    //MARK:- IBOutlets
+   
+    //MARK: - Outlets
     @IBOutlet weak var txfNewPaswd: UITextField!{
         didSet {
             txfNewPaswd.delegate = self
@@ -25,10 +26,11 @@ class ChangepaswdVC: BaseViewController {
     @IBOutlet weak var lblPaswderr: UILabel!
     @IBOutlet weak var lblConfrmPaswdErr: UILabel!
     
+    //MARK: - Properties
     var email = ""
     var vm = LoginVM()
     
-    //    MARK:- ViewLifeCycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
@@ -43,21 +45,19 @@ class ChangepaswdVC: BaseViewController {
     
     override func viewWillLayoutSubviews() {
         self.view.layoutIfNeeded()
-        
     }
     
-    //MARK:- IBActions
-    
+    //MARK: - BUTTON ACTION
     @IBAction func submitTap(_ sender: UIButton) {
         self.txfNewPaswd.resignFirstResponder()
         self.txfConfirmPaswd.resignFirstResponder()
         if self.validPassworddetails(confrmPaswd: self.txfConfirmPaswd.text ?? "", paswd: self.txfNewPaswd.text ?? "") {
             self.vm.changePasswordApi(email: self.email, password: txfNewPaswd.text ?? "")
         }
-        
     }
 }
 
+//MARK: - TEXT FIELD DELEGATES
 extension ChangepaswdVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.lblPaswderr.isHidden = true
@@ -67,6 +67,7 @@ extension ChangepaswdVC: UITextFieldDelegate {
     }
 }
 
+//MARK: - VIEW CONTROLLER EXTENSION
 extension ChangepaswdVC {
     private func validPassworddetails(confrmPaswd : String , paswd : String)->Bool{
         if paswd == "" {
@@ -103,12 +104,10 @@ extension ChangepaswdVC {
         txfConfirmPaswd.textColor = .black
         txfNewPaswd.isSecureTextEntry = true
         txfConfirmPaswd.isSecureTextEntry = true
-
     }
-    
-    
 }
 
+//MARK: - AFTER LOGIN  SUCCESS DELEGATE
 extension ChangepaswdVC: AfterLoginSuccess {
     func loginSuccess() {
         debugPrint("loginSuccess")
@@ -134,6 +133,5 @@ extension ChangepaswdVC: AfterLoginSuccess {
         let vc = LoginVC.instance()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
     
 }

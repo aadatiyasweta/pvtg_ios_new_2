@@ -20,7 +20,6 @@ struct NotificationListResult: Codable {
 	let added_on : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case title = "title"
 		case body = "body"
 		case image = "image"

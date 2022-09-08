@@ -9,7 +9,8 @@
 import UIKit
 
 class MoreVM: BaseVm {
-    //API to LogOut
+    
+    //MARK: - Logout API
     func logOutApi(user_id: String) {
         let params : [String: Any] = ["user_id": user_id,"language" : SaveToDefaults().getAppLang() ?? "en"]
         debugPrint(params)

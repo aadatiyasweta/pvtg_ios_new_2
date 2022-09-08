@@ -9,14 +9,20 @@
 import UIKit
 
 class InterestCell: UICollectionViewCell {
-    @IBOutlet weak var imginterest: UIImageView!
     
+    //MARK: - Outlets
+    @IBOutlet weak var imginterest: UIImageView!
     @IBOutlet weak var vwInterest: UIView!
+    
+    //MARK: - Properties
     static let ident = "InterestCell"
+    
+    //MARK: - CELL IDENTIFIER
     class func nib()-> UINib {
         return UINib.init(nibName: InterestCell.ident, bundle: nil)
     }
 
+    //MARK: - LIFECYCLE METHOD
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

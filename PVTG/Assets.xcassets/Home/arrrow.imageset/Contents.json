@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "arrrow.png",
+      "filename" : "arrrow-min.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "rectangle1@2x.png",
+      "filename" : "rectangle1@2x-min.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "rectangle1@3x.png",
+      "filename" : "rectangle1@3x-min.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

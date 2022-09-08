@@ -22,6 +22,7 @@ extension UILabel {
         super.awakeFromNib()
         self.setup()
     }
+    
     func setup() {
         let size = self.font.pointSize*widthFactor
         self.font = UIFont.init(name: self.font.fontName, size: size)
@@ -34,7 +35,6 @@ extension UILabel {
         }
     }
 }
-
 
 extension UITextField {
     open override func awakeFromNib() {
@@ -76,7 +76,6 @@ extension UITextView{
         }
         return false
     }
-    
 }
 
 extension UIButton {
@@ -92,9 +91,7 @@ extension UIButton {
     }
 }
 
-
 class OtpField: UITextField {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -103,11 +100,9 @@ class OtpField: UITextField {
         NotificationCenter.default.post(name: Notification.Name("Back"), object: self)
         super.deleteBackward()
     }
-    
 }
 
 class UnpasteField:UITextField{
-    
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         print(action)
         if action == #selector(UIResponderStandardEditActions.paste(_:)){
@@ -120,10 +115,7 @@ class UnpasteField:UITextField{
     }
 }
 
-
-
 class BackVCFlowLayout: UICollectionViewFlowLayout {
-    
     let baseHeight: CGFloat = 60.0
     var offsetX: CGFloat = 0 {
         willSet {

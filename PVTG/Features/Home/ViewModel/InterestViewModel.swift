@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol LoadingCategory: class {
+protocol LoadingCategory: AnyObject {
     func reloaddata()
     func fillSelectedArray()
 }
@@ -15,6 +15,7 @@ class InterestViewModel: BaseVm {
     var model: CategoryBase?
     weak var delegate: LoadingCategory?
     
+    //MARK: - GET ALL CATEGORY API
     func getAllCategoryApi(user_id: String) {
              self.show()
         api_manager.GETApi(allCategoryUrl(userid: user_id), param: nil, header: header()) { (response, err, code) in
@@ -27,7 +28,6 @@ class InterestViewModel: BaseVm {
                          let model = try? jsonDecoder.decode(CategoryBase.self, from: data ?? Data())
                          self.model = model
                        self.delegate?.reloaddata()
-                         
                      }
                      else {
                          showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -38,6 +38,7 @@ class InterestViewModel: BaseVm {
              }
          }
     
+    //MARK: - USER SELECTED CATEGORY API
     func userSelectedCategoryApi(user_id: String, selected_category: String) {
         let prams : [String : Any] = ["user_id": user_id, "selected_category": selected_category,"language" : SaveToDefaults().getAppLang() ?? "en"]
                 self.show()
@@ -46,9 +47,7 @@ class InterestViewModel: BaseVm {
                     if let json = response{
                         debugPrint(json)
                         if json["statusCode"] == 200 {
-                          // showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
                           self.delegate?.fillSelectedArray()
-                            
                         }
                         else {
                             showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)

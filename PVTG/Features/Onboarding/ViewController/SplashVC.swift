@@ -11,10 +11,8 @@ import AVFoundation
 import AVKit
 
 class SplashVC:UIViewController {
-    
-    //    @IBOutlet weak var viewPlayer: UIView!
-    
-  
+ 
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
@@ -22,6 +20,7 @@ class SplashVC:UIViewController {
         })
     }
 
+    //MARK: - METHOD TO CHECK LOGIN STATUS
     func checkLoginStatus() {
         if SaveToDefaults().getAppLang() ?? "" == "" || SaveToDefaults().getAppLang() == nil{
             let vc = LanguageChnageVC.navigation()
@@ -33,7 +32,6 @@ class SplashVC:UIViewController {
                     let vc = OnboardingVC.navigation()
                     window?.rootViewController = vc
                     window?.makeKeyAndVisible()
-                    
                 } else{
                     let vc = LoginVC.navigation()
                     window?.rootViewController = vc
@@ -45,9 +43,7 @@ class SplashVC:UIViewController {
                 window?.makeKeyAndVisible()
             }
         }
-          
        }
-
 }
 //Sessionapi/search http://52.27.53.102/pvtg/api/v1/Sessionapi/search
 //Token -------->>>>>> B4J86g1oMT

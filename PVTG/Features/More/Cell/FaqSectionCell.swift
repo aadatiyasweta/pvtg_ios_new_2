@@ -10,12 +10,16 @@ import UIKit
 
 class FaqSectionCell: UITableViewCell {
 
+    //MARK: - Outlets
     @IBOutlet weak var lbl_Section: UILabel!
+    
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    //MARK: - METHOD TO SET DATA
     func toSetSectionData(data: String){
             lbl_Section.text = data
         

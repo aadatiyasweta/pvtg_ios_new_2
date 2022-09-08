@@ -23,7 +23,6 @@ struct LoginResult : Codable {
 	let user_token : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case user_id = "user_id"
 		case name = "name"
 		case email = "email"

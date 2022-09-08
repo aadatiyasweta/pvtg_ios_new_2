@@ -12,26 +12,22 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
+
 struct Point_accumulationModel : Codable {
 	let view_token_notification : String?
 	let first_booking_point : String?
 	let id : String?
-	//let created_at : String?
 	let review_rate : String?
 	let vendor_cancel_booking_points : String?
-	//let updated_at : String?
 	let bookings : String?
 	let first_login_point : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case view_token_notification = "view_token_notification"
 		case first_booking_point = "first_booking_point"
 		case id = "id"
-	//	case created_at = "created_at"
 		case review_rate = "review_rate"
 		case vendor_cancel_booking_points = "vendor_cancel_booking_points"
-	//	case updated_at = "updated_at"
 		case bookings = "bookings"
 		case first_login_point = "first_login_point"
 	}
@@ -41,12 +37,9 @@ struct Point_accumulationModel : Codable {
 		view_token_notification = try values.decodeIfPresent(String.self, forKey: .view_token_notification)
 		first_booking_point = try values.decodeIfPresent(String.self, forKey: .first_booking_point)
 		id = try values.decodeIfPresent(String.self, forKey: .id)
-	//	created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
 		review_rate = try values.decodeIfPresent(String.self, forKey: .review_rate)
 		vendor_cancel_booking_points = try values.decodeIfPresent(String.self, forKey: .vendor_cancel_booking_points)
-	//	updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)
 		bookings = try values.decodeIfPresent(String.self, forKey: .bookings)
 		first_login_point = try values.decodeIfPresent(String.self, forKey: .first_login_point)
 	}
-
 }

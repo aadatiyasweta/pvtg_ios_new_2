@@ -9,7 +9,8 @@
 import UIKit
 
 class SearchSessionVC: BaseViewController {
-
+    
+    //MARK: - Outlets
     @IBOutlet weak var txfSearch: UITextField!{
         didSet {
             self.txfSearch.delegate = self
@@ -22,13 +23,10 @@ class SearchSessionVC: BaseViewController {
             self.colectionVwCategory.dataSource = self
             self.colectionVwCategory.delegate = self
             self.colectionVwCategory.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
-            
         }
-        
     }
     
     @IBOutlet weak var btnClose: UIButton!
-    
     @IBOutlet weak var tblVwSession: UITableView!{
         didSet {
             self.tblVwSession.dataSource = self
@@ -36,70 +34,65 @@ class SearchSessionVC: BaseViewController {
             self.tblVwSession.register(SessionCell.nib(), forCellReuseIdentifier: SessionCell.ident)
         }
     }
-    //MARK:- Variables
+    
+    //MARK: - Properties
     var vm = SearchSessionViewModel()
     var catgryId = 0
     
-    
+    //MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         self.btnClose.isHidden = false
         setShadowToView()
-        // Do any additional setup after loading the view.
     }
     
     func setShadowToView() {
         paddingTextfield(textfield: txfSearch)
         DispatchQueue.main.async {
             setVSViewShadow(radius: 10, color: .black, view: self.vwContainSearch, opacity: 0.12)
-        
         }
     }
     
+    //MARK: - BUTTON ACTION
     @IBAction func btnCloseTap(_ sender: UIButton) {
         self.txfSearch.resignFirstResponder()
         self.txfSearch.text = ""
     }
-    
 }
 
+//MARK: - TEXT FIELD DELEGATES
 extension SearchSessionVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-           if string == "" {
-               if textField.text?.count ?? 0 == 1 {
-                  //  searchVendor_API(searchText: string)
-               }
-               else {
-                   if textField.text?.count ?? 0 > 0 {
-                     //  searchVendor_API(searchText: textField.text! + string)
-                   } else {
-                       //searchVendor_API(searchText: string)
-                   }
-               }
-           }
-           else {
-               if textField.text?.count ?? 0 > 0 {
-                  // searchVendor_API(searchText: textField.text! + string)
-               } else {
-                  // searchVendor_API(searchText: string)
-               }
-           }
-           return true
-       }
-       
-       func textFieldDidBeginEditing(_ textField: UITextField) {
-           //searchVendor_API(searchText: textField.text ?? "")
-       }
-       func textFieldDidEndEditing(_ textField: UITextField) {
-          // searchVendor_API(searchText: textField.text ?? "")
-       }
-       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           textField.resignFirstResponder()
-           return true
-       }
+        if string == "" {
+            if textField.text?.count ?? 0 == 1 {
+            }
+            else {
+                if textField.text?.count ?? 0 > 0 {
+                } else {
+                }
+            }
+        }
+        else {
+            if textField.text?.count ?? 0 > 0 {
+            } else {
+            }
+        }
+        return true
+    }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
+//MARK: - TABLE VIEW DELEGATES AND DATASOURCE
 extension SearchSessionVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -109,14 +102,16 @@ extension SearchSessionVC: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SessionCell.ident, for: indexPath) as? SessionCell else { return UITableViewCell()}
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
-    
 }
 
+//MARK: - COLLECTION VIEW DELEGATE AND DATASOURCE
 extension SearchSessionVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
@@ -132,24 +127,24 @@ extension SearchSessionVC: UICollectionViewDataSource, UICollectionViewDelegate,
             cell.vwContainCatgry.border(width: 0.3, color: UIColor().coloWithHexString(hex: "#9a9a9a"))
         }
         cell.vwContainCatgry.layer.cornerRadius = 17
-               return cell
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = ""
-           let label = UILabel(frame: CGRect.zero)
-           label.text = text
-           label.sizeToFit()
-           return CGSize(width: label.frame.size.width + 26, height: 45)
-        }
+        let label = UILabel(frame: CGRect.zero)
+        label.text = text
+        label.sizeToFit()
+        return CGSize(width: label.frame.size.width + 26, height: 45)
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                if catgryId == indexPath.row {
+        if catgryId == indexPath.row {
             catgryId = -1
         } else {
             catgryId = indexPath.row
         }
         self.colectionVwCategory.reloadData()
-
+        
     }
     
 }

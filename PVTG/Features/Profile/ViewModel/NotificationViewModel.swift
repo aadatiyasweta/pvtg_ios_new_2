@@ -8,14 +8,17 @@
 
 import UIKit
 
-protocol AfterGettingNotificationList: class {
+protocol AfterGettingNotificationList: AnyObject {
     func updateList()
 }
 
 class NotificationViewModel: BaseVm {
+    
+    //MARK: - Properties
     var model: NotificationListBase?
     weak var delegate: AfterGettingNotificationList?
     
+    //MARK: -  Method to get Coach Notification List
     func getCoachNotificationListApi(user_id: String, offset: String) {
         let prams : [String : Any] = ["user_id": user_id, "offset": offset,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
@@ -29,7 +32,6 @@ class NotificationViewModel: BaseVm {
                     let model = try? jsonDecoder.decode(NotificationListBase.self, from: data ?? Data())
                     self.model = model
                     self.delegate?.updateList()
-                    
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -39,28 +41,27 @@ class NotificationViewModel: BaseVm {
             }
         }
     }
-
- func updateNotificationStatus(user_Id:String) {
-     self.show()
-  let prams : [String : Any] = ["user_id": user_Id]
-     api_manager.GETApi(updateNotificationStatusUrl(), param: prams, header: header()) { (response, err, code) in
-         self.dismiss()
-         if let json = response{
-             debugPrint(json)
-             if json["statusCode"] == 200 {
-                 let jsonDecoder = JSONDecoder()
-                 let data = try? json["result"].rawData()
-               let model = try? jsonDecoder.decode(NotificationListBase.self, from: data ?? Data())
-               self.model = model
-
-             }
-             else {
-                 showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
-             }
-         }else{
-             showAlert(strTitle: somethingWentWrongMessage)
-         }
-     }
- }
- 
+    
+    //MARK: - METHOD TO UPDATE NOTIFICATION STATUS
+    func updateNotificationStatus(user_Id:String) {
+        self.show()
+        let prams : [String : Any] = ["user_id": user_Id]
+        api_manager.GETApi(updateNotificationStatusUrl(), param: prams, header: header()) { (response, err, code) in
+            self.dismiss()
+            if let json = response{
+                debugPrint(json)
+                if json["statusCode"] == 200 {
+                    let jsonDecoder = JSONDecoder()
+                    let data = try? json["result"].rawData()
+                    let model = try? jsonDecoder.decode(NotificationListBase.self, from: data ?? Data())
+                    self.model = model
+                }
+                else {
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                }
+            }else{
+                showAlert(strTitle: somethingWentWrongMessage)
+            }
+        }
+    }
 }

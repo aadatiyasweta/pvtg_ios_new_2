@@ -9,21 +9,25 @@
 import UIKit
 
 class ThankyouVC: BaseViewController {
-
+ 
+    //MARK: - Outlets
     @IBOutlet weak var pointsLbl: UILabel!
     @IBOutlet weak var btnBack: UIButton!
     var name = ""
     var points = ""
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.Your session has been booked. You have earned 20pts.
         self.pointsLbl.text = R.string.localizable.yourSessionHasBeen(self.points)
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
          renderTheColorOfImage()
     }
+    
+    //MARK: - METHOD TO SET RENDER COLOR OF IMAGE
     func renderTheColorOfImage() {
         let myImage = UIImage(named: "minimalLeft2X")
         let tintableImage = myImage?.withRenderingMode(.alwaysTemplate)
@@ -31,10 +35,9 @@ class ThankyouVC: BaseViewController {
         self.btnBack.tintColor = .white
     }
     
+    //MARK: - BUTTON ACTION
     @IBAction func btnTapBooking(_ sender: UIButton) {
          appDelegate.tabBarVc?.selectedIndex = 1
         self.navigationController?.popToRootViewController(animated: true)
-       
     }
-    
 }

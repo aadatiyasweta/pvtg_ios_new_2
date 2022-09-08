@@ -10,18 +10,23 @@ import UIKit
 
 class OnboardingSecondCell: UICollectionViewCell {
 
+    //MARK: - Outlets
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
     
+    //MARK: - Properties
     static let ident = "OnboardingSecondCell"
     class func nib()->UINib {
         return UINib.init(nibName: OnboardingSecondCell.ident, bundle: nil)
     }
+    
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+    
+    //MARK: - BIND DATA METHOD
     func bindRewardData(model : [RewardsModel]){
         print(model.count)
         self.titleLbl.text =  R.string.localizable.earnUseRewardss()

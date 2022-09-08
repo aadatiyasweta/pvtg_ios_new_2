@@ -14,9 +14,8 @@ import AVFoundation
 import AVKit
 
 class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
-    //MARK:- IBOutlets
     
-    
+    //MARK: - Outlets
     @IBOutlet weak var bookingDateLbl: UILabel!
     @IBOutlet weak var offeredHeightCons: NSLayoutConstraint!
     @IBOutlet weak var offerdView: UIView!
@@ -37,7 +36,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var btnToPrev: UIButton!
     @IBOutlet weak var btnToCurrent: UIButton!
     @IBOutlet weak var btnToNext: UIButton!
-    
     @IBOutlet weak var aboutViewBottomCons: NSLayoutConstraint!
     @IBOutlet weak var aboutView: UIView!
     @IBOutlet weak var vwcalendar: FSCalendar!{
@@ -48,11 +46,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
     
     @IBOutlet weak var cancelBtn: UIButton!
-    
     @IBOutlet weak var completedBtn: UIButton!
-    
     @IBOutlet weak var lblDayWithDate: UILabel!
-    
     @IBOutlet weak var vwCollection: UICollectionView!{
         didSet {
             vwCollection.dataSource = self
@@ -62,16 +57,12 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
     
     @IBOutlet weak var vwbookTickets: UIView!
-    
     @IBOutlet weak var lblTicketCount: UILabel!
-    
     @IBOutlet weak var vwToGetBlurEffect: UIView!
-    
     @IBOutlet weak var vwContainfee: UIView!
     @IBOutlet weak var vwsession: UIView!
     @IBOutlet weak var langView: UIView!
     @IBOutlet weak var btnToRemove: UIButton!
-    
     @IBOutlet weak var vwcontainTktCount: UIView!
     @IBOutlet weak var colectnVwSessionImage: UICollectionView! {
         didSet {
@@ -81,26 +72,18 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         }
     }
     @IBOutlet weak var pageCtrl: UIPageControl!
-    
     @IBOutlet weak var btndecrease: UIButton!
     @IBOutlet weak var btnIncrease: UIButton!
-    
     @IBOutlet weak var lblNoTime: UILabel!
-    
     @IBOutlet weak var scrollViewBotmconstarint: NSLayoutConstraint!
     @IBOutlet weak var lblAboutVendor: UILabel!
-    
     @IBOutlet weak var vwMapHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var vwColectionHeightConstarint: NSLayoutConstraint!
-    
     @IBOutlet weak var btnBooknow: UIButton!
     @IBOutlet weak var vwCalendarHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var txtVw: UILabel!
     
-    
-    //MARK:- Variables
+    //MARK: - Properties
     var x = 1
     var mapView:GMSMapView?
     var monthVal: Int?
@@ -113,7 +96,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         return formatter
     }()
     var selectedDate = ""
-     let formatter: DateFormatter = {
+    let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
@@ -130,14 +113,13 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var offeredIndex = -1
     var bookingId = ""
     var arrPayments = [GetAllPaymentDetailsData]()
-    //MARK:- ViewLifeCycle
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//     self.tabBarController?.tabBar.addBadge(index: 3)
         self.mainScrollview.delegate = self
-         vwcalendar.appearance.todayColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
+        vwcalendar.appearance.todayColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         vwcalendar.appearance.todaySelectionColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
-//     vwcalendar.formatter.timeZone = TimeZone.current
         self.selectedDate = formatter.string(from: self.today)
         offeredCollView.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
         if controllerId == 1{
@@ -150,8 +132,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
             self.btnBooknow.isHidden = true
-         self.priceLabel.isHidden = true
-//            self.lblsessionPrice.isHidden = true
+            self.priceLabel.isHidden = true
             self.cancelBtn.isHidden = false
             self.completedBtn.isHidden = true
         } else if controllerId == 2 {
@@ -163,9 +144,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.vwCalendarHeightConstraint.constant = 300
             self.lblDayWithDate.isHidden = false
             self.lblNoTime.isHidden = false
-             self.btnBooknow.isHidden = true
-         self.priceLabel.isHidden = true
-//            self.lblsessionPrice.isHidden = true
+            self.btnBooknow.isHidden = true
+            self.priceLabel.isHidden = true
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
         }else if controllerId == 3 {
@@ -178,8 +158,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
             self.btnBooknow.isHidden = true
-         self.priceLabel.isHidden = true
-//            self.lblsessionPrice.isHidden = true
+            self.priceLabel.isHidden = true
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
         }else {
@@ -194,8 +173,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = false
             self.cancelBtn.isHidden = true
             self.completedBtn.isHidden = true
-         self.priceLabel.isHidden = false
-//            self.lblsessionPrice.isHidden = false
+            self.priceLabel.isHidden = false
         }
         loadApi(top_search: "")
         vm.delegate = self
@@ -205,33 +183,32 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setVSViewShadow(radius: 10, color: .black, view: self.vwcontainTktCount, opacity: 0.12)
-       // setVSViewShadow(radius: 10, color: .black, view: self.vwcontainTktCount, opacity: 0.12)
     }
-
+    
+    //MARK: - METHOD TO SET MAP
     func SetMap(){
         if let lat1 = self.vm.model?.latitude, let long1 = self.vm.model?.longitude{
             let lat = Double(lat1)
             let long = Double(long1)
             let location = CLLocationCoordinate2D(latitude: lat ?? 0.0, longitude: long ?? 0.0)
             let camera = GMSCameraPosition.camera(withLatitude: lat ?? 0.0, longitude: long ?? 0.0, zoom: 15, bearing: 0,
-                                              viewingAngle: 40)
-        mapView = GMSMapView.map(withFrame: self.vwmap.bounds, camera: camera)
-        self.vwmap.addSubview(mapView ?? GMSMapView())
-        mapView?.delegate = self
+                                                  viewingAngle: 40)
+            mapView = GMSMapView.map(withFrame: self.vwmap.bounds, camera: camera)
+            self.vwmap.addSubview(mapView ?? GMSMapView())
+            mapView?.delegate = self
             mapView?.isUserInteractionEnabled = false
-        let marker = GMSMarker()
-        let markerImage = UIImage(named: "marker")
-        let markerView = UIImageView(image: markerImage)
-        markerView.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
-        markerView.contentMode = .scaleAspectFit
-        marker.iconView = markerView
-        marker.position = location
-                       marker.map = mapView
+            let marker = GMSMarker()
+            let markerImage = UIImage(named: "marker")
+            let markerView = UIImageView(image: markerImage)
+            markerView.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
+            markerView.contentMode = .scaleAspectFit
+            marker.iconView = markerView
+            marker.position = location
+            marker.map = mapView
         }
     }
     
-    //MARK:- IBActions
-    
+    //MARK: - BUTTON ACTION
     @IBAction func btnSubmit(_ sender: UIButton) {
         if id == -1 {
             showAlert(strTitle: R.string.localizable.pleaseSelecttime())
@@ -239,10 +216,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.vwbookTickets.animShow()
             self.vwToGetBlurEffect.addBlurEffect()
             self.btnToRemove.isHidden = false
-            
         }
     }
-    
     
     @IBAction func cancelBtnTap(_ sender: UIButton) {
         showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: Bundle.main.appName, itsController: self) { (succsss) in
@@ -257,7 +232,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
                     if let id = SaveToDefaults().getUserId(){
                         let ammount = self.vm.model?.paid_amount ?? ""
                         if let n = NumberFormatter().number(from: ammount) {
-                          let floatPrice = CGFloat(truncating: n)
+                            let floatPrice = CGFloat(truncating: n)
                             let fiftenPercent = CGFloat((floatPrice*15)/100)
                             let finalPrice = floatPrice-fiftenPercent
                             self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.vm.model?.payment_id ?? "", ammount: "\(finalPrice)")
@@ -272,10 +247,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             }
         }
     }
- 
- 
-
- 
+    
     @IBAction func btnToTapPrev(_ sender: UIButton) {
         moveCurrentpage(value: true)
     }
@@ -286,34 +258,29 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func btnToTapNext(_ sender: UIButton) {
         moveCurrentpage(value: false)
     }
+    
     @IBAction func btnReduceTicketTap(_ sender: UIButton) {
         if self.lblTicketCount.text == "01"{
             btndecrease.isUserInteractionEnabled = false
         } else {
             let deccount = (Int(self.lblTicketCount.text ?? "01") ?? 0)-1
             self.lblTicketCount.text = String(format: "%02d", deccount)
-           // self.btnIncrease.isUserInteractionEnabled = true
         }
     }
-    
     
     @IBAction func btnIncreaseTicketTap(_ sender: UIButton) {
         var count = (Int(lblTicketCount.text ?? "01") ?? 0)
         self.btndecrease.isUserInteractionEnabled = true
         if count == Int(self.vm.availableTickets?.ticket_avilable ?? "") {
-            
-           // self.btnIncrease.isUserInteractionEnabled = false
             if count > 1{
                 showAlert(strTitle: R.string.localizable.onlyTickets("\(count)"))
             }else
             {
                 showAlert(strTitle: R.string.localizable.onlyTicket("\(count)"))
             }
-            
         } else {
             count = (Int(lblTicketCount.text ?? "00") ?? 0)+1
         }
-    
         self.lblTicketCount.text = String(format: "%02d", count)
     }
     
@@ -331,28 +298,31 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
 }
 
+//MARK: - FSCALENDAR DELEGATE
 extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         return 1
     }
+    
     private func moveCurrentpage(value: Bool) {
-     let calendar = Calendar(identifier: .gregorian)
+        let calendar = Calendar(identifier: .gregorian)
         var dateComponents = DateComponents()
         dateComponents.month = value ? -1 : 1
         self.currentpage = calendar.date(byAdding: dateComponents, to: self.currentpage ?? self.today)
         self.vwcalendar.setCurrentPage(self.currentpage ?? Date(), animated: true)
         
     }
- 
-   func minimumDate(for calendar: FSCalendar) -> Date {
-     return Date()
+    
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return Date()
     }
+    
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-//     calendar.formatter.timeZone = TimeZone.current
-     setHeaderMonth(date: calendar.currentPage)
+        setHeaderMonth(date: calendar.currentPage)
     }
+    
     private func setHeaderMonth(date:Date) {
-     let calendar = Calendar(identifier: .gregorian)
+        let calendar = Calendar(identifier: .gregorian)
         yearVal = calendar.component(.year, from: date)
         monthVal = calendar.component(.month, from: date)
         self.currentpage = date
@@ -363,8 +333,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         btnToNext.setTitle("\(headerFormatter.string(from: next))", for: .normal)
         btnToPrev.setTitle("\(headerFormatter.string(from: prev))", for: .normal)
     }
- 
-
+    
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         
         if date.compare(Date.yesterday) == .orderedAscending {
@@ -374,6 +343,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
             return true
         }
     }
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.isFromSelection = true
         debugPrint("Api for getting time")
@@ -387,24 +357,21 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if val.is_avilable == "1" {
                         self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true)
-                    self.scrollViewBotmconstarint.constant = 97
+                        self.scrollViewBotmconstarint.constant = 97
                     }
                 }
-                
             } else {
                 self.timeArr.removeAll()
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                     self.scrollViewBotmconstarint.constant = 0
                     self.btnBooknow.isHidden = true
-                 self.priceLabel.isHidden = true
-//                  self.lblsessionPrice.isHidden = true
+                    self.priceLabel.isHidden = true
                 }, completion: nil)
-                
             }
         }
         
         self.vwCollection.reloadData()
-     print(self.timeArr)
+        print(self.timeArr)
         self.colectnVwSessionImage.reloadData()
     }
     
@@ -414,15 +381,13 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         var Date24 = ""
         
         if let date1 = dateFormatter.date(from: dateAsString){
-        debugPrint("Date is \(date)")
+            debugPrint("Date is \(date)")
             debugPrint("date is \(date1)")
-        dateFormatter.dateFormat = "EEEE, MMMM d"
-        Date24 = dateFormatter.string(from: date1 )
+            dateFormatter.dateFormat = "EEEE, MMMM d"
+            Date24 = dateFormatter.string(from: date1 )
         }
         debugPrint("24 hour formatted Date:",Date24)
-        
         return Date24
-        
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance,eventDefaultColorsFor date: Date) -> [UIColor]? {
@@ -432,9 +397,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         debugPrint(data)
         debugPrint(strDate)
         for allDate in data{
-         
             if allDate.schedule_date == strDate{
-             
                 if allDate.is_avilable=="1"{
                     return [.green]
                 } else {
@@ -447,6 +410,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
     }
 }
 
+//MARK: - DATE EXTENSION
 extension Date {
     func toLocalTime()->Date
     {
@@ -454,10 +418,10 @@ extension Date {
         let seconds:TimeInterval = TimeInterval(tz.secondsFromGMT(for: self as Date))
         return Date(timeInterval: seconds, since: self as Date)
     }
-
+    
 }
 
-
+//MARK: - COLLECTION VIEW DELEGATES AND DATASOURCE
 extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView==colectnVwSessionImage{
@@ -465,7 +429,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }else if collectionView == self.offeredCollView{
             return self.vm.model?.session_type?.count ?? 0
         }
-     print("time is ",self.timeArr)
+        print("time is ",self.timeArr)
         return self.timeArr.count
     }
     
@@ -479,15 +443,13 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             } else {
                 self.lblNoTime.isHidden = true
                 self.lblNoTime.text = ""
-                
             }
         }
         else{
-           self.lblNoTime.isHidden = true
+            self.lblNoTime.isHidden = true
         }
         
         if collectionView == self.vwCollection {
-   
             var remainingTkt = 0
             if  let totalTkt = Int(self.timeArr[indexPath.row].total_ticket ?? ""), let soldTkt = Int(self.timeArr[indexPath.row].sold_ticket ?? "") {
                 remainingTkt =  totalTkt-soldTkt
@@ -497,9 +459,8 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
             if self.timeArr[indexPath.row].is_avilable_time == "0" {
                 cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
-               // cell.vwContainCatgry.alpha = 0.7
                 cell.vwContainCatgry.layer.cornerRadius = 10
-
+                
             } else {
                 if id == indexPath.row {
                     cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.01960784314, green: 0.8509803922, blue: 0.7411764706, alpha: 1)
@@ -508,8 +469,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 }
                 cell.vwContainCatgry.layer.cornerRadius = 10
             }
-            
-          //  cell.layoutSubviews()
             cell.setData(data: self.timeArr[indexPath.row])
             return cell
         }
@@ -517,40 +476,31 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
             cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
             if offeredIndex != -1{
-//                self.lblsessionPrice.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
-             
-             print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
-             var myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
-             let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
-//             myDouble = 150000000.00
-//             let myDouble = Double(12000)
-             
-             let currencyFormatter = NumberFormatter()
-             currencyFormatter.usesGroupingSeparator = true
-             currencyFormatter.numberStyle = .currency
-             currencyFormatter.locale =  Locale(identifier: "en_US")
-             let num = Int(strPrice);
+                print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
+                let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
+                let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
+                
+                let currencyFormatter = NumberFormatter()
+                currencyFormatter.usesGroupingSeparator = true
+                currencyFormatter.numberStyle = .currency
+                currencyFormatter.locale =  Locale(identifier: "en_US")
+                let num = Int(strPrice);
                 if num != nil {
-                 currencyFormatter.minimumFractionDigits = 0
+                    currencyFormatter.minimumFractionDigits = 0
                     print("Valid Integer")
                 }
                 else {
-                 currencyFormatter.minimumFractionDigits = 2
+                    currencyFormatter.minimumFractionDigits = 2
                     print("Not Valid Integer")
                 }
-             //             currencyFormatter.currencyCode = "COP"
-//             currencyFormatter.locale = Locale.current
-
-            let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
-            
-            
-             let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
-             if let currency = self.vm.model?.currency {
-              self.priceLabel.text = replaced + " " +  currency
-             }
-//             self.priceLabel.text = "\(self.vm.model?.session_type?[offeredIndex].price ?? "" ) \(self.vm.model?.currency ?? "")"
+                
+                let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+                let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+                if let currency = self.vm.model?.currency {
+                    self.priceLabel.text = replaced + " " +  currency
+                }
             }
-           
+            
             if offeredIndex == indexPath.row {
                 cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.01960784314, green: 0.8509803922, blue: 0.7411764706, alpha: 1)
             } else {
@@ -567,10 +517,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             cell1.descLabel.isHidden = true
             self.setuptimer()
             if self.vm.model?.images?[indexPath.row].type ?? "" == "image"{
-                 cell1.playBtn.isHidden = true
-             loadImage(self.vm.model?.images?[indexPath.row].session_image ?? "", cell1.imgDetailView, activity: nil, defaultImage: nil)
+                cell1.playBtn.isHidden = true
+                loadImage(self.vm.model?.images?[indexPath.row].session_image ?? "", cell1.imgDetailView, activity: nil, defaultImage: nil)
             }else{
-                 cell1.playBtn.isHidden = false
+                cell1.playBtn.isHidden = false
                 loadImage(self.vm.model?.images?[indexPath.row].image_thumbnail ?? "", cell1.imgDetailView, activity: nil, defaultImage: nil)
             }
             cell1.playcall = {
@@ -578,24 +528,24 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             }
             return cell1
         }
-        
     }
+    
     func presentAvplayerController(url : String){
-           if let videoURL = URL(string: url){
-               let player = AVPlayer(url: videoURL)
-               let playerViewController = AVPlayerViewController()
-               playerViewController.player = player
-               do {
-                   try AVAudioSession.sharedInstance().setCategory(.playback)
-               } catch(let error) {
-                   print(error.localizedDescription)
-               }
-               self.present(playerViewController, animated: true) {
-                   playerViewController.player!.play()
-               }
-           }
-           
-       }
+        if let videoURL = URL(string: url){
+            let player = AVPlayer(url: videoURL)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback)
+            } catch(let error) {
+                print(error.localizedDescription)
+            }
+            self.present(playerViewController, animated: true) {
+                playerViewController.player!.play()
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView==self.vwCollection {
             return CGSize(width: 150, height: 55)
@@ -611,21 +561,22 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             return CGSize(width: SCREEN_WIDTH, height: self.colectnVwSessionImage.frame.height)
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.vwCollection{
-        if self.id == indexPath.row{
-           // self.id = -1
-        } else {
-            self.id = indexPath.row
-            guard let userid = SaveToDefaults().getUserId() else { return}
-            self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
-        }
-        self.vwCollection.reloadData()
+            if self.id == indexPath.row{
+            } else {
+                self.id = indexPath.row
+                guard let userid = SaveToDefaults().getUserId() else { return}
+                self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
+            }
+            self.vwCollection.reloadData()
         }else if collectionView == self.offeredCollView{
             self.offeredIndex = indexPath.row
             collectionView.reloadData()
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView==self.colectnVwSessionImage {
             self.pageCtrl.numberOfPages = self.vm.model?.images?.count ?? 0
@@ -634,22 +585,22 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
     }
 }
 
+//MARK: - CUSTOM DELEGATE
 extension SessionDetailVC: GetResponse {
     func refundAPiResponse(){
         self.navigationController?.popViewController(animated: true)
     }
+    
     func sessionTimeDetail(){
         self.timeArr = self.vm.timeArr?.result ?? []
         if self.controllerId != 1{
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
-//                self.lblsessionPrice.isHidden = true
-             self.priceLabel.isHidden = true
+                self.priceLabel.isHidden = true
                 self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
-             self.priceLabel.isHidden = false
-//                self.lblsessionPrice.isHidden = false
+                self.priceLabel.isHidden = false
                 self.scrollViewBotmconstarint.constant = 97
                 if  self.isFromSelection{
                     let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
@@ -660,6 +611,7 @@ extension SessionDetailVC: GetResponse {
         self.vwCollection.reloadData()
         self.offeredCollView.reloadData()
     }
+    
     func reloadTime() {
         guard let alldate = self.vm.model?.all_date else {return}
         self.formatter.dateFormat = "yyyy-MM-dd"
@@ -686,7 +638,6 @@ extension SessionDetailVC: GetResponse {
         self.btnToRemove.isHidden = false
     }
     
-    
     func bookingSuccess() {
         self.vwbookTickets.isHidden = true
         self.btnToRemove.isHidden = true
@@ -697,28 +648,22 @@ extension SessionDetailVC: GetResponse {
         vc.ticketModel = self.vm.availableTickets
         vc.customModel = self.vm.customModel
         self.navigationController?.pushViewController(vc, animated: true)
-
-        
     }
     
-    
+    //MARK: - METHOD TO RELOAD DATA
     func reloadData() {
-         
         DispatchQueue.main.async {
-            
             self.SetMap()
         }
         self.timeArr = self.vm.timeArr?.result ?? Array()
         if self.controllerId != 1{
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
-               self.priceLabel.isHidden = true
-//                self.lblsessionPrice.isHidden = true
+                self.priceLabel.isHidden = true
                 self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
-             self.priceLabel.isHidden = false
-//                self.lblsessionPrice.isHidden = false
+                self.priceLabel.isHidden = false
                 self.scrollViewBotmconstarint.constant = 97
             }
         }
@@ -752,7 +697,7 @@ extension SessionDetailVC: GetResponse {
         let value = Double(data.distance ?? "")!
         let doubleStr = String(format: "%.2f", value)
         let str = (data.city ?? "") + " " + R.string.localizable.kmaway(doubleStr)
-//        self.lblsessionPrice.text = (data.currency ?? "$")+(data.ticket_price ?? "")
+        //        self.lblsessionPrice.text = (data.currency ?? "$")+(data.ticket_price ?? "")
         self.lblSessionname.text = data.category_name ?? ""
         self.vwrating.rating = Double(data.rating ?? "")!
         self.lblPlaceName.text = str
@@ -761,7 +706,7 @@ extension SessionDetailVC: GetResponse {
         let lat = Double(lat1); let lng = Double(lang1)
         SaveToDefaults().seSessiontLatitude(lat: lat)
         SaveToDefaults().seSessiontLongitude(lat: lng)
-        //        self.lblDayWithDate.text = convertIntoHourFormatted(inputDate: data.all_date?[0].schedule_date ?? "")
+        
         self.lblSessionPlaceName.text = data.name_of_listing
         self.lblsessiondetail.text = data.description
         if self.vm.model?.session_type?.count ?? 0 == 0{
@@ -769,13 +714,6 @@ extension SessionDetailVC: GetResponse {
             self.offeredHeightCons.constant = 0
             self.offeredIndex = -1
         }else{
-//            for value in 0..<(self.vm.model?.session_type!.count)!{
-//                if self.vm.model?.session_type?[value].session_type_id == self.vm.model?.booking_session_type{
-//                    self.vm.model?.session_type = [self.vm.model?.session_type?[value]]
-//                    self.offeredIndex = 0
-//                    break
-//                }
-//            }
             if self.offeredIndex == -1{
                 self.offeredIndex = 0
             }
@@ -784,13 +722,13 @@ extension SessionDetailVC: GetResponse {
             
         }
         self.vwCollection.reloadData()
-     if(data.session_booking_status == "2" ||  data.session_booking_status == "3"){
-      self.cancelBtn.isEnabled = false
-      self.cancelBtn.setTitle("Cancelled", for: .normal)
-     }else {
-      self.cancelBtn.isEnabled = true
-      self.cancelBtn.setTitle("Cancel", for: .normal)
-     }
+        if(data.session_booking_status == "2" ||  data.session_booking_status == "3"){
+            self.cancelBtn.isEnabled = false
+            self.cancelBtn.setTitle("Cancelled", for: .normal)
+        }else {
+            self.cancelBtn.isEnabled = true
+            self.cancelBtn.setTitle("Cancel", for: .normal)
+        }
         self.vwcalendar.reloadData()
         self.colectnVwSessionImage.reloadData()
         self.offeredCollView.reloadData()
@@ -816,32 +754,29 @@ extension SessionDetailVC: GetResponse {
                 
             }
         }
-     self.getAllPaymentDetails()
+        self.getAllPaymentDetails()
     }
-   
- //MARK: - METHOD TO GET ALL PAYMENT DETAILS
- 
- func getAllPaymentDetails() {
-  if let userid = SaveToDefaults().getUserId(){
-   vm.getAllPayments(user_id: userid){
-    if let arrPayments = self.vm.arrPayments {
-     self.arrPayments = arrPayments
-     let dict =   self.arrPayments .filter{ ($0.session_id!) == self.sessionId }.first
-     if let dict = dict{
-      self.vm.chargeId = dict.charge_id ?? ""
-     }
-    }
-   }
-  }
-  
- }}
-
-extension SessionDetailVC {
-    //MARK:- Function to automatic Scroll
-    private func setuptimer() {
-       // self.timer = Timer.scheduledTimer(timeInterval: 3, target: self , selector:
-        //    #selector(startScrolling), userInfo: nil, repeats: true)
+    
+    //MARK: - METHOD TO GET ALL PAYMENT DETAILS
+    func getAllPaymentDetails() {
+        if let userid = SaveToDefaults().getUserId(){
+            vm.getAllPayments(user_id: userid){
+                if let arrPayments = self.vm.arrPayments {
+                    self.arrPayments = arrPayments
+                    let dict =   self.arrPayments .filter{ ($0.session_id!) == self.sessionId }.first
+                    if let dict = dict{
+                        self.vm.chargeId = dict.charge_id ?? ""
+                    }
+                }
+            }
+        }
         
+    }}
+
+//MARK: - VIEW CONTROLLER EXTENSION
+extension SessionDetailVC {
+    //MARK: - METHOD TO AUTOMATIC SCROLL
+    private func setuptimer() {
     }
     
     @objc func startScrolling() {
@@ -853,17 +788,16 @@ extension SessionDetailVC {
             self.x = 0
             self.vwCollection.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
         }
-    
     }
     
     //UIScrollView INT TO COUNT
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.colectnVwSessionImage{
-             self.timer?.invalidate()
-             self.timer = nil
+            self.timer?.invalidate()
+            self.timer = nil
         }
         else if scrollView == self.mainScrollview{
             print(scrollView.contentOffset.y)
@@ -880,12 +814,13 @@ extension SessionDetailVC {
         }
     }
     
-    //Api Integration
+    //MARK: - API INETEGRATION
     private func loadApi(top_search: String) {
         guard let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude()  else {return}
         self.vm.sessionDtailApi(user_id: userid, session_id: sessionId, latitude: "\(lat)", longitude: "\(lng)", top_search: top_search,bookingId: self.bookingId)
         
     }
+    
     private func bookingApi() {
         guard let userid = SaveToDefaults().getUserId() else {return}
         if let id = self.vm.model?.session_id, let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude()  {
@@ -898,23 +833,19 @@ extension SessionDetailVC {
                 return
             }
             self.vm.checkTicketAvailabilityApi(user_id: userid, session_id: id, latitude: "\(lat)", longitude: "\(lng)", ticket: self.lblTicketCount.text ?? "", booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", paid_amount: amt, schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", offeredTypeId: offeredTypeId)
-            }
-//            self.vm.sessionBookingApi(user_id: userid, session_id: id, ticket: "\(tempTkt)", booking_date: self.selectedDate, booking_from_time: fromtime, booking_to_time: toTime, paid_amount: amt, schedule_time_id: timeId)
         }
+    }
     
-    
-    //Customization Of view
+    //MARK: - Customization Of view
     private func customizationOfView(){
         DispatchQueue.main.async {
             setRightShadow(view: self.vwContainfee, color: #colorLiteral(red: 0.4522080421, green: 0.4990295768, blue: 0.8806897998, alpha: 1), opacity: 0.7, width: 5, height: 4)
             setRightShadowWithOffset(view: self.vwsession, color: #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), opacity: 0.2, width: 5, height: 5, offsetX: 10, offsetY: 20)
             setRightShadowWithOffset(view: self.langView, color: #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), opacity: 0.2, width: 5, height: 5, offsetX: 10, offsetY: 20)
-            // setRightShadow(view: self.vwsession, color: #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1), opacity: 0.7, width: 5, height: 555)
-            
         }
     }
     
-    //Function To handle the current year montrh date in FsCalendar
+    //MARK: - Function To handle the current year montrh date in FsCalendar
     private func handlingHeaderInFSCalendar() {
         let date = Date()
         setHeaderMonth(date:date)
@@ -923,6 +854,8 @@ extension SessionDetailVC {
     }
     
 }
+
+//MARK: - DATE EXTENSION
 extension Date {
     static var yesterday: Date { return Date().dayBefore }
     static var tomorrow:  Date { return Date().dayAfter }

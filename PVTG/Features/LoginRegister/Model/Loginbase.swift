@@ -18,7 +18,6 @@ struct Loginbase : Codable {
 	let result : LoginResult?
 
 	enum CodingKeys: String, CodingKey {
-
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case result = "result"

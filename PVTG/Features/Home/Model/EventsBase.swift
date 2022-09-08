@@ -18,7 +18,6 @@ struct EventsBase : Codable {
 	let result : [EventsResult]?
      let history : [EventsResult]?
 	enum CodingKeys: String, CodingKey {
-
 		case statusCode = "statusCode"
 		case aPICODERESULT = "APICODERESULT"
 		case result = "active_event"

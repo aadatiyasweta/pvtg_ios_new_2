@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "map-min.png",
       "idiom" : "universal",
-      "filename" : "map.png",
       "scale" : "1x"
     },
     {
+      "filename" : "map@2x-min.png",
       "idiom" : "universal",
-      "filename" : "map@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "map@3x-min.png",
       "idiom" : "universal",
-      "filename" : "map@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

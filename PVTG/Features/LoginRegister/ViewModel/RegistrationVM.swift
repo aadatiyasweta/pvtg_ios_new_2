@@ -7,13 +7,16 @@
 //
 
 import UIKit
-protocol AfterRegistration: class {
+protocol AfterRegistration: AnyObject {
     func successRegisteration()
 }
 class RegistrationVM: BaseVm {
+    
+    //MARK: - Properties
     public weak var delegate: AfterRegistration?
     var model: LoginResult?
     
+    //MARK: - VALIDATE REGISTRATION DETAILS
     func validRegistartiondetails(email : String , paswd : String, name: String, confirmPaswd: String, mobile: String)->Bool{
         if name == ""{
             showMesssgeWindow(msg: emptyNameMessage)
@@ -37,7 +40,7 @@ class RegistrationVM: BaseVm {
         return true
     }
     
-    ///API for registration
+    //MARK: - API for registration
     func signupApi(email: String, password: String, name: String, country_code: String, phone: String, acc_type: String, social_id: String, pictureData: Data) {
         let prams : [String : Any] = ["name" : name, "email": email, "country_code": country_code, "phone": phone, "acc_type": acc_type, "social_id": social_id, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
         print(prams)
@@ -65,6 +68,7 @@ class RegistrationVM: BaseVm {
             }
         })
         }
+    
     func setDataInLocal(){
         let encoder = JSONEncoder()
         if let encodedData = try? encoder.encode(self.model) {
@@ -73,7 +77,7 @@ class RegistrationVM: BaseVm {
         defaults.synchronize()
     }
     
-    ///API for checking email/phone existence Userapi/check_email_phone
+    //MARK: - API for checking email/phone existence Userapi/check_email_phone
     func checkinEmailPhoneApi(email: String, country_code: String, phone: String, password: String, name: String, acc_type: String, social_id: String, pictureData: Data) {
         let prams : [String : Any] = ["email": email, "country_code": country_code, "phone": phone,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
@@ -93,7 +97,5 @@ class RegistrationVM: BaseVm {
             }
         }
     }
-    
-    
     
 }

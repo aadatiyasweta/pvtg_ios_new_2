@@ -13,21 +13,16 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct Earn_rewardModel : Codable {
-	//let created_at : String?
-	//let updated_at : String?
 	let id : String?
 	let message : String?
 
 	enum CodingKeys: String, CodingKey {
-
-		
 		case id = "id"
 		case message = "message"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-	
 		id = try values.decodeIfPresent(String.self, forKey: .id)
 		message = try values.decodeIfPresent(String.self, forKey: .message)
 	}

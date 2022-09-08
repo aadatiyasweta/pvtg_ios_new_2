@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol AfterLoginSuccess: class {
+protocol AfterLoginSuccess: AnyObject {
     func loginSuccess()
     func failure(msg: String)
     func createNewuser()
@@ -17,9 +17,12 @@ protocol AfterLoginSuccess: class {
     
 }
 class LoginVM: BaseVm {
+    
+    //MARK: - Properties
     weak var delegate: AfterLoginSuccess?
     var model: LoginResult?
     
+    //MARK: - VALIDATION
     func validLogindetails(email : String , paswd : String, txfemail: UITextField, txfpaswd: UITextField)->Bool{
         if email == "" {
             showMesssgeJustBelowView(view: txfemail, msg: emptyemail)
@@ -34,6 +37,7 @@ class LoginVM: BaseVm {
         return true
     }
     
+    //MARK: - METHOD TO SETD
     func setDataInLocal(){
         let encoder = JSONEncoder()
         if let encodedData = try? encoder.encode(self.model) {
@@ -54,7 +58,7 @@ class LoginVM: BaseVm {
         
     }
     
-    //API to Login
+    //MARK: LOGIN API
     func loginApi(email: String, password: String) {
         let prams : [String : Any] = ["email": email, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
         print(prams)
@@ -84,7 +88,7 @@ class LoginVM: BaseVm {
         }
     }
     
-    //API to ForgotPassword
+    //MARK: - FORGOT PASSWORD API
     func forgotApi(email: String, is_resend: String) {
         let prams : [String : Any] = ["email": email, "is_resend": is_resend,"language" : SaveToDefaults().getAppLang() ?? "en"]
         print(prams)
@@ -108,6 +112,8 @@ class LoginVM: BaseVm {
             }
         }
     }
+    
+    //MARK: - OTP API
     func otpCheckApi(email: String, otp: String) {
         let prams : [String : Any] = ["email": email, "otp": otp,"language" : SaveToDefaults().getAppLang() ?? "en"]
            print(prams)
@@ -127,6 +133,8 @@ class LoginVM: BaseVm {
                }
            }
        }
+    
+    //MARK: - CHANGE PASSWORD API
     func changePasswordApi(email: String, password: String) {
            let prams : [String : Any] = ["email": email, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
               print(prams)
@@ -147,6 +155,7 @@ class LoginVM: BaseVm {
               }
           }
     
+    //MARK: - SOCIAL LOGIN API
     func socialLoginApi(social_id: String, acc_type: String) {
         let prams : [String : Any] = ["social_id": social_id, "acc_type": acc_type,"language" : SaveToDefaults().getAppLang() ?? "en"]
         self.show()
@@ -159,13 +168,11 @@ class LoginVM: BaseVm {
                 let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
                 self.model = responseModel
                 if json["statusCode"] == 200 {
-                  
                     self.setDataInLocal()
                     SaveToDefaults().setUserId(id: self.model?.user_id)
                     SaveToDefaults().setAccessToken(value: self.model?.user_token)
                     SaveToDefaults().setEmail(value: self.model?.email)
                     self.delegate?.loginSuccess()
-                    
                 }else if json["statusCode"] == 202{
                     self.setDataInLocal()
                     SaveToDefaults().setEmail(value: self.model?.email)

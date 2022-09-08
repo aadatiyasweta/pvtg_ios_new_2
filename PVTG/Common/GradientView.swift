@@ -31,14 +31,14 @@ class GradientView: UIView {
             gradientLayer.endPoint   = diagonalMode ? CGPoint(x: 1, y: 1) : CGPoint(x: 0.8, y: 1)
         }
     }
+    
     func updateLocations() {
         gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
     }
+    
     func updateColors() {
         gradientLayer.colors    = [startColor.cgColor, endColor.cgColor]
     }
-    
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -46,7 +46,6 @@ class GradientView: UIView {
         updateLocations()
         updateColors()
     }
-    
 }
 
 extension UIColor {
@@ -68,6 +67,7 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 }
+
 extension UIView {
     func setCornerRadius(radius: CGFloat) {
         self.layer.cornerRadius = radius
@@ -92,7 +92,6 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 5.0 ,height:5.0)
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = 1
-//         self.layer.shadowRadius = 10.0
         self.layer.masksToBounds = false
     }
     
@@ -101,18 +100,18 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 0.0 ,height:5.0)
         self.layer.shadowOpacity = 0.9
         self.layer.shadowRadius = 1
-        //         self.layer.shadowRadius = 10.0
         self.layer.masksToBounds = false
     }
+    
     func bottomSetShadow(){
         self.layer.shadowColor = UIColor().coloWithHexString(hex: "#CACDCD").cgColor
         self.layer.shadowOffset = CGSize(width: 0.0 ,height:8.0)
         self.layer.shadowOpacity = 0.3
         self.layer.shadowRadius = 1
-        //         self.layer.shadowRadius = 10.0
         self.layer.masksToBounds = false
     }
 }
+
 extension UIImageView
 {
     func roundCornersForAspectFit(radius: CGFloat)

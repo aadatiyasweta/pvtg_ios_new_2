@@ -23,7 +23,6 @@ struct User_profile : Codable {
 	let total_point : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case name = "name"
 		case email = "email"
 		case country_code = "country_code"

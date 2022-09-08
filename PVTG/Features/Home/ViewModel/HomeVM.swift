@@ -7,13 +7,14 @@
 //
 
 import UIKit
-protocol GetHomeData: class {
+protocol GetHomeData: AnyObject {
  func reloadData(unreadNotificationCount:Int)
 }
 class HomeVM: BaseVm {
-    var model: HomeResult?
+ var model: HomeResult?
   weak var delegate: GetHomeData?
     
+    //MARK: - HOME API
     func getHomeApi(user_id: String, category_id: String, latitude: String, longitude: String, search: String, top_search: String, city: String,minPrice : Int? = 0 , maxprice : Int? = 0,currency : String) {
         var prams = [String : Any]()
         if minPrice == 0 && maxprice == 0{

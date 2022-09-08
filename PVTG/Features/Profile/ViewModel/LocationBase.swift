@@ -18,7 +18,6 @@ struct LocationBase : Codable {
 	let status : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case html_attributions = "html_attributions"
 		case results = "results"
 		case status = "status"
@@ -30,5 +29,4 @@ struct LocationBase : Codable {
 		results = try values.decodeIfPresent([LocationResults].self, forKey: .results)
 		status = try values.decodeIfPresent(String.self, forKey: .status)
 	}
-
 }

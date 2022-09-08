@@ -10,19 +10,17 @@ import UIKit
 import MarqueeLabel
 
 class ProfileVC: BaseViewController {
-    //MARK:- IBOutlets
+    
+    //MARK: - Outlets
     @IBOutlet weak var imgBg: UIImageView!
     @IBOutlet weak var backBtn: UIButton!
-    
     @IBOutlet weak var mainScrolView: UIScrollView!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblPVTGPoints: UILabel!
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var lblMobNo: UILabel!
-    
     @IBOutlet weak var lblEmailAdd: UILabel!
-    
     @IBOutlet weak var colectionVwinterest: UICollectionView!{
         didSet {
             colectionVwinterest.dataSource = self
@@ -32,16 +30,18 @@ class ProfileVC: BaseViewController {
     }
     
     @IBOutlet weak var imageLogo: UIImageView!
-    
+  
+    //MARK: - Properties
     private var vm = ProfileViewModel()
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainScrolView.delegate = self
         renderTheColorOfImage()
         vm.delegate = self
-       // setData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadApi()
@@ -51,29 +51,24 @@ class ProfileVC: BaseViewController {
           DispatchQueue.main.async {
             self.imgUser.layer.cornerRadius = 10
             self.imgUser.image = #imageLiteral(resourceName: "more")
-//              let myImage = UIImage(named: "logoWhite")
-//              let tintableImage = myImage?.withRenderingMode(.alwaysTemplate)
-//              self.imageLogo.image = tintableImage
-//              self.imageLogo.tintColor = UIColor().coloWithHexString(hex: "#05d9bd")
           }
       }
     
-
-   //MARK:- IBActions
-    
+   //MARK: - BUTTON ACTION
     @IBAction func EditprofileTap(_ sender: UIButton) {
         let vc = EditProfileVC.instance()
         vc.userDta = self.vm.model?.user_profile
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     @IBAction func EditInterestTap(_ sender: UIButton) {
         let vc = TransformerExampleViewController.instance()
         vc.controllerId = 1
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
+//MARK: - COLLECTION VIEW DELEGATE
 extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.vm.model?.selected_category?.count ?? 0
@@ -95,6 +90,7 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         cell.setData(interest: self.vm.model?.selected_category?[indexPath.row])
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
              return CGSize(width: 144, height: 148)
@@ -104,43 +100,34 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         }
         return CGSize(width: 126, height: 148)
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.mainScrolView{
             if scrollView.contentOffset.y  < 0{
                 scrollView.contentOffset.y = 0
                // self.backBtn.isHidden = false
             }else{
-//                if scrollView.contentOffset.y > 55 {
-//                    self.backBtn.isHidden = true
-//                }else{
-//                    self.backBtn.isHidden = false
-//                }
             }
         }
     }
 }
 
+//MARK: - CUSTOM DELEGATE
 extension ProfileVC: UpdateTheProfile {
     func updateProfile() {
         guard let data = self.vm.model else {return}
         self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + " \(R.string.localizable.purevibesPts())"
         self.lblName.text = data.user_profile?.name ?? ""
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
-      
         loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
-        if let phone = data.user_profile?.phone {
-           // self.lblMobNo.text = "\(phone)"
-            
-        }
         self.colectionVwinterest.reloadData()
         self.lblAddress.text = SaveToDefaults().getCity() ?? ""
     }
-    
-    
 }
 
+//MARK: - VIEW CONTROLLER EXTENSION
 extension ProfileVC {
-    private  func loadApi() {
+  private  func loadApi() {
            if let userid = SaveToDefaults().getUserId() {
             self.vm.getUserProfileApi(user_id: userid)
            }
@@ -151,11 +138,9 @@ extension ProfileVC {
         loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         SaveToDefaults().setProfilePic(value: data.user_profile?.user_image ?? "")
         self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + R.string.localizable.purevibesPts()
-      
         self.lblAddress.text = SaveToDefaults().getCity() ?? ""
         self.lblName.text = data.user_profile?.name ?? ""
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
-      //  self.lblMobNo.text = "\(data.user_profile?.phone ?? "")"
     }
 }
 

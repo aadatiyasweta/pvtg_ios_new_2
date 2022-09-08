@@ -10,6 +10,7 @@ import UIKit
 
 class OnboardingFirstPointsCell: UICollectionViewCell {
 
+    //MARK: - Outlets
     @IBOutlet weak var firstLoginLbl: UILabel!
     @IBOutlet weak var firstBookinglbl: UILabel!
     @IBOutlet weak var bookingLbl: UILabel!
@@ -17,15 +18,18 @@ class OnboardingFirstPointsCell: UICollectionViewCell {
     @IBOutlet weak var tokenNotificationLbl: UILabel!
     @IBOutlet weak var vendorCancelLbl: UILabel!
     
+    //MARK: - Properties
     static let ident = "OnboardingFirstPointsCell"
     class func nib()->UINib {
         return UINib.init(nibName: OnboardingFirstPointsCell.ident, bundle: nil)
     }
+    
+    //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-      
     }
+    
+    //MARK: - METHOD TO BIND DATA
     func bindData(model : Point_accumulationModel?){
         guard let model = model else{return}
         self.firstLoginLbl.attributedText = AttriButedcolor(str1: R.string.localizable.firstLogin(), str2: " \(model.first_login_point ?? "") \(R.string.localizable.pts())")
@@ -34,7 +38,5 @@ class OnboardingFirstPointsCell: UICollectionViewCell {
         self.reviewRateLbl.attributedText = AttriButedcolor(str1: R.string.localizable.reviewsRate(), str2: " \(model.review_rate ?? "") \(R.string.localizable.pts())")
         self.tokenNotificationLbl.attributedText = AttriButedcolor(str1: R.string.localizable.viewTokenNotification(), str2: " \(model.view_token_notification ?? "") \(R.string.localizable.pts())")
         self.vendorCancelLbl.attributedText = AttriButedcolor(str1: R.string.localizable.ifVendorCancelBookingPoints(), str2: " \(model.vendor_cancel_booking_points ?? "") \(R.string.localizable.pts())")
-      
     }
-
 }

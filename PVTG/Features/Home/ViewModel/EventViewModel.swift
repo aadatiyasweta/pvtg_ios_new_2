@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LoadingEvents: class {
+protocol LoadingEvents: AnyObject {
     func colecnreloaddata()
     func tblReloadData()
 }
@@ -16,6 +16,8 @@ protocol LoadingEvents: class {
 class EventViewModel: BaseVm {
     var model: EventsBase?
     weak var delegate: LoadingEvents?
+    
+    //MARK: - GET ACTIVE EVENT API
     func getActiveEventApi(user_id: String, latitude: String, longitude: String, offset: String) {
         let prams : [String : Any] = ["user_id": user_id, "latitude": latitude, "longitude": longitude, "offset": offset,"language" : SaveToDefaults().getAppLang() ?? "en"]
           self.show()
@@ -40,6 +42,8 @@ class EventViewModel: BaseVm {
               }
           }
       }
+    
+    //MARK: - GET HISTORY EVENT API
     func getHistoryEventApi(user_id: String, latitude: String, longitude: String) {
              let prams : [String : Any] = ["user_id": user_id, "latitude": latitude, "longitude": longitude,"language" : SaveToDefaults().getAppLang() ?? "en"]
              self.show()
