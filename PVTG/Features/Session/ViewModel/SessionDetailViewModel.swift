@@ -230,7 +230,7 @@ class SessionDetailViewModel: BaseVm {
     func stripeRefundAPI(chargeID:String) {
         self.show()
         let  headers = [
-            "Authorization": "Bearer \(stripeSecretKey)",
+            "Authorization": "Bearer \(stripeLiveSecretKey)",
         ]
         let param : [String:Any] = ["charge" : chargeID]
         api_manager.POSTApi(refundPaymentUsingStripe(), param: param, header: headers) { (response, err, code) in

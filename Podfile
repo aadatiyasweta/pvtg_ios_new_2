@@ -24,7 +24,6 @@ target 'PVTG' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GoogleSignIn', '~> 5.0'
-
 #  pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
   pod 'paper-onboarding'
@@ -34,7 +33,14 @@ target 'PVTG' do
   pod 'Stripe', '~> 15.0.1'
 #  pod 'R.swift'
   
-  
+  post_install do |installer|
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    end
+    end
 
 
 end
+
+
+

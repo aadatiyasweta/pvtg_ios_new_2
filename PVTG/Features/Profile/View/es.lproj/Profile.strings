@@ -17,7 +17,7 @@
 "JP1-Fo-d7H.text" = "¿Como fue tu experiencia?\n\nCalifica y escribe tu opinión para obtener 2 pts";
 
 /* Class = "UILabel"; text = "Your work is to discover your world and then_with all your heart give yourself to it\r-Buddha"; ObjectID = "KbA-Sd-leB"; */
-"KbA-Sd-leB.text" = "Tu trabajo es descubrir tu mundo y luego con todo tu corazón entrégate a él. \r-Buddha";
+//"KbA-Sd-leB.text" = "Tu trabajo es descubrir tu mundo y luego con todo tu corazón entrégate a él. \r-Buddha";
 
 /* Class = "UILabel"; text = "  Rate Trip"; ObjectID = "LL0-Al-Nui"; */
 "LL0-Al-Nui.text" = "  Califica el viaje";
