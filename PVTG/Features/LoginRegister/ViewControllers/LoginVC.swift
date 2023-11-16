@@ -85,7 +85,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     }
     
     @IBAction func tapLoginWithGoogle(_ sender: UIButton) {
-        GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance.signIn(withPresenting: self)
     }
     
     @IBAction func tapLoginWithApple(_ sender: UIButton) {
@@ -143,18 +143,19 @@ extension LoginVC: UITextFieldDelegate {
 }
 
 //MARK: - GOOGLE AND FACEBOOK DELEGATES
-extension LoginVC: GIDSignInDelegate, FacebookDelegate{
+//extension LoginVC: GIDSignInDelegate, FacebookDelegate{
+extension LoginVC: FacebookDelegate{
     //MARK: - Google SignIn
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
     {
         if (error == nil)
         {
             let gPlusId = user.userID // For client-side use only!
-            let name = user.profile.name
+            let name = user.profile?.name
             var email:String = ""
             
             Socialdata["FullName"] = name
-            if let emailID = user.profile.email{
+            if let emailID = user.profile?.email{
                 email = emailID
                 Socialdata["Email_Id"] = email
             }else{
@@ -313,9 +314,9 @@ extension LoginVC {
     
     //MARK: - Google Signup Method
     func googleLogin() {
-        GIDSignIn.sharedInstance().clientID = "213231135715-4bt41406ei6um842vpd6ntolaap3j0p4.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().presentingViewController = self
+//        GIDSignIn.sharedInstance.clientID = "213231135715-4bt41406ei6um842vpd6ntolaap3j0p4.apps.googleusercontent.com"
+//        GIDSignIn.sharedInstance.delegate = self
+//        GIDSignIn.sharedInstance.presentingViewController = self
     }
     
 }

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
+import IQKeyboardManager
 import Firebase
 import AuthenticationServices
 import UserNotifications
@@ -30,7 +31,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     var currentVC : UIViewController?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared().isEnabled = true
         GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
 //     GMSServices.provideAPIKey("AIzaSyCz9l1ZKpCvUXFlkT4sopsN8OKi6plvBmk")
 
@@ -108,7 +109,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     
     //MARK: - Function For Open URL
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
-        let googleDidHandle = GIDSignIn.sharedInstance().handle(url)
+        let googleDidHandle = GIDSignIn.sharedInstance.handle(url)
         let facebookDidHandle = appDelegate.application(app, open: url, options: options)
         Auth.auth().canHandle(url)
         return  facebookDidHandle || googleDidHandle

@@ -151,7 +151,7 @@
 		18DB86BA25B178FF0035084F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB86B925B178FF0035084F /* ProfileViewModel.swift */; };
 		18EACC4B25A58C0D00B1F959 /* RateUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EACC4A25A58C0D00B1F959 /* RateUsVC.swift */; };
 		18F4DE6925A8465E00E7827A /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4DE6825A8465D00E7827A /* UPCarouselFlowLayout.swift */; };
-		62DEB8BD2B65508163B88D08 /* Pods_PVTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */; };
+		9000D1B7E0C66A79DE097975 /* Pods_PVTG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5DD6F2EFBD8C456520CF89 /* Pods_PVTG.framework */; };
 		A466878827B236500073A15F /* TabBarBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466878727B236500073A15F /* TabBarBadge.swift */; };
 		A466878B27B262B10073A15F /* ActiveEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466878927B262B10073A15F /* ActiveEventCollectionViewCell.swift */; };
 		A466878C27B262B10073A15F /* ActiveEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A466878A27B262B10073A15F /* ActiveEventCollectionViewCell.xib */; };
@@ -193,6 +193,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17845B8EA6A5CAFA1E677BF0 /* Pods-PVTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.debug.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.debug.xcconfig"; sourceTree = "<group>"; };
 		180534D2259320F000625B53 /* RegistrationvC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationvC.swift; sourceTree = "<group>"; };
 		180534D42593306300625B53 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		180534D625933C6C00625B53 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
@@ -346,14 +347,13 @@
 		18DB86B925B178FF0035084F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		18EACC4A25A58C0D00B1F959 /* RateUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateUsVC.swift; sourceTree = "<group>"; };
 		18F4DE6825A8465D00E7827A /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
-		558B74FBCF5C95B718FAB54C /* Pods-PVTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.release.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.release.xcconfig"; sourceTree = "<group>"; };
-		5FAAD99D1247D339D5164761 /* Pods-PVTG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.debug.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.debug.xcconfig"; sourceTree = "<group>"; };
-		9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PVTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C5DD6F2EFBD8C456520CF89 /* Pods_PVTG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PVTG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A466878727B236500073A15F /* TabBarBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBadge.swift; sourceTree = "<group>"; };
 		A466878927B262B10073A15F /* ActiveEventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveEventCollectionViewCell.swift; sourceTree = "<group>"; };
 		A466878A27B262B10073A15F /* ActiveEventCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveEventCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4A2D4CD27B537AB00823CCF /* GetAllPaymentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPaymentDetails.swift; sourceTree = "<group>"; };
 		A4AADCBA27AD42100067BF9F /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
+		D1BA11506CA7B3A461508290 /* Pods-PVTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.release.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.release.xcconfig"; sourceTree = "<group>"; };
 		D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstPointsCell.swift; sourceTree = "<group>"; };
 		D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondCell.swift; sourceTree = "<group>"; };
 		D62D733D26C67C3B00DFD0DA /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62DEB8BD2B65508163B88D08 /* Pods_PVTG.framework in Frameworks */,
+				9000D1B7E0C66A79DE097975 /* Pods_PVTG.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,7 +679,7 @@
 				187F3E36258CC7FD008FB2CB /* PVTG */,
 				187F3E35258CC7FD008FB2CB /* Products */,
 				B3581A9A7E3F343867E227DC /* Pods */,
-				27E83E4D123DF718306C92D0 /* Frameworks */,
+				7BCA842E960306DF9C7679E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -977,10 +977,10 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		27E83E4D123DF718306C92D0 /* Frameworks */ = {
+		7BCA842E960306DF9C7679E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9DAAA5E1C581DACC150EA4EE /* Pods_PVTG.framework */,
+				9C5DD6F2EFBD8C456520CF89 /* Pods_PVTG.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -988,8 +988,8 @@
 		B3581A9A7E3F343867E227DC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5FAAD99D1247D339D5164761 /* Pods-PVTG.debug.xcconfig */,
-				558B74FBCF5C95B718FAB54C /* Pods-PVTG.release.xcconfig */,
+				17845B8EA6A5CAFA1E677BF0 /* Pods-PVTG.debug.xcconfig */,
+				D1BA11506CA7B3A461508290 /* Pods-PVTG.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1019,13 +1019,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 187F3E48258CC802008FB2CB /* Build configuration list for PBXNativeTarget "PVTG" */;
 			buildPhases = (
-				317C34BB8681D33FC87B444A /* [CP] Check Pods Manifest.lock */,
+				B350739812C8EA15438B5272 /* [CP] Check Pods Manifest.lock */,
 				D6C95FD426BD4A1100DC5719 /* ShellScript */,
 				187F3E30258CC7FD008FB2CB /* Sources */,
 				187F3E31258CC7FD008FB2CB /* Frameworks */,
 				187F3E32258CC7FD008FB2CB /* Resources */,
-				F9454A0CE52C059E11F41903 /* [CP] Embed Pods Frameworks */,
-				877599CF4EAB69FE12A68F39 /* [CP] Copy Pods Resources */,
+				2BD7C8D8E8D492BC04D176C4 /* [CP] Embed Pods Frameworks */,
+				89434F18B44DCD0145E53C22 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1127,7 +1127,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		317C34BB8681D33FC87B444A /* [CP] Check Pods Manifest.lock */ = {
+		2BD7C8D8E8D492BC04D176C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89434F18B44DCD0145E53C22 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B350739812C8EA15438B5272 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1149,23 +1183,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		877599CF4EAB69FE12A68F39 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D6C95FD426BD4A1100DC5719 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1179,28 +1196,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
-		};
-		F9454A0CE52C059E11F41903 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1619,7 +1619,7 @@
 		};
 		187F3E49258CC802008FB2CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FAAD99D1247D339D5164761 /* Pods-PVTG.debug.xcconfig */;
+			baseConfigurationReference = 17845B8EA6A5CAFA1E677BF0 /* Pods-PVTG.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
@@ -1646,7 +1646,7 @@
 		};
 		187F3E4A258CC802008FB2CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 558B74FBCF5C95B718FAB54C /* Pods-PVTG.release.xcconfig */;
+			baseConfigurationReference = D1BA11506CA7B3A461508290 /* Pods-PVTG.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
