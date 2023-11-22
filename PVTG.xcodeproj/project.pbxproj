@@ -1196,7 +1196,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1627,7 +1627,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = KNN6PGPRBD;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1653,7 +1653,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.1;
-				DEVELOPMENT_TEAM = KNN6PGPRBD;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

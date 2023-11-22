@@ -41,10 +41,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         remoteNotification(application: application)
-     Stripe.setDefaultPublishableKey(stripeLivePublishKey)
-//     StripeAPI.defaultPublishableKey = "pk_test_51J7DFrIWyJFFO2dYlvl6aDAVF17ajBQLHCiimifuVEjo9ilhPWr51KglkxPb1oqY7W8w0Lttrrj9IYti0ol1RaKP00Wwya2QRY"
-//     StripeAPI.defaultPublishableKey("pk_test_51J7DFrIWyJFFO2dYlvl6aDAVF17ajBQLHCiimifuVEjo9ilhPWr51KglkxPb1oqY7W8w0Lttrrj9IYti0ol1RaKP00Wwya2QRY")
-//     Stripe.setDefaultPublishableKey("pk_test_51J7DFrIWyJFFO2dYlvl6aDAVF17ajBQLHCiimifuVEjo9ilhPWr51KglkxPb1oqY7W8w0Lttrrj9IYti0ol1RaKP00Wwya2QRY")
+    // Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
+     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
         let vc = SplashVC.navigation()
         window?.rootViewController = vc

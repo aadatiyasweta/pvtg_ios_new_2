@@ -385,7 +385,7 @@ extension SummaryVC {
     //MARK: - MAKE PAYMENT FROM STRIPE
     func makePayment(stripetoken:STPToken){
         let email = SaveToDefaults().getEmail() ?? ""
-        print(stripetoken.tokenId)
+       // print(stripetoken.tokenId)
         
         let acessToken = SaveToDefaults().getAccessToken() ?? ""
         if let id = SaveToDefaults().getUserId(){
