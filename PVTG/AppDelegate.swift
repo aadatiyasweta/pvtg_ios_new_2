@@ -181,7 +181,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
                 }
             }
         }
-      
         completionHandler(.newData)
     }
     
@@ -196,7 +195,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
     func hitApi(id : String){
         let param : [String:String] = ["user_id" : SaveToDefaults().getUserId() ?? "" , "session_id":id ]
         api_manager.POSTApi(attendingSession(), param: param, header: header()) { (json, err, statusCode) in
-            
         }
     }
 }

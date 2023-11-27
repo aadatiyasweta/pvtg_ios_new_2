@@ -21,17 +21,18 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var lblCategry: UILabel!
     @IBOutlet weak var lblSessionNmae: UILabel!
     @IBOutlet weak var vwRating: CosmosView!
-    @IBOutlet weak var Discount: UILabel!
+    @IBOutlet weak var Discount: UILabel! // here showing discount lbl
     @IBOutlet weak var btnAvlblPoints: UIButton!
     @IBOutlet weak var totalFare: UILabel!
     @IBOutlet weak var toatalTickets: UILabel!
     @IBOutlet weak var lblPlacewithDistance: UILabel!
     @IBOutlet weak var btnUseNow: UIButton!
-    @IBOutlet weak var lblPoints: UILabel!
+    @IBOutlet weak var lblPoints: UILabel! // here showing points lbl
     @IBOutlet weak var vwmap: UIView!
     @IBOutlet weak var usePvtBtn: UIButton!
     @IBOutlet weak var rewardedString: UILabel!
     
+    @IBOutlet weak var discountpriceTxtfld: UITextField!
     //MARK: - Properties
     var onboardingVm = OnboardingVm()
     var bookingDetails: SessionDetailResult?
@@ -47,10 +48,27 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     var firstPoints = 0
     var secondPoins = 0
     var isPointsUsed = false
+    var selectedPoint = 0
+    
+    var discountValuePicker: UIPickerView!
+
+    var discountValueArr = ["25%", "50%"]
+    var selectedDiscounttStr = ""
+    var selectedPointStr = ""
+    var selectedPointIdStr = ""
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        discountValuePicker = UIPickerView()
+
+        discountValuePicker.dataSource = self
+        discountValuePicker.delegate = self
+
+        discountpriceTxtfld.inputView = discountValuePicker
+        //discountpriceTxtfld.text = gradePickerValues[0]
+        
         self.discountViewHeightCons.constant = 0
         self.onboardingVm.delegate = self
         self.vm.bookingDelegate = self
@@ -104,8 +122,18 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     
     //MARK: - BUTTON ACTION
     @IBAction func useNow(_ sender: Any) {
+        if Int(self.ticketModel?.total_point ?? "0")! < self.selectedPoint{
+            showAlertView("Your available points is low", title: appName)
+        }else{
+//            lblPoints.text = (self.onboardingVm.model?.rewards?[row].points ?? "0")
+//            + " \(R.string.localizable.pts())"
+            if(selectedPointStr == ""){
+                selectedPointStr = self.lblPoints.text?.replacingOccurrences(of: " Pts", with: "") ?? ""
+                self.selectedPoint = Int(selectedPointStr) ?? 0
+                selectedPointStr = ""
+            }
         isPointsUsed = true
-        let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "%", with: "") ?? ""
+        let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "% Discount", with: "") ?? ""
         let intDiscountWithOUtPercent = Int(strDiscountWithoutPercent) ?? 0
         let discountGiven = Double(intDiscountWithOUtPercent) / Double(100)
         if let price = self.customModel?.paid_amount {
@@ -137,10 +165,16 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
                 print(replaced)
+                //let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // added by ashitesh
+                let val = Int(self.ticketModel?.total_point ?? "0")! - self.selectedPoint // added by ashitesh
+                self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal) // added by ashitesh
                 self.vwAdddashedBordr.isHidden = true
                 self.btnUseNow.isHidden = true
                 self.discountViewHeightCons.constant = 0
             }
+        }
+//            let val = Int(self.ticketModel?.total_point ?? "0")!
+//            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
         }
     }
     
@@ -158,21 +192,27 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             amount = "\(price)"
         }
         if self.isPointsUsed == true{
-            if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
-                let perctange = (price*self.firstPointDiscount)/100
-                amount = "\(price-perctange)"
-                points = "\(self.firstPoints)"
-            }
-            else{
-                if self.secondPointDiscount == 0{
-                    amount = "0"
-                    points = "\(self.secondPoins)"
-                }else{
-                    let perctange = (price*self.secondPointDiscount)/100
+//            if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
+//                let perctange = (price*self.firstPointDiscount)/100
+//                amount = "\(price-perctange)"
+//                points = "\(self.firstPoints)"
+//            }
+//            else{
+//                if self.secondPointDiscount == 0{
+//                    amount = "0"
+//                    points = "\(self.secondPoins)"
+//                }else{
+//                    let perctange = (price*self.secondPointDiscount)/100
+//                    amount = "\(price-perctange)"
+//                    points = "\(self.secondPoins)"
+//                }
+//            }
+            // above commented by ashitesh
+            let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "% Discount", with: "") ?? ""
+            let intDiscountWithOUtPercent = Int(strDiscountWithoutPercent) ?? 0
+            let perctange = (price*intDiscountWithOUtPercent)/100
                     amount = "\(price-perctange)"
-                    points = "\(self.secondPoins)"
-                }
-            }
+                    points = "\(self.selectedPoint)"
         }
         
         if let n = NumberFormatter().number(from: amount) {
@@ -200,18 +240,29 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
                 self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
                 self.lblPoints.text = "\(self.firstPoints) \(R.string.localizable.pts())"
-                let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints
+                self.selectedPoint = self.firstPoints
+//                let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints
+                let val = Int(self.ticketModel?.total_point ?? "0")! // commented by ashitesh
                 self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
             }else{
                 if self.secondPointDiscount == 0{
                     self.Discount.text = R.string.localizable.free()
                 }else{
-                    self.Discount.text = "\(self.secondPointDiscount)%"
+                    self.Discount.text = "\(self.secondPointDiscount)% Discount"
                 }
                 self.lblPoints.text = "\(self.secondPoins) \(R.string.localizable.pts())"
-                let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins
+                self.selectedPoint = self.secondPoins
+//                let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // commented by ashitesh
+                let val = Int(self.ticketModel?.total_point ?? "0")!
                 self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
             }
+//            if Int(self.ticketModel?.total_point ?? "0")! < self.selectedPoint{
+//                showAlertView("Your available points is low", title: appName)
+//            }else{
+//                let val = Int(self.ticketModel?.total_point ?? "0")!
+//                self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+//            }
+            
         }else{
             self.vwAdddashedBordr.isHidden = true
             self.btnUseNow.isHidden = true
@@ -264,17 +315,22 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
             self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
             self.lblPoints.text = "\(self.firstPoints) \(R.string.localizable.pts())"
-            let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints
+            self.selectedPoint = self.firstPoints
+//            let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints // commented by ashitesh
+            
+            let val = Int(self.ticketModel?.total_point ?? "0")!
             self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
         }else{
             if self.secondPointDiscount == 0{
                 self.Discount.text = R.string.localizable.free()
                 
             }else{
-                self.Discount.text = "\(self.secondPointDiscount)%"
+                self.Discount.text = "\(self.secondPointDiscount)% Discount"
             }
             self.lblPoints.text = "\(self.secondPoins) \(R.string.localizable.pts())"
-            let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins
+            self.selectedPoint = self.firstPoints
+//            let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // commented by ashitesh
+            let val = Int(self.ticketModel?.total_point ?? "0")!
             self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
         }
     }
@@ -393,7 +449,7 @@ extension SummaryVC {
             if(currency == "$"){
                 currency = "USD"
             }
-            let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "%", with: "") ?? ""
+            let strDiscountWithoutPercent  = self.Discount.text?.replacingOccurrences(of: "% Discount", with: "") ?? ""
             let intDiscountWithOUtPercent = Int(strDiscountWithoutPercent) ?? 0
             let discountGiven = Double(intDiscountWithOUtPercent) / Double(100)
             
@@ -415,12 +471,15 @@ extension SummaryVC {
                     }else {
                         strAmount = String(Int(totalPrice.rounded(.toNearestOrEven)))
                     }
-                    
-                    self.vm.makePAymentStripe(user_id: id, stripeytoken: stripetoken.tokenId, ammount: strAmount, currency: currency, email: email, token: acessToken,sessionId: self.customModel?.session_id ?? ""){ data in
-                        if(data != ""){
-                            self.bookSession(transactionID: data)
+//                    if(Int(strAmount) ?? 0 < 2020){
+//                        showAlertView("Amount should be atleast 2020", title: appName)
+//                    }else{
+                        self.vm.makePAymentStripe(user_id: id, stripeytoken: stripetoken.tokenId, ammount: strAmount, currency: currency, email: email, token: acessToken,sessionId: self.customModel?.session_id ?? ""){ data in
+                            if(data != ""){
+                                self.bookSession(transactionID: data)
+                            }
                         }
-                    }
+                   // }
                 }
             }
         }
@@ -491,6 +550,34 @@ extension SummaryVC : STPAddCardViewControllerDelegate
         print(token)
         dismiss(animated: false, completion: nil)
         self.makePayment(stripetoken: token)
+    }
+}
+
+extension SummaryVC : UIPickerViewDataSource,UIPickerViewDelegate{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return discountValueArr.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return discountValueArr[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        Discount.text = discountValueArr[row] + " Discount"
+        lblPoints.text = (self.onboardingVm.model?.rewards?[row].points ?? "0")
+        + " \(R.string.localizable.pts())"
+        selectedPointStr = self.onboardingVm.model?.rewards?[row].points ?? "0"
+        self.selectedPoint = Int(self.selectedPointStr) ?? 0
+        selectedDiscounttStr = self.onboardingVm.model?.rewards?[row].discount ?? "0"
+        selectedPointIdStr = self.onboardingVm.model?.rewards?[row].id ?? "0"
+        self.view.endEditing(true)
+        //pickerMaximumValue.isHidden = true
+        //connectLimitPickerHeight.constant = 10
     }
 }
 
