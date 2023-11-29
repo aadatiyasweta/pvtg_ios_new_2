@@ -10695,11 +10695,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31E90EDD5CA4E72255D97779158D2CDB /* GoogleSignIn.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
+				DEVELOPMENT_TEAM = KNN6PGPRBD;
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = GoogleSignIn;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -10968,11 +10972,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37568702DFE300CF47E8E83D27080C62 /* GoogleSignIn.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
+				DEVELOPMENT_TEAM = KNN6PGPRBD;
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = GoogleSignIn;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -12888,6 +12896,7 @@
 			baseConfigurationReference = 236F75EACF62FB3A22CCDCB0617608FF /* Stripe.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Stripe";
+				DEVELOPMENT_TEAM = KNN6PGPRBD;
 				IBSC_MODULE = Stripe;
 				INFOPLIST_FILE = "Target Support Files/Stripe/ResourceBundle-Stripe-Stripe-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -12904,6 +12913,7 @@
 			baseConfigurationReference = 9B9F0A8957E18B6BC098DB7B3B7238F3 /* Stripe.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Stripe";
+				DEVELOPMENT_TEAM = KNN6PGPRBD;
 				IBSC_MODULE = Stripe;
 				INFOPLIST_FILE = "Target Support Files/Stripe/ResourceBundle-Stripe-Stripe-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
