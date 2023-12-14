@@ -11,10 +11,9 @@ import UIKit
 import IQKeyboardManager
 import Firebase
 import AuthenticationServices
-import UserNotifications
+//import UserNotifications
 import FirebaseMessaging
 import FirebaseCore
-//import FirebaseInstanceID
 import SVProgressHUD
 import AVFoundation
 import GooglePlaces
@@ -25,7 +24,8 @@ import Stripe
 
 
 @UIApplicationMain
-class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
+//class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
+class AppDelegate:UIResponder,UIApplicationDelegate, MessagingDelegate,  UNUserNotificationCenterDelegate{
     var window: UIWindow?
     var tabBarVc : UITabBarController?
     var currentVC : UIViewController?
@@ -39,8 +39,9 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
 //
         GMSPlacesClient.provideAPIKey("AIzaSyCcR9sGmXLeCBwVXIOH2ciEsGlgmHIik98")
         FirebaseApp.configure()
-        Messaging.messaging().delegate = self
-        remoteNotification(application: application)
+                fireBaseSetup(application: application)
+                Messaging.messaging().delegate = self
+        //remoteNotification(application: application)
     // Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
      Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
@@ -48,6 +49,90 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    func fireBaseSetup(application: UIApplication) {
+            if #available(iOS 10.0, *) {
+                // For iOS 10 display notification (sent via APNS)
+                UNUserNotificationCenter.current().delegate = self
+
+                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+                UNUserNotificationCenter.current().requestAuthorization(
+                    options: authOptions,
+                    completionHandler: {_,_ in })
+            } else {
+                let settings: UIUserNotificationSettings =
+                    UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+                application.registerUserNotificationSettings(settings)
+            }
+            application.registerForRemoteNotifications()
+        }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {               print("Firebase registration token: \(String(describing: fcmToken))")
+            if let  fcmTokenn = fcmToken {
+                UserDefaults.standard.set(fcmTokenn, forKey:"deviceToken")
+             }
+            SaveToDefaults().setFcmToken(token: "\(String(describing: fcmToken))")
+    }
+
+func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Pass device token to auth.
+        //let firebaseAuth = Auth.auth()
+        //At development time we use .sandbox
+        //firebaseAuth.setAPNSToken(deviceToken, type: AuthAPNSTokenType.sandbox)
+        //At time of production it will be set to .prod
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+                print("userInfo",userInfo)
+//                if userInfo["gcm.notification.type"] as? String == "reminder"{
+//                    if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
+//                        print(session_id,session_name)
+//                        if SaveToDefaults().getAccessToken() != nil{
+//                            if application.applicationState == .active{
+//                                self.performAttendingAlert(name: session_name, id: session_id)
+//                            }
+//                        }
+//                    }
+//                }
+     //           completionHandler(.newData)
+
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        _ = notification.request.content.categoryIdentifier
+
+
+//                completionHandler([UNNotificationPresentationOptions.alert,UNNotificationPresentationOptions.sound,UNNotificationPresentationOptions.badge])
+        completionHandler([.alert,.sound, .badge])
+
+                //let object = notification.request.content.userInfo as? [String : AnyObject]
+    }
+    
+    @available(iOS 10.0, *)
+    internal func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//
+//        if let Notification_type = response.notification.request.content.userInfo["aps"] as? NSDictionary{
+//
+//        }
+        let userInfo = response.notification.request.content.userInfo
+        print("didReceive")
+        if userInfo["gcm.notification.type"] as? String == "reminder"{
+        if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
+            print(session_id,session_name)
+            if SaveToDefaults().getAccessToken() != nil{
+//                if UIApplication.shared.applicationState == .inactive{
+ //                   DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//                        self.performAttendingAlert(name: session_name, id: session_id)
+//                    }
+//                }else{
+                    self.performAttendingAlert(name: session_name, id: session_id)
+ //               }
+            }
+        }
+        }
+       // completionHandler()
     }
     
     func checkLoginStatus() {
@@ -68,53 +153,46 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         }
     }
     
-    func remoteNotification(application:UIApplication) {
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_,_ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
-        application.registerForRemoteNotifications()
-    }
+//    func remoteNotification(application:UIApplication) {
+//        if #available(iOS 10.0, *) {
+//            // For iOS 10 display notification (sent via APNS)
+//            UNUserNotificationCenter.current().delegate = self
+//            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//            UNUserNotificationCenter.current().requestAuthorization(
+//                options: authOptions,
+//                completionHandler: {_,_ in })
+//        } else {
+//            let settings: UIUserNotificationSettings =
+//                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//            application.registerUserNotificationSettings(settings)
+//        }
+//        application.registerForRemoteNotifications()
+//    }
 
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("Firebase registration token: \(String(describing: fcmToken))")
-        if let  fcmTokenn = fcmToken {
-            UserDefaults.standard.set(fcmTokenn, forKey:"deviceToken")
-        }
-        SaveToDefaults().setFcmToken(token: "\(String(describing: fcmToken))")
-    }
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("didRegisterForRemoteNotificationsWithDeviceToken")
-        Messaging.messaging().setAPNSToken(deviceToken, type: .sandbox)
-        Messaging.messaging().setAPNSToken(deviceToken, type: .prod)
-        Messaging.messaging().token { (token, error) in
-               if let error = error {
-                   print("Error fetching remote instance ID: \(error.localizedDescription)")
-               } else if let token = token {
-                   UserDefaults.standard.set(token, forKey:"deviceToken")
-               }
-           }
-    }
+//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        print("didRegisterForRemoteNotificationsWithDeviceToken")
+//        Messaging.messaging().setAPNSToken(deviceToken, type: .sandbox)
+//        Messaging.messaging().setAPNSToken(deviceToken, type: .prod)
+//        Messaging.messaging().token { (token, error) in
+//               if let error = error {
+//                   print("Error fetching remote instance ID: \(error.localizedDescription)")
+//               } else if let token = token {
+//                   UserDefaults.standard.set(token, forKey:"deviceToken")
+//               }
+//           }
+//    }
     
     //MARK: - Function For Open URL
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
         let googleDidHandle = GIDSignIn.sharedInstance.handle(url)
         let facebookDidHandle = appDelegate.application(app, open: url, options: options)
-        Auth.auth().canHandle(url)
+        //Auth.auth().canHandle(url)
         return  facebookDidHandle || googleDidHandle
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-    }
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+//    }
     
     func applicationWillResignActive(_ application: UIApplication) {
     }
@@ -147,42 +225,43 @@ class AppDelegate:UIResponder,UIApplicationDelegate, UNUserNotificationCenterDel
         }
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options:   UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .badge, .sound])
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options:   UNNotificationPresentationOptions) -> Void) {
+//        completionHandler([.alert, .badge, .sound])
+//    }
+//
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//        let userInfo = response.notification.request.content.userInfo
+//        print("didReceive")
+//        if userInfo["gcm.notification.type"] as? String == "reminder"{
+//        if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
+//            print(session_id,session_name)
+//            if SaveToDefaults().getAccessToken() != nil{
+//                if UIApplication.shared.applicationState == .inactive{
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//                        self.performAttendingAlert(name: session_name, id: session_id)
+//                    }
+//                }else{
+//                    self.performAttendingAlert(name: session_name, id: session_id)
+//                }
+//            }
+//        }
+//        }
+//    }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        print("didReceive")
-        if userInfo["gcm.notification.type"] as? String == "reminder"{
-        if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
-            print(session_id,session_name)
-            if SaveToDefaults().getAccessToken() != nil{
-                if UIApplication.shared.applicationState == .inactive{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                        self.performAttendingAlert(name: session_name, id: session_id)
-                    }
-                }else{
-                    self.performAttendingAlert(name: session_name, id: session_id)
-                }
-            }
-        }
-        }
-    }
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("userInfo",userInfo)
-        if userInfo["gcm.notification.type"] as? String == "reminder"{
-            if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
-                print(session_id,session_name)
-                if SaveToDefaults().getAccessToken() != nil{
-                    if application.applicationState == .active{
-                        self.performAttendingAlert(name: session_name, id: session_id)
-                    }
-                }
-            }
-        }
-        completionHandler(.newData)
-    }
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//        print("userInfo",userInfo)
+//        if userInfo["gcm.notification.type"] as? String == "reminder"{
+//            if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
+//                print(session_id,session_name)
+//                if SaveToDefaults().getAccessToken() != nil{
+//                    if application.applicationState == .active{
+//                        self.performAttendingAlert(name: session_name, id: session_id)
+//                    }
+//                }
+//            }
+//        }
+//        completionHandler(.newData)
+//    }
     
     func performAttendingAlert(name : String, id : String){
         let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
