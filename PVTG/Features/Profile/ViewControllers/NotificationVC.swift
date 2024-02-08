@@ -64,20 +64,30 @@ extension NotificationVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotificationCell.ident, for: indexPath) as? NotificationCell else {return UITableViewCell()}
-        if self.notificationVM.model?.result?[indexPath.row].image != "" {
-            cell.imgHeightConstraint.constant = 150
-            cell.imgBottomconstraint.constant = 15
-        } else {
-            cell.imgHeightConstraint.constant = 0
-            cell.imgBottomconstraint.constant = 0
-        }
         cell.setData(data: self.notificationVM.model?.result?[indexPath.row])
+//        if self.notificationVM.model?.result?[indexPath.row].image != "" {
+////            cell.imgHeightConstraint.constant = 150
+////            cell.imgBottomconstraint.constant = 15
+//            cell.stackVwlLowerPart.isHidden = false
+//        } else {
+////            cell.imgHeightConstraint.constant = 0
+////            cell.imgBottomconstraint.constant = 0
+//            cell.stackVwlLowerPart.isHidden = true
+//        }
+//        DispatchQueue.main.async {
+//                  //reload this row so that `heightForRowAt` runs again and calculates height of cell based on image height
+//            self.tableView.reloadRows(at: [IndexPath], with: .automatic)
+//                  }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
+//
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 88
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         debugPrint("\(indexPath.row)")

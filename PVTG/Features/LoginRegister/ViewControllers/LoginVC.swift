@@ -127,7 +127,7 @@ extension LoginVC: AfterLoginSuccess {
     
     func loginSuccess() {
         SaveToDefaults().setIsNew(isNew: true)
-        let vc = TabBarControllerViewController.instance()
+        let vc = TabBarControllerViewController.instance() 
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

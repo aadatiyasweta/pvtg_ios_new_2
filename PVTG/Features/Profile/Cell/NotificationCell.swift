@@ -20,6 +20,8 @@ class NotificationCell: UITableViewCell {
     @IBOutlet weak var imgBottomconstraint: NSLayoutConstraint!
     @IBOutlet weak var lblnotificationMessage: UILabel!
     
+    @IBOutlet weak var stackVwlLowerPart: UIView!
+    @IBOutlet weak var stackVwUpperPart: UIView!
     //MARK: - Properties
     static let ident = "NotificationCell"
     class func nib()->UINib {
@@ -56,6 +58,11 @@ class NotificationCell: UITableViewCell {
         }
 
         let img = data.image ?? ""
-        loadImage(img, self.imgNotificationDesc, activity: nil, defaultImage: nil)
+        if img != "" {
+            stackVwlLowerPart.isHidden = false
+            loadImage(img, self.imgNotificationDesc, activity: nil, defaultImage: nil)
+        } else {
+            stackVwlLowerPart.isHidden = true
+        }
     }
 }

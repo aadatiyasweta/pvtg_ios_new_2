@@ -159,6 +159,7 @@
 		A4AADCBB27AD42100067BF9F /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AADCBA27AD42100067BF9F /* UITabBar+Extension.swift */; };
 		D6072A3B26E8BB1B003BC668 /* OnboardingFirstPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */; };
 		D6072A9226E8C8AE003BC668 /* OnboardingSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */; };
+		D61EDDF22B2ADDC100035700 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D61EDDF12B2ADDC100035700 /* GoogleService-Info.plist */; };
 		D62D733E26C67C3B00DFD0DA /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D733D26C67C3B00DFD0DA /* PriceView.swift */; };
 		D62D734326C68DA700DFD0DA /* LineMeasureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */; };
 		D62D734426C68DA700DFD0DA /* LineMeasureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */; };
@@ -166,7 +167,6 @@
 		D6573BF625CCF02500CB64DD /* CircularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6573BF425CCF02500CB64DD /* CircularCell.xib */; };
 		D69176472705976C0005C572 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69176462705976C0005C572 /* ReminderView.swift */; };
 		D69176782705ADF10005C572 /* ReminderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D691767A2705ADF10005C572 /* ReminderView.xib */; };
-		D6A02D8D28BCC2D3009889D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6A02D8C28BCC2D3009889D9 /* GoogleService-Info.plist */; };
 		D6A257422747D36B0031B75D /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8DA126F3707A009E61EC /* PriceView.xib */; };
 		D6C95FD926BD4AE400DC5719 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C95FD826BD4AE400DC5719 /* R.generated.swift */; };
 		D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C95FE026BD4BA000DC5719 /* Localizable.strings */; };
@@ -356,6 +356,7 @@
 		D1BA11506CA7B3A461508290 /* Pods-PVTG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PVTG.release.xcconfig"; path = "Target Support Files/Pods-PVTG/Pods-PVTG.release.xcconfig"; sourceTree = "<group>"; };
 		D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstPointsCell.swift; sourceTree = "<group>"; };
 		D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondCell.swift; sourceTree = "<group>"; };
+		D61EDDF12B2ADDC100035700 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D62D733D26C67C3B00DFD0DA /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineMeasureCell.swift; sourceTree = "<group>"; };
 		D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineMeasureCell.xib; sourceTree = "<group>"; };
@@ -366,7 +367,6 @@
 		D69176792705ADF10005C572 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReminderView.xib; sourceTree = "<group>"; };
 		D691767D2705ADF50005C572 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReminderView.strings; sourceTree = "<group>"; };
 		D691767F2705ADF70005C572 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ReminderView.strings; sourceTree = "<group>"; };
-		D6A02D8C28BCC2D3009889D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6A2573F2747C41D0031B75D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PriceView.strings; sourceTree = "<group>"; };
 		D6A257412747C4220031B75D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PriceView.strings; sourceTree = "<group>"; };
 		D6C95FD826BD4AE400DC5719 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -694,7 +694,7 @@
 		187F3E36258CC7FD008FB2CB /* PVTG */ = {
 			isa = PBXGroup;
 			children = (
-				D6A02D8C28BCC2D3009889D9 /* GoogleService-Info.plist */,
+				D61EDDF12B2ADDC100035700 /* GoogleService-Info.plist */,
 				D6C95FD726BD4ACE00DC5719 /* Localization */,
 				18B184C225B953DD00B83A6B /* PVTG.entitlements */,
 				1855F47F2592377A009396E6 /* Font */,
@@ -1094,6 +1094,7 @@
 				187F3E81258CCB58008FB2CB /* CountryCodeCell.xib in Resources */,
 				18629C1B25A435F9008027EC /* ProfileInterestCell.xib in Resources */,
 				187F3E6F258CCB58008FB2CB /* CountryCode.json in Resources */,
+				D61EDDF22B2ADDC100035700 /* GoogleService-Info.plist in Resources */,
 				D62D734426C68DA700DFD0DA /* LineMeasureCell.xib in Resources */,
 				184D963A25AC3D5E00C90BDF /* OnboardingCell.xib in Resources */,
 				187F3E7E258CCB58008FB2CB /* CountryPicker.xib in Resources */,
@@ -1119,7 +1120,6 @@
 				18A765E9259CA49200E71FF9 /* SearchCell.xib in Resources */,
 				187F3E72258CCB58008FB2CB /* appleTone.wav in Resources */,
 				D6FFDC5E26BC0CA400321F04 /* ActiveEventCell.xib in Resources */,
-				D6A02D8D28BCC2D3009889D9 /* GoogleService-Info.plist in Resources */,
 				D6FFDC7C26BC113200321F04 /* More.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

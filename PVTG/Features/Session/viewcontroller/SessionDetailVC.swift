@@ -242,7 +242,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
                     if let id = SaveToDefaults().getUserId(){
                         self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
                     }
-                    
                 }
             }
         }
@@ -427,7 +426,8 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         if collectionView==colectnVwSessionImage{
             return self.vm.model?.images?.count ?? 0
         }else if collectionView == self.offeredCollView{
-            return self.vm.model?.session_type?.count ?? 0
+//            return self.vm.model?.session_type?.count ?? 0
+            return 1
         }
         print("time is ",self.timeArr)
         return self.timeArr.count
