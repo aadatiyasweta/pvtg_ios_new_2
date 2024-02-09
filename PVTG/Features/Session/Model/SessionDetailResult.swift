@@ -101,11 +101,13 @@ struct SessionTypeModel : Codable {
     let session_type : String?
     let session_type_id : String?
     let price : String?
+    let price_type : String?
     enum CodingKeys: String, CodingKey {
 
         case session_type = "session_type"
         case session_type_id = "session_type_id"
         case price = "price"
+        case price_type = "price_type"
         
     }
     init(from decoder: Decoder) throws {
@@ -113,6 +115,7 @@ struct SessionTypeModel : Codable {
         session_type = try values.decodeIfPresent(String.self, forKey: .session_type)
         session_type_id = try values.decodeIfPresent(String.self, forKey: .session_type_id)
         price = try values.decodeIfPresent(String.self, forKey: .price)
+        price_type = try values.decodeIfPresent(String.self, forKey: .price_type)
         
     }
 }

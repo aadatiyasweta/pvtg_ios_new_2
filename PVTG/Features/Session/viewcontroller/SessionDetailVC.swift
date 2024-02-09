@@ -38,6 +38,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var btnToNext: UIButton!
     @IBOutlet weak var aboutViewBottomCons: NSLayoutConstraint!
     @IBOutlet weak var aboutView: UIView!
+    
+    @IBOutlet weak var serviceTimeCollectionVw: UICollectionView!
     @IBOutlet weak var vwcalendar: FSCalendar!{
         didSet {
             self.vwcalendar.dataSource = self
@@ -113,6 +115,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var offeredIndex = -1
     var bookingId = ""
     var arrPayments = [GetAllPaymentDetailsData]()
+    var selectedTimeIndex = 0
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -122,6 +125,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         vwcalendar.appearance.todaySelectionColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         self.selectedDate = formatter.string(from: self.today)
         offeredCollView.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
+        serviceTimeCollectionVw.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
         if controllerId == 1{
             self.vwmap.isHidden = false
             self.vwcalendar.isHidden = true
@@ -356,13 +360,13 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if val.is_avilable == "1" {
                         self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true)
-                        self.scrollViewBotmconstarint.constant = 97
+                       // self.scrollViewBotmconstarint.constant = 97
                     }
                 }
             } else {
                 self.timeArr.removeAll()
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-                    self.scrollViewBotmconstarint.constant = 0
+                   // self.scrollViewBotmconstarint.constant = 0
                     self.btnBooknow.isHidden = true
                     self.priceLabel.isHidden = true
                 }, completion: nil)
@@ -428,6 +432,9 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }else if collectionView == self.offeredCollView{
 //            return self.vm.model?.session_type?.count ?? 0
             return 1
+        }
+        else if(collectionView == serviceTimeCollectionVw){
+            return 3
         }
         print("time is ",self.timeArr)
         return self.timeArr.count
@@ -510,6 +517,29 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             
             return cell
         }
+        else if(collectionView == serviceTimeCollectionVw){
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
+            
+            if(self.vm.model?.session_type?[indexPath.row].price_type == "sixty"){
+                cell.searchCategorylbl.text = "60 mins"
+            }else if (self.vm.model?.session_type?[indexPath.row].price_type == "ninety"){
+                cell.searchCategorylbl.text = "90 mins"
+            }else{
+                
+                cell.searchCategorylbl.text = "120 mins"
+            }
+            if(selectedTimeIndex == indexPath.item){
+                cell.searchCategorylbl.textColor = UIColor.white
+                cell.vwContainCatgry.backgroundColor =  UIColor(red: 5/255, green: 217/255, blue: 189/255, alpha: 1)
+            }else{
+                cell.searchCategorylbl.textColor = UIColor.black
+                cell.vwContainCatgry.backgroundColor = UIColor.white
+            }
+            cell.vwContainCatgry.layer.borderWidth = 1
+            cell.vwContainCatgry.layer.borderColor = UIColor(red: 5/255, green: 217/255, blue: 189/255, alpha: 1).cgColor
+            cell.vwContainCatgry.layer.cornerRadius = 10
+            return cell
+        }
         else {
             guard let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.ident, for: indexPath) as? OnboardingCell else { return UICollectionViewCell() }
             cell1.imgDetailView.isHidden = false
@@ -557,6 +587,14 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             label.sizeToFit()
             return CGSize(width: label.frame.size.width+22, height: 55)
         }
+        else if(collectionView == serviceTimeCollectionVw){
+            let text = self.vm.model?.session_type?[indexPath.row].price_type
+            let label = UILabel(frame: CGRect.zero)
+            label.text = text
+            label.sizeToFit()
+//            return CGSize(width: label.frame.size.width+22, height: 55)
+            return CGSize(width: 120, height: 55)
+        }
         else {
             return CGSize(width: SCREEN_WIDTH, height: self.colectnVwSessionImage.frame.height)
         }
@@ -574,6 +612,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }else if collectionView == self.offeredCollView{
             self.offeredIndex = indexPath.row
             collectionView.reloadData()
+        }
+        else if(collectionView == serviceTimeCollectionVw){
+            self.selectedTimeIndex = indexPath.row
+            serviceTimeCollectionVw.reloadData()
         }
     }
     
@@ -597,11 +639,11 @@ extension SessionDetailVC: GetResponse {
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
                 self.priceLabel.isHidden = true
-                self.scrollViewBotmconstarint.constant = 0
+                //self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
                 self.priceLabel.isHidden = false
-                self.scrollViewBotmconstarint.constant = 97
+                //self.scrollViewBotmconstarint.constant = 97
                 if  self.isFromSelection{
                     let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
                     mainScrollview.setContentOffset(bottomOffset, animated: true)
@@ -610,6 +652,7 @@ extension SessionDetailVC: GetResponse {
         }
         self.vwCollection.reloadData()
         self.offeredCollView.reloadData()
+        self.serviceTimeCollectionVw.reloadData()
     }
     
     func reloadTime() {
@@ -619,13 +662,13 @@ extension SessionDetailVC: GetResponse {
             if self.formatter.string(from: self.today) == val.schedule_date && val.is_avilable ?? "0" == "1"{
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false)
-                    self.scrollViewBotmconstarint.constant = 97
+                    //self.scrollViewBotmconstarint.constant = 97
                 }
                 break
             } else {
                 self.timeArr.removeAll()
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-                    self.scrollViewBotmconstarint.constant = 0
+                   // self.scrollViewBotmconstarint.constant = 0
                     //self.btnBooknow.isHidden = true
                 }, completion: nil)
                 
@@ -660,11 +703,11 @@ extension SessionDetailVC: GetResponse {
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
                 self.priceLabel.isHidden = true
-                self.scrollViewBotmconstarint.constant = 0
+                //self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
                 self.priceLabel.isHidden = false
-                self.scrollViewBotmconstarint.constant = 97
+                //self.scrollViewBotmconstarint.constant = 97
             }
         }
         
@@ -718,8 +761,9 @@ extension SessionDetailVC: GetResponse {
                 self.offeredIndex = 0
             }
             self.offerdView.isHidden = false
-            self.offeredHeightCons.constant = 116
+//            self.offeredHeightCons.constant = 116
             
+            self.offeredHeightCons.constant = 198
         }
         self.vwCollection.reloadData()
         if(data.session_booking_status == "2" ||  data.session_booking_status == "3"){
@@ -732,6 +776,7 @@ extension SessionDetailVC: GetResponse {
         self.vwcalendar.reloadData()
         self.colectnVwSessionImage.reloadData()
         self.offeredCollView.reloadData()
+        self.serviceTimeCollectionVw.reloadData()
         self.timer?.invalidate()
         setuptimer()
         guard let alldate = self.vm.model?.all_date else {return}
@@ -741,14 +786,14 @@ extension SessionDetailVC: GetResponse {
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if self.controllerId == 0 || self.controllerId == 2{
                         self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false)
-                        self.scrollViewBotmconstarint.constant = 97
+                       // self.scrollViewBotmconstarint.constant = 97
                     }
                 }
                 break
             } else {
                 self.timeArr.removeAll()
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-                    self.scrollViewBotmconstarint.constant = 0
+                   // self.scrollViewBotmconstarint.constant = 0
                     self.btnBooknow.isHidden = true
                 }, completion: nil)
                 
