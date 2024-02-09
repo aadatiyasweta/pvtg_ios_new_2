@@ -833,8 +833,8 @@
                             <constraint firstItem="ppg-q6-o72" firstAttribute="trailing" secondItem="iJP-br-t1e" secondAttribute="trailing" constant="55" id="kni-DX-Iby"/>
                             <constraint firstItem="ppg-q6-o72" firstAttribute="bottom" secondItem="iJP-br-t1e" secondAttribute="bottom" constant="30" id="onl-Un-hif"/>
                             <constraint firstItem="d9t-Lb-S6p" firstAttribute="centerX" secondItem="ppg-q6-o72" secondAttribute="centerX" id="qHa-cT-mro"/>
-                            <constraint firstItem="x1J-nz-1K2" firstAttribute="bottom" secondItem="ppg-q6-o72" secondAttribute="bottom" id="qes-fq-gbX"/>
                             <constraint firstItem="iJP-br-t1e" firstAttribute="leading" secondItem="ppg-q6-o72" secondAttribute="leading" constant="55" id="rj0-Ec-NmU"/>
+                            <constraint firstItem="ppg-q6-o72" firstAttribute="bottom" secondItem="iJP-br-t1e" secondAttribute="bottom" constant="30" id="sd4-Aa-IF1"/>
                             <constraint firstItem="x1J-nz-1K2" firstAttribute="centerX" secondItem="2Oi-Ft-hyQ" secondAttribute="centerX" id="vC8-uV-cws"/>
                             <constraint firstItem="OLw-1C-Gok" firstAttribute="bottom" secondItem="iJP-br-t1e" secondAttribute="bottom" id="vxH-dZ-xwF"/>
                             <constraint firstItem="iJP-br-t1e" firstAttribute="top" secondItem="p7v-VY-6P1" secondAttribute="bottom" constant="-24" id="wgC-Fa-u5j"/>
