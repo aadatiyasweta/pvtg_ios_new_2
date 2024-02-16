@@ -434,7 +434,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             return 1
         }
         else if(collectionView == serviceTimeCollectionVw){
-            return 3
+            return self.vm.model?.session_type?.count ?? 0
         }
         print("time is ",self.timeArr)
         return self.timeArr.count

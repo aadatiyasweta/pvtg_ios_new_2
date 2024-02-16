@@ -33,6 +33,11 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var rewardedString: UILabel!
     
     @IBOutlet weak var discountpriceTxtfld: UITextField!
+    @IBOutlet weak var pointsBgVw: UIView!
+    
+    @IBOutlet weak var rewardPicImgBgVw: UIView!
+    @IBOutlet weak var rewardCupBgVw: UIView!
+    
     //MARK: - Properties
     var onboardingVm = OnboardingVm()
     var bookingDetails: SessionDetailResult?
@@ -60,6 +65,13 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        pointsBgVw.layer.borderWidth = 1
+        pointsBgVw.layer.borderColor = UIColor.white.cgColor
+        
+        rewardPicImgBgVw.layer.cornerRadius = 5
+        rewardPicImgBgVw.clipsToBounds = true
+        rewardCupBgVw.layer.cornerRadius = 5
+        rewardPicImgBgVw.clipsToBounds = true
         
         discountValuePicker = UIPickerView()
 
@@ -319,7 +331,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 //            let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints // commented by ashitesh
             
             let val = Int(self.ticketModel?.total_point ?? "0")!
-            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+//            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+            self.btnAvlblPoints.setTitle("\(val)", for: .normal)
         }else{
             if self.secondPointDiscount == 0{
                 self.Discount.text = R.string.localizable.free()
@@ -331,7 +344,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             self.selectedPoint = self.firstPoints
 //            let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // commented by ashitesh
             let val = Int(self.ticketModel?.total_point ?? "0")!
-            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+//            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+            self.btnAvlblPoints.setTitle("\(val)", for: .normal)
         }
     }
 }
