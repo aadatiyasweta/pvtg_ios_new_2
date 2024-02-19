@@ -85,6 +85,9 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     }
     
     @IBAction func tapLoginWithGoogle(_ sender: UIButton) {
+        let config = GIDConfiguration(clientID: "213231135715-6tq4dmpkanreubpk3krueo47hvedluco.apps.googleusercontent.com")
+                
+        GIDSignIn.sharedInstance.configuration = config
         GIDSignIn.sharedInstance.signIn(withPresenting: self)
     }
     

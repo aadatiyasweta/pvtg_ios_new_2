@@ -17,14 +17,18 @@ import GoogleMaps
 import GoogleSignIn
 import Stripe
 
-import Firebase
+//import Firebase
 //import FirebaseAuth
-import FirebaseMessaging
+//import FirebaseMessaging
 //import FirebaseCore
+
+import FirebaseMessaging
+import UserNotifications
+import Firebase
 
 
 @UIApplicationMain
-class AppDelegate:UIResponder,UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate{
+class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDelegate,MessagingDelegate{
     var window: UIWindow?
     var tabBarVc : UITabBarController?
     var currentVC : UIViewController?
@@ -42,6 +46,9 @@ class AppDelegate:UIResponder,UIApplicationDelegate, MessagingDelegate, UNUserNo
         FirebaseApp.configure()
                 fireBaseSetup(application: application)
                 Messaging.messaging().delegate = self
+        
+       // FirebaseApp.configure()
+              //  Messaging.messaging().delegate = self
         
         //remoteNotification(application: application)
     // Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
@@ -70,26 +77,79 @@ class AppDelegate:UIResponder,UIApplicationDelegate, MessagingDelegate, UNUserNo
             application.registerForRemoteNotifications()
         }
     
-        func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {                   print("fcmToken",fcmToken ?? "")
-                        if let  fcmTokenn = fcmToken {
-                            UserDefaults.standard.set(fcmTokenn, forKey:"deviceToken")
-                         }
-                        SaveToDefaults().setFcmToken(token: "\(String(describing: fcmToken))")
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+       // Messaging.messaging().apnsToken = deviceToken
+    }
+    
+         func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+            print("fcmToken:\(String(describing: fcmToken))")
+             if let  fcmTokenn = fcmToken {
+                UserDefaults.standard.set(fcmTokenn, forKey:"deviceToken")
+                                     }
+                SaveToDefaults().setFcmToken(token: "\(String(describing: fcmToken))")
+            
         }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+       
+        func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
-    {
-        _ = notification.request.content.categoryIdentifier
+        }
+        
+        @available(iOS 10.0, *)
+        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+        {
 
-                completionHandler([UNNotificationPresentationOptions.alert,UNNotificationPresentationOptions.sound,UNNotificationPresentationOptions.badge])
-
-                let object = notification.request.content.userInfo as? [String : AnyObject]
-    }
+            let object = notification.request.content.userInfo as! [String : AnyObject]
+//            if isNetworkConnectionEnable {
+//                NotificationCenter.default.post(name: Notification.Name("chatBageUpdate"), object: nil)
+//                completionHandler([.alert,.sound, .badge])
+//            }
+            completionHandler([.alert,.sound, .badge])
+        }
+        
+        @available(iOS 10.0, *)
+        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+            _ = response.notification.request.content.categoryIdentifier
+            let object = response.notification.request.content.userInfo as! [String : AnyObject]
+            print(object)
+//            if UserDefaults.isLogin ?? false {
+//                if isNetworkConnectionEnable {
+//                    if "chat" == object["gcm.notification.type"] as? String{
+//                        setTabViewChatListController()
+//                    }
+//                }
+            }
     
+//        func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {                   print("fcmToken",fcmToken ?? "")
+//                        if let  fcmTokenn = fcmToken {
+//                            UserDefaults.standard.set(fcmTokenn, forKey:"deviceToken")
+//                         }
+//                        SaveToDefaults().setFcmToken(token: "\(String(describing: fcmToken))")
+//        }
+//
+//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//            Messaging.messaging().apnsToken = deviceToken
+//        }
+    
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//
+//    }
+//
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+//    {
+//        _ = notification.request.content.categoryIdentifier
+//
+//                completionHandler([UNNotificationPresentationOptions.alert,UNNotificationPresentationOptions.sound,UNNotificationPresentationOptions.badge])
+//
+//                let object = notification.request.content.userInfo as? [String : AnyObject]
+//    }
+    
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//
+//        _ = response.notification.request.content.categoryIdentifier
+//                let object = response.notification.request.content.userInfo as! [String : AnyObject]
+//
+//    }
+//
     
 //    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 //

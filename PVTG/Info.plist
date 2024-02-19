@@ -31,7 +31,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.213231135715-4bt41406ei6um842vpd6ntolaap3j0p4</string>
+				<string>com.googleusercontent.apps.213231135715-6tq4dmpkanreubpk3krueo47hvedluco</string>
 			</array>
 		</dict>
 		<dict>
@@ -48,8 +48,6 @@
 	<key>FacebookAppID</key>
 	<string>242237660736745</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
-	<key>FirebaseMessagingAutoInitEnabled</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>

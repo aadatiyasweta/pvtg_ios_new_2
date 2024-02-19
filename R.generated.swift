@@ -1942,7 +1942,7 @@ struct _R {
     }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 65 images.
+  /// This `_R.image` struct is generated, and contains static references to 66 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -2059,6 +2059,9 @@ struct _R {
 
     /// Image `moreGreen`.
     var moreGreen: RswiftResources.ImageResource { .init(name: "moreGreen", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `newFilterDownAr`.
+    var newFilterDownAr: RswiftResources.ImageResource { .init(name: "newFilterDownAr", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `output-onlinejpgtools`.
     var outputOnlinejpgtools: RswiftResources.ImageResource { .init(name: "output-onlinejpgtools", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -2424,6 +2427,7 @@ struct _R {
         if UIKit.UIImage(named: "minimalLeft2X", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'minimalLeft2X' is used in storyboard 'Home', but couldn't be loaded.") }
         if UIKit.UIImage(named: "more", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'more' is used in storyboard 'Home', but couldn't be loaded.") }
         if UIKit.UIImage(named: "moreGreen", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'moreGreen' is used in storyboard 'Home', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "newFilterDownAr", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'newFilterDownAr' is used in storyboard 'Home', but couldn't be loaded.") }
         if UIKit.UIImage(named: "radioFill", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'radioFill' is used in storyboard 'Home', but couldn't be loaded.") }
         if UIKit.UIImage(named: "radioGrey", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'radioGrey' is used in storyboard 'Home', but couldn't be loaded.") }
         if eventsViewController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'eventsViewController' could not be loaded from storyboard 'Home' as 'EventsViewController'.") }
