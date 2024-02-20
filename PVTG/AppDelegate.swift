@@ -32,8 +32,11 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     var window: UIWindow?
     var tabBarVc : UITabBarController?
     var currentVC : UIViewController?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        FirebaseApp.configure()
+                fireBaseSetup(application: application)
+                Messaging.messaging().delegate = self
         // Override point for customization after application launch.
         IQKeyboardManager.shared().isEnabled = true
         GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
@@ -43,9 +46,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
 //
         GMSPlacesClient.provideAPIKey("AIzaSyCcR9sGmXLeCBwVXIOH2ciEsGlgmHIik98")
         
-        FirebaseApp.configure()
-                fireBaseSetup(application: application)
-                Messaging.messaging().delegate = self
+        
         
        // FirebaseApp.configure()
               //  Messaging.messaging().delegate = self
@@ -78,7 +79,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-       // Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().apnsToken = deviceToken
     }
     
          func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
