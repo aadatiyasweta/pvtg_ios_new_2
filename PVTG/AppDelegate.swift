@@ -255,7 +255,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     }
     
     func hitDeviceTokenApi(isLogout : Bool? = false){
-        let deviceToken = UserDefaults.standard.object(forKey: "deviceToken") ?? ""
+        let deviceToken = UserDefaults.standard.object(forKey: "deviceToken") ?? "1234"
         let param : [String:Any] = [
             "device_token": !isLogout! ? deviceToken : "123",
             "device_type": "Ios",

@@ -81,7 +81,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         discountpriceTxtfld.inputView = discountValuePicker
         //discountpriceTxtfld.text = gradePickerValues[0]
         
-        self.discountViewHeightCons.constant = 0
+        self.discountViewHeightCons.constant = 50
         self.onboardingVm.delegate = self
         self.vm.bookingDelegate = self
         DispatchQueue.main.async {
@@ -180,9 +180,11 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 //let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // added by ashitesh
                 let val = Int(self.ticketModel?.total_point ?? "0")! - self.selectedPoint // added by ashitesh
                 self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal) // added by ashitesh
-                self.vwAdddashedBordr.isHidden = true
-                self.btnUseNow.isHidden = true
-                self.discountViewHeightCons.constant = 0
+                self.vwAdddashedBordr.alpha = 0.5
+                self.btnUseNow.alpha = 0.5
+                self.btnUseNow.isUserInteractionEnabled = false
+                self.discountpriceTxtfld.isUserInteractionEnabled = false
+                self.discountViewHeightCons.constant = 50
             }
         }
 //            let val = Int(self.ticketModel?.total_point ?? "0")!
@@ -246,8 +248,10 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func tapUseNow(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected{
-            self.vwAdddashedBordr.isHidden = false
-            self.btnUseNow.isHidden = false
+            self.vwAdddashedBordr.alpha = 1
+            self.btnUseNow.alpha = 1
+            self.btnUseNow.isUserInteractionEnabled = true
+            self.discountpriceTxtfld.isUserInteractionEnabled = true
             self.discountViewHeightCons.constant = 50
             if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
                 self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
@@ -276,9 +280,11 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 //            }
             
         }else{
-            self.vwAdddashedBordr.isHidden = true
-            self.btnUseNow.isHidden = true
-            self.discountViewHeightCons.constant = 0
+            self.vwAdddashedBordr.alpha = 0.5
+           self.btnUseNow.alpha = 0.5
+            self.btnUseNow.isUserInteractionEnabled = false
+            self.discountpriceTxtfld.isUserInteractionEnabled = false
+            self.discountViewHeightCons.constant = 50
             let val = (self.ticketModel?.total_point)!
             self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
             self.setOriginalPriceWithOutDiscount()
@@ -312,17 +318,21 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
                 print(replaced)
-                self.vwAdddashedBordr.isHidden = true
-                self.btnUseNow.isHidden = true
-                self.discountViewHeightCons.constant = 0
+                self.vwAdddashedBordr.alpha = 0.5
+                self.btnUseNow.alpha = 0.5
+                self.btnUseNow.isUserInteractionEnabled = false
+                self.discountpriceTxtfld.isUserInteractionEnabled = false
+                self.discountViewHeightCons.constant = 50
             }
         }
     }
     
     //MARK: - METHOD TO SHOW USED POINT
     private func showUseNow(){
-        self.vwAdddashedBordr.isHidden = false
-        self.btnUseNow.isHidden = false
+        self.vwAdddashedBordr.alpha = 1
+        self.btnUseNow.alpha = 1
+        self.btnUseNow.isUserInteractionEnabled = true
+        self.discountpriceTxtfld.isUserInteractionEnabled = true
         self.discountViewHeightCons.constant = 50
         if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
             self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
