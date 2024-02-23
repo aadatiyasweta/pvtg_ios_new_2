@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :ios, '11.0'
 
 target 'PVTG' do
 
@@ -18,10 +18,10 @@ target 'PVTG' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Analytics'
   #pod 'Firebase/Core'
-  pod 'Cosmos', '~> 22.1'
+  pod 'Cosmos'
   pod 'Firebase/Auth'
   pod 'FSCalendar'
-  pod 'SVPinView', '~> 1.0'
+  pod 'SVPinView'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GoogleSignIn'
@@ -31,13 +31,9 @@ target 'PVTG' do
   pod 'R.swift'
   pod 'RangeSeekSlider'
   pod 'Stripe', '~> 15.0.1'
-#  pod 'R.swift'
+
   
-  post_install do |installer|
-    installer.pods_project.build_configurations.each do |config|
-      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-    end
-    end
+
 
 
 end

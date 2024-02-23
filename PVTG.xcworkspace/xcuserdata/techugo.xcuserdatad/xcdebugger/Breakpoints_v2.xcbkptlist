@@ -49,6 +49,21 @@
                   endingLineNumber = "138"
                   offsetFromSymbolStart = "1071">
                </Location>
+               <Location
+                  uuid = "810075F4-FD94-4C26-A164-613B20D9C692 - 58955287f81caf5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SummaryVC.useNow(Any) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "1035">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -129,6 +144,21 @@
                   endingLineNumber = "154"
                   offsetFromSymbolStart = "234">
                </Location>
+               <Location
+                  uuid = "8E0904F6-CB13-48D0-AA8B-5B758F37A3EA - adcbce83826280af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.LoginVC.sign(_: Swift.Optional&lt;__C.GIDSignIn&gt;, didSignInFor: Swift.Optional&lt;__C.GIDGoogleUser&gt;, withError: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/LoginRegister/ViewControllers/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "218">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -176,6 +206,21 @@
                   startingLineNumber = "170"
                   endingLineNumber = "170"
                   offsetFromSymbolStart = "2661">
+               </Location>
+               <Location
+                  uuid = "72199E74-21E7-4A91-A916-589984E4C0C1 - adcbce838262825f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.LoginVC.sign(_: Swift.Optional&lt;__C.GIDSignIn&gt;, didSignInFor: Swift.Optional&lt;__C.GIDGoogleUser&gt;, withError: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/LoginRegister/ViewControllers/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "2613">
                </Location>
             </Locations>
          </BreakpointContent>

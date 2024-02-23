@@ -2898,7 +2898,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 MIT License
 
-Copyright (c) 2013-2017 Iftekhar Qurashi
+Copyright (c) 2013-2023 Iftekhar Qurashi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -3146,7 +3146,7 @@ IN THE SOFTWARE.
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2022 Mathijs Kadijk
+Copyright (c) 2014-2023 Mathijs Kadijk
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
