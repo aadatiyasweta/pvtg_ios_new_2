@@ -47,7 +47,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         GMSPlacesClient.provideAPIKey("AIzaSyCcR9sGmXLeCBwVXIOH2ciEsGlgmHIik98")
         
         
-        
        // FirebaseApp.configure()
               //  Messaging.messaging().delegate = self
         
@@ -92,7 +91,18 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         }
        
         func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
+            print("userInfo",userInfo)
+                   if userInfo["gcm.notification.type"] as? String == "reminder"{
+                          if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
+                              print(session_id,session_name)
+                              if SaveToDefaults().getAccessToken() != nil{
+                                  if application.applicationState == .active{
+                                      self.performAttendingAlert(name: session_name, id: session_id)
+                                  }
+                              }
+                          }
+                      }
+                      completionHandler(.newData)
         }
         
         @available(iOS 10.0, *)
@@ -268,11 +278,34 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     }
         
     func performAttendingAlert(name : String, id : String){
-        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
-        viewObj?.id = id
-        viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
-        viewObj?.delegate = self
-        window?.addSubview(viewObj!)
+//        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+//        viewObj?.id = id
+//        viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
+//        viewObj?.delegate = self
+//        window?.addSubview(viewObj!)
+        
+        Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: "Will you still be attending your holistic session?", controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
+            guard let self else{return}
+            if result{
+                self.hitApi(id: id)
+            }else{
+                Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: "Will you still be attending your holistic session?", controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
+                    guard let self else{return}
+                    if result{
+                        print("Yes Clicked")
+                    }else{
+                        Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: "Will you still be attending your holistic session?", controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
+                            guard let self else{return}
+                            if result{
+                                print("Yes Clicked")
+                            }else{
+                                print("no ")
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func hitApi(id : String){

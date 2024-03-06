@@ -66,6 +66,9 @@ extension UIColor {
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
+    
+    static var purpleActionBtn : UIColor { get { UIColor(named: "PurpleActionBtn") ?? .purple}}
+    static var greyActionBtn : UIColor { get { UIColor(named: "GreyActionBtn") ?? .gray}}
 }
 
 extension UIView {

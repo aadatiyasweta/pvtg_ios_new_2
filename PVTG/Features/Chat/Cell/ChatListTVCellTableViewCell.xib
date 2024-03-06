@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="KGk-i7-Jjw" customClass="ChatListTVCellTableViewCell" customModule="PVTG" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="330" height="90"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="eWy-Dh-I2B">
+                        <rect key="frame" x="16" y="21" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="4wV-7m-bQ5"/>
+                            <constraint firstAttribute="height" constant="48" id="V5d-fv-HJu"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John D." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTW-bz-gv3">
+                        <rect key="frame" x="80" y="21" width="62" height="19.666666666666671"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrived on location.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-BD-SzX">
+                        <rect key="frame" x="80" y="52" width="118" height="17"/>
+                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                        <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H96-oa-6A5">
+                        <rect key="frame" x="268" y="22.333333333333332" width="46" height="16.999999999999996"/>
+                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                        <color key="textColor" name="PurpleActionBtn"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJz-p4-QG0">
+                        <rect key="frame" x="294" y="50.666666666666664" width="20" height="19.999999999999993"/>
+                        <color key="backgroundColor" name="PurpleActionBtn"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="EN6-si-ayo"/>
+                            <constraint firstAttribute="width" constant="20" id="Pk2-hq-Whp"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PTW-bz-gv3" firstAttribute="leading" secondItem="eWy-Dh-I2B" secondAttribute="trailing" constant="16" id="8vS-Xl-Lf3"/>
+                    <constraint firstItem="H96-oa-6A5" firstAttribute="centerY" secondItem="PTW-bz-gv3" secondAttribute="centerY" id="CgO-UK-c3I"/>
+                    <constraint firstItem="eWy-Dh-I2B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="EYz-OM-kdR"/>
+                    <constraint firstItem="uJz-p4-QG0" firstAttribute="trailing" secondItem="H96-oa-6A5" secondAttribute="trailing" id="Nm7-ZQ-XC6"/>
+                    <constraint firstItem="eWy-Dh-I2B" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YVy-mx-6km"/>
+                    <constraint firstItem="7gV-BD-SzX" firstAttribute="bottom" secondItem="eWy-Dh-I2B" secondAttribute="bottom" id="bQ4-rR-rp3"/>
+                    <constraint firstItem="7gV-BD-SzX" firstAttribute="leading" secondItem="PTW-bz-gv3" secondAttribute="leading" id="eaN-uD-Axu"/>
+                    <constraint firstAttribute="trailing" secondItem="H96-oa-6A5" secondAttribute="trailing" constant="16" id="gsA-Gg-mgy"/>
+                    <constraint firstItem="uJz-p4-QG0" firstAttribute="centerY" secondItem="7gV-BD-SzX" secondAttribute="centerY" id="rhv-Do-92k"/>
+                    <constraint firstItem="PTW-bz-gv3" firstAttribute="top" secondItem="eWy-Dh-I2B" secondAttribute="top" id="uL9-hd-W1J"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="67.175572519083971" y="14.788732394366198"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="person" width="48" height="48"/>
+        <namedColor name="PurpleActionBtn">
+            <color red="0.37599998712539673" green="0.40400001406669617" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

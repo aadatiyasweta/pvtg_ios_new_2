@@ -536,3 +536,52 @@ class SimpleVideoView: UIView {
     }
 }
 
+class Helper {
+    static let shared = Helper()
+    private init(){ }
+    
+    func showAlertWithCallback(buttonText label1: String, buttonText2 label2: String, title: String, message: String, controller: UIViewController, completion: @escaping ((Bool) -> Void)) {
+        
+        var alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Set font and attributes for title
+        let titleFont = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)]
+        let attributedTitle = NSAttributedString(string: title, attributes: titleFont)
+        alert.setValue(attributedTitle, forKey: "attributedTitle")
+        
+        // Set font and attributes for message
+        let messageFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
+        let attributedMessage = NSAttributedString(string: message, attributes: messageFont)
+        alert.setValue(attributedMessage, forKey: "attributedMessage")
+        
+        // Set font and attributes for button text
+        let button1 = UIAlertAction(title: label1, style: .default) { action in
+            completion(true)
+        }
+        let button2 = UIAlertAction(title: label2, style: .default) { action in
+            completion(false)
+        }
+        // Apply font and attributes for button text
+        button1.setValue(UIColor.purpleActionBtn, forKey: "titleTextColor")
+        button2.setValue(UIColor.greyActionBtn, forKey: "titleTextColor")
+        
+        alert.addAction(button1)
+        alert.addAction(button2)
+        controller.present(alert, animated: true)
+    }
+    
+    func showCustomAlertWithCallback(buttonText label1: String, buttonText2 label2: String, title: String, message: String, controller: UIViewController, completion: @escaping ((Bool) -> Void)) {
+        DispatchQueue.main.async {
+            let popup = ReminderView.initWith(frame: UIScreen.main.bounds)
+            controller.view.addSubview(popup ?? UIView())
+            popup?.title = message
+            popup?.heading = title
+            popup?.btnText1 = label1
+            popup?.btnText2 = label2
+            popup?.callBackClosure = { handler in
+                popup?.removeFromSuperview()
+                completion(handler)
+            }
+        }
+    }
+}

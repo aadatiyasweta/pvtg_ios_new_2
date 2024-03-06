@@ -94,6 +94,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.usePvtBtn.isSelected = false
     }
     
     override func viewWillLayoutSubviews() {
@@ -329,8 +330,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     
     //MARK: - METHOD TO SHOW USED POINT
     private func showUseNow(){
-        self.vwAdddashedBordr.alpha = 1
-        self.btnUseNow.alpha = 1
+        self.vwAdddashedBordr.alpha = 0.5
+        self.btnUseNow.alpha = 0.5
         self.btnUseNow.isUserInteractionEnabled = true
         self.discountpriceTxtfld.isUserInteractionEnabled = true
         self.discountViewHeightCons.constant = 50
@@ -538,7 +539,7 @@ extension SummaryVC : GetBookingResponse,getOnboardingResponse{
         }else{
             self.usePvtBtn.isUserInteractionEnabled = true
             self.showUseNow()
-            self.usePvtBtn.isSelected = true
+            self.usePvtBtn.isSelected = false
         }
         if self.ticketModel?.user_booking ?? 0 == 0{
             self.rewardedString.text = R.string.localizable.youWillBeRewarded(self.onboardingVm.model?.point_accumulation?.first_booking_point ?? "")
