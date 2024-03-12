@@ -160,8 +160,6 @@
 		D6072A3B26E8BB1B003BC668 /* OnboardingFirstPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A3926E8BB1B003BC668 /* OnboardingFirstPointsCell.swift */; };
 		D6072A9226E8C8AE003BC668 /* OnboardingSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */; };
 		D61FC51F2B8DC60300953315 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61FC5212B8DC60300953315 /* Chat.storyboard */; };
-		D61FC52A2B8DE96500953315 /* ChatListTVCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FC5282B8DE96500953315 /* ChatListTVCellTableViewCell.swift */; };
-		D61FC52B2B8DE96500953315 /* ChatListTVCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61FC5292B8DE96500953315 /* ChatListTVCellTableViewCell.xib */; };
 		D62D733E26C67C3B00DFD0DA /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D733D26C67C3B00DFD0DA /* PriceView.swift */; };
 		D62D734326C68DA700DFD0DA /* LineMeasureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */; };
 		D62D734426C68DA700DFD0DA /* LineMeasureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */; };
@@ -171,6 +169,12 @@
 		D69176472705976C0005C572 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69176462705976C0005C572 /* ReminderView.swift */; };
 		D69176782705ADF10005C572 /* ReminderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D691767A2705ADF10005C572 /* ReminderView.xib */; };
 		D6A257422747D36B0031B75D /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8DA126F3707A009E61EC /* PriceView.xib */; };
+		D6B852B02B9F2D21007173B2 /* ReceiverTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B852AE2B9F2D21007173B2 /* ReceiverTVCell.swift */; };
+		D6B852B12B9F2D21007173B2 /* ReceiverTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B852AF2B9F2D21007173B2 /* ReceiverTVCell.xib */; };
+		D6B852B42B9F3876007173B2 /* SenderTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B852B22B9F3876007173B2 /* SenderTVCell.swift */; };
+		D6B852B52B9F3876007173B2 /* SenderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B852B32B9F3876007173B2 /* SenderTVCell.xib */; };
+		D6B852B82B9F4C1C007173B2 /* DateHeaderTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B852B62B9F4C1C007173B2 /* DateHeaderTVCell.swift */; };
+		D6B852B92B9F4C1C007173B2 /* DateHeaderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B852B72B9F4C1C007173B2 /* DateHeaderTVCell.xib */; };
 		D6BA19362B8359E600E38C83 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6BA19352B8359E600E38C83 /* GoogleService-Info.plist */; };
 		D6C95FD926BD4AE400DC5719 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C95FD826BD4AE400DC5719 /* R.generated.swift */; };
 		D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C95FE026BD4BA000DC5719 /* Localizable.strings */; };
@@ -363,8 +367,6 @@
 		D61FC5202B8DC60300953315 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
 		D61FC5242B8DC6AB00953315 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Chat.strings; sourceTree = "<group>"; };
 		D61FC5262B8DC6AC00953315 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Chat.strings; sourceTree = "<group>"; };
-		D61FC5282B8DE96500953315 /* ChatListTVCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTVCellTableViewCell.swift; sourceTree = "<group>"; };
-		D61FC5292B8DE96500953315 /* ChatListTVCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListTVCellTableViewCell.xib; sourceTree = "<group>"; };
 		D62D733D26C67C3B00DFD0DA /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineMeasureCell.swift; sourceTree = "<group>"; };
 		D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineMeasureCell.xib; sourceTree = "<group>"; };
@@ -397,6 +399,12 @@
 		D691767F2705ADF70005C572 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ReminderView.strings; sourceTree = "<group>"; };
 		D6A2573F2747C41D0031B75D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PriceView.strings; sourceTree = "<group>"; };
 		D6A257412747C4220031B75D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PriceView.strings; sourceTree = "<group>"; };
+		D6B852AE2B9F2D21007173B2 /* ReceiverTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTVCell.swift; sourceTree = "<group>"; };
+		D6B852AF2B9F2D21007173B2 /* ReceiverTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverTVCell.xib; sourceTree = "<group>"; };
+		D6B852B22B9F3876007173B2 /* SenderTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTVCell.swift; sourceTree = "<group>"; };
+		D6B852B32B9F3876007173B2 /* SenderTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderTVCell.xib; sourceTree = "<group>"; };
+		D6B852B62B9F4C1C007173B2 /* DateHeaderTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderTVCell.swift; sourceTree = "<group>"; };
+		D6B852B72B9F4C1C007173B2 /* DateHeaderTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateHeaderTVCell.xib; sourceTree = "<group>"; };
 		D6BA19352B8359E600E38C83 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6C95FD826BD4AE400DC5719 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D6C95FDF26BD4BA000DC5719 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1046,8 +1054,12 @@
 		D61FC5272B8DE92B00953315 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D61FC5282B8DE96500953315 /* ChatListTVCellTableViewCell.swift */,
-				D61FC5292B8DE96500953315 /* ChatListTVCellTableViewCell.xib */,
+				D6B852AE2B9F2D21007173B2 /* ReceiverTVCell.swift */,
+				D6B852AF2B9F2D21007173B2 /* ReceiverTVCell.xib */,
+				D6B852B22B9F3876007173B2 /* SenderTVCell.swift */,
+				D6B852B32B9F3876007173B2 /* SenderTVCell.xib */,
+				D6B852B62B9F4C1C007173B2 /* DateHeaderTVCell.swift */,
+				D6B852B72B9F4C1C007173B2 /* DateHeaderTVCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1176,7 +1188,6 @@
 				187F3E78258CCB58008FB2CB /* Splash.json in Resources */,
 				D6DC8D8226F36E23009E61EC /* OnboardingFirstPointsCell.xib in Resources */,
 				18A2CB2025BAE8D5000480E3 /* InterCell.xib in Resources */,
-				D61FC52B2B8DE96500953315 /* ChatListTVCellTableViewCell.xib in Resources */,
 				D6D522B726CA67EB00CF9E95 /* PriceCollCell.xib in Resources */,
 				A466878C27B262B10073A15F /* ActiveEventCollectionViewCell.xib in Resources */,
 				D6FFDC6E26BC0FCE00321F04 /* Home.storyboard in Resources */,
@@ -1186,6 +1197,8 @@
 				18B4D65925A5B904006C554D /* NotificationCell.xib in Resources */,
 				D6DC8D8A26F36E75009E61EC /* OnboardingSecondCell.xib in Resources */,
 				187F3E81258CCB58008FB2CB /* CountryCodeCell.xib in Resources */,
+				D6B852B92B9F4C1C007173B2 /* DateHeaderTVCell.xib in Resources */,
+				D6B852B12B9F2D21007173B2 /* ReceiverTVCell.xib in Resources */,
 				18629C1B25A435F9008027EC /* ProfileInterestCell.xib in Resources */,
 				187F3E6F258CCB58008FB2CB /* CountryCode.json in Resources */,
 				D6BA19362B8359E600E38C83 /* GoogleService-Info.plist in Resources */,
@@ -1196,6 +1209,7 @@
 				1855F4A12592377B009396E6 /* Montserrat-Regular.ttf in Resources */,
 				D6FFDC3F26BC0AA900321F04 /* Onboarding.storyboard in Resources */,
 				D6FFDC6726BC0D6E00321F04 /* HistoryCell.xib in Resources */,
+				D6B852B52B9F3876007173B2 /* SenderTVCell.xib in Resources */,
 				1855F49F2592377B009396E6 /* Montserrat-ExtraBold.ttf in Resources */,
 				1831523225A6CEB4006CA85A /* SearchLocationCell.xib in Resources */,
 				D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */,
@@ -1317,6 +1331,7 @@
 				186AC27925C7BAA600C97842 /* LocationResults.swift in Sources */,
 				1852FF0825C90EC2002CAF9E /* SemiCircleView.swift in Sources */,
 				1831523825A6D734006CA85A /* ForgotPaswordVC.swift in Sources */,
+				D6B852B82B9F4C1C007173B2 /* DateHeaderTVCell.swift in Sources */,
 				1896C3C225B801FB0053EC45 /* NotificationViewModel.swift in Sources */,
 				18A2CB1F25BAE8D5000480E3 /* InterCell.swift in Sources */,
 				1851713E25930BAA00F4BF4B /* LoginVC.swift in Sources */,
@@ -1344,7 +1359,6 @@
 				186AC27825C7BAA600C97842 /* Location.swift in Sources */,
 				18C3D54825BF138B00A34B3E /* TransformerExampleViewController.swift in Sources */,
 				187F3E7D258CCB58008FB2CB /* Utilities.m in Sources */,
-				D61FC52A2B8DE96500953315 /* ChatListTVCellTableViewCell.swift in Sources */,
 				D6573BF525CCF02500CB64DD /* CircularCell.swift in Sources */,
 				18DB86BA25B178FF0035084F /* ProfileViewModel.swift in Sources */,
 				1834FF55259B59FA00F205D6 /* SummaryVC.swift in Sources */,
@@ -1368,6 +1382,7 @@
 				1852FF0B25C90EC2002CAF9E /* FSPageViewLayout.swift in Sources */,
 				18CB0A2525B9E33B00AA10E8 /* GetTicketResult.swift in Sources */,
 				18B2A50525AEEDDA0028073E /* SessionDetailViewModel.swift in Sources */,
+				D6B852B02B9F2D21007173B2 /* ReceiverTVCell.swift in Sources */,
 				18708BEE25A42292001439CA /* ProfileVC.swift in Sources */,
 				18BD585A259C63500035FFA8 /* MoreCell.swift in Sources */,
 				A466878827B236500073A15F /* TabBarBadge.swift in Sources */,
@@ -1435,6 +1450,7 @@
 				187F3E7F258CCB58008FB2CB /* CountryPicker.swift in Sources */,
 				1831DCEE25AD5BB400A1570B /* OnboardingVC.swift in Sources */,
 				187F3E70258CCB58008FB2CB /* UITextView+Placeholder.m in Sources */,
+				D6B852B42B9F3876007173B2 /* SenderTVCell.swift in Sources */,
 				186AC27B25C7BAA600C97842 /* Viewport.swift in Sources */,
 				185DEBC625B2B8BB00318D87 /* AllTimeBase.swift in Sources */,
 				188C108C25B17FA600A326FE /* User_profile.swift in Sources */,
