@@ -117,6 +117,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var arrPayments = [GetAllPaymentDetailsData]()
     var selectedTimeIndex = 0
     
+    var sessionTypeArr = [String]()
+    var sessionTypePriceArr = [String]()
+    var sessionPriArr = [String]()
+    var selectedSession = ""
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -431,10 +436,24 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             return self.vm.model?.images?.count ?? 0
         }else if collectionView == self.offeredCollView{
 //            return self.vm.model?.session_type?.count ?? 0
-            return 1
+           // return 1
+            return self.sessionTypeArr.count
         }
         else if(collectionView == serviceTimeCollectionVw){
-            return self.vm.model?.session_type?.count ?? 0
+
+            sessionPriArr.removeAll()
+                for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+                    //for j in 0..<(self.sessionTypeArr.count){
+                        if self.vm.model?.session_type?[i].session_type == self.selectedSession{
+                            self.sessionPriArr.append(self.vm.model?.session_type?[i].price_type ?? "")
+                        }
+                    }
+                //}
+           // }
+            print("sessionPriArr",self.sessionPriArr)
+            return self.sessionPriArr.count
+            
+//            return self.vm.model?.session_type?.count ?? 0
         }
         print("time is ",self.timeArr)
         return self.timeArr.count
@@ -481,11 +500,17 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }
         else if collectionView == self.offeredCollView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
-            cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
+           // cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
+            cell.searchCategorylbl.text = self.sessionTypeArr[indexPath.row]
             if offeredIndex != -1{
-                print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
-                let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
-                let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
+//                print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
+                print("Price is",self.sessionTypePriceArr[offeredIndex])
+                
+//                let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
+//                let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
+                
+                let myDouble  = Double(self.sessionTypePriceArr[offeredIndex]) ?? 0.0
+                let strPrice = self.sessionTypePriceArr[offeredIndex]
                 
                 let currencyFormatter = NumberFormatter()
                 currencyFormatter.usesGroupingSeparator = true
@@ -520,14 +545,22 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         else if(collectionView == serviceTimeCollectionVw){
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
             
-            if(self.vm.model?.session_type?[indexPath.row].price_type == "sixty"){
+//            if(self.vm.model?.session_type?[indexPath.row].price_type == "sixty"){
+//                cell.searchCategorylbl.text = "60 mins"
+//            }else if (self.vm.model?.session_type?[indexPath.row].price_type == "ninety"){
+//                cell.searchCategorylbl.text = "90 mins"
+//            }else{
+//
+//                cell.searchCategorylbl.text = "120 mins"
+//            }
+            if(sessionPriArr[indexPath.row] == "sixty"){
                 cell.searchCategorylbl.text = "60 mins"
-            }else if (self.vm.model?.session_type?[indexPath.row].price_type == "ninety"){
+            }else if (sessionPriArr[indexPath.row] == "ninety"){
                 cell.searchCategorylbl.text = "90 mins"
             }else{
-                
                 cell.searchCategorylbl.text = "120 mins"
             }
+            
             if(selectedTimeIndex == indexPath.item){
                 cell.searchCategorylbl.textColor = UIColor.white
                 cell.vwContainCatgry.backgroundColor =  UIColor(red: 5/255, green: 217/255, blue: 189/255, alpha: 1)
@@ -581,7 +614,9 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             return CGSize(width: 150, height: 55)
         }
         else if collectionView==self.offeredCollView{
-            let text = self.vm.model?.session_type?[indexPath.row].session_type
+            //let text = self.vm.model?.session_type?[indexPath.row].session_type
+            let text = sessionTypeArr[indexPath.row]
+            
             let label = UILabel(frame: CGRect.zero)
             label.text = text
             label.sizeToFit()
@@ -611,7 +646,9 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             self.vwCollection.reloadData()
         }else if collectionView == self.offeredCollView{
             self.offeredIndex = indexPath.row
+            self.selectedSession = sessionTypeArr[indexPath.row]
             collectionView.reloadData()
+            serviceTimeCollectionVw.reloadData()
         }
         else if(collectionView == serviceTimeCollectionVw){
             self.selectedTimeIndex = indexPath.row
@@ -708,6 +745,16 @@ extension SessionDetailVC: GetResponse {
                 self.btnBooknow.isHidden = false
                 self.priceLabel.isHidden = false
                 //self.scrollViewBotmconstarint.constant = 97
+            }
+        }
+        self.sessionTypeArr.removeAll()
+        self.sessionTypePriceArr.removeAll()
+        for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+            if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
+            }else{
+                self.sessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
+                self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
+                self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
             }
         }
         

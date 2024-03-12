@@ -2454,11 +2454,11 @@ Copyright 2022 Google
 
 ## GoogleMaps
 
-Copyright 2021 Google
+Copyright 2023 Google
 
 ## GooglePlaces
 
-Copyright 2021 Google
+Copyright 2023 Google
 
 ## GoogleSignIn
 
@@ -2898,7 +2898,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 MIT License
 
-Copyright (c) 2013-2023 Iftekhar Qurashi
+Copyright (c) 2013-2017 Iftekhar Qurashi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -3474,7 +3474,7 @@ SOFTWARE.
 
 MIT License
 
-Copyright (c) 2011-2018 Sam Vermette, Tobias Tiemerding and contributors.
+Copyright (c) 2011-2023 Sam Vermette, Tobias Totzek and contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
