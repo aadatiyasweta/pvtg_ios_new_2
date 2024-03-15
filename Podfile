@@ -7,7 +7,7 @@ target 'PVTG' do
   use_frameworks!
   
   # Pods for PVTG
-  pod 'Alamofire'
+    pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'SDWebImage'
     pod 'ReachabilitySwift'

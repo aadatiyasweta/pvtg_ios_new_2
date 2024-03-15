@@ -23,24 +23,28 @@ class SplashVC:UIViewController {
     //MARK: - METHOD TO CHECK LOGIN STATUS
     func checkLoginStatus() {
         if SaveToDefaults().getAppLang() ?? "" == "" || SaveToDefaults().getAppLang() == nil{
-            let vc = LanguageChnageVC.navigation()
-            window?.rootViewController = vc
-            window?.makeKeyAndVisible()
+//            let vc = LanguageChnageVC.navigation()
+//            window?.rootViewController = vc
+//            window?.makeKeyAndVisible()
+            appDelegate.setChangeLanguageVC()
         }else{
             if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
                 if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
-                    let vc = OnboardingVC.navigation()
-                    window?.rootViewController = vc
-                    window?.makeKeyAndVisible()
+//                    let vc = OnboardingVC.navigation()
+//                    window?.rootViewController = vc
+//                    window?.makeKeyAndVisible()
+                    appDelegate.setOnboardingVC()
                 } else{
-                    let vc = LoginVC.navigation()
-                    window?.rootViewController = vc
-                    window?.makeKeyAndVisible()
+//                    let vc = LoginVC.navigation()
+//                    window?.rootViewController = vc
+//                    window?.makeKeyAndVisible()
+                    appDelegate.setLoginVC()
                 }
             } else {
-                let vc = TabBarControllerViewController.navigation()
-                window?.rootViewController = vc
-                window?.makeKeyAndVisible()
+//                let vc = TabBarControllerViewController.navigation()
+//                window?.rootViewController = vc
+//                window?.makeKeyAndVisible()
+                appDelegate.setTabBarControllerVC()
             }
         }
        }

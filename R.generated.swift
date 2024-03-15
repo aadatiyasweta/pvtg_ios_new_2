@@ -1966,7 +1966,7 @@ struct _R {
     var purpleActionBtn: RswiftResources.ColorResource { .init(name: "PurpleActionBtn", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 69 images.
+  /// This `_R.image` struct is generated, and contains static references to 71 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -2008,6 +2008,9 @@ struct _R {
 
     /// Image `descriptionImage`.
     var descriptionImage: RswiftResources.ImageResource { .init(name: "descriptionImage", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `doubletick`.
+    var doubletick: RswiftResources.ImageResource { .init(name: "doubletick", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `dropDown`.
     var dropDown: RswiftResources.ImageResource { .init(name: "dropDown", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -2162,6 +2165,9 @@ struct _R {
     /// Image `thankyouIllustrations`.
     var thankyouIllustrations: RswiftResources.ImageResource { .init(name: "thankyouIllustrations", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `threeDots`.
+    var threeDots: RswiftResources.ImageResource { .init(name: "threeDots", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `vectorSmartObject`.
     var vectorSmartObject: RswiftResources.ImageResource { .init(name: "vectorSmartObject", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
@@ -2272,7 +2278,7 @@ struct _R {
     var appleToneWav: RswiftResources.FileResource { .init(name: "appleTone", pathExtension: "wav", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  /// This `_R.nib` struct is generated, and contains static references to 25 nibs.
+  /// This `_R.nib` struct is generated, and contains static references to 27 nibs.
   struct nib {
     let bundle: Foundation.Bundle
 
@@ -2288,9 +2294,6 @@ struct _R {
     /// Nib `CategoryCell`.
     var categoryCell: RswiftResources.NibReference<CategoryCell> { .init(name: "CategoryCell", bundle: bundle) }
 
-    /// Nib `ChatListTVCellTableViewCell`.
-    var chatListTVCellTableViewCell: RswiftResources.NibReference<ChatListTVCellTableViewCell> { .init(name: "ChatListTVCellTableViewCell", bundle: bundle) }
-
     /// Nib `CircularCell`.
     var circularCell: RswiftResources.NibReference<CircularCell> { .init(name: "CircularCell", bundle: bundle) }
 
@@ -2299,6 +2302,9 @@ struct _R {
 
     /// Nib `CountryPicker`.
     var countryPicker: RswiftResources.NibReference<CountryPicker> { .init(name: "CountryPicker", bundle: bundle) }
+
+    /// Nib `DateHeaderTVCell`.
+    var dateHeaderTVCell: RswiftResources.NibReferenceReuseIdentifier<DateHeaderTVCell, DateHeaderTVCell> { .init(name: "DateHeaderTVCell", bundle: bundle, identifier: "DateHeaderTVCell") }
 
     /// Nib `FaqSectionCell`.
     var faqSectionCell: RswiftResources.NibReference<FaqSectionCell> { .init(name: "FaqSectionCell", bundle: bundle) }
@@ -2339,6 +2345,9 @@ struct _R {
     /// Nib `ProfileInterestCell`.
     var profileInterestCell: RswiftResources.NibReference<ProfileInterestCell> { .init(name: "ProfileInterestCell", bundle: bundle) }
 
+    /// Nib `ReceiverTVCell`.
+    var receiverTVCell: RswiftResources.NibReferenceReuseIdentifier<ReceiverTVCell, ReceiverTVCell> { .init(name: "ReceiverTVCell", bundle: bundle, identifier: "ReceiverTVCell") }
+
     /// Nib `ReminderView`.
     var reminderView: RswiftResources.NibReference<ReminderView> { .init(name: "ReminderView", bundle: bundle) }
 
@@ -2348,6 +2357,9 @@ struct _R {
     /// Nib `SearchLocationCell`.
     var searchLocationCell: RswiftResources.NibReference<SearchLocationCell> { .init(name: "SearchLocationCell", bundle: bundle) }
 
+    /// Nib `SenderTVCell`.
+    var senderTVCell: RswiftResources.NibReferenceReuseIdentifier<SenderTVCell, SenderTVCell> { .init(name: "SenderTVCell", bundle: bundle, identifier: "SenderTVCell") }
+
     /// Nib `SessionCell`.
     var sessionCell: RswiftResources.NibReference<SessionCell> { .init(name: "SessionCell", bundle: bundle) }
 
@@ -2356,8 +2368,7 @@ struct _R {
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in nib 'AllCategoryCell', but couldn't be loaded.") }
-      if UIKit.UIImage(named: "person", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'person' is used in nib 'ChatListTVCellTableViewCell', but couldn't be loaded.") }
-      if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'ChatListTVCellTableViewCell', but couldn't be loaded.") }
+      if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'DateHeaderTVCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "bgProfile", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bgProfile' is used in nib 'HistoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'HistoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in nib 'HistoryCell', but couldn't be loaded.") }
@@ -2375,19 +2386,29 @@ struct _R {
       if UIKit.UIImage(named: "sliderThumb", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'sliderThumb' is used in nib 'PriceView', but couldn't be loaded.") }
       if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'ReminderView', but couldn't be loaded.") }
       if UIKit.UIImage(named: "recentLocation", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'recentLocation' is used in nib 'SearchLocationCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "doubletick", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'doubletick' is used in nib 'SenderTVCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "bgProfile", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bgProfile' is used in nib 'SessionCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'SessionCell', but couldn't be loaded.") }
     }
   }
 
-  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
   struct reuseIdentifier {
 
     /// Reuse identifier `ActiveEventCollectionViewCell`.
     let activeEventCollectionViewCell: RswiftResources.ReuseIdentifier<ActiveEventCollectionViewCell> = .init(identifier: "ActiveEventCollectionViewCell")
 
+    /// Reuse identifier `DateHeaderTVCell`.
+    let dateHeaderTVCell: RswiftResources.ReuseIdentifier<DateHeaderTVCell> = .init(identifier: "DateHeaderTVCell")
+
     /// Reuse identifier `FaqSupport_TVC`.
     let faqSupport_TVC: RswiftResources.ReuseIdentifier<FaqSupport_TVC> = .init(identifier: "FaqSupport_TVC")
+
+    /// Reuse identifier `ReceiverTVCell`.
+    let receiverTVCell: RswiftResources.ReuseIdentifier<ReceiverTVCell> = .init(identifier: "ReceiverTVCell")
+
+    /// Reuse identifier `SenderTVCell`.
+    let senderTVCell: RswiftResources.ReuseIdentifier<SenderTVCell> = .init(identifier: "SenderTVCell")
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 8 storyboards.
@@ -2448,7 +2469,8 @@ struct _R {
 
       func validate() throws {
         if UIKit.UIImage(named: "BackBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'BackBtn' is used in storyboard 'Chat', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "Search", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Search' is used in storyboard 'Chat', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "person", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'person' is used in storyboard 'Chat', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "threeDots", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'threeDots' is used in storyboard 'Chat', but couldn't be loaded.") }
         if chatListVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'chatListVC' could not be loaded from storyboard 'Chat' as 'ChatListVC'.") }
       }
     }

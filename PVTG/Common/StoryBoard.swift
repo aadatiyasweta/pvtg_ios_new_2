@@ -110,6 +110,12 @@ extension SummaryVC {
     }
 
 }
+extension ContactUsViewVC {
+    class func instance()-> ContactUsViewVC {
+        return session.instantiateViewController(withIdentifier: "ContactUsViewVC") as! ContactUsViewVC
+    }
+}
+
 extension TabBarControllerViewController {
     class func navigation()-> UINavigationController{
            return home.instantiateViewController(withIdentifier: "home") as! UINavigationController

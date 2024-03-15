@@ -16,12 +16,12 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var btnBack: UIButton!
-    
+    @IBOutlet weak var okBtnVw: UIView!
     //MARK: - Properties
     var type = ""
     let webView = WKWebView()
     var url = ""
-    
+    var isFromReschedule = false
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,11 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
         if let url = URL(string: url) {
             let request = URLRequest(url: url)
             webView.load(request)
+        }
+        if isFromReschedule == true{
+            self.okBtnVw.isHidden = false
+        }else{
+            self.okBtnVw.isHidden = true
         }
     }
     
@@ -67,4 +72,9 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     private func webViewDidStartLoad(_ webView: WKWebView) {
         print("webViewDidStartLoad")
     }
+    
+    @IBAction func okBtnAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

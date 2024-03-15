@@ -16,12 +16,6 @@ import GooglePlaces
 import GoogleMaps
 import GoogleSignIn
 import Stripe
-
-//import Firebase
-//import FirebaseAuth
-//import FirebaseMessaging
-//import FirebaseCore
-
 import FirebaseMessaging
 import UserNotifications
 import Firebase
@@ -32,33 +26,39 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     var window: UIWindow?
     var tabBarVc : UITabBarController?
     var currentVC : UIViewController?
+    var navigation = UINavigationController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-                fireBaseSetup(application: application)
-                Messaging.messaging().delegate = self
+        fireBaseSetup(application: application)
+        Messaging.messaging().delegate = self
         // Override point for customization after application launch.
         IQKeyboardManager.shared().isEnabled = true
-        GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
-//     GMSServices.provideAPIKey("AIzaSyCz9l1ZKpCvUXFlkT4sopsN8OKi6plvBmk")
-
-//     GMSPlacesClient.provideAPIKey("AIzaSyCz9l1ZKpCvUXFlkT4sopsN8OKi6plvBmk")
-//
-        GMSPlacesClient.provideAPIKey("AIzaSyCcR9sGmXLeCBwVXIOH2ciEsGlgmHIik98")
-        
-        
-       // FirebaseApp.configure()
-              //  Messaging.messaging().delegate = self
-        
-        //remoteNotification(application: application)
+        if let apiKey = getAPIKeyFromPlist() {
+            GMSServices.provideAPIKey(apiKey)
+            GMSPlacesClient.provideAPIKey(apiKey)
+        }
     // Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
      Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
-        let vc = SplashVC.navigation()
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
+//        let vc = SplashVC.navigation()
+//        window?.rootViewController = vc
+//        window?.makeKeyAndVisible()
+        setSplashVC()
         return true
     }
+    
+    func setSplashVC(){
+        let vc = onboarding.instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
+        self.navigation = UINavigationController(rootViewController: vc)
+        navigation.navigationBar.isHidden = true
+        navigation.interactivePopGestureRecognizer?.isEnabled = false
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
+    }
+    
+    
+    
     
     func fireBaseSetup(application: UIApplication) {
             if #available(iOS 10.0, *) {
@@ -92,16 +92,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
        
         func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
             print("userInfo",userInfo)
-                   if userInfo["gcm.notification.type"] as? String == "reminder"{
-                          if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
-                              print(session_id,session_name)
-                              if SaveToDefaults().getAccessToken() != nil{
-                                  if application.applicationState == .active{
-                                      self.performAttendingAlert(name: session_name, id: session_id)
-                                  }
-                              }
-                          }
-                      }
+                   
                       completionHandler(.newData)
         }
         
@@ -117,109 +108,100 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             completionHandler([.alert,.sound, .badge])
         }
         
-        @available(iOS 10.0, *)
-        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-            _ = response.notification.request.content.categoryIdentifier
-            let object = response.notification.request.content.userInfo as! [String : AnyObject]
-            print(object)
-//            if UserDefaults.isLogin ?? false {
-//                if isNetworkConnectionEnable {
-//                    if "chat" == object["gcm.notification.type"] as? String{
-//                        setTabViewChatListController()
-//                    }
-//                }
+     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo as? [String : AnyObject]
+        print(userInfo)
+        if userInfo?["gcm.notification.type"] as? String == "reminder"{
+            if let session_id = userInfo?["gcm.notification.session_id"] as? String, let session_name = userInfo?["gcm.notification.session_name"] as? String, let notificationString = userInfo?["gcm.notification.data"] as? String {
+                let notificationData = convertToDictionary(text: notificationString)
+                if let bookingId = notificationData?["booking_id"] as? String, let bodyMessage = notificationData?["body"] as? String{
+                    print(session_id,session_name)
+                    //                               if SaveToDefaults().getAccessToken() != nil{
+                    //                                   if application.applicationState == .active{
+                    self.performAttendingAlert(name: session_name, id: session_id,message: bodyMessage, bookingId: bookingId)
+                    //                                   }
+                    //                               }
+                }
             }
+        }else if userInfo?["gcm.notification.type"] as? String == "session_follow_up"{
+            if let session_id = userInfo?["gcm.notification.session_id"] as? String, let session_name = userInfo?["gcm.notification.session_name"] as? String, let notificationString = userInfo?["gcm.notification.data"] as? String {
+                let notificationData = convertToDictionary(text: notificationString)
+                    print(session_id,session_name)
+                if let bodyMessage = notificationData?["body"] as? String{
+                    self.performSessionFollowupAlert(name: session_name, id: session_id,message: bodyMessage)
+                }
+                }
+        }
+    }
     
-//        func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {                   print("fcmToken",fcmToken ?? "")
-//                        if let  fcmTokenn = fcmToken {
-//                            UserDefaults.standard.set(fcmTokenn, forKey:"deviceToken")
-//                         }
-//                        SaveToDefaults().setFcmToken(token: "\(String(describing: fcmToken))")
-//        }
-//
-//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//            Messaging.messaging().apnsToken = deviceToken
-//        }
     
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//
-//    }
-//
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
-//    {
-//        _ = notification.request.content.categoryIdentifier
-//
-//                completionHandler([UNNotificationPresentationOptions.alert,UNNotificationPresentationOptions.sound,UNNotificationPresentationOptions.badge])
-//
-//                let object = notification.request.content.userInfo as? [String : AnyObject]
-//    }
-    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//
-//        _ = response.notification.request.content.categoryIdentifier
-//                let object = response.notification.request.content.userInfo as! [String : AnyObject]
-//
-//    }
-//
-    
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//
-//                print("userInfo",userInfo)
-////                if userInfo["gcm.notification.type"] as? String == "reminder"{
-////                    if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
-////                        print(session_id,session_name)
-////                        if SaveToDefaults().getAccessToken() != nil{
-////                            if application.applicationState == .active{
-////                                self.performAttendingAlert(name: session_name, id: session_id)
-////                            }
-////                        }
-////                    }
-////                }
-//     //           completionHandler(.newData)
-//
-//    }
-    
-//    @available(iOS 10.0, *)
-//    internal func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-////
-////        if let Notification_type = response.notification.request.content.userInfo["aps"] as? NSDictionary{
-////
-////        }
-//        let userInfo = response.notification.request.content.userInfo
-//        print("didReceive")
-//        if userInfo["gcm.notification.type"] as? String == "reminder"{
-//        if let session_id = userInfo["gcm.notification.session_id"] as? String, let session_name = userInfo["gcm.notification.session_name"] as? String{
-//            print(session_id,session_name)
-//            if SaveToDefaults().getAccessToken() != nil{
-////                if UIApplication.shared.applicationState == .inactive{
-// //                   DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-////                        self.performAttendingAlert(name: session_name, id: session_id)
-////                    }
-////                }else{
-//                    self.performAttendingAlert(name: session_name, id: session_id)
-// //               }
-//            }
-//        }
-//        }
-//       // completionHandler()
-//    }
+    func convertToDictionary(text: String) -> [String: Any]? {
+                if let data = text.data(using: .utf8) {
+                    do {
+                        return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    } catch {
+                     //   Helpers.showAlert(strTitle: error.localizedDescription)
+                    }
+                }
+                return nil
+            }
     
     func checkLoginStatus() {
         if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
             if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
-                let vc = OnboardingVC.navigation()
-                window?.rootViewController = vc
-                window?.makeKeyAndVisible()
+//                let vc = OnboardingVC.navigation()
+//                window?.rootViewController = vc
+//                window?.makeKeyAndVisible()
+                setOnboardingVC()
             } else{
-                let vc = LoginVC.navigation()
-                window?.rootViewController = vc
-                window?.makeKeyAndVisible()
+//                let vc = LoginVC.navigation()
+//                window?.rootViewController = vc
+//                window?.makeKeyAndVisible()
+                setLoginVC()
             }
         } else {
-            let vc = TabBarControllerViewController.navigation()
-            window?.rootViewController = vc
-            window?.makeKeyAndVisible()
+//            let vc = TabBarControllerViewController.navigation()
+//            window?.rootViewController = vc
+//            window?.makeKeyAndVisible()
+            setTabBarControllerVC()
         }
+    }
+    
+    func setOnboardingVC(){
+        let vc = onboarding.instantiateViewController(withIdentifier: "OnboardingVC") as! OnboardingVC
+        self.navigation = UINavigationController(rootViewController: vc)
+        navigation.navigationBar.isHidden = true
+        navigation.interactivePopGestureRecognizer?.isEnabled = false
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
+    }
+    
+    func setLoginVC(){
+        let vc = login.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        self.navigation = UINavigationController(rootViewController: vc)
+        navigation.navigationBar.isHidden = true
+        navigation.interactivePopGestureRecognizer?.isEnabled = false
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
+    }
+    
+    func setTabBarControllerVC(){
+        let vc = home.instantiateViewController(withIdentifier: "TabBarControllerViewController") as! TabBarControllerViewController
+        self.navigation = UINavigationController(rootViewController: vc)
+        navigation.navigationBar.isHidden = true
+        navigation.interactivePopGestureRecognizer?.isEnabled = false
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
+    }
+    
+    func setChangeLanguageVC(){
+        let vc = onboarding.instantiateViewController(withIdentifier: "LanguageChnageVC") as! LanguageChnageVC
+        self.navigation = UINavigationController(rootViewController: vc)
+        navigation.navigationBar.isHidden = true
+        navigation.interactivePopGestureRecognizer?.isEnabled = false
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
     }
         
 //    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -277,33 +259,60 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         }
     }
         
-    func performAttendingAlert(name : String, id : String){
+    func performAttendingAlert(name : String, id : String, message:String, bookingId: String){
 //        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
 //        viewObj?.id = id
 //        viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
 //        viewObj?.delegate = self
 //        window?.addSubview(viewObj!)
-        
-        Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: "Will you still be attending your holistic session?", controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
+        Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: message, controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
             guard let self else{return}
             if result{
-                self.hitApi(id: id)
-            }else{
-                Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: "Will you still be attending your holistic session?", controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
-                    guard let self else{return}
-                    if result{
-                        print("Yes Clicked")
-                    }else{
-                        Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: "Will you still be attending your holistic session?", controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
-                            guard let self else{return}
-                            if result{
-                                print("Yes Clicked")
-                            }else{
-                                print("no ")
+                self.hitApi(id: "\(id)")
+                    Helper.shared.showAlertWithCallback(buttonText: "View", buttonText2: "Later", title: "View policy", message: "Please view late fee policy", controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
+                        guard let self else{return}
+                        if result{
+                            print("Yes Clicked")
+                            let vc = PrivacyPolicyVC.instance()
+                           // vc.type = R.string.localizable.cancelPolicy()
+                            vc.type = "Late fee Policy"
+                            vc.isFromReschedule = true
+                            vc.url = cancelPolicy
+                            self.navigation.pushViewController(vc, animated: true)
+                        }else{
+                           
                             }
                         }
                     }
+            else {
+                        Helper.shared.showAlertWithCallback(buttonText: "Reschedule", buttonText2: "No", title: "Reminder", message: "Let's reschedule your session.", controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
+                            guard let self else{return}
+                            if result{
+                                print("Yes Clicked")
+                                let vc = SessionDetailVC.instance()
+                                vc.sessionId = "\(id)"
+                                vc.bookingId = bookingId
+                                vc.controllerId = 0
+                                vc.isFromReschedule = true
+        //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
+                                self.navigation.pushViewController(vc, animated: true)
+                            }else{
+                                print("no ")
+                            }
+                    }
                 }
+            }
+    }
+    
+    func performSessionFollowupAlert(name : String, id : String, message:String){
+        Helper.shared.showAlertWithCallback(buttonText: "View", buttonText2: "Later", title: "Follow Up Session!", message: message, controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
+            guard let self else{return}
+            if result{
+                let vc = SessionDetailVC.instance()
+                vc.sessionId = "\(id)"
+                vc.controllerId = 0
+                vc.isFromFollowup = true
+                self.navigation.pushViewController(vc, animated: true)
             }
         }
     }
@@ -320,4 +329,15 @@ extension AppDelegate : ReminderViewYesProtocol{
     func getYesCallback(id:String) {
         self.hitApi(id: id)
     }
+}
+
+//
+func getAPIKeyFromPlist() -> String? {
+    if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
+       let plist = NSDictionary(contentsOfFile: path),
+       let apiKey = plist.object(forKey: "Google_Api_Key") as? String {
+        print("GoogleApiKey \(apiKey)")
+        return apiKey
+    }
+    return nil
 }

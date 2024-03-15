@@ -123,7 +123,8 @@
                     <connections>
                         <outlet property="backBtn" destination="BDb-sy-XR6" id="pcU-6D-aa4"/>
                         <outlet property="headerView" destination="JZM-er-AoD" id="7zu-PS-vQQ"/>
-                        <outlet property="settingsBtn" destination="JZM-er-AoD" id="XrN-ab-BQT"/>
+                        <outlet property="onlineLabel" destination="pWP-lI-B8H" id="8c4-0a-4Wv"/>
+                        <outlet property="settingsBtn" destination="10s-D7-VLM" id="xpC-gK-aaF"/>
                         <outlet property="tableView" destination="62e-H1-PTE" id="4fG-kp-2vU"/>
                         <outlet property="userImg" destination="0zO-Ke-myr" id="SYh-nf-Zar"/>
                         <outlet property="userNameLabel" destination="vBR-UD-F5w" id="hn3-54-Sey"/>

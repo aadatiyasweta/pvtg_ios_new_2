@@ -21,11 +21,10 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         super.viewDidLoad()
     }
     
-    @objc func methodOfReceivedNotification(notification: Notification) {
-        let info = notification.userInfo
-        
-        appDelegate.performAttendingAlert(name : info?["name"] as? String ?? "", id : info?["session_id"] as? String ?? "")
-    }
+//    @objc func methodOfReceivedNotification(notification: Notification) {
+//        let info = notification.userInfo
+//        appDelegate.performAttendingAlert(name : info?["name"] as? String ?? "", id : info?["session_id"] as? String ?? "")
+//    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

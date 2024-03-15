@@ -101,9 +101,10 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
     SaveToDefaults().setAccessToken(value: nil)
     SaveToDefaults().setLogindata(data: Data())
     defaults.synchronize()
-    let vc = LoginVC.navigation()
-    window?.rootViewController = vc
-    window?.makeKeyAndVisible()
+//    let vc = LoginVC.navigation()
+//    window?.rootViewController = vc
+//    window?.makeKeyAndVisible()
+       appDelegate.setLoginVC()
    }
   }
   default:

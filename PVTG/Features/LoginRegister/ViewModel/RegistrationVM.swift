@@ -48,7 +48,6 @@ class RegistrationVM: BaseVm {
         api_manager.upload(registrationUrl(), pictureData, params: prams, "image", header: header(), completion: { (err, response, code) in
             self.dismiss()
             if let json = response{
-                debugPrint(json)
                 if json["statusCode"] == 200 {
                     let data = try? json["result"].rawData()
                     let jsonDecoder = JSONDecoder()

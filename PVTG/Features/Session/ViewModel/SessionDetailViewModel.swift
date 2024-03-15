@@ -21,8 +21,6 @@ protocol GetResponse: AnyObject{
 protocol GetBookingResponse: AnyObject{
     func bookingSuccess()
     func getPrefrenceId(id : String)
-    
-    
 }
 class SessionDetailViewModel: BaseVm {
     
@@ -37,7 +35,7 @@ class SessionDetailViewModel: BaseVm {
     var sessionName = ""
     var sessionDesc = ""
     var chargeId = ""
-    
+    var rescheduleSuccesClosure:() -> (Void) = {   }
     //MARK: - SESSION DETAIL API
     func sessionDtailApi(user_id: String, session_id: String, latitude: String, longitude: String, top_search: String,bookingId : String) {
         let date = Date().dateInString()
@@ -46,7 +44,6 @@ class SessionDetailViewModel: BaseVm {
         api_manager.GETApi(sessionDetailApi(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
             if let json = response{
-                debugPrint(json)
                 if json["statusCode"] == 200 {
                     let data = try? json["result"].rawData()
                     let jsonDecoder = JSONDecoder()
@@ -306,6 +303,29 @@ class SessionDetailViewModel: BaseVm {
                 debugPrint(json)
                 if json["statusCode"] == 200 {
                     self.bookingDelegate?.bookingSuccess()
+                }
+                else {
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                }
+            }else{
+                showAlert(strTitle: somethingWentWrongMessage)
+            }
+        }
+    }
+    
+    //MARK: - RESCHEDULE SESSION BOOKING API
+    func sessionRescheduleApi(user_id: String, session_id: String, booking_id: String, booking_date: String, booking_from_time: String, booking_to_time: String, schedule_time_id: String,session_type_id : String? = "") {
+        var prams = [String : Any]()
+        prams = ["user_id": user_id, "session_id": session_id, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "schedule_time_id": schedule_time_id,"booking_id": booking_id,"session_type_id":self.model?.session_type?[0].session_type_id ?? "" ,"language" : SaveToDefaults().getAppLang() ?? "en"]
+        print(prams)
+        self.show()
+        api_manager.POSTApi(rescheduleSessionApiUrl(), param: prams, header: header()) { (response, err, code) in
+            self.dismiss()
+            if let json = response{
+                debugPrint(json)
+                if json["statusCode"] == 200 {
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                    self.rescheduleSuccesClosure()
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)

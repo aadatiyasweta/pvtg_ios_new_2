@@ -13,18 +13,28 @@ class ThankyouVC: BaseViewController {
     //MARK: - Outlets
     @IBOutlet weak var pointsLbl: UILabel!
     @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var titleLbl: UILabel!
     var name = ""
     var points = ""
-    
+    var isFromReschedule = false
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.pointsLbl.text = R.string.localizable.yourSessionHasBeen(self.points)
+        if isFromReschedule == true {
+            self.pointsLbl.text = "Your booking has been rescheduled."
+            self.titleLbl.text = "Reschedule Complete"
+        }else{
+            self.pointsLbl.text = R.string.localizable.yourSessionHasBeen(self.points)
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
          renderTheColorOfImage()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
     }
     
     //MARK: - METHOD TO SET RENDER COLOR OF IMAGE

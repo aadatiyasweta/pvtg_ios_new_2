@@ -48,6 +48,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
     
     @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var rescheduleBtn: UIButton!
     @IBOutlet weak var completedBtn: UIButton!
     @IBOutlet weak var lblDayWithDate: UILabel!
     @IBOutlet weak var vwCollection: UICollectionView!{
@@ -84,7 +85,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var btnBooknow: UIButton!
     @IBOutlet weak var vwCalendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtVw: UILabel!
-    
+    @IBOutlet weak var customQstnVw: UIView!
+    @IBOutlet weak var customQstnBtn: UIButton!
     //MARK: - Properties
     var x = 1
     var mapView:GMSMapView?
@@ -121,7 +123,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var sessionTypePriceArr = [String]()
     var sessionPriArr = [String]()
     var selectedSession = ""
-    
+    var isFromReschedule = false
+    var isFromFollowup = false
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +134,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         self.selectedDate = formatter.string(from: self.today)
         offeredCollView.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
         serviceTimeCollectionVw.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
+        self.setAttributedText()
         if controllerId == 1{
             self.vwmap.isHidden = false
             self.vwcalendar.isHidden = true
@@ -194,6 +198,21 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         setVSViewShadow(radius: 10, color: .black, view: self.vwcontainTktCount, opacity: 0.12)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.isFromReschedule == true {
+            self.rescheduleBtn.isHidden = false
+            self.btnBooknow.isHidden = true
+        }else{
+            self.rescheduleBtn.isHidden = true
+        }
+        if self.isFromFollowup == true{
+            self.customQstnVw.isHidden = false
+        }else {
+            self.customQstnVw.isHidden = true
+        }
+    }
+    
     //MARK: - METHOD TO SET MAP
     func SetMap(){
         if let lat1 = self.vm.model?.latitude, let long1 = self.vm.model?.longitude{
@@ -215,6 +234,18 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             marker.position = location
             marker.map = mapView
         }
+    }
+    //MARK: - func Attributed Text
+    func setAttributedText(){
+        // Create attributed string with underline attribute
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .underlineStyle: NSUnderlineStyle.single.rawValue,
+                    .foregroundColor: UIColor.black // You can customize the color here
+                ]
+                let attributedString = NSAttributedString(string: "Question about your custom session?", attributes: attributes)
+                
+                // Apply attributed text to the button
+                customQstnBtn.setAttributedTitle(attributedString, for: .normal)
     }
     
     //MARK: - BUTTON ACTION
@@ -256,6 +287,15 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         }
     }
     
+    @IBAction func rescheduleBtnTap(_ sender: UIButton) {
+        if id == -1 {
+            showAlert(strTitle: R.string.localizable.pleaseSelecttime())
+        }else{
+            self.rescheduleBooking()
+        }
+      
+    }
+    
     @IBAction func btnToTapPrev(_ sender: UIButton) {
         moveCurrentpage(value: true)
     }
@@ -273,6 +313,21 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         } else {
             let deccount = (Int(self.lblTicketCount.text ?? "01") ?? 0)-1
             self.lblTicketCount.text = String(format: "%02d", deccount)
+        }
+    }
+    
+    @IBAction func customQstnBtnAction(_ sender: Any) {
+//        let vc = ContactUsViewVC.instance()
+//        vc.session_id = self.sessionId
+//        vc.modalPresentationStyle = .overFullScreen
+//        vc.modalTransitionStyle = .crossDissolve
+//        self.navigationController?.present(vc, animated: true)
+        
+        let popup = ContactUsView.initWith(frame: UIScreen.main.bounds)
+        self.view.addSubview(popup ?? UIView())
+        popup?.session_id = self.sessionId
+        popup?.contactusCallBack = { [weak self] in
+            popup?.removeFromSuperview()
         }
     }
     
@@ -928,6 +983,17 @@ extension SessionDetailVC {
         }
     }
     
+    //MARK: - Reschedule Api
+    private func rescheduleBooking(){
+        guard let userid = SaveToDefaults().getUserId() else {return}
+        self.vm.sessionRescheduleApi(user_id: userid, session_id: sessionId, booking_id: bookingId, booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")")
+        self.vm.rescheduleSuccesClosure = {[weak self ] in
+            guard let self else {return}
+            let vc = ThankyouVC.instance()
+            vc.isFromReschedule = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     //MARK: - Customization Of view
     private func customizationOfView(){
         DispatchQueue.main.async {

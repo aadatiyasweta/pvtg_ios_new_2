@@ -242,6 +242,22 @@ func getPrefrenceIdUrl()-> String{
     return url
     
 }
+
+func rescheduleSessionApiUrl()-> String{
+    var  url = "\(testingServer)Sessionapi/session_booking_reschedule"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("rescheduleSessionApiUrl",url)
+    return url
+}
+
+func contactUsApiUrl()-> String{
+    var  url = "\(testingServer)Sessionapi/contact_us"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("contactUsApiUrl",url)
+    return url
+}
+
+
 func sessionCancelApiUrl()-> String{
     var  url = "\(testingServer)Sessionapi/session_cancellation"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

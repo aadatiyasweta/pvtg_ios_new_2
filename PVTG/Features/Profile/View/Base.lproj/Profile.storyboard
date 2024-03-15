@@ -670,6 +670,7 @@ You earned 45pts</string>
                     <connections>
                         <outlet property="btnBack" destination="B5i-H9-8Dc" id="Bau-ny-p7T"/>
                         <outlet property="pointsLbl" destination="j0s-Ox-bXt" id="BkG-Eg-fJB"/>
+                        <outlet property="titleLbl" destination="gMG-XD-3Zu" id="VHW-wX-SMf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gd-ta-FQ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

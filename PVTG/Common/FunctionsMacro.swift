@@ -1448,6 +1448,14 @@ extension UIViewController {
         self.present(alrt, animated: true, completion: nil)
     }
     
+    func maxLenghtOfTextField(text : UITextField, value : Int, range : NSRange,string: String) -> Bool{
+        if range.length + range.location > text.text!.count{
+            return false
+        }
+        let newLength = text.text!.count + string.count - range.length
+        return  newLength <= value
+    }
+    
 }
 
 func UTCToLocal(date:String) -> String {
@@ -1835,6 +1843,17 @@ func showAlert(strTitle:String)
     alertViewController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
     appDelegate.window?.rootViewController?.present(alertViewController, animated: true, completion: nil)
 }
+
+func showAlertWithTitle(messageBody:String,controller:UIViewController) {
+    DispatchQueue.main.async()
+    {
+        let alertController = UIAlertController(title: appName, message:
+                                                    messageBody, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
+        controller.present(alertController, animated: true, completion: nil)
+    }
+}
+
 func elevateCardFromBottom(cardView : UIView){
     cardView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
     cardView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)

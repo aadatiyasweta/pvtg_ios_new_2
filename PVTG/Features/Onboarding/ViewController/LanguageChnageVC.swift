@@ -63,9 +63,10 @@ class LanguageChnageVC: BaseViewController {
                 SaveToDefaults().setAppLang(value: "en")
             }
             Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
-            let vc = TabBarControllerViewController.navigation()
-            window?.rootViewController = vc
-            window?.makeKeyAndVisible()
+//            let vc = TabBarControllerViewController.navigation()
+//            window?.rootViewController = vc
+//            window?.makeKeyAndVisible()
+            appDelegate.setTabBarControllerVC()
         }else{
             if spanishBtn.isSelected{
                 SaveToDefaults().setAppLang(value: "es")
@@ -75,19 +76,22 @@ class LanguageChnageVC: BaseViewController {
             Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
             if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
                 if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
-                    let vc = OnboardingVC.navigation()
-                    window?.rootViewController = vc
-                    window?.makeKeyAndVisible()
+//                    let vc = OnboardingVC.navigation()
+//                    window?.rootViewController = vc
+//                    window?.makeKeyAndVisible()
+                    appDelegate.setOnboardingVC()
                     
                 } else{
-                    let vc = LoginVC.navigation()
-                    window?.rootViewController = vc
-                    window?.makeKeyAndVisible()
+//                    let vc = LoginVC.navigation()
+//                    window?.rootViewController = vc
+//                    window?.makeKeyAndVisible()
+                    appDelegate.setLoginVC()
                 }
             } else {
-                let vc = TabBarControllerViewController.navigation()
-                window?.rootViewController = vc
-                window?.makeKeyAndVisible()
+//                let vc = TabBarControllerViewController.navigation()
+//                window?.rootViewController = vc
+//                window?.makeKeyAndVisible()
+                appDelegate.setTabBarControllerVC()
             }
         }
     }

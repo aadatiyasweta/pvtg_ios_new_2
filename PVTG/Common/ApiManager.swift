@@ -27,21 +27,23 @@ class ApiManager {
         
         if isConnection(){
             print(param ?? [:])
-            AF.request(url, method: .post, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().responseJSON(completionHandler: { dataResponse in
+            AF.request(url, method: .post, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().response(completionHandler: { dataResponse in
                 SVProgressHUD.dismiss()
-                print(String(data: dataResponse.data ?? Data(), encoding: String.Encoding.utf8) ?? nil)
+                let respString:String = String(data: (dataResponse.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
+                print(respString)
                 switch dataResponse.result {
                 case .success( let value):
-                    let json = JSON.init(value)
+                    let json = JSON.init(value ?? Data())
                     debugPrint(json)
                     if json["statusCode"].isKeyPresent(){
                         if json["statusCode"].intValue == 403{
                             SaveToDefaults().setAccessToken(value: nil)
                             SaveToDefaults().setLogindata(data: Data())
                             defaults.synchronize()
-                            let vc = LoginVC.navigation()
-                            window?.rootViewController = vc
-                            window?.makeKeyAndVisible()
+//                            let vc = LoginVC.navigation()
+//                            window?.rootViewController = vc
+//                            window?.makeKeyAndVisible()
+                            appDelegate.setLoginVC()
                         }
                     }
                     debugPrint(json)
@@ -60,21 +62,23 @@ class ApiManager {
     func GETApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
         print(param ?? [:])
         if isConnection(){
-            AF.request(url, method: .get, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().responseJSON(completionHandler: { dataResponse in
+            AF.request(url, method: .get, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().response(completionHandler: { dataResponse in
                 SVProgressHUD.dismiss()
-                print(String(data: dataResponse.data ?? Data(), encoding: String.Encoding.utf8) ?? nil)
+                let respString:String = String(data: (dataResponse.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
+                print(respString)
                 switch dataResponse.result {
                 case .success( let value):
-                    let json = JSON.init(value)
+                    let json = JSON.init(value ?? Data())
                     print(json)
                     if json["statusCode"].isKeyPresent(){
                         if json["statusCode"].intValue == 403{
                             SaveToDefaults().setAccessToken(value: nil)
                             SaveToDefaults().setLogindata(data: Data())
                             defaults.synchronize()
-                            let vc = LoginVC.navigation()
-                            window?.rootViewController = vc
-                            window?.makeKeyAndVisible()
+//                            let vc = LoginVC.navigation()
+//                            window?.rootViewController = vc
+//                            window?.makeKeyAndVisible()
+                            appDelegate.setLoginVC()
                         }
                     }
                     completion(json , nil, dataResponse.response?.statusCode)
@@ -91,18 +95,19 @@ class ApiManager {
     func PUTApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
         print(param ?? [:])
         if isConnection(){
-            AF.request(url, method: .put, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().responseJSON(completionHandler: { dataResponse in
+            AF.request(url, method: .put, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().response(completionHandler: { dataResponse in
                 switch dataResponse.result {
                 case .success( let value):
-                    let json = JSON.init(value)
+                    let json = JSON.init(value ?? Data())
                     if json["statusCode"].isKeyPresent(){
                         if json["statusCode"].intValue == 403{
                             SaveToDefaults().setAccessToken(value: nil)
                             SaveToDefaults().setLogindata(data: Data())
                             defaults.synchronize()
-                            let vc = LoginVC.navigation()
-                            window?.rootViewController = vc
-                            window?.makeKeyAndVisible()
+//                            let vc = LoginVC.navigation()
+//                            window?.rootViewController = vc
+//                            window?.makeKeyAndVisible()
+                            appDelegate.setLoginVC()
                         }
                     }
                     completion(json , nil, dataResponse.response?.statusCode)
@@ -119,70 +124,79 @@ class ApiManager {
     
     func DeleteApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
         print(param ?? [:])
-        AF.request(url, method: .delete, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().responseJSON(completionHandler: { dataResponse in
-            switch dataResponse.result {
-            case .success( let value):
-                let json = JSON.init(value)
-                completion(json , nil, dataResponse.response?.statusCode)
-            case .failure(let err):
-                completion(nil , err.underlyingError, dataResponse.response?.statusCode)
-            }
-        })
-    }
-    
-    func upload(_ url :String , _ data:Data,params : [String:Any]?, _ fileName:String , header:[String:String]? , completion:@escaping (_ error:Error? , _ responce:JSON?,_ statuscode :Int?)->()) {
         if isConnection(){
             let head = HTTPHeaders.init(header ?? [:])
-            AF.upload(multipartFormData: { (multiPart) in
-                debugPrint(params)
-                for (key, value) in params ?? [:] {
-                    if let temp = value as? String {
-                        multiPart.append(temp.data(using: .utf8)!, withName: key)
-                    }
-                    if let temp = value as? Int {
-                        multiPart.append("\(temp)".data(using: .utf8)!, withName: key)
-                    }
-                    if let temp = value as? NSArray {
-                        temp.forEach({ element in
-                            let keyObj = key + "[]"
-                            if let string = element as? String {
-                                multiPart.append(string.data(using: .utf8)!, withName: keyObj)
-                            } else
-                                if let num = element as? Int {
-                                    let value = "\(num)"
-                                    multiPart.append(value.data(using: .utf8)!, withName: keyObj)
-                            }
-                        })
-                    }
-                }
-                
-                multiPart.append(data, withName: fileName, fileName: "\(getCurrentLocalDate()).png", mimeType: "image/png")
-            }, to: url, method: .post, headers: head).responseJSON { (response) in
-                SVProgressHUD.dismiss()
-                debugPrint(response.request)
-                debugPrint(response.result)
-                switch response.result{
-                case .success(let data):
-                    let json = JSON.init(data)
-                    if json["statusCode"].isKeyPresent(){
-                        if json["statusCode"].intValue == 403{
-                            SaveToDefaults().setAccessToken(value: nil)
-                            SaveToDefaults().setLogindata(data: Data())
-                            defaults.synchronize()
-                            let vc = LoginVC.navigation()
-                            window?.rootViewController = vc
-                            window?.makeKeyAndVisible()
-                        }
-                    }
-                    completion(nil , json, response.response?.statusCode)
+            AF.request(url, method: .delete, parameters: param, encoding: encoding!, headers: HTTPHeaders.init(header ?? [:])).validate().response { dataResponse in
+                let respString:String = String(data: (dataResponse.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
+                print(respString)
+                switch dataResponse.result {
+                case .success( let value):
+                    let json = JSON.init(value ?? Data())
+                    completion(json , nil, dataResponse.response?.statusCode)
                 case .failure(let err):
-                    completion(err.underlyingError , nil, response.response?.statusCode)
+                    completion(nil , err.underlyingError, dataResponse.response?.statusCode)
                 }
             }
-        }
-        else{
+        }else{
             showAlert(strTitle: internetConnectionMessage)
         }
     }
+    
+    
+    func upload(_ url :String , _ data:Data,params : [String:Any]?, _ fileName:String , header:[String:String]? , completion:@escaping (_ error:Error? , _ responce:JSON?,_ statuscode :Int?)->()) {
+                if isConnection(){
+                    let head = HTTPHeaders.init(header ?? [:])
+                    print(params ?? [:])
+                    AF.upload(multipartFormData: { (multiPart) in
+                        for (key, value) in params ?? [:] {
+                            if let temp = value as? String {
+                                multiPart.append(temp.data(using: .utf8)!, withName: key)
+                            }
+                            if let temp = value as? Int {
+                                multiPart.append("\(temp)".data(using: .utf8)!, withName: key)
+                            }
+                            if let temp = value as? NSArray {
+                                temp.forEach({ element in
+                                    let keyObj = key + "[]"
+                                    if let string = element as? String {
+                                        multiPart.append(string.data(using: .utf8)!, withName: keyObj)
+                                    } else
+                                        if let num = element as? Int {
+                                            let value = "\(num)"
+                                            multiPart.append(value.data(using: .utf8)!, withName: keyObj)
+                                    }
+                                })
+                            }
+                        }
+                        multiPart.append(data, withName: fileName, fileName: "file.png", mimeType: "image/png")
+                    }, to: url, method: .post, headers: head).response{ (response) in
+                        SVProgressHUD.dismiss()
+                        let respString:String = String(data: (response.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
+                        print(respString)
+                        switch response.result{
+                        case .success(let data):
+                             let json = JSON.init(data ?? Data())
+                            if json["statusCode"].isKeyPresent(){
+                                if json["statusCode"].intValue == 403{
+                                    SaveToDefaults().setAccessToken(value: nil)
+                                    SaveToDefaults().setLogindata(data: Data())
+                                    defaults.synchronize()
+//                                    let vc = LoginVC.navigation()
+//                                    window?.rootViewController = vc
+//                                    window?.makeKeyAndVisible()
+                                    appDelegate.setLoginVC()
+                                }
+                            }
+                            completion(nil , json, response.response?.statusCode)
+                        case .failure(let err):
+                            completion(err.underlyingError , nil, response.response?.statusCode)
+                        }
+                    }
+                }
+                else{
+                    showAlert(strTitle: internetConnectionMessage)
+                }
+            }
 }
+
 
