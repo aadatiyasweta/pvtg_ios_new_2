@@ -2278,7 +2278,7 @@ struct _R {
     var appleToneWav: RswiftResources.FileResource { .init(name: "appleTone", pathExtension: "wav", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  /// This `_R.nib` struct is generated, and contains static references to 27 nibs.
+  /// This `_R.nib` struct is generated, and contains static references to 28 nibs.
   struct nib {
     let bundle: Foundation.Bundle
 
@@ -2296,6 +2296,9 @@ struct _R {
 
     /// Nib `CircularCell`.
     var circularCell: RswiftResources.NibReference<CircularCell> { .init(name: "CircularCell", bundle: bundle) }
+
+    /// Nib `ContactUsView`.
+    var contactUsView: RswiftResources.NibReference<ContactUsView> { .init(name: "ContactUsView", bundle: bundle) }
 
     /// Nib `CountryCodeCell`.
     var countryCodeCell: RswiftResources.NibReference<CountryCodeCell> { .init(name: "CountryCodeCell", bundle: bundle) }
@@ -2368,6 +2371,7 @@ struct _R {
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in nib 'AllCategoryCell', but couldn't be loaded.") }
+      if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'ContactUsView', but couldn't be loaded.") }
       if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'DateHeaderTVCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "bgProfile", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bgProfile' is used in nib 'HistoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'HistoryCell', but couldn't be loaded.") }
@@ -2584,6 +2588,7 @@ struct _R {
         if UIKit.UIImage(named: "bg", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bg' is used in storyboard 'More', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dropdown", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'dropdown' is used in storyboard 'More', but couldn't be loaded.") }
         if UIKit.UIImage(named: "minimalLeft2X", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'minimalLeft2X' is used in storyboard 'More', but couldn't be loaded.") }
+        if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in storyboard 'More', but couldn't be loaded.") }
         if changePasswordVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'changePasswordVC' could not be loaded from storyboard 'More' as 'ChangePasswordVC'.") }
         if faqSupport_VC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'faqSupport_VC' could not be loaded from storyboard 'More' as 'FaqSupport_VC'.") }
         if privacyPolicyVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'privacyPolicyVC' could not be loaded from storyboard 'More' as 'PrivacyPolicyVC'.") }
@@ -2659,6 +2664,7 @@ struct _R {
 
       let name = "Session"
 
+      var contactUsViewVC: RswiftResources.StoryboardViewControllerIdentifier<ContactUsViewVC> { .init(identifier: "ContactUsViewVC", storyboard: name, bundle: bundle) }
       var searchSessionVC: RswiftResources.StoryboardViewControllerIdentifier<SearchSessionVC> { .init(identifier: "SearchSessionVC", storyboard: name, bundle: bundle) }
       var sessionDetailVC: RswiftResources.StoryboardViewControllerIdentifier<SessionDetailVC> { .init(identifier: "SessionDetailVC", storyboard: name, bundle: bundle) }
 
@@ -2669,6 +2675,8 @@ struct _R {
         if UIKit.UIImage(named: "cross", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'cross' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "minimalLeft2X", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'minimalLeft2X' is used in storyboard 'Session', but couldn't be loaded.") }
+        if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in storyboard 'Session', but couldn't be loaded.") }
+        if contactUsViewVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'contactUsViewVC' could not be loaded from storyboard 'Session' as 'ContactUsViewVC'.") }
         if searchSessionVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'searchSessionVC' could not be loaded from storyboard 'Session' as 'SearchSessionVC'.") }
         if sessionDetailVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'sessionDetailVC' could not be loaded from storyboard 'Session' as 'SessionDetailVC'.") }
       }
