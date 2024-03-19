@@ -125,9 +125,16 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var selectedSession = ""
     var isFromReschedule = false
     var isFromFollowup = false
+    
+    var tempSessionTypeArr = [String]()
+    var tempSessionTypePriceArr = [String]()
+    var tempselectedSession = ""
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        tempSessionTypeArr.removeAll()
+        tempSessionTypePriceArr.removeAll()
         self.mainScrollview.delegate = self
         vwcalendar.appearance.todayColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         vwcalendar.appearance.todaySelectionColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
@@ -559,7 +566,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             cell.searchCategorylbl.text = self.sessionTypeArr[indexPath.row]
             if offeredIndex != -1{
 //                print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
-                print("Price is",self.sessionTypePriceArr[offeredIndex])
+                //print("Price is",self.sessionTypePriceArr[offeredIndex])
                 
 //                let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
 //                let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
@@ -727,6 +734,22 @@ extension SessionDetailVC: GetResponse {
     
     func sessionTimeDetail(){
         self.timeArr = self.vm.timeArr?.result ?? []
+        
+        for i in 0..<(self.vm.timeArr?.result?.count ?? 0){
+            if((self.vm.timeArr?.result?[i].session_booking_session_type ?? "") != ""){
+                self.sessionTypeArr.removeAll()
+                self.sessionTypePriceArr.removeAll()
+                self.sessionTypeArr.append(self.vm.timeArr?.result?[i].session_booking_session_type ?? "")
+                self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+            }else{
+                self.sessionTypeArr.removeAll()
+                self.sessionTypePriceArr.removeAll()
+                
+                self.sessionTypeArr = self.tempSessionTypeArr
+                self.sessionTypePriceArr  = self.tempSessionTypePriceArr
+                self.selectedSession = self.tempselectedSession
+            }
+        }
         if self.controllerId != 1{
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
@@ -749,6 +772,7 @@ extension SessionDetailVC: GetResponse {
     
     func reloadTime() {
         guard let alldate = self.vm.model?.all_date else {return}
+        
         self.formatter.dateFormat = "yyyy-MM-dd"
         for val in alldate {
             if self.formatter.string(from: self.today) == val.schedule_date && val.is_avilable ?? "0" == "1"{
@@ -804,12 +828,35 @@ extension SessionDetailVC: GetResponse {
         }
         self.sessionTypeArr.removeAll()
         self.sessionTypePriceArr.removeAll()
+        self.tempSessionTypeArr.removeAll()
+        self.tempSessionTypePriceArr.removeAll()
         for i in 0..<(self.vm.model?.session_type?.count ?? 0){
-            if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
+            if(tempSessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
             }else{
-                self.sessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
-                self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
-                self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                self.tempSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
+                self.tempselectedSession = self.vm.model?.session_type?[i].session_type ?? ""
+                self.tempSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+            }
+        }
+        
+        if((self.vm.model?.session_booking_session_type ?? "") != ""){
+//            self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
+            for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+                if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
+                }else{
+                    self.selectedSession = self.vm.model?.session_type?[i].session_type ?? ""
+                    self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                    self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
+                }
+            }
+        }else{
+            for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+                if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
+                }else{
+                    self.sessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
+                    self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
+                    self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                }
             }
         }
         

@@ -37,6 +37,8 @@ struct SessionDetailResult : Codable {
     let booking_date : String?
     let payment_id : String?
     let paid_amount : String?
+    let session_booking_session_type : String?
+    let session_booking_booking_date : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -64,6 +66,8 @@ struct SessionDetailResult : Codable {
         case payment_id = "payment_id"
         case paid_amount = "paid_amount"
   case session_booking_status = "session_booking_status"
+        case session_booking_session_type = "session_booking_session_type"
+        case session_booking_booking_date = "session_booking_booking_date"
 
 	}
 
@@ -93,6 +97,8 @@ struct SessionDetailResult : Codable {
         payment_id = try values.decodeIfPresent(String.self, forKey: .payment_id)
         paid_amount = try values.decodeIfPresent(String.self, forKey: .paid_amount)
   session_booking_status = try values.decodeIfPresent(String.self, forKey: .session_booking_status)
+        session_booking_session_type = try values.decodeIfPresent(String.self, forKey: .session_booking_session_type)
+        session_booking_booking_date = try values.decodeIfPresent(String.self, forKey: .session_booking_booking_date)
 
 	}
 
