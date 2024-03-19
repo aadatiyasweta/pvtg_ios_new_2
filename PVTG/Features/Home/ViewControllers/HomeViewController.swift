@@ -123,40 +123,9 @@ class HomeViewController: BaseViewController {
     }
     
     @IBAction func btnTapToEditProfile(_ sender: UIButton) {
-//        let vc = ProfileVC.instance()
-//        self.navigationController?.pushViewController(vc, animated: true)
-        Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: "Will you still be attending your holistic session?", controller: self) { [weak self] result in
-            guard let self else{return}
-            if result{
-               print("yessssss")
-            }else{
-                Helper.shared.showAlertWithCallback(buttonText: "View", buttonText2: "Later", title: "Reminder", message: "Please view late fee policy", controller: self) { [weak self] result in
-                    guard let self else{return}
-                    if result{
-                        print("Yes Clicked")
-                        let vc = PrivacyPolicyVC.instance()
-                        vc.type = R.string.localizable.cancelPolicy()
-                    //    vc.type = "Late fee Policy"
-                        vc.url = cancelPolicy
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }else{
-                        Helper.shared.showAlertWithCallback(buttonText: "Reschedule", buttonText2: "No", title: "Reminder", message: "Let's reschedule your session.", controller: self) { [weak self] result in
-                            guard let self else{return}
-                            if result{
-                                print("Yes Clicked")
-                                let vc = SessionDetailVC.instance()
-//                                vc.sessionId = self.homevm.model?.all_result?[indexPath.row].session_id ?? ""
-                                vc.controllerId = 0
-//                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            }else{
-                                print("no ")
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        let vc = ProfileVC.instance()
+        self.navigationController?.pushViewController(vc, animated: true)
+       
     }
 }
 
