@@ -87,6 +87,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var txtVw: UILabel!
     @IBOutlet weak var customQstnVw: UIView!
     @IBOutlet weak var customQstnBtn: UIButton!
+    @IBOutlet weak var contactUsVw: UIView!
     //MARK: - Properties
     var x = 1
     var mapView:GMSMapView?
@@ -154,6 +155,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = true
             self.priceLabel.isHidden = true
             self.cancelBtn.isHidden = false
+            self.contactUsVw.isHidden = false
             self.completedBtn.isHidden = true
         } else if controllerId == 2 {
             self.vwmap.isHidden = false
@@ -167,6 +169,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = true
             self.priceLabel.isHidden = true
             self.cancelBtn.isHidden = true
+            self.contactUsVw.isHidden = true
             self.completedBtn.isHidden = true
         }else if controllerId == 3 {
             self.vwmap.isHidden = true
@@ -180,6 +183,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.btnBooknow.isHidden = true
             self.priceLabel.isHidden = true
             self.cancelBtn.isHidden = true
+            self.contactUsVw.isHidden = true
             self.completedBtn.isHidden = true
         }else {
             self.vwmap.isHidden = false
@@ -192,6 +196,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblNoTime.isHidden = false
             self.btnBooknow.isHidden = false
             self.cancelBtn.isHidden = true
+            self.contactUsVw.isHidden = true
             self.completedBtn.isHidden = true
             self.priceLabel.isHidden = false
         }
@@ -293,6 +298,15 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             }
         }
     }
+    
+    
+    @IBAction func chatButtonAction(_ sender: Any) {
+        let vc = ChatBoxView.instance()
+        vc.otherUser = (self.vm.model?.created_by ?? "").lowercased()
+        vc.reciverId = self.vm.model?.created_id ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     @IBAction func rescheduleBtnTap(_ sender: UIButton) {
         if id == -1 {

@@ -29,6 +29,7 @@ target 'PVTG' do
   pod 'R.swift'
   pod 'RangeSeekSlider'
   pod 'Stripe', '~> 15.0.1'
+  pod 'Socket.IO-Client-Swift'
 
 end
 

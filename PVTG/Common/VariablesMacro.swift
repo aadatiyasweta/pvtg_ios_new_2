@@ -113,3 +113,106 @@ extension Bundle {
         objc_setAssociatedObject(Bundle.main, &bundleKey,    Bundle.main.path(forResource: language, ofType: "lproj"), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }
+
+
+enum AKDataTimeFormat: String, CaseIterable {
+    
+    ///Sample Apr 2022
+    case MMM_yyyy = "MMM yyyy"
+    
+    ///Sample 6 Jun
+    case dth_MMM = "d MMM"
+    
+    ///Sample 6 June 2022 Tuesday
+    case dth_MMMM_yyyy_EEEE = "d MMMM yyyy EEEE"
+    
+    /// sample 2022-04-18T00:00:00.000Z
+    case yyyy_MM_dd_T_HH_mm_ss_SSS_Z = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    
+    ///sample 2021-08-18 14:36:46.145234+0530
+    case yyyy_MM_dd_T_HH_mm_ss_sssZ = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+    
+    /// sample 2021-06-04 12:59:59
+    case yyyy_MM_dd_hh_mm_ss = "yyyy-MM-dd hh:mm:ss"
+    
+    /// sample 2021-06-04 22:59:59
+    case yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss"
+    
+    /// sample 2021-06-04 22:59
+    case yyyy_MM_dd_HH_mm = "yyyy-MM-dd HH:mm"
+    /// sample 2021-06-04 12:59:59 pm
+    case yyyy_MM_dd_hh_mm_ss_a = "yyyy-MM-dd hh:mm:ss a"
+    
+    /// sample 2021-06-04 12:59 pm
+    case yyyy_MM_dd_hh_mm_a = "yyyy-MM-dd hh:mm a"
+    
+    /// sample 2021-06-04
+    case yyyy_MM_dd = "yyyy-MM-dd"
+    
+    /// sample 04 June, 10:59 AM
+    case dd_MMMM_h_mm_a = "dd MMMM, h:mm a"
+    
+    /// sample 04 June 2023
+    case dd_MMMM_yyyy = "dd MMMM yyyy"
+    
+    /// sample Friday, 4th Jun
+    case EEEE_dth_MMM = "EEEE, d MMM"
+    
+    /// sample Friday, 4th Jun 2021
+    case EEEE_dth_MMM_yyyy = "EEEE, d MMM yyyy"
+    
+    /// sample Friday, 4th Jun 2021, 10:59 AM
+    case EEEE_dth_MMM_yyyy_h_mm_a = "EEEE, d MMM yyyy, h:mm a"
+    
+    /// sample 10:59 AM
+    case h_mm_a = "h:mm a"
+    
+    /// sample 04 day only
+    case dd = "dd"
+    
+    /// sample  09 month only
+    case MM = "M"
+    
+    /// sample  January month only
+    case MMMM = "MMMM"
+    case MMM = "MMM"
+    
+    /// sample  2021 year only
+    case yyyy = "yyyy"
+    
+    /// sample  10 hour only
+    case hh = "hh"
+    
+    /// sample  13 hour only
+    case HH = "HH"
+    
+    /// sample  10 am
+    case hh_a = "hh a"
+    
+    /// sample  13:00
+    case HH_mm = "HH:mm"
+    
+    /// sample  35 minute only
+    case mm = "mm"
+    
+    /// sample  am 0r pm only
+    case a = "a"
+    
+    /// sample 15:38:00 AM
+    case HH_mm_ss_a = "HH:mm:ss a"
+    
+    /// sample 15:38 AM
+    case HH_mm_a = "HH:mm a"
+    
+    /// sample  12 hour
+    case hh_mm_a = "hh:mm a"
+    
+    /// sample 15:38:00
+    case HH_mm_ss = "HH:mm:ss"
+    
+    /// sample Sun
+    case E = "E"
+    
+    case MM_dd_yyyy = "MM/dd/yyyy"
+    
+}

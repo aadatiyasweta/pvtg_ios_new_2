@@ -18,7 +18,8 @@ let aboutUs = "https://dharma.services/about_us.html"
 let faq = "https://dharma.services/faq.html"
 let privacy = "http://dharma.services/privacy_policy.html"
 let cancelPolicy = "http://dharma.services/cancel_policy.html"
-let server = testingServer
+//let server = testingServer
+let server = Config.shared.baseUrl()
 let googlePlacesSearchApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=noida&key=AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k"
 let appLanguage = SaveToDefaults().getAppLang() ?? "en"
 func loginUrl()-> String {
@@ -26,6 +27,11 @@ func loginUrl()-> String {
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/normal_login",url)
     return url
+}
+
+var SCREENSIZE:CGSize
+{
+    return UIScreen.main.bounds.size
 }
 
 func forgotUrl()-> String {
@@ -150,21 +156,21 @@ func updateProfileUrl()-> String {
     return url
 }
 func sessionRatingUrl()-> String {
-    var  url = "\(testingServer)Sessionapi/session_rating"
+    var  url = "\(server)Sessionapi/session_rating"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/session_rating",url)
     return url
 }
 
 func updateDeviceTokenUrl()-> String {
-    var  url = "\(testingServer)Userapi/update_device_token"
+    var  url = "\(server)Userapi/update_device_token"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("updateDeviceTokenUrl",url)
     return url
 }
 
 func session_time_detail()-> String {
-    var  url = "\(testingServer)Sessionapi/session_time_detail"
+    var  url = "\(server)Sessionapi/session_time_detail"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/session_time_detail",url)
     return url
@@ -197,39 +203,39 @@ func allCategoryUrl(userid: String)-> String {
 }
 //&language=\(SaveToDefaults().getAppLang() ?? "en")
 func searchSessionUrl()-> String {
-    var  url = "\(testingServer)Sessionapi/search?language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Sessionapi/search?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/search",url)
     return url
 }
 func sessionallCategoryUrl()-> String {
-    var  url = "\(testingServer)Sessionapi/all_category"
+    var  url = "\(server)Sessionapi/all_category"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/all_category",url)
     return url
 }
 ///language=\(SaveToDefaults().getAppLang() ?? "en")
 func sessionBookingUrl()-> String {
-    var  url = "\(testingServer)Sessionapi/session_booking"
+    var  url = "\(server)Sessionapi/session_booking"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Sessionapi/session_booking",url)
     return url
 }
 
 func selectInterestUrl()-> String{
-    var  url = "\(testingServer)Userapi/user_interest_category"
+    var  url = "\(server)Userapi/user_interest_category"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/user_interest_category",url)
     return url
 }
 func getSplashPointsUrl()-> String{
-    var  url = "\(testingServer)Userapi/getSplashPoints?language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Userapi/getSplashPoints?language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("getSplashPointsUrl",url)
     return url
 }
 func getCurrencyDataUrl(id:String)-> String{
-    var  url = "\(testingServer)Sessionapi/get_currency?user_id=\(id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
+    var  url = "\(server)Sessionapi/get_currency?user_id=\(id)&language=\(SaveToDefaults().getAppLang() ?? "en")"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("getCurrencyDataUrl",url)
     return url
@@ -244,14 +250,14 @@ func getPrefrenceIdUrl()-> String{
 }
 
 func rescheduleSessionApiUrl()-> String{
-    var  url = "\(testingServer)Sessionapi/session_booking_reschedule"
+    var  url = "\(server)Sessionapi/session_booking_reschedule"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("rescheduleSessionApiUrl",url)
     return url
 }
 
 func contactUsApiUrl()-> String{
-    var  url = "\(testingServer)Sessionapi/contact_us"
+    var  url = "\(server)Sessionapi/contact_us"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("contactUsApiUrl",url)
     return url
@@ -259,25 +265,25 @@ func contactUsApiUrl()-> String{
 
 
 func sessionCancelApiUrl()-> String{
-    var  url = "\(testingServer)Sessionapi/session_cancellation"
+    var  url = "\(server)Sessionapi/session_cancellation"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("sessionCancelApiUrl",url)
     return url
 }
 func partialRefundApiUrl()-> String{
-    var  url = "\(testingServer)Sessionapi/mecardo_partial_payment"
+    var  url = "\(server)Sessionapi/mecardo_partial_payment"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("partialRefundApiUrl",url)
     return url
 }
 func fullRefundApiUrl()-> String{
-    var  url = "\(testingServer)Sessionapi/mecardo_payment_refund"
+    var  url = "\(server)Sessionapi/mecardo_payment_refund"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("fullRefundApiUrl",url)
     return url
 }
 func attendingSession()-> String{
-    var  url = "\(testingServer)Sessionapi/confirm_booking"
+    var  url = "\(server)Sessionapi/confirm_booking"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("attendingSession",url)
     return url
@@ -305,7 +311,7 @@ func getAllPaymentDetailsUrl(user_id: String)-> String{
 }
 
 func updateNotificationStatusUrl()-> String{
-    var  url = "\(testingServer)Userapi/update_read_status"
+    var  url = "\(server)Userapi/update_read_status"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/user_interest_category",url)
     return url

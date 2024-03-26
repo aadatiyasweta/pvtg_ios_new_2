@@ -1966,7 +1966,7 @@ struct _R {
     var purpleActionBtn: RswiftResources.ColorResource { .init(name: "PurpleActionBtn", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 71 images.
+  /// This `_R.image` struct is generated, and contains static references to 72 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -2065,6 +2065,9 @@ struct _R {
 
     /// Image `loc`.
     var loc: RswiftResources.ImageResource { .init(name: "loc", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `location`.
+    var location: RswiftResources.ImageResource { .init(name: "location", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `logoLi`.
     var logoLi: RswiftResources.ImageResource { .init(name: "logoLi", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -2396,7 +2399,7 @@ struct _R {
     }
   }
 
-  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
+  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 16 reuse identifiers.
   struct reuseIdentifier {
 
     /// Reuse identifier `ActiveEventCollectionViewCell`.
@@ -2408,6 +2411,39 @@ struct _R {
     /// Reuse identifier `FaqSupport_TVC`.
     let faqSupport_TVC: RswiftResources.ReuseIdentifier<FaqSupport_TVC> = .init(identifier: "FaqSupport_TVC")
 
+    /// Reuse identifier `ImagePreviewCVCell`.
+    let imagePreviewCVCell: RswiftResources.ReuseIdentifier<ImagePreviewCVCell> = .init(identifier: "ImagePreviewCVCell")
+
+    /// Reuse identifier `MyAudioTVCell`.
+    let myAudioTVCell: RswiftResources.ReuseIdentifier<MyAudioTVCell> = .init(identifier: "MyAudioTVCell")
+
+    /// Reuse identifier `MyImageTVCell`.
+    let myImageTVCell: RswiftResources.ReuseIdentifier<MyImageTVCell> = .init(identifier: "MyImageTVCell")
+
+    /// Reuse identifier `MyImagesTVCell`.
+    let myImagesTVCell: RswiftResources.ReuseIdentifier<MyImagesTVCell> = .init(identifier: "MyImagesTVCell")
+
+    /// Reuse identifier `MyMessageTVCell`.
+    let myMessageTVCell: RswiftResources.ReuseIdentifier<MyMessageTVCell> = .init(identifier: "MyMessageTVCell")
+
+    /// Reuse identifier `MyVideoTVCell`.
+    let myVideoTVCell: RswiftResources.ReuseIdentifier<MyVideoTVCell> = .init(identifier: "MyVideoTVCell")
+
+    /// Reuse identifier `PartnerAudioTVCell`.
+    let partnerAudioTVCell: RswiftResources.ReuseIdentifier<PartnerAudioTVCell> = .init(identifier: "PartnerAudioTVCell")
+
+    /// Reuse identifier `PartnerImageTVCell`.
+    let partnerImageTVCell: RswiftResources.ReuseIdentifier<PartnerImageTVCell> = .init(identifier: "PartnerImageTVCell")
+
+    /// Reuse identifier `PartnerImagesTVCell`.
+    let partnerImagesTVCell: RswiftResources.ReuseIdentifier<PartnerImagesTVCell> = .init(identifier: "PartnerImagesTVCell")
+
+    /// Reuse identifier `PartnerMessageTVCell`.
+    let partnerMessageTVCell: RswiftResources.ReuseIdentifier<PartnerMessageTVCell> = .init(identifier: "PartnerMessageTVCell")
+
+    /// Reuse identifier `PartnerVideoTVCell`.
+    let partnerVideoTVCell: RswiftResources.ReuseIdentifier<PartnerVideoTVCell> = .init(identifier: "PartnerVideoTVCell")
+
     /// Reuse identifier `ReceiverTVCell`.
     let receiverTVCell: RswiftResources.ReuseIdentifier<ReceiverTVCell> = .init(identifier: "ReceiverTVCell")
 
@@ -2415,10 +2451,11 @@ struct _R {
     let senderTVCell: RswiftResources.ReuseIdentifier<SenderTVCell> = .init(identifier: "SenderTVCell")
   }
 
-  /// This `_R.storyboard` struct is generated, and contains static references to 8 storyboards.
+  /// This `_R.storyboard` struct is generated, and contains static references to 9 storyboards.
   struct storyboard {
     let bundle: Foundation.Bundle
     var chat: chat { .init(bundle: bundle) }
+    var chatCall: chatCall { .init(bundle: bundle) }
     var home: home { .init(bundle: bundle) }
     var launchScreen: launchScreen { .init(bundle: bundle) }
     var login: login { .init(bundle: bundle) }
@@ -2428,6 +2465,9 @@ struct _R {
     var session: session { .init(bundle: bundle) }
 
     func chat(bundle: Foundation.Bundle) -> chat {
+      .init(bundle: bundle)
+    }
+    func chatCall(bundle: Foundation.Bundle) -> chatCall {
       .init(bundle: bundle)
     }
     func home(bundle: Foundation.Bundle) -> home {
@@ -2453,6 +2493,7 @@ struct _R {
     }
     func validate() throws {
       try self.chat.validate()
+      try self.chatCall.validate()
       try self.home.validate()
       try self.launchScreen.validate()
       try self.login.validate()
@@ -2476,6 +2517,54 @@ struct _R {
         if UIKit.UIImage(named: "person", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'person' is used in storyboard 'Chat', but couldn't be loaded.") }
         if UIKit.UIImage(named: "threeDots", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'threeDots' is used in storyboard 'Chat', but couldn't be loaded.") }
         if chatListVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'chatListVC' could not be loaded from storyboard 'Chat' as 'ChatListVC'.") }
+      }
+    }
+
+    /// Storyboard `ChatCall`.
+    struct chatCall: RswiftResources.StoryboardReference {
+      let bundle: Foundation.Bundle
+
+      let name = "ChatCall"
+
+      var chatBoxView: RswiftResources.StoryboardViewControllerIdentifier<ChatBoxView> { .init(identifier: "ChatBoxView", storyboard: name, bundle: bundle) }
+      var imagePreviewView: RswiftResources.StoryboardViewControllerIdentifier<ImagePreviewView> { .init(identifier: "ImagePreviewView", storyboard: name, bundle: bundle) }
+      var recordAudioPopupView: RswiftResources.StoryboardViewControllerIdentifier<RecordAudioPopupView> { .init(identifier: "RecordAudioPopupView", storyboard: name, bundle: bundle) }
+
+      func validate() throws {
+        if UIKit.UIImage(named: "111", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named '111' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "121", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named '121' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "121-1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named '121-1' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "222", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named '222' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Asset 1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Asset 1' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Asset 2", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Asset 2' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "BackBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'BackBtn' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Calender_yellow", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Calender_yellow' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Cancel_round", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Cancel_round' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Group 10610", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Group 10610' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Group 4", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Group 4' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Group 4981", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Group 4981' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Group 5923", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Group 5923' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Group 5969", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Group 5969' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Icon awesome-microphone", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Icon awesome-microphone' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Icon material-send", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Icon material-send' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "arrow_black", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'arrow_black' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "location", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'location' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "pause.rectangle.fill") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'pause.rectangle.fill' is used in storyboard 'ChatCall', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "person.circle.fill") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'person.circle.fill' is used in storyboard 'ChatCall', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "photo") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'photo' is used in storyboard 'ChatCall', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "photo.fill") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'photo.fill' is used in storyboard 'ChatCall', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "play.rectangle.fill") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'play.rectangle.fill' is used in storyboard 'ChatCall', but couldn't be loaded.") } }
+        if UIKit.UIImage(named: "threeDots", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'threeDots' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "waveform.and.mic") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'waveform.and.mic' is used in storyboard 'ChatCall', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "xmark.bin.fill") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'xmark.bin.fill' is used in storyboard 'ChatCall', but couldn't be loaded.") } }
+        if UIKit.UIColor(named: "BG1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'BG1' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIColor(named: "ButtonRed", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'ButtonRed' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIColor(named: "PRIMARY_BLUE", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PRIMARY_BLUE' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIColor(named: "PRIMARY_PINK", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PRIMARY_PINK' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIColor(named: "TEXT1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'TEXT1' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if chatBoxView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'chatBoxView' could not be loaded from storyboard 'ChatCall' as 'ChatBoxView'.") }
+        if imagePreviewView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'imagePreviewView' could not be loaded from storyboard 'ChatCall' as 'ImagePreviewView'.") }
+        if recordAudioPopupView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'recordAudioPopupView' could not be loaded from storyboard 'ChatCall' as 'RecordAudioPopupView'.") }
       }
     }
 

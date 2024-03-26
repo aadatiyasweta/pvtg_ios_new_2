@@ -11,6 +11,7 @@ let main = UIStoryboard.init(name: "Main", bundle: nil)
 let setting = UIStoryboard.init(name: "Setting", bundle: nil)
 let session = UIStoryboard.init(name: "Session", bundle: nil)
 let profile = UIStoryboard.init(name: "Profile", bundle: nil)
+let Chat = UIStoryboard.init(name: "ChatCall", bundle: nil)
 let onboarding = UIStoryboard.init(name: "Onboarding", bundle: nil)
 let splash = UIStoryboard.init(name: "Onboarding", bundle: nil)
 
@@ -160,6 +161,12 @@ extension SessionDetailVC {
 extension ProfileVC {
     class func instance()-> ProfileVC {
         return profile.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+    }
+}
+
+extension ChatBoxView {
+    class func instance()-> ChatBoxView {
+        return Chat.instantiateViewController(withIdentifier: "ChatBoxView") as! ChatBoxView
     }
 }
 

@@ -64,7 +64,7 @@
 	<key>NSAppleMusicUsageDescription</key>
 	<string>App would like access your media Library.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>App would like to access Camera for your profile photo upload.Your photos won't be shared without your permission.</string>
+	<string>App would like to access Camera for your profile photo upload.Your photos won&apos;t be shared without your permission.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Your location is required for searching on map</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -113,5 +113,15 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>kBaseUrl</key>
+	<string>$(BASE_URL)</string>
+	<key>kSocketUrl</key>
+	<string>$(SOCKET_URL)</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Location always usage description</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Location always and when in usage description</string>
+    <key>NSLocationUsageDescription</key>
+    <string>Location usage desription</string>
 </dict>
 </plist>

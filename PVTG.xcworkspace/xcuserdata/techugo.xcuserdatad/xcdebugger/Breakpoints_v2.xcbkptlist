@@ -3,4 +3,134 @@
    uuid = "95F952CD-E8A5-4D44-8134-6D09E0F00F6B"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82672F84-3CDA-4FFA-BDD8-EF91DD2204CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "tapUseNow(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0DDC06B3-EBC9-4866-BF4C-4C6083F85F6D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "tapUseNow(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0DDC06B3-EBC9-4866-BF4C-4C6083F85F6D - 70b6c61f3e210d49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SummaryVC.tapUseNow(__C.UIButton) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "251"
+                  endingLineNumber = "251"
+                  offsetFromSymbolStart = "336">
+               </Location>
+               <Location
+                  uuid = "0DDC06B3-EBC9-4866-BF4C-4C6083F85F6D - 70b6c61f3e210d49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SummaryVC.tapUseNow(__C.UIButton) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "251"
+                  endingLineNumber = "251"
+                  offsetFromSymbolStart = "380">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95965796-57C7-43CA-8223-FCA9DE3E7FBC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
+            landmarkName = "getOnboardingData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "95965796-57C7-43CA-8223-FCA9DE3E7FBC - c769419b5fcb09ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SummaryVC.getOnboardingData() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "537"
+                  endingLineNumber = "537"
+                  offsetFromSymbolStart = "5446">
+               </Location>
+               <Location
+                  uuid = "95965796-57C7-43CA-8223-FCA9DE3E7FBC - c769419b5fcb08d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SummaryVC.getOnboardingData() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "544"
+                  endingLineNumber = "544"
+                  offsetFromSymbolStart = "5450">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE0AF784-5B95-4246-AB45-9DED3DA7ACDF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Home/ViewControllers/SummaryVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "522"
+            endingLineNumber = "522"
+            landmarkName = "getOnboardingData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

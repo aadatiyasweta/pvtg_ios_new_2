@@ -1,0 +1,14 @@
+//
+//  Production.xcconfig
+//  PVTG
+//
+//  Created by Techugo on 21/03/24.
+//  Copyright © 2024 ShubhamMacmini. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+SLASH = /
+BASE_URL = http:$(SLASH)/dharma.services/api/v1/
+SOCKET_URL = http:$(SLASH)/54.245.144.158:5040

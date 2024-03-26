@@ -534,13 +534,13 @@ extension SummaryVC : GetBookingResponse,getOnboardingResponse{
             }
         }
         let pt = Int(self.ticketModel?.total_point ?? "0")
-        if pt ?? 0 < firstPoints{
-            self.usePvtBtn.isUserInteractionEnabled = false
-        }else{
-            self.usePvtBtn.isUserInteractionEnabled = true
-            self.showUseNow()
-            self.usePvtBtn.isSelected = false
-        }
+//        if pt ?? 0 < firstPoints{
+//           self.usePvtBtn.isUserInteractionEnabled = false
+//        }else{
+//            self.usePvtBtn.isUserInteractionEnabled = true
+//            self.showUseNow()
+//            self.usePvtBtn.isSelected = false
+//        }
         if self.ticketModel?.user_booking ?? 0 == 0{
             self.rewardedString.text = R.string.localizable.youWillBeRewarded(self.onboardingVm.model?.point_accumulation?.first_booking_point ?? "")
         }else{
