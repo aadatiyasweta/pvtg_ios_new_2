@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -222,8 +222,8 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Interest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KN-Ax-CER">
-                                <rect key="frame" x="27" y="166.5" width="266.5" height="29.5"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Interest" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KN-Ax-CER">
+                                <rect key="frame" x="24" y="166.5" width="272" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -305,9 +305,11 @@
                             <constraint firstItem="Agk-yh-Pm9" firstAttribute="top" secondItem="LAB-Q0-gzy" secondAttribute="top" constant="10" id="YrO-7g-UHu"/>
                             <constraint firstItem="VYW-6m-f8C" firstAttribute="top" secondItem="bmK-Me-WYh" secondAttribute="top" constant="155" id="YxK-TD-ZW6"/>
                             <constraint firstItem="bmK-Me-WYh" firstAttribute="centerX" secondItem="LAB-Q0-gzy" secondAttribute="centerX" id="ZqK-yq-pOs"/>
+                            <constraint firstItem="LAB-Q0-gzy" firstAttribute="trailing" secondItem="2KN-Ax-CER" secondAttribute="trailing" constant="24" id="aYd-OL-Kr4"/>
                             <constraint firstItem="vot-Gs-cGo" firstAttribute="top" secondItem="PDd-oj-Npn" secondAttribute="top" id="bcw-6l-izE"/>
                             <constraint firstItem="VYW-6m-f8C" firstAttribute="centerX" secondItem="LAB-Q0-gzy" secondAttribute="centerX" id="cLm-af-7Wr"/>
                             <constraint firstItem="vot-Gs-cGo" firstAttribute="leading" secondItem="PDd-oj-Npn" secondAttribute="leading" id="f9n-zE-f5Y"/>
+                            <constraint firstItem="2KN-Ax-CER" firstAttribute="leading" secondItem="LAB-Q0-gzy" secondAttribute="leading" constant="24" id="gOe-PW-KAt"/>
                             <constraint firstAttribute="trailing" secondItem="vot-Gs-cGo" secondAttribute="trailing" id="hgv-T3-AmM"/>
                             <constraint firstItem="EgR-BU-2Bl" firstAttribute="top" secondItem="Agk-yh-Pm9" secondAttribute="bottom" constant="5" id="j6g-6H-d5V"/>
                             <constraint firstItem="bmK-Me-WYh" firstAttribute="top" secondItem="EgR-BU-2Bl" secondAttribute="bottom" constant="8" id="lbo-Pz-5D9"/>

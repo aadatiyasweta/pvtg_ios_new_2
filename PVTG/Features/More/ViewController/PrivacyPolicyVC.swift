@@ -27,9 +27,6 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
         super.viewDidLoad()
         self.titleLbl.text = type
         self.showWithTouch()
-        webView.frame = CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
-        // webView.backgroundColor = .clear
-        self.subView.addSubview(webView)
         webView.uiDelegate = self
         webView.navigationDelegate = self
         if let url = URL(string: url) {
@@ -46,6 +43,13 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         setVSViewShadow(radius: 10, color: .black, view: self.btnBack, opacity: 0.12)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        webView.frame = CGRect.init(x: 0, y: 0, width: self.subView.frame.size.width, height: self.subView.frame.size.height - 20)
+        // webView.backgroundColor = .clear
+        self.subView.addSubview(webView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

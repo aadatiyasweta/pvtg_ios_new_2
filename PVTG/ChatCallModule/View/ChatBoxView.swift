@@ -137,7 +137,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
                 self.sendView.isHidden = false
             }
         }
-        profileName.text = "Samantha"
+        profileName.text = self.name
         profilePic.sd_setImage(with: URL(string: self.image), placeholderImage: UIImage(named: "person"))
         self.messageTV.layer.cornerRadius = 20
         self.messageTV.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 0.6).cgColor
@@ -368,7 +368,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
 //            "user_type":self.user,
 //            "ticketNo":self.ticketNo
 //        ])
-        self.sendMeassage(msg:message,msg_type:"text",url:"",thumbnil:"",lat: "", long: "")
+        self.sendMeassage(msg:message,msg_type:"text",url:"",thumbnil:"",lat: 0.0, long: 0.0)
         self.messageTV.textColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
         self.messageTV.text = "Write here something..."
         updateMsgTVHeight()
@@ -465,12 +465,12 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     @objc private func openMap(sender: UIButton) {
         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
                     UIApplication.shared.openURL(NSURL(string:
-                                                        "comgooglemaps://?saddr=&daddr=\(Double(arrChatList[sender.tag].lat ?? "") ?? 0.0),\(Double(arrChatList[sender.tag].lat ?? "") ?? 0.0)&directionsmode=driving")! as URL)
+                                                        "comgooglemaps://?saddr=&daddr=\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0),\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0)&directionsmode=driving")! as URL)
                     
                 } else {
                     // if GoogleMap App is not installed
                     UIApplication.shared.openURL(NSURL(string:
-                                                        "https://maps.google.com/?q=@\(Double(arrChatList[sender.tag].lat ?? "") ?? 0.0),\(Double(arrChatList[sender.tag].lat ?? "") ?? 0.0)&directionsmode=driving")! as URL)
+                                                        "https://maps.google.com/?q=@\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0),\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0)&directionsmode=driving")! as URL)
                 }
     }
 }
@@ -523,48 +523,48 @@ extension ChatBoxView : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        if arrChatList[indexPath.row].sID == "\(UserDetails.userID ?? 0)" && arrChatList[indexPath.row]. == "user"{}
-        if arrChatList[indexPath.row].sID == "\(SaveToDefaults().getUserId() ?? "0")", arrChatList[indexPath.row].msgType == .text {
+        if arrChatList[indexPath.row].sID == Int(SaveToDefaults().getUserId() ?? "0"), arrChatList[indexPath.row].msgType == .text {
             let cell = tableView.dequeueReusableCell(withIdentifier: MyMessageTVCell.id, for: indexPath) as! MyMessageTVCell
             cell.set(arrChatList[indexPath.row])
             return cell
-        } else if arrChatList[indexPath.row].sID != "\(SaveToDefaults().getUserId() ?? "0")", arrChatList[indexPath.row].msgType == .text {
+        } else if arrChatList[indexPath.row].sID != Int(SaveToDefaults().getUserId() ?? "0"), arrChatList[indexPath.row].msgType == .text {
             let cell = tableView.dequeueReusableCell(withIdentifier: PartnerMessageTVCell.id, for: indexPath) as! PartnerMessageTVCell
             cell.set(arrChatList[indexPath.row])
             return cell
-        } else if arrChatList[indexPath.row].sID == "\(SaveToDefaults().getUserId() ?? "0")", arrChatList[indexPath.row].msgType == .Audio {
+        } else if arrChatList[indexPath.row].sID == Int(SaveToDefaults().getUserId() ?? "0"), arrChatList[indexPath.row].msgType == .Audio {
             let cell = tableView.dequeueReusableCell(withIdentifier: MyAudioTVCell.id, for: indexPath) as! MyAudioTVCell
             cell.playPauseBtn.tag = indexPath.row
             cell.playPauseBtn.addTarget(self, action: #selector(playPauseBtnHandler), for: .touchUpInside)
             cell.set(arrChatList[indexPath.row])
             return cell
-        } else if arrChatList[indexPath.row].sID != "\(SaveToDefaults().getUserId() ?? "0")", arrChatList[indexPath.row].msgType == .Audio {
+        } else if arrChatList[indexPath.row].sID != Int(SaveToDefaults().getUserId() ?? "0"), arrChatList[indexPath.row].msgType == .Audio {
             let cell = tableView.dequeueReusableCell(withIdentifier: PartnerAudioTVCell.id, for: indexPath) as! PartnerAudioTVCell
             cell.playPauseBtn.tag = indexPath.row
             cell.playPauseBtn.addTarget(self, action: #selector(playPauseBtnHandler), for: .touchUpInside)
             cell.set(arrChatList[indexPath.row])
             return cell
         }
-        else if arrChatList[indexPath.row].sID == "\(SaveToDefaults().getUserId() ?? "0")", arrChatList[indexPath.row].msgType == .video {
+        else if arrChatList[indexPath.row].sID == Int(SaveToDefaults().getUserId() ?? "0"), arrChatList[indexPath.row].msgType == .video {
             let cell = tableView.dequeueReusableCell(withIdentifier: MyVideoTVCell.id, for: indexPath) as! MyVideoTVCell
             cell.playBtn.tag = indexPath.row
             cell.playBtn.addTarget(self, action: #selector(playVideoBtnHandler(sender:)), for: .touchUpInside)
             cell.set(arrChatList[indexPath.row])
             return cell
-        } else if arrChatList[indexPath.row].sID != "\(SaveToDefaults().getUserId() ?? "0")", arrChatList[indexPath.row].msgType == .video {
+        } else if arrChatList[indexPath.row].sID != Int(SaveToDefaults().getUserId() ?? "0"), arrChatList[indexPath.row].msgType == .video {
             let cell = tableView.dequeueReusableCell(withIdentifier: PartnerVideoTVCell.id, for: indexPath) as! PartnerVideoTVCell
             cell.playBtn.tag = indexPath.row
             cell.playBtn.addTarget(self, action: #selector(playVideoBtnHandler(sender:)), for: .touchUpInside)
             cell.set(arrChatList[indexPath.row])
             return cell
         }
-        else if arrChatList[indexPath.row].sID == "\(SaveToDefaults().getUserId() ?? "0")", arrChatList[indexPath.row].msgType == .image {
+        else if arrChatList[indexPath.row].sID == Int(SaveToDefaults().getUserId() ?? "0"), arrChatList[indexPath.row].msgType == .image {
             let cell = tableView.dequeueReusableCell(withIdentifier: MyImageTVCell.id, for: indexPath) as! MyImageTVCell
             cell.playButton.tag = indexPath.row
             cell.playButton.addTarget(self, action: #selector(zoomImageBtnHandler(sender:)), for: .touchUpInside)
             cell.set(arrChatList[indexPath.row])
             return cell
         }
-        else if arrChatList[indexPath.row].sID == "\(SaveToDefaults().getUserId() ?? "0")", arrChatList[indexPath.row].msgType == .location {
+        else if arrChatList[indexPath.row].sID == Int(SaveToDefaults().getUserId() ?? "0"), arrChatList[indexPath.row].msgType == .location {
             let cell = tableView.dequeueReusableCell(withIdentifier: MyLocationTVCell.id, for: indexPath) as! MyLocationTVCell
             cell.playBtn.tag = indexPath.row
             cell.playBtn.addTarget(self, action: #selector(openMap(sender:)), for: .touchUpInside)
@@ -790,11 +790,11 @@ extension ChatBoxView:UIImagePickerControllerDelegate,UINavigationControllerDele
     }
 }
 extension ChatBoxView {
-    func sendMeassage(msg:String,msg_type:String,url:String,thumbnil:String,lat:String,long:String){
+    func sendMeassage(msg:String,msg_type:String,url:String,thumbnil:String,lat:Double,long:Double){
         if SocketHelper.shared.isConnected {
             SocketHelper.shared.sendMessage(data: [
-                "s_id": "\(SaveToDefaults().getUserId() ?? "0")",
-                "r_id": self.reciverId ,
+                "s_id": Int(SaveToDefaults().getUserId() ?? "0") ?? 0,
+                "r_id": Int(self.reciverId) ?? 0 ,
                 "msg": msg,
                 "msg_type": msg_type,
                 "url": url,
@@ -1016,6 +1016,6 @@ extension ChatBoxView: CLLocationManagerDelegate {
         // Function to send location data to a server
         func sendLocationToServer(latitude: Double, longitude: Double) {
             // Implement your code to send location data to a server here
-            self.sendMeassage(msg:"",msg_type:"location",url:"",thumbnil:"",lat: "\(latitude)", long: "\(longitude)")
+            self.sendMeassage(msg:"",msg_type:"location",url:"",thumbnil:"",lat: latitude, long: longitude)
         }
 }

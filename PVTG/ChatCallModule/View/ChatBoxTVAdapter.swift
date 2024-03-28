@@ -394,7 +394,7 @@ class MyLocationTVCell: UITableViewCell {
         } else {
             self.photoIV.image = UIImage(systemName: "photo.fill")
         }
-        let center = CLLocationCoordinate2D(latitude: Double(model.lat ?? "0.0") ?? 0.0, longitude: Double(model.long ?? "0.0") ?? 0.0)
+        let center = CLLocationCoordinate2D(latitude: model.lat ?? 0.0, longitude: model.long ?? 0.0)
                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
 
                self.mapView.setRegion(region, animated: true)

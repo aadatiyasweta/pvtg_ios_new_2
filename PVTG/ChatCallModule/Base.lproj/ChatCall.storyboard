@@ -398,7 +398,7 @@
                                                             <color key="textColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11.05 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbF-cz-ubQ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11.05 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbF-cz-ubQ">
                                                             <rect key="frame" x="53" y="34.5" width="47.5" height="13"/>
                                                             <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="11"/>
                                                             <color key="textColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -407,6 +407,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="zbF-cz-ubQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uXa-kL-5b3" secondAttribute="leading" constant="8" id="2TF-z9-JtJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="zbF-cz-ubQ" secondAttribute="trailing" constant="4" id="48y-hC-zh5"/>
                                                         <constraint firstAttribute="bottom" secondItem="A6G-fF-NXH" secondAttribute="bottom" constant="24" id="6Un-Pr-O9a"/>
                                                         <constraint firstItem="A6G-fF-NXH" firstAttribute="leading" secondItem="uXa-kL-5b3" secondAttribute="leading" constant="16" id="8NI-38-w3A"/>
@@ -481,6 +482,7 @@ Erocitica medication time ?</string>
                                                     <constraints>
                                                         <constraint firstItem="9al-fp-rUf" firstAttribute="top" secondItem="CnQ-YW-3zK" secondAttribute="top" constant="16" id="7IM-aw-YPh"/>
                                                         <constraint firstAttribute="trailing" secondItem="lAQ-ff-5nQ" secondAttribute="trailing" constant="4" id="BbB-cu-h38"/>
+                                                        <constraint firstItem="lAQ-ff-5nQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CnQ-YW-3zK" secondAttribute="leading" constant="8" id="PhJ-Zi-bhH"/>
                                                         <constraint firstAttribute="trailing" secondItem="9al-fp-rUf" secondAttribute="trailing" constant="16" id="UPx-sd-DZ4"/>
                                                         <constraint firstAttribute="bottom" secondItem="9al-fp-rUf" secondAttribute="bottom" constant="24" id="UVY-zn-I1R"/>
                                                         <constraint firstAttribute="bottom" secondItem="lAQ-ff-5nQ" secondAttribute="bottom" constant="8" id="X27-Gm-T6Z"/>
@@ -1241,28 +1243,28 @@ Erocitica medication time ?</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.30 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cy7-EL-eUf">
-                                                    <rect key="frame" x="16" y="22.5" width="382" height="13"/>
+                                                    <rect key="frame" x="350.5" y="22.5" width="47.5" height="13"/>
                                                     <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="11"/>
                                                     <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OmC-x6-o5O">
-                                                    <rect key="frame" x="248" y="4" width="150" height="10"/>
+                                                    <rect key="frame" x="158" y="4" width="240" height="10"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qrM-9K-zxV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="9.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="9.5"/>
                                                             <color key="tintColor" name="BG1"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="Puf-Ym-FvP"/>
-                                                                <constraint firstAttribute="width" constant="150" id="cbe-Jt-dhu"/>
+                                                                <constraint firstAttribute="width" constant="240" id="cbe-Jt-dhu"/>
                                                             </constraints>
                                                         </imageView>
                                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXd-un-Phc">
-                                                            <rect key="frame" x="0.0" y="-1" width="150" height="12"/>
+                                                            <rect key="frame" x="0.0" y="-1" width="240" height="12"/>
                                                             <standardMapConfiguration key="preferredConfiguration"/>
                                                         </mapView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55w-Ai-MXe">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="10"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="10"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" image="Group 10610"/>
                                                         </button>
@@ -1301,7 +1303,7 @@ Erocitica medication time ?</string>
                                                 <constraint firstItem="cy7-EL-eUf" firstAttribute="centerY" secondItem="hjB-3D-HY2" secondAttribute="centerY" id="VTp-Yp-67r"/>
                                                 <constraint firstItem="OmC-x6-o5O" firstAttribute="top" secondItem="s5O-Jq-HFq" secondAttribute="top" constant="4" id="bhL-Eu-5ry"/>
                                                 <constraint firstItem="hjB-3D-HY2" firstAttribute="top" secondItem="OmC-x6-o5O" secondAttribute="bottom" id="gHy-Jl-UOf"/>
-                                                <constraint firstItem="cy7-EL-eUf" firstAttribute="leading" secondItem="s5O-Jq-HFq" secondAttribute="leading" constant="16" id="jAw-ce-gY3"/>
+                                                <constraint firstItem="cy7-EL-eUf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s5O-Jq-HFq" secondAttribute="leading" constant="16" id="jAw-ce-gY3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1905,10 +1907,10 @@ Erocitica medication time ?</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

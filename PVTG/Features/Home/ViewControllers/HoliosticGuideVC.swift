@@ -64,6 +64,9 @@ class HoliosticGuideVC: BaseViewController {
             vm.getAllCategoryApi(user_id: userid)
         }
     }
+    override func viewWillLayoutSubviews() {
+        self.colectionVwCategory.reloadData()
+    }
     
     func setShadowToView() {
         paddingTextfield(textfield: txfSearch)

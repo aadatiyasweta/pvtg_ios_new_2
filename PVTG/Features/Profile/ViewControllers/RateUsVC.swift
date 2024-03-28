@@ -20,16 +20,23 @@ class RateUsVC: BaseViewController {
     private var vm = RateViewModel()
     var sessionid = ""
     var bookingID = ""
-    
+    var placeholder = ""
    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
+        txtView.text = placeholder
+        txtView.textColor = .white
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         borderTheView()
+        if SaveToDefaults().getAppLang() ?? "en" == "en"{
+            self.placeholder  = "Write something..."
+        }else{
+            self.placeholder = "Escribe algo..."
+        }
     }
     
     //MARK: - BUTTON ACTION
@@ -56,5 +63,27 @@ extension RateUsVC: AfterSuccess {
     func reloadData() {
         self.navigationController?.popViewController(animated: true)
         debugPrint("After Success")
+    }
+}
+
+extension RateUsVC: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+    if textView.text == placeholder {
+    textView.text = ""
+    textView.textColor = .black
+    }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+    if textView.text.isEmpty {
+    textView.text = placeholder
+    textView.textColor = UIColor.white
+    } else {
+    placeholder = textView.text
+    }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+    placeholder = textView.text
     }
 }

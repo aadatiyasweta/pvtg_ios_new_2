@@ -1,0 +1,366 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "5Rp-6K-Jcz.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"QAR 240\"; ObjectID = \"5Rp-6K-Jcz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "QAR 240"
+          }
+        }
+      }
+    },
+    "5XQ-lK-PFe.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"10.30 AM\"; ObjectID = \"5XQ-lK-PFe\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10.30 AM"
+          }
+        }
+      }
+    },
+    "7k6-st-Xew.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"This user is not available to chat.\"; ObjectID = \"7k6-st-Xew\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This user is not available to chat."
+          }
+        }
+      }
+    },
+    "7wk-Yh-6bu.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Thu 20, 12:00 PM\"; ObjectID = \"7wk-Yh-6bu\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Thu 20, 12:00 PM"
+          }
+        }
+      }
+    },
+    "9al-fp-rUf.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Hey Eric !! have you checked the\\nErocitica medication time ?\"; ObjectID = \"9al-fp-rUf\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hey Eric !! have you checked the\nErocitica medication time ?"
+          }
+        }
+      }
+    },
+    "9QC-Ic-PF6.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Gallery\"; ObjectID = \"9QC-Ic-PF6\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Gallery"
+          }
+        }
+      }
+    },
+    "A6G-fF-NXH.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Hello John !!\"; ObjectID = \"A6G-fF-NXH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hello John !!"
+          }
+        }
+      }
+    },
+    "CNX-B8-MIu.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"00:00:00\"; ObjectID = \"CNX-B8-MIu\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:00:00"
+          }
+        }
+      }
+    },
+    "CTY-MW-SP3.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Online\"; ObjectID = \"CTY-MW-SP3\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Online"
+          }
+        }
+      }
+    },
+    "cy7-EL-eUf.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"10.30 AM\"; ObjectID = \"cy7-EL-eUf\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10.30 AM"
+          }
+        }
+      }
+    },
+    "dhB-Ba-9m9.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Air Conditioner Repair\"; ObjectID = \"dhB-Ba-9m9\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Air Conditioner Repair"
+          }
+        }
+      }
+    },
+    "EUr-MP-OBw.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"10.30 AM\"; ObjectID = \"EUr-MP-OBw\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10.30 AM"
+          }
+        }
+      }
+    },
+    "FLU-7v-zNP.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Partner Name\"; ObjectID = \"FLU-7v-zNP\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Partner Name"
+          }
+        }
+      }
+    },
+    "FNV-Rw-pxr.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"select Image\"; ObjectID = \"FNV-Rw-pxr\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "select Image"
+          }
+        }
+      }
+    },
+    "fxK-iO-Vzi.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Samantha\"; ObjectID = \"fxK-iO-Vzi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Samantha"
+          }
+        }
+      }
+    },
+    "JV1-Zr-wkb.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"11.05 PM\"; ObjectID = \"JV1-Zr-wkb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "11.05 PM"
+          }
+        }
+      }
+    },
+    "lAQ-ff-5nQ.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"10.30 AM\"; ObjectID = \"lAQ-ff-5nQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10.30 AM"
+          }
+        }
+      }
+    },
+    "lZr-Id-DDQ.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Send\"; ObjectID = \"lZr-Id-DDQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Send"
+          }
+        }
+      }
+    },
+    "NSd-BB-isp.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"11.05 PM\"; ObjectID = \"NSd-BB-isp\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "11.05 PM"
+          }
+        }
+      }
+    },
+    "pG8-4p-IPx.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"+0\"; ObjectID = \"pG8-4p-IPx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+0"
+          }
+        }
+      }
+    },
+    "PKZ-bV-ojp.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"11.05 PM\"; ObjectID = \"PKZ-bV-ojp\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "11.05 PM"
+          }
+        }
+      }
+    },
+    "Pva-05-w3g.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"10.30 AM\"; ObjectID = \"Pva-05-w3g\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10.30 AM"
+          }
+        }
+      }
+    },
+    "Q9f-8W-PB1.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Camera\"; ObjectID = \"Q9f-8W-PB1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Camera"
+          }
+        }
+      }
+    },
+    "Qgt-3f-lri.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"10.30 AM\"; ObjectID = \"Qgt-3f-lri\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10.30 AM"
+          }
+        }
+      }
+    },
+    "Rzf-pR-a7C.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"10.30 AM\"; ObjectID = \"Rzf-pR-a7C\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10.30 AM"
+          }
+        }
+      }
+    },
+    "sUI-3m-WGK.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"This query is resolved.\"; ObjectID = \"sUI-3m-WGK\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This query is resolved."
+          }
+        }
+      }
+    },
+    "Tqb-Z8-cAH.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"10.30 AM\"; ObjectID = \"Tqb-Z8-cAH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10.30 AM"
+          }
+        }
+      }
+    },
+    "uhc-2z-tev.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Contact ID: 153846\"; ObjectID = \"uhc-2z-tev\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Contact ID: 153846"
+          }
+        }
+      }
+    },
+    "XyX-Vb-yVy.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"+0\"; ObjectID = \"XyX-Vb-yVy\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+0"
+          }
+        }
+      }
+    },
+    "zbF-cz-ubQ.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"11.05 PM\"; ObjectID = \"zbF-cz-ubQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "11.05 PM"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

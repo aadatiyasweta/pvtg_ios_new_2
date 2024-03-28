@@ -1090,7 +1090,7 @@
                                 <rect key="frame" x="8" y="1425" width="304" height="20"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6d-sF-7rb">
-                                        <rect key="frame" x="4" y="0.0" width="296" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="20"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal">
@@ -1104,9 +1104,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="x6d-sF-7rb" firstAttribute="top" secondItem="ZfU-MW-hEz" secondAttribute="top" id="CIR-v4-taq"/>
-                                    <constraint firstItem="x6d-sF-7rb" firstAttribute="leading" secondItem="ZfU-MW-hEz" secondAttribute="leading" constant="4" id="L3T-7N-aKV"/>
+                                    <constraint firstItem="x6d-sF-7rb" firstAttribute="leading" secondItem="ZfU-MW-hEz" secondAttribute="leading" id="L3T-7N-aKV"/>
                                     <constraint firstAttribute="height" constant="20" id="b3F-6M-DTr"/>
-                                    <constraint firstAttribute="trailing" secondItem="x6d-sF-7rb" secondAttribute="trailing" constant="4" id="hYp-iF-yz7"/>
+                                    <constraint firstAttribute="trailing" secondItem="x6d-sF-7rb" secondAttribute="trailing" id="hYp-iF-yz7"/>
                                     <constraint firstAttribute="bottom" secondItem="x6d-sF-7rb" secondAttribute="bottom" id="kZV-J5-Gn9"/>
                                 </constraints>
                             </view>

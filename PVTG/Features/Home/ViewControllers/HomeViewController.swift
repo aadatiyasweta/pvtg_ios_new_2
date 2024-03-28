@@ -255,7 +255,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             if(self.selectedCurrency == "USD"){
                 priceView?.seekView.maxValue = CGFloat(300)
             }else {
-                priceView?.seekView.maxValue = CGFloat(600000)
+                priceView?.seekView.maxValue = CGFloat(100000)
             }
             priceView?.selectCurrencyFiled.text = self.selectedCurrency
             priceView?.seekView.selectedMaxValue = CGFloat(self.maximimPrice)
@@ -426,7 +426,7 @@ extension HomeViewController : getPriceSliderValues{
     
     func resetFilter() {
         self.isSelectedFromFilter = false
-        self.maximimPrice = 600000
+        self.maximimPrice = 100000
         self.minimUmPrice = 0
         loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
     }

@@ -12,7 +12,7 @@ import Network
 enum SocketEvent: String {
     case addUser
     case getChatMessages
-    case sendMessage
+    case sendUserMessage
     case receiveMessage
     case disconnectChat
     case getChatHistory
@@ -47,7 +47,7 @@ class SocketHelper: NSObject {
 //            chaturl = "\(scheme)://\(baseUrl)"
 //        }
         
-        self.manager = SocketManager(socketURL: URL(string: Config.shared.socketUrl()) ?? .ServerSocketHost, config: [.log(true),.version(.two)])
+        self.manager = SocketManager(socketURL: URL(string: Config.shared.socketUrl()) ?? .ServerSocketHost, config: [.log(true)])
         guard let manager = self.manager else {return}
         self.socket = SocketIOClient(manager: manager, nsp: "audio_chat")
         socket = manager.defaultSocket
@@ -75,12 +75,12 @@ class SocketHelper: NSObject {
             self.isConnected = false
             self.callBackDisConnected?()
         })
-        socket!.on(SocketEvent.sendMessage.rawValue) { [weak self] results, _ in
+        socket!.on(SocketEvent.sendUserMessage.rawValue) { [weak self] results, _ in
            
             guard results.count > 0,
                   let dict = results[0] as? [String: Any],
-                  let result = dict["result"] as? [String: Any],
-                  let final = self?.jsonData(from: result)
+               //   let result = dict["result"] as? [String: Any],
+                  let final = self?.jsonData(from: dict)
             else {return}
             do {
                 let messages = try JSONDecoder().decode(MessageModel.self, from: final)
@@ -94,8 +94,8 @@ class SocketHelper: NSObject {
         //    AppObject.stopLoader()
             guard results.count > 0,
                   let dict = results.first as? [String: Any],
-                  let result = dict["result"] as? [String: Any],
-                  let datas = result["rows"] as? [Any],
+                //  let result = dict["result"] as? [String: Any],
+                  let datas = dict["chat"] as? [Any],
                   let final = self?.jsonData(from: datas)
             else {return}
             do {
@@ -173,12 +173,13 @@ class SocketHelper: NSObject {
       
         socket.emit(SocketEvent.getChatMessages.rawValue, [
             "user_id": "\(s_id)",
-            "other_user_id": "\(r_id)",
-            "ticketNo": ticketNo,
-            "page" : offset,
-            "limit" : 10
+            "other_user_id": "\(r_id)"
+//            "ticketNo": ticketNo,
+//            "page" : offset,
+//            "limit" : 10
         ] as [String : Any])
     }
+    
     func getChatHistoryList(s_id: String,offset : Int) {
         guard let socket = manager?.defaultSocket else {return}
       
@@ -191,12 +192,12 @@ class SocketHelper: NSObject {
     
     func sendMessage(data: [String: Any]) {
         guard let socket = manager?.defaultSocket else {return}
-        socket.emit(SocketEvent.sendMessage.rawValue, data)
+        socket.emit(SocketEvent.sendUserMessage.rawValue, data)
     }
     
     func receiveMessage() {
         guard let socket = manager?.defaultSocket else {return}
-        let uuid = socket.on(SocketEvent.sendMessage.rawValue) { [weak self] results, _ in
+        let uuid = socket.on(SocketEvent.sendUserMessage.rawValue) { [weak self] results, _ in
           
             guard results.count > 0,
                   let dict = results[0] as? [String: Any],

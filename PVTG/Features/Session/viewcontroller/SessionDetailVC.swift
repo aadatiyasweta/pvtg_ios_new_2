@@ -304,6 +304,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         let vc = ChatBoxView.instance()
         vc.otherUser = (self.vm.model?.created_by ?? "").lowercased()
         vc.reciverId = self.vm.model?.created_id ?? ""
+        vc.image = self.vm.model?.chat_user_image ?? ""
+        vc.name = self.vm.model?.vendorName ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

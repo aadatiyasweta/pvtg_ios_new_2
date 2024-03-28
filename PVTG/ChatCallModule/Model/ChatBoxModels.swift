@@ -56,25 +56,25 @@ struct GetChatHistory : Codable{
 
 struct MessageModel: Codable {
     let id : Int?
-    let sID, rID: String
+    let sID, rID: Int
     let msg: String
     let url: String
     let msgType: MessageType
     let addedOn: String
     let read_status : String
     let videoThumbnail : String?
-    let lat, long : String?
+    let lat, long : Double?
     
     enum CodingKeys: String, CodingKey {
         case id = "chat_id"
-        case sID = "sender_id"
-        case rID = "receiver_id"
-        case msg = "message"
-        case url = "media"
-        case msgType = "message_type"
-        case addedOn = "created_at"
+        case sID = "s_id"
+        case rID = "r_id"
+        case msg = "msg"
+        case url = "url"
+        case msgType = "msg_type"
+        case addedOn = "date_added"
         case read_status = "read_status"
-        case videoThumbnail = "thumbnail"
+        case videoThumbnail = "thumb_url"
         case lat = "lat"
         case long = "long"
     }
