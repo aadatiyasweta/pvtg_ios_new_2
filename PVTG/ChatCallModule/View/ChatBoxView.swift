@@ -12,6 +12,7 @@ import PhotosUI
 import AVKit
 import MobileCoreServices
 import IQKeyboardManager
+import SVProgressHUD
 //import SVProgressHUD
 class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     
@@ -166,6 +167,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
 //        else{
         SocketHelper.shared.establishConnection(type: "connect")
      //   AppObject.startLoader(viewName: self.view)
+        self.show()
         SocketHelper.shared.callBackConnect = { [weak self] in
             SocketHelper.shared.initChat(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self?.reciverId ?? "", user: self?.user ?? "", otherUser: self?.otherUser ?? "")
             SocketHelper.shared.getChatList(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self?.reciverId ?? "", ticketNo: self?.ticketNo ?? "",offset: self?.offset ?? 1)
@@ -192,7 +194,16 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         self.viewModel.viewWillDisappear()
     }
     
-    
+    func show(){
+        if isConnection(){
+            SVProgressHUD.show()
+            SVProgressHUD.setDefaultMaskType(.clear)
+        }
+    }
+    func dismiss(){
+        SVProgressHUD.dismiss()
+    }
+   
     //MARK: - Functions Play Video
     func PlayVideoURL(url: String) {
         var videoURL = URL(string: url)
@@ -588,19 +599,19 @@ extension ChatBoxView : UITableViewDelegate,UITableViewDataSource{
                 if visibleRows.count > 0{
                     if visibleRows[0].row == 0 {
                         scrollTbl = false
-                        if !apiHit {
-                            self.apiHit = true
-                            if SocketHelper.shared.isConnected {
-                                SocketHelper.shared.getChatList(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self.reciverId, ticketNo: self.ticketNo,offset: self.offset)
-                            }
-                            else {
-                                SocketHelper.shared.establishConnection(type: "list")
-                                SocketHelper.shared.callBackConnectList = { [weak self] in
-                                    SocketHelper.shared.getChatList(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self?.reciverId ?? "", ticketNo: self?.ticketNo ?? "",offset: self?.offset ?? 0)
-                                }
-                            }
-                                                  
-                        }
+//                        if !apiHit {
+//                            self.apiHit = true
+//                            if SocketHelper.shared.isConnected {
+//                                SocketHelper.shared.getChatList(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self.reciverId, ticketNo: self.ticketNo,offset: self.offset)
+//                            }
+//                            else {
+//                                SocketHelper.shared.establishConnection(type: "list")
+//                                SocketHelper.shared.callBackConnectList = { [weak self] in
+//                                    SocketHelper.shared.getChatList(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self?.reciverId ?? "", ticketNo: self?.ticketNo ?? "",offset: self?.offset ?? 0)
+//                                }
+//                            }
+//                                                  
+//                        }
                     }
                 }
             }
@@ -620,6 +631,7 @@ extension ChatBoxView : UITableViewDelegate,UITableViewDataSource{
             self?.apiHit = true
             self?.hideView.isHidden = true
            // AppObject.stopLoader()
+            self?.dismiss()
             if let chatData  = chatData {
                 
                 if chatData.isEmpty {

@@ -61,13 +61,15 @@ struct _R {
     let developmentRegion = "en"
   }
 
-  /// This `_R.string` struct is generated, and contains static references to 15 localization tables.
+  /// This `_R.string` struct is generated, and contains static references to 17 localization tables.
   struct string {
     let bundle: Foundation.Bundle
     let preferredLanguages: [String]?
     let locale: Locale?
     var activeEventCell: activeEventCell { .init(source: .init(bundle: bundle, tableName: "ActiveEventCell", preferredLanguages: preferredLanguages, locale: locale)) }
     var chat: chat { .init(source: .init(bundle: bundle, tableName: "Chat", preferredLanguages: preferredLanguages, locale: locale)) }
+    var chatCall: chatCall { .init(source: .init(bundle: bundle, tableName: "ChatCall", preferredLanguages: preferredLanguages, locale: locale)) }
+    var contactUsView: contactUsView { .init(source: .init(bundle: bundle, tableName: "ContactUsView", preferredLanguages: preferredLanguages, locale: locale)) }
     var historyCell: historyCell { .init(source: .init(bundle: bundle, tableName: "HistoryCell", preferredLanguages: preferredLanguages, locale: locale)) }
     var home: home { .init(source: .init(bundle: bundle, tableName: "Home", preferredLanguages: preferredLanguages, locale: locale)) }
     var localizable: localizable { .init(source: .init(bundle: bundle, tableName: "Localizable", preferredLanguages: preferredLanguages, locale: locale)) }
@@ -87,6 +89,12 @@ struct _R {
     }
     func chat(preferredLanguages: [String]) -> chat {
       .init(source: .init(bundle: bundle, tableName: "Chat", preferredLanguages: preferredLanguages, locale: locale))
+    }
+    func chatCall(preferredLanguages: [String]) -> chatCall {
+      .init(source: .init(bundle: bundle, tableName: "ChatCall", preferredLanguages: preferredLanguages, locale: locale))
+    }
+    func contactUsView(preferredLanguages: [String]) -> contactUsView {
+      .init(source: .init(bundle: bundle, tableName: "ContactUsView", preferredLanguages: preferredLanguages, locale: locale))
     }
     func historyCell(preferredLanguages: [String]) -> historyCell {
       .init(source: .init(bundle: bundle, tableName: "HistoryCell", preferredLanguages: preferredLanguages, locale: locale))
@@ -186,6 +194,254 @@ struct _R {
     /// This `_R.string.chat` struct is generated, and contains static references to 0 localization keys.
     struct chat {
       let source: RswiftResources.StringResource.Source
+    }
+
+    /// This `_R.string.chatCall` struct is generated, and contains static references to 30 localization keys.
+    struct chatCall {
+      let source: RswiftResources.StringResource.Source
+
+      /// en translation: QAR 240
+      ///
+      /// Key: 5Rp-6K-Jcz.text
+      ///
+      /// Locales: en, es
+      var rp6KJczText: RswiftResources.StringResource { .init(key: "5Rp-6K-Jcz.text", tableName: "ChatCall", source: source, developmentValue: "QAR 240", comment: nil) }
+
+      /// en translation: 10.30 AM
+      ///
+      /// Key: 5XQ-lK-PFe.text
+      ///
+      /// Locales: en, es
+      var xqlkpFeText: RswiftResources.StringResource { .init(key: "5XQ-lK-PFe.text", tableName: "ChatCall", source: source, developmentValue: "10.30 AM", comment: nil) }
+
+      /// en translation: This user is not available to chat.
+      ///
+      /// Key: 7k6-st-Xew.text
+      ///
+      /// Locales: en, es
+      var k6StXewText: RswiftResources.StringResource { .init(key: "7k6-st-Xew.text", tableName: "ChatCall", source: source, developmentValue: "This user is not available to chat.", comment: nil) }
+
+      /// en translation: Thu 20, 12:00 PM
+      ///
+      /// Key: 7wk-Yh-6bu.text
+      ///
+      /// Locales: en, es
+      var wkYh6buText: RswiftResources.StringResource { .init(key: "7wk-Yh-6bu.text", tableName: "ChatCall", source: source, developmentValue: "Thu 20, 12:00 PM", comment: nil) }
+
+      /// en translation: Gallery
+      ///
+      /// Key: 9QC-Ic-PF6.normalTitle
+      ///
+      /// Locales: en, es
+      var qcIcPF6NormalTitle: RswiftResources.StringResource { .init(key: "9QC-Ic-PF6.normalTitle", tableName: "ChatCall", source: source, developmentValue: "Gallery", comment: nil) }
+
+      /// en translation: Hey Eric !! have you checked the Erocitica medication time ?
+      ///
+      /// Key: 9al-fp-rUf.text
+      ///
+      /// Locales: en, es
+      var alFpRUfText: RswiftResources.StringResource { .init(key: "9al-fp-rUf.text", tableName: "ChatCall", source: source, developmentValue: "Hey Eric !! have you checked the\nErocitica medication time ?", comment: nil) }
+
+      /// en translation: Hello John !!
+      ///
+      /// Key: A6G-fF-NXH.text
+      ///
+      /// Locales: en, es
+      var a6GFFNXHText: RswiftResources.StringResource { .init(key: "A6G-fF-NXH.text", tableName: "ChatCall", source: source, developmentValue: "Hello John !!", comment: nil) }
+
+      /// en translation: 00:00:00
+      ///
+      /// Key: CNX-B8-MIu.text
+      ///
+      /// Locales: en, es
+      var cnxb8MIuText: RswiftResources.StringResource { .init(key: "CNX-B8-MIu.text", tableName: "ChatCall", source: source, developmentValue: "00:00:00", comment: nil) }
+
+      /// en translation: Online
+      ///
+      /// Key: CTY-MW-SP3.text
+      ///
+      /// Locales: en, es
+      var ctymwsp3Text: RswiftResources.StringResource { .init(key: "CTY-MW-SP3.text", tableName: "ChatCall", source: source, developmentValue: "Online", comment: nil) }
+
+      /// en translation: 10.30 AM
+      ///
+      /// Key: EUr-MP-OBw.text
+      ///
+      /// Locales: en, es
+      var eUrMPOBwText: RswiftResources.StringResource { .init(key: "EUr-MP-OBw.text", tableName: "ChatCall", source: source, developmentValue: "10.30 AM", comment: nil) }
+
+      /// en translation: Partner Name
+      ///
+      /// Key: FLU-7v-zNP.text
+      ///
+      /// Locales: en, es
+      var flu7vZNPText: RswiftResources.StringResource { .init(key: "FLU-7v-zNP.text", tableName: "ChatCall", source: source, developmentValue: "Partner Name", comment: nil) }
+
+      /// en translation: select Image
+      ///
+      /// Key: FNV-Rw-pxr.text
+      ///
+      /// Locales: en, es
+      var fnvRwPxrText: RswiftResources.StringResource { .init(key: "FNV-Rw-pxr.text", tableName: "ChatCall", source: source, developmentValue: "select Image", comment: nil) }
+
+      /// en translation: 11.05 PM
+      ///
+      /// Key: JV1-Zr-wkb.text
+      ///
+      /// Locales: en, es
+      var jv1ZrWkbText: RswiftResources.StringResource { .init(key: "JV1-Zr-wkb.text", tableName: "ChatCall", source: source, developmentValue: "11.05 PM", comment: nil) }
+
+      /// en translation: 11.05 PM
+      ///
+      /// Key: NSd-BB-isp.text
+      ///
+      /// Locales: en, es
+      var nSdBBIspText: RswiftResources.StringResource { .init(key: "NSd-BB-isp.text", tableName: "ChatCall", source: source, developmentValue: "11.05 PM", comment: nil) }
+
+      /// en translation: 11.05 PM
+      ///
+      /// Key: PKZ-bV-ojp.text
+      ///
+      /// Locales: en, es
+      var pkzbvOjpText: RswiftResources.StringResource { .init(key: "PKZ-bV-ojp.text", tableName: "ChatCall", source: source, developmentValue: "11.05 PM", comment: nil) }
+
+      /// en translation: 10.30 AM
+      ///
+      /// Key: Pva-05-w3g.text
+      ///
+      /// Locales: en, es
+      var pva05W3gText: RswiftResources.StringResource { .init(key: "Pva-05-w3g.text", tableName: "ChatCall", source: source, developmentValue: "10.30 AM", comment: nil) }
+
+      /// en translation: Camera
+      ///
+      /// Key: Q9f-8W-PB1.normalTitle
+      ///
+      /// Locales: en, es
+      var q9f8WPB1NormalTitle: RswiftResources.StringResource { .init(key: "Q9f-8W-PB1.normalTitle", tableName: "ChatCall", source: source, developmentValue: "Camera", comment: nil) }
+
+      /// en translation: 10.30 AM
+      ///
+      /// Key: Qgt-3f-lri.text
+      ///
+      /// Locales: en, es
+      var qgt3fLriText: RswiftResources.StringResource { .init(key: "Qgt-3f-lri.text", tableName: "ChatCall", source: source, developmentValue: "10.30 AM", comment: nil) }
+
+      /// en translation: 10.30 AM
+      ///
+      /// Key: Rzf-pR-a7C.text
+      ///
+      /// Locales: en, es
+      var rzfPRA7CText: RswiftResources.StringResource { .init(key: "Rzf-pR-a7C.text", tableName: "ChatCall", source: source, developmentValue: "10.30 AM", comment: nil) }
+
+      /// en translation: 10.30 AM
+      ///
+      /// Key: Tqb-Z8-cAH.text
+      ///
+      /// Locales: en, es
+      var tqbZ8CAHText: RswiftResources.StringResource { .init(key: "Tqb-Z8-cAH.text", tableName: "ChatCall", source: source, developmentValue: "10.30 AM", comment: nil) }
+
+      /// en translation: +0
+      ///
+      /// Key: XyX-Vb-yVy.text
+      ///
+      /// Locales: en, es
+      var xyXVbYVyText: RswiftResources.StringResource { .init(key: "XyX-Vb-yVy.text", tableName: "ChatCall", source: source, developmentValue: "+0", comment: nil) }
+
+      /// en translation: 10.30 AM
+      ///
+      /// Key: cy7-EL-eUf.text
+      ///
+      /// Locales: en, es
+      var cy7ELEUfText: RswiftResources.StringResource { .init(key: "cy7-EL-eUf.text", tableName: "ChatCall", source: source, developmentValue: "10.30 AM", comment: nil) }
+
+      /// en translation: Air Conditioner Repair
+      ///
+      /// Key: dhB-Ba-9m9.text
+      ///
+      /// Locales: en, es
+      var dhBBa9m9Text: RswiftResources.StringResource { .init(key: "dhB-Ba-9m9.text", tableName: "ChatCall", source: source, developmentValue: "Air Conditioner Repair", comment: nil) }
+
+      /// en translation: Samantha
+      ///
+      /// Key: fxK-iO-Vzi.text
+      ///
+      /// Locales: en, es
+      var fxKIOVziText: RswiftResources.StringResource { .init(key: "fxK-iO-Vzi.text", tableName: "ChatCall", source: source, developmentValue: "Samantha", comment: nil) }
+
+      /// en translation: 10.30 AM
+      ///
+      /// Key: lAQ-ff-5nQ.text
+      ///
+      /// Locales: en, es
+      var lAQFf5nQText: RswiftResources.StringResource { .init(key: "lAQ-ff-5nQ.text", tableName: "ChatCall", source: source, developmentValue: "10.30 AM", comment: nil) }
+
+      /// en translation: Send
+      ///
+      /// Key: lZr-Id-DDQ.normalTitle
+      ///
+      /// Locales: en, es
+      var lZrIdDDQNormalTitle: RswiftResources.StringResource { .init(key: "lZr-Id-DDQ.normalTitle", tableName: "ChatCall", source: source, developmentValue: "Send", comment: nil) }
+
+      /// en translation: +0
+      ///
+      /// Key: pG8-4p-IPx.text
+      ///
+      /// Locales: en, es
+      var pG84pIPxText: RswiftResources.StringResource { .init(key: "pG8-4p-IPx.text", tableName: "ChatCall", source: source, developmentValue: "+0", comment: nil) }
+
+      /// en translation: This query is resolved.
+      ///
+      /// Key: sUI-3m-WGK.text
+      ///
+      /// Locales: en, es
+      var sUI3mWGKText: RswiftResources.StringResource { .init(key: "sUI-3m-WGK.text", tableName: "ChatCall", source: source, developmentValue: "This query is resolved.", comment: nil) }
+
+      /// en translation: Contact ID: 153846
+      ///
+      /// Key: uhc-2z-tev.text
+      ///
+      /// Locales: en, es
+      var uhc2zTevText: RswiftResources.StringResource { .init(key: "uhc-2z-tev.text", tableName: "ChatCall", source: source, developmentValue: "Contact ID: 153846", comment: nil) }
+
+      /// en translation: 11.05 PM
+      ///
+      /// Key: zbF-cz-ubQ.text
+      ///
+      /// Locales: en, es
+      var zbFCzUbQText: RswiftResources.StringResource { .init(key: "zbF-cz-ubQ.text", tableName: "ChatCall", source: source, developmentValue: "11.05 PM", comment: nil) }
+    }
+
+    /// This `_R.string.contactUsView` struct is generated, and contains static references to 4 localization keys.
+    struct contactUsView {
+      let source: RswiftResources.StringResource.Source
+
+      /// en translation: Email
+      ///
+      /// Key: 6ZU-rt-gdj.placeholder
+      ///
+      /// Locales: en, es
+      var zuRtGdjPlaceholder: RswiftResources.StringResource { .init(key: "6ZU-rt-gdj.placeholder", tableName: "ContactUsView", source: source, developmentValue: "Email", comment: nil) }
+
+      /// en translation: Contact Us
+      ///
+      /// Key: 7QD-5y-UtQ.text
+      ///
+      /// Locales: en, es
+      var qd5yUtQText: RswiftResources.StringResource { .init(key: "7QD-5y-UtQ.text", tableName: "ContactUsView", source: source, developmentValue: "Contact Us", comment: nil) }
+
+      /// en translation: SEND
+      ///
+      /// Key: QPQ-Og-Azz.normalTitle
+      ///
+      /// Locales: en, es
+      var qpqOgAzzNormalTitle: RswiftResources.StringResource { .init(key: "QPQ-Og-Azz.normalTitle", tableName: "ContactUsView", source: source, developmentValue: "SEND", comment: nil) }
+
+      /// en translation: Name
+      ///
+      /// Key: pFQ-cU-i9k.placeholder
+      ///
+      /// Locales: en, es
+      var pFQCUI9kPlaceholder: RswiftResources.StringResource { .init(key: "pFQ-cU-i9k.placeholder", tableName: "ContactUsView", source: source, developmentValue: "Name", comment: nil) }
     }
 
     /// This `_R.string.historyCell` struct is generated, and contains static references to 9 localization keys.
@@ -457,7 +713,7 @@ struct _R {
       var zXJ65ISKNormalTitle: RswiftResources.StringResource { .init(key: "zXJ-65-iSK.normalTitle", tableName: "Home", source: source, developmentValue: "Done", comment: nil) }
     }
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 93 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 102 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -531,6 +787,13 @@ struct _R {
       /// Locales: en, es
       var changePassword: RswiftResources.StringResource { .init(key: "ChangePassword", tableName: "Localizable", source: source, developmentValue: "Change Password", comment: nil) }
 
+      /// en translation: Question about your custom session?
+      ///
+      /// Key: CustomQuestion
+      ///
+      /// Locales: en, es
+      var customQuestion: RswiftResources.StringResource { .init(key: "CustomQuestion", tableName: "Localizable", source: source, developmentValue: "Question about your custom session?", comment: nil) }
+
       /// en translation: Discount
       ///
       /// Key: Discount
@@ -587,6 +850,13 @@ struct _R {
       /// Locales: en, es
       var firstLogin: RswiftResources.StringResource { .init(key: "FirstLogin", tableName: "Localizable", source: source, developmentValue: "First Login:", comment: nil) }
 
+      /// en translation: Follow Up Session!
+      ///
+      /// Key: Followupsession
+      ///
+      /// Locales: en, es
+      var followupsession: RswiftResources.StringResource { .init(key: "Followupsession", tableName: "Localizable", source: source, developmentValue: "Follow Up Session!", comment: nil) }
+
       /// en translation: Free Service
       ///
       /// Key: FreeService
@@ -614,6 +884,20 @@ struct _R {
       ///
       /// Locales: en, es
       var ifVendorCancelBookingPoints: RswiftResources.StringResource { .init(key: "IfVendorCancelBooking points", tableName: "Localizable", source: source, developmentValue: "If Vendor Cancels: Booking points +5:", comment: nil) }
+
+      /// en translation: Late fee Policy
+      ///
+      /// Key: LatePolicy
+      ///
+      /// Locales: en, es
+      var latePolicy: RswiftResources.StringResource { .init(key: "LatePolicy", tableName: "Localizable", source: source, developmentValue: "Late fee Policy", comment: nil) }
+
+      /// en translation: Later
+      ///
+      /// Key: Later
+      ///
+      /// Locales: en, es
+      var later: RswiftResources.StringResource { .init(key: "Later", tableName: "Localizable", source: source, developmentValue: "Later", comment: nil) }
 
       /// en translation: No available time for date.
       ///
@@ -713,6 +997,20 @@ struct _R {
       /// Locales: en, es
       var rateUs: RswiftResources.StringResource { .init(key: "RateUs", tableName: "Localizable", source: source, developmentValue: "Rate Us", comment: nil) }
 
+      /// en translation: Reschedule
+      ///
+      /// Key: Reschedule
+      ///
+      /// Locales: en, es
+      var reschedule: RswiftResources.StringResource { .init(key: "Reschedule", tableName: "Localizable", source: source, developmentValue: "Reschedule", comment: nil) }
+
+      /// en translation: Let's reschedule your session.
+      ///
+      /// Key: RescheduleSession
+      ///
+      /// Locales: en, es
+      var rescheduleSession: RswiftResources.StringResource { .init(key: "RescheduleSession", tableName: "Localizable", source: source, developmentValue: "Let's reschedule your session.", comment: nil) }
+
       /// en translation: Reviews/Rate:
       ///
       /// Key: ReviewsRate
@@ -783,12 +1081,33 @@ struct _R {
       /// Locales: en, es
       var topSearch: RswiftResources.StringResource { .init(key: "TopSearch", tableName: "Localizable", source: source, developmentValue: "Top Search", comment: nil) }
 
+      /// en translation: View
+      ///
+      /// Key: View
+      ///
+      /// Locales: en, es
+      var view: RswiftResources.StringResource { .init(key: "View", tableName: "Localizable", source: source, developmentValue: "View", comment: nil) }
+
+      /// en translation: Please view late fee policy
+      ///
+      /// Key: ViewLatePolicy
+      ///
+      /// Locales: en, es
+      var viewLatePolicy: RswiftResources.StringResource { .init(key: "ViewLatePolicy", tableName: "Localizable", source: source, developmentValue: "Please view late fee policy", comment: nil) }
+
       /// en translation: View Token Notification:
       ///
       /// Key: ViewTokenNotification
       ///
       /// Locales: en, es
       var viewTokenNotification: RswiftResources.StringResource { .init(key: "ViewTokenNotification", tableName: "Localizable", source: source, developmentValue: "View Token Notification:", comment: nil) }
+
+      /// en translation: View policy
+      ///
+      /// Key: Viewpolicy
+      ///
+      /// Locales: en, es
+      var viewpolicy: RswiftResources.StringResource { .init(key: "Viewpolicy", tableName: "Localizable", source: source, developmentValue: "View policy", comment: nil) }
 
       /// en translation: Add Interests for more recommendations
       ///
@@ -2557,6 +2876,7 @@ struct _R {
         if UIKit.UIImage(named: "Icon awesome-microphone", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Icon awesome-microphone' is used in storyboard 'ChatCall', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Icon material-send", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Icon material-send' is used in storyboard 'ChatCall', but couldn't be loaded.") }
         if UIKit.UIImage(named: "arrow_black", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'arrow_black' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "doubletick", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'doubletick' is used in storyboard 'ChatCall', but couldn't be loaded.") }
         if UIKit.UIImage(named: "location", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'location' is used in storyboard 'ChatCall', but couldn't be loaded.") }
         if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "pause.rectangle.fill") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'pause.rectangle.fill' is used in storyboard 'ChatCall', but couldn't be loaded.") } }
         if UIKit.UIImage(named: "person", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'person' is used in storyboard 'ChatCall', but couldn't be loaded.") }
@@ -2572,6 +2892,7 @@ struct _R {
         if UIKit.UIColor(named: "GreyActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'GreyActionBtn' is used in storyboard 'ChatCall', but couldn't be loaded.") }
         if UIKit.UIColor(named: "PRIMARY_BLUE", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PRIMARY_BLUE' is used in storyboard 'ChatCall', but couldn't be loaded.") }
         if UIKit.UIColor(named: "PRIMARY_PINK", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PRIMARY_PINK' is used in storyboard 'ChatCall', but couldn't be loaded.") }
+        if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in storyboard 'ChatCall', but couldn't be loaded.") }
         if UIKit.UIColor(named: "TEXT1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'TEXT1' is used in storyboard 'ChatCall', but couldn't be loaded.") }
         if chatBoxView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'chatBoxView' could not be loaded from storyboard 'ChatCall' as 'ChatBoxView'.") }
         if imagePreviewView() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'imagePreviewView' could not be loaded from storyboard 'ChatCall' as 'ImagePreviewView'.") }

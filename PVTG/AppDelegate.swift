@@ -262,20 +262,20 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     func performAttendingAlert(name : String, id : String, message:String, bookingId: String){
 //        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
 //        viewObj?.id = id
-//        viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
+//       viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
 //        viewObj?.delegate = self
 //        window?.addSubview(viewObj!)
-        Helper.shared.showAlertWithCallback(buttonText: "Yes", buttonText2: "No", title: "Reminder", message: message, controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
+        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: message, controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
             guard let self else{return}
             if result{
                 self.hitApi(id: "\(id)")
-                    Helper.shared.showAlertWithCallback(buttonText: "View", buttonText2: "Later", title: "View policy", message: "Please view late fee policy", controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
+                    Helper.shared.showAlertWithCallback(buttonText:  R.string.localizable.view(), buttonText2: R.string.localizable.later() , title: R.string.localizable.viewpolicy(), message: R.string.localizable.viewLatePolicy(), controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
                         guard let self else{return}
                         if result{
                             print("Yes Clicked")
                             let vc = PrivacyPolicyVC.instance()
-                           // vc.type = R.string.localizable.cancelPolicy()
-                            vc.type = "Late fee Policy"
+                            vc.type = R.string.localizable.latePolicy()
+                           // vc.type = "Late fee Policy"
                             vc.isFromReschedule = true
                             vc.url = cancelPolicy
                             self.navigation.pushViewController(vc, animated: true)
@@ -285,7 +285,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                         }
                     }
             else {
-                        Helper.shared.showAlertWithCallback(buttonText: "Reschedule", buttonText2: "No", title: "Reminder", message: "Let's reschedule your session.", controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
+                        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.reschedule(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: R.string.localizable.rescheduleSession(), controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
                             guard let self else{return}
                             if result{
                                 print("Yes Clicked")
@@ -305,7 +305,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     }
     
     func performSessionFollowupAlert(name : String, id : String, message:String){
-        Helper.shared.showAlertWithCallback(buttonText: "View", buttonText2: "Later", title: "Follow Up Session!", message: message, controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
+        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.view(), buttonText2: R.string.localizable.later() , title:  R.string.localizable.followupsession(), message: message, controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
             guard let self else{return}
             if result{
                 let vc = SessionDetailVC.instance()

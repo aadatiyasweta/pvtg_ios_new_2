@@ -172,8 +172,8 @@
 		D69176782705ADF10005C572 /* ReminderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D691767A2705ADF10005C572 /* ReminderView.xib */; };
 		D699B82A2BB5A76F00B46F64 /* ChatCall.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D699B82C2BB5A76F00B46F64 /* ChatCall.storyboard */; };
 		D6A257422747D36B0031B75D /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8DA126F3707A009E61EC /* PriceView.xib */; };
+		D6A30F8E2BB9B9BC008E4DCF /* ContactUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A30F902BB9B9BC008E4DCF /* ContactUsView.xib */; };
 		D6B6D9642BA42A44000D1C0C /* ContactUsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B6D9632BA42A44000D1C0C /* ContactUsViewViewModel.swift */; };
-		D6B6D9672BA44A4D000D1C0C /* ContactUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B6D9662BA44A4D000D1C0C /* ContactUsView.xib */; };
 		D6B6D9692BA44B00000D1C0C /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B6D9682BA44B00000D1C0C /* ContactUsView.swift */; };
 		D6B852B02B9F2D21007173B2 /* ReceiverTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B852AE2B9F2D21007173B2 /* ReceiverTVCell.swift */; };
 		D6B852B12B9F2D21007173B2 /* ReceiverTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B852AF2B9F2D21007173B2 /* ReceiverTVCell.xib */; };
@@ -424,8 +424,10 @@
 		D699B8312BB5A91900B46F64 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ChatCall.strings; sourceTree = "<group>"; };
 		D6A2573F2747C41D0031B75D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PriceView.strings; sourceTree = "<group>"; };
 		D6A257412747C4220031B75D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PriceView.strings; sourceTree = "<group>"; };
+		D6A30F8F2BB9B9BC008E4DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ContactUsView.xib; sourceTree = "<group>"; };
+		D6A30F932BB9B9D4008E4DCF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ContactUsView.strings; sourceTree = "<group>"; };
+		D6A30F952BB9B9D6008E4DCF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ContactUsView.strings; sourceTree = "<group>"; };
 		D6B6D9632BA42A44000D1C0C /* ContactUsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewViewModel.swift; sourceTree = "<group>"; };
-		D6B6D9662BA44A4D000D1C0C /* ContactUsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsView.xib; sourceTree = "<group>"; };
 		D6B6D9682BA44B00000D1C0C /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
 		D6B852AE2B9F2D21007173B2 /* ReceiverTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTVCell.swift; sourceTree = "<group>"; };
 		D6B852AF2B9F2D21007173B2 /* ReceiverTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverTVCell.xib; sourceTree = "<group>"; };
@@ -1152,7 +1154,7 @@
 		D6B6D9652BA44A0B000D1C0C /* ContactUs */ = {
 			isa = PBXGroup;
 			children = (
-				D6B6D9662BA44A4D000D1C0C /* ContactUsView.xib */,
+				D6A30F902BB9B9BC008E4DCF /* ContactUsView.xib */,
 				D6B6D9682BA44B00000D1C0C /* ContactUsView.swift */,
 			);
 			path = ContactUs;
@@ -1311,7 +1313,7 @@
 				D6DC8D8226F36E23009E61EC /* OnboardingFirstPointsCell.xib in Resources */,
 				18A2CB2025BAE8D5000480E3 /* InterCell.xib in Resources */,
 				D6D522B726CA67EB00CF9E95 /* PriceCollCell.xib in Resources */,
-				D6B6D9672BA44A4D000D1C0C /* ContactUsView.xib in Resources */,
+				D6A30F8E2BB9B9BC008E4DCF /* ContactUsView.xib in Resources */,
 				A466878C27B262B10073A15F /* ActiveEventCollectionViewCell.xib in Resources */,
 				D6FFDC6E26BC0FCE00321F04 /* Home.storyboard in Resources */,
 				D61FC51F2B8DC60300953315 /* Chat.storyboard in Resources */,
@@ -1641,6 +1643,16 @@
 				D699B8312BB5A91900B46F64 /* es */,
 			);
 			name = ChatCall.storyboard;
+			sourceTree = "<group>";
+		};
+		D6A30F902BB9B9BC008E4DCF /* ContactUsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6A30F8F2BB9B9BC008E4DCF /* Base */,
+				D6A30F932BB9B9D4008E4DCF /* en */,
+				D6A30F952BB9B9D6008E4DCF /* es */,
+			);
+			name = ContactUsView.xib;
 			sourceTree = "<group>";
 		};
 		D6C95FE026BD4BA000DC5719 /* Localizable.strings */ = {

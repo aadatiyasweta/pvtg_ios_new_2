@@ -47,7 +47,7 @@ class SocketHelper: NSObject {
 //            chaturl = "\(scheme)://\(baseUrl)"
 //        }
         
-        self.manager = SocketManager(socketURL: URL(string: Config.shared.socketUrl()) ?? .ServerSocketHost, config: [.log(true)])
+        self.manager = SocketManager(socketURL: URL(string: Config.shared.socketUrl()) ?? .ServerSocketHost, config: [.log(true),.version(.two)])
         guard let manager = self.manager else {return}
         self.socket = SocketIOClient(manager: manager, nsp: "audio_chat")
         socket = manager.defaultSocket
@@ -90,6 +90,23 @@ class SocketHelper: NSObject {
                 PVTG.showAlert(strTitle: error.localizedDescription)
             }
         }
+        
+        socket!.on(SocketEvent.receiveMessage.rawValue) { [weak self] results, _ in
+           
+            guard results.count > 0,
+                  let dict = results[0] as? [String: Any],
+                  let result = dict["result"] as? [String: Any],
+                  let final = self?.jsonData(from: result)
+            else {return}
+            do {
+                let messages = try JSONDecoder().decode(MessageModel.self, from: final)
+                self?.sendMessageClosure?(messages)
+            } catch {
+                
+                PVTG.showAlert(strTitle: error.localizedDescription)
+            }
+        }
+        
         socket!.on(SocketEvent.getChatMessages.rawValue) { [weak self] results, _ in
         //    AppObject.stopLoader()
             guard results.count > 0,

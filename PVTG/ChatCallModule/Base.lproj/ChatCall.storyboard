@@ -371,14 +371,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PartnerMessageTVCell" id="QRb-fO-ZuK" customClass="PartnerMessageTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="59.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QRb-fO-ZuK" id="5H8-er-Pe5">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SXz-YK-iyA">
-                                                    <rect key="frame" x="16" y="59" width="30" height="1"/>
+                                                    <rect key="frame" x="16" y="63.5" width="30" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="KzC-Sa-eGu"/>
                                                         <constraint firstAttribute="height" id="WPU-Wt-j5F"/>
@@ -390,35 +390,35 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXa-kL-5b3">
-                                                    <rect key="frame" x="16" y="4" width="104.5" height="55.5"/>
+                                                    <rect key="frame" x="16" y="4" width="116.5" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello John !!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6G-fF-NXH">
-                                                            <rect key="frame" x="16" y="16" width="72.5" height="15.5"/>
-                                                            <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="13"/>
+                                                            <rect key="frame" x="16" y="16" width="84.5" height="20"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                             <color key="textColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11.05 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbF-cz-ubQ">
-                                                            <rect key="frame" x="53" y="34.5" width="47.5" height="13"/>
-                                                            <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="11"/>
-                                                            <color key="textColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <rect key="frame" x="59" y="32" width="53.5" height="20"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                            <color key="textColor" name="PurpleActionBtn"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="zbF-cz-ubQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uXa-kL-5b3" secondAttribute="leading" constant="8" id="2TF-z9-JtJ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="zbF-cz-ubQ" secondAttribute="trailing" constant="4" id="48y-hC-zh5"/>
+                                                        <constraint firstItem="zbF-cz-ubQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uXa-kL-5b3" secondAttribute="leading" constant="16" id="2TF-z9-JtJ"/>
                                                         <constraint firstAttribute="bottom" secondItem="A6G-fF-NXH" secondAttribute="bottom" constant="24" id="6Un-Pr-O9a"/>
                                                         <constraint firstItem="A6G-fF-NXH" firstAttribute="leading" secondItem="uXa-kL-5b3" secondAttribute="leading" constant="16" id="8NI-38-w3A"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Mt0-db-NIF"/>
                                                         <constraint firstItem="A6G-fF-NXH" firstAttribute="top" secondItem="uXa-kL-5b3" secondAttribute="top" constant="16" id="dmc-Lq-xZf"/>
                                                         <constraint firstAttribute="bottom" secondItem="zbF-cz-ubQ" secondAttribute="bottom" constant="8" id="eAW-n3-yc3"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zbF-cz-ubQ" secondAttribute="trailing" constant="4" id="n24-tu-nYp"/>
                                                         <constraint firstAttribute="trailing" secondItem="A6G-fF-NXH" secondAttribute="trailing" constant="16" id="zgj-Q5-RCx"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <integer key="value" value="24"/>
+                                                            <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -442,14 +442,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyMessageTVCell" id="GMb-Bn-rN8" customClass="MyMessageTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="109.5" width="414" height="74.5"/>
+                                        <rect key="frame" x="0.0" y="114" width="414" height="83.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GMb-Bn-rN8" id="2zJ-BC-wPV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="58h-da-cIz">
-                                                    <rect key="frame" x="368" y="74" width="30" height="1"/>
+                                                    <rect key="frame" x="368" y="83" width="30" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="drU-zC-WpD"/>
                                                         <constraint firstAttribute="height" id="grh-IM-Hjh"/>
@@ -461,37 +461,46 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CnQ-YW-3zK">
-                                                    <rect key="frame" x="175.5" y="4" width="222.5" height="70.5"/>
+                                                    <rect key="frame" x="141" y="4" width="257" height="79.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9al-fp-rUf">
-                                                            <rect key="frame" x="16" y="16" width="190.5" height="30.5"/>
+                                                            <rect key="frame" x="16" y="16" width="225" height="39.5"/>
                                                             <string key="text">Hey Eric !! have you checked the
 Erocitica medication time ?</string>
-                                                            <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.30 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAQ-ff-5nQ">
-                                                            <rect key="frame" x="171" y="49.5" width="47.5" height="13"/>
-                                                            <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="11"/>
-                                                            <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <rect key="frame" x="170.5" y="51.5" width="58.5" height="20"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doubletick" translatesAutoresizingMaskIntoConstraints="NO" id="TEV-qS-Fnd">
+                                                            <rect key="frame" x="237" y="55.5" width="12" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="12" id="JVy-IA-LII"/>
+                                                                <constraint firstAttribute="width" constant="12" id="Lye-zr-cIZ"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.37647058820000001" green="0.4039215686" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="TEV-qS-Fnd" secondAttribute="trailing" constant="8" id="4NI-LA-HNx"/>
                                                         <constraint firstItem="9al-fp-rUf" firstAttribute="top" secondItem="CnQ-YW-3zK" secondAttribute="top" constant="16" id="7IM-aw-YPh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="lAQ-ff-5nQ" secondAttribute="trailing" constant="4" id="BbB-cu-h38"/>
-                                                        <constraint firstItem="lAQ-ff-5nQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CnQ-YW-3zK" secondAttribute="leading" constant="8" id="PhJ-Zi-bhH"/>
+                                                        <constraint firstItem="lAQ-ff-5nQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CnQ-YW-3zK" secondAttribute="leading" constant="16" id="PhJ-Zi-bhH"/>
+                                                        <constraint firstItem="TEV-qS-Fnd" firstAttribute="leading" secondItem="lAQ-ff-5nQ" secondAttribute="trailing" constant="8" id="REJ-2W-bKo"/>
                                                         <constraint firstAttribute="trailing" secondItem="9al-fp-rUf" secondAttribute="trailing" constant="16" id="UPx-sd-DZ4"/>
                                                         <constraint firstAttribute="bottom" secondItem="9al-fp-rUf" secondAttribute="bottom" constant="24" id="UVY-zn-I1R"/>
                                                         <constraint firstAttribute="bottom" secondItem="lAQ-ff-5nQ" secondAttribute="bottom" constant="8" id="X27-Gm-T6Z"/>
                                                         <constraint firstItem="9al-fp-rUf" firstAttribute="leading" secondItem="CnQ-YW-3zK" secondAttribute="leading" constant="16" id="fuh-nb-pgG"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="j5D-el-mDh"/>
+                                                        <constraint firstItem="TEV-qS-Fnd" firstAttribute="centerY" secondItem="lAQ-ff-5nQ" secondAttribute="centerY" id="y9n-9y-kEw"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <integer key="value" value="24"/>
+                                                            <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -515,7 +524,7 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PartnerAudioTVCell" id="kWf-3i-Nn0" customClass="PartnerAudioTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="184" width="414" height="88"/>
+                                        <rect key="frame" x="0.0" y="197.5" width="414" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kWf-3i-Nn0" id="MIC-WL-w2s">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
@@ -593,7 +602,7 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyAudioTVCell" id="bXF-S0-2LT" customClass="MyAudioTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="272" width="414" height="88"/>
+                                        <rect key="frame" x="0.0" y="285.5" width="414" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bXF-S0-2LT" id="qIn-P6-CYa">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
@@ -673,7 +682,7 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PartnerImageTVCell" id="AWd-Ds-nPe" customClass="PartnerImageTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="360" width="414" height="182"/>
+                                        <rect key="frame" x="0.0" y="373.5" width="414" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AWd-Ds-nPe" id="kdF-nu-wod">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="182"/>
@@ -753,7 +762,7 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyImageTVCell" id="WZm-aP-Jzb" customClass="MyImageTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="542" width="414" height="182"/>
+                                        <rect key="frame" x="0.0" y="555.5" width="414" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WZm-aP-Jzb" id="oeZ-lt-q2G">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="182"/>
@@ -834,14 +843,14 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PartnerImagesTVCell" id="chZ-0n-xap" customClass="PartnerImagesTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="724" width="414" height="271"/>
+                                        <rect key="frame" x="0.0" y="737.5" width="414" height="271"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="chZ-0n-xap" id="eXw-0X-amZ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BxW-LN-jAv">
-                                                    <rect key="frame" x="16" y="225.5" width="30" height="29"/>
+                                                    <rect key="frame" x="16" y="27.5" width="30" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="muC-Te-0AX"/>
                                                         <constraint firstAttribute="width" constant="30" id="wc3-9H-393"/>
@@ -853,29 +862,29 @@ Erocitica medication time ?</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11.05 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSd-BB-isp">
-                                                    <rect key="frame" x="54" y="233.5" width="344" height="13"/>
+                                                    <rect key="frame" x="54" y="21.5" width="344" height="13"/>
                                                     <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="11"/>
                                                     <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsY-dd-y4w">
-                                                    <rect key="frame" x="16" y="16" width="201" height="201"/>
+                                                    <rect key="frame" x="16" y="16" width="201" height="4"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fuZ-L7-bFf">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuZ-L7-bFf">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="I5y-jr-yKm"/>
                                                                 <constraint firstAttribute="height" constant="100" id="LrB-Nr-aoY"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="owC-rZ-big">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="owC-rZ-big">
                                                             <rect key="frame" x="101" y="0.0" width="100" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="mXj-rD-Cfg"/>
                                                                 <constraint firstAttribute="height" constant="100" id="pB5-5T-7or"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Frb-BX-wZB">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Frb-BX-wZB">
                                                             <rect key="frame" x="0.0" y="101" width="100" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="9oC-NE-goq"/>
@@ -883,14 +892,14 @@ Erocitica medication time ?</string>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mlz-sk-kBh">
-                                                            <rect key="frame" x="101" y="101" width="100" height="100"/>
+                                                            <rect key="frame" x="101" y="-32" width="100" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="100" id="F5G-CJ-NLL"/>
                                                                 <constraint firstAttribute="width" constant="100" id="roH-Nl-tvo"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyX-Vb-yVy">
-                                                            <rect key="frame" x="101" y="101" width="100" height="100"/>
+                                                            <rect key="frame" x="101" y="-32" width="100" height="36"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                             <color key="textColor" name="BG1"/>
@@ -948,14 +957,14 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyImagesTVCell" id="Vaz-L7-DK0" customClass="MyImagesTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="995" width="414" height="271"/>
+                                        <rect key="frame" x="0.0" y="1008.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vaz-L7-DK0" id="Tjb-xm-GdC">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5MZ-uc-jj6">
-                                                    <rect key="frame" x="368" y="225.5" width="30" height="29"/>
+                                                    <rect key="frame" x="368" y="27.5" width="30" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="K3c-iV-RL1"/>
                                                         <constraint firstAttribute="height" constant="30" id="u8I-5f-kbJ"/>
@@ -967,29 +976,29 @@ Erocitica medication time ?</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.30 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pva-05-w3g">
-                                                    <rect key="frame" x="16" y="233.5" width="344" height="13"/>
+                                                    <rect key="frame" x="16" y="21.5" width="344" height="13"/>
                                                     <fontDescription key="fontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="11"/>
                                                     <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrN-8m-eJo">
-                                                    <rect key="frame" x="197" y="16" width="201" height="201"/>
+                                                    <rect key="frame" x="197" y="16" width="201" height="4"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPJ-LZ-9hp">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPJ-LZ-9hp">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="100" id="j5L-AO-DQN"/>
                                                                 <constraint firstAttribute="width" constant="100" id="yNO-qu-Vhu"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yyh-Wb-M1z">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yyh-Wb-M1z">
                                                             <rect key="frame" x="101" y="0.0" width="100" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="I3E-Rn-9Jp"/>
                                                                 <constraint firstAttribute="height" constant="100" id="zSz-N1-3yo"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eWk-LN-jDf">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWk-LN-jDf">
                                                             <rect key="frame" x="0.0" y="101" width="100" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="G5Y-8Z-Tw6"/>
@@ -997,14 +1006,14 @@ Erocitica medication time ?</string>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P6c-lZ-AfW">
-                                                            <rect key="frame" x="101" y="101" width="100" height="100"/>
+                                                            <rect key="frame" x="101" y="-32" width="100" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="100" id="4ek-M1-CDn"/>
                                                                 <constraint firstAttribute="width" constant="100" id="QLc-5Y-rYl"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pG8-4p-IPx">
-                                                            <rect key="frame" x="101" y="101" width="100" height="100"/>
+                                                            <rect key="frame" x="101" y="-32" width="100" height="36"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                             <color key="textColor" name="BG1"/>
@@ -1062,7 +1071,7 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyVideoTVCell" id="cJs-wL-SKo" customClass="MyVideoTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1266" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1052.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cJs-wL-SKo" id="wSz-Cg-UXO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -1143,7 +1152,7 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PartnerVideoTVCell" id="R4f-Zn-uX9" customClass="PartnerVideoTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1310" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1096.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R4f-Zn-uX9" id="vBY-eB-8tR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -1224,7 +1233,7 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyLocationTVCell" id="m9n-FN-3tt" customClass="MyLocationTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1354" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1140.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m9n-FN-3tt" id="s5O-Jq-HFq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -1316,7 +1325,7 @@ Erocitica medication time ?</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PartnerLocationTVCell" id="XQS-XC-1nz" customClass="PartnerLocationTVCell" customModule="PVTG" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1398" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="1184.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XQS-XC-1nz" id="ffY-rq-X3R">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -1875,6 +1884,7 @@ Erocitica medication time ?</string>
         <image name="Icon awesome-microphone" width="11" height="16"/>
         <image name="Icon material-send" width="19" height="16"/>
         <image name="arrow_black" width="7.5" height="13"/>
+        <image name="doubletick" width="10" height="11"/>
         <image name="location" width="32" height="32"/>
         <image name="pause.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="person" width="48" height="48"/>
@@ -1899,6 +1909,9 @@ Erocitica medication time ?</string>
         </namedColor>
         <namedColor name="PRIMARY_PINK">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PurpleActionBtn">
+            <color red="0.37599998712539673" green="0.40400001406669617" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TEXT1">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>

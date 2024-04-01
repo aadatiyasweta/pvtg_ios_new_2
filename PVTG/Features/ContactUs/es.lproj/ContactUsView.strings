@@ -1,0 +1,12 @@
+
+/* Class = "UITextField"; placeholder = "EMAIL"; ObjectID = "6ZU-rt-gdj"; */
+"6ZU-rt-gdj.placeholder" = "Correo electrónico";
+
+/* Class = "UILabel"; text = "Contact Us"; ObjectID = "7QD-5y-UtQ"; */
+"7QD-5y-UtQ.text" = "Contacta con nosotras";
+
+/* Class = "UIButton"; normalTitle = "SEND"; ObjectID = "QPQ-Og-Azz"; */
+"QPQ-Og-Azz.normalTitle" = "ENVIAR";
+
+/* Class = "UITextField"; placeholder = "NAME"; ObjectID = "pFQ-cU-i9k"; */
+"pFQ-cU-i9k.placeholder" = "Nombre";

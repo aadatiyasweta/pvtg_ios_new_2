@@ -93,3 +93,12 @@
 "PriceFilter" = "Filtro de precio";
 "bookingdate" = "Fecha para registrarse :";
 "CancellationPolicy" = "Política de cancelación";
+"View" = "Vista";
+"Later" = "Later";
+"Viewpolicy" = "Más tarde";
+"ViewLatePolicy" = "Consulte la política de cargos por pagos atrasados";
+"LatePolicy" = "Política de cargos por pagos atrasados";
+"Reschedule" = "Reprogramar";
+"RescheduleSession" = "Reprogramemos tu sesión.";
+"Followupsession" = "¡Sesión de seguimiento!";
+"CustomQuestion" = "¿Preguntas sobre tu sesión personalizada?";

@@ -254,8 +254,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
                     .underlineStyle: NSUnderlineStyle.single.rawValue,
                     .foregroundColor: UIColor.black // You can customize the color here
                 ]
-                let attributedString = NSAttributedString(string: "Question about your custom session?", attributes: attributes)
-                
+                let attributedString = NSAttributedString(string: R.string.localizable.customQuestion(), attributes: attributes)
                 // Apply attributed text to the button
                 customQstnBtn.setAttributedTitle(attributedString, for: .normal)
     }

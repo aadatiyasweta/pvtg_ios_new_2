@@ -99,3 +99,13 @@
 "PriceFilter" = "Price Filter";
 "bookingdate" = "Booking Date :";
 "CancellationPolicy" = "Cancellation Policy";
+"View" = "View";
+"Later" = "Later";
+"Viewpolicy" = "View policy";
+"ViewLatePolicy" = "Please view late fee policy";
+"LatePolicy" = "Late fee Policy";
+"Reschedule" = "Reschedule";
+"RescheduleSession" = "Let's reschedule your session.";
+"Followupsession" = "Follow Up Session!";
+"CustomQuestion" = "Question about your custom session?";
+

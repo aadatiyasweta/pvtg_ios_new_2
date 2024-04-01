@@ -20,11 +20,12 @@ class MyMessageTVCell: UITableViewCell {
     
     @IBOutlet weak var userIV: UIImageView!
     @IBOutlet weak var dateTimeLbl: UILabel!
-    @IBOutlet weak var msgBalloonVw: UIView! {
-        didSet {
-            self.msgBalloonVw.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner]
-        }
-    }
+    @IBOutlet weak var msgBalloonVw: UIView! 
+    //{
+//        didSet {
+//            self.msgBalloonVw.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner]
+//        }
+//    }
     @IBOutlet weak var msgLbl: UILabel!
     
     private var model: MessageModel!
@@ -190,11 +191,12 @@ class PartnerMessageTVCell: UITableViewCell {
     
     @IBOutlet weak var userIV: UIImageView!
     @IBOutlet weak var dateTimeLbl: UILabel!
-    @IBOutlet weak var msgBalloonVw: UIView! {
-        didSet {
-            self.msgBalloonVw.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-        }
-    }
+    @IBOutlet weak var msgBalloonVw: UIView! 
+//    {
+//        didSet {
+//            self.msgBalloonVw.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+//        }
+//    }
     @IBOutlet weak var msgLbl: UILabel!
     
     private var model: MessageModel!

@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "6ZU-rt-gdj.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"EMAIL\"; ObjectID = \"6ZU-rt-gdj\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "EMAIL"
+          }
+        }
+      }
+    },
+    "7QD-5y-UtQ.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Contact Us\"; ObjectID = \"7QD-5y-UtQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Contact Us"
+          }
+        }
+      }
+    },
+    "pFQ-cU-i9k.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"NAME\"; ObjectID = \"pFQ-cU-i9k\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "NAME"
+          }
+        }
+      }
+    },
+    "QPQ-Og-Azz.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"SEND\"; ObjectID = \"QPQ-Og-Azz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SEND"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
