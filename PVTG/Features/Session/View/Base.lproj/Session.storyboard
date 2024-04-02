@@ -1168,6 +1168,7 @@
                         <outlet property="cancelBtn" destination="OLw-1C-Gok" id="8Kp-wb-naF"/>
                         <outlet property="colectnVwSessionImage" destination="gBF-F1-5bm" id="SCe-Rb-cw8"/>
                         <outlet property="completedBtn" destination="d9t-Lb-S6p" id="MKT-eE-sZf"/>
+                        <outlet property="contactUsLbl" destination="2zS-1C-Y7I" id="wjb-kk-vPu"/>
                         <outlet property="contactUsVw" destination="IsQ-K4-nrH" id="wNA-hC-las"/>
                         <outlet property="customQstnBtn" destination="x6d-sF-7rb" id="AgT-cq-wub"/>
                         <outlet property="customQstnVw" destination="ZfU-MW-hEz" id="DqU-eE-oa4"/>

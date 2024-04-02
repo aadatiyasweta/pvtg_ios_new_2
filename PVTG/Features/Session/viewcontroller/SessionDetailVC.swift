@@ -88,6 +88,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var customQstnVw: UIView!
     @IBOutlet weak var customQstnBtn: UIButton!
     @IBOutlet weak var contactUsVw: UIView!
+    @IBOutlet weak var contactUsLbl: UILabel!
     //MARK: - Properties
     var x = 1
     var mapView:GMSMapView?
@@ -142,7 +143,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         self.selectedDate = formatter.string(from: self.today)
         offeredCollView.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
         serviceTimeCollectionVw.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
-        self.setAttributedText()
         if controllerId == 1{
             self.vwmap.isHidden = false
             self.vwcalendar.isHidden = true
@@ -223,6 +223,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         }else {
             self.customQstnVw.isHidden = true
         }
+        self.setAttributedText()
+        self.contactUsLbl.text = R.string.localizable.contactUs()
     }
     
     //MARK: - METHOD TO SET MAP

@@ -713,7 +713,7 @@ struct _R {
       var zXJ65ISKNormalTitle: RswiftResources.StringResource { .init(key: "zXJ-65-iSK.normalTitle", tableName: "Home", source: source, developmentValue: "Done", comment: nil) }
     }
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 102 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 103 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -786,6 +786,13 @@ struct _R {
       ///
       /// Locales: en, es
       var changePassword: RswiftResources.StringResource { .init(key: "ChangePassword", tableName: "Localizable", source: source, developmentValue: "Change Password", comment: nil) }
+
+      /// en translation: Let Vendor know you arrived.
+      ///
+      /// Key: ContactUs
+      ///
+      /// Locales: en, es
+      var contactUs: RswiftResources.StringResource { .init(key: "ContactUs", tableName: "Localizable", source: source, developmentValue: "Let Vendor know you arrived.", comment: nil) }
 
       /// en translation: Question about your custom session?
       ///
