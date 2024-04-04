@@ -2326,8 +2326,8 @@ struct _R {
     /// Image `call`.
     var call: RswiftResources.ImageResource { .init(name: "call", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
-    /// Image `chatIcon`.
-    var chatIcon: RswiftResources.ImageResource { .init(name: "chatIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+    /// Image `chaticon`.
+    var chaticon: RswiftResources.ImageResource { .init(name: "chaticon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `close`.
     var close: RswiftResources.ImageResource { .init(name: "close", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }

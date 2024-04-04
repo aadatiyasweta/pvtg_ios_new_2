@@ -34,38 +34,6 @@
             endingLineNumber = "251"
             landmarkName = "tapUseNow(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0DDC06B3-EBC9-4866-BF4C-4C6083F85F6D - 70b6c61f3e210d49"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.SummaryVC.tapUseNow(__C.UIButton) -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "251"
-                  endingLineNumber = "251"
-                  offsetFromSymbolStart = "336">
-               </Location>
-               <Location
-                  uuid = "0DDC06B3-EBC9-4866-BF4C-4C6083F85F6D - 70b6c61f3e210d49"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.SummaryVC.tapUseNow(__C.UIButton) -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "251"
-                  endingLineNumber = "251"
-                  offsetFromSymbolStart = "380">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -82,38 +50,6 @@
             endingLineNumber = "537"
             landmarkName = "getOnboardingData()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "95965796-57C7-43CA-8223-FCA9DE3E7FBC - c769419b5fcb09ed"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.SummaryVC.getOnboardingData() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "537"
-                  endingLineNumber = "537"
-                  offsetFromSymbolStart = "5446">
-               </Location>
-               <Location
-                  uuid = "95965796-57C7-43CA-8223-FCA9DE3E7FBC - c769419b5fcb08d6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.SummaryVC.getOnboardingData() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Home/ViewControllers/SummaryVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "544"
-                  endingLineNumber = "544"
-                  offsetFromSymbolStart = "5450">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -135,415 +71,399 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "34E2AD97-E8DF-4DED-A370-0900AA41C18D"
+            uuid = "AF908C4F-E355-49EA-8D20-D9B58E8FB3C4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/More/ViewController/PrivacyPolicyVC.swift"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "722"
+            endingLineNumber = "722"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F34010BB-7F8E-4E7A-8251-398316038E7A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "723"
+            endingLineNumber = "723"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F95220E6-1B94-4D40-A547-2BA481A474C8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "730"
+            endingLineNumber = "730"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07C6AB8F-DEC7-4E78-942B-333290BFFC66"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "731"
+            endingLineNumber = "731"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6FBC5558-930B-4FA2-87D0-3B40598642B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "738"
+            endingLineNumber = "738"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5D951355-161A-4F11-B7BC-BC6DFBA43336"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "740"
+            endingLineNumber = "740"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBA9E825-C1C5-40BB-B02B-CF5F81C10B8A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "736"
+            endingLineNumber = "736"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "21577CDF-B6F4-4A8B-AED2-D9FA68A68686"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
+            landmarkName = "sessionTimeDetail()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7320942-BF6A-4BE4-823B-DD58A70AA38B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "887"
+            endingLineNumber = "887"
+            landmarkName = "reloadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FCAC8C51-D4D2-47ED-B6D8-99D86BD7C411"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "865"
+            endingLineNumber = "865"
+            landmarkName = "reloadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "432C3696-4009-42CE-A2AC-7905E19A878B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "876"
+            endingLineNumber = "876"
+            landmarkName = "reloadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E81AB524-0840-4CCD-8929-B0CE9A797FD2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
+            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D5035DD-D985-4612-9132-14F98F442616"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
+            landmarkName = "btnContinueTap(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1ADFBAE5-784F-4625-AB5F-99E77A29D4EB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1050"
+            endingLineNumber = "1050"
+            landmarkName = "bookingApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43C5AAAF-F179-4B62-954E-B104ACF91E65"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1056"
+            endingLineNumber = "1056"
+            landmarkName = "bookingApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B053D4B3-17A5-456D-B8E1-534A281B42D0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1054"
+            endingLineNumber = "1054"
+            landmarkName = "bookingApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B0ABB49-B9E9-4C0E-A8A8-E67A3317F046"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1059"
+            endingLineNumber = "1059"
+            landmarkName = "bookingApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F7FC636E-D262-489E-8821-5EFCF5FC1CED"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1061"
+            endingLineNumber = "1061"
+            landmarkName = "bookingApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF8EDBC2-9A72-446A-9077-707CD9B78ADF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "763"
+            endingLineNumber = "763"
+            landmarkName = "sessionTimeDetail()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66923DF6-A4D3-4306-8915-773D95E352A7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "732"
+            endingLineNumber = "732"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3118552D-F3E4-44C5-9F21-2C2C45AA3F08"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "774"
+            endingLineNumber = "774"
+            landmarkName = "sessionTimeDetail()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88AEE26A-8280-4816-856D-7735E73390DE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/ViewModel/SessionDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "checkTicketAvailabilityApi(user_id:session_id:latitude:longitude:ticket:booking_date:booking_from_time:booking_to_time:paid_amount:schedule_time_id:offeredTypeId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0748278B-2661-4568-9050-FF958B377DFB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/ViewModel/SessionDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "checkTicketAvailabilityApi(user_id:session_id:latitude:longitude:ticket:booking_date:booking_from_time:booking_to_time:paid_amount:schedule_time_id:offeredTypeId:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "34E2AD97-E8DF-4DED-A370-0900AA41C18D - a03d48752498bcae"
+                  uuid = "0748278B-2661-4568-9050-FF958B377DFB - 18631566d3f0b05"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PVTG.PrivacyPolicyVC.viewDidLoad() -&gt; ()"
+                  symbolName = "PVTG.SessionDetailViewModel.checkTicketAvailabilityApi(user_id: Swift.String, session_id: Swift.String, latitude: Swift.String, longitude: Swift.String, ticket: Swift.String, booking_date: Swift.String, booking_from_time: Swift.String, booking_to_time: Swift.String, paid_amount: Swift.String, schedule_time_id: Swift.String, offeredTypeId: Swift.String) -&gt; ()"
                   moduleName = "PVTG"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/More/ViewController/PrivacyPolicyVC.swift"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/ViewModel/SessionDetailViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "294">
+                  startingLineNumber = "66"
+                  endingLineNumber = "66">
                </Location>
                <Location
-                  uuid = "34E2AD97-E8DF-4DED-A370-0900AA41C18D - a03d48752498bcae"
+                  uuid = "0748278B-2661-4568-9050-FF958B377DFB - 5d728ebd77d19dfa"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PVTG.PrivacyPolicyVC.viewDidLoad() -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;SwiftyJSON.JSON&gt;, Swift.Optional&lt;Swift.Error&gt;, Swift.Optional&lt;Swift.Int&gt;) -&gt; () in PVTG.SessionDetailViewModel.checkTicketAvailabilityApi(user_id: Swift.String, session_id: Swift.String, latitude: Swift.String, longitude: Swift.String, ticket: Swift.String, booking_date: Swift.String, booking_from_time: Swift.String, booking_to_time: Swift.String, paid_amount: Swift.String, schedule_time_id: Swift.String, offeredTypeId: Swift.String) -&gt; ()"
                   moduleName = "PVTG"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/More/ViewController/PrivacyPolicyVC.swift"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/ViewModel/SessionDetailViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "306">
-               </Location>
-               <Location
-                  uuid = "34E2AD97-E8DF-4DED-A370-0900AA41C18D - a03d48752498bcae"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.PrivacyPolicyVC.viewDidLoad() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/More/ViewController/PrivacyPolicyVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "279">
+                  startingLineNumber = "67"
+                  endingLineNumber = "67">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "97A56DE7-831A-4CA0-9193-52B52CA3D6B1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/More/ViewController/PrivacyPolicyVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "97A56DE7-831A-4CA0-9193-52B52CA3D6B1 - a03d48752498bc4f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.PrivacyPolicyVC.viewDidLoad() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/More/ViewController/PrivacyPolicyVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "566">
-               </Location>
-               <Location
-                  uuid = "97A56DE7-831A-4CA0-9193-52B52CA3D6B1 - a03d48752498bc4f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.PrivacyPolicyVC.viewDidLoad() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/More/ViewController/PrivacyPolicyVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "578">
-               </Location>
-               <Location
-                  uuid = "97A56DE7-831A-4CA0-9193-52B52CA3D6B1 - a03d48752498bc4f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.PrivacyPolicyVC.viewDidLoad() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/More/ViewController/PrivacyPolicyVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "551">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "36FA1FAE-BD9E-4DCB-ABE4-D8462825E81D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "configureSocketClient()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "36FA1FAE-BD9E-4DCB-ABE4-D8462825E81D - 2a3ea6a26b8780a1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.configureSocketClient() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "243">
-               </Location>
-               <Location
-                  uuid = "36FA1FAE-BD9E-4DCB-ABE4-D8462825E81D - 2a3ea6a26b8780a1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.configureSocketClient() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "232">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C5D366F8-BC8F-4BC9-A134-F6C4BB883C63"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "configureSocketClient()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C5D366F8-BC8F-4BC9-A134-F6C4BB883C63 - 2a3ea6a26b878086"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.configureSocketClient() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "449">
-               </Location>
-               <Location
-                  uuid = "C5D366F8-BC8F-4BC9-A134-F6C4BB883C63 - 2a3ea6a26b878367"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.configureSocketClient() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "445">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "58A3F920-0FB8-42D0-AD5E-2A8ED22FFE25"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "configureSocketClient()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "58A3F920-0FB8-42D0-AD5E-2A8ED22FFE25 - 2a3ea6a26b878367"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.configureSocketClient() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "750">
-               </Location>
-               <Location
-                  uuid = "58A3F920-0FB8-42D0-AD5E-2A8ED22FFE25 - 2a3ea6a26b878367"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.configureSocketClient() -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "445">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D401663D-D851-4E17-8746-E49C0F3E16F8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
-            landmarkName = "performAttendingAlert(name:id:message:bookingId:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D401663D-D851-4E17-8746-E49C0F3E16F8 - 93bbdc14506e7ae"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in PVTG.AppDelegate.performAttendingAlert(name: Swift.String, id: Swift.String, message: Swift.String, bookingId: Swift.String) -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/AppDelegate.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "272"
-                  endingLineNumber = "272"
-                  offsetFromSymbolStart = "826">
-               </Location>
-               <Location
-                  uuid = "D401663D-D851-4E17-8746-E49C0F3E16F8 - 3a89e2118f41d00a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #1 (Swift.Bool) -&gt; () in PVTG.AppDelegate.performAttendingAlert(name: Swift.String, id: Swift.String, message: Swift.String, bookingId: Swift.String) -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/AppDelegate.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "272"
-                  endingLineNumber = "272"
-                  offsetFromSymbolStart = "261">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8724A176-1E43-4391-8C2B-94929952D834"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
-            landmarkName = "performAttendingAlert(name:id:message:bookingId:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "31158003-B55E-4D32-9FE6-757EC7E9786A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "performAttendingAlert(name:id:message:bookingId:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "31158003-B55E-4D32-9FE6-757EC7E9786A - 7cb7930d7c7048ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.AppDelegate.performAttendingAlert(name: Swift.String, id: Swift.String, message: Swift.String, bookingId: Swift.String) -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/AppDelegate.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "268"
-                  endingLineNumber = "268"
-                  offsetFromSymbolStart = "423">
-               </Location>
-               <Location
-                  uuid = "31158003-B55E-4D32-9FE6-757EC7E9786A - 93bbdc14506e72a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in PVTG.AppDelegate.performAttendingAlert(name: Swift.String, id: Swift.String, message: Swift.String, bookingId: Swift.String) -&gt; ()"
-                  moduleName = "PVTG"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/AppDelegate.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "268"
-                  endingLineNumber = "268"
-                  offsetFromSymbolStart = "330">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "55C6A9A0-2859-4C29-BF3A-B7B67D607075"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "05363901-37F2-43D0-928E-31566E59EAEE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

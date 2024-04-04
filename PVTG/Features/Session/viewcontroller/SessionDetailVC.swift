@@ -123,12 +123,15 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     var sessionTypeArr = [String]()
     var sessionTypePriceArr = [String]()
+    var sessionTypeIDArr = [String]()
     var sessionPriArr = [String]()
     var selectedSession = ""
+    var selectedSessionID = ""
     var isFromReschedule = false
     var isFromFollowup = false
     
     var tempSessionTypeArr = [String]()
+    var tempSessionIDTypeArr = [String]()
     var tempSessionTypePriceArr = [String]()
     var tempselectedSession = ""
     
@@ -137,6 +140,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         super.viewDidLoad()
         tempSessionTypeArr.removeAll()
         tempSessionTypePriceArr.removeAll()
+        tempSessionIDTypeArr.removeAll()
         self.mainScrollview.delegate = self
         vwcalendar.appearance.todayColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         vwcalendar.appearance.todaySelectionColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
@@ -726,6 +730,8 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }else if collectionView == self.offeredCollView{
             self.offeredIndex = indexPath.row
             self.selectedSession = sessionTypeArr[indexPath.row]
+            self.selectedSessionID = self.sessionTypeIDArr[indexPath.row]
+            print("selectedSessionID",self.selectedSessionID)
             collectionView.reloadData()
             serviceTimeCollectionVw.reloadData()
         }
@@ -756,15 +762,19 @@ extension SessionDetailVC: GetResponse {
             if((self.vm.timeArr?.result?[i].session_booking_session_type ?? "") != ""){
                 self.sessionTypeArr.removeAll()
                 self.sessionTypePriceArr.removeAll()
+                self.sessionTypeIDArr.removeAll()
                 self.sessionTypeArr.append(self.vm.timeArr?.result?[i].session_booking_session_type ?? "")
                 self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
             }else{
                 self.sessionTypeArr.removeAll()
                 self.sessionTypePriceArr.removeAll()
+                self.sessionTypeIDArr.removeAll()
                 
                 self.sessionTypeArr = self.tempSessionTypeArr
                 self.sessionTypePriceArr  = self.tempSessionTypePriceArr
                 self.selectedSession = self.tempselectedSession
+                self.sessionTypeIDArr = self.tempSessionIDTypeArr
             }
         }
         if self.controllerId != 1{
@@ -846,6 +856,7 @@ extension SessionDetailVC: GetResponse {
         self.sessionTypeArr.removeAll()
         self.sessionTypePriceArr.removeAll()
         self.tempSessionTypeArr.removeAll()
+        self.tempSessionIDTypeArr.removeAll()
         self.tempSessionTypePriceArr.removeAll()
         for i in 0..<(self.vm.model?.session_type?.count ?? 0){
             if(tempSessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
@@ -853,6 +864,7 @@ extension SessionDetailVC: GetResponse {
                 self.tempSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
                 self.tempselectedSession = self.vm.model?.session_type?[i].session_type ?? ""
                 self.tempSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                self.tempSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
             }
         }
         
@@ -864,6 +876,7 @@ extension SessionDetailVC: GetResponse {
                     self.selectedSession = self.vm.model?.session_type?[i].session_type ?? ""
                     self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
                     self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
+                    self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
                 }
             }
         }else{
@@ -873,6 +886,7 @@ extension SessionDetailVC: GetResponse {
                     self.sessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
                     self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
                     self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                    self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
                 }
             }
         }
@@ -1038,7 +1052,8 @@ extension SessionDetailVC {
             var amt = ""
             var offeredTypeId = ""
             if self.offeredIndex != -1{
-                offeredTypeId = self.vm.model?.session_type?[self.offeredIndex].session_type_id ?? ""
+                offeredTypeId = selectedSessionID
+               // offeredTypeId = self.vm.model?.session_type?[self.offeredIndex].session_type_id ?? ""
                 amt = self.vm.model?.session_type?[self.offeredIndex].price ?? ""
             }else{
                 return
