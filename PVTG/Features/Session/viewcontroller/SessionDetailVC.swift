@@ -1028,12 +1028,12 @@ extension SessionDetailVC {
             print(scrollView.contentOffset.y)
             if scrollView.contentOffset.y  < 0{
                 scrollView.contentOffset.y = 0
-                self.backBtn.isHidden = false
+        //        self.backBtn.isHidden = false
             }else{
                 if scrollView.contentOffset.y > 55 {
-                    self.backBtn.isHidden = true
+        //            self.backBtn.isHidden = true
                 }else{
-                    self.backBtn.isHidden = false
+         //           self.backBtn.isHidden = false
                 }
             }
         }
@@ -1053,6 +1053,10 @@ extension SessionDetailVC {
             var offeredTypeId = ""
             if self.offeredIndex != -1{
                 offeredTypeId = selectedSessionID
+                if selectedSessionID == "" {
+                    self.selectedSessionID = self.sessionTypeIDArr[0]
+                    offeredTypeId = selectedSessionID
+                }
                // offeredTypeId = self.vm.model?.session_type?[self.offeredIndex].session_type_id ?? ""
                 amt = self.vm.model?.session_type?[self.offeredIndex].price ?? ""
             }else{

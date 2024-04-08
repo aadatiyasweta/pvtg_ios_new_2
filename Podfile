@@ -8,7 +8,7 @@ target 'PVTG' do
   
   # Pods for PVTG
   
-  pod 'Alamofire'
+    pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'SDWebImage'
     pod 'ReachabilitySwift'

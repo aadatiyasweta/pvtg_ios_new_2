@@ -302,8 +302,8 @@
             filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1056"
-            endingLineNumber = "1056"
+            startingLineNumber = "1060"
+            endingLineNumber = "1060"
             landmarkName = "bookingApi()"
             landmarkType = "7">
          </BreakpointContent>
@@ -334,8 +334,8 @@
             filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1059"
-            endingLineNumber = "1059"
+            startingLineNumber = "1063"
+            endingLineNumber = "1063"
             landmarkName = "bookingApi()"
             landmarkType = "7">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1061"
-            endingLineNumber = "1061"
+            startingLineNumber = "1065"
+            endingLineNumber = "1065"
             landmarkName = "bookingApi()"
             landmarkType = "7">
          </BreakpointContent>
@@ -414,8 +414,8 @@
             filePath = "PVTG/Features/Session/ViewModel/SessionDetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "checkTicketAvailabilityApi(user_id:session_id:latitude:longitude:ticket:booking_date:booking_from_time:booking_to_time:paid_amount:schedule_time_id:offeredTypeId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -430,8 +430,8 @@
             filePath = "PVTG/Features/Session/ViewModel/SessionDetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "checkTicketAvailabilityApi(user_id:session_id:latitude:longitude:ticket:booking_date:booking_from_time:booking_to_time:paid_amount:schedule_time_id:offeredTypeId:)"
             landmarkType = "7">
             <Locations>
@@ -447,7 +447,8 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
-                  endingLineNumber = "66">
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "0">
                </Location>
                <Location
                   uuid = "0748278B-2661-4568-9050-FF958B377DFB - 5d728ebd77d19dfa"
@@ -461,7 +462,38 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
-                  endingLineNumber = "67">
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "0748278B-2661-4568-9050-FF958B377DFB - b257c10cd2819f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailViewModel.checkTicketAvailabilityApi(user_id: Swift.String, session_id: Swift.String, latitude: Swift.String, longitude: Swift.String, ticket: Swift.String, booking_date: Swift.String, booking_from_time: Swift.String, booking_to_time: Swift.String, paid_amount: Swift.String, schedule_time_id: Swift.String, offeredTypeId: Swift.String) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Session/ViewModel/SessionDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "523">
+               </Location>
+               <Location
+                  uuid = "0748278B-2661-4568-9050-FF958B377DFB - 57d1c3fbd7c68eca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;SwiftyJSON.JSON&gt;, Swift.Optional&lt;Swift.Error&gt;, Swift.Optional&lt;Swift.Int&gt;) -&gt; () in PVTG.SessionDetailViewModel.checkTicketAvailabilityApi(user_id: Swift.String, session_id: Swift.String, latitude: Swift.String, longitude: Swift.String, ticket: Swift.String, booking_date: Swift.String, booking_from_time: Swift.String, booking_to_time: Swift.String, paid_amount: Swift.String, schedule_time_id: Swift.String, offeredTypeId: Swift.String) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Documents/PVTG_iOS/PVTG/Features/Session/ViewModel/SessionDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "871">
                </Location>
             </Locations>
          </BreakpointContent>

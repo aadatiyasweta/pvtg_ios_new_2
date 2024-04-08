@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Stripe
+import StoreKit
 
 protocol GetResponse: AnyObject{
     func reloadData()
@@ -303,6 +304,7 @@ class SessionDetailViewModel: BaseVm {
                 debugPrint(json)
                 if json["statusCode"] == 200 {
                     self.bookingDelegate?.bookingSuccess()
+                    SKStoreReviewController.requestReview()
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -350,5 +352,4 @@ class SessionDetailViewModel: BaseVm {
         }
         return nil
     }
-    
 }
