@@ -61,10 +61,17 @@ class LoginVM: BaseVm {
     //MARK: LOGIN API
     func loginApi(email: String, password: String) {
         let prams : [String : Any] = ["email": email, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
-        print(prams)
+        //print(prams)
         self.show()
         api_manager.POSTApi(loginUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
+//            let cookieHeader = (prams.compactMap({ (key, value) -> String in
+//                return "\(key)=\(value)"
+//            }) as Array).joined(separator: ";")
+//            
+//            let loginUrl = String(describing: loginUrl())
+//            let responseString = String(describing: response)
+
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
@@ -81,10 +88,13 @@ class LoginVM: BaseVm {
                 }
                 else {
                     self.delegate?.failure(msg: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                   // showAlert(strTitle: cookieHeader + ":: " + loginUrl + ", " + responseString)
                 }
             }else{
                 showAlert(strTitle: somethingWentWrongMessage)
+               // showAlert(strTitle: cookieHeader + ":: " + loginUrl + ", " +  responseString)
             }
+           // })
         }
     }
     
@@ -189,3 +199,7 @@ class LoginVM: BaseVm {
     }
     
 }
+
+
+
+

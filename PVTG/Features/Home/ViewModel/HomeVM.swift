@@ -22,10 +22,21 @@ class HomeVM: BaseVm {
         }else{
             prams = ["user_id": user_id, "category_id": category_id, "latitude": latitude, "longitude": longitude, "search": search, "top_search": top_search, "city": city,"language" : SaveToDefaults().getAppLang() ?? "en", "min_price" : minPrice ?? 0 , "max_price" : maxprice ?? 0,"selected_currency" : currency]
         }
+//        if minPrice == 0 && maxprice == 0{
+//            prams = ["user_id": "34", "category_id": "", "latitude": "41.15168065288667", "longitude": "16.41554494366934", "search": "", "top_search": "", "city": "Corato","language" : SaveToDefaults().getAppLang() ?? "en"]
+//        }else{
+//            prams = ["user_id": "34", "category_id": "", "latitude": "41.15168065288667", "longitude": "16.41554494366934", "search": "", "top_search": "", "city": "Corato","language" : SaveToDefaults().getAppLang() ?? "en", "min_price" : minPrice ?? 0 , "max_price" : maxprice ?? 0,"selected_currency" : currency]
+//        }
          
         self.show()
         api_manager.POSTApi(gethome(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
+//            let cookieHeader = (prams.compactMap({ (key, value) -> String in
+//                return "\(key)=\(value)"
+//            }) as Array).joined(separator: ";")
+//            
+//            let homeUrl = String(describing: gethome())
+//            let responseString = String(describing: response)
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
@@ -39,9 +50,11 @@ class HomeVM: BaseVm {
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                   // showAlert(strTitle: cookieHeader + ":: " + homeUrl + ", " + responseString)
                 }
             }else{
                 showAlert(strTitle: somethingWentWrongMessage)
+               // showAlert(strTitle: cookieHeader + ":: " + homeUrl + ", " + responseString)
             }
         }
     }

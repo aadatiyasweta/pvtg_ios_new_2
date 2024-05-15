@@ -1368,7 +1368,8 @@ func header()->[String:String]?{
         print("Token -------->>>>>>",token)
         let header : [String: String] = [
             // "Content-Type" : "application/x-www-form-urlencoded",
-            "APPKEY": "\(token)"
+//            "APPKEY": "\(token)" // old one
+            "Appkey": "\(token)"
         ]
         print("Header :---: ",header)
         return header

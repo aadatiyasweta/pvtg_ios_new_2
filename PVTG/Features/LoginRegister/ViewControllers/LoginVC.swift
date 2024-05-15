@@ -129,9 +129,14 @@ extension LoginVC: AfterLoginSuccess {
     }
     
     func loginSuccess() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            
+               
         SaveToDefaults().setIsNew(isNew: true)
         let vc = TabBarControllerViewController.instance() 
         self.navigationController?.pushViewController(vc, animated: true)
+            
+        })
     }
 }
 

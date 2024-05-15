@@ -29,8 +29,13 @@ class ApiManager {
             print(param ?? [:])
             AF.request(url, method: .post, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().response(completionHandler: { dataResponse in
                 SVProgressHUD.dismiss()
-                let respString:String = String(data: (dataResponse.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
-                print(respString)
+//                let respString:String = String(data: (dataResponse.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
+//                print(respString)
+//                
+//                let alertViewController = UIAlertController(title: appName, message: respString, preferredStyle: .alert)
+//                alertViewController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
+//                appDelegate.window?.rootViewController?.present(alertViewController, animated: true, completion: nil)
+                
                 switch dataResponse.result {
                 case .success( let value):
                     let json = JSON.init(value ?? Data())
