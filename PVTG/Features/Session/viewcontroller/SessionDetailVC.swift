@@ -135,9 +135,19 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var tempSessionTypePriceArr = [String]()
     var tempselectedSession = ""
     
+    var allSessionTypeArr = [String]()
+    var allSessionIDTypeArr = [String]()
+    var allSessionTypePriceArr = [String]()
+    var allSessionTypePriceTypeArr = [String]()
+    
+    var isLoop = false
+    var isPriceLoop = false
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        isLoop = false
+        isPriceLoop = false
         tempSessionTypeArr.removeAll()
         tempSessionTypePriceArr.removeAll()
         tempSessionIDTypeArr.removeAll()
@@ -216,6 +226,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isLoop = false
+        isPriceLoop = false
         if self.isFromReschedule == true {
             self.rescheduleBtn.isHidden = false
             self.btnBooknow.isHidden = true
@@ -583,38 +595,150 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }
         else if collectionView == self.offeredCollView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
-           // cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
+            // cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
             cell.searchCategorylbl.text = self.sessionTypeArr[indexPath.row]
             if offeredIndex != -1{
-//                print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
+                //                print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
                 //print("Price is",self.sessionTypePriceArr[offeredIndex])
                 
-//                let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
-//                let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
-                
-                let myDouble  = Double(self.sessionTypePriceArr[offeredIndex]) ?? 0.0
-                let strPrice = self.sessionTypePriceArr[offeredIndex]
-                
-                let currencyFormatter = NumberFormatter()
-                currencyFormatter.usesGroupingSeparator = true
-                currencyFormatter.numberStyle = .currency
-                currencyFormatter.locale =  Locale(identifier: "en_US")
-                let num = Int(strPrice);
-                if num != nil {
-                    currencyFormatter.minimumFractionDigits = 0
-                    print("Valid Integer")
-                }
-                else {
-                    currencyFormatter.minimumFractionDigits = 2
-                    print("Not Valid Integer")
-                }
-                
-                let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
-                let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
-                if let currency = self.vm.model?.currency {
-                    self.priceLabel.text = replaced + " " +  currency
+                //                let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
+                //                let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
+                if(isPriceLoop == false){
+                    let myDouble  = Double(self.sessionTypePriceArr[offeredIndex]) ?? 0.0
+                    let strPrice = self.sessionTypePriceArr[offeredIndex]
+                    
+                    let currencyFormatter = NumberFormatter()
+                    currencyFormatter.usesGroupingSeparator = true
+                    currencyFormatter.numberStyle = .currency
+                    currencyFormatter.locale =  Locale(identifier: "en_US")
+                    let num = Int(strPrice);
+                    if num != nil {
+                        currencyFormatter.minimumFractionDigits = 0
+                        print("Valid Integer")
+                    }
+                    else {
+                        currencyFormatter.minimumFractionDigits = 2
+                        print("Not Valid Integer")
+                    }
+                    
+                    let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+                    let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+                    if let currency = self.vm.model?.currency {
+                        self.priceLabel.text = replaced + " " +  currency
+                    }
                 }
             }
+            if(isLoop == true){
+                isPriceLoop = true
+            for i in 0..<(self.allSessionTypeArr.count){
+                var indexPosi = 0
+                if((self.allSessionTypeArr[i] == selectedSession) && selectedSession != ""){
+                    if(isLoop == true){
+                        if(sessionPriArr[selectedTimeIndex] == "sixty" ){
+                            
+//                            for i in 0..<(self.allSessionTypePriceTypeArr.count){
+//                                if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
+                                    //
+                            indexPosi = i + selectedTimeIndex
+                                    if(isLoop == true){
+                                    let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
+                                    let strPrice = self.allSessionTypePriceArr[indexPosi]
+                                    
+                                    let currencyFormatter = NumberFormatter()
+                                    currencyFormatter.usesGroupingSeparator = true
+                                    currencyFormatter.numberStyle = .currency
+                                    currencyFormatter.locale =  Locale(identifier: "en_US")
+                                    let num = Int(strPrice);
+                                    if num != nil {
+                                        currencyFormatter.minimumFractionDigits = 0
+                                        print("Valid Integer")
+                                    }
+                                    else {
+                                        currencyFormatter.minimumFractionDigits = 2
+                                        print("Not Valid Integer")
+                                    }
+                                    
+                                    let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+                                    let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+                                    if let currency = self.vm.model?.currency {
+                                        self.priceLabel.text = replaced + " " +  currency
+                                        self.isLoop = false
+                                        indexPosi = 0
+                                    }
+//                                }
+//                                }
+                            }
+                        }else if (sessionPriArr[selectedTimeIndex] == "ninety"){
+                           // for i in 0..<(self.allSessionTypePriceTypeArr.count){
+                                //if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
+                                    //
+                            indexPosi = i + selectedTimeIndex
+                                    if(isLoop == true){
+                                        let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
+                                        let strPrice = self.allSessionTypePriceArr[indexPosi]
+                                        
+                                        let currencyFormatter = NumberFormatter()
+                                        currencyFormatter.usesGroupingSeparator = true
+                                        currencyFormatter.numberStyle = .currency
+                                        currencyFormatter.locale =  Locale(identifier: "en_US")
+                                        let num = Int(strPrice);
+                                        if num != nil {
+                                            currencyFormatter.minimumFractionDigits = 0
+                                            print("Valid Integer")
+                                        }
+                                        else {
+                                            currencyFormatter.minimumFractionDigits = 2
+                                            print("Not Valid Integer")
+                                        }
+                                        
+                                        let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+                                        let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+                                        if let currency = self.vm.model?.currency {
+                                            self.priceLabel.text = replaced + " " +  currency
+                                            self.isLoop = false
+                                            indexPosi = 0
+                                        }
+                                    }
+                                //}
+                            //}
+                        }else{
+//                            for i in 0..<(self.allSessionTypePriceTypeArr.count){
+//                                if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
+//                                    //
+                            indexPosi = i + selectedTimeIndex
+                                    if(isLoop == true){
+                                        let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
+                                        let strPrice = self.allSessionTypePriceArr[indexPosi]
+                                        
+                                        let currencyFormatter = NumberFormatter()
+                                        currencyFormatter.usesGroupingSeparator = true
+                                        currencyFormatter.numberStyle = .currency
+                                        currencyFormatter.locale =  Locale(identifier: "en_US")
+                                        let num = Int(strPrice);
+                                        if num != nil {
+                                            currencyFormatter.minimumFractionDigits = 0
+                                            print("Valid Integer")
+                                        }
+                                        else {
+                                            currencyFormatter.minimumFractionDigits = 2
+                                            print("Not Valid Integer")
+                                        }
+                                        
+                                        let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+                                        let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+                                        if let currency = self.vm.model?.currency {
+                                            self.priceLabel.text = replaced + " " +  currency
+                                            self.isLoop = false
+                                            indexPosi = 0
+                                        }
+                                    }
+//                                }
+//                            }
+                        }
+                    }
+                }
+            }
+        }
             
             if offeredIndex == indexPath.row {
                 cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.01960784314, green: 0.8509803922, blue: 0.7411764706, alpha: 1)
@@ -676,6 +800,32 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.vwCollection{
+            if self.id == indexPath.row{
+            } else {
+                self.id = indexPath.row
+                guard let userid = SaveToDefaults().getUserId() else { return}
+                self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
+            }
+            self.vwCollection.reloadData()
+        }else if collectionView == self.offeredCollView{
+            self.offeredIndex = indexPath.row
+            self.selectedSession = sessionTypeArr[indexPath.row]
+            self.selectedSessionID = self.sessionTypeIDArr[indexPath.row]
+            print("selectedSessionID",self.selectedSessionID)
+            isLoop = true
+            collectionView.reloadData()
+            serviceTimeCollectionVw.reloadData()
+        }
+        else if(collectionView == serviceTimeCollectionVw){
+            self.selectedTimeIndex = indexPath.row
+            isLoop = true
+            offeredCollView.reloadData()
+            serviceTimeCollectionVw.reloadData()
+        }
+    }
+    
     func presentAvplayerController(url : String){
         if let videoURL = URL(string: url){
             let player = AVPlayer(url: videoURL)
@@ -718,29 +868,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.vwCollection{
-            if self.id == indexPath.row{
-            } else {
-                self.id = indexPath.row
-                guard let userid = SaveToDefaults().getUserId() else { return}
-                self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
-            }
-            self.vwCollection.reloadData()
-        }else if collectionView == self.offeredCollView{
-            self.offeredIndex = indexPath.row
-            self.selectedSession = sessionTypeArr[indexPath.row]
-            self.selectedSessionID = self.sessionTypeIDArr[indexPath.row]
-            print("selectedSessionID",self.selectedSessionID)
-            collectionView.reloadData()
-            serviceTimeCollectionVw.reloadData()
-        }
-        else if(collectionView == serviceTimeCollectionVw){
-            self.selectedTimeIndex = indexPath.row
-            serviceTimeCollectionVw.reloadData()
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView==self.colectnVwSessionImage {
             self.pageCtrl.numberOfPages = self.vm.model?.images?.count ?? 0
@@ -763,6 +890,7 @@ extension SessionDetailVC: GetResponse {
                 self.sessionTypeArr.removeAll()
                 self.sessionTypePriceArr.removeAll()
                 self.sessionTypeIDArr.removeAll()
+    
                 self.sessionTypeArr.append(self.vm.timeArr?.result?[i].session_booking_session_type ?? "")
                 self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
                 self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
@@ -858,7 +986,15 @@ extension SessionDetailVC: GetResponse {
         self.tempSessionTypeArr.removeAll()
         self.tempSessionIDTypeArr.removeAll()
         self.tempSessionTypePriceArr.removeAll()
+        self.allSessionTypeArr.removeAll()
+        self.allSessionIDTypeArr.removeAll()
+        self.allSessionTypePriceArr.removeAll()
+        self.allSessionTypePriceTypeArr.removeAll()
         for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+            self.allSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
+            self.allSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+            self.allSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+            self.allSessionTypePriceTypeArr.append(self.vm.model?.session_type?[i].price_type ?? "")
             if(tempSessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
             }else{
                 self.tempSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")

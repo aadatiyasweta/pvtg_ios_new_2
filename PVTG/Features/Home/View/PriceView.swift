@@ -102,7 +102,7 @@ class PriceView : UIView{
 //MARK: - RANGE SEEK SLIDER DELEGATE
 extension PriceView : RangeSeekSliderDelegate{
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
-        if((maxValue - minValue) > 6000){
+        if((maxValue - minValue) > 5000){
             let upMin = minValue.rounded(.up)
             let upMax = maxValue.rounded(.up)
             self.minimumValue = Int(upMin)
