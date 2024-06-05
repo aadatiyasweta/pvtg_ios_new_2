@@ -82,6 +82,8 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     var serviceType = ""
     let locationManager = CLLocationManager()
     
+    var locationSendStatus = false
+    
     weak var playPauseObserver: NSObjectProtocol?
     private var selectedImagesData: [(data: Data,name: String,key: String,extension: String)] = []
     
@@ -89,7 +91,9 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationSendStatus = false
         locationManager.delegate = self
+        locationManager.distanceFilter = 15
         locationManager.requestWhenInUseAuthorization()
         hederView.dropShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.25), offSet: CGSize(width: 1, height: 1))
         if notavilableSatus {
@@ -101,6 +105,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
             notavilableView.isHidden = true
         }
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 20
+       // IQKeyboardManager.shared().shouldResignOnTouchOutside = false
        
         imagePickerController.delegate = self
         videoPickerController.delegate = self
@@ -109,6 +114,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         self.customeImageVideoPopup.layer.borderColor = UIColor(red: 0/255, green: 98/255, blue: 155/255, alpha: 1.0).cgColor
         self.customeImageVideoPopup.layer.borderWidth = 1.0
         self.galleryButton.layer.borderWidth = 1.0
+        
 //        if self.onlineStatus == "true"{
 //            onlineView.backgroundColor = UIColor(hexString: "079B7F")
 //        }
@@ -149,6 +155,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         
         
         self.viewModel.viewDidLoad(reciverId: self.reciverId,user: self.user, ticketNo: self.ticketNo,otherUser:self.otherUser)
+        
 //        keyboardWillHide = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main, using: keyboardWillHideHandler(noti:))
 //
 //        keyboardWillShow = NotificationCenter.default.addObserver(
@@ -179,8 +186,10 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         
         player = AVPlayer()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        locationSendStatus = false
         self.viewModel.viewWillAppear()
     }
     
@@ -192,6 +201,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.viewModel.viewWillDisappear()
+        //IQKeyboardManager.shared().shouldResignOnTouchOutside = true
     }
     
     func show(){
@@ -234,7 +244,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let height = keyboardSize.cgRectValue.height - self.view.safeAreaInsets.bottom
         UIView.animate(withDuration: 3, delay: 0, options: .curveEaseInOut) {
-//            self.messageTVBottom.constant = height
+            self.messageTVBottom.constant = height
         }
         
         //        DispatchQueue.main.async {
@@ -387,7 +397,10 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     
     
     @IBAction func mapBtnAction(_ sender: Any) {
-        locationManager.startUpdatingLocation()
+        locationSendStatus = false
+        if(locationSendStatus == false){
+            locationManager.startUpdatingLocation()
+        }
     }
     
     deinit {
@@ -803,6 +816,7 @@ extension ChatBoxView:UIImagePickerControllerDelegate,UINavigationControllerDele
 }
 extension ChatBoxView {
     func sendMeassage(msg:String,msg_type:String,url:String,thumbnil:String,lat:Double,long:Double){
+        self.locationSendStatus = true
         if SocketHelper.shared.isConnected {
             SocketHelper.shared.sendMessage(data: [
                 "s_id": Int(SaveToDefaults().getUserId() ?? "0") ?? 0,
@@ -1022,12 +1036,16 @@ extension ChatBoxView: CLLocationManagerDelegate {
             print("Latitude: \(latitude), Longitude: \(longitude)")
             
             // Example: Send location to a server
-            sendLocationToServer(latitude: latitude, longitude: longitude)
+            if(self.locationSendStatus == false){
+                sendLocationToServer(latitude: latitude, longitude: longitude)
+            }
         }
         
         // Function to send location data to a server
         func sendLocationToServer(latitude: Double, longitude: Double) {
             // Implement your code to send location data to a server here
-            self.sendMeassage(msg:"",msg_type:"location",url:"",thumbnil:"",lat: latitude, long: longitude)
+            if(self.locationSendStatus == false){
+                self.sendMeassage(msg:"",msg_type:"location",url:"",thumbnil:"",lat: latitude, long: longitude)
+            }
         }
 }

@@ -102,10 +102,12 @@ class PriceView : UIView{
 //MARK: - RANGE SEEK SLIDER DELEGATE
 extension PriceView : RangeSeekSliderDelegate{
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
-        let upMin = minValue.rounded(.up)
-        let upMax = maxValue.rounded(.up)
-        self.minimumValue = Int(upMin)
-        self.maxValue = Int(upMax)
+        if((maxValue - minValue) > 6000){
+            let upMin = minValue.rounded(.up)
+            let upMax = maxValue.rounded(.up)
+            self.minimumValue = Int(upMin)
+            self.maxValue = Int(upMax)
+        }
     }
 }
 
@@ -139,22 +141,22 @@ extension PriceView : UIPickerViewDelegate,UIPickerViewDataSource{
         self.selectCurrencyFiled.text = self.currencyArr[row]
         if(selectCurrencyFiled.text == "USD"){
             self.selectedCurrency = self.selectCurrencyFiled.text ?? ""
-            self.minimumValue = 0
-            self.maxValue = 300
-            self.seekView.minValue = 0
-            self.seekView.maxValue = 300
-            self.seekView.selectedMaxValue = CGFloat(300)
-            self.seekView.selectedMinValue = CGFloat(0)
-            self.seekView.delegate = self
+//            self.minimumValue = 0
+//            self.maxValue = 300
+//            self.seekView.minValue = 0
+//            self.seekView.maxValue = 300
+//            self.seekView.selectedMaxValue = CGFloat(300)
+//            self.seekView.selectedMinValue = CGFloat(0)
+//            self.seekView.delegate = self
         }else {
-            self.minimumValue = 0
-            self.maxValue = 600000
+//            self.minimumValue = 0
+//            self.maxValue = 600000
             self.selectedCurrency = self.selectCurrencyFiled.text ?? ""
-            self.seekView.minValue = 0
-            self.seekView.maxValue = 600000
-            self.seekView.selectedMaxValue = CGFloat(600000)
-            self.seekView.selectedMinValue = CGFloat(0)
-            self.seekView.delegate = self
+//            self.seekView.minValue = 0
+//            self.seekView.maxValue = 600000
+//            self.seekView.selectedMaxValue = CGFloat(600000)
+//            self.seekView.selectedMinValue = CGFloat(0)
+//            self.seekView.delegate = self
         }
     }
 }

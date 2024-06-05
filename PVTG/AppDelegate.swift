@@ -34,6 +34,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         Messaging.messaging().delegate = self
         // Override point for customization after application launch.
         IQKeyboardManager.shared().isEnabled = true
+        //IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         if let apiKey = getAPIKeyFromPlist() {
             GMSServices.provideAPIKey(apiKey)
             GMSPlacesClient.provideAPIKey(apiKey)
