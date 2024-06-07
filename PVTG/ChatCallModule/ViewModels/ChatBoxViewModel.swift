@@ -11,7 +11,7 @@ import UIKit
 
 extension ChatBoxViewModel {
     func viewDidLoad(reciverId: String,user: String,ticketNo: String,otherUser:String) {
-        //self.setupKeyboardObserver()
+        self.setupKeyboardObserver()
         
         guard let view = self.view else { return }
         view.titleLbl.text = self.partnerName
@@ -28,7 +28,7 @@ extension ChatBoxViewModel {
     }
     
     func viewWillAppear() {
-        //self.setupObservers()
+        self.setupObservers()
     }
     
     func viewDidAppear() {

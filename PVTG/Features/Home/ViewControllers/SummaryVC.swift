@@ -54,6 +54,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     var secondPoins = 0
     var isPointsUsed = false
     var selectedPoint = 0
+    var getPriceFromPreviousPage = 0
     
     var discountValuePicker: UIPickerView!
 
@@ -519,6 +520,7 @@ extension SummaryVC {
 //MARK: - CUSTOM DELEGATE
 extension SummaryVC : GetBookingResponse,getOnboardingResponse{
     func getOnboardingData() {
+        self.discountValueArr.removeAll()
         if self.onboardingVm.model?.rewards?.count == 2{
             self.firstPoints = Int(self.onboardingVm.model?.rewards?[0].points ?? "0") ?? 0
             self.secondPoins = Int(self.onboardingVm.model?.rewards?[1].points ?? "0") ?? 0
@@ -527,6 +529,11 @@ extension SummaryVC : GetBookingResponse,getOnboardingResponse{
                 let first = str.split(separator: "%")[0].description
                 self.firstPointDiscount = Int(first) ?? 0
             }
+            for i in 0..<(self.onboardingVm.model?.rewards?.count ?? 0){
+                self.Discount.text = (self.onboardingVm.model?.rewards?[0].discount ?? "") + " Discount"
+                self.discountValueArr.append(self.onboardingVm.model?.rewards?[i].discount ?? "")
+            }
+            self.discountValuePicker.reloadAllComponents()
             let str1 = self.onboardingVm.model?.rewards?[1].discount ?? "0"
             if str1.contains("%"){
                 let first = str1.split(separator: "%")[0].description

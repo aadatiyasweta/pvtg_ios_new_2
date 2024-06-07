@@ -104,7 +104,8 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
             typeView.isHidden = false
             notavilableView.isHidden = true
         }
-        IQKeyboardManager.shared().keyboardDistanceFromTextField = 20
+        IQKeyboardManager.shared().isEnabled = false
+       // IQKeyboardManager.shared().keyboardDistanceFromTextField = 20
        // IQKeyboardManager.shared().shouldResignOnTouchOutside = false
        
         imagePickerController.delegate = self
@@ -393,6 +394,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         self.messageTV.textColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
         self.messageTV.text = "Write here something..."
         updateMsgTVHeight()
+        self.view.endEditing(false)
     }
     
     
@@ -1049,3 +1051,59 @@ extension ChatBoxView: CLLocationManagerDelegate {
             }
         }
 }
+
+//@IBDesignable
+//class PlaceHolderTextView: UITextView {
+//
+//    @IBInspectable var placeholder: String = "" {
+//         didSet{
+//             updatePlaceHolder()
+//        }
+//    }
+//
+//    @IBInspectable var placeholderColor: UIColor = UIColor.gray {
+//        didSet {
+//            updatePlaceHolder()
+//        }
+//    }
+//    @IBInspectable var textColorWrght : UIColor? =  UIColor.darkGray{
+//        didSet {
+//            updatePlaceHolder()
+//        }
+//    }
+//
+//    private var originalTextColor = UIColor.black
+//    private var originalText: String = ""
+//
+//    private func updatePlaceHolder() {
+//
+//        if self.text == "" || self.text == placeholder  {
+//
+//            self.text = placeholder
+//            self.textColor = placeholderColor
+//            if let color = self.textColor {
+//
+//                self.originalTextColor = color
+//            }
+//            self.originalText = ""
+//        } else {
+//            self.textColor = textColorWrght
+//            self.originalTextColor = textColorWrght!
+//            self.originalText = self.text
+//        }
+//
+//    }
+//
+//    override func becomeFirstResponder() -> Bool {
+//        let result = super.becomeFirstResponder()
+//        self.text = self.originalText
+//        self.textColor = self.textColorWrght
+//        return result
+//    }
+//    override func resignFirstResponder() -> Bool {
+//        let result = super.resignFirstResponder()
+//        updatePlaceHolder()
+//
+//        return result
+//    }
+//}

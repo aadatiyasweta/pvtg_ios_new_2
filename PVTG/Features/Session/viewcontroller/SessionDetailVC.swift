@@ -142,12 +142,14 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     var isLoop = false
     var isPriceLoop = false
+    var updatedprice = ""
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         isLoop = false
         isPriceLoop = false
+        updatedprice = ""
         tempSessionTypeArr.removeAll()
         tempSessionTypePriceArr.removeAll()
         tempSessionIDTypeArr.removeAll()
@@ -226,8 +228,9 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        isLoop = false
-        isPriceLoop = false
+//        isLoop = false
+//        isPriceLoop = false
+//        updatedprice = ""
         if self.isFromReschedule == true {
             self.rescheduleBtn.isHidden = false
             self.btnBooknow.isHidden = true
@@ -603,9 +606,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 
                 //                let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
                 //                let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
-                if(isPriceLoop == false){
+                if(isPriceLoop == false && isLoop == false){
                     let myDouble  = Double(self.sessionTypePriceArr[offeredIndex]) ?? 0.0
                     let strPrice = self.sessionTypePriceArr[offeredIndex]
+                    self.updatedprice = strPrice
                     
                     let currencyFormatter = NumberFormatter()
                     currencyFormatter.usesGroupingSeparator = true
@@ -624,6 +628,8 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                     let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
                     let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
                     if let currency = self.vm.model?.currency {
+                        
+                        self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
                         self.priceLabel.text = replaced + " " +  currency
                     }
                 }
@@ -643,7 +649,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                     if(isLoop == true){
                                     let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
                                     let strPrice = self.allSessionTypePriceArr[indexPosi]
-                                    
+                                        self.updatedprice = strPrice
                                     let currencyFormatter = NumberFormatter()
                                     currencyFormatter.usesGroupingSeparator = true
                                     currencyFormatter.numberStyle = .currency
@@ -676,7 +682,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                     if(isLoop == true){
                                         let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
                                         let strPrice = self.allSessionTypePriceArr[indexPosi]
-                                        
+                                        self.updatedprice = strPrice
                                         let currencyFormatter = NumberFormatter()
                                         currencyFormatter.usesGroupingSeparator = true
                                         currencyFormatter.numberStyle = .currency
@@ -709,7 +715,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                     if(isLoop == true){
                                         let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
                                         let strPrice = self.allSessionTypePriceArr[indexPosi]
-                                        
+                                        self.updatedprice = strPrice
                                         let currencyFormatter = NumberFormatter()
                                         currencyFormatter.usesGroupingSeparator = true
                                         currencyFormatter.numberStyle = .currency
@@ -901,7 +907,8 @@ extension SessionDetailVC: GetResponse {
                 
                 self.sessionTypeArr = self.tempSessionTypeArr
                 self.sessionTypePriceArr  = self.tempSessionTypePriceArr
-                self.selectedSession = self.tempselectedSession
+//                self.selectedSession = self.tempselectedSession
+                self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
                 self.sessionTypeIDArr = self.tempSessionIDTypeArr
             }
         }
@@ -961,6 +968,7 @@ extension SessionDetailVC: GetResponse {
         vc.totalTkt = self.lblTicketCount.text ?? ""
         vc.ticketModel = self.vm.availableTickets
         vc.customModel = self.vm.customModel
+        //vc.getPriceFromPreviousPage =
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -1187,6 +1195,7 @@ extension SessionDetailVC {
         if let id = self.vm.model?.session_id, let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude()  {
             var amt = ""
             var offeredTypeId = ""
+            amt = self.updatedprice
             if self.offeredIndex != -1{
                 offeredTypeId = selectedSessionID
                 if selectedSessionID == "" {
@@ -1194,7 +1203,8 @@ extension SessionDetailVC {
                     offeredTypeId = selectedSessionID
                 }
                // offeredTypeId = self.vm.model?.session_type?[self.offeredIndex].session_type_id ?? ""
-                amt = self.vm.model?.session_type?[self.offeredIndex].price ?? ""
+               // amt = self.vm.model?.session_type?[self.offeredIndex].price ?? ""
+               
             }else{
                 return
             }
