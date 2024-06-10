@@ -540,16 +540,22 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         else if(collectionView == serviceTimeCollectionVw){
 
             sessionPriArr.removeAll()
+            if((self.vm.model?.session_booking_session_type ?? "") != ""){
+                self.sessionPriArr.append(self.vm.model?.booked_price_type ?? "")
+                print("sessionPriArr",self.sessionPriArr)
+            }else{
                 for i in 0..<(self.vm.model?.session_type?.count ?? 0){
                     //for j in 0..<(self.sessionTypeArr.count){
-                        if self.vm.model?.session_type?[i].session_type == self.selectedSession{
-                            self.sessionPriArr.append(self.vm.model?.session_type?[i].price_type ?? "")
-                        }
+                    if self.vm.model?.session_type?[i].session_type == self.selectedSession{
+                        self.sessionPriArr.append(self.vm.model?.session_type?[i].price_type ?? "")
                     }
+                }
                 //}
-           // }
-            print("sessionPriArr",self.sessionPriArr)
-            return self.sessionPriArr.count
+                // }
+                print("sessionPriArr",self.sessionPriArr)
+            }
+                return self.sessionPriArr.count
+            
             
 //            return self.vm.model?.session_type?.count ?? 0
         }
@@ -897,9 +903,15 @@ extension SessionDetailVC: GetResponse {
                 self.sessionTypePriceArr.removeAll()
                 self.sessionTypeIDArr.removeAll()
     
-                self.sessionTypeArr.append(self.vm.timeArr?.result?[i].session_booking_session_type ?? "")
-                self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
-                self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+               // self.sessionTypeArr.append(self.vm.timeArr?.result?[i].session_booking_session_type ?? "")
+                //self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                //self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+                
+                //self.selectedSession = self.vm.model?.session_booking_session_type ?? ""
+                self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")
+                self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
+                self.sessionTypeIDArr.append(self.vm.model?.session_booking_type_id ?? "")
+                
             }else{
                 self.sessionTypeArr.removeAll()
                 self.sessionTypePriceArr.removeAll()
@@ -1013,16 +1025,22 @@ extension SessionDetailVC: GetResponse {
         }
         
         if((self.vm.model?.session_booking_session_type ?? "") != ""){
-//            self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
-            for i in 0..<(self.vm.model?.session_type?.count ?? 0){
-                if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
-                }else{
-                    self.selectedSession = self.vm.model?.session_type?[i].session_type ?? ""
-                    self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
-                    self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
-                    self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
-                }
-            }
+
+           // for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+//                if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
+//                }else{
+//                    self.selectedSession = self.vm.model?.session_type?[i].session_type ?? ""
+//                    self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+//                    self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
+//                    self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+            //    }
+           // }
+            /* for booked status detail */
+            self.selectedSession = self.vm.model?.session_booking_session_type ?? ""
+            self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")
+            self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
+            self.sessionTypeIDArr.append(self.vm.model?.session_booking_type_id ?? "")
+            
         }else{
             for i in 0..<(self.vm.model?.session_type?.count ?? 0){
                 if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){

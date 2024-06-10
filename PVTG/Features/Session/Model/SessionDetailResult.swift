@@ -38,6 +38,9 @@ struct SessionDetailResult : Codable {
     let payment_id : String?
     let paid_amount : String?
     let session_booking_session_type : String?
+    let session_booking_type_id : String?
+    let session_booking_amount : String?
+    let booked_price_type : String?
     let session_booking_booking_date : String?
     let created_id: String?
     let created_by: String?
@@ -66,6 +69,9 @@ struct SessionDetailResult : Codable {
         case session_type = "session_type"
         case session_language = "session_language"
         case booking_session_type = "booking_session_type"
+        case session_booking_type_id = "session_booking_type_id"
+        case session_booking_amount = "session_booking_amount"
+        case booked_price_type = "session_booking_price_type"
         case booking_date = "booking_date"
         case payment_id = "payment_id"
         case paid_amount = "paid_amount"
@@ -98,6 +104,9 @@ struct SessionDetailResult : Codable {
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
          vendorName = try values.decodeIfPresent(String.self, forKey: .vendorName)
         booking_session_type = try values.decodeIfPresent(String.self, forKey: .booking_session_type)
+        session_booking_amount = try values.decodeIfPresent(String.self, forKey: .session_booking_amount)
+        session_booking_type_id = try values.decodeIfPresent(String.self, forKey: .session_booking_type_id)
+        booked_price_type = try values.decodeIfPresent(String.self, forKey: .booked_price_type)
         session_language = try values.decodeIfPresent(String.self, forKey: .session_language)
         session_type = try values.decodeIfPresent([SessionTypeModel].self, forKey: .session_type)
         booking_date = try values.decodeIfPresent(String.self, forKey: .booking_date)
