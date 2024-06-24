@@ -116,8 +116,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         if let lat1 = self.bookingDetails?.latitude , let long1 = self.bookingDetails?.longitude{
             let lat = Double(lat1)
             let long = Double(long1)
-            let location = CLLocationCoordinate2D(latitude: lat! , longitude: long! )
-            let camera = GMSCameraPosition.camera(withLatitude: lat! , longitude: long! , zoom: 15, bearing: 0,
+            let location = CLLocationCoordinate2D(latitude: lat ?? 0.0 , longitude: long ?? 0.0 )
+            let camera = GMSCameraPosition.camera(withLatitude: lat ?? 0.0 , longitude: long ?? 0.0 , zoom: 15, bearing: 0,
                                                   viewingAngle: 40)
             mapView = GMSMapView.map(withFrame: self.vwmap.bounds, camera: camera)
             self.vwmap.addSubview(mapView ?? GMSMapView())

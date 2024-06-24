@@ -1095,12 +1095,12 @@ struct _R {
       /// Locales: en, es
       var view: RswiftResources.StringResource { .init(key: "View", tableName: "Localizable", source: source, developmentValue: "View", comment: nil) }
 
-      /// en translation: Please view late fee policy
+      /// en translation: Please arrive on time!
       ///
       /// Key: ViewLatePolicy
       ///
       /// Locales: en, es
-      var viewLatePolicy: RswiftResources.StringResource { .init(key: "ViewLatePolicy", tableName: "Localizable", source: source, developmentValue: "Please view late fee policy", comment: nil) }
+      var viewLatePolicy: RswiftResources.StringResource { .init(key: "ViewLatePolicy", tableName: "Localizable", source: source, developmentValue: "Please arrive on time!", comment: nil) }
 
       /// en translation: View Token Notification:
       ///
@@ -2292,7 +2292,7 @@ struct _R {
     var purpleActionBtn: RswiftResources.ColorResource { .init(name: "PurpleActionBtn", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 73 images.
+  /// This `_R.image` struct is generated, and contains static references to 74 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -2301,6 +2301,9 @@ struct _R {
 
     /// Image `Bg-3`.
     var bg3: RswiftResources.ImageResource { .init(name: "Bg-3", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ChatIcn`.
+    var chatIcn: RswiftResources.ImageResource { .init(name: "ChatIcn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `Search`.
     var search: RswiftResources.ImageResource { .init(name: "Search", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -3099,8 +3102,8 @@ struct _R {
       func validate() throws {
         if UIKit.UIImage(named: "+", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named '+' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "-", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named '-' is used in storyboard 'Session', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ChatIcn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ChatIcn' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bg", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bg' is used in storyboard 'Session', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "chatIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'chatIcon' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "cross", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'cross' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "minimalLeft2X", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'minimalLeft2X' is used in storyboard 'Session', but couldn't be loaded.") }

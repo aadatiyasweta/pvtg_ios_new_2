@@ -139,6 +139,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var allSessionIDTypeArr = [String]()
     var allSessionTypePriceArr = [String]()
     var allSessionTypePriceTypeArr = [String]()
+    var descSessionTypeArr = [String]()
     
     var isLoop = false
     var isPriceLoop = false
@@ -321,12 +322,18 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     
     @IBAction func chatButtonAction(_ sender: Any) {
-        let vc = ChatBoxView.instance()
-        vc.otherUser = (self.vm.model?.created_by ?? "").lowercased()
-        vc.reciverId = self.vm.model?.created_id ?? ""
-        vc.image = self.vm.model?.chat_user_image ?? ""
-        vc.name = self.vm.model?.vendorName ?? ""
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = ChatBoxView.instance()
+//        vc.otherUser = (self.vm.model?.created_by ?? "").lowercased()
+//        vc.reciverId = self.vm.model?.created_id ?? ""
+//        vc.image = self.vm.model?.chat_user_image ?? ""
+//        vc.name = self.vm.model?.vendorName ?? ""
+//        self.navigationController?.pushViewController(vc, animated: true)
+        let popup = ContactUsView.initWith(frame: UIScreen.main.bounds)
+        self.view.addSubview(popup ?? UIView())
+        popup?.session_id = self.sessionId
+        popup?.contactusCallBack = { [weak self] in
+            popup?.removeFromSuperview()
+        }
     }
     
     
@@ -366,12 +373,12 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
 //        vc.modalTransitionStyle = .crossDissolve
 //        self.navigationController?.present(vc, animated: true)
         
-        let popup = ContactUsView.initWith(frame: UIScreen.main.bounds)
-        self.view.addSubview(popup ?? UIView())
-        popup?.session_id = self.sessionId
-        popup?.contactusCallBack = { [weak self] in
-            popup?.removeFromSuperview()
-        }
+//        let popup = ContactUsView.initWith(frame: UIScreen.main.bounds)
+//        self.view.addSubview(popup ?? UIView())
+//        popup?.session_id = self.sessionId
+//        popup?.contactusCallBack = { [weak self] in
+//            popup?.removeFromSuperview()
+//        }
     }
     
     @IBAction func btnIncreaseTicketTap(_ sender: UIButton) {
@@ -653,6 +660,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                     //
                             indexPosi = i + selectedTimeIndex
                                     if(isLoop == true){
+                                        self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
                                     let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
                                     let strPrice = self.allSessionTypePriceArr[indexPosi]
                                         self.updatedprice = strPrice
@@ -686,6 +694,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                     //
                             indexPosi = i + selectedTimeIndex
                                     if(isLoop == true){
+                                        self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
                                         let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
                                         let strPrice = self.allSessionTypePriceArr[indexPosi]
                                         self.updatedprice = strPrice
@@ -719,6 +728,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
 //                                    //
                             indexPosi = i + selectedTimeIndex
                                     if(isLoop == true){
+                                        self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
                                         let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
                                         let strPrice = self.allSessionTypePriceArr[indexPosi]
                                         self.updatedprice = strPrice
@@ -908,7 +918,8 @@ extension SessionDetailVC: GetResponse {
                 //self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
                 
                 //self.selectedSession = self.vm.model?.session_booking_session_type ?? ""
-                self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")
+                /*self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")*/ // now wrong type selection
+                self.sessionTypePriceArr.append(self.vm.model?.session_booking_amount ?? "")
                 self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
                 self.sessionTypeIDArr.append(self.vm.model?.session_booking_type_id ?? "")
                 
@@ -1009,11 +1020,13 @@ extension SessionDetailVC: GetResponse {
         self.allSessionTypeArr.removeAll()
         self.allSessionIDTypeArr.removeAll()
         self.allSessionTypePriceArr.removeAll()
+        self.descSessionTypeArr.removeAll()
         self.allSessionTypePriceTypeArr.removeAll()
         for i in 0..<(self.vm.model?.session_type?.count ?? 0){
             self.allSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
             self.allSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
             self.allSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+            self.descSessionTypeArr.append(self.vm.model?.session_type?[i].descriptionen ?? "")
             self.allSessionTypePriceTypeArr.append(self.vm.model?.session_type?[i].price_type ?? "")
             if(tempSessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
             }else{
@@ -1037,7 +1050,8 @@ extension SessionDetailVC: GetResponse {
            // }
             /* for booked status detail */
             self.selectedSession = self.vm.model?.session_booking_session_type ?? ""
-            self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")
+            //self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")
+            self.sessionTypePriceArr.append(self.vm.model?.session_booking_amount ?? "")
             self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
             self.sessionTypeIDArr.append(self.vm.model?.session_booking_type_id ?? "")
             

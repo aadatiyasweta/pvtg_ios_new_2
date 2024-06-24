@@ -96,7 +96,8 @@
 "View" = "Vista";
 "Later" = "Later";
 "Viewpolicy" = "Más tarde";
-"ViewLatePolicy" = "Consulte la política de cargos por pagos atrasados";
+//"ViewLatePolicy" = "Consulte la política de cargos por pagos atrasados"; // ashitesh changed as per client updation
+"ViewLatePolicy" = "¡Por favor llegue a tiempo!";
 "LatePolicy" = "Política de cargos por pagos atrasados";
 "Reschedule" = "Reprogramar";
 "RescheduleSession" = "Reprogramemos tu sesión.";

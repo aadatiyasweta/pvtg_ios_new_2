@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -882,7 +882,7 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatIcon" translatesAutoresizingMaskIntoConstraints="NO" id="uyQ-iL-q8P">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChatIcn" translatesAutoresizingMaskIntoConstraints="NO" id="uyQ-iL-q8P">
                                         <rect key="frame" x="248" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="KWn-8C-FLN"/>
@@ -921,7 +921,7 @@
                                             <constraint firstAttribute="width" constant="120" id="fPv-eb-tWg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                                        <state key="normal" title="Cancel">
+                                        <state key="normal" title="Reschedule">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -930,7 +930,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="cancelBtnTap:" destination="g4N-T8-DGB" eventType="touchUpInside" id="TfK-8t-cpF"/>
+                                            <action selector="rescheduleBtnTap:" destination="g4N-T8-DGB" eventType="touchUpInside" id="xKI-rp-B9z"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbe-hQ-Y5L">
@@ -941,7 +941,7 @@
                                             <constraint firstAttribute="width" constant="124" id="fyr-V7-kbj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                                        <state key="normal" title="RESCHEDULE">
+                                        <state key="normal" title="No">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -950,7 +950,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="rescheduleBtnTap:" destination="g4N-T8-DGB" eventType="touchUpInside" id="2ZH-JE-jUq"/>
+                                            <action selector="cancelBtnTap:" destination="g4N-T8-DGB" eventType="touchUpInside" id="QKb-NT-7gr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1165,7 +1165,7 @@
                         <outlet property="btnToPrev" destination="uxS-PF-csy" id="Vga-sN-nCI"/>
                         <outlet property="btnToRemove" destination="dLw-t5-wPy" id="R3w-5P-Vk2"/>
                         <outlet property="btndecrease" destination="Pfo-1k-OnA" id="DK5-HG-sUg"/>
-                        <outlet property="cancelBtn" destination="OLw-1C-Gok" id="8Kp-wb-naF"/>
+                        <outlet property="cancelBtn" destination="Bbe-hQ-Y5L" id="0jA-CX-TJB"/>
                         <outlet property="colectnVwSessionImage" destination="gBF-F1-5bm" id="SCe-Rb-cw8"/>
                         <outlet property="completedBtn" destination="d9t-Lb-S6p" id="MKT-eE-sZf"/>
                         <outlet property="contactUsLbl" destination="2zS-1C-Y7I" id="wjb-kk-vPu"/>
@@ -1189,7 +1189,7 @@
                         <outlet property="offeredHeightCons" destination="SaS-lA-XS7" id="AMX-vr-cpV"/>
                         <outlet property="pageCtrl" destination="37l-tK-9Og" id="T7O-xf-CKd"/>
                         <outlet property="priceLabel" destination="6Pi-Bs-ezE" id="Wg1-B3-u1R"/>
-                        <outlet property="rescheduleBtn" destination="Bbe-hQ-Y5L" id="8PE-yb-j3S"/>
+                        <outlet property="rescheduleBtn" destination="OLw-1C-Gok" id="Ooo-eo-VNQ"/>
                         <outlet property="serviceTimeCollectionVw" destination="SEs-id-jJo" id="iCs-sk-ZR3"/>
                         <outlet property="txtVw" destination="oCP-mF-dBy" id="b3s-Qd-k7z"/>
                         <outlet property="vendorNameLbl" destination="NdZ-hG-QLR" id="P8W-P2-NRt"/>
@@ -1215,8 +1215,8 @@
     <resources>
         <image name="+" width="29.5" height="29.5"/>
         <image name="-" width="29.5" height="7.5"/>
+        <image name="ChatIcn" width="40" height="40"/>
         <image name="bg" width="557.5" height="1086.5"/>
-        <image name="chatIcon" width="40" height="40"/>
         <image name="cross" width="13.5" height="13.5"/>
         <image name="loc" width="10" height="12.5"/>
         <image name="minimalLeft2X" width="7.5" height="13.5"/>
