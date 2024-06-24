@@ -128,6 +128,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var selectedSession = ""
     var selectedSessionID = ""
     var isFromReschedule = false
+    var isFromRescheduleNo = false
     var isFromFollowup = false
     
     var tempSessionTypeArr = [String]()
@@ -144,6 +145,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var isLoop = false
     var isPriceLoop = false
     var updatedprice = ""
+    var tapReschudleBtn = false
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -213,6 +215,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblNoTime.isHidden = false
             self.btnBooknow.isHidden = false
             self.cancelBtn.isHidden = true
+            self.rescheduleBtn.isHidden = true // ashtesh ashi2
             self.contactUsVw.isHidden = true
             self.completedBtn.isHidden = true
             self.priceLabel.isHidden = false
@@ -232,16 +235,23 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
 //        isLoop = false
 //        isPriceLoop = false
 //        updatedprice = ""
-        if self.isFromReschedule == true {
+        self.tapReschudleBtn = false
+        if self.isFromReschedule == true && isFromRescheduleNo == false {
             self.rescheduleBtn.isHidden = false
+            self.cancelBtn.isHidden = true
             self.btnBooknow.isHidden = true
-        }else{
+        }else if self.isFromReschedule == false && isFromRescheduleNo == true {
+            self.rescheduleBtn.isHidden = false
+            self.cancelBtn.isHidden = false
+            self.btnBooknow.isHidden = true
+        }
+        else{
             self.rescheduleBtn.isHidden = true
         }
         if self.isFromFollowup == true{
             self.customQstnVw.isHidden = false
         }else {
-            self.customQstnVw.isHidden = true
+            self.customQstnVw.isHidden = true //ashi3
         }
         self.setAttributedText()
         self.contactUsLbl.text = R.string.localizable.contactUs()
@@ -283,9 +293,13 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     //MARK: - BUTTON ACTION
     @IBAction func btnSubmit(_ sender: UIButton) {
-        if id == -1 {
+        if id == -1 && tapReschudleBtn == false{
             showAlert(strTitle: R.string.localizable.pleaseSelecttime())
-        } else {
+        }else if (tapReschudleBtn == true){
+            self.rescheduleBooking()
+            self.tapReschudleBtn = false
+        }
+        else {
             self.vwbookTickets.animShow()
             self.vwToGetBlurEffect.addBlurEffect()
             self.btnToRemove.isHidden = false
@@ -322,26 +336,22 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     
     @IBAction func chatButtonAction(_ sender: Any) {
-//        let vc = ChatBoxView.instance()
-//        vc.otherUser = (self.vm.model?.created_by ?? "").lowercased()
-//        vc.reciverId = self.vm.model?.created_id ?? ""
-//        vc.image = self.vm.model?.chat_user_image ?? ""
-//        vc.name = self.vm.model?.vendorName ?? ""
-//        self.navigationController?.pushViewController(vc, animated: true)
-        let popup = ContactUsView.initWith(frame: UIScreen.main.bounds)
-        self.view.addSubview(popup ?? UIView())
-        popup?.session_id = self.sessionId
-        popup?.contactusCallBack = { [weak self] in
-            popup?.removeFromSuperview()
-        }
+        let vc = ChatBoxView.instance()
+        vc.otherUser = (self.vm.model?.created_by ?? "").lowercased()
+        vc.reciverId = self.vm.model?.created_id ?? ""
+        vc.image = self.vm.model?.chat_user_image ?? ""
+        vc.name = self.vm.model?.vendorName ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
     @IBAction func rescheduleBtnTap(_ sender: UIButton) {
         if id == -1 {
+            self.tapReschudleBtn = true
             showAlert(strTitle: R.string.localizable.pleaseSelecttime())
         }else{
             self.rescheduleBooking()
+            self.tapReschudleBtn = false
         }
       
     }
@@ -373,12 +383,12 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
 //        vc.modalTransitionStyle = .crossDissolve
 //        self.navigationController?.present(vc, animated: true)
         
-//        let popup = ContactUsView.initWith(frame: UIScreen.main.bounds)
-//        self.view.addSubview(popup ?? UIView())
-//        popup?.session_id = self.sessionId
-//        popup?.contactusCallBack = { [weak self] in
-//            popup?.removeFromSuperview()
-//        }
+        let popup = ContactUsView.initWith(frame: UIScreen.main.bounds)
+        self.view.addSubview(popup ?? UIView())
+        popup?.session_id = self.sessionId
+        popup?.contactusCallBack = { [weak self] in
+            popup?.removeFromSuperview()
+        }
     }
     
     @IBAction func btnIncreaseTicketTap(_ sender: UIButton) {
@@ -827,8 +837,12 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             if self.id == indexPath.row{
             } else {
                 self.id = indexPath.row
-                guard let userid = SaveToDefaults().getUserId() else { return}
-                self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
+//                if(self.tapReschudleBtn == true){
+//                    self.rescheduleBooking()
+//                }else{
+                    guard let userid = SaveToDefaults().getUserId() else { return}
+                    self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
+  //              }
             }
             self.vwCollection.reloadData()
         }else if collectionView == self.offeredCollView{
@@ -943,6 +957,8 @@ extension SessionDetailVC: GetResponse {
             } else {
                 self.btnBooknow.isHidden = false
                 self.priceLabel.isHidden = false
+                self.cancelBtn.isHidden = true
+                self.rescheduleBtn.isHidden = true
                 //self.scrollViewBotmconstarint.constant = 97
                 if  self.isFromSelection{
                     let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
@@ -1009,6 +1025,8 @@ extension SessionDetailVC: GetResponse {
             } else {
                 self.btnBooknow.isHidden = false
                 self.priceLabel.isHidden = false
+                self.cancelBtn.isHidden = true
+                self.rescheduleBtn.isHidden = true
                 //self.scrollViewBotmconstarint.constant = 97
             }
         }

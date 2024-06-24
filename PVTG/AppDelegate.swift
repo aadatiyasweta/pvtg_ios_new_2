@@ -265,7 +265,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
 //        viewObj?.id = id
 //       viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
 //        viewObj?.delegate = self
-//        window?.addSubview(viewObj!)
+//        window?.addSubview(viewObj!) // ashi1
         Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: message, controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
             guard let self else{return}
             if result{
@@ -295,10 +295,19 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                                 vc.bookingId = bookingId
                                 vc.controllerId = 0
                                 vc.isFromReschedule = true
+                                vc.isFromRescheduleNo = false
         //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
                                 self.navigation.pushViewController(vc, animated: true)
                             }else{
                                 print("no ")
+                                let vc = SessionDetailVC.instance()
+                                vc.sessionId = "\(id)"
+                                vc.bookingId = bookingId
+                                vc.controllerId = 0
+                                vc.isFromReschedule = false
+                                vc.isFromRescheduleNo = true
+        //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
+                                self.navigation.pushViewController(vc, animated: true)
                             }
                     }
                 }

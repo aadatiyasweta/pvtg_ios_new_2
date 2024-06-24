@@ -911,7 +911,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Lbh-kP-Cag">
-                                <rect key="frame" x="26" y="1400" width="268" height="45"/>
+                                <rect key="frame" x="15.5" y="1400" width="289" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLw-1C-Gok">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="45"/>
@@ -921,7 +921,7 @@
                                             <constraint firstAttribute="width" constant="120" id="fPv-eb-tWg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                                        <state key="normal" title="Reschedule">
+                                        <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -930,18 +930,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="rescheduleBtnTap:" destination="g4N-T8-DGB" eventType="touchUpInside" id="xKI-rp-B9z"/>
+                                            <action selector="cancelBtnTap:" destination="g4N-T8-DGB" eventType="touchUpInside" id="MWU-lF-x6b"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbe-hQ-Y5L">
-                                        <rect key="frame" x="144" y="0.0" width="124" height="45"/>
+                                        <rect key="frame" x="144" y="0.0" width="145" height="45"/>
                                         <color key="backgroundColor" red="0.37647058820000001" green="0.4039215686" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Y7g-zg-FQQ"/>
-                                            <constraint firstAttribute="width" constant="124" id="fyr-V7-kbj"/>
+                                            <constraint firstAttribute="width" constant="145" id="fyr-V7-kbj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
-                                        <state key="normal" title="No">
+                                        <state key="normal" title="RESCHEDULE">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -950,7 +950,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="cancelBtnTap:" destination="g4N-T8-DGB" eventType="touchUpInside" id="QKb-NT-7gr"/>
+                                            <action selector="rescheduleBtnTap:" destination="g4N-T8-DGB" eventType="touchUpInside" id="Bak-Dw-iku"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1165,7 +1165,7 @@
                         <outlet property="btnToPrev" destination="uxS-PF-csy" id="Vga-sN-nCI"/>
                         <outlet property="btnToRemove" destination="dLw-t5-wPy" id="R3w-5P-Vk2"/>
                         <outlet property="btndecrease" destination="Pfo-1k-OnA" id="DK5-HG-sUg"/>
-                        <outlet property="cancelBtn" destination="Bbe-hQ-Y5L" id="0jA-CX-TJB"/>
+                        <outlet property="cancelBtn" destination="OLw-1C-Gok" id="jcs-5d-e08"/>
                         <outlet property="colectnVwSessionImage" destination="gBF-F1-5bm" id="SCe-Rb-cw8"/>
                         <outlet property="completedBtn" destination="d9t-Lb-S6p" id="MKT-eE-sZf"/>
                         <outlet property="contactUsLbl" destination="2zS-1C-Y7I" id="wjb-kk-vPu"/>
@@ -1189,7 +1189,7 @@
                         <outlet property="offeredHeightCons" destination="SaS-lA-XS7" id="AMX-vr-cpV"/>
                         <outlet property="pageCtrl" destination="37l-tK-9Og" id="T7O-xf-CKd"/>
                         <outlet property="priceLabel" destination="6Pi-Bs-ezE" id="Wg1-B3-u1R"/>
-                        <outlet property="rescheduleBtn" destination="OLw-1C-Gok" id="Ooo-eo-VNQ"/>
+                        <outlet property="rescheduleBtn" destination="Bbe-hQ-Y5L" id="NXM-8B-mZ8"/>
                         <outlet property="serviceTimeCollectionVw" destination="SEs-id-jJo" id="iCs-sk-ZR3"/>
                         <outlet property="txtVw" destination="oCP-mF-dBy" id="b3s-Qd-k7z"/>
                         <outlet property="vendorNameLbl" destination="NdZ-hG-QLR" id="P8W-P2-NRt"/>
