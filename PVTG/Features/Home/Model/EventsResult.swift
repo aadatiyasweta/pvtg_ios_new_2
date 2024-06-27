@@ -14,6 +14,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 struct EventsResult : Codable {
 	let booking_id : String?
+    let reschedule_count : String?
 	let booking_date : String?
 	let ticket : String?
 	let paid_amount : String?
@@ -33,6 +34,7 @@ struct EventsResult : Codable {
 	enum CodingKeys: String, CodingKey {
 		case booking_id = "booking_id"
 		case booking_date = "booking_date"
+        case reschedule_count = "reschedule_count"
 		case ticket = "ticket"
 		case paid_amount = "paid_amount"
 		case session_id = "session_id"
@@ -54,6 +56,7 @@ struct EventsResult : Codable {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		booking_id = try values.decodeIfPresent(String.self, forKey: .booking_id)
 		booking_date = try values.decodeIfPresent(String.self, forKey: .booking_date)
+        reschedule_count = try values.decodeIfPresent(String.self, forKey: .reschedule_count)
 		ticket = try values.decodeIfPresent(String.self, forKey: .ticket)
 		paid_amount = try values.decodeIfPresent(String.self, forKey: .paid_amount)
 		session_id = try values.decodeIfPresent(String.self, forKey: .session_id)

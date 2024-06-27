@@ -37,6 +37,7 @@ class SessionDetailViewModel: BaseVm {
     var sessionDesc = ""
     var chargeId = ""
     var rescheduleSuccesClosure:() -> (Void) = {   }
+    var rescheduleErrorClosure:() -> (Void) = {   }
     //MARK: - SESSION DETAIL API
     func sessionDtailApi(user_id: String, session_id: String, latitude: String, longitude: String, top_search: String,bookingId : String) {
         let date = Date().dateInString()
@@ -316,9 +317,9 @@ class SessionDetailViewModel: BaseVm {
     }
     
     //MARK: - RESCHEDULE SESSION BOOKING API
-    func sessionRescheduleApi(user_id: String, session_id: String, booking_id: String, booking_date: String, booking_from_time: String, booking_to_time: String, schedule_time_id: String,session_type_id : String? = "") {
+    func sessionRescheduleApi(user_id: String, session_id: String, booking_id: String, booking_date: String, booking_from_time: String, booking_to_time: String, schedule_time_id: String,session_type_id : String? = "",rescheduleCount : String) {
         var prams = [String : Any]()
-        prams = ["user_id": user_id, "session_id": session_id, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "schedule_time_id": schedule_time_id,"booking_id": booking_id,"session_type_id":self.model?.session_type?[0].session_type_id ?? "" ,"language" : SaveToDefaults().getAppLang() ?? "en"]
+        prams = ["user_id": user_id, "session_id": session_id, "reschedule_count": rescheduleCount, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "schedule_time_id": schedule_time_id,"booking_id": booking_id,"session_type_id":self.model?.session_type?[0].session_type_id ?? "" ,"language" : SaveToDefaults().getAppLang() ?? "en"]
         print(prams)
         self.show()
         api_manager.POSTApi(rescheduleSessionApiUrl(), param: prams, header: header()) { (response, err, code) in
@@ -331,6 +332,7 @@ class SessionDetailViewModel: BaseVm {
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                    self.rescheduleErrorClosure()
                 }
             }else{
                 showAlert(strTitle: somethingWentWrongMessage)

@@ -76,6 +76,7 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
         vc.controllerId = 1
         vc.bookingId = self.vm.model?.result?[indexPath.row].booking_id ?? ""
         vc.sessionId = self.vm.model?.result?[indexPath.row].session_id ?? ""
+        vc.rescheduleCountStr = self.vm.model?.result?[indexPath.row].reschedule_count ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

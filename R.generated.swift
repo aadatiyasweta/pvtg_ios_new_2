@@ -766,12 +766,12 @@ struct _R {
       /// Locales: en, es
       var cameraAccessDenied: RswiftResources.StringResource { .init(key: "CameraAccessDenied", tableName: "Localizable", source: source, developmentValue: "Camera Access Denied", comment: nil) }
 
-      /// en translation: Are you sure you want to cancel the booking
+      /// en translation: Are you sure you want to cancel your booking
       ///
       /// Key: CancelTheBooking
       ///
       /// Locales: en, es
-      var cancelTheBooking: RswiftResources.StringResource { .init(key: "CancelTheBooking", tableName: "Localizable", source: source, developmentValue: "Are you sure you want to cancel the booking", comment: nil) }
+      var cancelTheBooking: RswiftResources.StringResource { .init(key: "CancelTheBooking", tableName: "Localizable", source: source, developmentValue: "Are you sure you want to cancel your booking", comment: nil) }
 
       /// en translation: Cancellation Policy
       ///

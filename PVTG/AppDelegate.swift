@@ -116,11 +116,11 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         if userInfo?["gcm.notification.type"] as? String == "reminder"{
             if let session_id = userInfo?["gcm.notification.session_id"] as? String, let session_name = userInfo?["gcm.notification.session_name"] as? String, let notificationString = userInfo?["gcm.notification.data"] as? String {
                 let notificationData = convertToDictionary(text: notificationString)
-                if let bookingId = notificationData?["booking_id"] as? String, let bodyMessage = notificationData?["body"] as? String{
-                    print(session_id,session_name)
+                if let bookingId = notificationData?["booking_id"] as? String, let bodyMessage = notificationData?["body"] as? String, let rescheduleCount = notificationData?["reschedule_count"] as? String{
+                    print(session_id,session_name,rescheduleCount)
                     //                               if SaveToDefaults().getAccessToken() != nil{
                     //                                   if application.applicationState == .active{
-                    self.performAttendingAlert(name: session_name, id: session_id,message: bodyMessage, bookingId: bookingId)
+                    self.performAttendingAlert(name: session_name, id: session_id,message: bodyMessage, bookingId: bookingId, rescheduleCount: rescheduleCount)
                     //                                   }
                     //                               }
                 }
@@ -260,7 +260,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         }
     }
         
-    func performAttendingAlert(name : String, id : String, message:String, bookingId: String){
+    func performAttendingAlert(name : String, id : String, message:String, bookingId: String, rescheduleCount: String){
 //        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
 //        viewObj?.id = id
 //       viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
@@ -278,6 +278,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                             vc.type = R.string.localizable.latePolicy()
                            // vc.type = "Late fee Policy"
                             vc.isFromReschedule = true
+                            vc.rescheduleCountStr = rescheduleCount
                             vc.url = cancelPolicy
                             self.navigation.pushViewController(vc, animated: true)
                         }else{
@@ -293,6 +294,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                                 let vc = SessionDetailVC.instance()
                                 vc.sessionId = "\(id)"
                                 vc.bookingId = bookingId
+                                vc.rescheduleCountStr = rescheduleCount
                                 vc.controllerId = 0
                                 vc.isFromReschedule = true
                                 vc.isFromRescheduleNo = false
@@ -303,6 +305,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                                 let vc = SessionDetailVC.instance()
                                 vc.sessionId = "\(id)"
                                 vc.bookingId = bookingId
+                                vc.rescheduleCountStr = rescheduleCount
                                 vc.controllerId = 0
                                 vc.isFromReschedule = false
                                 vc.isFromRescheduleNo = true

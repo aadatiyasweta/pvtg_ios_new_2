@@ -21,6 +21,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     var type = ""
     let webView = WKWebView()
     var url = ""
+    var rescheduleCountStr = ""
     var isFromReschedule = false
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -79,6 +80,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     
     @IBAction func okBtnAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
