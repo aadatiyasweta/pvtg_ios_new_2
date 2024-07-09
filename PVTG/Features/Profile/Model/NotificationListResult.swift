@@ -18,6 +18,11 @@ struct NotificationListResult: Codable {
 	let image : String?
 	let type : String?
 	let added_on : String?
+    
+    let session_id : String?
+    let booking_id : String?
+    let schedule_time_id : String?
+    let reschedule_count : String?
 
 	enum CodingKeys: String, CodingKey {
 		case title = "title"
@@ -25,6 +30,11 @@ struct NotificationListResult: Codable {
 		case image = "image"
 		case type = "type"
 		case added_on = "added_on"
+        
+        case session_id = "session_id"
+        case booking_id = "booking_id"
+        case schedule_time_id = "schedule_time_id"
+        case reschedule_count = "reschedule_count"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -34,6 +44,11 @@ struct NotificationListResult: Codable {
 		image = try values.decodeIfPresent(String.self, forKey: .image)
 		type = try values.decodeIfPresent(String.self, forKey: .type)
 		added_on = try values.decodeIfPresent(String.self, forKey: .added_on)
+        
+        session_id = try values.decodeIfPresent(String.self, forKey: .session_id)
+        booking_id = try values.decodeIfPresent(String.self, forKey: .booking_id)
+        schedule_time_id = try values.decodeIfPresent(String.self, forKey: .schedule_time_id)
+        reschedule_count = try values.decodeIfPresent(String.self, forKey: .reschedule_count)
 	}
 
 }

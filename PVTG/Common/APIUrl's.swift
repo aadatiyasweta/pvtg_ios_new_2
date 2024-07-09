@@ -92,6 +92,12 @@ func changePasswordUrl()-> String {
     print("Userapi/change_password",url)
     return url
 }
+func checkSession()-> String{
+    var  url = "\(server)Sessionapi/check_session"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("Sessionapi/check_session",url)
+    return url
+}
 func togglePushUrl()-> String {
     var  url = "\(server)togglePush"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

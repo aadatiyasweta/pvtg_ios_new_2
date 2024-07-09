@@ -244,6 +244,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         let vc = PrivacyPolicyVC.instance()
         vc.type = R.string.localizable.cancelPolicy()
         vc.url = cancelPolicy
+        vc.isComingCancelBooking = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

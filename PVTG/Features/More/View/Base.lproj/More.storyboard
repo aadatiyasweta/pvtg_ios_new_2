@@ -62,11 +62,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="481"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVT-iW-Zyg">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="401"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="321"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wE8-4r-YBO">
-                                                <rect key="frame" x="0.0" y="401" width="320" height="80"/>
+                                                <rect key="frame" x="0.0" y="321" width="320" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3L3-FD-F3X">
                                                         <rect key="frame" x="135" y="15" width="50" height="50"/>
@@ -88,11 +88,42 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="0V8-wM-Bba"/>
                                                     <constraint firstItem="3L3-FD-F3X" firstAttribute="centerY" secondItem="wE8-4r-YBO" secondAttribute="centerY" id="J4A-nb-Dmp"/>
                                                     <constraint firstItem="3L3-FD-F3X" firstAttribute="centerX" secondItem="wE8-4r-YBO" secondAttribute="centerX" id="QCR-1F-fpA"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPp-vI-siL">
+                                                <rect key="frame" x="0.0" y="401" width="320" height="80"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJ1-nx-352">
+                                                        <rect key="frame" x="70" y="15" width="180" height="50"/>
+                                                        <color key="backgroundColor" name="PurpleActionBtn"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="180" id="S5B-RL-q4R"/>
+                                                            <constraint firstAttribute="height" constant="50" id="aL9-Ma-tVI"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="CANCEL BOOKING"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="25"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="cancelBookingBtnTapped:" destination="joW-Dt-v9X" eventType="touchUpInside" id="ity-TG-AE3"/>
+                                                            <action selector="okBtnAction:" destination="joW-Dt-v9X" eventType="touchUpInside" id="z0E-Jy-Oh0"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="lJ1-nx-352" firstAttribute="centerY" secondItem="DPp-vI-siL" secondAttribute="centerY" id="YgH-s4-boP"/>
+                                                    <constraint firstItem="lJ1-nx-352" firstAttribute="centerX" secondItem="DPp-vI-siL" secondAttribute="centerX" id="buZ-3U-cda"/>
+                                                    <constraint firstAttribute="height" constant="80" id="wep-jE-7at"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -123,6 +154,8 @@
                     </view>
                     <connections>
                         <outlet property="btnBack" destination="JTM-Xb-VOP" id="HLp-sr-atj"/>
+                        <outlet property="cancelBookingBtn" destination="lJ1-nx-352" id="vbq-ll-cla"/>
+                        <outlet property="cancelBookingVw" destination="DPp-vI-siL" id="Ze8-ZU-26O"/>
                         <outlet property="okBtnVw" destination="wE8-4r-YBO" id="MeK-tG-47u"/>
                         <outlet property="subView" destination="MVT-iW-Zyg" id="yLg-FN-1mI"/>
                         <outlet property="titleLbl" destination="ZyP-qo-IiI" id="Mgr-Pl-5pA"/>
@@ -493,7 +526,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

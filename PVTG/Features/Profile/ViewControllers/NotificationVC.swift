@@ -28,13 +28,26 @@ class NotificationVC: BaseViewController {
     var indexOfPageToRequest = 0
     var ispageEnabled = false
     
+    var bookigIdSTr = ""
+    var sessionIdSTr = ""
+    var rescheduleCountSTr = ""
+    
+    var notificationListData = [NotificationListResult]()
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        bookigIdSTr = ""
         self.tabBarController?.removeBadgeSubview()
         self.notificationVM.delegate = self
-        loadApi(offset: "0")
+       
         self.tblNotication.register(NotificationCell.nib(), forCellReuseIdentifier: NotificationCell.ident)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        notificationListData.removeAll()
+        loadApi(offset: "0")
     }
     
     override func viewWillLayoutSubviews() {
@@ -91,6 +104,14 @@ extension NotificationVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         debugPrint("\(indexPath.row)")
+        
+        bookigIdSTr = self.notificationListData[indexPath.row].booking_id ?? ""
+        sessionIdSTr = self.notificationListData[indexPath.row].session_id ?? ""
+        rescheduleCountSTr = self.notificationListData[indexPath.row].reschedule_count ?? ""
+        guard let userid = SaveToDefaults().getUserId() else {return}
+        
+        //self.notificationVM.getCoachNotificationListApi(user_id: userid, offset: offset)
+        self.notificationVM.makeCheckSession(user_id: userid, session_id: notificationListData[indexPath.row].session_id ?? "", schedule_time_id: self.notificationListData[indexPath.row].schedule_time_id ?? "")
     }
 }
 
@@ -110,9 +131,20 @@ extension NotificationVC {
 
 //MARK: - CUSTOM DELEGATE
 extension NotificationVC: AfterGettingNotificationList {
+    func updateCheckRescheduleStatus() {
+        print("StatusSucess")
+        let vc = SessionDetailVC.instance()
+        vc.controllerId = 1
+        vc.bookingId = bookigIdSTr
+        vc.sessionId = sessionIdSTr
+        vc.rescheduleCountStr = rescheduleCountSTr
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func updateList() {
         if self.notificationVM.model?.result?.count ?? 0 > 0 {
             self.lbvlNoNotification.text = ""
+            notificationListData += self.notificationVM.model?.result ?? [NotificationListResult]()
             
         } else {
             self.lbvlNoNotification.text = R.string.localizable.noNotifications()

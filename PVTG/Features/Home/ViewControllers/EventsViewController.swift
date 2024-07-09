@@ -47,12 +47,12 @@ class EventsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
-        self.setCollectionVw()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadApi(offset: "0")
+        self.setCollectionVw()
     }
 }
 

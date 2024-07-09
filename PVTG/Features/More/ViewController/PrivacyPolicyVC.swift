@@ -17,15 +17,32 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var okBtnVw: UIView!
+    
+    @IBOutlet weak var cancelBookingVw: UIView!
+    
+    @IBOutlet weak var cancelBookingBtn: UIButton!
+    
+    
     //MARK: - Properties
     var type = ""
     let webView = WKWebView()
     var url = ""
+    var timeStr = ""
+    var ammountSTr = ""
+    var useridStr = ""
+    var sessionId = ""
+    var bookingId = ""
+    var payment_id = ""
+    var isFromPartial = false
+    
     var rescheduleCountStr = ""
     var isFromReschedule = false
+    var isComingCancelBooking = false
+    var vm = SessionDetailViewModel()
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelBookingVw.isHidden = true
         self.titleLbl.text = type
         self.showWithTouch()
         webView.uiDelegate = self
@@ -39,6 +56,43 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
         }else{
             self.okBtnVw.isHidden = true
         }
+        
+        if(isComingCancelBooking == true){
+            self.okBtnVw.isHidden = true
+            cancelBookingVw.isHidden = false
+            
+//            showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: "Confirm Booking Cancellation", itsController: self) { (succsss) in
+//                if succsss{
+//                    
+//                    let time = self.timeStr
+//                    let ammount = self.ammountSTr
+//                    let fromattter1 = DateFormatter()
+//                    fromattter1.dateFormat = "yyyy-MM-dd HH:mm"
+//                    fromattter1.timeZone =  NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
+//                    let endDate = fromattter1.date(from: time) ?? Date()
+//                    let hours = getMinutesDifferenceFromTwoDates(start: getCurrentLocalDate(), end: endDate).hour ?? 0
+//                    if hours < 2{
+//                        if let id = SaveToDefaults().getUserId(){
+//                            let ammount = self.ammountSTr
+//                            if let n = NumberFormatter().number(from: ammount) {
+//                                let floatPrice = CGFloat(truncating: n)
+//                                let fiftenPercent = CGFloat((floatPrice*15)/100)
+//                                let finalPrice = floatPrice-fiftenPercent
+//                                self.vm.sessionCancelApi(user_id: self.useridStr, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.payment_id, ammount: "\(finalPrice)")
+//                            }
+//                            
+//                        }
+//                    }else{
+//                        if let id = SaveToDefaults().getUserId(){
+//                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
+//                        }
+//                    }
+//                }
+//            }
+            
+        }
+        cancelBookingBtn.layer.cornerRadius = cancelBookingBtn.frame.size.height/2
+        cancelBookingBtn.clipsToBounds = true
     }
     
     override func viewWillLayoutSubviews() {
@@ -83,4 +137,41 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
         //self.navigationController?.popToRootViewController(animated: true)
     }
     
+    @IBAction func cancelBookingBtnTapped(_ sender: Any) {
+        if(isComingCancelBooking == true){
+
+            
+            showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: "Confirm Booking Cancellation", itsController: self) { (succsss) in
+                if succsss{
+                    
+                    let time = self.timeStr
+                    let ammount = self.ammountSTr
+                    let fromattter1 = DateFormatter()
+                    fromattter1.dateFormat = "yyyy-MM-dd HH:mm"
+                    fromattter1.timeZone =  NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
+                    let endDate = fromattter1.date(from: time) ?? Date()
+                    let hours = getMinutesDifferenceFromTwoDates(start: getCurrentLocalDate(), end: endDate).hour ?? 0
+                    if hours < 2{
+                        if let id = SaveToDefaults().getUserId(){
+                            let ammount = self.ammountSTr
+                            if let n = NumberFormatter().number(from: ammount) {
+                                let floatPrice = CGFloat(truncating: n)
+                                let fiftenPercent = CGFloat((floatPrice*15)/100)
+                                let finalPrice = floatPrice-fiftenPercent
+                                self.vm.sessionCancelApi(user_id: self.useridStr, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.payment_id, ammount: "\(finalPrice)")
+                            }
+                            
+                        }
+                    }else{
+                        if let id = SaveToDefaults().getUserId(){
+                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
+                        }
+                    }
+                    self.isComingCancelBooking = false
+                    self.cancelBookingBtn.setTitle("CANCELLED", for: .normal)
+                }
+            }
+            
+        }
+    }
 }

@@ -78,6 +78,7 @@ class ActiveEventCell: UICollectionViewCell {
         if let img = data.session_image {
             loadImage(img, self.sessionImage, activity: nil, defaultImage: nil)
         }
+        activeEventCollectionView.reloadData()
         
     }
     

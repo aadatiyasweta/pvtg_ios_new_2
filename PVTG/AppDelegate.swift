@@ -280,6 +280,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                             vc.isFromReschedule = true
                             vc.rescheduleCountStr = rescheduleCount
                             vc.url = cancelPolicy
+                            vc.isComingCancelBooking = false
                             self.navigation.pushViewController(vc, animated: true)
                         }else{
                            

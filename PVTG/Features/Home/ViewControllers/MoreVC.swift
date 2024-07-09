@@ -84,6 +84,7 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
    vc.url = cancelPolicy
+      vc.isComingCancelBooking = false
    self.navigationController?.pushViewController(vc, animated: true)
   case 7:
    let vc = PrivacyPolicyVC.instance()

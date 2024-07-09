@@ -175,6 +175,7 @@
 		D6A30F8E2BB9B9BC008E4DCF /* ContactUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A30F902BB9B9BC008E4DCF /* ContactUsView.xib */; };
 		D6B6D9642BA42A44000D1C0C /* ContactUsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B6D9632BA42A44000D1C0C /* ContactUsViewViewModel.swift */; };
 		D6B6D9692BA44B00000D1C0C /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B6D9682BA44B00000D1C0C /* ContactUsView.swift */; };
+		D6B6FC4A2C2EC738009A0119 /* CheckSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B6FC492C2EC737009A0119 /* CheckSessionModel.swift */; };
 		D6B852B02B9F2D21007173B2 /* ReceiverTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B852AE2B9F2D21007173B2 /* ReceiverTVCell.swift */; };
 		D6B852B12B9F2D21007173B2 /* ReceiverTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B852AF2B9F2D21007173B2 /* ReceiverTVCell.xib */; };
 		D6B852B42B9F3876007173B2 /* SenderTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B852B22B9F3876007173B2 /* SenderTVCell.swift */; };
@@ -429,6 +430,7 @@
 		D6A30F952BB9B9D6008E4DCF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ContactUsView.strings; sourceTree = "<group>"; };
 		D6B6D9632BA42A44000D1C0C /* ContactUsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewViewModel.swift; sourceTree = "<group>"; };
 		D6B6D9682BA44B00000D1C0C /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
+		D6B6FC492C2EC737009A0119 /* CheckSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSessionModel.swift; sourceTree = "<group>"; };
 		D6B852AE2B9F2D21007173B2 /* ReceiverTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTVCell.swift; sourceTree = "<group>"; };
 		D6B852AF2B9F2D21007173B2 /* ReceiverTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverTVCell.xib; sourceTree = "<group>"; };
 		D6B852B22B9F3876007173B2 /* SenderTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTVCell.swift; sourceTree = "<group>"; };
@@ -715,6 +717,7 @@
 				188C108A25B17FA600A326FE /* ProfileResult.swift */,
 				188C108725B17FA600A326FE /* Selected_category.swift */,
 				188C108825B17FA600A326FE /* User_profile.swift */,
+				D6B6FC492C2EC737009A0119 /* CheckSessionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1430,7 +1433,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1512,6 +1515,7 @@
 				D6B6D9692BA44B00000D1C0C /* ContactUsView.swift in Sources */,
 				186AC27A25C7BAA600C97842 /* Geometry.swift in Sources */,
 				185245E225B99B1A00801AFB /* SearchSessionViewModel.swift in Sources */,
+				D6B6FC4A2C2EC738009A0119 /* CheckSessionModel.swift in Sources */,
 				18F4DE6925A8465E00E7827A /* UPCarouselFlowLayout.swift in Sources */,
 				1852FF0E25C90EC2002CAF9E /* FSPagerCollectionView.swift in Sources */,
 				1865F465259C7DAD00669618 /* PrivacyPolicyVC.swift in Sources */,

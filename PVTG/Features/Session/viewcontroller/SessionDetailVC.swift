@@ -344,32 +344,72 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
     
     @IBAction func cancelBtnTap(_ sender: UIButton) {
-//        showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: Bundle.main.appName, itsController: self) { (succsss) in
-        showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: "Confirm Booking Cancellation", itsController: self) { (succsss) in
-            if succsss{
-                let time = self.vm.model?.booking_date ?? ""
-                let fromattter1 = DateFormatter()
-                fromattter1.dateFormat = "yyyy-MM-dd HH:mm"
-                fromattter1.timeZone =  NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
-                let endDate = fromattter1.date(from: time) ?? Date()
-                let hours = getMinutesDifferenceFromTwoDates(start: getCurrentLocalDate(), end: endDate).hour ?? 0
-                if hours < 2{
-                    if let id = SaveToDefaults().getUserId(){
-                        let ammount = self.vm.model?.paid_amount ?? ""
-                        if let n = NumberFormatter().number(from: ammount) {
-                            let floatPrice = CGFloat(truncating: n)
-                            let fiftenPercent = CGFloat((floatPrice*15)/100)
-                            let finalPrice = floatPrice-fiftenPercent
-                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.vm.model?.payment_id ?? "", ammount: "\(finalPrice)")
-                        }
-                    }
-                }else{
-                    if let id = SaveToDefaults().getUserId(){
-                        self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
-                    }
-                }
-            }
-        }
+
+//        showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: "Confirm Booking Cancellation", itsController: self) { (succsss) in
+//            if succsss{
+        
+                let vc = PrivacyPolicyVC.instance()
+                vc.type = R.string.localizable.latePolicy()
+                vc.isFromReschedule = true
+                vc.url = cancelPolicy
+                vc.isComingCancelBooking = true
+                vc.timeStr = self.vm.model?.booking_date ?? ""
+                            
+                            vc.sessionId = self.sessionId
+                            vc.bookingId = self.bookingId
+                            vc.payment_id = self.vm.model?.payment_id ?? ""
+        vc.ammountSTr = self.vm.model?.paid_amount ?? ""
+        
+//                let time = self.vm.model?.booking_date ?? ""
+//                        let fromattter1 = DateFormatter()
+//                        fromattter1.dateFormat = "yyyy-MM-dd HH:mm"
+//                        fromattter1.timeZone =  NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
+//                        let endDate = fromattter1.date(from: time) ?? Date()
+//                        let hours = getMinutesDifferenceFromTwoDates(start: getCurrentLocalDate(), end: endDate).hour ?? 0
+//        if hours < 2{
+//            if let id = SaveToDefaults().getUserId(){
+//                vc.isFromPartial = true
+//                vc.useridStr = id
+//                
+//                let ammount = self.vm.model?.paid_amount ?? ""
+//                if let n = NumberFormatter().number(from: ammount) {
+//                    let floatPrice = CGFloat(truncating: n)
+//                    let fiftenPercent = CGFloat((floatPrice*15)/100)
+//                    let finalPrice = floatPrice-fiftenPercent
+//                    vc.ammountSTr = "\(finalPrice)"
+//                }
+//            }
+//        }else{
+//            if let id = SaveToDefaults().getUserId(){
+//                vc.isFromPartial = false
+//                vc.ammountSTr = self.vm.model?.paid_amount ?? ""
+//            }
+//        }
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+//                let time = self.vm.model?.booking_date ?? ""
+//                let fromattter1 = DateFormatter()
+//                fromattter1.dateFormat = "yyyy-MM-dd HH:mm"
+//                fromattter1.timeZone =  NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
+//                let endDate = fromattter1.date(from: time) ?? Date()
+//                let hours = getMinutesDifferenceFromTwoDates(start: getCurrentLocalDate(), end: endDate).hour ?? 0
+//                if hours < 2{
+//                    if let id = SaveToDefaults().getUserId(){
+//                        let ammount = self.vm.model?.paid_amount ?? ""
+//                        if let n = NumberFormatter().number(from: ammount) {
+//                            let floatPrice = CGFloat(truncating: n)
+//                            let fiftenPercent = CGFloat((floatPrice*15)/100)
+//                            let finalPrice = floatPrice-fiftenPercent
+//                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.vm.model?.payment_id ?? "", ammount: "\(finalPrice)")
+//                        }
+//                    }
+//                }else{
+//                    if let id = SaveToDefaults().getUserId(){
+//                        self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
+//                    }
+//                }
+//            }
+//        }
     }
     
     
@@ -1155,7 +1195,7 @@ extension SessionDetailVC: GetResponse {
                 }else{
                     self.sessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
                     self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
-                    self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                    self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "") // here comes
                     self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
                 }
             } // ashiteshhh
