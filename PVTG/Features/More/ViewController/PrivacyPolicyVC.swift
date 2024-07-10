@@ -39,6 +39,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     var isFromReschedule = false
     var isComingCancelBooking = false
     var vm = SessionDetailViewModel()
+    var getChargeId = ""
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,7 +146,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
                 if succsss{
                     
                     let time = self.timeStr
-                    let ammount = self.ammountSTr
+                    //let ammount = self.ammountSTr
                     let fromattter1 = DateFormatter()
                     fromattter1.dateFormat = "yyyy-MM-dd HH:mm"
                     fromattter1.timeZone =  NSTimeZone(abbreviation: "GMT+0:00") as TimeZone?
@@ -158,13 +159,13 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
                                 let floatPrice = CGFloat(truncating: n)
                                 let fiftenPercent = CGFloat((floatPrice*15)/100)
                                 let finalPrice = floatPrice-fiftenPercent
-                                self.vm.sessionCancelApi(user_id: self.useridStr, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.payment_id, ammount: "\(finalPrice)")
+                                self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.payment_id, ammount: "\(finalPrice)", chargeid: self.getChargeId)
                             }
                             
                         }
                     }else{
                         if let id = SaveToDefaults().getUserId(){
-                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.vm.model?.paid_amount ?? "")
+                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.ammountSTr, chargeid: self.getChargeId)
                         }
                     }
                     self.isComingCancelBooking = false

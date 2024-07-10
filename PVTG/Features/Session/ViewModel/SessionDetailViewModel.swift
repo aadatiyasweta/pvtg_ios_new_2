@@ -206,7 +206,7 @@ class SessionDetailViewModel: BaseVm {
     }
     
     //MARK: - METHOD TO CANCEL SESSION API
-    func sessionCancelApi(user_id: String, session_id: String,booking_id : String,isFromPartial : Bool , paymentId: String,ammount : String) {
+    func sessionCancelApi(user_id: String, session_id: String,booking_id : String,isFromPartial : Bool , paymentId: String,ammount : String, chargeid : String) {
         self.show()
         let param : [String:Any] = ["user_id" : user_id , "session_id" : session_id,"booking_id":booking_id]
         api_manager.POSTApi(sessionCancelApiUrl(), param: param, header: header()) { (response, err, code) in
@@ -215,6 +215,8 @@ class SessionDetailViewModel: BaseVm {
                 debugPrint(json)
                 if json["statusCode"] == 200 {
                     self.stripeRefundAPI(chargeID: self.chargeId)
+                    //showAlert(strTitle: "Session cancelled successfully.")
+                    
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
