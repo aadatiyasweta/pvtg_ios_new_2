@@ -214,8 +214,8 @@ class SessionDetailViewModel: BaseVm {
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
-                    self.stripeRefundAPI(chargeID: self.chargeId)
-                    //showAlert(strTitle: "Session cancelled successfully.")
+                    self.stripeRefundAPI(chargeID: chargeid)
+                    showAlert(strTitle: "Session cancelled successfully.")
                     
                 }
                 else {

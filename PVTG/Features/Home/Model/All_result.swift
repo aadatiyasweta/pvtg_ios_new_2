@@ -23,6 +23,7 @@ struct All_result : Codable {
     let distance : String?
     let address : String?
     let address_id : String?
+    //let follow_up_id : String?
     
     enum CodingKeys: String, CodingKey {
         case session_id = "session_id"
@@ -35,6 +36,7 @@ struct All_result : Codable {
         case distance = "distance"
         case address = "address"
         case address_id = "address_id"
+       // case follow_up_id = "follow_up_id"
     }
     
     init(from decoder: Decoder) throws {
@@ -49,5 +51,6 @@ struct All_result : Codable {
         distance = try values.decodeIfPresent(String.self, forKey: .distance)
         address = try values.decodeIfPresent(String.self, forKey: .address)
         address_id = try values.decodeIfPresent(String.self, forKey: .address_id)
+        //follow_up_id = try values.decodeIfPresent(String.self, forKey: .follow_up_id)
     }
 }

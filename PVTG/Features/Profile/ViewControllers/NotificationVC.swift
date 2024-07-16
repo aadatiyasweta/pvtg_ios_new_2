@@ -33,6 +33,7 @@ class NotificationVC: BaseViewController {
     var rescheduleCountSTr = ""
     
     var notificationListData = [NotificationListResult]()
+   // var window: UIWindow?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -78,29 +79,9 @@ extension NotificationVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotificationCell.ident, for: indexPath) as? NotificationCell else {return UITableViewCell()}
         cell.setData(data: self.notificationVM.model?.result?[indexPath.row])
-//        if self.notificationVM.model?.result?[indexPath.row].image != "" {
-////            cell.imgHeightConstraint.constant = 150
-////            cell.imgBottomconstraint.constant = 15
-//            cell.stackVwlLowerPart.isHidden = false
-//        } else {
-////            cell.imgHeightConstraint.constant = 0
-////            cell.imgBottomconstraint.constant = 0
-//            cell.stackVwlLowerPart.isHidden = true
-//        }
-//        DispatchQueue.main.async {
-//                  //reload this row so that `heightForRowAt` runs again and calculates height of cell based on image height
-//            self.tableView.reloadRows(at: [IndexPath], with: .automatic)
-//                  }
+
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-//
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 88
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         debugPrint("\(indexPath.row)")
@@ -132,13 +113,43 @@ extension NotificationVC {
 //MARK: - CUSTOM DELEGATE
 extension NotificationVC: AfterGettingNotificationList {
     func updateCheckRescheduleStatus() {
+        
+        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.reschedule(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: R.string.localizable.rescheduleSession(), controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
+            guard let self else{return}
+            if result{
+                let vc = SessionDetailVC.instance()
+                    vc.controllerId = 1
+                    vc.bookingId = self.bookigIdSTr
+                    vc.sessionId = self.sessionIdSTr
+                    vc.rescheduleCountStr = self.rescheduleCountSTr
+                    self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                print("no ")
+               
+            }
+    }
+
+        
+        
+        
+//        let refreshAlert = UIAlertController(title: R.string.localizable.notificationtitle(), message: R.string.localizable.rescheduleSession(), preferredStyle: UIAlertController.Style.alert)
+//        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+//            refreshAlert.dismiss(animated: true, completion: nil)
+//        }))
+//                refreshAlert.addAction(UIAlertAction(title: R.string.localizable.reschedule(), style: .default, handler: { (action: UIAlertAction!) in
+//
+//                    let vc = SessionDetailVC.instance()
+//                    vc.controllerId = 1
+//                    vc.bookingId = self.bookigIdSTr
+//                    vc.sessionId = self.sessionIdSTr
+//                    vc.rescheduleCountStr = self.rescheduleCountSTr
+//                    self.navigationController?.pushViewController(vc, animated: true)
+//                }))
+//
+//                present(refreshAlert, animated: true, completion: nil)
+        
         print("StatusSucess")
-        let vc = SessionDetailVC.instance()
-        vc.controllerId = 1
-        vc.bookingId = bookigIdSTr
-        vc.sessionId = sessionIdSTr
-        vc.rescheduleCountStr = rescheduleCountSTr
-        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     func updateList() {

@@ -297,8 +297,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                                 vc.bookingId = bookingId
                                 vc.rescheduleCountStr = rescheduleCount
                                 vc.controllerId = 0
-                                vc.isFromReschedule = true
-                                vc.isFromRescheduleNo = false
+                                vc.isFromReschedule = false
+                                vc.isFromRescheduleNo = true
         //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
                                 self.navigation.pushViewController(vc, animated: true)
                             }else{
@@ -308,8 +308,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                                 vc.bookingId = bookingId
                                 vc.rescheduleCountStr = rescheduleCount
                                 vc.controllerId = 0
-                                vc.isFromReschedule = false
-                                vc.isFromRescheduleNo = true
+                                vc.isFromReschedule = true
+                                vc.isFromRescheduleNo = false
         //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
                                 self.navigation.pushViewController(vc, animated: true)
                             }

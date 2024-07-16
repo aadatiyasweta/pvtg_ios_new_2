@@ -24,7 +24,7 @@ class MoreVC: BaseViewController {
  }
  
  //MARK: - Properties
- var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(),R.string.localizable.changeLanguage(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(), R.string.localizable.signout()]
+ var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(),R.string.localizable.changeLanguage(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(), R.string.localizable.signout()]
  var morevm = MoreVM()
  
 //MARK: - LifeCycle
@@ -81,24 +81,30 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
    vc.url = terms
    self.navigationController?.pushViewController(vc, animated: true)
   case 6:
+      let vc = PrivacyPolicyVC.instance()
+      vc.type = self.moreArr[indexPath.row]
+      vc.url = cancelPolicy
+         vc.isComingCancelBooking = false
+      self.navigationController?.pushViewController(vc, animated: true)
+  case 7:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
-   vc.url = cancelPolicy
+   vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html" // late fee url
       vc.isComingCancelBooking = false
    self.navigationController?.pushViewController(vc, animated: true)
-  case 7:
+  case 8:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
    vc.url = aboutUs
    self.navigationController?.pushViewController(vc, animated: true)
-  case 8:
+  case 9:
    debugPrint("  Rate us")
       SKStoreReviewController.requestReview()
-  case 9:
+  case 10:
    let vc = OnboardingVC.instance()
    vc.controllerId = 1
    self.navigationController?.pushViewController(vc, animated: true)
-  case 10:  self.showAlertWithConfirmation(R.string.localizable.areyousureyouwant(), withTitle: appName, itsController: self) { (sucess) in
+  case 11:  self.showAlertWithConfirmation(R.string.localizable.areyousureyouwant(), withTitle: appName, itsController: self) { (sucess) in
    if sucess{
     appDelegate.hitDeviceTokenApi(isLogout: true)
     SaveToDefaults().setAccessToken(value: nil)

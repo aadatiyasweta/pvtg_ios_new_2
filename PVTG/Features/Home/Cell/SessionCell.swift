@@ -20,6 +20,7 @@ class SessionCell: UITableViewCell {
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var sessionImg: UIImageView!
     
+    @IBOutlet weak var followUpView: UIView!
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "SessionCell"
     class func nib()-> UINib {
@@ -29,6 +30,7 @@ class SessionCell: UITableViewCell {
     //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        followUpView.isHidden = true
     }
     
     override func layoutSubviews() {

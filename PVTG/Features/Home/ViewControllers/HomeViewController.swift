@@ -52,6 +52,8 @@ class HomeViewController: BaseViewController {
     var selectedCurrency = "COP"
     var isSelectedFromFilter = false
     
+    var homeResultData = [All_result]()
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,12 +135,21 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(self.homevm.model?.all_result?.count ?? 0)
-        return self.homevm.model?.all_result?.count ?? 0
+        //return self.homevm.model?.all_result?.count ?? 0
+        return self.homeResultData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SessionCell.ident, for: indexPath) as? SessionCell else { return UITableViewCell()}
-        cell.setHomeData(data: self.homevm.model?.all_result?[indexPath.row])
+//        cell.setHomeData(data: self.homevm.model?.all_result?[indexPath.row])
+        cell.setHomeData(data: self.homeResultData[indexPath.row])
+        if(self.homevm.model?.followUp != nil){
+            if(indexPath.row == self.homeResultData.count-1){
+                cell.followUpView.isHidden = false
+            }else{
+                cell.followUpView.isHidden = true
+            }
+        }
         return cell
     }
     
@@ -148,9 +159,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = SessionDetailVC.instance()
-        vc.sessionId = self.homevm.model?.all_result?[indexPath.row].session_id ?? ""
+//        vc.sessionId = self.homevm.model?.all_result?[indexPath.row].session_id ?? ""
+        vc.sessionId = self.homeResultData[indexPath.row].session_id ?? ""
         vc.controllerId = 0
-        SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
+//        SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
+        SaveToDefaults().setSessionTimeId(name: self.homeResultData[indexPath.row].session_image)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -377,6 +390,7 @@ extension HomeViewController: CLLocationManagerDelegate{
 //MARK: - CUSTOM DELEGATE
 extension HomeViewController: GetHomeData {
     func reloadData(unreadNotificationCount : Int) {
+        homeResultData.removeAll()
         if self.maximimPrice == 0{
             self.minimUmPrice = self.homevm.model?.min_val ?? 0
             self.maximimPrice = self.homevm.model?.max_val ?? 0
@@ -400,14 +414,26 @@ extension HomeViewController: GetHomeData {
             }
         }
         self.selectedCurrency = self.homevm.model?.selected_currency ?? "COP"
-        if self.homevm.model?.all_result?.count == 0 {
+        
+        for i in 0..<(self.homevm.model?.all_result?.count ?? 0){
+            homeResultData.append((self.homevm.model?.all_result?[i])!)
+        }
+        
+        if(self.homevm.model?.followUp != nil){
+            homeResultData.append((self.homevm.model?.followUp)!)
+        }
+        //if self.homevm.model?.all_result?.count == 0 {
+        if  self.homeResultData.count == 0 {
             self.lblNoSession.text = R.string.localizable.noSession()
         } else {
             self.lblNoSession.text = ""
         }
+
+        
         self.colectionVw.reloadData()
         self.tblSession.reloadData()
-        if self.homevm.model?.all_result?.count != 0{
+//        if self.homevm.model?.all_result?.count != 0{
+        if self.homeResultData.count != 0{
             self.tblSession.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
         }
     }

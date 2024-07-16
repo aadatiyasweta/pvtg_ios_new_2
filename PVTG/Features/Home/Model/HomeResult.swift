@@ -22,6 +22,7 @@ struct HomeResult : Codable {
     let max_val : Int?
     let currency_data : [String]?
     let selected_currency : String?
+    let followUp : All_result?
     
 	enum CodingKeys: String, CodingKey {
 		case all_result = "all_result"
@@ -33,6 +34,7 @@ struct HomeResult : Codable {
         case max_val = "max_val"
         case currency_data = "currency_data"
         case selected_currency = "selected_currency"
+        case followUp = "followUp"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -46,7 +48,53 @@ struct HomeResult : Codable {
         max_val = try values.decodeIfPresent(Int.self, forKey: .max_val)
         currency_data = try values.decodeIfPresent([String].self, forKey: .currency_data)
         selected_currency = try values.decodeIfPresent(String.self, forKey: .selected_currency)
+        followUp = try values.decodeIfPresent(All_result.self, forKey: .followUp)
 	}
-
 }
+
+//struct followUpData : Codable {
+//    let session_id : String?
+//    let distance : String?
+//    let created_by : String?
+//    let category_name : String?
+//    let session_language : String?
+//    let address_id : String?
+//    let address : String?
+//    let name_of_listing : String?
+//    let rating : String?
+//    let session_image : String?
+//    let city : String?
+//    let follow_up_id : String?
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case session_id = "session_id"
+//        case distance = "distance"
+//        case created_by = "created_by"
+//        case category_name = "category_name"
+//        case session_language = "session_language"
+//        case address_id = "address_id"
+//        case address = "address"
+//        case name_of_listing = "name_of_listing"
+//        case rating = "rating"
+//        case session_image = "session_image"
+//        case city = "city"
+//        case follow_up_id = "follow_up_id"
+//    }
+//
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        session_id = try values.decodeIfPresent(String.self, forKey: .session_id)
+//        distance = try values.decodeIfPresent(String.self, forKey: .distance)
+//        created_by = try values.decodeIfPresent(String.self, forKey: .created_by)
+//        category_name = try values.decodeIfPresent(String.self, forKey: .category_name)
+//        session_language = try values.decodeIfPresent(String.self, forKey: .session_language)
+//        address_id = try values.decodeIfPresent(String.self, forKey: .address_id)
+//        address = try values.decodeIfPresent(String.self, forKey: .address)
+//        name_of_listing = try values.decodeIfPresent(String.self, forKey: .name_of_listing)
+//        session_image = try values.decodeIfPresent(String.self, forKey: .session_image)
+//        city = try values.decodeIfPresent(String.self, forKey: .city)
+//        rating = try values.decodeIfPresent(String.self, forKey: .rating)
+//        follow_up_id = try values.decodeIfPresent(String.self, forKey: .follow_up_id)
+//    }
+//}
 

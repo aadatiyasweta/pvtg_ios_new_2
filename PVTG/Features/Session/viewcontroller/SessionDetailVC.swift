@@ -177,15 +177,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
             
-//            self.vwmap.isHidden = false
-//            self.vwcalendar.isHidden = false
-//            self.vwCollection.isHidden = false
-//            self.vwColectionHeightConstarint.constant = 70
-//            self.vwMapHeightConstraint.constant = 256
-//            self.vwCalendarHeightConstraint.constant = 300
-//            self.lblDayWithDate.isHidden = false
-//            self.lblNoTime.isHidden = false
-//            
             self.btnBooknow.isHidden = true
             self.priceLabel.isHidden = true
             self.cancelBtn.isHidden = false
@@ -265,10 +256,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        isLoop = false
-//        isPriceLoop = false
-//        updatedprice = ""
-        
+
         loadApi(top_search: "")
         vm.delegate = self
         handlingHeaderInFSCalendar()
@@ -351,9 +339,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     @IBAction func cancelBtnTap(_ sender: UIButton) {
 
-//        showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: "Confirm Booking Cancellation", itsController: self) { (succsss) in
-//            if succsss{
-        
                 let vc = PrivacyPolicyVC.instance()
                 vc.type = R.string.localizable.latePolicy()
                 vc.isFromReschedule = true
@@ -603,8 +588,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         if collectionView==colectnVwSessionImage{
             return self.vm.model?.images?.count ?? 0
         }else if collectionView == self.offeredCollView{
-//            return self.vm.model?.session_type?.count ?? 0
-           // return 1
             return self.sessionTypeArr.count
         }
         else if(collectionView == serviceTimeCollectionVw){
@@ -615,13 +598,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 print("sessionPriArr",self.sessionPriArr)
             }else{
                 for i in 0..<(self.vm.model?.session_type?.count ?? 0){
-                    //for j in 0..<(self.sessionTypeArr.count){
                     if self.vm.model?.session_type?[i].session_type == self.selectedSession{
                         self.sessionPriArr.append(self.vm.model?.session_type?[i].price_type ?? "")
                     }
                 }
-                //}
-                // }
                 print("sessionPriArr",self.sessionPriArr)
             }
                 return self.sessionPriArr.count

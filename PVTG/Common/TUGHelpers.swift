@@ -1014,3 +1014,8 @@ extension UIView {
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
 }
+
+var AppObject:AppDelegate
+{
+    return UIApplication.shared.delegate as! AppDelegate
+}
