@@ -74,6 +74,7 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SessionDetailVC.instance()
         vc.controllerId = 1
+        vc.screenFrom = "EventVC"
         vc.bookingId = self.vm.model?.result?[indexPath.row].booking_id ?? ""
         vc.sessionId = self.vm.model?.result?[indexPath.row].session_id ?? ""
         vc.rescheduleCountStr = self.vm.model?.result?[indexPath.row].reschedule_count ?? ""

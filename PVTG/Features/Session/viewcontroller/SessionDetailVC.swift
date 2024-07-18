@@ -89,6 +89,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var customQstnBtn: UIButton!
     @IBOutlet weak var contactUsVw: UIView!
     @IBOutlet weak var contactUsLbl: UILabel!
+    
+    @IBOutlet weak var cancelTagView: UIView!
     //MARK: - Properties
     var x = 1
     var mapView:GMSMapView?
@@ -114,6 +116,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var vm = SessionDetailViewModel()
     var timeArr = [AllTimeResult]()
     var controllerId = 0
+    var screenFrom = ""
     var timer : Timer?
     var isFromSelection = false
     var offeredIndex = -1
@@ -152,6 +155,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelTagView.isHidden = true
         isLoop = false
         isPriceLoop = false
         updatedprice = ""
@@ -698,113 +702,121 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 var indexPosi = 0
                 if((self.allSessionTypeArr[i] == selectedSession) && selectedSession != ""){
                     if(isLoop == true){
-                        if(sessionPriArr[selectedTimeIndex] == "sixty" ){
+                        if((selectedTimeIndex + 1) == sessionPriArr.count ){
                             
-//                            for i in 0..<(self.allSessionTypePriceTypeArr.count){
-//                                if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
-                                    //
-                            indexPosi = i + selectedTimeIndex
-                                    if(isLoop == true){
-                                        self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
-                                    let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
-                                    let strPrice = self.allSessionTypePriceArr[indexPosi]
-                                        self.updatedprice = strPrice
-                                    let currencyFormatter = NumberFormatter()
-                                    currencyFormatter.usesGroupingSeparator = true
-                                    currencyFormatter.numberStyle = .currency
-                                    currencyFormatter.locale =  Locale(identifier: "en_US")
-                                    let num = Int(strPrice);
-                                    if num != nil {
-                                        currencyFormatter.minimumFractionDigits = 0
-                                        print("Valid Integer")
-                                    }
-                                    else {
-                                        currencyFormatter.minimumFractionDigits = 2
-                                        print("Not Valid Integer")
-                                    }
-                                    
-                                    let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
-                                    let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
-                                    if let currency = self.vm.model?.currency {
-                                        self.priceLabel.text = replaced + " " +  currency
-                                        self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
-                                        self.isLoop = false
-                                        indexPosi = 0
-                                    }
-//                                }
-//                                }
-                            }
-                        }else if (sessionPriArr[selectedTimeIndex] == "ninety"){
-                           // for i in 0..<(self.allSessionTypePriceTypeArr.count){
-                                //if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
-                                    //
-                            indexPosi = i + selectedTimeIndex
-                                    if(isLoop == true){
-                                        self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
-                                        let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
-                                        let strPrice = self.allSessionTypePriceArr[indexPosi]
-                                        self.updatedprice = strPrice
-                                        let currencyFormatter = NumberFormatter()
-                                        currencyFormatter.usesGroupingSeparator = true
-                                        currencyFormatter.numberStyle = .currency
-                                        currencyFormatter.locale =  Locale(identifier: "en_US")
-                                        let num = Int(strPrice);
-                                        if num != nil {
-                                            currencyFormatter.minimumFractionDigits = 0
-                                            print("Valid Integer")
-                                        }
-                                        else {
-                                            currencyFormatter.minimumFractionDigits = 2
-                                            print("Not Valid Integer")
-                                        }
-                                        
-                                        let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
-                                        let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
-                                        if let currency = self.vm.model?.currency {
-                                            self.priceLabel.text = replaced + " " +  currency
-                                            self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
-                                            self.isLoop = false
-                                            indexPosi = 0
-                                        }
-                                    }
-                                //}
-                            //}
                         }else{
-//                            for i in 0..<(self.allSessionTypePriceTypeArr.count){
-//                                if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
-//                                    //
-                            indexPosi = i + selectedTimeIndex
-                                    if(isLoop == true){
-                                        self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
-                                        let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
-                                        let strPrice = self.allSessionTypePriceArr[indexPosi]
-                                        self.updatedprice = strPrice
-                                        let currencyFormatter = NumberFormatter()
-                                        currencyFormatter.usesGroupingSeparator = true
-                                        currencyFormatter.numberStyle = .currency
-                                        currencyFormatter.locale =  Locale(identifier: "en_US")
-                                        let num = Int(strPrice);
-                                        if num != nil {
-                                            currencyFormatter.minimumFractionDigits = 0
-                                            print("Valid Integer")
-                                        }
-                                        else {
-                                            currencyFormatter.minimumFractionDigits = 2
-                                            print("Not Valid Integer")
-                                        }
-                                        
-                                        let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
-                                        let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
-                                        if let currency = self.vm.model?.currency {
-                                            self.priceLabel.text = replaced + " " +  currency
-                                            self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
-                                            self.isLoop = false
-                                            indexPosi = 0
-                                        }
-                                    }
-//                                }
-//                            }
+                            selectedTimeIndex = 0
                         }
+                       // for j in 0..<sessionPriArr.count{
+                           // if(j == selectedTimeIndex){
+                                if(sessionPriArr[selectedTimeIndex] == "sixty" ){
+
+                                    indexPosi = i + selectedTimeIndex
+                                            if(isLoop == true){
+                                                self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
+                                            let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
+                                            let strPrice = self.allSessionTypePriceArr[indexPosi]
+                                                self.updatedprice = strPrice
+                                            let currencyFormatter = NumberFormatter()
+                                            currencyFormatter.usesGroupingSeparator = true
+                                            currencyFormatter.numberStyle = .currency
+                                            currencyFormatter.locale =  Locale(identifier: "en_US")
+                                            let num = Int(strPrice);
+                                            if num != nil {
+                                                currencyFormatter.minimumFractionDigits = 0
+                                                print("Valid Integer")
+                                            }
+                                            else {
+                                                currencyFormatter.minimumFractionDigits = 2
+                                                print("Not Valid Integer")
+                                            }
+                                            
+                                            let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+                                            let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+                                            if let currency = self.vm.model?.currency {
+                                                self.priceLabel.text = replaced + " " +  currency
+                                                self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
+                                                self.isLoop = false
+                                                indexPosi = 0
+                                            }
+        //                                }
+        //                                }
+                                    }
+                                }else if (sessionPriArr[selectedTimeIndex] == "ninety"){
+                                   // for i in 0..<(self.allSessionTypePriceTypeArr.count){
+                                        //if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
+                                            //
+                                    indexPosi = i + selectedTimeIndex
+                                            if(isLoop == true){
+                                                self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
+                                                let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
+                                                let strPrice = self.allSessionTypePriceArr[indexPosi]
+                                                self.updatedprice = strPrice
+                                                let currencyFormatter = NumberFormatter()
+                                                currencyFormatter.usesGroupingSeparator = true
+                                                currencyFormatter.numberStyle = .currency
+                                                currencyFormatter.locale =  Locale(identifier: "en_US")
+                                                let num = Int(strPrice);
+                                                if num != nil {
+                                                    currencyFormatter.minimumFractionDigits = 0
+                                                    print("Valid Integer")
+                                                }
+                                                else {
+                                                    currencyFormatter.minimumFractionDigits = 2
+                                                    print("Not Valid Integer")
+                                                }
+                                                
+                                                let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+                                                let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+                                                if let currency = self.vm.model?.currency {
+                                                    self.priceLabel.text = replaced + " " +  currency
+                                                    self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
+                                                    self.isLoop = false
+                                                    indexPosi = 0
+                                                }
+                                            }
+                                        //}
+                                    //}
+                                }else{
+        //                            for i in 0..<(self.allSessionTypePriceTypeArr.count){
+        //                                if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
+        //                                    //
+                                    indexPosi = i + selectedTimeIndex
+                                            if(isLoop == true){
+                                                self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
+                                                let myDouble  = Double(self.allSessionTypePriceArr[indexPosi]) ?? 0.0
+                                                let strPrice = self.allSessionTypePriceArr[indexPosi]
+                                                self.updatedprice = strPrice
+                                                let currencyFormatter = NumberFormatter()
+                                                currencyFormatter.usesGroupingSeparator = true
+                                                currencyFormatter.numberStyle = .currency
+                                                currencyFormatter.locale =  Locale(identifier: "en_US")
+                                                let num = Int(strPrice);
+                                                if num != nil {
+                                                    currencyFormatter.minimumFractionDigits = 0
+                                                    print("Valid Integer")
+                                                }
+                                                else {
+                                                    currencyFormatter.minimumFractionDigits = 2
+                                                    print("Not Valid Integer")
+                                                }
+                                                
+                                                let  priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
+                                                let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
+                                                if let currency = self.vm.model?.currency {
+                                                    self.priceLabel.text = replaced + " " +  currency
+                                                    self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
+                                                    self.isLoop = false
+                                                    indexPosi = 0
+                                                }
+                                            }
+        //                                }
+        //                            }
+                                }
+//                            }else{
+//                                print("New1")
+//                            }
+                        //}
                     }
                 }
             }
@@ -1201,7 +1213,14 @@ extension SessionDetailVC: GetResponse {
             self.cancelBtn.layer.borderWidth = 0
             self.cancelBtn.layer.borderColor = UIColor.clear.cgColor
             self.rescheduleBtn.isHidden = true
+            self.cancelTagView.isHidden = true
+//            if(self.screenFrom == "EventVC"){
+//                self.cancelTagView.isHidden = false
+//            }else{
+//                self.cancelTagView.isHidden = true
+//            }
         }else {
+            self.cancelTagView.isHidden = true
             self.cancelBtn.isEnabled = true
             self.cancelBtn.setTitle("Cancel", for: .normal)
         }

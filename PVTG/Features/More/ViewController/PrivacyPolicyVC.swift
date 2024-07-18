@@ -160,12 +160,18 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
                                 let fiftenPercent = CGFloat((floatPrice*15)/100)
                                 let finalPrice = floatPrice-fiftenPercent
                                 self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.payment_id, ammount: "\(finalPrice)", chargeid: self.getChargeId)
+                                self.vm.cancellSuccesClosure = {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
                             }
                             
                         }
                     }else{
                         if let id = SaveToDefaults().getUserId(){
                             self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.ammountSTr, chargeid: self.getChargeId)
+                            self.vm.cancellSuccesClosure = {
+                                self.navigationController?.popViewController(animated: true)
+                            }
                         }
                     }
                     self.isComingCancelBooking = false

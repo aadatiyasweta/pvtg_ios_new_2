@@ -143,12 +143,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SessionCell.ident, for: indexPath) as? SessionCell else { return UITableViewCell()}
 //        cell.setHomeData(data: self.homevm.model?.all_result?[indexPath.row])
         cell.setHomeData(data: self.homeResultData[indexPath.row])
-        if(self.homevm.model?.followUp != nil){
+        if(self.homevm.model?.followUp?.follow_up_id != "0" && self.homevm.model?.followUp?.follow_up_id != "" && self.homevm.model?.followUp?.follow_up_id != nil){
             if(indexPath.row == self.homeResultData.count-1){
                 cell.followUpView.isHidden = false
             }else{
                 cell.followUpView.isHidden = true
             }
+        }else{
+            cell.followUpView.isHidden = true
         }
         return cell
     }
@@ -419,7 +421,7 @@ extension HomeViewController: GetHomeData {
             homeResultData.append((self.homevm.model?.all_result?[i])!)
         }
         
-        if(self.homevm.model?.followUp != nil){
+        if(self.homevm.model?.followUp?.follow_up_id != "0" && self.homevm.model?.followUp?.follow_up_id != "" && self.homevm.model?.followUp?.follow_up_id != nil){
             homeResultData.append((self.homevm.model?.followUp)!)
         }
         //if self.homevm.model?.all_result?.count == 0 {
