@@ -29,6 +29,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     var navigation = UINavigationController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Thread.sleep(forTimeInterval: 3.0)
         FirebaseApp.configure()
         fireBaseSetup(application: application)
         Messaging.messaging().delegate = self
@@ -45,9 +46,38 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
 //        let vc = SplashVC.navigation()
 //        window?.rootViewController = vc
 //        window?.makeKeyAndVisible()
-        setSplashVC()
+        //setSplashVC()
+        checkLoginStatus()
         return true
     }
+    
+    func checkLoginStatus() {
+        if SaveToDefaults().getAppLang() ?? "" == "" || SaveToDefaults().getAppLang() == nil{
+//            let vc = LanguageChnageVC.navigation()
+//            window?.rootViewController = vc
+//            window?.makeKeyAndVisible()
+            setChangeLanguageVC()
+        }else{
+            if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
+                if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
+//                    let vc = OnboardingVC.navigation()
+//                    window?.rootViewController = vc
+//                    window?.makeKeyAndVisible()
+                    setOnboardingVC()
+                } else{
+//                    let vc = LoginVC.navigation()
+//                    window?.rootViewController = vc
+//                    window?.makeKeyAndVisible()
+                    setLoginVC()
+                }
+            } else {
+//                let vc = TabBarControllerViewController.navigation()
+//                window?.rootViewController = vc
+//                window?.makeKeyAndVisible()
+                setTabBarControllerVC()
+            }
+        }
+       }
     
     func setSplashVC(){
         let vc = onboarding.instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
@@ -148,26 +178,26 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                 return nil
             }
     
-    func checkLoginStatus() {
-        if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
-            if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
-//                let vc = OnboardingVC.navigation()
-//                window?.rootViewController = vc
-//                window?.makeKeyAndVisible()
-                setOnboardingVC()
-            } else{
-//                let vc = LoginVC.navigation()
-//                window?.rootViewController = vc
-//                window?.makeKeyAndVisible()
-                setLoginVC()
-            }
-        } else {
-//            let vc = TabBarControllerViewController.navigation()
-//            window?.rootViewController = vc
-//            window?.makeKeyAndVisible()
-            setTabBarControllerVC()
-        }
-    }
+//    func checkLoginStatus() {
+//        if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
+//            if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
+////                let vc = OnboardingVC.navigation()
+////                window?.rootViewController = vc
+////                window?.makeKeyAndVisible()
+//                setOnboardingVC()
+//            } else{
+////                let vc = LoginVC.navigation()
+////                window?.rootViewController = vc
+////                window?.makeKeyAndVisible()
+//                setLoginVC()
+//            }
+//        } else {
+////            let vc = TabBarControllerViewController.navigation()
+////            window?.rootViewController = vc
+////            window?.makeKeyAndVisible()
+//            setTabBarControllerVC()
+//        }
+//    }
     
     func setOnboardingVC(){
         let vc = onboarding.instantiateViewController(withIdentifier: "OnboardingVC") as! OnboardingVC
