@@ -22,6 +22,9 @@ struct AllTimeResult : Codable {
     let session_booking_session_type : String?
     let session_booking_booking_date : String?
     let booked_price_type : String?
+    
+    let is_booked : String?
+    let is_available : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -34,6 +37,9 @@ struct AllTimeResult : Codable {
         case session_booking_session_type = "session_booking_session_type"
         case session_booking_booking_date = "session_booking_booking_date"
         case booked_price_type = "session_booking_price_type"
+        
+        case is_booked = "is_booked"
+        case is_available = "is_available"
         
 	}
 
@@ -48,6 +54,8 @@ struct AllTimeResult : Codable {
         session_booking_session_type = try values.decodeIfPresent(String.self, forKey: .session_booking_session_type)
         session_booking_booking_date = try values.decodeIfPresent(String.self, forKey: .session_booking_booking_date)
         booked_price_type = try values.decodeIfPresent(String.self, forKey: .booked_price_type)
+        is_available = try values.decodeIfPresent(String.self, forKey: .is_available)
+        is_booked = try values.decodeIfPresent(String.self, forKey: .is_booked)
 	}
 
 }

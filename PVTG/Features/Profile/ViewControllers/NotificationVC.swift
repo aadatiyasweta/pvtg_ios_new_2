@@ -68,6 +68,54 @@ class NotificationVC: BaseViewController {
             }
         }
     }
+    
+    func performAttendingAlert(id : String, bookingId: String, rescheduleCount: String){
+        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: "Your session begins in 3 hours, will you still be attending your Ashitesh session?", controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
+            guard let self else{return}
+            if result{
+               // self.hitApi(id: "\(id)")
+                Helper.shared.showAlertWithCallback(buttonText:  R.string.localizable.view(), buttonText2: R.string.localizable.later() , title: R.string.localizable.viewpolicy(), message: R.string.localizable.viewLatePolicy(), controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
+                        guard let self else{return}
+                        if result{
+                            print("Yes Clicked")
+                            let vc = PrivacyPolicyVC.instance()
+                            vc.type = R.string.localizable.latePolicy()
+                            vc.isFromReschedule = true
+                            vc.rescheduleCountStr = rescheduleCount
+                            vc.url = cancelPolicy
+                            vc.isComingCancelBooking = false
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }else{
+                           
+                            }
+                        }
+                    }
+            else { // here after first click no
+                Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.reschedule(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: R.string.localizable.rescheduleSession(), controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
+                            guard let self else{return}
+                    if result{
+                        print("Yes Clicked")
+                        let vc = SessionDetailVC.instance()
+                            vc.controllerId = 1
+                            vc.bookingId = self.bookigIdSTr
+                            vc.sessionId = self.sessionIdSTr
+                            vc.rescheduleCountStr = self.rescheduleCountSTr
+                            self.navigationController?.pushViewController(vc, animated: true)
+                    }else{
+                                print("no ")
+                                let vc = SessionDetailVC.instance()
+                                vc.sessionId = "\(id)"
+                                vc.bookingId = bookingId
+                                vc.rescheduleCountStr = rescheduleCount
+                                vc.controllerId = 0
+                                //vc.isFromReschedule = true
+                                //vc.isFromRescheduleNo = false
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                    }
+                }
+            }
+    }
 }
 
 //MARK: - TABLE VIEW DELEGATE AND DATASOURCE
@@ -113,21 +161,22 @@ extension NotificationVC {
 //MARK: - CUSTOM DELEGATE
 extension NotificationVC: AfterGettingNotificationList {
     func updateCheckRescheduleStatus() {
-        
-        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.reschedule(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: R.string.localizable.rescheduleSession(), controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
-            guard let self else{return}
-            if result{
-                let vc = SessionDetailVC.instance()
-                    vc.controllerId = 1
-                    vc.bookingId = self.bookigIdSTr
-                    vc.sessionId = self.sessionIdSTr
-                    vc.rescheduleCountStr = self.rescheduleCountSTr
-                    self.navigationController?.pushViewController(vc, animated: true)
-            }else{
-                print("no ")
-               
-            }
-    }
+        performAttendingAlert(id: self.sessionIdSTr, bookingId: self.bookigIdSTr, rescheduleCount: self.rescheduleCountSTr)
+//        
+//        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.reschedule(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: R.string.localizable.rescheduleSession(), controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
+//            guard let self else{return}
+//            if result{
+//                let vc = SessionDetailVC.instance()
+//                    vc.controllerId = 1
+//                    vc.bookingId = self.bookigIdSTr
+//                    vc.sessionId = self.sessionIdSTr
+//                    vc.rescheduleCountStr = self.rescheduleCountSTr
+//                    self.navigationController?.pushViewController(vc, animated: true)
+//            }else{
+//                print("no ")
+//               
+//            }
+//    }
 
         
         

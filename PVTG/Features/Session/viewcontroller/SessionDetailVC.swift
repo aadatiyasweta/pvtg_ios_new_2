@@ -152,6 +152,9 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var rescheduleCountStr = ""
     var getChargeId = ""
     
+    var reloadTimeBoolValue = false
+    var sessionTimeMinuteStr = ""
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -344,7 +347,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func cancelBtnTap(_ sender: UIButton) {
 
                 let vc = PrivacyPolicyVC.instance()
-                vc.type = R.string.localizable.latePolicy()
+                vc.type = R.string.localizable.cancelPolicy()
                 vc.isFromReschedule = true
                 vc.url = cancelPolicy
                 vc.getChargeId = getChargeId
@@ -521,7 +524,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
             if selectedDate == val.schedule_date{
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if val.is_avilable == "1" {
-                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true)
+                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
                        // self.scrollViewBotmconstarint.constant = 97
                     }
                 }
@@ -597,16 +600,18 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         else if(collectionView == serviceTimeCollectionVw){
 
             sessionPriArr.removeAll()
-            if((self.vm.model?.session_booking_session_type ?? "") != ""){
-                self.sessionPriArr.append(self.vm.model?.booked_price_type ?? "")
-                print("sessionPriArr",self.sessionPriArr)
-            }else{
+//            if((self.vm.model?.session_booking_session_type ?? "") != ""){
+//                self.sessionPriArr.append(self.vm.model?.booked_price_type ?? "")
+//                print("sessionPriArr",self.sessionPriArr)
+//            }else{
                 for i in 0..<(self.vm.model?.session_type?.count ?? 0){
                     if self.vm.model?.session_type?[i].session_type == self.selectedSession{
                         self.sessionPriArr.append(self.vm.model?.session_type?[i].price_type ?? "")
                     }
                 }
                 print("sessionPriArr",self.sessionPriArr)
+            if(sessionTimeMinuteStr == ""){
+                self.sessionTimeMinuteStr = self.vm.model?.session_type?[0].price_type ?? ""
             }
                 return self.sessionPriArr.count
             
@@ -653,6 +658,9 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 }
                 cell.vwContainCatgry.layer.cornerRadius = 10
             }
+            if self.timeArr[indexPath.row].is_available == "0" {
+                cell.vwContainCatgry.backgroundColor = UIColor.lightGray
+            }
             cell.setData(data: self.timeArr[indexPath.row])
             return cell
         }
@@ -693,6 +701,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                         self.priceLabel.text = replaced + " " +  currency
                         self.lblsessiondetail.text = self.vm.model?.session_type?[0].descriptionen ?? ""
                         self.selectedSessionID = self.vm.model?.session_type?[0].session_type_id ?? ""
+                        if(self.reloadTimeBoolValue == false){
+                            self.reloadTimeBoolValue = true
+                            self.reloadTime()
+                        }
                     }
                 }
             }
@@ -702,15 +714,17 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 var indexPosi = 0
                 if((self.allSessionTypeArr[i] == selectedSession) && selectedSession != ""){
                     if(isLoop == true){
-                        if((selectedTimeIndex + 1) == sessionPriArr.count ){
+                       // if((selectedTimeIndex + 1) == sessionPriArr.count ){
+                        if(selectedTimeIndex < sessionPriArr.count ){
                             
                         }else{
                             selectedTimeIndex = 0
+                            
                         }
                        // for j in 0..<sessionPriArr.count{
                            // if(j == selectedTimeIndex){
                                 if(sessionPriArr[selectedTimeIndex] == "sixty" ){
-
+                                    self.sessionTimeMinuteStr = "sixty"
                                     indexPosi = i + selectedTimeIndex
                                             if(isLoop == true){
                                                 self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
@@ -736,6 +750,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                             if let currency = self.vm.model?.currency {
                                                 self.priceLabel.text = replaced + " " +  currency
                                                 self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
+                                                self.reloadTime()
                                                 self.isLoop = false
                                                 indexPosi = 0
                                             }
@@ -746,6 +761,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                    // for i in 0..<(self.allSessionTypePriceTypeArr.count){
                                         //if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
                                             //
+                                    self.sessionTimeMinuteStr = "ninety"
                                     indexPosi = i + selectedTimeIndex
                                             if(isLoop == true){
                                                 self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
@@ -771,6 +787,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                 if let currency = self.vm.model?.currency {
                                                     self.priceLabel.text = replaced + " " +  currency
                                                     self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
+                                                    self.reloadTime()
                                                     self.isLoop = false
                                                     indexPosi = 0
                                                 }
@@ -781,6 +798,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         //                            for i in 0..<(self.allSessionTypePriceTypeArr.count){
         //                                if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
         //                                    //
+                                    self.sessionTimeMinuteStr = "one_twenty"
                                     indexPosi = i + selectedTimeIndex
                                             if(isLoop == true){
                                                 self.lblsessiondetail.text = self.descSessionTypeArr[indexPosi]
@@ -806,6 +824,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                 if let currency = self.vm.model?.currency {
                                                     self.priceLabel.text = replaced + " " +  currency
                                                     self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
+                                                    self.reloadTime()
                                                     self.isLoop = false
                                                     indexPosi = 0
                                                 }
@@ -884,15 +903,19 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.vwCollection{
-            if self.id == indexPath.row{
-            } else {
-                self.id = indexPath.row
-//                if(self.tapReschudleBtn == true){
-//                    self.rescheduleBooking()
-//                }else{
+            if self.timeArr[indexPath.row].is_available == "0" {
+                self.id = -1
+            }else{
+                if self.id == indexPath.row{
+                } else {
+                    self.id = indexPath.row
+                    //                if(self.tapReschudleBtn == true){
+                    //                    self.rescheduleBooking()
+                    //                }else{
                     guard let userid = SaveToDefaults().getUserId() else { return}
                     self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
-  //              }
+                    //              }
+                }
             }
             self.vwCollection.reloadData()
         }else if collectionView == self.offeredCollView{
@@ -999,7 +1022,9 @@ extension SessionDetailVC: GetResponse {
                 self.sessionTypeArr = self.tempSessionTypeArr
                 self.sessionTypePriceArr  = self.tempSessionTypePriceArr
 //                self.selectedSession = self.tempselectedSession
-                self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
+                if(selectedSession == ""){
+                    self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
+                }
                 self.sessionTypeIDArr = self.tempSessionIDTypeArr
             }
         }
@@ -1043,7 +1068,7 @@ extension SessionDetailVC: GetResponse {
         for val in alldate {
             if self.formatter.string(from: self.today) == val.schedule_date && val.is_avilable ?? "0" == "1"{
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
-                    self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false)
+                    self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
                     //self.scrollViewBotmconstarint.constant = 97
                 }
                 break
@@ -1072,6 +1097,8 @@ extension SessionDetailVC: GetResponse {
         vc.totalTkt = self.lblTicketCount.text ?? ""
         vc.ticketModel = self.vm.availableTickets
         vc.customModel = self.vm.customModel
+        vc.getSessionTimeMinuteStr = sessionTimeMinuteStr
+        vc.selectedSessionSTr = selectedSession
         //vc.getPriceFromPreviousPage =
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -1236,7 +1263,7 @@ extension SessionDetailVC: GetResponse {
             if self.formatter.string(from: self.today) == val.schedule_date && val.is_avilable ?? "0" == "1"{
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if self.controllerId == 0 || self.controllerId == 2{
-                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false)
+                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
                        // self.scrollViewBotmconstarint.constant = 97
                     }
                 }

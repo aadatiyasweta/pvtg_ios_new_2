@@ -153,8 +153,8 @@ class SessionDetailViewModel: BaseVm {
         }
     }
     //MARK: - TIMING ARRAY PF SPECIFIC DATA API
-    func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool) {
-        let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id,"currenttimezone" : TimeZone.current.identifier,"language" : SaveToDefaults().getAppLang() ?? "en"]
+    func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool, session_type_id:String, session_type : String) {
+        let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id,"session_type_id": session_type_id,"currenttimezone" : TimeZone.current.identifier,"language" : SaveToDefaults().getAppLang() ?? "en","session_type" : session_type]
         if isloader {
             self.dismiss()
         } else {
@@ -294,12 +294,12 @@ class SessionDetailViewModel: BaseVm {
     }
     
     //MARK: - SESSION BOOKING API
-    func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String,session_type_id : String? = "",paymentId : String) {
+    func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String,session_type_id : String? = "",paymentId : String,session_time_minute : String, selectedSessionSTr : String) {
         var prams = [String : Any]()
         if session_type_id ?? "" == ""{
-            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","payment_id" : paymentId]
+            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","payment_id" : paymentId,"session_type_id" : session_type_id ?? "","session_time_minute" : session_time_minute,"session_type" : selectedSessionSTr]
         }else{
-            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","session_type_id" : session_type_id ?? "","payment_id" : paymentId]
+            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","session_type_id" : session_type_id ?? "","payment_id" : paymentId,"session_time_minute" : session_time_minute,"session_type" : selectedSessionSTr]
         }
         
         print(prams)

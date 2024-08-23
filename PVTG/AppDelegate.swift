@@ -317,7 +317,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                             }
                         }
                     }
-            else {
+            else { // here after first click no
                         Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.reschedule(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: R.string.localizable.rescheduleSession(), controller: self.window?.rootViewController ?? UIViewController()) { [weak self] result in
                             guard let self else{return}
                             if result{

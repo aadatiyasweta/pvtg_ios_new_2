@@ -62,6 +62,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     var selectedDiscounttStr = ""
     var selectedPointStr = ""
     var selectedPointIdStr = ""
+    var getSessionTimeMinuteStr = ""
+    var selectedSessionSTr = ""
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -514,7 +516,7 @@ extension SummaryVC {
     
     //MARK: - METHOD TO HIT SESSION BOOKING API
     private func bookSession(transactionID:String) {
-        self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: self.ammountPayment, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:self.pointsPayent,session_type_id: self.customModel?.offeredTypeId ?? "",paymentId: transactionID)
+        self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: self.ammountPayment, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:self.pointsPayent,session_type_id: self.customModel?.offeredTypeId ?? "",paymentId: transactionID, session_time_minute: self.getSessionTimeMinuteStr, selectedSessionSTr : self.selectedSessionSTr)
     }
 }
 
