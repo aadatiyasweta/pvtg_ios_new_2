@@ -327,21 +327,21 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                                 vc.bookingId = bookingId
                                 vc.rescheduleCountStr = rescheduleCount
                                 vc.controllerId = 0
-                                vc.isFromReschedule = false
-                                vc.isFromRescheduleNo = true
+                                vc.isFromReschedule = true // at first it was false
+                                vc.isFromRescheduleNo = false // at first it was true - both changed due to client requirement
         //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
                                 self.navigation.pushViewController(vc, animated: true)
                             }else{
                                 print("no ")
-                                let vc = SessionDetailVC.instance()
-                                vc.sessionId = "\(id)"
-                                vc.bookingId = bookingId
-                                vc.rescheduleCountStr = rescheduleCount
-                                vc.controllerId = 0
-                                vc.isFromReschedule = true
-                                vc.isFromRescheduleNo = false
-        //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
-                                self.navigation.pushViewController(vc, animated: true)
+                                // due to client requirement it is commented
+//                                let vc = SessionDetailVC.instance()
+//                                vc.sessionId = "\(id)"
+//                                vc.bookingId = bookingId
+//                                vc.rescheduleCountStr = rescheduleCount
+//                                vc.controllerId = 0
+//                                vc.isFromReschedule = true
+//                                vc.isFromRescheduleNo = false
+//                                self.navigation.pushViewController(vc, animated: true)
                             }
                     }
                 }

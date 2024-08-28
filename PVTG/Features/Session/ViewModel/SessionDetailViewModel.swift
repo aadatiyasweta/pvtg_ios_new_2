@@ -322,9 +322,9 @@ class SessionDetailViewModel: BaseVm {
     }
     
     //MARK: - RESCHEDULE SESSION BOOKING API
-    func sessionRescheduleApi(user_id: String, session_id: String, booking_id: String, booking_date: String, booking_from_time: String, booking_to_time: String, schedule_time_id: String,session_type_id : String? = "",rescheduleCount : String) {
+    func sessionRescheduleApi(user_id: String, session_id: String, booking_id: String, booking_date: String, booking_from_time: String, booking_to_time: String, schedule_time_id: String,session_type_id : String? = "",rescheduleCount : String,session_time_minute : String,selectedSessionSTr : String) {
         var prams = [String : Any]()
-        prams = ["user_id": user_id, "session_id": session_id, "reschedule_count": rescheduleCount, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "schedule_time_id": schedule_time_id,"booking_id": booking_id,"session_type_id":self.model?.session_type?[0].session_type_id ?? "" ,"language" : SaveToDefaults().getAppLang() ?? "en"]
+        prams = ["user_id": user_id, "session_id": session_id, "reschedule_count": rescheduleCount, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "schedule_time_id": schedule_time_id,"booking_id": booking_id,"session_type_id":self.model?.session_type?[0].session_type_id ?? "" ,"language" : SaveToDefaults().getAppLang() ?? "en","session_time_minute" : session_time_minute,"session_type" : selectedSessionSTr]
         print(prams)
         self.show()
         api_manager.POSTApi(rescheduleSessionApiUrl(), param: prams, header: header()) { (response, err, code) in

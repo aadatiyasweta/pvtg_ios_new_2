@@ -104,6 +104,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         return formatter
     }()
     var selectedDate = ""
+    var dateToDeleselect = Date()
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -158,6 +159,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.backBtn.isHidden = false
         cancelTagView.isHidden = true
         isLoop = false
         isPriceLoop = false
@@ -338,6 +340,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.tapReschudleBtn = false
         }
         else {
+            self.backBtn.isHidden = true
             self.vwbookTickets.animShow()
             self.vwToGetBlurEffect.addBlurEffect()
             self.btnToRemove.isHidden = false
@@ -462,6 +465,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.vwbookTickets.animHide()
             self.btnToRemove.isHidden = true
             self.vwToGetBlurEffect.removeBlurEffect()
+            self.backBtn.isHidden = false
         }
     }
 }
@@ -517,6 +521,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         debugPrint("Api for getting time")
         self.formatter.dateFormat = "yyyy-MM-dd"
         print("did select date \(self.formatter.string(from: date))")
+        dateToDeleselect = date
         self.selectedDate = "\(self.formatter.string(from: date))"
         self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
         guard let alldate = self.vm.model?.all_date else {return}
@@ -617,9 +622,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             
             
 //            return self.vm.model?.session_type?.count ?? 0
+        }else{
+            print("timeCount ",self.timeArr.count)
+            return self.timeArr.count
         }
-        print("time is ",self.timeArr)
-        return self.timeArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -647,7 +653,8 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             }
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
             if self.timeArr[indexPath.row].is_avilable_time == "0" {
-                cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
+                //cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
+                cell.vwContainCatgry.backgroundColor = UIColor.lightGray
                 cell.vwContainCatgry.layer.cornerRadius = 10
                 
             } else {
@@ -702,7 +709,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                         self.lblsessiondetail.text = self.vm.model?.session_type?[0].descriptionen ?? ""
                         self.selectedSessionID = self.vm.model?.session_type?[0].session_type_id ?? ""
                         if(self.reloadTimeBoolValue == false){
-                            self.reloadTimeBoolValue = true
+                            
                             self.reloadTime()
                         }
                     }
@@ -750,7 +757,14 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                             if let currency = self.vm.model?.currency {
                                                 self.priceLabel.text = replaced + " " +  currency
                                                 self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
-                                                self.reloadTime()
+                                                self.reloadTimeBoolValue = false
+                                               // if(self.isFromSelection == true){
+                                                self.vwcalendar.deselect(self.dateToDeleselect)
+                                                self.id = -1
+                                                self.selectedDate = formatter.string(from: self.today)
+                                                self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                    self.reloadTime()
+                                               // }
                                                 self.isLoop = false
                                                 indexPosi = 0
                                             }
@@ -787,7 +801,14 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                 if let currency = self.vm.model?.currency {
                                                     self.priceLabel.text = replaced + " " +  currency
                                                     self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
-                                                    self.reloadTime()
+                                                    self.reloadTimeBoolValue = false
+                                                    //if(self.isFromSelection == true){
+                                                    self.vwcalendar.deselect(self.dateToDeleselect)
+                                                    self.id = -1
+                                                    self.selectedDate = formatter.string(from: self.today)
+                                                    self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                        self.reloadTime()
+                                                    //}
                                                     self.isLoop = false
                                                     indexPosi = 0
                                                 }
@@ -824,7 +845,14 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                 if let currency = self.vm.model?.currency {
                                                     self.priceLabel.text = replaced + " " +  currency
                                                     self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
-                                                    self.reloadTime()
+                                                    self.reloadTimeBoolValue = false
+                                                   // if(self.isFromSelection == true){
+                                                    self.vwcalendar.deselect(self.dateToDeleselect)
+                                                    self.id = -1
+                                                    self.selectedDate = formatter.string(from: self.today)
+                                                    self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                        self.reloadTime()
+                                                   // }
                                                     self.isLoop = false
                                                     indexPosi = 0
                                                 }
@@ -902,6 +930,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       // self.isFromSelection = false
         if collectionView == self.vwCollection{
             if self.timeArr[indexPath.row].is_available == "0" {
                 self.id = -1
@@ -996,6 +1025,7 @@ extension SessionDetailVC: GetResponse {
     }
     
     func sessionTimeDetail(){
+        self.timeArr.removeAll()
         self.timeArr = self.vm.timeArr?.result ?? []
         
         for i in 0..<(self.vm.timeArr?.result?.count ?? 0){
@@ -1066,20 +1096,25 @@ extension SessionDetailVC: GetResponse {
         
         self.formatter.dateFormat = "yyyy-MM-dd"
         for val in alldate {
-            if self.formatter.string(from: self.today) == val.schedule_date && val.is_avilable ?? "0" == "1"{
+            //if self.formatter.string(from: self.today) == val.schedule_date && val.is_avilable ?? "0" == "1"{
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
-                    self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
+                    if((self.selectedSessionID != "") && (self.reloadTimeBoolValue == false)){
+                        self.reloadTimeBoolValue = true
+                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
+                        break
+                    }
                     //self.scrollViewBotmconstarint.constant = 97
                 }
-                break
-            } else {
-                self.timeArr.removeAll()
-                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-                   // self.scrollViewBotmconstarint.constant = 0
-                    //self.btnBooknow.isHidden = true
-                }, completion: nil)
-                
-            }
+//                break
+//            } 
+//            else {
+//                self.timeArr.removeAll()
+//                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+//                   // self.scrollViewBotmconstarint.constant = 0
+//                    //self.btnBooknow.isHidden = true
+//                }, completion: nil)
+//                
+//            }
         }
     }
     
@@ -1181,7 +1216,21 @@ extension SessionDetailVC: GetResponse {
         if data.booking_date ?? "" == ""{
             self.bookingDateLbl.text = ""
         }else{
-            self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a"))"
+            let getBookingToTimeStr = data.booking_to_time ?? ""
+            var dateToTimeStr = ""
+            
+            if(getBookingToTimeStr != ""){
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+                dateFormatter.dateFormat = "HH:mm"
+                let date = dateFormatter.date(from:getBookingToTimeStr)!
+                
+                // let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "h:mm a"
+                dateToTimeStr = dateFormatter.string(from: date)
+            }
+            
+            self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a"))" + "-" + dateToTimeStr
         }
         if data.bio == "" {
             self.lblAboutVendor.text = ""
@@ -1370,7 +1419,7 @@ extension SessionDetailVC {
     //MARK: - Reschedule Api
     private func rescheduleBooking(){
         guard let userid = SaveToDefaults().getUserId() else {return}
-        self.vm.sessionRescheduleApi(user_id: userid, session_id: sessionId, booking_id: bookingId, booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", rescheduleCount: rescheduleCountStr)
+        self.vm.sessionRescheduleApi(user_id: userid, session_id: sessionId, booking_id: bookingId, booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", rescheduleCount: rescheduleCountStr,session_time_minute : self.sessionTimeMinuteStr,selectedSessionSTr : self.selectedSession)
         self.vm.rescheduleSuccesClosure = {[weak self ] in
 //            guard let self else {return}
 //            let vc = ThankyouVC.instance()
