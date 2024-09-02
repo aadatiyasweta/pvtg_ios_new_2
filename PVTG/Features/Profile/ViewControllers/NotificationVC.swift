@@ -69,8 +69,9 @@ class NotificationVC: BaseViewController {
         }
     }
     
+    //"Your session begins in 3 hours, will you still be attending your session?" ---  previously it was
     func performAttendingAlert(id : String, bookingId: String, rescheduleCount: String){
-        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: "Your session begins in 3 hours, will you still be attending your Ashitesh session?", controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
+        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: "Your session begins soon, will you still be attending your " + "[Session name]" + " session?", controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
             guard let self else{return}
             if result{
                // self.hitApi(id: "\(id)")
@@ -103,14 +104,14 @@ class NotificationVC: BaseViewController {
                             self.navigationController?.pushViewController(vc, animated: true)
                     }else{
                                 print("no ")
-                                let vc = SessionDetailVC.instance()
-                                vc.sessionId = "\(id)"
-                                vc.bookingId = bookingId
-                                vc.rescheduleCountStr = rescheduleCount
-                                vc.controllerId = 0
-                                //vc.isFromReschedule = true
-                                //vc.isFromRescheduleNo = false
-                                self.navigationController?.pushViewController(vc, animated: true)
+//                                let vc = SessionDetailVC.instance()
+//                                vc.sessionId = "\(id)"
+//                                vc.bookingId = bookingId
+//                                vc.rescheduleCountStr = rescheduleCount
+//                                vc.controllerId = 0
+//                                //vc.isFromReschedule = true
+//                                //vc.isFromRescheduleNo = false
+//                                self.navigationController?.pushViewController(vc, animated: true)
                             }
                     }
                 }

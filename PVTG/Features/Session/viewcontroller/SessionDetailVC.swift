@@ -1097,6 +1097,7 @@ extension SessionDetailVC: GetResponse {
         self.formatter.dateFormat = "yyyy-MM-dd"
         for val in alldate {
             //if self.formatter.string(from: self.today) == val.schedule_date && val.is_avilable ?? "0" == "1"{
+            if selectedDate == val.schedule_date{
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if((self.selectedSessionID != "") && (self.reloadTimeBoolValue == false)){
                         self.reloadTimeBoolValue = true
@@ -1105,6 +1106,14 @@ extension SessionDetailVC: GetResponse {
                     }
                     //self.scrollViewBotmconstarint.constant = 97
                 }
+            }else{
+                self.timeArr.removeAll()
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+                   // self.scrollViewBotmconstarint.constant = 0
+                    self.btnBooknow.isHidden = true
+                    self.priceLabel.isHidden = true
+                }, completion: nil)
+            }
 //                break
 //            } 
 //            else {
@@ -1182,7 +1191,7 @@ extension SessionDetailVC: GetResponse {
             }
         }
         
-        if((self.vm.model?.booked_price_type ?? "") != ""){
+        if((self.vm.model?.booked_price_type ?? "") != "" && self.controllerId == 1){
 
            // for i in 0..<(self.vm.model?.session_type?.count ?? 0){
 //                if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
@@ -1230,7 +1239,7 @@ extension SessionDetailVC: GetResponse {
                 dateToTimeStr = dateFormatter.string(from: date)
             }
             
-            self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a", currentTimeZone: ""))" + "-" + dateToTimeStr
+            self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a", currentTimeZone: data.currenttimezone ?? ""))" + "-" + dateToTimeStr
         }
         if data.bio == "" {
             self.lblAboutVendor.text = ""
