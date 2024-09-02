@@ -23,6 +23,7 @@ struct NotificationListResult: Codable {
     let booking_id : String?
     let schedule_time_id : String?
     let reschedule_count : String?
+    let name_of_listing : String?
 
 	enum CodingKeys: String, CodingKey {
 		case title = "title"
@@ -35,6 +36,7 @@ struct NotificationListResult: Codable {
         case booking_id = "booking_id"
         case schedule_time_id = "schedule_time_id"
         case reschedule_count = "reschedule_count"
+        case name_of_listing = "name_of_listing"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -49,6 +51,7 @@ struct NotificationListResult: Codable {
         booking_id = try values.decodeIfPresent(String.self, forKey: .booking_id)
         schedule_time_id = try values.decodeIfPresent(String.self, forKey: .schedule_time_id)
         reschedule_count = try values.decodeIfPresent(String.self, forKey: .reschedule_count)
+        name_of_listing = try values.decodeIfPresent(String.self, forKey: .name_of_listing)
 	}
 
 }

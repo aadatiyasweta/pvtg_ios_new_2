@@ -31,6 +31,7 @@ class NotificationVC: BaseViewController {
     var bookigIdSTr = ""
     var sessionIdSTr = ""
     var rescheduleCountSTr = ""
+    var sessionTitleStr = ""
     
     var notificationListData = [NotificationListResult]()
    // var window: UIWindow?
@@ -71,7 +72,7 @@ class NotificationVC: BaseViewController {
     
     //"Your session begins in 3 hours, will you still be attending your session?" ---  previously it was
     func performAttendingAlert(id : String, bookingId: String, rescheduleCount: String){
-        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: "Your session begins soon, will you still be attending your " + "[Session name]" + " session?", controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
+        Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: "Your session begins soon, will you still be attending your " + sessionTitleStr + " session?", controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
             guard let self else{return}
             if result{
                // self.hitApi(id: "\(id)")
@@ -138,6 +139,7 @@ extension NotificationVC: UITableViewDataSource, UITableViewDelegate {
         bookigIdSTr = self.notificationListData[indexPath.row].booking_id ?? ""
         sessionIdSTr = self.notificationListData[indexPath.row].session_id ?? ""
         rescheduleCountSTr = self.notificationListData[indexPath.row].reschedule_count ?? ""
+        sessionTitleStr = self.notificationListData[indexPath.row].name_of_listing ?? ""
         guard let userid = SaveToDefaults().getUserId() else {return}
         
         //self.notificationVM.getCoachNotificationListApi(user_id: userid, offset: offset)

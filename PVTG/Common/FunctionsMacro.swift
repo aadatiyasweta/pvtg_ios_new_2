@@ -761,6 +761,20 @@ func changeDateFormatForReminder(date : String,fromFormat : String = "dd-MMMM-yy
     return "Nil"
 }
 
+
+func changeDateToAnotherDateString(date : String,fromFormat : String = "EEEE, MMMM d", toFormat : String = "yyyy-MM-dd", currentTimeZone:String)-> String{
+    dateFormatter.dateFormat = fromFormat
+    dateFormatter.timeZone = TimeZone(abbreviation: currentTimeZone)
+    let date1 = dateFormatter.date(from: date)
+    dateFormatter.timeZone = NSTimeZone.local
+    dateFormatter.dateFormat = toFormat
+    if date1 != nil{
+        let str = dateFormatter.string(from: date1!)
+        return str
+    }
+    return "Nil"
+}
+
 func weekDayarr(days : String)->[Int]{
     var weekDayArr = [Int]()
     let arryOfDays = days.components(separatedBy: ", ")

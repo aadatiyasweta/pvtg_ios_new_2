@@ -758,13 +758,18 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                 self.priceLabel.text = replaced + " " +  currency
                                                 self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
                                                 self.reloadTimeBoolValue = false
-                                               // if(self.isFromSelection == true){
-                                                self.vwcalendar.deselect(self.dateToDeleselect)
+                                                
                                                 self.id = -1
-                                                self.selectedDate = formatter.string(from: self.today)
-                                                self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
-                                                    self.reloadTime()
-                                               // }
+//                                                self.selectedDate = formatter.string(from: self.today)
+//                                                self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                if(self.selectedDate != ""){
+                                                }else{
+                                                    self.vwcalendar.deselect(self.dateToDeleselect)
+                                                    self.selectedDate = formatter.string(from: self.today)
+                                                    self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                    self.selectedDate = changeDateToAnotherDateString(date: self.selectedDate, fromFormat: "EEEE, MMMM d", toFormat: "yyyy-MM-dd", currentTimeZone: "")
+                                                }
+                                                self.reloadTime()
                                                 self.isLoop = false
                                                 indexPosi = 0
                                             }
@@ -803,10 +808,15 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                     self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
                                                     self.reloadTimeBoolValue = false
                                                     //if(self.isFromSelection == true){
-                                                    self.vwcalendar.deselect(self.dateToDeleselect)
                                                     self.id = -1
-                                                    self.selectedDate = formatter.string(from: self.today)
-                                                    self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                    if(self.selectedDate != ""){
+                                                    }else{
+                                                        self.vwcalendar.deselect(self.dateToDeleselect)
+                                                        self.selectedDate = formatter.string(from: self.today)
+                                                        self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                        self.selectedDate = changeDateToAnotherDateString(date: self.selectedDate, fromFormat: "EEEE, MMMM d", toFormat: "yyyy-MM-dd", currentTimeZone: "")
+                                                    }
+                                                     // "Monday, September 2"
                                                         self.reloadTime()
                                                     //}
                                                     self.isLoop = false
@@ -847,12 +857,20 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                     self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
                                                     self.reloadTimeBoolValue = false
                                                    // if(self.isFromSelection == true){
-                                                    self.vwcalendar.deselect(self.dateToDeleselect)
+                                                    
                                                     self.id = -1
-                                                    self.selectedDate = formatter.string(from: self.today)
-                                                    self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
-                                                        self.reloadTime()
+//                                                    self.selectedDate = formatter.string(from: self.today)
+//                                                    self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                    if(self.selectedDate != ""){
+                                                       // self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                    }else{
+                                                        self.vwcalendar.deselect(self.dateToDeleselect)
+                                                        self.selectedDate = formatter.string(from: self.today)
+                                                        self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
+                                                        self.selectedDate = changeDateToAnotherDateString(date: self.selectedDate, fromFormat: "EEEE, MMMM d", toFormat: "yyyy-MM-dd", currentTimeZone: "")
+                                                    }
                                                    // }
+                                                    self.reloadTime()
                                                     self.isLoop = false
                                                     indexPosi = 0
                                                 }
@@ -961,6 +979,30 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             isLoop = true
             offeredCollView.reloadData()
             serviceTimeCollectionVw.reloadData()
+            
+            
+//            guard let alldate = self.vm.model?.all_date else {return}
+//            for val in alldate {
+//                if selectedDate == val.schedule_date{
+//                    if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
+//                        if val.is_avilable == "1" {
+//                            self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
+//                           // self.scrollViewBotmconstarint.constant = 97
+//                        }
+//                    }
+//                } else {
+//                    self.timeArr.removeAll()
+//                    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+//                       // self.scrollViewBotmconstarint.constant = 0
+//                        self.btnBooknow.isHidden = true
+//                        self.priceLabel.isHidden = true
+//                    }, completion: nil)
+//                }
+//            }
+//            
+//            self.vwCollection.reloadData()
+//            print(self.timeArr)
+//            self.colectnVwSessionImage.reloadData()
         }
     }
     
