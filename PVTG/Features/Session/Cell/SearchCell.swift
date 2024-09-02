@@ -30,8 +30,8 @@ class SearchCell: UICollectionViewCell {
     func setData(data: AllTimeResult?) {
         guard let data = data else {return}
         if let time1 = data.from_time, let toTime = data.to_time {
-            let time1Str = changeDateFormatForReminder(date: time1, fromFormat: "HH:mm", toFormat: "hh:mm a")
-             let time2Str = changeDateFormatForReminder(date: toTime, fromFormat: "HH:mm", toFormat: "hh:mm a")
+            let time1Str = changeDateFormatForReminder(date: time1, fromFormat: "HH:mm", toFormat: "hh:mm a", currentTimeZone: data.currenttimezone ?? "")
+            let time2Str = changeDateFormatForReminder(date: toTime, fromFormat: "HH:mm", toFormat: "hh:mm a", currentTimeZone: data.currenttimezone ?? "")
             self.searchCategorylbl.text = "\(time1Str) - \(time2Str)"
         }
     }

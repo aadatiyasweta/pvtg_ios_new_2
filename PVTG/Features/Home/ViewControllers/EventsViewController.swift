@@ -111,6 +111,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
         let vc = SessionDetailVC.instance()
         vc.controllerId = 3
         vc.sessionId = self.vm.model?.history?[indexPath.row].session_id ?? ""
+        vc.bookingId = self.vm.model?.history?[indexPath.row].booking_id ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

@@ -25,6 +25,7 @@ struct AllTimeResult : Codable {
     
     let is_booked : String?
     let is_available : String?
+    let currenttimezone : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -40,6 +41,7 @@ struct AllTimeResult : Codable {
         
         case is_booked = "is_booked"
         case is_available = "is_available"
+        case currenttimezone = "currenttimezone"
         
 	}
 
@@ -56,6 +58,7 @@ struct AllTimeResult : Codable {
         booked_price_type = try values.decodeIfPresent(String.self, forKey: .booked_price_type)
         is_available = try values.decodeIfPresent(String.self, forKey: .is_available)
         is_booked = try values.decodeIfPresent(String.self, forKey: .is_booked)
+        currenttimezone = try values.decodeIfPresent(String.self, forKey: .currenttimezone)
 	}
 
 }

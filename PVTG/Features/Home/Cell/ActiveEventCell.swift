@@ -99,7 +99,7 @@ extension ActiveEventCell:UICollectionViewDelegate,UICollectionViewDataSource,UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActiveEventCollectionViewCell", for: indexPath) as! ActiveEventCollectionViewCell
         if(indexPath.row == 0) {
             if let bookingDate = dictData?.booking_date {
-                let strDate = changeDateFormatForReminder(date: bookingDate, fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a")
+                let strDate = changeDateFormatForReminder(date: bookingDate, fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a", currentTimeZone: "")
                 cell.configureUI(with: strDate, imageName:  "shape6Copy")
             }
         }else if(indexPath.row == 1){
@@ -123,7 +123,7 @@ extension ActiveEventCell:UICollectionViewDelegate,UICollectionViewDataSource,UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(indexPath.row == 0){
             if let bookingDate = dictData?.booking_date {
-                let strDate = changeDateFormatForReminder(date: bookingDate, fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a")
+                let strDate = changeDateFormatForReminder(date: bookingDate, fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a", currentTimeZone: "")
                 let label = UILabel(frame: CGRect.zero)
                 label.text = strDate
                 label.sizeToFit()

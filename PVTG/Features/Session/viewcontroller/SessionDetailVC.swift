@@ -1197,7 +1197,7 @@ extension SessionDetailVC: GetResponse {
             self.selectedSession = self.vm.model?.session_booking_session_type ?? ""
             //self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")
             self.sessionTypePriceArr.append(self.vm.model?.session_booking_amount ?? "")
-            self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
+            self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "") // here 1 count
             self.sessionTypeIDArr.append(self.vm.model?.session_booking_type_id ?? "")
             
         }else{
@@ -1230,7 +1230,7 @@ extension SessionDetailVC: GetResponse {
                 dateToTimeStr = dateFormatter.string(from: date)
             }
             
-            self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a"))" + "-" + dateToTimeStr
+            self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a", currentTimeZone: ""))" + "-" + dateToTimeStr
         }
         if data.bio == "" {
             self.lblAboutVendor.text = ""
