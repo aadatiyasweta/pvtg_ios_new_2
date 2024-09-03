@@ -20,7 +20,8 @@ let terms =  "https://dharma.services/terms_condition.html"
 let aboutUs = "https://dharma.services/about_us.html"
 let faq = "https://dharma.services/faq.html"
 let privacy = "http://dharma.services/privacy_policy.html"
-let cancelPolicy = "http://dharma.services/cancel_policy.html"
+//let cancelPolicy = "https://dharma.services/cancel_policy.html" // live
+let cancelPolicy = "https://techugoserver.info/pvtg_dev/cancel_policy.html" // development
 //let server = testingServer
 let server = Config.shared.baseUrl()
 let googlePlacesSearchApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=noida&key=AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k"

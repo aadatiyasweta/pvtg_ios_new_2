@@ -50,6 +50,36 @@
             endingLineNumber = "217"
             landmarkName = "receiveMessage()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F36AD791-E4AC-45BC-A583-1689244B0701 - cc575b7f0e446d0d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SocketHelper.receiveMessage() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "217"
+                  endingLineNumber = "217">
+               </Location>
+               <Location
+                  uuid = "F36AD791-E4AC-45BC-A583-1689244B0701 - bf77b470c98aa757"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.receiveMessage() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "217"
+                  endingLineNumber = "217">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -114,6 +144,36 @@
             endingLineNumber = "232"
             landmarkName = "decodeObject(_:decoder:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3690CE79-BE80-432E-AB40-F29BED8845F4 - 75c8276898eda782"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 1 of PVTG.SocketHelper.decodeObject&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(_: Any, decoder: Foundation.JSONDecoder, completion: (&#x3c4;_0_0) -&gt; ()) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232">
+               </Location>
+               <Location
+                  uuid = "3690CE79-BE80-432E-AB40-F29BED8845F4 - 96299e0c91d8cbfb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SocketHelper.decodeObject&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(_: Any, decoder: Foundation.JSONDecoder, completion: (&#x3c4;_0_0) -&gt; ()) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -194,6 +254,36 @@
             endingLineNumber = "94"
             landmarkName = "configureSocketClient()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6C09CF06-E579-46D2-90BD-FFAF8DDB9551 - fe30fb16ca99cdb9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SocketHelper.configureSocketClient() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94">
+               </Location>
+               <Location
+                  uuid = "6C09CF06-E579-46D2-90BD-FFAF8DDB9551 - 8bea8a7c1acee25"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.configureSocketClient() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -497,6 +587,52 @@
             startingLineNumber = "110"
             endingLineNumber = "110"
             landmarkName = "configureSocketClient()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7B3708E1-B9B9-49FC-87D4-BB19490C360F - fe30fb16ca99cfa9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SocketHelper.configureSocketClient() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110">
+               </Location>
+               <Location
+                  uuid = "7B3708E1-B9B9-49FC-87D4-BB19490C360F - 65491b945e5b5634"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (Swift.Array&lt;Any&gt;, SocketIO.SocketAckEmitter) -&gt; () in PVTG.SocketHelper.configureSocketClient() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/ChatCallModule/Utilities/SocketHelper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "24758E94-5702-4808-974E-C71ED013518F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Profile/ViewControllers/NotificationVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
