@@ -61,7 +61,7 @@ struct MessageModel: Codable {
     let url: String
     let msgType: MessageType
     let addedOn: String
-    let read_status : String
+    let read_status : String?
     let videoThumbnail : String?
     let lat, long : Double?
     

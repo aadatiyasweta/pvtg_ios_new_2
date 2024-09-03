@@ -50,7 +50,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     var name = ""
     var ticketNo = ""
     var user = "user"
-    var otherUser = "vendor"
+    var otherUser = ""
     var onlineStatus = "true"
     var notavilableSatus = false
     let viewModel = ChatBoxViewModel()
@@ -91,6 +91,9 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(otherUser == ""){
+            otherUser = "vendor"
+        }
         locationSendStatus = false
         locationManager.delegate = self
         locationManager.distanceFilter = 15
@@ -830,7 +833,8 @@ extension ChatBoxView {
                 "sender_type": self.user ,
                 "ticketNo": self.ticketNo,
                 "lat": lat,
-                "long":long
+                "long":long,
+                "receiver_type": self.otherUser
             ])
         }
         else{
@@ -847,7 +851,8 @@ extension ChatBoxView {
                     "sender_type": self?.user ?? "",
                     "ticketNo": self?.ticketNo ?? "",
                     "lat": lat,
-                    "long":long
+                    "long":long,
+                    "receiver_type": self?.otherUser ?? "vendor"
                 ])
             }
         }
