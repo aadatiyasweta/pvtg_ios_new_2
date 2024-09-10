@@ -51,8 +51,8 @@ class NotificationViewModel: BaseVm {
     }
     
     //MARK: - makeCheckSession API
-    func makeCheckSession(user_id: String, session_id: String,schedule_time_id : String) {
-        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "schedule_time_id": schedule_time_id]
+    func makeCheckSession(user_id: String, session_id: String,schedule_time_id : String,booking_id : String) {
+        let prams : [String : Any] = ["user_id": user_id, "session_id": session_id, "schedule_time_id": schedule_time_id, "booking_id": booking_id]
         self.show()
         api_manager.POSTApi(checkSession(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()

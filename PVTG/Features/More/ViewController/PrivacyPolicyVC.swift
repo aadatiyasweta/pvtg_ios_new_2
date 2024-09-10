@@ -40,6 +40,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     var isComingCancelBooking = false
     var vm = SessionDetailViewModel()
     var getChargeId = ""
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()

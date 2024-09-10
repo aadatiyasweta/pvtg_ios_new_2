@@ -145,12 +145,13 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         print(userInfo)
         if userInfo?["gcm.notification.type"] as? String == "reminder"{
             if let session_id = userInfo?["gcm.notification.session_id"] as? String, let session_name = userInfo?["gcm.notification.session_name"] as? String, let notificationString = userInfo?["gcm.notification.data"] as? String {
-                let notificationData = convertToDictionary(text: notificationString)
-                if let bookingId = notificationData?["booking_id"] as? String, let bodyMessage = notificationData?["body"] as? String, let rescheduleCount = notificationData?["reschedule_count"] as? String{
+                let notificationData = convertToDictionary(text: notificationString) booking_date
+                if let bookingId = notificationData?["booking_id"] as? String, let bodyMessage = notificationData?["body"] as? String, let rescheduleCount = notificationData?["reschedule_count"] as? String, let paymentIdSTr = notificationData?["payment_id"] as? String, let chargeIdStr = notificationData?["charge_id"] as? String, let amountSTr = notificationData?["amount"] as? String, let bookingDateStr = notificationData?["booking_date"] as? String{
                     print(session_id,session_name,rescheduleCount)
                     //                               if SaveToDefaults().getAccessToken() != nil{
                     //                                   if application.applicationState == .active{
-                    self.performAttendingAlert(name: session_name, id: session_id,message: bodyMessage, bookingId: bookingId, rescheduleCount: rescheduleCount)
+                    self.performAttendingAlert(name: session_name, id: session_id,message: bodyMessage, bookingId: bookingId, rescheduleCount: rescheduleCount, amount: amountSTr, payment_id: paymentIdSTr, charge_id: chargeIdStr, bookingDateStr: bookingDateStr)
+                 
                     //                                   }
                     //                               }
                 }
@@ -290,7 +291,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         }
     }
         
-    func performAttendingAlert(name : String, id : String, message:String, bookingId: String, rescheduleCount: String){
+    func performAttendingAlert(name : String, id : String, message:String, bookingId: String, rescheduleCount: String, amount: String, payment_id: String, charge_id: String, bookingDateStr: String){
 //        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
 //        viewObj?.id = id
 //       viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
@@ -309,7 +310,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                            // vc.type = "Late fee Policy"
                             vc.isFromReschedule = true
                             vc.rescheduleCountStr = rescheduleCount
-                            vc.url = cancelPolicy
+                           // vc.url = cancelPolicy
+                            vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html"
                             vc.isComingCancelBooking = false
                             self.navigation.pushViewController(vc, animated: true)
                         }else{
@@ -342,6 +344,21 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
 //                                vc.isFromReschedule = true
 //                                vc.isFromRescheduleNo = false
 //                                self.navigation.pushViewController(vc, animated: true)
+                                let vc = PrivacyPolicyVC.instance()
+                                vc.type = R.string.localizable.cancelPolicy()
+                                vc.isFromReschedule = true
+                                vc.sessionId = "\(id)"
+                                vc.bookingId = bookingId
+                                vc.rescheduleCountStr = rescheduleCount
+                                vc.url = cancelPolicy
+                                vc.isComingCancelBooking = true
+                                
+                                vc.getChargeId = charge_id
+                                vc.timeStr = bookingDateStr
+                                vc.payment_id = payment_id
+                                vc.ammountSTr = amount
+                                
+                                self.navigation.pushViewController(vc, animated: true)
                             }
                     }
                 }

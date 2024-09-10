@@ -383,7 +383,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
 //        self.customeImageVideoPopup.isHidden = true
     }
     @IBAction func sendMessageAction(_ sender: UIButton) {
-        guard let message = self.messageTV.text, message != "Write here something...", message != "" else { return }
+        guard let message = self.messageTV.text, message != "Write something here...", message != "" else { return }
 //        SocketHelper.shared.sendMessage(data: [
 //            "s_id": "\(UserDefaults.userID ?? "0")",
 //            "r_id": reciverId,
@@ -395,7 +395,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
 //        ])
         self.sendMeassage(msg:message,msg_type:"text",url:"",thumbnil:"",lat: 0.0, long: 0.0)
         self.messageTV.textColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
-        self.messageTV.text = "Write here something..."
+        self.messageTV.text = "Write something here..."
         updateMsgTVHeight()
         self.view.endEditing(false)
     }
@@ -509,10 +509,10 @@ extension ChatBoxView: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        self.messageTV.text = self.messageTV.text == "Write here something..."
+        self.messageTV.text = self.messageTV.text == "Write something here..."
         ? nil
         : textView.text
-        self.messageTV.textColor = self.messageTV.text == "Write here something..."
+        self.messageTV.textColor = self.messageTV.text == "Write something here..."
         ? UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
         : UIColor.black
         
@@ -536,9 +536,9 @@ extension ChatBoxView: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         self.messageTV.text = self.messageTV.text == "" || self.messageTV.text == nil
-        ? "Write here something..."
+        ? "Write something here..."
         : textView.text
-        self.messageTV.textColor = self.messageTV.text == "Write here something..."
+        self.messageTV.textColor = self.messageTV.text == "Write something here..."
         ? UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
         : UIColor.black
     }

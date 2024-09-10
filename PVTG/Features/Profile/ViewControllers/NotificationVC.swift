@@ -33,6 +33,11 @@ class NotificationVC: BaseViewController {
     var rescheduleCountSTr = ""
     var sessionTitleStr = ""
     
+    var amountSTr = ""
+    var paymentIdStr = ""
+    var chargeIdSTr = ""
+    var bookingDateSTr = ""
+    
     var notificationListData = [NotificationListResult]()
    // var window: UIWindow?
     
@@ -84,7 +89,8 @@ class NotificationVC: BaseViewController {
                             vc.type = R.string.localizable.latePolicy()
                             vc.isFromReschedule = true
                             vc.rescheduleCountStr = rescheduleCount
-                            vc.url = cancelPolicy
+                            //vc.url = cancelPolicy
+                            vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html"
                             vc.isComingCancelBooking = false
                             self.navigationController?.pushViewController(vc, animated: true)
                         }else{
@@ -113,6 +119,20 @@ class NotificationVC: BaseViewController {
 //                                //vc.isFromReschedule = true
 //                                //vc.isFromRescheduleNo = false
 //                                self.navigationController?.pushViewController(vc, animated: true)
+                        let vc = PrivacyPolicyVC.instance()
+                        vc.type = R.string.localizable.cancelPolicy()
+                        vc.isFromReschedule = true
+                        vc.bookingId = bookingId
+                        vc.rescheduleCountStr = rescheduleCount
+                        vc.url = cancelPolicy
+                        vc.isComingCancelBooking = true
+                        vc.sessionId = self.sessionIdSTr
+                        vc.getChargeId = chargeIdSTr
+                        vc.timeStr = bookingDateSTr
+                        vc.payment_id = paymentIdStr
+                        vc.ammountSTr = amountSTr
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
                             }
                     }
                 }
@@ -140,10 +160,16 @@ extension NotificationVC: UITableViewDataSource, UITableViewDelegate {
         sessionIdSTr = self.notificationListData[indexPath.row].session_id ?? ""
         rescheduleCountSTr = self.notificationListData[indexPath.row].reschedule_count ?? ""
         sessionTitleStr = self.notificationListData[indexPath.row].name_of_listing ?? ""
+        
+        amountSTr = self.notificationListData[indexPath.row].amount ?? ""
+        paymentIdStr = self.notificationListData[indexPath.row].payment_id ?? ""
+        chargeIdSTr = self.notificationListData[indexPath.row].charge_id ?? ""
+        bookingDateSTr = self.notificationListData[indexPath.row].booking_date ?? ""
+        
         guard let userid = SaveToDefaults().getUserId() else {return}
         
         //self.notificationVM.getCoachNotificationListApi(user_id: userid, offset: offset)
-        self.notificationVM.makeCheckSession(user_id: userid, session_id: notificationListData[indexPath.row].session_id ?? "", schedule_time_id: self.notificationListData[indexPath.row].schedule_time_id ?? "")
+        self.notificationVM.makeCheckSession(user_id: userid, session_id: sessionIdSTr, schedule_time_id: self.notificationListData[indexPath.row].schedule_time_id ?? "", booking_id: bookigIdSTr)
     }
 }
 

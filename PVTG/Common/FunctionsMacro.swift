@@ -750,7 +750,7 @@ func showOpenSettingAlert(sender : UIViewController){
 
 func changeDateFormatForReminder(date : String,fromFormat : String = "dd-MMMM-yyyy", toFormat : String = "yyyy-MM-dd", currentTimeZone:String)-> String{
     dateFormatter.dateFormat = fromFormat
-    dateFormatter.timeZone = TimeZone(abbreviation: currentTimeZone)
+   // dateFormatter.timeZone = TimeZone(abbreviation: currentTimeZone) locatimeZone
     let date1 = dateFormatter.date(from: date)
     dateFormatter.timeZone = NSTimeZone.local
     dateFormatter.dateFormat = toFormat
