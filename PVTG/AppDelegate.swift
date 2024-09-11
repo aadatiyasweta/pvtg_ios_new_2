@@ -145,7 +145,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         print(userInfo)
         if userInfo?["gcm.notification.type"] as? String == "reminder"{
             if let session_id = userInfo?["gcm.notification.session_id"] as? String, let session_name = userInfo?["gcm.notification.session_name"] as? String, let notificationString = userInfo?["gcm.notification.data"] as? String {
-                let notificationData = convertToDictionary(text: notificationString) booking_date
+                let notificationData = convertToDictionary(text: notificationString)
                 if let bookingId = notificationData?["booking_id"] as? String, let bodyMessage = notificationData?["body"] as? String, let rescheduleCount = notificationData?["reschedule_count"] as? String, let paymentIdSTr = notificationData?["payment_id"] as? String, let chargeIdStr = notificationData?["charge_id"] as? String, let amountSTr = notificationData?["amount"] as? String, let bookingDateStr = notificationData?["booking_date"] as? String{
                     print(session_id,session_name,rescheduleCount)
                     //                               if SaveToDefaults().getAccessToken() != nil{

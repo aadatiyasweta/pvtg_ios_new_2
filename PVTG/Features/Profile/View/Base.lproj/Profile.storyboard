@@ -714,6 +714,10 @@ You earned 45pts</string>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EJR-dj-ITb">
                                 <rect key="frame" x="0.0" y="93" width="414" height="643"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ELE-ym-YIW" id="FML-Ik-sOa"/>
+                                    <outlet property="delegate" destination="ELE-ym-YIW" id="7kb-KJ-Tle"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzv-Bg-zrg">
                                 <rect key="frame" x="207" y="378" width="0.0" height="0.0"/>
@@ -745,7 +749,7 @@ You earned 45pts</string>
                     <connections>
                         <outlet property="btnBack" destination="h4l-lm-ZBZ" id="IhM-S1-6Iu"/>
                         <outlet property="lbvlNoNotification" destination="qzv-Bg-zrg" id="60O-mG-0W9"/>
-                        <outlet property="tblNotication" destination="EJR-dj-ITb" id="YM4-nS-PBg"/>
+                        <outlet property="tblNotication" destination="EJR-dj-ITb" id="ACB-xm-VKw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JIW-H2-HCL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1207,7 +1211,7 @@ You earned 45pts</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

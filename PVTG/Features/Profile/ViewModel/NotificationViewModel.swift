@@ -21,14 +21,15 @@ class NotificationViewModel: BaseVm {
     
     //MARK: - Properties
     var model: NotificationListBase?
+    var SuccesClosuredata:(_ notificationData:[NotificationListResult]) -> (Void) = { notificationData in   }
     weak var delegate: AfterGettingNotificationList?
     
     //weak var delegateCheckStatus: CheckRescheduleStatus?
     var successfulMsg = ""
     
     //MARK: -  Method to get Coach Notification List
-    func getCoachNotificationListApi(user_id: String, offset: String) {
-        let prams : [String : Any] = ["user_id": user_id, "offset": offset,"language" : SaveToDefaults().getAppLang() ?? "en"]
+    func getCoachNotificationListApi(user_id: String, offset: String, limit: String) {
+        let prams : [String : Any] = ["user_id": user_id, "offset": offset,"language" : SaveToDefaults().getAppLang() ?? "en", "limit": limit]
         self.show()
         api_manager.GETApi(getCoachNotificationList(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
@@ -39,6 +40,7 @@ class NotificationViewModel: BaseVm {
                     let jsonDecoder = JSONDecoder()
                     let model = try? jsonDecoder.decode(NotificationListBase.self, from: data ?? Data())
                     self.model = model
+                    self.SuccesClosuredata(self.model?.result ?? [NotificationListResult]())
                     self.delegate?.updateList()
                 }
                 else {
