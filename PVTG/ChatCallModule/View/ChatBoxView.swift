@@ -494,12 +494,12 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     @objc private func openMap(sender: UIButton) {
         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
                     UIApplication.shared.openURL(NSURL(string:
-                                                        "comgooglemaps://?saddr=&daddr=\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0),\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0)&directionsmode=driving")! as URL)
+                                                        "comgooglemaps://?saddr=&daddr=\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0),\(Double(arrChatList[sender.tag].long ?? 0.0) ?? 0.0)&directionsmode=driving")! as URL)
                     
                 } else {
                     // if GoogleMap App is not installed
                     UIApplication.shared.openURL(NSURL(string:
-                                                        "https://maps.google.com/?q=@\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0),\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0)&directionsmode=driving")! as URL)
+                                                        "https://maps.google.com/?q=@\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0),\(Double(arrChatList[sender.tag].long ?? 0.0) ?? 0.0)&directionsmode=driving")! as URL)
                 }
     }
 }

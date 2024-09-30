@@ -155,6 +155,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     var reloadTimeBoolValue = false
     var sessionTimeMinuteStr = ""
+    var getFollowUpId = ""
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -173,6 +174,9 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         self.selectedDate = formatter.string(from: self.today)
         offeredCollView.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
         serviceTimeCollectionVw.register(SearchCell.nib(), forCellWithReuseIdentifier: SearchCell.ident)
+        self.vwcalendar.reloadData()
+        self.vwcalendar.setNeedsLayout()
+        self.vwcalendar.layoutIfNeeded()
         if controllerId == 1{
         btnToPrev.isHidden = true
         btnToCurrent.isHidden = true
@@ -182,7 +186,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.vwCollection.isHidden = true
             self.vwColectionHeightConstarint.constant = 0
             self.vwMapHeightConstraint.constant = 256
-            self.vwCalendarHeightConstraint.constant = 300
+//            self.vwCalendarHeightConstraint.constant = 300
+            self.vwCalendarHeightConstraint.constant = 0
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
             
@@ -288,7 +293,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
 //        else{
 //            self.rescheduleBtn.isHidden = true // yet commented ashitesh
 //        }
-        if self.isFromFollowup == true{
+        if (self.isFromFollowup == true || (getFollowUpId != "0" && getFollowUpId != "")){
             self.customQstnVw.isHidden = false
         }else {
             self.customQstnVw.isHidden = true //ashi3
@@ -377,7 +382,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     @IBAction func rescheduleBtnTap(_ sender: UIButton) {
         //handlingHeaderInFSCalendar()
-       // self.vwcalendar.reloadData()
+        
+        self.vwcalendar.reloadData()
+        self.vwcalendar.setNeedsLayout()
+        self.vwcalendar.layoutIfNeeded()
+        
         self.vwmap.isHidden = false
         btnToPrev.isHidden = false
         btnToCurrent.isHidden = false
@@ -1220,17 +1229,46 @@ extension SessionDetailVC: GetResponse {
         self.descSessionTypeArr.removeAll()
         self.allSessionTypePriceTypeArr.removeAll()
         for i in 0..<(self.vm.model?.session_type?.count ?? 0){
-            self.allSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
-            self.allSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
-            self.allSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
-            self.descSessionTypeArr.append(self.vm.model?.session_type?[i].descriptionen ?? "")
-            self.allSessionTypePriceTypeArr.append(self.vm.model?.session_type?[i].price_type ?? "")
+            if(self.vm.model?.session_type?[i].session_type ?? "" == "Studio"){
+                self.allSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
+                self.allSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+                self.allSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                self.descSessionTypeArr.append(self.vm.model?.session_type?[i].descriptionen ?? "")
+                self.allSessionTypePriceTypeArr.append(self.vm.model?.session_type?[i].price_type ?? "")
+            }
             if(tempSessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
             }else{
                 self.tempSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
                 self.tempselectedSession = self.vm.model?.session_type?[i].session_type ?? ""
                 self.tempSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
                 self.tempSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+            }
+        }
+        for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+            if(self.vm.model?.session_type?[i].session_type ?? "" == "Virtual"){
+                self.allSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
+                self.allSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+                self.allSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                self.descSessionTypeArr.append(self.vm.model?.session_type?[i].descriptionen ?? "")
+                self.allSessionTypePriceTypeArr.append(self.vm.model?.session_type?[i].price_type ?? "")
+            }
+        }
+        for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+            if(self.vm.model?.session_type?[i].session_type ?? "" == "Home"){
+                self.allSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
+                self.allSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+                self.allSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                self.descSessionTypeArr.append(self.vm.model?.session_type?[i].descriptionen ?? "")
+                self.allSessionTypePriceTypeArr.append(self.vm.model?.session_type?[i].price_type ?? "")
+            }
+        }
+        for i in 0..<(self.vm.model?.session_type?.count ?? 0){
+            if(self.vm.model?.session_type?[i].session_type ?? "" == "Teaching"){
+                self.allSessionTypeArr.append(self.vm.model?.session_type?[i].session_type ?? "")
+                self.allSessionIDTypeArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
+                self.allSessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
+                self.descSessionTypeArr.append(self.vm.model?.session_type?[i].descriptionen ?? "")
+                self.allSessionTypePriceTypeArr.append(self.vm.model?.session_type?[i].price_type ?? "")
             }
         }
         

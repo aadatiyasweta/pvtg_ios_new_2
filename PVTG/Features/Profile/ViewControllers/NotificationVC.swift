@@ -214,10 +214,23 @@ extension NotificationVC: UITableViewDataSource, UITableViewDelegate {
         chargeIdSTr = self.arrNotificationresult[indexPath.row].charge_id ?? ""
         bookingDateSTr = self.arrNotificationresult[indexPath.row].booking_date ?? ""
         
-        guard let userid = SaveToDefaults().getUserId() else {return}
-        
-        //self.notificationVM.getCoachNotificationListApi(user_id: userid, offset: offset)
-        self.notificationVM.makeCheckSession(user_id: userid, session_id: sessionIdSTr, schedule_time_id: self.arrNotificationresult[indexPath.row].schedule_time_id ?? "", booking_id: bookigIdSTr)
+        var sessionType = self.arrNotificationresult[indexPath.row].type ?? ""
+        if(sessionType == "normal" || sessionType == "booking" || sessionType == "place" || sessionType == "welcome" || sessionType == "booking_reschedule" || sessionType == "refund"){
+            print("No notification reminder")
+        }else if(sessionType == "session_follow_up"){
+            let vc = SessionDetailVC.instance()
+                vc.controllerId = 0
+                vc.bookingId = self.bookigIdSTr
+                vc.sessionId = self.sessionIdSTr
+                vc.rescheduleCountStr = self.rescheduleCountSTr
+                self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else{
+            guard let userid = SaveToDefaults().getUserId() else {return}
+            
+            //self.notificationVM.getCoachNotificationListApi(user_id: userid, offset: offset)
+            self.notificationVM.makeCheckSession(user_id: userid, session_id: sessionIdSTr, schedule_time_id: self.arrNotificationresult[indexPath.row].schedule_time_id ?? "", booking_id: bookigIdSTr)
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

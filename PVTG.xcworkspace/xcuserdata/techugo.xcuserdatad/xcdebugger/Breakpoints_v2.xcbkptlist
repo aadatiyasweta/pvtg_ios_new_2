@@ -7,113 +7,279 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1C26A46A-10F2-410C-A886-5D9480711B52"
+            uuid = "1814DD25-83D1-4C5B-A1A6-673AE1237CB4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Profile/ViewControllers/NotificationVC.swift"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
-            landmarkName = "updateList()"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1814DD25-83D1-4C5B-A1A6-673AE1237CB4 - c1dc043c417e00db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.viewDidLoad() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186">
+               </Location>
+               <Location
+                  uuid = "1814DD25-83D1-4C5B-A1A6-673AE1237CB4 - c1dc043c417e0084"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.viewDidLoad() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B91AF87F-197B-4707-9EDF-8E66C7136FE6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B91AF87F-197B-4707-9EDF-8E66C7136FE6 - c1dc043c417e0347"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.viewDidLoad() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214">
+               </Location>
+               <Location
+                  uuid = "B91AF87F-197B-4707-9EDF-8E66C7136FE6 - c1dc043c417e0360"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.viewDidLoad() -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3D746C1-2A2B-489D-A21B-BFE80FF6CA9E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E5C1F0B9-990E-4809-B65A-44DF2CE09256"
+            uuid = "92F839AD-C0A5-40DD-91AE-7B44B0E51916"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Common/FunctionsMacro.swift"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "934"
-            endingLineNumber = "934"
-            landmarkName = "loadProfilePic(_:_:activity:name:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6D288936-10E0-4CC7-A510-A23517E6E677"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/Common/FunctionsMacro.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "924"
-            endingLineNumber = "924"
-            landmarkName = "loadImage(_:_:activity:defaultImage:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E4F27EBF-DC75-4224-ADDE-C067293F8DC3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/Common/FunctionsMacro.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "936"
-            endingLineNumber = "936"
-            landmarkName = "loadProfilePic(_:_:activity:name:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "329C8713-0544-472D-9EFF-93A2998B85EA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/Common/FunctionsMacro.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "931"
-            endingLineNumber = "931"
-            landmarkName = "loadImage(_:_:activity:defaultImage:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FEB2D6B7-E3FC-4B34-A169-5E46AE613A77"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Home/ViewControllers/EventsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "directions(lat:long:)"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "rescheduleBtnTap(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04B06C3D-0339-4DC4-88F2-9E405E2B5D62"
+            uuid = "B712290A-95CA-4C52-B0D3-C06502A6BFC1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Home/ViewControllers/EventsViewController.swift"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "directions(lat:long:)"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A68042C-1BE0-487A-A396-7591EF5DE338"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7A68042C-1BE0-487A-A396-7591EF5DE338 - b1af4cf235b102a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "302"
+                  endingLineNumber = "302">
+               </Location>
+               <Location
+                  uuid = "7A68042C-1BE0-487A-A396-7591EF5DE338 - b1af4cf235b10306"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "299"
+                  endingLineNumber = "299">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D49C44CE-A07F-468D-8521-698203265581"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
+            landmarkName = "customQstnBtnAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D49C44CE-A07F-468D-8521-698203265581 - 97cc876ad66e960a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.customQstnBtnAction(Any) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "449"
+                  endingLineNumber = "449">
+               </Location>
+               <Location
+                  uuid = "D49C44CE-A07F-468D-8521-698203265581 - 97cc876ad66e95cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.customQstnBtnAction(Any) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "443"
+                  endingLineNumber = "443">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0E6C638-CFCB-4769-97B1-C45B32E59FE6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
+            landmarkName = "customQstnBtnAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B0E6C638-CFCB-4769-97B1-C45B32E59FE6 - 97cc876ad66e960a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.customQstnBtnAction(Any) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "449"
+                  endingLineNumber = "449">
+               </Location>
+               <Location
+                  uuid = "B0E6C638-CFCB-4769-97B1-C45B32E59FE6 - 97cc876ad66e95ef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PVTG.SessionDetailVC.customQstnBtnAction(Any) -&gt; ()"
+                  moduleName = "PVTG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
