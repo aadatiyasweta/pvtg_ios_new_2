@@ -23,16 +23,30 @@ class OTPVC: BaseViewController {
     //MARK: - Properties
     var email = ""
     var otp = ""
-    var otpTimer : Timer?
-    var counter = 60
+//    var otpTimer : Timer?
+//    var counter = 60
     var vm = LoginVM()
+    
+    var totalSecond = 60
+    var timer:Timer?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        timer?.invalidate()
         setupPinView()
         self.vm.delegate = self
         self.otpMobileLbL.text = R.string.localizable.entertheverificationcode(self.email)
+        donotReciveLbl.text = ""
+        resndBtn.setTitle("", for: .normal)
+        resndBtn.isUserInteractionEnabled = false
+        timeLbl.text = "00:30"
+        
+//        donotReciveLbl.text = "donotReciveLbl"
+//        resndBtn.setTitle("Resend Code", for: .normal)
+        
+        self.totalSecond = 30
+        self.startTimer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,23 +59,50 @@ class OTPVC: BaseViewController {
     }
   
     //MARK:  - INITIAL TIMER
-    func initialtimer(){
-        self.resndBtn.alpha = 0
-        self.donotReciveLbl.alpha = 0
-        self.otpTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerAction), userInfo: nil, repeats: true)
-    }
+//    func initialtimer(){
+//        self.resndBtn.alpha = 0
+//        self.donotReciveLbl.alpha = 0
+//        self.otpTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerAction), userInfo: nil, repeats: true)
+//    }
     
     //MARK: - TIMER ACTION
-    @objc func timerAction() {
-        if(counter > 0){
-            self.counter -= 1
-            self.resndBtn.alpha = 0
-            self.donotReciveLbl.alpha = 0
+//    @objc func timerAction() {
+//        if(counter > 0){
+//            self.counter -= 1
+//            self.resndBtn.alpha = 0
+//            self.donotReciveLbl.alpha = 0
+//        }else{
+//            otpTimer?.invalidate()
+//            self.resndBtn.alpha = 1
+//            self.donotReciveLbl.alpha = 1
+//         }
+//    }
+    func startTimer(){
+       timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
+    }
+    
+    @objc func countdown() {
+        var minutes: Int
+        var seconds: Int
+
+        if totalSecond == 0 {
+            timer?.invalidate()
+            timeLbl.text = ""
+            //resendTimeLbl.textColor = UIColor.lightGray
+            
+            self.resndBtn.isUserInteractionEnabled = true
+            donotReciveLbl.text = "Didn’t Receive? "
+            resndBtn.setTitle("Resend Code", for: .normal)
         }else{
-            otpTimer?.invalidate()
-            self.resndBtn.alpha = 1
-            self.donotReciveLbl.alpha = 1
-         }
+            donotReciveLbl.text = ""
+            resndBtn.setTitle("", for: .normal)
+            totalSecond = totalSecond - 1
+            minutes = (totalSecond % 3600) / 60
+            seconds = (totalSecond % 3600) % 60
+            print(String(format: "%02d:%02d", minutes, seconds))
+            timeLbl.text = "\(String(format: "%02d:%02d", minutes, seconds))"
+            self.resndBtn.isUserInteractionEnabled = false
+        }
     }
     
     func setupPinView() {
@@ -83,13 +124,16 @@ class OTPVC: BaseViewController {
         }
         pinView.didFinishCallback = { [weak self] pin in
             self?.otp = pin
-            self?.otpTimer?.invalidate()
         }
     }
     
     @IBAction func resendBtnTap(_ sender: UIButton) {
         self.pinView.clearPin()
         self.vm.forgotApi(email: self.email, is_resend: "1")
+        donotReciveLbl.text = ""
+        resndBtn.setTitle("", for: .normal)
+        self.totalSecond = 30
+        self.startTimer()
     }
     
     @IBAction func verifyBtnTap(_ sender: UIButton) {
@@ -104,6 +148,16 @@ class OTPVC: BaseViewController {
 
 //MARK: - CUSTOM DELEGATE
 extension OTPVC: AfterLoginSuccess {
+    func inCorrectOtpMessage() {
+        let alertController = UIAlertController(title: "Dharma", message: "Invalid OTP." as? String, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
+            self.pinView.clearPin()
+            self.otp = ""
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     func changePaswdSucces() {
          debugPrint("changePaswdSucces")
     }
@@ -125,6 +179,7 @@ extension OTPVC: AfterLoginSuccess {
     }
     
     func otpCheckSuccess() {
+        self.timer?.invalidate()
         let vc = ChangepaswdVC.instance()
         vc.email = self.email
         self.navigationController?.pushViewController(vc, animated: true)

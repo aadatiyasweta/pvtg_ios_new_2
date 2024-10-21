@@ -106,6 +106,10 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
 
 //MARK: - AFTER LOGIN SUCCESS DELEGATE
 extension LoginVC: AfterLoginSuccess {
+    func inCorrectOtpMessage() {
+        print("In Correct Msg")
+    }
+    
     func forgotSuccess() {
         debugPrint("forgotSuccess")
     }

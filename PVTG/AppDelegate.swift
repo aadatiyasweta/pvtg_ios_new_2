@@ -40,6 +40,9 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             GMSServices.provideAPIKey(apiKey)
             GMSPlacesClient.provideAPIKey(apiKey)
         }
+        
+//        GMSPlacesClient.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
+//        GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
     // Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
      Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
@@ -164,6 +167,44 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                     self.performSessionFollowupAlert(name: session_name, id: session_id,message: bodyMessage)
                 }
                 }
+        }
+//        else if let userInfo = userInfo as? [String: Any],
+//           let aps = userInfo["aps"] as? [String: Any],
+//           let alert = aps["alert"] as? [String: Any],
+//           let title = alert["title"] as? String {
+//            print("Title: \(title)")
+//            
+//            if(title == "Session Reminder" || title == "reminder"){
+//                
+//            }
+//        } 
+        else if let userInfo = userInfo as? [String: Any],
+             let type = userInfo["type"] as? String {
+              print("Type: \(type)")
+            if(type == "Session Reminder" || type == "reminder"){
+                if let session_id = userInfo["session_id"] as? String, let session_name = userInfo["session_name"] as? String {
+//                    , let notificationString = userInfo?["gcm.notification.data"] as? String {
+//                    let notificationData = convertToDictionary(text: notificationString)
+                    if let bookingId = userInfo["booking_id"] as? String, let bodyMessage = userInfo["body"] as? String, let rescheduleCount = userInfo["reschedule_count"] as? String, let paymentIdSTr = userInfo["payment_id"] as? String, let chargeIdStr = userInfo["charge_id"] as? String, let amountSTr = userInfo["amount"] as? String, let bookingDateStr = userInfo["booking_date"] as? String{
+                        print(session_id,session_name,rescheduleCount)
+
+                        self.performAttendingAlert(name: session_name, id: session_id,message: bodyMessage, bookingId: bookingId, rescheduleCount: rescheduleCount, amount: amountSTr, payment_id: paymentIdSTr, charge_id: chargeIdStr, bookingDateStr: bookingDateStr)
+                    }
+                }
+            }
+            else if(type == "session_follow_up"){
+                if let session_id = userInfo["session_id"] as? String, let session_name = userInfo["session_name"] as? String {
+                    //let notificationString = userInfo?["gcm.notification.data"] as? String {
+                    if let bodyMessage = userInfo["body"] as? String{
+                        self.performSessionFollowupAlert(name: session_name, id: session_id,message: bodyMessage)
+                    }
+                }
+            }else{
+                
+            }
+          }
+        else {
+            print("Title not found.")
         }
     }
     
@@ -311,7 +352,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                             vc.isFromReschedule = true
                             vc.rescheduleCountStr = rescheduleCount
                            // vc.url = cancelPolicy
-                            vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html"
+                            vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html" // development
                             vc.isComingCancelBooking = false
                             self.navigation.pushViewController(vc, animated: true)
                         }else{
@@ -328,9 +369,9 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                                 vc.sessionId = "\(id)"
                                 vc.bookingId = bookingId
                                 vc.rescheduleCountStr = rescheduleCount
-                                vc.controllerId = 0
-                                vc.isFromReschedule = true // at first it was false
-                                vc.isFromRescheduleNo = false // at first it was true - both changed due to client requirement
+                                vc.controllerId = 1
+                                vc.isFromReschedule = false // at first it was false
+                                vc.isFromRescheduleNo = true // at first it was true - both changed due to client requirement
         //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
                                 self.navigation.pushViewController(vc, animated: true)
                             }else{

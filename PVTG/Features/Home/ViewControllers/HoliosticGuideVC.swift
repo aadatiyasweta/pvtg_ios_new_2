@@ -52,19 +52,26 @@ class HoliosticGuideVC: BaseViewController {
     //MARK: - Properties
     override func viewDidLoad() {
         super.viewDidLoad()
+       //
         vm.delegate = self
         setShadowToView()
         self.btnClose.isHidden = false
         self.colectionVwCategory.isPagingEnabled = true
+        
+//        let layout = UICollectionViewFlowLayout()
+//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        colectionVwCategory.collectionViewLayout = layout
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let userid = SaveToDefaults().getUserId() {
             vm.getAllCategoryApi(user_id: userid)
+           // self.colectionVwCategory.layoutIfNeeded()
         }
     }
     override func viewWillLayoutSubviews() {
+        self.view.layoutIfNeeded()
         self.colectionVwCategory.reloadData()
     }
     
@@ -195,6 +202,8 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
                 cell.searchCategorylbl.textColor = UIColor().coloWithHexString(hex: "#9a9a9a")
                 cell.vwContainCatgry.border(width: 0.3, color: UIColor().coloWithHexString(hex: "#9a9a9a"))
             }
+//            cell.searchCategorylbl.numberOfLines = 0
+//            cell.searchCategorylbl.lineBreakMode = .byWordWrapping
             cell.setSearchData(data: self.vm.categorymodel?.result?[indexPath.row])
             cell.vwContainCatgry.layer.cornerRadius = 17
             return cell
@@ -221,6 +230,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
                 return CGSize(width: label.frame.size.width + 36, height: 45)
             }
             return CGSize(width: label.frame.size.width + 26, height: 45)
+            
         }
     }
     

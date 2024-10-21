@@ -73,6 +73,10 @@ extension ForgotPaswordVC {
 
 //MARK: - CUSTOM DELEGATE
 extension ForgotPaswordVC: AfterLoginSuccess {
+    func inCorrectOtpMessage() {
+        print("In Correct Msg")
+    }
+    
     func otpCheckSuccess() {
     }
     

@@ -109,6 +109,10 @@ extension ChangepaswdVC {
 
 //MARK: - AFTER LOGIN  SUCCESS DELEGATE
 extension ChangepaswdVC: AfterLoginSuccess {
+    func inCorrectOtpMessage() {
+        print("In Correct Msg")
+    }
+    
     func loginSuccess() {
         debugPrint("loginSuccess")
     }

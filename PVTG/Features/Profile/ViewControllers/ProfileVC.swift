@@ -21,6 +21,9 @@ class ProfileVC: BaseViewController {
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var lblMobNo: UILabel!
     @IBOutlet weak var lblEmailAdd: UILabel!
+    
+    var spinnerr = UIActivityIndicatorView(style: .gray)
+    
     @IBOutlet weak var colectionVwinterest: UICollectionView!{
         didSet {
             colectionVwinterest.dataSource = self
@@ -44,13 +47,20 @@ class ProfileVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.imgUser.image = nil
+        activityIndicator()
         loadApi()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            self.spinnerr.stopAnimating()
+            self.spinnerr.hidesWhenStopped = true
+            self.hideActivityIndicator()
+        })
     }
     
     func renderTheColorOfImage() {
           DispatchQueue.main.async {
             self.imgUser.layer.cornerRadius = 10
-            self.imgUser.image = #imageLiteral(resourceName: "more")
+            //self.imgUser.image = #imageLiteral(resourceName: "more")
           }
       }
     
@@ -65,6 +75,18 @@ class ProfileVC: BaseViewController {
         let vc = TransformerExampleViewController.instance()
         vc.controllerId = 1
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func activityIndicator() {
+                self.spinnerr.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+                self.spinnerr.center = CGPoint(x:self.imgUser.bounds.size.width / 2, y:self.imgUser.bounds.size.height / 2)
+
+                self.imgUser.addSubview(self.spinnerr)
+                self.spinnerr.startAnimating()
+    }
+    
+    func hideActivityIndicator() {
+            self.spinnerr.stopAnimating()
     }
 }
 
@@ -116,12 +138,32 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
 extension ProfileVC: UpdateTheProfile {
     func updateProfile() {
         guard let data = self.vm.model else {return}
+        self.imgUser.image = nil
+//        self.hideActivityIndicator()
+//            self.spinnerr.stopAnimating()
+//            self.spinnerr.hidesWhenStopped = true
         self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + " \(R.string.localizable.purevibesPts())"
         self.lblName.text = data.user_profile?.name ?? ""
         self.lblEmailAdd.text = data.user_profile?.email ?? ""
-        loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
+        if(data.user_profile?.user_image != "" && data.user_profile?.user_image != nil){
+            //loadImage(data.image, imgcategory, activity: nil, defaultImage: nil)
+//            loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
+            loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: nil)
+            if(self.imgUser.image != nil){
+                
+                self.spinnerr.stopAnimating()
+                self.spinnerr.hidesWhenStopped = true
+                self.hideActivityIndicator()
+            }
+        }else{
+            self.imgUser.image = #imageLiteral(resourceName: "more")
+            self.spinnerr.stopAnimating()
+            self.spinnerr.hidesWhenStopped = true
+        self.hideActivityIndicator()
+        }
         self.colectionVwinterest.reloadData()
         self.lblAddress.text = SaveToDefaults().getCity() ?? ""
+       
     }
 }
 
@@ -135,8 +177,23 @@ extension ProfileVC {
     
     private func setData() {
         guard let data = self.vm.getDataFromLocal() else {return}
-        loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
-        SaveToDefaults().setProfilePic(value: data.user_profile?.user_image ?? "")
+       
+        //loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
+        if(data.user_profile?.user_image != "" && data.user_profile?.user_image != nil){
+            loadImage(data.user_profile?.user_image ?? "", self.imgUser, activity: nil, defaultImage: nil)
+            if(self.imgUser.image != nil){
+                self.spinnerr.stopAnimating()
+                self.spinnerr.hidesWhenStopped = true
+                self.hideActivityIndicator()
+            }
+        }else{
+            self.imgUser.image = #imageLiteral(resourceName: "more")
+            self.spinnerr.stopAnimating()
+            self.spinnerr.hidesWhenStopped = true
+        self.hideActivityIndicator()
+        }
+        
+       // SaveToDefaults().setProfilePic(value: data.user_profile?.user_image ?? "")
         self.lblPVTGPoints.text = (data.user_profile?.total_point ?? "") + R.string.localizable.purevibesPts()
         self.lblAddress.text = SaveToDefaults().getCity() ?? ""
         self.lblName.text = data.user_profile?.name ?? ""

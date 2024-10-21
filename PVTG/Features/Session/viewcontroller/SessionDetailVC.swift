@@ -353,7 +353,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
     
     @IBAction func cancelBtnTap(_ sender: UIButton) {
-
+        self.backBtn.isHidden = false
                 let vc = PrivacyPolicyVC.instance()
                 vc.type = R.string.localizable.cancelPolicy()
                 vc.isFromReschedule = true
@@ -371,6 +371,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     
     
     @IBAction func chatButtonAction(_ sender: Any) {
+        self.backBtn.isHidden = false
         let vc = ChatBoxView.instance()
         vc.otherUser = (self.vm.model?.created_by ?? "").lowercased()
         vc.reciverId = self.vm.model?.created_id ?? ""
@@ -1187,6 +1188,7 @@ extension SessionDetailVC: GetResponse {
     func bookingSuccess() {
         self.vwbookTickets.isHidden = true
         self.btnToRemove.isHidden = true
+        self.backBtn.isHidden = false
         self.vwToGetBlurEffect.removeBlurEffect()
         let vc = SummaryVC.instance()
         vc.bookingDetails = self.vm.model
@@ -1197,6 +1199,16 @@ extension SessionDetailVC: GetResponse {
         vc.selectedSessionSTr = selectedSession
         //vc.getPriceFromPreviousPage =
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func soldTicketResponse(){
+        DispatchQueue.main.async {
+            self.vwbookTickets.animHide()
+            self.btnToRemove.isHidden = true
+            self.vwbookTickets.isHidden = true
+            self.vwToGetBlurEffect.removeBlurEffect()
+            self.backBtn.isHidden = false
+        }
     }
     
     //MARK: - METHOD TO RELOAD DATA
@@ -1380,6 +1392,7 @@ extension SessionDetailVC: GetResponse {
             self.cancelBtn.layer.borderColor = UIColor.clear.cgColor
             self.rescheduleBtn.isHidden = true
             self.cancelTagView.isHidden = true
+            self.contactUsVw.isHidden = true
 //            if(self.screenFrom == "EventVC"){
 //                self.cancelTagView.isHidden = false
 //            }else{

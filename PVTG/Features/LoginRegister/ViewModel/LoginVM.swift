@@ -14,6 +14,7 @@ protocol AfterLoginSuccess: AnyObject {
     func forgotSuccess()
     func otpCheckSuccess()
     func changePaswdSucces()
+    func inCorrectOtpMessage()
     
 }
 class LoginVM: BaseVm {
@@ -136,7 +137,11 @@ class LoginVM: BaseVm {
                        self.delegate?.otpCheckSuccess()
                    }
                    else {
-                    showAlert(strTitle: json["APICODERESULT"].stringValue)
+                       if(json["APICODERESULT"].stringValue == "Invalid OTP." || json["APICODERESULT"].stringValue == "Invalid OTP"){
+                           self.delegate?.inCorrectOtpMessage()
+                       }else{
+                           showAlert(strTitle: json["APICODERESULT"].stringValue)
+                       }
                    }
                }else{
                    showAlert(strTitle: somethingWentWrongMessage)

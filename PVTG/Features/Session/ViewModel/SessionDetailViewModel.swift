@@ -18,6 +18,7 @@ protocol GetResponse: AnyObject{
     func reloadTime()
     func sessionTimeDetail()
     func refundAPiResponse()
+    func soldTicketResponse()
 }
 protocol GetBookingResponse: AnyObject{
     func bookingSuccess()
@@ -77,6 +78,7 @@ class SessionDetailViewModel: BaseVm {
                     
                 }else if json["statusCode"] == 300 {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                    self.delegate?.soldTicketResponse()
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)

@@ -164,6 +164,7 @@
 		D62D734326C68DA700DFD0DA /* LineMeasureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */; };
 		D62D734426C68DA700DFD0DA /* LineMeasureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D734226C68DA700DFD0DA /* LineMeasureCell.xib */; };
 		D6499FEF2B8DF44000720E9B /* ChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6499FEE2B8DF44000720E9B /* ChatListVC.swift */; };
+		D64F1C3F2CBCFB1C0034AD6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D64F1C3E2CBCFB1C0034AD6E /* GoogleService-Info.plist */; };
 		D65136D42BA343CC00146D88 /* ContactUsViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65136D32BA343CC00146D88 /* ContactUsViewVC.swift */; };
 		D6573BF525CCF02500CB64DD /* CircularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6573BF325CCF02500CB64DD /* CircularCell.swift */; };
 		D6573BF625CCF02500CB64DD /* CircularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6573BF425CCF02500CB64DD /* CircularCell.xib */; };
@@ -182,7 +183,6 @@
 		D6B852B52B9F3876007173B2 /* SenderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B852B32B9F3876007173B2 /* SenderTVCell.xib */; };
 		D6B852B82B9F4C1C007173B2 /* DateHeaderTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B852B62B9F4C1C007173B2 /* DateHeaderTVCell.swift */; };
 		D6B852B92B9F4C1C007173B2 /* DateHeaderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B852B72B9F4C1C007173B2 /* DateHeaderTVCell.xib */; };
-		D6BA19362B8359E600E38C83 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6BA19352B8359E600E38C83 /* GoogleService-Info.plist */; };
 		D6C95FD926BD4AE400DC5719 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C95FD826BD4AE400DC5719 /* R.generated.swift */; };
 		D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C95FE026BD4BA000DC5719 /* Localizable.strings */; };
 		D6D153E92BAC0479003C71F0 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D153E82BAC0479003C71F0 /* Config.swift */; };
@@ -412,6 +412,7 @@
 		D6499FED2B8DEEE900720E9B /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		D6499FEE2B8DF44000720E9B /* ChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListVC.swift; sourceTree = "<group>"; };
 		D64D0357270F2EB100C9A7D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
+		D64F1C3E2CBCFB1C0034AD6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D65136D32BA343CC00146D88 /* ContactUsViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewVC.swift; sourceTree = "<group>"; };
 		D6573BF325CCF02500CB64DD /* CircularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCell.swift; sourceTree = "<group>"; };
 		D6573BF425CCF02500CB64DD /* CircularCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularCell.xib; sourceTree = "<group>"; };
@@ -437,7 +438,6 @@
 		D6B852B32B9F3876007173B2 /* SenderTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderTVCell.xib; sourceTree = "<group>"; };
 		D6B852B62B9F4C1C007173B2 /* DateHeaderTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderTVCell.swift; sourceTree = "<group>"; };
 		D6B852B72B9F4C1C007173B2 /* DateHeaderTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateHeaderTVCell.xib; sourceTree = "<group>"; };
-		D6BA19352B8359E600E38C83 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6C95FD826BD4AE400DC5719 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D6C95FDF26BD4BA000DC5719 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6C95FE126BD4BA400DC5719 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -784,7 +784,6 @@
 			isa = PBXGroup;
 			children = (
 				D6D153E52BABFFBC003C71F0 /* Environment */,
-				D6BA19352B8359E600E38C83 /* GoogleService-Info.plist */,
 				D6C95FD726BD4ACE00DC5719 /* Localization */,
 				18B184C225B953DD00B83A6B /* PVTG.entitlements */,
 				1855F47F2592377A009396E6 /* Font */,
@@ -1178,6 +1177,7 @@
 				D6D153E62BAC0046003C71F0 /* Development.xcconfig */,
 				D6D153E72BAC005A003C71F0 /* Production.xcconfig */,
 				D6D153E82BAC0479003C71F0 /* Config.swift */,
+				D64F1C3E2CBCFB1C0034AD6E /* GoogleService-Info.plist */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -1319,6 +1319,7 @@
 				D6A30F8E2BB9B9BC008E4DCF /* ContactUsView.xib in Resources */,
 				A466878C27B262B10073A15F /* ActiveEventCollectionViewCell.xib in Resources */,
 				D6FFDC6E26BC0FCE00321F04 /* Home.storyboard in Resources */,
+				D64F1C3F2CBCFB1C0034AD6E /* GoogleService-Info.plist in Resources */,
 				D61FC51F2B8DC60300953315 /* Chat.storyboard in Resources */,
 				D699B82A2BB5A76F00B46F64 /* ChatCall.storyboard in Resources */,
 				D69176782705ADF10005C572 /* ReminderView.xib in Resources */,
@@ -1330,7 +1331,6 @@
 				D6B852B12B9F2D21007173B2 /* ReceiverTVCell.xib in Resources */,
 				18629C1B25A435F9008027EC /* ProfileInterestCell.xib in Resources */,
 				187F3E6F258CCB58008FB2CB /* CountryCode.json in Resources */,
-				D6BA19362B8359E600E38C83 /* GoogleService-Info.plist in Resources */,
 				D62D734426C68DA700DFD0DA /* LineMeasureCell.xib in Resources */,
 				184D963A25AC3D5E00C90BDF /* OnboardingCell.xib in Resources */,
 				187F3E7E258CCB58008FB2CB /* CountryPicker.xib in Resources */,

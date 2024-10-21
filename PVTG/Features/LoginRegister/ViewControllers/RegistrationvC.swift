@@ -234,7 +234,10 @@ extension RegistrationvC {
     private func fetchUserData() {
         self.txfPassword.isHidden = true
         self.txfconfirmpaswd.isHidden = true
-        self.txffullName.text = socialData["FullName"]
+//        if(socialData["FullName"] != "" || socialData["FullName"] != " " || socialData["FullName"] != "  " || socialData["FullName"] != "   "){
+//            self.txffullName.text = socialData["FullName"]
+//        }
+       //
         self.txfEmail.text = socialData["Email_Id"]
         if self.txfEmail.text != "" {
             self.txfEmail.isUserInteractionEnabled = false
