@@ -176,6 +176,7 @@ extension EditProfileVC {
 extension EditProfileVC: UpdateTheProfile {
     func removeProfilePic() {
         print("removeProfilePic-Done")
+        imguser.image = UIImage(named: "more")
     }
     
     func updateProfile() {

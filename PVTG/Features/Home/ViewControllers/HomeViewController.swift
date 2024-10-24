@@ -11,7 +11,7 @@ import GooglePlaces
 import GoogleMaps
 import CoreLocation
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, CLLocationManagerDelegate {
     
     //MARK: - Outlets
     @IBOutlet weak var lblNoSession: UILabel!
@@ -53,6 +53,7 @@ class HomeViewController: BaseViewController {
     var isSelectedFromFilter = false
     
     var homeResultData = [All_result]()
+    var saveAddressDefault = ""
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -70,19 +71,102 @@ class HomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        initializeLocation()
+        if(self.lblLocn.text == ""){
+            self.showAlertForPermissionDenied()
+        }
+        
         if(self.isSelectedFromFilter == false){
             appDelegate.currentVC = self
-            let address = SaveToDefaults().getformattedAddress()
-            if address ?? "" == "" {
-                toDelegateSelf()
-                placesClient = GMSPlacesClient.shared()
-            }else{
-                self.city = SaveToDefaults().getCity() ?? ""
-                self.lblLocn.text = address
-                loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
-            }
+            //let address = SaveToDefaults().getformattedAddress()
+//            if address ?? "" == "" {
+//                toDelegateSelf()
+//                placesClient = GMSPlacesClient.shared()
+
+//            }else{
+//                self.city = SaveToDefaults().getCity() ?? ""
+//                self.lblLocn.text = address
+//               // UserDefaults.standard.setValue(address, forKey: "userAddress")
+//                loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
+//            }
         }
     }
+    
+    func initializeLocation(){
+            locationManager.requestAlwaysAuthorization()
+                    locationManager.requestWhenInUseAuthorization()
+                    if CLLocationManager.locationServicesEnabled() {
+                        locationManager.delegate = self
+                        locationManager.startUpdatingLocation()
+                    }
+                else{
+                        showAlertForPermissionDenied()
+                    }
+    }
+    
+    func showAlertForPermissionDenied() {
+        let alertController = UIAlertController(
+            title: R.string.localizable.backGroundLocationdDisabled(),
+            message: R.string.localizable.inOrderto(),
+            preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let openAction = UIAlertAction(title: R.string.localizable.openSettings(), style: .default) { (action) in
+            UserDefaults.standard.set(true, forKey: "OpenSettings")
+            if let url = NSURL(string:UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            }
+        }
+        alertController.addAction(openAction)
+        self.present(alertController, animated: true, completion: nil)
+        }
+    
+    func getUserCurrentLocation(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            guard let location = locations.last else {
+                return
+            }
+            self.userLocCoordinate = location.coordinate
+            requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
+            locationManager.stopUpdatingLocation()
+        }
+    
+        func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+            self.userLocCoordinate = position.target
+            requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
+        }
+    
+        func requestToGetAddressFromLatLong(userloc:CLLocationCoordinate2D)
+        {
+            let addressCoordinates = CLLocationCoordinate2DMake(userloc.latitude,userloc.longitude)
+            let coder = GMSGeocoder()
+            coder.reverseGeocodeCoordinate(addressCoordinates) { response, error in
+                if let addrss = response?.firstResult() {
+                    let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
+                    self.lblLocn.text = addrss.locality
+                    self.city = addrss.locality ?? ""
+                    SaveToDefaults().setCity(value: self.city)
+                    UserDefaults.standard.setValue(self.city, forKey: "userAddress")
+                    SaveToDefaults().setLatitude(lat: location.latitude)
+                    SaveToDefaults().setLongtitude(lon: location.longitude)
+                    self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
+                    if let addressLineArray = addrss.lines{
+                        if addressLineArray.count>0{
+                        }
+                    }
+                }
+            }
+        }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -334,66 +418,67 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 //MARK: - CLLOCATION MANAGER DELEGATE
-extension HomeViewController: CLLocationManagerDelegate{
-    func toDelegateSelf(){
-        locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled()
-        {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    //MARK: - CLLocation Delegate
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse :
-            break
-        case .restricted :
-            self.onDeniedLocatin()
-        case .denied :
-            self.onDeniedLocatin()
-        default :
-            break
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
-            return
-        }
-        self.userLocCoordinate = location.coordinate
-        requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
-        locationManager.stopUpdatingLocation()
-    }
-    
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        self.userLocCoordinate = position.target
-        requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
-    }
-  
-    func requestToGetAddressFromLatLong(userloc:CLLocationCoordinate2D)
-    {
-        let addressCoordinates = CLLocationCoordinate2DMake(userloc.latitude,userloc.longitude)
-        let coder = GMSGeocoder()
-        coder.reverseGeocodeCoordinate(addressCoordinates) { response, error in
-            if let addrss = response?.firstResult() {
-                let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
-                self.lblLocn.text = addrss.locality
-                self.city = addrss.locality ?? ""
-                SaveToDefaults().setCity(value: self.city)
-                SaveToDefaults().setLatitude(lat: location.latitude)
-                SaveToDefaults().setLongtitude(lon: location.longitude)
-                self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
-                if let addressLineArray = addrss.lines{
-                    if addressLineArray.count>0{
-                    }
-                }
-            }
-        }
-    }
-}
+//extension HomeViewController: CLLocationManagerDelegate{
+//    func toDelegateSelf(){
+//        locationManager.requestWhenInUseAuthorization()
+//        if CLLocationManager.locationServicesEnabled()
+//        {
+//            locationManager.delegate = self
+//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            locationManager.startUpdatingLocation()
+//        }
+//    }
+//    
+//    //MARK: - CLLocation Delegate
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        switch status {
+//        case .authorizedWhenInUse :
+//            break
+//        case .restricted :
+//            self.onDeniedLocatin()
+//        case .denied :
+//            self.onDeniedLocatin()
+//        default :
+//            break
+//        }
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        guard let location = locations.last else {
+//            return
+//        }
+//        self.userLocCoordinate = location.coordinate
+//        requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
+//        locationManager.stopUpdatingLocation()
+//    }
+//    
+//    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+//        self.userLocCoordinate = position.target
+//        requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
+//    }
+//  
+//    func requestToGetAddressFromLatLong(userloc:CLLocationCoordinate2D)
+//    {
+//        let addressCoordinates = CLLocationCoordinate2DMake(userloc.latitude,userloc.longitude)
+//        let coder = GMSGeocoder()
+//        coder.reverseGeocodeCoordinate(addressCoordinates) { response, error in
+//            if let addrss = response?.firstResult() {
+//                let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
+//                self.lblLocn.text = addrss.locality
+//                self.city = addrss.locality ?? ""
+//                SaveToDefaults().setCity(value: self.city)
+//                UserDefaults.standard.setValue(self.city, forKey: "userAddress")
+//                SaveToDefaults().setLatitude(lat: location.latitude)
+//                SaveToDefaults().setLongtitude(lon: location.longitude)
+//                self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
+//                if let addressLineArray = addrss.lines{
+//                    if addressLineArray.count>0{
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 
 //MARK: - CUSTOM DELEGATE
 extension HomeViewController: GetHomeData {
@@ -468,54 +553,54 @@ extension HomeViewController : getPriceSliderValues{
     func setProfilePic() {
     }
     
-    func onDeniedLocatin(){
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined, .restricted, .denied:
-            let alertController = UIAlertController(
-                title: R.string.localizable.backGroundLocationdDisabled(),
-                message: R.string.localizable.inOrderto(),
-                preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            
-            let openAction = UIAlertAction(title: R.string.localizable.openSettings(), style: .default) { (action) in
-                UserDefaults.standard.set(true, forKey: "OpenSettings")
-                if let url = NSURL(string:UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
-                }
-            }
-            alertController.addAction(openAction)
-            self.present(alertController, animated: true, completion: nil)
-        case .authorizedAlways:
-            print("notDet6ermined")
-        case .authorizedWhenInUse:
-            print("AuthorizationWhenInUse")
-        @unknown default:
-            print("notDet6ermined")
-        }
+//    func onDeniedLocatin(){
+//        switch CLLocationManager.authorizationStatus() {
+//        case .notDetermined, .restricted, .denied:
+//            let alertController = UIAlertController(
+//                title: R.string.localizable.backGroundLocationdDisabled(),
+//                message: R.string.localizable.inOrderto(),
+//                preferredStyle: .alert)
+//            UserDefaults.standard.removeObject(forKey: "userAddress")
+//            let cancelAction = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil)
+//            alertController.addAction(cancelAction)
+//            
+//            let openAction = UIAlertAction(title: R.string.localizable.openSettings(), style: .default) { (action) in
+//                UserDefaults.standard.set(true, forKey: "OpenSettings")
+//                if let url = NSURL(string:UIApplication.openSettingsURLString) {
+//                    UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+//                }
+//            }
+//            alertController.addAction(openAction)
+//            self.present(alertController, animated: true, completion: nil)
+//        case .authorizedAlways:
+//            print("notDet6ermined")
+//        case .authorizedWhenInUse:
+//            print("AuthorizationWhenInUse")
+//        @unknown default:
+//            print("notDet6ermined")
+//        }
     }
     
     //MARK: - Re-enabel location permission
-    internal func checkAndEnabelLocationPermission() {
-        if CLLocationManager.locationServicesEnabled() {
-            return
-        }
-        
-        let allow = UIAlertAction(title: R.string.localizable.allow(), style: UIAlertAction.Style.default) { ( action) in
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
-            }
-        }
-        
-        let dontAllow = UIAlertAction(title: R.string.localizable.donotAllow(), style: UIAlertAction.Style.default) { ( action) in
-            self.locationManager.startUpdatingLocation()
-        }
-    }
-}
+//    internal func checkAndEnabelLocationPermission() {
+//        if CLLocationManager.locationServicesEnabled() {
+//            return
+//        }
+//        
+//        let allow = UIAlertAction(title: R.string.localizable.allow(), style: UIAlertAction.Style.default) { ( action) in
+//            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+//                return
+//            }
+//            if UIApplication.shared.canOpenURL(settingsUrl) {
+//                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+//            }
+//        }
+//        
+//        let dontAllow = UIAlertAction(title: R.string.localizable.donotAllow(), style: UIAlertAction.Style.default) { ( action) in
+//            self.locationManager.startUpdatingLocation()
+//        }
+//    }
+//}
 
 extension Bundle {
     var version: String {
