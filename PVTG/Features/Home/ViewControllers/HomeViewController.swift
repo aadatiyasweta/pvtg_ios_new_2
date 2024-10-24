@@ -73,9 +73,12 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
         super.viewWillAppear(animated)
         
         initializeLocation()
-        if(self.lblLocn.text == ""){
-            self.showAlertForPermissionDenied()
-        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+            if(self.lblLocn.text == ""){
+                self.showAlertForPermissionDenied()
+            }
+        })
+       
         
         if(self.isSelectedFromFilter == false){
             appDelegate.currentVC = self
@@ -156,7 +159,7 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
                     self.lblLocn.text = addrss.locality
                     self.city = addrss.locality ?? ""
                     SaveToDefaults().setCity(value: self.city)
-                    UserDefaults.standard.setValue(self.city, forKey: "userAddress")
+                   // UserDefaults.standard.setValue(self.city, forKey: "userAddress")
                     SaveToDefaults().setLatitude(lat: location.latitude)
                     SaveToDefaults().setLongtitude(lon: location.longitude)
                     self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)

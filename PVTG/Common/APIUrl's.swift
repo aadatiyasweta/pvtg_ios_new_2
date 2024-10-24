@@ -203,6 +203,15 @@ func removeProfilePicUrl()-> String {
     return url
 }
 
+
+func changeLanguageUrl()-> String {
+    var  url = "\(server)Userapi/change_language"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("changeLanguageUrl",url)
+    return url
+}
+
+
 func session_time_detail()-> String {
     var  url = "\(server)Sessionapi/session_time_detail"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

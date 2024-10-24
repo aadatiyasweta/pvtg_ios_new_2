@@ -161,6 +161,14 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if SaveToDefaults().getAppLang() ?? "en" == "en"{
+            rescheduleBtn.setTitle("RESCHEDULE", for: .normal)
+            completedBtn.setTitle("Completed", for: .normal)
+        }else{
+            rescheduleBtn.setTitle("REPROGRAMAR", for: .normal)
+            completedBtn.setTitle("Terminada", for: .normal)
+        }
+        
         self.backBtn.isHidden = false
         cancelTagView.isHidden = true
         isLoop = false
@@ -202,7 +210,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.cancelBtn.backgroundColor = .clear
             self.cancelBtn.layer.borderColor = UIColor.black.cgColor
             self.cancelBtn.layer.borderWidth = 1
-            self.cancelBtn.setTitle("Cancel", for: .normal)
+            if SaveToDefaults().getAppLang() ?? "en" == "en"{
+                cancelBtn.setTitle("Cancel", for: .normal)
+            }else{
+                cancelBtn.setTitle("Cancelar", for: .normal)
+            }
             self.cancelBtn.setTitleColor(.black, for: .normal)
             self.rescheduleBtn.isHidden = false
             
@@ -306,7 +318,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.cancelBtn.isHidden = false
             self.cancelBtn.backgroundColor = .clear
             self.cancelBtn.layer.borderColor = UIColor.black.cgColor
-            self.cancelBtn.setTitle("Cancel", for: .normal)
+            if SaveToDefaults().getAppLang() ?? "en" == "en"{
+                cancelBtn.setTitle("Cancel", for: .normal)
+            }else{
+                cancelBtn.setTitle("Cancelar", for: .normal)
+            }
             self.cancelBtn.setTitleColor(.black, for: .normal)
             self.cancelBtn.layer.borderWidth = 1
             self.btnBooknow.isHidden = true
@@ -1147,7 +1163,11 @@ extension SessionDetailVC: GetResponse {
                     self.cancelBtn.isHidden = false
                     self.cancelBtn.backgroundColor = .clear
                     self.cancelBtn.layer.borderColor = UIColor.black.cgColor
-                    self.cancelBtn.setTitle("Cancel", for: .normal)
+                    if SaveToDefaults().getAppLang() ?? "en" == "en"{
+                        cancelBtn.setTitle("Cancel", for: .normal)
+                    }else{
+                        cancelBtn.setTitle("Cancelar", for: .normal)
+                    }
                     self.cancelBtn.setTitleColor(.black, for: .normal)
                     self.cancelBtn.layer.borderWidth = 1
                     self.btnBooknow.isHidden = true
@@ -1423,7 +1443,11 @@ extension SessionDetailVC: GetResponse {
         self.vwCollection.reloadData()
         if(data.session_booking_status == "2" ||  data.session_booking_status == "3"){
             self.cancelBtn.isEnabled = false
-            self.cancelBtn.setTitle("Cancelled", for: .normal)
+            if SaveToDefaults().getAppLang() ?? "en" == "en"{
+                cancelBtn.setTitle("Cancelled", for: .normal)
+            }else{
+                cancelBtn.setTitle("Cancelar", for: .normal)
+            }
             self.cancelBtn.backgroundColor = UIColor(red: 96/255, green: 103/255, blue: 217/255, alpha: 1)
             self.cancelBtn.setTitleColor(.white, for: .normal)
             self.cancelBtn.layer.borderWidth = 0
@@ -1443,7 +1467,11 @@ extension SessionDetailVC: GetResponse {
         else {
             self.cancelTagView.isHidden = true
             self.cancelBtn.isEnabled = true
-            self.cancelBtn.setTitle("Cancel", for: .normal)
+            if SaveToDefaults().getAppLang() ?? "en" == "en"{
+                cancelBtn.setTitle("Cancel", for: .normal)
+            }else{
+                cancelBtn.setTitle("Cancelar", for: .normal)
+            }
         }
         self.vwcalendar.reloadData()
         self.colectnVwSessionImage.reloadData()

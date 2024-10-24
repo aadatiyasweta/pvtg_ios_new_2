@@ -55,6 +55,17 @@ class LanguageChnageVC: BaseViewController {
         sender.isSelected = true
     }
     
+    func hitChangeLanguageApi(){
+        let param : [String:Any] = [
+            "user_id" : SaveToDefaults().getUserId() ?? "",
+            "language" : SaveToDefaults().getAppLang() ?? "en"
+        ]
+        print(header() ?? [:])
+        api_manager.PUTApi(changeLanguageUrl(), param: param, header: header()) { (response, err, stausCode) in
+            print(response ?? "Nil")
+        }
+    }
+    
     @IBAction func nextBtnTap(_ sender: UIButton) {
         if self.isFromProfile{
             if spanishBtn.isSelected{
@@ -63,6 +74,8 @@ class LanguageChnageVC: BaseViewController {
                 SaveToDefaults().setAppLang(value: "en")
             }
             Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
+            self.hitChangeLanguageApi()
+            
 //            let vc = TabBarControllerViewController.navigation()
 //            window?.rootViewController = vc
 //            window?.makeKeyAndVisible()
