@@ -713,7 +713,7 @@ struct _R {
       var zXJ65ISKNormalTitle: RswiftResources.StringResource { .init(key: "zXJ-65-iSK.normalTitle", tableName: "Home", source: source, developmentValue: "Done", comment: nil) }
     }
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 104 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 105 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -807,6 +807,21 @@ struct _R {
       ///
       /// Locales: en, es
       var deleteAccount: RswiftResources.StringResource { .init(key: "DeleteAccount", tableName: "Localizable", source: source, developmentValue: "Delete Account", comment: nil) }
+
+      /// en translation: Delete Photo
+      ///
+      /// Key: DeletePhoto
+      ///
+      /// Locales: en, es
+        var sureDeleteAccount: RswiftResources.StringResource { .init(key: "SureDeleteAccount", tableName: "Localizable", source: source, developmentValue: "Are you sure you want to delete your account?", comment: nil) }
+
+        /// en translation: Delete Photo
+        ///
+        /// Key: DeletePhoto
+        ///
+        /// Locales: en, es
+        
+        var deletePhoto: RswiftResources.StringResource { .init(key: "DeletePhoto", tableName: "Localizable", source: source, developmentValue: "Delete Photo", comment: nil) }
 
       /// en translation: Discount
       ///
@@ -2713,6 +2728,7 @@ struct _R {
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in nib 'AllCategoryCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in nib 'ContactUsView', but couldn't be loaded.") }
       if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'ContactUsView', but couldn't be loaded.") }
       if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'DateHeaderTVCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "bgProfile", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bgProfile' is used in nib 'HistoryCell', but couldn't be loaded.") }

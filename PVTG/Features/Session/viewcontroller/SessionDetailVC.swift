@@ -468,6 +468,9 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         popup?.contactusCallBack = { [weak self] in
             popup?.removeFromSuperview()
         }
+        popup?.contactusCancelCallBack = { [weak self] in
+            popup?.removeFromSuperview()
+        }
     }
     
     @IBAction func btnIncreaseTicketTap(_ sender: UIButton) {

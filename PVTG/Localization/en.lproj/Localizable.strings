@@ -110,4 +110,6 @@
 "CustomQuestion" = "Question about your custom session?";
 "ContactUs" = "Let Vendor know you arrived.";
 "DeleteAccount" = "Delete Account";
+"DeletePhoto" = "Delete Photo";
+"SureDeleteAccount" = "Are you sure you want to delete your account?"
 

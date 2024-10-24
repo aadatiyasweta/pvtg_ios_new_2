@@ -333,14 +333,11 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     }
     
     func hitDeleteUserAccountApi(isDelete : Bool? = false){
-        let deviceToken = UserDefaults.standard.object(forKey: "deviceToken") ?? "1234"
         let param : [String:Any] = [
-            "device_token": !isDelete! ? deviceToken : "123",
-            "device_type": "Ios",
             "user_id" : SaveToDefaults().getUserId() ?? ""
         ]
         print(header() ?? [:])
-        api_manager.DeleteApi(deleteAccountUrl(), param: param, header: header()) { (response, err, stausCode) in
+        api_manager.PUTApi(deleteAccountUrl(), param: param, header: header()) { (response, err, stausCode) in
             print(response ?? "Nil")
         }
     }

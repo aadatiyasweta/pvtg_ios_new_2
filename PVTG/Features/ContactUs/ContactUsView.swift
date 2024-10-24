@@ -21,6 +21,9 @@ class ContactUsView : UIView {
     var viewModel = ContactUsViewViewModel()
     var session_id = ""
     var contactusCallBack : (()->())?
+    
+    var contactusCancelCallBack : (()->())?
+    
     //MARK: - LifeCycle
     class func initWith(frame: CGRect)->ContactUsView? {
         let view = Bundle.main.loadNibNamed("ContactUsView", owner: self, options: nil)?[0] as? ContactUsView
@@ -35,11 +38,18 @@ class ContactUsView : UIView {
         applyPlaceholderColor(to: nameTxtField)
         applyPlaceholderColor(to: emailTxtField)
 //        self.outerVw.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
+        
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(outerVwtapGesture(_:)))
+        outerVw.addGestureRecognizer(tap1)
+    }
+    
+    @objc func outerVwtapGesture(_ sender: UITapGestureRecognizer){
+        self.contactusCancelCallBack?()
     }
     // Function to apply placeholder text color to a text field
     private func applyPlaceholderColor(to textField: UITextField) {
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black // Set placeholder color to black
+            .foregroundColor: UIColor.lightGray // Set placeholder color to black
         ]
         textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "", attributes: attributes)
     }
@@ -84,6 +94,9 @@ class ContactUsView : UIView {
         }
     }
     
+    @IBAction func cancelBtnTapped(_ sender: Any) {
+        self.contactusCancelCallBack?()
+    }
 }
 
 extension ContactUsView : UITextFieldDelegate,UITextViewDelegate {

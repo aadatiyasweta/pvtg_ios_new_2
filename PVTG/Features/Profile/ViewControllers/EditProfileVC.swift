@@ -115,10 +115,16 @@ extension EditProfileVC {
             })
             
         }
+        
+        let deletePhotoAction = UIAlertAction.init(title: R.string.localizable.deletePhoto(), style: .default) { (camera) in
+            
+        }
+        
         let cancelAction = UIAlertAction.init(title: R.string.localizable.cancel(), style: .cancel, handler: nil)
         alertSheet.addAction(cameraAction)
         alertSheet.addAction(photoAction)
         alertSheet.addAction(cancelAction)
+        alertSheet.addAction(deletePhotoAction)
         self.present(alertSheet, animated: true, completion: nil)
     }
     

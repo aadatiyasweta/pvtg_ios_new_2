@@ -104,12 +104,14 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
    let vc = OnboardingVC.instance()
    vc.controllerId = 1
    self.navigationController?.pushViewController(vc, animated: true)
-  case 11:  self.showAlertWithConfirmation("Are you sure you want to delete your account?", withTitle: appName, itsController: self) { (sucess) in
+  case 11:  self.showAlertWithConfirmation(R.string.localizable.sureDeleteAccount(), withTitle: appName, itsController: self) { (sucess) in
    if sucess{
+      // self.show()
     appDelegate.hitDeleteUserAccountApi(isDelete: true)
     SaveToDefaults().setAccessToken(value: nil)
     SaveToDefaults().setLogindata(data: Data())
     defaults.synchronize()
+       //self.dismiss()
        appDelegate.setLoginVC()
    }
   }
