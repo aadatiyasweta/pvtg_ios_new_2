@@ -263,7 +263,7 @@ extension LoginVC: FacebookDelegate{
 //MARK: - VIEW CONTROLLER EXTENSION
 extension LoginVC {
     func makeRequestToSocialSignup(accountType: String, social_id: String ){
-        self.loginVM.socialLoginApi(social_id: social_id, acc_type: accountType)
+        self.loginVM.socialLoginApi(social_id: social_id, acc_type: accountType, email: "kumar.ashitesh@techugo.com")
     }
     
     private func validLogindetails(email : String , paswd : String)->Bool{

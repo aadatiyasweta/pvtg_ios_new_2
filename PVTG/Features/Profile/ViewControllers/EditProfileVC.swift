@@ -164,7 +164,12 @@ extension EditProfileVC {
         self.txfmail.text = userDta?.email
         SaveToDefaults().setProfilePic(value: userDta?.user_image ?? "")
         loadImage(userDta?.user_image ?? "", self.imguser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
+        
+        if(userDta?.user_image ?? "" == ""){
+            imguser.image = UIImage(named: "more")
+        }
     }
+    
 }
 
 //MARK: - CUSTOM DELEGATE

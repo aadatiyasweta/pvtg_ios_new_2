@@ -481,7 +481,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
                 showAlert(strTitle: R.string.localizable.onlyTickets("\(count)"))
             }else
             {
-                showAlert(strTitle: R.string.localizable.onlyTicket("\(count)"))
+                showAlert(strTitle: R.string.localizable.onlyTickets("\(count)"))
+               // showAlert(strTitle: R.string.localizable.onlyTicket("\(count)")) // commented
             }
         } else {
             count = (Int(lblTicketCount.text ?? "00") ?? 0)+1
