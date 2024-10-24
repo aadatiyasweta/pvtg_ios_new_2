@@ -189,6 +189,13 @@ func updateDeviceTokenUrl()-> String {
     return url
 }
 
+func deleteAccountUrl()-> String {
+    var  url = "\(server)Userapi/delete_account"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("deleteAccountUrl",url)
+    return url
+}
+
 func session_time_detail()-> String {
     var  url = "\(server)Sessionapi/session_time_detail"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

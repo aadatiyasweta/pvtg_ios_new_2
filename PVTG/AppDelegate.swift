@@ -331,6 +331,19 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             print(response ?? "Nil")
         }
     }
+    
+    func hitDeleteUserAccountApi(isDelete : Bool? = false){
+        let deviceToken = UserDefaults.standard.object(forKey: "deviceToken") ?? "1234"
+        let param : [String:Any] = [
+            "device_token": !isDelete! ? deviceToken : "123",
+            "device_type": "Ios",
+            "user_id" : SaveToDefaults().getUserId() ?? ""
+        ]
+        print(header() ?? [:])
+        api_manager.DeleteApi(deleteAccountUrl(), param: param, header: header()) { (response, err, stausCode) in
+            print(response ?? "Nil")
+        }
+    }
         
     func performAttendingAlert(name : String, id : String, message:String, bookingId: String, rescheduleCount: String, amount: String, payment_id: String, charge_id: String, bookingDateStr: String){
 //        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))

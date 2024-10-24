@@ -24,7 +24,7 @@ class MoreVC: BaseViewController {
  }
  
  //MARK: - Properties
- var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(),R.string.localizable.changeLanguage(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(), R.string.localizable.signout()]
+    var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(),R.string.localizable.changeLanguage(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(),R.string.localizable.deleteAccount(), R.string.localizable.signout()]
  var morevm = MoreVM()
  
 //MARK: - LifeCycle
@@ -104,7 +104,16 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
    let vc = OnboardingVC.instance()
    vc.controllerId = 1
    self.navigationController?.pushViewController(vc, animated: true)
-  case 11:  self.showAlertWithConfirmation(R.string.localizable.areyousureyouwant(), withTitle: appName, itsController: self) { (sucess) in
+  case 11:  self.showAlertWithConfirmation("Are you sure you want to delete your account?", withTitle: appName, itsController: self) { (sucess) in
+   if sucess{
+    appDelegate.hitDeleteUserAccountApi(isDelete: true)
+    SaveToDefaults().setAccessToken(value: nil)
+    SaveToDefaults().setLogindata(data: Data())
+    defaults.synchronize()
+       appDelegate.setLoginVC()
+   }
+  }
+  case 12:  self.showAlertWithConfirmation(R.string.localizable.areyousureyouwant(), withTitle: appName, itsController: self) { (sucess) in
    if sucess{
     appDelegate.hitDeviceTokenApi(isLogout: true)
     SaveToDefaults().setAccessToken(value: nil)
