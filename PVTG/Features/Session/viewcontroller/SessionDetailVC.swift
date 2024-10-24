@@ -114,6 +114,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var yearVal: Int?
     var id = -1
     var sessionId = ""
+    var sessionStatus = ""
     var vm = SessionDetailViewModel()
     var timeArr = [AllTimeResult]()
     var controllerId = 0
@@ -222,7 +223,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.cancelBtn.isHidden = true
             self.contactUsVw.isHidden = true
             self.completedBtn.isHidden = true
-        }else if controllerId == 3 {
+        }else if controllerId == 3 && sessionStatus == "3"{
             btnToPrev.isHidden = true
             btnToCurrent.isHidden = true
             btnToNext.isHidden = true
@@ -239,6 +240,25 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.cancelBtn.isHidden = true
             self.contactUsVw.isHidden = true
             self.completedBtn.isHidden = true
+            self.rescheduleBtn.isHidden = true
+        }else if controllerId == 3 && sessionStatus == "1"{
+            btnToPrev.isHidden = true
+            btnToCurrent.isHidden = true
+            btnToNext.isHidden = true
+            self.vwmap.isHidden = true
+            self.vwcalendar.isHidden = true
+            self.vwCollection.isHidden = true
+            self.vwColectionHeightConstarint.constant = 0
+            self.vwMapHeightConstraint.constant = 0
+            self.vwCalendarHeightConstraint.constant = 0
+            self.lblDayWithDate.isHidden = true
+            self.lblNoTime.isHidden = true
+            self.btnBooknow.isHidden = true
+            self.priceLabel.isHidden = true
+            self.cancelBtn.isHidden = true
+            self.contactUsVw.isHidden = true
+            self.completedBtn.isHidden = false
+            self.rescheduleBtn.isHidden = true
         }else {
             btnToPrev.isHidden = false
             btnToCurrent.isHidden = false
@@ -271,6 +291,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        self.selectedDate = formatter.string(from: self.today)
         loadApi(top_search: "")
         vm.delegate = self
         handlingHeaderInFSCalendar()
@@ -960,7 +981,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        // self.isFromSelection = false
         if collectionView == self.vwCollection{
-            if self.timeArr[indexPath.row].is_available == "0" {
+            if self.timeArr[indexPath.row].is_available == "0" || self.timeArr[indexPath.row].is_avilable_time == "0"{
                 self.id = -1
             }else{
                 if self.id == indexPath.row{
@@ -1127,10 +1148,22 @@ extension SessionDetailVC: GetResponse {
                     self.cancelBtn.layer.borderWidth = 1
                     self.btnBooknow.isHidden = true
                 }else{
-                    self.btnBooknow.isHidden = false
-                    self.priceLabel.isHidden = false
-                    self.cancelBtn.isHidden = true
-                    self.rescheduleBtn.isHidden = true // here one
+                    if(sessionStatus == "3"){
+                        self.btnBooknow.isHidden = true
+                        self.cancelBtn.isHidden = false
+//                        self.completedBtn.isHidden = true
+//                        self.rescheduleBtn.isHidden = true
+//                        self.cancelBtn.setTitle("Cancelled", for: .normal)
+//                        self.cancelBtn.backgroundColor = UIColor(red: 96/255, green: 103/255, blue: 217/255, alpha: 1)
+//                        self.cancelBtn.setTitleColor(.white, for: .normal)
+//                        self.cancelBtn.layer.borderWidth = 0
+//                        self.cancelBtn.layer.borderColor = UIColor.clear.cgColor
+                    }else{
+                        self.btnBooknow.isHidden = false
+                        self.priceLabel.isHidden = false
+                        self.cancelBtn.isHidden = true
+                        self.rescheduleBtn.isHidden = true // here one
+                    }
                 }
                 //self.scrollViewBotmconstarint.constant = 97
                 if  self.isFromSelection{
@@ -1197,6 +1230,7 @@ extension SessionDetailVC: GetResponse {
         vc.customModel = self.vm.customModel
         vc.getSessionTimeMinuteStr = sessionTimeMinuteStr
         vc.selectedSessionSTr = selectedSession
+        self.id = -1
         //vc.getPriceFromPreviousPage =
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -1391,6 +1425,7 @@ extension SessionDetailVC: GetResponse {
             self.cancelBtn.layer.borderWidth = 0
             self.cancelBtn.layer.borderColor = UIColor.clear.cgColor
             self.rescheduleBtn.isHidden = true
+            self.btnBooknow.isHidden = true
             self.cancelTagView.isHidden = true
             self.contactUsVw.isHidden = true
 //            if(self.screenFrom == "EventVC"){
@@ -1398,7 +1433,10 @@ extension SessionDetailVC: GetResponse {
 //            }else{
 //                self.cancelTagView.isHidden = true
 //            }
-        }else {
+        } 
+        //else if (controllerId == 3 && (data.session_booking_status == "2" ||  data.session_booking_status == "3")){
+        //}
+        else {
             self.cancelTagView.isHidden = true
             self.cancelBtn.isEnabled = true
             self.cancelBtn.setTitle("Cancel", for: .normal)

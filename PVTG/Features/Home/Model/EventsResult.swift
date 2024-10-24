@@ -31,6 +31,7 @@ struct EventsResult : Codable {
     let lat : String?
     let long : String?
     let currency : String?
+    let status : String?
 	enum CodingKeys: String, CodingKey {
 		case booking_id = "booking_id"
 		case booking_date = "booking_date"
@@ -50,6 +51,7 @@ struct EventsResult : Codable {
         case lat = "latitude"
         case long = "longitude"
         case currency = "currency"
+        case status = "status"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -72,6 +74,7 @@ struct EventsResult : Codable {
         long = try values.decodeIfPresent(String.self, forKey: .long)
         lat = try values.decodeIfPresent(String.self, forKey: .lat)
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
+        status = try values.decodeIfPresent(String.self, forKey: .status)
 	}
 
 }
