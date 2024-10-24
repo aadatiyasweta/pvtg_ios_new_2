@@ -134,6 +134,7 @@ PODS:
     - GTMSessionFetcher/Core (< 4.0, >= 1.5)
   - GTMSessionFetcher/Core (3.1.1)
   - IQKeyboardManager (6.5.16)
+  - KeychainSwift (24.0.0)
   - MarqueeLabel (4.4.0)
   - nanopb (2.30909.1):
     - nanopb/decode (= 2.30909.1)
@@ -172,6 +173,7 @@ DEPENDENCIES:
   - GooglePlaces
   - GoogleSignIn
   - IQKeyboardManager
+  - KeychainSwift
   - MarqueeLabel
   - paper-onboarding
   - R.swift
@@ -212,6 +214,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - IQKeyboardManager
+    - KeychainSwift
     - MarqueeLabel
     - nanopb
     - paper-onboarding
@@ -255,6 +258,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
   IQKeyboardManager: 024b54d7dcb765c5bc99882cb4d5ea24a8cb7c3c
+  KeychainSwift: 007c4647486e4563adca839cf02cef00deb3b670
   MarqueeLabel: d2388949ac58d587303178d56a792ba8a001b037
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   paper-onboarding: fede1799b1da6988f3788e3b71654583c6f3bce1
@@ -271,6 +275,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 1d31acdbfba8a40fe80c0310e9ce181d6aa22a4b
+PODFILE CHECKSUM: b7ab6d067cee6efb114a5c67e450d76b5cfe5a55
 
 COCOAPODS: 1.15.2

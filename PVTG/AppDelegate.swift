@@ -19,6 +19,7 @@ import Stripe
 import FirebaseMessaging
 import UserNotifications
 import Firebase
+import FBSDKCoreKit
 
 
 @UIApplicationMain
@@ -40,6 +41,10 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             GMSServices.provideAPIKey(apiKey)
             GMSPlacesClient.provideAPIKey(apiKey)
         }
+//        FBSDKCoreKit.ApplicationDelegate.shared.application(
+//                    application,
+//                    didFinishLaunchingWithOptions: launchOptions
+//                )
         
 //        GMSPlacesClient.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
 //        GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
@@ -334,7 +339,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     
     func hitDeleteUserAccountApi(isDelete : Bool? = false){
         let param : [String:Any] = [
-            "user_id" : SaveToDefaults().getUserId() ?? ""
+            "user_id" : SaveToDefaults().getUserId() ?? "",
+            "language" : SaveToDefaults().getAppLang() ?? "en"
         ]
         print(header() ?? [:])
         api_manager.PUTApi(deleteAccountUrl(), param: param, header: header()) { (response, err, stausCode) in

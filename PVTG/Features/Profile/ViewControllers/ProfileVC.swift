@@ -136,6 +136,10 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
 
 //MARK: - CUSTOM DELEGATE
 extension ProfileVC: UpdateTheProfile {
+    func removeProfilePic() {
+        print("removeProfilePic-Done")
+    }
+    
     func updateProfile() {
         guard let data = self.vm.model else {return}
         self.imgUser.image = nil

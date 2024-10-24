@@ -23,7 +23,7 @@ class ApiManager {
     static let sharedInstance = ApiManager.init()
     
     func POSTApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
-        debugPrint(param ?? [:])
+        //debugPrint(param ?? [:])
         
         if isConnection(){
             print(param ?? [:])
@@ -51,7 +51,7 @@ class ApiManager {
                             appDelegate.setLoginVC()
                         }
                     }
-                    debugPrint(json)
+                   // debugPrint(json)
                     completion(json , nil, dataResponse.response?.statusCode)
                 case .failure(let err):
                     completion(nil , err.underlyingError, dataResponse.response?.statusCode)

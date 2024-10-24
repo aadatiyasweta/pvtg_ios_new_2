@@ -117,7 +117,7 @@ extension EditProfileVC {
         }
         
         let deletePhotoAction = UIAlertAction.init(title: R.string.localizable.deletePhoto(), style: .default) { (camera) in
-            
+            self.vm.removeProfilePicApi()
         }
         
         let cancelAction = UIAlertAction.init(title: R.string.localizable.cancel(), style: .cancel, handler: nil)
@@ -174,6 +174,10 @@ extension EditProfileVC {
 
 //MARK: - CUSTOM DELEGATE
 extension EditProfileVC: UpdateTheProfile {
+    func removeProfilePic() {
+        print("removeProfilePic-Done")
+    }
+    
     func updateProfile() {
         self.navigationController?.popViewController(animated: true)
     }

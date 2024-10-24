@@ -717,747 +717,747 @@ struct _R {
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
-      /// es translation: Acerca de nosotros
+      /// en translation: About Us
       ///
       /// Key: AboutUs
       ///
-      /// Locales: es
-      var aboutUs: RswiftResources.StringResource { .init(key: "AboutUs", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var aboutUs: RswiftResources.StringResource { .init(key: "AboutUs", tableName: "Localizable", source: source, developmentValue: "About Us", comment: nil) }
 
-      /// es translation: Acerca del proveedor del servicio
+      /// en translation: About Vendor
       ///
       /// Key: AboutVendor
       ///
-      /// Locales: es
-      var aboutVendor: RswiftResources.StringResource { .init(key: "AboutVendor", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var aboutVendor: RswiftResources.StringResource { .init(key: "AboutVendor", tableName: "Localizable", source: source, developmentValue: "About Vendor", comment: nil) }
 
-      /// es translation: Permitir
+      /// en translation: Allow
       ///
       /// Key: Allow
       ///
-      /// Locales: es
-      var allow: RswiftResources.StringResource { .init(key: "Allow", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var allow: RswiftResources.StringResource { .init(key: "Allow", tableName: "Localizable", source: source, developmentValue: "Allow", comment: nil) }
 
-      /// es translation: ¿Está seguro que quiere cerra sesión?
+      /// en translation: Are you sure you want to signout?
       ///
       /// Key: Areyousureyouwant
       ///
-      /// Locales: es
-      var areyousureyouwant: RswiftResources.StringResource { .init(key: "Areyousureyouwant", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var areyousureyouwant: RswiftResources.StringResource { .init(key: "Areyousureyouwant", tableName: "Localizable", source: source, developmentValue: "Are you sure you want to signout?", comment: nil) }
 
-      /// es translation: ID de Reserva
+      /// en translation: Booking ID
       ///
       /// Key: BookingID
       ///
-      /// Locales: es
-      var bookingID: RswiftResources.StringResource { .init(key: "BookingID", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var bookingID: RswiftResources.StringResource { .init(key: "BookingID", tableName: "Localizable", source: source, developmentValue: "Booking ID", comment: nil) }
 
-      /// es translation: Reservas:
+      /// en translation: Bookings:
       ///
       /// Key: Bookings
       ///
-      /// Locales: es
-      var bookings: RswiftResources.StringResource { .init(key: "Bookings", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var bookings: RswiftResources.StringResource { .init(key: "Bookings", tableName: "Localizable", source: source, developmentValue: "Bookings:", comment: nil) }
 
-      /// es translation: Acceso a la cámara denegado
+      /// en translation: Camera Access Denied
       ///
       /// Key: CameraAccessDenied
       ///
-      /// Locales: es
-      var cameraAccessDenied: RswiftResources.StringResource { .init(key: "CameraAccessDenied", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var cameraAccessDenied: RswiftResources.StringResource { .init(key: "CameraAccessDenied", tableName: "Localizable", source: source, developmentValue: "Camera Access Denied", comment: nil) }
 
-      /// es translation: ¿Está seguro que quiere cancelar la reserva?
+      /// en translation: Are you sure you want to cancel your booking
       ///
       /// Key: CancelTheBooking
       ///
-      /// Locales: es
-      var cancelTheBooking: RswiftResources.StringResource { .init(key: "CancelTheBooking", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var cancelTheBooking: RswiftResources.StringResource { .init(key: "CancelTheBooking", tableName: "Localizable", source: source, developmentValue: "Are you sure you want to cancel your booking", comment: nil) }
 
-      /// es translation: Política de cancelación
+      /// en translation: Cancellation Policy
       ///
       /// Key: CancellationPolicy
       ///
-      /// Locales: es
-      var cancellationPolicy: RswiftResources.StringResource { .init(key: "CancellationPolicy", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var cancellationPolicy: RswiftResources.StringResource { .init(key: "CancellationPolicy", tableName: "Localizable", source: source, developmentValue: "Cancellation Policy", comment: nil) }
 
-      /// es translation: Cambiar contraseña
+      /// en translation: Change Password
       ///
       /// Key: ChangePassword
       ///
-      /// Locales: es
-      var changePassword: RswiftResources.StringResource { .init(key: "ChangePassword", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var changePassword: RswiftResources.StringResource { .init(key: "ChangePassword", tableName: "Localizable", source: source, developmentValue: "Change Password", comment: nil) }
 
-      /// es translation: Deja que la vendedora sepa que llegaste.
+      /// en translation: Let Vendor know you arrived.
       ///
       /// Key: ContactUs
       ///
-      /// Locales: es
-      var contactUs: RswiftResources.StringResource { .init(key: "ContactUs", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var contactUs: RswiftResources.StringResource { .init(key: "ContactUs", tableName: "Localizable", source: source, developmentValue: "Let Vendor know you arrived.", comment: nil) }
 
-      /// es translation: ¿Preguntas sobre tu sesión personalizada?
+      /// en translation: Question about your custom session?
       ///
       /// Key: CustomQuestion
       ///
-      /// Locales: es
-      var customQuestion: RswiftResources.StringResource { .init(key: "CustomQuestion", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var customQuestion: RswiftResources.StringResource { .init(key: "CustomQuestion", tableName: "Localizable", source: source, developmentValue: "Question about your custom session?", comment: nil) }
 
-      /// es translation: Eliminar cuenta
+      /// en translation: Delete Account
       ///
       /// Key: DeleteAccount
       ///
-      /// Locales: es
-      var deleteAccount: RswiftResources.StringResource { .init(key: "DeleteAccount", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var deleteAccount: RswiftResources.StringResource { .init(key: "DeleteAccount", tableName: "Localizable", source: source, developmentValue: "Delete Account", comment: nil) }
 
-      /// es translation: Eliminar foto
+      /// en translation: Delete Photo
       ///
       /// Key: DeletePhoto
       ///
-      /// Locales: es
-      var deletePhoto: RswiftResources.StringResource { .init(key: "DeletePhoto", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var deletePhoto: RswiftResources.StringResource { .init(key: "DeletePhoto", tableName: "Localizable", source: source, developmentValue: "Delete Photo", comment: nil) }
 
-      /// es translation: Descuento
+      /// en translation: Discount
       ///
       /// Key: Discount
       ///
-      /// Locales: es
-      var discount: RswiftResources.StringResource { .init(key: "Discount", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var discount: RswiftResources.StringResource { .init(key: "Discount", tableName: "Localizable", source: source, developmentValue: "Discount", comment: nil) }
 
-      /// es translation: No permitir
+      /// en translation: Don't Allow
       ///
       /// Key: DonotAllow
       ///
-      /// Locales: es
-      var donotAllow: RswiftResources.StringResource { .init(key: "DonotAllow", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var donotAllow: RswiftResources.StringResource { .init(key: "DonotAllow", tableName: "Localizable", source: source, developmentValue: "Don't Allow", comment: nil) }
 
-      /// es translation: Recompensas
+      /// en translation: Rewards
       ///
       /// Key: EarnUseRewardss
       ///
-      /// Locales: es
-      var earnUseRewardss: RswiftResources.StringResource { .init(key: "EarnUseRewardss", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var earnUseRewardss: RswiftResources.StringResource { .init(key: "EarnUseRewardss", tableName: "Localizable", source: source, developmentValue: "Rewards", comment: nil) }
 
-      /// es translation: Ingresa el código de verificación enviado a tu correo electrónico  %@
+      /// en translation: Enter the verification code sent to your email  %@
       ///
       /// Key: Entertheverificationcode
       ///
-      /// Locales: es
-      var entertheverificationcode: RswiftResources.StringResource1<String> { .init(key: "Entertheverificationcode", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var entertheverificationcode: RswiftResources.StringResource1<String> { .init(key: "Entertheverificationcode", tableName: "Localizable", source: source, developmentValue: "Enter the verification code sent to your email\n %@", comment: nil) }
 
-      /// es translation: Explora eventos holísticos
+      /// en translation: Explore Holistic Events
       ///
       /// Key: ExploreHolisticEvents
       ///
-      /// Locales: es
-      var exploreHolisticEvents: RswiftResources.StringResource { .init(key: "ExploreHolisticEvents", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var exploreHolisticEvents: RswiftResources.StringResource { .init(key: "ExploreHolisticEvents", tableName: "Localizable", source: source, developmentValue: "Explore Holistic Events", comment: nil) }
 
-      /// es translation: Preguntas Frecuentes
+      /// en translation: FAQs
       ///
       /// Key: FAQs
       ///
-      /// Locales: es
-      var faQs: RswiftResources.StringResource { .init(key: "FAQs", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var faQs: RswiftResources.StringResource { .init(key: "FAQs", tableName: "Localizable", source: source, developmentValue: "FAQs", comment: nil) }
 
-      /// es translation: Primera reserva:
+      /// en translation: First Booking:
       ///
       /// Key: FirstBooking
       ///
-      /// Locales: es
-      var firstBooking: RswiftResources.StringResource { .init(key: "FirstBooking", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var firstBooking: RswiftResources.StringResource { .init(key: "FirstBooking", tableName: "Localizable", source: source, developmentValue: "First Booking:", comment: nil) }
 
-      /// es translation: Primer inicio de sesión:
+      /// en translation: First Login:
       ///
       /// Key: FirstLogin
       ///
-      /// Locales: es
-      var firstLogin: RswiftResources.StringResource { .init(key: "FirstLogin", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var firstLogin: RswiftResources.StringResource { .init(key: "FirstLogin", tableName: "Localizable", source: source, developmentValue: "First Login:", comment: nil) }
 
-      /// es translation: ¡Sesión de seguimiento!
+      /// en translation: Follow Up Session!
       ///
       /// Key: Followupsession
       ///
-      /// Locales: es
-      var followupsession: RswiftResources.StringResource { .init(key: "Followupsession", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var followupsession: RswiftResources.StringResource { .init(key: "Followupsession", tableName: "Localizable", source: source, developmentValue: "Follow Up Session!", comment: nil) }
 
-      /// es translation: Servicio gratis
+      /// en translation: Free Service
       ///
       /// Key: FreeService
       ///
-      /// Locales: es
-      var freeService: RswiftResources.StringResource { .init(key: "FreeService", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var freeService: RswiftResources.StringResource { .init(key: "FreeService", tableName: "Localizable", source: source, developmentValue: "Free Service", comment: nil) }
 
-      /// es translation: ¡Comiénza!
+      /// en translation: Get Started
       ///
       /// Key: GetStarted
       ///
-      /// Locales: es
-      var getStarted: RswiftResources.StringResource { .init(key: "GetStarted", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var getStarted: RswiftResources.StringResource { .init(key: "GetStarted", tableName: "Localizable", source: source, developmentValue: "Get Started", comment: nil) }
 
-      /// es translation: Recompensas DHARMA
+      /// en translation: Dharma Rewards
       ///
       /// Key: HowItWorks
       ///
-      /// Locales: es
-      var howItWorks: RswiftResources.StringResource { .init(key: "HowItWorks", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var howItWorks: RswiftResources.StringResource { .init(key: "HowItWorks", tableName: "Localizable", source: source, developmentValue: "Dharma Rewards", comment: nil) }
 
-      /// es translation: Si el proveedor del servicio cancela: 5+ puntos de reservación
+      /// en translation: If Vendor Cancels: Booking points +5:
       ///
       /// Key: IfVendorCancelBooking points
       ///
-      /// Locales: es
-      var ifVendorCancelBookingPoints: RswiftResources.StringResource { .init(key: "IfVendorCancelBooking points", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var ifVendorCancelBookingPoints: RswiftResources.StringResource { .init(key: "IfVendorCancelBooking points", tableName: "Localizable", source: source, developmentValue: "If Vendor Cancels: Booking points +5:", comment: nil) }
 
-      /// es translation: Política de cargos por pagos atrasados
+      /// en translation: Late fee Policy
       ///
       /// Key: LatePolicy
       ///
-      /// Locales: es
-      var latePolicy: RswiftResources.StringResource { .init(key: "LatePolicy", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var latePolicy: RswiftResources.StringResource { .init(key: "LatePolicy", tableName: "Localizable", source: source, developmentValue: "Late fee Policy", comment: nil) }
 
-      /// es translation: Later
+      /// en translation: Later
       ///
       /// Key: Later
       ///
-      /// Locales: es
-      var later: RswiftResources.StringResource { .init(key: "Later", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var later: RswiftResources.StringResource { .init(key: "Later", tableName: "Localizable", source: source, developmentValue: "Later", comment: nil) }
 
-      /// es translation: No hay disponibilidad para la fecha seleccionada.
+      /// en translation: No available time for date.
       ///
       /// Key: NoAvailableTimeFordate
       ///
-      /// Locales: es
-      var noAvailableTimeFordate: RswiftResources.StringResource { .init(key: "NoAvailableTimeFordate", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var noAvailableTimeFordate: RswiftResources.StringResource { .init(key: "NoAvailableTimeFordate", tableName: "Localizable", source: source, developmentValue: "No available time for date.", comment: nil) }
 
-      /// es translation: Sin locaciones previas
+      /// en translation: No Location searched yet.
       ///
       /// Key: NoLocationsearchedyet
       ///
-      /// Locales: es
-      var noLocationsearchedyet: RswiftResources.StringResource { .init(key: "NoLocationsearchedyet", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var noLocationsearchedyet: RswiftResources.StringResource { .init(key: "NoLocationsearchedyet", tableName: "Localizable", source: source, developmentValue: "No Location searched yet.", comment: nil) }
 
-      /// es translation: Sin notificaciones
+      /// en translation: No Notifications
       ///
       /// Key: NoNotifications
       ///
-      /// Locales: es
-      var noNotifications: RswiftResources.StringResource { .init(key: "NoNotifications", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var noNotifications: RswiftResources.StringResource { .init(key: "NoNotifications", tableName: "Localizable", source: source, developmentValue: "No Notifications", comment: nil) }
 
-      /// es translation: Sin iniciar sesión
+      /// en translation: No Session
       ///
       /// Key: NoSession
       ///
-      /// Locales: es
-      var noSession: RswiftResources.StringResource { .init(key: "NoSession", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var noSession: RswiftResources.StringResource { .init(key: "NoSession", tableName: "Localizable", source: source, developmentValue: "No Session", comment: nil) }
 
-      /// es translation: No hay tiquetes disponibles
+      /// en translation: No ticket available
       ///
       /// Key: Noticketavailable
       ///
-      /// Locales: es
-      var noticketavailable: RswiftResources.StringResource { .init(key: "Noticketavailable", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var noticketavailable: RswiftResources.StringResource { .init(key: "Noticketavailable", tableName: "Localizable", source: source, developmentValue: "No ticket available", comment: nil) }
 
-      /// es translation: Notificaciones
+      /// en translation: Notifications
       ///
       /// Key: Notifications
       ///
-      /// Locales: es
-      var notifications: RswiftResources.StringResource { .init(key: "Notifications", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var notifications: RswiftResources.StringResource { .init(key: "Notifications", tableName: "Localizable", source: source, developmentValue: "Notifications", comment: nil) }
 
-      /// es translation: Abrir ajustes
+      /// en translation: Open Settings
       ///
       /// Key: OpenSettings
       ///
-      /// Locales: es
-      var openSettings: RswiftResources.StringResource { .init(key: "OpenSettings", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var openSettings: RswiftResources.StringResource { .init(key: "OpenSettings", tableName: "Localizable", source: source, developmentValue: "Open Settings", comment: nil) }
 
-      /// es translation: Escoger de la galería del celular
+      /// en translation: Pick from Camera Roll
       ///
       /// Key: PickfromCameraRoll
       ///
-      /// Locales: es
-      var pickfromCameraRoll: RswiftResources.StringResource { .init(key: "PickfromCameraRoll", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var pickfromCameraRoll: RswiftResources.StringResource { .init(key: "PickfromCameraRoll", tableName: "Localizable", source: source, developmentValue: "Pick from Camera Roll", comment: nil) }
 
-      /// es translation: Por favor escoja la hora
+      /// en translation: Please Select time
       ///
       /// Key: PleaseSelecttime
       ///
-      /// Locales: es
-      var pleaseSelecttime: RswiftResources.StringResource { .init(key: "PleaseSelecttime", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var pleaseSelecttime: RswiftResources.StringResource { .init(key: "PleaseSelecttime", tableName: "Localizable", source: source, developmentValue: "Please Select time", comment: nil) }
 
-      /// es translation: Acumulación de puntos
+      /// en translation: Point Accumulation
       ///
       /// Key: PointAccumulation
       ///
-      /// Locales: es
-      var pointAccumulation: RswiftResources.StringResource { .init(key: "PointAccumulation", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var pointAccumulation: RswiftResources.StringResource { .init(key: "PointAccumulation", tableName: "Localizable", source: source, developmentValue: "Point Accumulation", comment: nil) }
 
-      /// es translation: Filtro de precio
+      /// en translation: Price Filter
       ///
       /// Key: PriceFilter
       ///
-      /// Locales: es
-      var priceFilter: RswiftResources.StringResource { .init(key: "PriceFilter", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var priceFilter: RswiftResources.StringResource { .init(key: "PriceFilter", tableName: "Localizable", source: source, developmentValue: "Price Filter", comment: nil) }
 
-      /// es translation: Política de privacidad
+      /// en translation: Privacy Policy
       ///
       /// Key: PrivacyPolicy
       ///
-      /// Locales: es
-      var privacyPolicy: RswiftResources.StringResource { .init(key: "PrivacyPolicy", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var privacyPolicy: RswiftResources.StringResource { .init(key: "PrivacyPolicy", tableName: "Localizable", source: source, developmentValue: "Privacy Policy", comment: nil) }
 
-      /// es translation: Puntos DHARMA
+      /// en translation: Dharma pts
       ///
       /// Key: PurevibesPts
       ///
-      /// Locales: es
-      var purevibesPts: RswiftResources.StringResource { .init(key: "PurevibesPts", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var purevibesPts: RswiftResources.StringResource { .init(key: "PurevibesPts", tableName: "Localizable", source: source, developmentValue: "Dharma pts", comment: nil) }
 
-      /// es translation: ¡Danos una calificación!
+      /// en translation: Rate Us
       ///
       /// Key: RateUs
       ///
-      /// Locales: es
-      var rateUs: RswiftResources.StringResource { .init(key: "RateUs", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var rateUs: RswiftResources.StringResource { .init(key: "RateUs", tableName: "Localizable", source: source, developmentValue: "Rate Us", comment: nil) }
 
-      /// es translation: Reprogramar
+      /// en translation: Reschedule
       ///
       /// Key: Reschedule
       ///
-      /// Locales: es
-      var reschedule: RswiftResources.StringResource { .init(key: "Reschedule", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var reschedule: RswiftResources.StringResource { .init(key: "Reschedule", tableName: "Localizable", source: source, developmentValue: "Reschedule", comment: nil) }
 
-      /// es translation: Reprogramemos tu sesión.
+      /// en translation: Let's reschedule your session.
       ///
       /// Key: RescheduleSession
       ///
-      /// Locales: es
-      var rescheduleSession: RswiftResources.StringResource { .init(key: "RescheduleSession", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var rescheduleSession: RswiftResources.StringResource { .init(key: "RescheduleSession", tableName: "Localizable", source: source, developmentValue: "Let's reschedule your session.", comment: nil) }
 
-      /// es translation: Reseñas/Comentarios:
+      /// en translation: Reviews/Rate:
       ///
       /// Key: ReviewsRate
       ///
-      /// Locales: es
-      var reviewsRate: RswiftResources.StringResource { .init(key: "ReviewsRate", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var reviewsRate: RswiftResources.StringResource { .init(key: "ReviewsRate", tableName: "Localizable", source: source, developmentValue: "Reviews/Rate:", comment: nil) }
 
-      /// es translation: Formas de obtener y &  redimir recompensas
+      /// en translation: Way to Earn &  Use Rewards
       ///
       /// Key: Rewards
       ///
-      /// Locales: es
-      var rewards: RswiftResources.StringResource { .init(key: "Rewards", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var rewards: RswiftResources.StringResource { .init(key: "Rewards", tableName: "Localizable", source: source, developmentValue: "Way to Earn & \nUse Rewards", comment: nil) }
 
-      /// es translation: Escoge tus intereses
+      /// en translation: Select Your Interests
       ///
       /// Key: SelectYourInterests
       ///
-      /// Locales: es
-      var selectYourInterests: RswiftResources.StringResource { .init(key: "SelectYourInterests", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var selectYourInterests: RswiftResources.StringResource { .init(key: "SelectYourInterests", tableName: "Localizable", source: source, developmentValue: "Select Your Interests", comment: nil) }
 
-      /// es translation: Cerrar sesión
+      /// en translation: Signout
       ///
       /// Key: Signout
       ///
-      /// Locales: es
-      var signout: RswiftResources.StringResource { .init(key: "Signout", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var signout: RswiftResources.StringResource { .init(key: "Signout", tableName: "Localizable", source: source, developmentValue: "Signout", comment: nil) }
 
-      /// es translation: Omitir
+      /// en translation: Skip
       ///
       /// Key: Skip
       ///
-      /// Locales: es
-      var skip: RswiftResources.StringResource { .init(key: "Skip", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var skip: RswiftResources.StringResource { .init(key: "Skip", tableName: "Localizable", source: source, developmentValue: "Skip", comment: nil) }
 
-      /// es translation: ¿Estás seguro de que quieres eliminar tu cuenta?
+      /// en translation: Are you sure you want to delete your account?
       ///
       /// Key: SureDeleteAccount
       ///
-      /// Locales: es
-      var sureDeleteAccount: RswiftResources.StringResource { .init(key: "SureDeleteAccount", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var sureDeleteAccount: RswiftResources.StringResource { .init(key: "SureDeleteAccount", tableName: "Localizable", source: source, developmentValue: "Are you sure you want to delete your account?", comment: nil) }
 
-      /// es translation: Tomar una foto
+      /// en translation: Take a Photo
       ///
       /// Key: TakePhoto
       ///
-      /// Locales: es
-      var takePhoto: RswiftResources.StringResource { .init(key: "TakePhoto", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var takePhoto: RswiftResources.StringResource { .init(key: "TakePhoto", tableName: "Localizable", source: source, developmentValue: "Take a Photo", comment: nil) }
 
-      /// es translation: Términos y condiciones
+      /// en translation: Terms & Conditions
       ///
       /// Key: TermsConditions
       ///
-      /// Locales: es
-      var termsConditions: RswiftResources.StringResource { .init(key: "TermsConditions", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var termsConditions: RswiftResources.StringResource { .init(key: "TermsConditions", tableName: "Localizable", source: source, developmentValue: "Terms & Conditions", comment: nil) }
 
-      /// es translation: Tiquete
+      /// en translation: Ticket
       ///
       /// Key: Ticket
       ///
-      /// Locales: es
-      var ticket: RswiftResources.StringResource { .init(key: "Ticket", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var ticket: RswiftResources.StringResource { .init(key: "Ticket", tableName: "Localizable", source: source, developmentValue: "Ticket", comment: nil) }
 
-      /// es translation: Tiquetes
+      /// en translation: Tickets
       ///
       /// Key: Tickets
       ///
-      /// Locales: es
-      var tickets: RswiftResources.StringResource { .init(key: "Tickets", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var tickets: RswiftResources.StringResource { .init(key: "Tickets", tableName: "Localizable", source: source, developmentValue: "Tickets", comment: nil) }
 
-      /// es translation: Búsqueda popular
+      /// en translation: Top Search
       ///
       /// Key: TopSearch
       ///
-      /// Locales: es
-      var topSearch: RswiftResources.StringResource { .init(key: "TopSearch", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var topSearch: RswiftResources.StringResource { .init(key: "TopSearch", tableName: "Localizable", source: source, developmentValue: "Top Search", comment: nil) }
 
-      /// es translation: Vista
+      /// en translation: View
       ///
       /// Key: View
       ///
-      /// Locales: es
-      var view: RswiftResources.StringResource { .init(key: "View", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var view: RswiftResources.StringResource { .init(key: "View", tableName: "Localizable", source: source, developmentValue: "View", comment: nil) }
 
-      /// es translation: ¡Por favor llegue a tiempo!
+      /// en translation: Please arrive on time!
       ///
       /// Key: ViewLatePolicy
       ///
-      /// Locales: es
-      var viewLatePolicy: RswiftResources.StringResource { .init(key: "ViewLatePolicy", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var viewLatePolicy: RswiftResources.StringResource { .init(key: "ViewLatePolicy", tableName: "Localizable", source: source, developmentValue: "Please arrive on time!", comment: nil) }
 
-      /// es translation: Ver notificaciones de token:
+      /// en translation: View Token Notification:
       ///
       /// Key: ViewTokenNotification
       ///
-      /// Locales: es
-      var viewTokenNotification: RswiftResources.StringResource { .init(key: "ViewTokenNotification", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var viewTokenNotification: RswiftResources.StringResource { .init(key: "ViewTokenNotification", tableName: "Localizable", source: source, developmentValue: "View Token Notification:", comment: nil) }
 
-      /// es translation: Más tarde
+      /// en translation: View policy
       ///
       /// Key: Viewpolicy
       ///
-      /// Locales: es
-      var viewpolicy: RswiftResources.StringResource { .init(key: "Viewpolicy", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var viewpolicy: RswiftResources.StringResource { .init(key: "Viewpolicy", tableName: "Localizable", source: source, developmentValue: "View policy", comment: nil) }
 
-      /// es translation: Agrega tus intereses para más recomendaciones
+      /// en translation: Add Interests for more recommendations
       ///
       /// Key: addIntersetMoreRecommen
       ///
-      /// Locales: es
-      var addIntersetMoreRecommen: RswiftResources.StringResource { .init(key: "addIntersetMoreRecommen", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var addIntersetMoreRecommen: RswiftResources.StringResource { .init(key: "addIntersetMoreRecommen", tableName: "Localizable", source: source, developmentValue: "Add Interests for more recommendations", comment: nil) }
 
-      /// es translation: Acceso a la ubicación en segundo plano deshabilitado
+      /// en translation: Background Location Access Disabled
       ///
       /// Key: backGroundLocationdDisabled
       ///
-      /// Locales: es
-      var backGroundLocationdDisabled: RswiftResources.StringResource { .init(key: "backGroundLocationdDisabled", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var backGroundLocationdDisabled: RswiftResources.StringResource { .init(key: "backGroundLocationdDisabled", tableName: "Localizable", source: source, developmentValue: "Background Location Access Disabled", comment: nil) }
 
-      /// es translation: Fecha para registrarse :
+      /// en translation: Booking Date :
       ///
       /// Key: bookingdate
       ///
-      /// Locales: es
-      var bookingdate: RswiftResources.StringResource { .init(key: "bookingdate", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var bookingdate: RswiftResources.StringResource { .init(key: "bookingdate", tableName: "Localizable", source: source, developmentValue: "Booking Date :", comment: nil) }
 
-      /// es translation: No
+      /// en translation: No
       ///
       /// Key: cancel
       ///
-      /// Locales: es
-      var cancel: RswiftResources.StringResource { .init(key: "cancel", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var cancel: RswiftResources.StringResource { .init(key: "cancel", tableName: "Localizable", source: source, developmentValue: "No", comment: nil) }
 
-      /// es translation: Política de cancelación
+      /// en translation: Cancellation Policy
       ///
       /// Key: cancelPolicy
       ///
-      /// Locales: es
-      var cancelPolicy: RswiftResources.StringResource { .init(key: "cancelPolicy", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var cancelPolicy: RswiftResources.StringResource { .init(key: "cancelPolicy", tableName: "Localizable", source: source, developmentValue: "Cancellation Policy", comment: nil) }
 
-      /// es translation: Cambiar idioma
+      /// en translation: Change Language
       ///
       /// Key: changeLanguage
       ///
-      /// Locales: es
-      var changeLanguage: RswiftResources.StringResource { .init(key: "changeLanguage", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var changeLanguage: RswiftResources.StringResource { .init(key: "changeLanguage", tableName: "Localizable", source: source, developmentValue: "Change Language", comment: nil) }
 
-      /// es translation: ¡Tranqui! Siempre podrás cancelar tu sesión faltando dos horas y obtendras devolución total de tu dinero
+      /// en translation: and don't worry you can always cancel up to 2 hours before a session begins for a Full Refund!
       ///
       /// Key: doNotWorry
       ///
-      /// Locales: es
-      var doNotWorry: RswiftResources.StringResource { .init(key: "doNotWorry", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var doNotWorry: RswiftResources.StringResource { .init(key: "doNotWorry", tableName: "Localizable", source: source, developmentValue: "and don't worry you can always cancel up to 2 hours before a session begins for a Full Refund!", comment: nil) }
 
-      /// es translation: Realizado
+      /// en translation: Done
       ///
       /// Key: done
       ///
-      /// Locales: es
-      var done: RswiftResources.StringResource { .init(key: "done", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var done: RswiftResources.StringResource { .init(key: "done", tableName: "Localizable", source: source, developmentValue: "Done", comment: nil) }
 
-      /// es translation: Este correo electrónico ya está registrado
+      /// en translation: This email-id already exists
       ///
       /// Key: emailExistsMessage
       ///
-      /// Locales: es
-      var emailExistsMessage: RswiftResources.StringResource { .init(key: "emailExistsMessage", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emailExistsMessage: RswiftResources.StringResource { .init(key: "emailExistsMessage", tableName: "Localizable", source: source, developmentValue: "This email-id already exists", comment: nil) }
 
-      /// es translation: Por favor, ingresa tu nombre
+      /// en translation: Please enter name.
       ///
       /// Key: emptyNameMessage
       ///
-      /// Locales: es
-      var emptyNameMessage: RswiftResources.StringResource { .init(key: "emptyNameMessage", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyNameMessage: RswiftResources.StringResource { .init(key: "emptyNameMessage", tableName: "Localizable", source: source, developmentValue: "Please enter name.", comment: nil) }
 
-      /// es translation: *Por favor ingresa una nueva contraseña.
+      /// en translation: *Please enter new password.
       ///
       /// Key: emptyNewpaswd
       ///
-      /// Locales: es
-      var emptyNewpaswd: RswiftResources.StringResource { .init(key: "emptyNewpaswd", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyNewpaswd: RswiftResources.StringResource { .init(key: "emptyNewpaswd", tableName: "Localizable", source: source, developmentValue: "*Please enter new password.", comment: nil) }
 
-      /// es translation: Ingresa tu contraseña temporal
+      /// en translation: Enter the OTP
       ///
       /// Key: emptyOTP
       ///
-      /// Locales: es
-      var emptyOTP: RswiftResources.StringResource { .init(key: "emptyOTP", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyOTP: RswiftResources.StringResource { .init(key: "emptyOTP", tableName: "Localizable", source: source, developmentValue: "Enter the OTP", comment: nil) }
 
-      /// es translation: Por favor ingrese la contraseña anterior
+      /// en translation: Please enter old password
       ///
       /// Key: emptyOldPaswd
       ///
-      /// Locales: es
-      var emptyOldPaswd: RswiftResources.StringResource { .init(key: "emptyOldPaswd", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyOldPaswd: RswiftResources.StringResource { .init(key: "emptyOldPaswd", tableName: "Localizable", source: source, developmentValue: "Please enter old password", comment: nil) }
 
-      /// es translation: Por favor ingrese un número de celular
+      /// en translation: Please enter phone number.
       ///
       /// Key: emptyPhone
       ///
-      /// Locales: es
-      var emptyPhone: RswiftResources.StringResource { .init(key: "emptyPhone", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyPhone: RswiftResources.StringResource { .init(key: "emptyPhone", tableName: "Localizable", source: source, developmentValue: "Please enter phone number.", comment: nil) }
 
-      /// es translation: Por favor deja tus comentarios y sugerencias.
+      /// en translation: Please give your feedback.
       ///
       /// Key: emptyReview
       ///
-      /// Locales: es
-      var emptyReview: RswiftResources.StringResource { .init(key: "emptyReview", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyReview: RswiftResources.StringResource { .init(key: "emptyReview", tableName: "Localizable", source: source, developmentValue: "Please give your feedback.", comment: nil) }
 
-      /// es translation: Por favor califica nuestros servicios .
+      /// en translation: Please rate our services.
       ///
       /// Key: emptyStar
       ///
-      /// Locales: es
-      var emptyStar: RswiftResources.StringResource { .init(key: "emptyStar", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyStar: RswiftResources.StringResource { .init(key: "emptyStar", tableName: "Localizable", source: source, developmentValue: "Please rate our services.", comment: nil) }
 
-      /// es translation: *Por favor ingresa la contraseña de confirmación
+      /// en translation: *Please enter confirm password
       ///
       /// Key: emptyconfirmMsg
       ///
-      /// Locales: es
-      var emptyconfirmMsg: RswiftResources.StringResource { .init(key: "emptyconfirmMsg", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyconfirmMsg: RswiftResources.StringResource { .init(key: "emptyconfirmMsg", tableName: "Localizable", source: source, developmentValue: "*Please enter confirm password", comment: nil) }
 
-      /// es translation: *Por favor ingese su correo electrónico.
+      /// en translation: *Please enter email.
       ///
       /// Key: emptyemail
       ///
-      /// Locales: es
-      var emptyemail: RswiftResources.StringResource { .init(key: "emptyemail", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptyemail: RswiftResources.StringResource { .init(key: "emptyemail", tableName: "Localizable", source: source, developmentValue: "*Please enter email.", comment: nil) }
 
-      /// es translation: *Por favor ingrese su contraseña.
+      /// en translation: *Please enter password.
       ///
       /// Key: emptypaswd
       ///
-      /// Locales: es
-      var emptypaswd: RswiftResources.StringResource { .init(key: "emptypaswd", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var emptypaswd: RswiftResources.StringResource { .init(key: "emptypaswd", tableName: "Localizable", source: source, developmentValue: "*Please enter password.", comment: nil) }
 
-      /// es translation: gratis
+      /// en translation: free
       ///
       /// Key: free
       ///
-      /// Locales: es
-      var free: RswiftResources.StringResource { .init(key: "free", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var free: RswiftResources.StringResource { .init(key: "free", tableName: "Localizable", source: source, developmentValue: "free", comment: nil) }
 
-      /// es translation:  Para ser notificado, abra la configuración y ajuste la opción de 'ubicación' en 'siempre'
+      /// en translation: In order to be notified, please open this app's settings and set location access to 'Always'
       ///
       /// Key: inOrderto
       ///
-      /// Locales: es
-      var inOrderto: RswiftResources.StringResource { .init(key: "inOrderto", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var inOrderto: RswiftResources.StringResource { .init(key: "inOrderto", tableName: "Localizable", source: source, developmentValue: "In order to be notified, please open this app's settings and set location access to 'Always'", comment: nil) }
 
-      /// es translation: *La contraseña debería tener al menos 8 caracteres
+      /// en translation: *Password should be of atleast 8 character
       ///
       /// Key: invalidPaswd
       ///
-      /// Locales: es
-      var invalidPaswd: RswiftResources.StringResource { .init(key: "invalidPaswd", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var invalidPaswd: RswiftResources.StringResource { .init(key: "invalidPaswd", tableName: "Localizable", source: source, developmentValue: "*Password should be of atleast 8 character", comment: nil) }
 
-      /// es translation: %@ km de distancia
+      /// en translation: %@ km away
       ///
       /// Key: kmaway
       ///
-      /// Locales: es
-      var kmaway: RswiftResources.StringResource1<String> { .init(key: "kmaway", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var kmaway: RswiftResources.StringResource1<String> { .init(key: "kmaway", tableName: "Localizable", source: source, developmentValue: "%@ km away", comment: nil) }
 
-      /// es translation:  Inicia sesión en tu guía de viaje holística 
+      /// en translation: Log Into Your Holistic Travel Guide
       ///
       /// Key: logHolisticTravel
       ///
-      /// Locales: es
-      var logHolisticTravel: RswiftResources.StringResource { .init(key: "logHolisticTravel", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var logHolisticTravel: RswiftResources.StringResource { .init(key: "logHolisticTravel", tableName: "Localizable", source: source, developmentValue: "Log Into Your Holistic Travel Guide", comment: nil) }
 
-      /// es translation: *La contraseña y la contraseña de confirmación no coinciden
+      /// en translation: *Password and confirm password do not match
       ///
       /// Key: matchconfrmpaswdMsg
       ///
-      /// Locales: es
-      var matchconfrmpaswdMsg: RswiftResources.StringResource { .init(key: "matchconfrmpaswdMsg", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var matchconfrmpaswdMsg: RswiftResources.StringResource { .init(key: "matchconfrmpaswdMsg", tableName: "Localizable", source: source, developmentValue: "*Password and confirm password do not match", comment: nil) }
 
-      /// es translation: Este número de celular ya está registrado
+      /// en translation: This mobile number already exists
       ///
       /// Key: mobileExistsMessage
       ///
-      /// Locales: es
-      var mobileExistsMessage: RswiftResources.StringResource { .init(key: "mobileExistsMessage", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var mobileExistsMessage: RswiftResources.StringResource { .init(key: "mobileExistsMessage", tableName: "Localizable", source: source, developmentValue: "This mobile number already exists", comment: nil) }
 
-      /// es translation: No
+      /// en translation: No
       ///
       /// Key: no
       ///
-      /// Locales: es
-      var no: RswiftResources.StringResource { .init(key: "no", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var no: RswiftResources.StringResource { .init(key: "no", tableName: "Localizable", source: source, developmentValue: "No", comment: nil) }
 
-      /// es translation: Recordatorio
+      /// en translation: Reminder
       ///
       /// Key: notificationtitle
       ///
-      /// Locales: es
-      var notificationtitle: RswiftResources.StringResource { .init(key: "notificationtitle", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var notificationtitle: RswiftResources.StringResource { .init(key: "notificationtitle", tableName: "Localizable", source: source, developmentValue: "Reminder", comment: nil) }
 
-      /// es translation: Yes
+      /// en translation: Yes
       ///
       /// Key: ok
       ///
-      /// Locales: es
-      var ok: RswiftResources.StringResource { .init(key: "ok", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var ok: RswiftResources.StringResource { .init(key: "ok", tableName: "Localizable", source: source, developmentValue: "Yes", comment: nil) }
 
-      /// es translation: Primer logro: PVG %@ Descuento- %@ pts  Segundo logro: %@ - %@  pts
+      /// en translation: First Milestone- %@ discount- %@ pts  Second Milestone- %@ - %@  pts
       ///
       /// Key: onbaordingFiftMsg
       ///
-      /// Locales: es
-      var onbaordingFiftMsg: RswiftResources.StringResource4<String, String, String, String> { .init(key: "onbaordingFiftMsg", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var onbaordingFiftMsg: RswiftResources.StringResource4<String, String, String, String> { .init(key: "onbaordingFiftMsg", tableName: "Localizable", source: source, developmentValue: "First Milestone- %@ discount- %@ pts\n\nSecond Milestone- %@ - %@  pts", comment: nil) }
 
-      /// es translation: Selecciona tus preferencias holísticas con nuestra Ruleta u omite la selección y ve directo a nuestro directorio Holístico.
+      /// en translation: Select your holistic preferences using our holistic therapy wheel. Or Bypass the selection and go straight to our Holistic Directory.
       ///
       /// Key: onbaordingFisrtMsg
       ///
-      /// Locales: es
-      var onbaordingFisrtMsg: RswiftResources.StringResource { .init(key: "onbaordingFisrtMsg", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var onbaordingFisrtMsg: RswiftResources.StringResource { .init(key: "onbaordingFisrtMsg", tableName: "Localizable", source: source, developmentValue: "Select your holistic preferences using our holistic therapy wheel.\nOr\nBypass the selection and go straight to our Holistic Directory.", comment: nil) }
 
-      /// es translation: Primer inicio de sesión: %@ pts Primera reserva: %@  ptsReservas: %@  pts Reseñas/Comentarios: %@  pts Notificación de Tokens de notificación: %@ pts Cancelación por parte del profesional: Puntos de Reserva+5: %@  pts
+      /// en translation: First Login: %@ pts First Booking: %@  pts Bookings: %@  pts Reviews/Rate: %@  pts View Token Notification: %@ pts If Vendor Cancels: Booking points +5: %@  pts
       ///
       /// Key: onbaordingFourthMsg
       ///
-      /// Locales: es
-      var onbaordingFourthMsg: RswiftResources.StringResource6<String, String, String, String, String, String> { .init(key: "onbaordingFourthMsg", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var onbaordingFourthMsg: RswiftResources.StringResource6<String, String, String, String, String, String> { .init(key: "onbaordingFourthMsg", tableName: "Localizable", source: source, developmentValue: "First Login: %@ pts\nFirst Booking: %@  pts\nBookings: %@  pts\nReviews/Rate: %@  pts\nView Token Notification: %@ pts\nIf Vendor Cancels: Booking points +5: %@  pts", comment: nil) }
 
-      /// es translation: Conéctate con profesionales especializados en Yoga, Reiki, Meditación y mucho más. Una vez conectado, agenda tus sesiones para escapar de la presión mental y la ansiedad que contiene el mundo.
+      /// en translation: Be connected to Holistic Practitioners, specializing in Yoga, Reiki, Mediation and much more .   Once connected, book your Holistic sessions to truly escape the mental pressures and anxiety of this world.
       ///
       /// Key: onbaordingSecondMsg
       ///
-      /// Locales: es
-      var onbaordingSecondMsg: RswiftResources.StringResource { .init(key: "onbaordingSecondMsg", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var onbaordingSecondMsg: RswiftResources.StringResource { .init(key: "onbaordingSecondMsg", tableName: "Localizable", source: source, developmentValue: "Be connected to Holistic Practitioners, specializing in Yoga, Reiki, Mediation and much more .\n\n Once connected, book your Holistic sessions to truly escape the mental pressures and anxiety of this world.", comment: nil) }
 
-      /// es translation: 1.Agenda y completa una sesión  2.Dejando una reseña  3.Usa tus puntos para un obtener 30% de descuentos y   una sesión GRATIS
+      /// en translation: 1.Book and Complete a Session  2.Submitting a review  3.Use your points for 30% Discounts and   FREE Sessions
       ///
       /// Key: onbaordingThirdMsg
       ///
-      /// Locales: es
-      var onbaordingThirdMsg: RswiftResources.StringResource { .init(key: "onbaordingThirdMsg", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var onbaordingThirdMsg: RswiftResources.StringResource { .init(key: "onbaordingThirdMsg", tableName: "Localizable", source: source, developmentValue: "1.Book and Complete a Session\n\n2.Submitting a review\n\n3.Use your points for 30% Discounts and \n\nFREE Sessions", comment: nil) }
 
-      /// es translation: Solo un tiquete está disponible.
+      /// en translation: only %@ ticket for this session are available.
       ///
       /// Key: onlyTicket
       ///
-      /// Locales: es
-      var onlyTicket: RswiftResources.StringResource { .init(key: "onlyTicket", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var onlyTicket: RswiftResources.StringResource1<String> { .init(key: "onlyTicket", tableName: "Localizable", source: source, developmentValue: "only %@ ticket for this session are available.", comment: nil) }
 
-      /// es translation: Solo %@ tiquetes están disponibles.
+      /// en translation: only %@ tickets for this session are available.
       ///
       /// Key: onlyTickets
       ///
-      /// Locales: es
-      var onlyTickets: RswiftResources.StringResource1<String> { .init(key: "onlyTickets", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var onlyTickets: RswiftResources.StringResource1<String> { .init(key: "onlyTickets", tableName: "Localizable", source: source, developmentValue: "only %@ tickets for this session are available.", comment: nil) }
 
-      /// es translation: Por favor ingrese una contraseña válida
+      /// en translation: Please enter valid password.
       ///
       /// Key: passwordRuleMessage
       ///
-      /// Locales: es
-      var passwordRuleMessage: RswiftResources.StringResource { .init(key: "passwordRuleMessage", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var passwordRuleMessage: RswiftResources.StringResource { .init(key: "passwordRuleMessage", tableName: "Localizable", source: source, developmentValue: "Please enter valid password.", comment: nil) }
 
-      /// es translation: Contraseña cambiada con éxito
+      /// en translation: Password changed successfully.
       ///
       /// Key: passwrdChangedSuccess
       ///
-      /// Locales: es
-      var passwrdChangedSuccess: RswiftResources.StringResource { .init(key: "passwrdChangedSuccess", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var passwrdChangedSuccess: RswiftResources.StringResource { .init(key: "passwrdChangedSuccess", tableName: "Localizable", source: source, developmentValue: "Password changed successfully.", comment: nil) }
 
-      /// es translation: Puntos
+      /// en translation: Pts
       ///
       /// Key: pts
       ///
-      /// Locales: es
-      var pts: RswiftResources.StringResource { .init(key: "pts", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var pts: RswiftResources.StringResource { .init(key: "pts", tableName: "Localizable", source: source, developmentValue: "Pts", comment: nil) }
 
-      /// es translation: Puntos DHARMA disponibles
+      /// en translation: Dharma pts available
       ///
       /// Key: ptsavailable
       ///
-      /// Locales: es
-      var ptsavailable: RswiftResources.StringResource { .init(key: "ptsavailable", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var ptsavailable: RswiftResources.StringResource { .init(key: "ptsavailable", tableName: "Localizable", source: source, developmentValue: "Dharma pts available", comment: nil) }
 
-      /// es translation: *Por favor ingresa un correo electrónico válido.
+      /// en translation: *Please enter a valid email address.
       ///
       /// Key: validEmailMessage
       ///
-      /// Locales: es
-      var validEmailMessage: RswiftResources.StringResource { .init(key: "validEmailMessage", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var validEmailMessage: RswiftResources.StringResource { .init(key: "validEmailMessage", tableName: "Localizable", source: source, developmentValue: "*Please enter a valid email address.", comment: nil) }
 
-      /// es translation: *Por favor ingrese un número de celular válido
+      /// en translation: *Please enter valid phone Number
       ///
       /// Key: validNumber
       ///
-      /// Locales: es
-      var validNumber: RswiftResources.StringResource { .init(key: "validNumber", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var validNumber: RswiftResources.StringResource { .init(key: "validNumber", tableName: "Localizable", source: source, developmentValue: "*Please enter valid phone Number", comment: nil) }
 
-      /// es translation: ¿Aún asistirá a su sesión? De lo contrario, cancele su reserva para evadir la tasa de cancelación tardía
+      /// en translation: Will you still be attending your %@ session? If not, please cancel to avoid late cancellation fee.
       ///
       /// Key: willYouAttending
       ///
-      /// Locales: es
-      var willYouAttending: RswiftResources.StringResource { .init(key: "willYouAttending", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var willYouAttending: RswiftResources.StringResource1<String> { .init(key: "willYouAttending", tableName: "Localizable", source: source, developmentValue: "Will you still be attending your %@ session? If not, please cancel to avoid late cancellation fee.", comment: nil) }
 
-      /// es translation: Sí
+      /// en translation: Yes
       ///
       /// Key: yes
       ///
-      /// Locales: es
-      var yes: RswiftResources.StringResource { .init(key: "yes", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var yes: RswiftResources.StringResource { .init(key: "yes", tableName: "Localizable", source: source, developmentValue: "Yes", comment: nil) }
 
-      /// es translation: Será recompensando con %@ puntos DHARMA por reservar esta sesión
+      /// en translation: You will be rewarded %@ pts for booking this session, 
       ///
       /// Key: youWillBeRewarded
       ///
-      /// Locales: es
-      var youWillBeRewarded: RswiftResources.StringResource1<String> { .init(key: "youWillBeRewarded", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var youWillBeRewarded: RswiftResources.StringResource1<String> { .init(key: "youWillBeRewarded", tableName: "Localizable", source: source, developmentValue: "You will be rewarded %@ pts for booking this session, ", comment: nil) }
 
-      /// es translation: Su sesión ha sido agendada. Ha obtenido %@ puntos.
+      /// en translation: Your session has been booked.  You have earned %@ pts.
       ///
       /// Key: yourSessionHasBeen
       ///
-      /// Locales: es
-      var yourSessionHasBeen: RswiftResources.StringResource1<String> { .init(key: "yourSessionHasBeen", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en, es
+      var yourSessionHasBeen: RswiftResources.StringResource1<String> { .init(key: "yourSessionHasBeen", tableName: "Localizable", source: source, developmentValue: "Your session has been booked. \nYou have earned %@ pts.", comment: nil) }
     }
 
     /// This `_R.string.login` struct is generated, and contains static references to 42 localization keys.

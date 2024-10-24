@@ -196,6 +196,13 @@ func deleteAccountUrl()-> String {
     return url
 }
 
+func removeProfilePicUrl()-> String {
+    var  url = "\(server)Userapi/remove_profile_pic"
+    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    print("removeProfilePicUrl",url)
+    return url
+}
+
 func session_time_detail()-> String {
     var  url = "\(server)Sessionapi/session_time_detail"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

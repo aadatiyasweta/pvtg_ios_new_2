@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import AuthenticationServices
+import KeychainSwift
 
 class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     
@@ -35,6 +36,11 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     var loginVM = LoginVM()
     var Socialdata = [String:String]()
     var fbHelper   = Facebook()
+    
+    var keyChain = KeychainSwift()
+    var fname = ""
+    var lname = ""
+    var email = ""
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -85,10 +91,11 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     }
     
     @IBAction func tapLoginWithGoogle(_ sender: UIButton) {
-        let config = GIDConfiguration(clientID: "213231135715-6tq4dmpkanreubpk3krueo47hvedluco.apps.googleusercontent.com")
-                
-        GIDSignIn.sharedInstance.configuration = config
-        GIDSignIn.sharedInstance.signIn(withPresenting: self)
+//        let config = GIDConfiguration(clientID: "213231135715-6tq4dmpkanreubpk3krueo47hvedluco.apps.googleusercontent.com")
+//                
+//        GIDSignIn.sharedInstance.configuration = config
+//        GIDSignIn.sharedInstance.signIn(withPresenting: self)
+        initGoogleLogin()
     }
     
     @IBAction func tapLoginWithApple(_ sender: UIButton) {
@@ -102,6 +109,69 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
         let vc = RegistrationvC.instance()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func initGoogleLogin(){
+        
+            let signInConfig = GIDConfiguration.init(clientID: "213231135715-6tq4dmpkanreubpk3krueo47hvedluco.apps.googleusercontent.com")
+        
+        GIDSignIn.sharedInstance.configuration = signInConfig
+        
+//        let gPlusId = user.userID // For client-side use only!
+//        let name = user.profile?.name
+//        var email:String = ""
+//        
+//        Socialdata["FullName"] = name
+//        if let emailID = user.profile?.email{
+//            email = emailID
+//            Socialdata["Email_Id"] = email
+//        }else{
+//            email = ""
+//        }
+//        Socialdata["Social_type"] = "google"
+//        Socialdata["id"] = gPlusId
+//        signIn.signOut()
+//        makeRequestToSocialSignup(accountType: "google", social_id: gPlusId ?? "")
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { user, error in
+                guard error == nil else { return }
+            guard let user = user?.user else{
+                    //assertionFailure("errror found in google plus sign in")
+                    return
+                }
+                
+                if let fName = user.profile?.name, fName.count > 0 {
+                    self.Socialdata["FullName"] = fName
+                }
+            
+            
+               // self.loginViewModelObj.fname = self.social_userFName
+                
+//                if let lName = user.profile?.familyName, lName.count > 0 {
+//                    self.social_userLName = lName
+//                    
+//                }
+              //  self.loginViewModelObj.lname = self.social_userLName
+                
+                if let email = user.profile?.email, email.count > 0 {
+                    self.Socialdata["Email_Id"] = email
+                    
+                }
+                //self.loginViewModelObj.email = self.social_userEmail
+                
+                let token = user.userID
+                guard token?.count ?? 0 > 0 else {
+                    return
+                }
+               // self.social_token = token ?? ""
+               
+            self.Socialdata["id"] = token
+            self.Socialdata["Social_type"] = "google"
+                
+                //API Call.
+            self.makeRequestToSocialSignup(accountType: "google", social_id: token ?? "")
+                
+            }
+        }
 }
 
 //MARK: - AFTER LOGIN SUCCESS DELEGATE
@@ -263,7 +333,8 @@ extension LoginVC: FacebookDelegate{
 //MARK: - VIEW CONTROLLER EXTENSION
 extension LoginVC {
     func makeRequestToSocialSignup(accountType: String, social_id: String ){
-        self.loginVM.socialLoginApi(social_id: social_id, acc_type: accountType, email: "kumar.ashitesh@techugo.com")
+//        self.loginVM.socialLoginApi(social_id: social_id, acc_type: accountType, email: self.Socialdata["Email_Id"] ?? "")
+        self.loginVM.socialLoginApi(social_id: social_id, acc_type: accountType, email: self.Socialdata["Email_Id"] ?? "")
     }
     
     private func validLogindetails(email : String , paswd : String)->Bool{
@@ -320,6 +391,37 @@ extension LoginVC {
             Socialdata["FullName"] = "\(appleUserFirstName ?? "") \(appleUserLastName ?? "")"
             Socialdata["Email_Id"] = appleUserEmail
             Socialdata["Social_type"] = "apple"
+            
+            if let firstName = appleIDCredential.fullName?.givenName, firstName.count > 0 {
+                self.fname = firstName
+                self.keyChain.set(fname, forKey:"apple_f_name" )
+                
+                print("Apple Fisrt Name: \(fname)")
+            } else {
+                self.fname = keyChain.get("apple_f_name") ?? ""
+                print("Apple Fisrt Name: \(fname)")
+            }
+            
+            if let lastName = appleIDCredential.fullName?.familyName, lastName.count > 0 {
+                self.lname = lastName
+                self.keyChain.set(lname, forKey:"apple_l_name" )
+                print("Apple Last Name: \(lname)")
+            } else {
+                self.lname = keyChain.get("apple_l_name") ?? ""
+                print("Apple Last Name: \(lname)")
+            }
+            Socialdata["FullName"] = "\(self.fname) \(self.lname)"
+            
+            if let email = appleIDCredential.email, email.count > 0 {
+                self.email = email
+                self.keyChain.set(email, forKey:"email" )
+                print("Apple userEmail: \(email)")
+            } else {
+                self.email = keyChain.get("email") ?? ""
+                print("Apple userEmail: \(email)")
+            }
+            Socialdata["Email_Id"] = self.email
+            
             makeRequestToSocialSignup(accountType: "apple", social_id: appleId )
         }
     }
@@ -332,3 +434,5 @@ extension LoginVC {
     }
     
 }
+
+

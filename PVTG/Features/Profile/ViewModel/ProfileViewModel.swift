@@ -10,6 +10,7 @@ import UIKit
 
 protocol UpdateTheProfile: AnyObject {
     func updateProfile()
+    func removeProfilePic()
 }
 
 class ProfileViewModel: BaseVm {
@@ -80,6 +81,31 @@ class ProfileViewModel: BaseVm {
                 if json["statusCode"] == 200 {
                     SaveToDefaults().setProfilePic(value:  json["result"]["user_image"].stringValue)
                     self.delegate?.updateProfile()
+                }
+                else {
+                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
+                }
+            }else{
+                showAlert(strTitle: somethingWentWrongMessage)
+            }
+        }
+    }
+    
+    func removeProfilePicApi(isDelete : Bool? = false){
+        let param : [String:Any] = [
+            "user_id" : SaveToDefaults().getUserId() ?? "",
+            "language" : SaveToDefaults().getAppLang() ?? "en"
+        ]
+        print(header() ?? [:])
+        self.show()
+        api_manager.PUTApi(removeProfilePicUrl(), param: param, header: header()) { (response, err, stausCode) in
+            
+            self.dismiss()
+            if let json = response{
+                debugPrint(json)
+                if json["statusCode"] == 200 {
+                    self.delegate?.removeProfilePic()
+                    showAlert(strTitle: json["APICODERESULT"].string ?? "Profile pic removed successfully.")
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)

@@ -177,7 +177,7 @@ class LoginVM: BaseVm {
         api_manager.POSTApi(socialLoginUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
             if let json = response{
-                debugPrint(json)
+                //debugPrint(json)
 //                let data = try? json["result"].rawData()
 //                let jsonDecoder = JSONDecoder()
 //                let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
