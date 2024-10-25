@@ -151,7 +151,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo as? [String : AnyObject]
         print(userInfo)
-        if userInfo?["gcm.notification.type"] as? String == "reminder"{
+        if userInfo?["gcm.notification.type"] as? String == "reminder" || userInfo?["gcm.notification.type"] as? String == "booking"{
             if let session_id = userInfo?["gcm.notification.session_id"] as? String, let session_name = userInfo?["gcm.notification.session_name"] as? String, let notificationString = userInfo?["gcm.notification.data"] as? String {
                 let notificationData = convertToDictionary(text: notificationString)
                 if let bookingId = notificationData?["booking_id"] as? String, let bodyMessage = notificationData?["body"] as? String, let rescheduleCount = notificationData?["reschedule_count"] as? String, let paymentIdSTr = notificationData?["payment_id"] as? String, let chargeIdStr = notificationData?["charge_id"] as? String, let amountSTr = notificationData?["amount"] as? String, let bookingDateStr = notificationData?["booking_date"] as? String{
@@ -186,7 +186,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         else if let userInfo = userInfo as? [String: Any],
              let type = userInfo["type"] as? String {
               print("Type: \(type)")
-            if(type == "Session Reminder" || type == "reminder"){
+            if(type == "Session Reminder" || type == "reminder" || type == "booking"){
                 if let session_id = userInfo["session_id"] as? String, let session_name = userInfo["session_name"] as? String {
 //                    , let notificationString = userInfo?["gcm.notification.data"] as? String {
 //                    let notificationData = convertToDictionary(text: notificationString)

@@ -30,6 +30,8 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var btnbigRate: UIButton!
     @IBOutlet weak var sessionImage: UIImageView!
     
+    @IBOutlet weak var statusLbl: UILabel!
+    
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "HistoryCell"
     class func nib()-> UINib {
@@ -53,6 +55,12 @@ class HistoryCell: UITableViewCell {
         
         if let bookingId = data.booking_id {
             self.lblBookingId.text = "\(R.string.localizable.bookingID()) : \(bookingId)"
+        }
+        
+        if(data.status == "1"){
+            statusLbl.text = "Completed"
+        }else{
+            statusLbl.text = "Cancelled"
         }
         
         if let bookingDate = data.booking_date {

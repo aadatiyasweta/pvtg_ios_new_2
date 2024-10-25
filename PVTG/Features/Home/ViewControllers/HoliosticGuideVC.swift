@@ -152,6 +152,7 @@ extension HoliosticGuideVC: UITableViewDataSource, UITableViewDelegate {
         let vc = SessionDetailVC.instance()
         vc.sessionId = self.vm.model?.result?[indexPath.row].session_id ?? "0"
         vc.controllerId = 2
+        
         SaveToDefaults().setSessionTimeId(name: self.vm.model?.result?[indexPath.row].session_image)
         self.navigationController?.pushViewController(vc, animated: true)
     }
