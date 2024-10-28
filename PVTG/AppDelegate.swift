@@ -186,7 +186,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         else if let userInfo = userInfo as? [String: Any],
              let type = userInfo["type"] as? String {
               print("Type: \(type)")
-            if(type == "Session Reminder" || type == "reminder" || type == "booking"){
+            if(type == "Session Reminder" || type == "reminder"){
                 if let session_id = userInfo["session_id"] as? String, let session_name = userInfo["session_name"] as? String {
 //                    , let notificationString = userInfo?["gcm.notification.data"] as? String {
 //                    let notificationData = convertToDictionary(text: notificationString)
@@ -204,7 +204,25 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                         self.performSessionFollowupAlert(name: session_name, id: session_id,message: bodyMessage)
                     }
                 }
-            }else{
+            }else if(type == "booking"){
+                
+                if let session_id = userInfo["session_id"] as? String, let session_name = userInfo["session_name"] as? String {
+                    if let bookingId = userInfo["booking_id"] as? String, let bodyMessage = userInfo["body"] as? String {
+
+                        let vc = SessionDetailVC.instance()
+                                                vc.sessionId = "\(session_id)"
+                                                vc.bookingId = bookingId
+                                                vc.rescheduleCountStr = ""
+                                                vc.controllerId = 1
+                                                vc.isFromReschedule = false
+                                                vc.isFromRescheduleNo = true //
+                                                self.navigation.pushViewController(vc, animated: true)
+
+                    }
+                }
+                
+            }
+            else{
                 
             }
           }
