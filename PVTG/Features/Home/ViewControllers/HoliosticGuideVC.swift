@@ -151,8 +151,8 @@ extension HoliosticGuideVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = SessionDetailVC.instance()
         vc.sessionId = self.vm.model?.result?[indexPath.row].session_id ?? "0"
-        vc.controllerId = 2
-        
+       // vc.controllerId = 2 as per client requirement
+        vc.controllerId = 0
         SaveToDefaults().setSessionTimeId(name: self.vm.model?.result?[indexPath.row].session_image)
         self.navigationController?.pushViewController(vc, animated: true)
     }

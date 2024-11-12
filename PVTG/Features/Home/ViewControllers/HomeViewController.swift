@@ -248,7 +248,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = SessionDetailVC.instance()
-//        vc.sessionId = self.homevm.model?.all_result?[indexPath.row].session_id ?? ""
         vc.sessionId = self.homeResultData[indexPath.row].session_id ?? ""
         vc.controllerId = 0
         if(indexPath.row == self.homeResultData.count-1){
@@ -257,7 +256,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             vc.getFollowUpId = ""
         }
         
-//        SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
         SaveToDefaults().setSessionTimeId(name: self.homeResultData[indexPath.row].session_image)
         self.navigationController?.pushViewController(vc, animated: true)
     }
