@@ -18,6 +18,9 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var userimg: UIImageView!
     @IBOutlet weak var lblLocn: UILabel!
+    
+    @IBOutlet weak var headerTitleLbl: UILabel!
+    
     @IBOutlet weak var colectionVw: UICollectionView!{
         didSet{
             colectionVw.dataSource = self
@@ -67,11 +70,15 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
             self.userimg.layer.borderColor = UIColor().coloWithHexString(hex: "#05d9bd").cgColor
             self.userimg.image = UIImage(named: "more")
         }
+        if SaveToDefaults().getAppLang() ?? "en" == "en"{
+            headerTitleLbl.text = "Explore energy healing session and balance your soul."
+        }else{
+            headerTitleLbl.text = "Explora la sesión de sanación energética y equilibra tu alma."
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         initializeLocation()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
             if(self.lblLocn.text == ""){
@@ -93,6 +100,11 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 //               // UserDefaults.standard.setValue(address, forKey: "userAddress")
 //                loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
 //            }
+        }
+        if SaveToDefaults().getAppLang() ?? "en" == "en"{
+            headerTitleLbl.text = "Explore energy healing session and balance your soul."
+        }else{
+            headerTitleLbl.text = "Explora la sesión de sanación energética y equilibra tu alma."
         }
     }
     

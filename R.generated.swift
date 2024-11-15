@@ -2313,7 +2313,7 @@ struct _R {
     var purpleActionBtn: RswiftResources.ColorResource { .init(name: "PurpleActionBtn", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 74 images.
+  /// This `_R.image` struct is generated, and contains static references to 76 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -2325,6 +2325,9 @@ struct _R {
 
     /// Image `ChatIcn`.
     var chatIcn: RswiftResources.ImageResource { .init(name: "ChatIcn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `IIcon`.
+    var iIcon: RswiftResources.ImageResource { .init(name: "IIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `Search`.
     var search: RswiftResources.ImageResource { .init(name: "Search", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -2439,6 +2442,9 @@ struct _R {
 
     /// Image `marker`.
     var marker: RswiftResources.ImageResource { .init(name: "marker", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `message_square_icon`.
+    var message_square_icon: RswiftResources.ImageResource { .init(name: "message_square_icon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `minimalLeft2X`.
     var minimalLeft2X: RswiftResources.ImageResource { .init(name: "minimalLeft2X", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import paper_onboarding
+//import paper_onboarding
 
 class OnboardingVC: UIViewController {
    
@@ -25,7 +25,7 @@ class OnboardingVC: UIViewController {
     let imageArr : [UIImage] = [#imageLiteral(resourceName: "group3-2"), #imageLiteral(resourceName: "group3-1"), #imageLiteral(resourceName: "group3")]
     var index : Int = 0
     var controllerId = 0
-    let onboarding1 = PaperOnboarding()
+    //let onboarding1 = PaperOnboarding()
     let button1 = UIButton()
     var vm = OnboardingVm()
     
