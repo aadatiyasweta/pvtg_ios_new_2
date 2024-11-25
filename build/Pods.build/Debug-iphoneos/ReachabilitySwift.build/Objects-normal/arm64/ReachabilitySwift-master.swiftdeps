@@ -1,6 +1,0 @@
-version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
-options: "099ab06a75047a4f0d5e0353aeadad66b41a967b13aca620f04d19b38fb38560"
-build_start_time: [1648015421, 237442970]
-build_end_time: [1648015425, 863852024]
-inputs:
-  "/Users/kashish/Documents/PVTG/Pods/ReachabilitySwift/Sources/Reachability.swift": [1643866670, 613774299]

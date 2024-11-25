@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
-options: "6218df63367a459e5329b3d9fbe622b6bd49d10e8510bf60a56439c9024e2da0"
-build_start_time: [1648015445, 568447113]
-build_end_time: [1648015458, 820569038]
-inputs:
-  "/Users/kashish/Documents/PVTG/Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Swift/AccessToken.swift": [1643866665, 938097238]
-  "/Users/kashish/Documents/PVTG/Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Swift/Permission.swift": [1643866665, 938522338]
-  "/Users/kashish/Documents/PVTG/Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Swift/Settings.swift": [1643866665, 938885927]
