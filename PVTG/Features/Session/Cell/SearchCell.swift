@@ -16,9 +16,6 @@ class SearchCell: UICollectionViewCell {
     @IBOutlet weak var leadingConstarintVw: NSLayoutConstraint!
     @IBOutlet weak var traillingConstarintVw: NSLayoutConstraint!
     
-    @IBOutlet weak var iiconImgVw: UIImageView!
-    
-    @IBOutlet weak var iIconBtn: UIButton!
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "SearchCell"
     class func nib()-> UINib {

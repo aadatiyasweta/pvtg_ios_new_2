@@ -166,7 +166,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     var sessionTimeMinuteStr = ""
     var getFollowUpId = ""
     var iIcount = -2
-    var iIcountValue = false
+    //var iIcountValue = false
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -174,15 +174,16 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         if SaveToDefaults().getAppLang() ?? "en" == "en"{
             rescheduleBtn.setTitle("RESCHEDULE", for: .normal)
             completedBtn.setTitle("Completed", for: .normal)
-            iIconTextLbl.text = "This time slot represents the window for your session. Within this period, you can choose a session length of 60, 90, or 120 minutes."
+            iIconTextLbl.text = "All time slots are listed as 2-hour windows, this won't affect your chosen session length at the top, which sets the price. Sessions vary by healer, and not all offer same time options."
             gotItBtn.setTitle("Got it!", for: .normal)
         }else{
             rescheduleBtn.setTitle("REPROGRAMAR", for: .normal)
             completedBtn.setTitle("Terminada", for: .normal)
-            iIconTextLbl.text = "Este intervalo de tiempo representa la ventana de tu sesión. Dentro de este período, puedes elegir una duración de sesión de 60, 90 o 120 minutos."
+            iIconTextLbl.text = "Todos los intervalos de tiempo se enumeran como ventanas de 2 horas, esto no afectará la duración de la sesión elegida en la parte superior, que establece el precio. Las sesiones varían según el curandero y no todas ofrecen opciones al mismo tiempo."
             gotItBtn.setTitle("¡Entiendo!", for: .normal)
         }
-        iIconBgVw.isHidden = true
+        iIconBgVw.isHidden = false
+        iIconBgVw.layer.cornerRadius = iIconBgVw.frame.size.height/2
         self.backBtn.isHidden = false
         cancelTagView.isHidden = true
         isLoop = false
@@ -318,8 +319,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         iIcount = -2
-        iIcountValue = false
-        iIconBgVw.isHidden = true
+       // iIcountValue = false
+        //iIconBgVw.isHidden = true
         self.vwcalendar.deselect(self.dateToDeleselect)
         self.selectedDate = formatter.string(from: self.today)
         loadApi(top_search: "")
@@ -474,6 +475,9 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
       
     }
     
+    @IBAction func iIconBtnTaped(_ sender: Any) {
+        iIconBgVw.isHidden = false
+    }
     @IBAction func btnToTapPrev(_ sender: UIButton) {
         moveCurrentpage(value: true)
     }
@@ -614,7 +618,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
                     if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                         if val.is_avilable == "1" {
                             self.iIcount = -2
-                            self.iIcountValue = false
+                            //self.iIcountValue = false
                             self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
                             // self.scrollViewBotmconstarint.constant = 97
                         }
@@ -740,15 +744,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 lblTicketCount.text = "01"
             }
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
-            cell.iIconBtn.tag = indexPath.row
-            cell.iIconBtn.addTarget(self, action: #selector(iIconBtnTapped), for: .touchUpInside)
             if self.timeArr[indexPath.row].is_avilable_time == "0" {
                 //cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
                 cell.vwContainCatgry.backgroundColor = UIColor.lightGray
                 cell.vwContainCatgry.layer.cornerRadius = 10
-                cell.iiconImgVw.isHidden = true
-                cell.iiconImgVw.image = UIImage(named: "")
-                //cell.iIconBtn.isUserInteractionEnabled = false
                 
             } else {
                 if id == indexPath.row {
@@ -759,23 +758,18 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 cell.vwContainCatgry.layer.cornerRadius = 10
             }
             if self.timeArr[indexPath.row].is_available == "0" {
-                cell.iiconImgVw.isHidden = true
-                //cell.iIconBtn.isUserInteractionEnabled = false
                 cell.vwContainCatgry.backgroundColor = UIColor.lightGray
-                cell.iiconImgVw.image = UIImage(named: "")
             }else{
-//                if(iIcount == 1){
-                iIcount = indexPath.row
-                if (indexPath.row == iIcount && self.iIcountValue == false){
-                    cell.iiconImgVw.isHidden = false
-                    cell.iiconImgVw.image = UIImage(named: "IIcon")
-                    //cell.iIconBtn.isUserInteractionEnabled = true
-                    iIcount = iIcount + 10
-                    self.iIcountValue = true
-                }
-                else{
-                    //cell.iiconImgVw.image = UIImage(named: "")
-                }
+////                if(iIcount == 1){
+//                iIcount = indexPath.row
+//                if (indexPath.row == iIcount && self.iIcountValue == false){
+//                    //cell.iIconBtn.isUserInteractionEnabled = true
+//                    iIcount = iIcount + 10
+//                    self.iIcountValue = true
+//                }
+//                else{
+//                    //cell.iiconImgVw.image = UIImage(named: "")
+//                }
             }
            
             cell.setData(data: self.timeArr[indexPath.row])
@@ -1064,7 +1058,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
        // self.isFromSelection = false
         if collectionView == self.vwCollection{
             self.iIcount = -2
-            self.iIcountValue = false
+            //self.iIcountValue = false
             if self.timeArr[indexPath.row].is_available == "0" || self.timeArr[indexPath.row].is_avilable_time == "0"{
                 self.id = -1
             }else{
@@ -1296,7 +1290,7 @@ extension SessionDetailVC: GetResponse {
                     if((self.selectedSessionID != "") && (self.reloadTimeBoolValue == false)){
                         self.reloadTimeBoolValue = true
                         self.iIcount = -2
-                        self.iIcountValue = false
+                        //self.iIcountValue = false
                         self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
                         break
                     }
@@ -1572,7 +1566,7 @@ extension SessionDetailVC: GetResponse {
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if self.controllerId == 0 || self.controllerId == 2{
                         self.iIcount = -2
-                        self.iIcountValue = false
+                       // self.iIcountValue = false
                         self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
                        // self.scrollViewBotmconstarint.constant = 97
                     }
