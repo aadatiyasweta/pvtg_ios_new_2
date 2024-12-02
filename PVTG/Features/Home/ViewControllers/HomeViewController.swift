@@ -71,9 +71,9 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
             self.userimg.image = UIImage(named: "more")
         }
         if SaveToDefaults().getAppLang() ?? "en" == "en"{
-            headerTitleLbl.text = "Explore energy healing session and balance your soul."
+            headerTitleLbl.text = "Explore energy healing sessions and balance your soul."
         }else{
-            headerTitleLbl.text = "Explora la sesión de sanación energética y equilibra tu alma."
+            headerTitleLbl.text = "Explora la sesións de sanación energética y equilibra tu alma."
         }
     }
     
@@ -101,11 +101,11 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 //                loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
 //            }
         }
-        if SaveToDefaults().getAppLang() ?? "en" == "en"{
-            headerTitleLbl.text = "Explore energy healing session and balance your soul."
-        }else{
-            headerTitleLbl.text = "Explora la sesión de sanación energética y equilibra tu alma."
-        }
+//        if SaveToDefaults().getAppLang() ?? "en" == "en"{
+//            headerTitleLbl.text = "Explore energy healing sessions and balance your soul."
+//        }else{
+//            headerTitleLbl.text = "Explora la sesións de sanación energética y equilibra tu alma."
+//        }
     }
     
     func initializeLocation(){

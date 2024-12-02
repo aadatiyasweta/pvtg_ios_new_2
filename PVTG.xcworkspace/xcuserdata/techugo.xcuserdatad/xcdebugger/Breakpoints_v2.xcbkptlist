@@ -7,112 +7,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AD04C90A-2BC4-4CD7-9333-283C50B302CF"
+            uuid = "E2C323B8-7DA3-4D62-8CC6-4C44B70217EB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            filePath = "PVTG/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "751"
-            endingLineNumber = "751"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "setChangeLanguageVC()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E4B6D61B-25C6-4D21-AE8E-4791E1B7526C"
+            uuid = "914246AB-B0E2-41AD-9C2E-6EBF78C25B04"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            filePath = "PVTG/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "761"
-            endingLineNumber = "761"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
+            landmarkName = "setChangeLanguageVC()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "34D87915-9103-4BDD-8F48-756DD9EEB6BD"
+            uuid = "B74C84EC-17A7-4C50-9AC8-C351B9787533"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            filePath = "PVTG/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "781"
-            endingLineNumber = "781"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "setChangeLanguageVC()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E77109C3-6872-4AB4-9262-29CD49171E57"
+            uuid = "4E94E3AF-75C1-4A9A-81C8-3C145EE0990A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            filePath = "PVTG/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1072"
-            endingLineNumber = "1072"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "checkLoginStatus()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A8E6C4E0-130D-491E-8312-BAF0C6F5AD2E"
+            uuid = "DB6C2F23-3D0E-48B5-89EB-066E686DCAE2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            filePath = "PVTG/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "765"
-            endingLineNumber = "765"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "checkLoginStatus()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D34DCAD3-7EA5-4726-84A2-3BC53AB90B5F"
+            uuid = "62BF9660-76A6-4EA7-AE10-54CF7175A2B5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
+            filePath = "PVTG/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "766"
-            endingLineNumber = "766"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7753ED89-BE34-4B3B-891A-A28A0B3877C2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PVTG/Features/Session/viewcontroller/SessionDetailVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
-            landmarkName = "iIconBtnTaped(_:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "checkLoginStatus()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -75,10 +75,7 @@ class LanguageChnageVC: BaseViewController {
             }
             Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
             self.hitChangeLanguageApi()
-            
-//            let vc = TabBarControllerViewController.navigation()
-//            window?.rootViewController = vc
-//            window?.makeKeyAndVisible()
+
             appDelegate.setTabBarControllerVC()
         }else{
             if spanishBtn.isSelected{

@@ -61,27 +61,26 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     
     func checkLoginStatus() {
         if SaveToDefaults().getAppLang() ?? "" == "" || SaveToDefaults().getAppLang() == nil{
-//            let vc = LanguageChnageVC.navigation()
-//            window?.rootViewController = vc
-//            window?.makeKeyAndVisible()
-            setChangeLanguageVC()
-        }else{
+            SaveToDefaults().setAppLang(value: "en")
             if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
                 if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
-//                    let vc = OnboardingVC.navigation()
-//                    window?.rootViewController = vc
-//                    window?.makeKeyAndVisible()
                     setOnboardingVC()
                 } else{
-//                    let vc = LoginVC.navigation()
-//                    window?.rootViewController = vc
-//                    window?.makeKeyAndVisible()
                     setLoginVC()
                 }
             } else {
-//                let vc = TabBarControllerViewController.navigation()
-//                window?.rootViewController = vc
-//                window?.makeKeyAndVisible()
+                setTabBarControllerVC()
+            }
+            // commented by ashitesh and upper code added due to client requirement to hide change language
+            //setChangeLanguageVC()
+        }else{
+            if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
+                if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
+                    setOnboardingVC()
+                } else{
+                    setLoginVC()
+                }
+            } else {
                 setTabBarControllerVC()
             }
         }

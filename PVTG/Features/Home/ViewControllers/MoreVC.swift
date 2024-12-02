@@ -24,7 +24,8 @@ class MoreVC: BaseViewController {
  }
  
  //MARK: - Properties
-    var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(),R.string.localizable.changeLanguage(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(),R.string.localizable.deleteAccount(), R.string.localizable.signout()]
+//    var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(),R.string.localizable.changeLanguage(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(),R.string.localizable.deleteAccount(), R.string.localizable.signout()]
+    var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(),R.string.localizable.deleteAccount(), R.string.localizable.signout()]
  var morevm = MoreVM()
  
 //MARK: - LifeCycle
@@ -61,50 +62,50 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
   case 1:
    let vc = ChangePasswordVC.instance()
    self.navigationController?.pushViewController(vc, animated: true)
+//  case 2:
+//   let vc = LanguageChnageVC.instance()
+//   vc.isFromProfile = true
+//   self.navigationController?.pushViewController(vc, animated: true)
   case 2:
-   let vc = LanguageChnageVC.instance()
-   vc.isFromProfile = true
-   self.navigationController?.pushViewController(vc, animated: true)
-  case 3:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
    vc.url = faq
    self.navigationController?.pushViewController(vc, animated: true)
-  case 4:
+  case 3:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
    vc.url = privacy
    self.navigationController?.pushViewController(vc, animated: true)
-  case 5:
+  case 4:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
    vc.url = terms
    self.navigationController?.pushViewController(vc, animated: true)
-  case 6:
+  case 5:
       let vc = PrivacyPolicyVC.instance()
       vc.type = self.moreArr[indexPath.row]
       vc.url = cancelPolicy
          vc.isComingCancelBooking = false
       self.navigationController?.pushViewController(vc, animated: true)
-  case 7:
+  case 6:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
    vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html" // late fee url
       vc.isComingCancelBooking = false
    self.navigationController?.pushViewController(vc, animated: true)
-  case 8:
+  case 7:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
    vc.url = aboutUs
    self.navigationController?.pushViewController(vc, animated: true)
-  case 9:
+  case 8:
    debugPrint("  Rate us")
       SKStoreReviewController.requestReview()
-  case 10:
+  case 9:
    let vc = OnboardingVC.instance()
    vc.controllerId = 1
    self.navigationController?.pushViewController(vc, animated: true)
-  case 11:  self.showAlertWithConfirmation(R.string.localizable.sureDeleteAccount(), withTitle: appName, itsController: self) { (sucess) in
+  case 10:  self.showAlertWithConfirmation(R.string.localizable.sureDeleteAccount(), withTitle: appName, itsController: self) { (sucess) in
    if sucess{
       // self.show()
     appDelegate.hitDeleteUserAccountApi(isDelete: true)
@@ -115,7 +116,7 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
        appDelegate.setLoginVC()
    }
   }
-  case 12:  self.showAlertWithConfirmation(R.string.localizable.areyousureyouwant(), withTitle: appName, itsController: self) { (sucess) in
+  case 11:  self.showAlertWithConfirmation(R.string.localizable.areyousureyouwant(), withTitle: appName, itsController: self) { (sucess) in
    if sucess{
     appDelegate.hitDeviceTokenApi(isLogout: true)
     SaveToDefaults().setAccessToken(value: nil)

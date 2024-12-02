@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cWO-ch-tAt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cWO-ch-tAt">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,7 +43,7 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naX-nE-bQV">
-                                <rect key="frame" x="229" y="13" width="120" height="32"/>
+                                <rect key="frame" x="229" y="33" width="120" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="2ab-ju-w6t"/>
                                 </constraints>
@@ -161,7 +161,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgU-ft-EFF">
-                                <rect key="frame" x="10" y="22" width="44" height="44"/>
+                                <rect key="frame" x="10" y="42" width="44" height="44"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="dyL-B2-fJ3"/>
@@ -178,13 +178,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Language" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhr-bB-ea6">
-                                <rect key="frame" x="114" y="33.5" width="147.5" height="21"/>
+                                <rect key="frame" x="114" y="53.5" width="147.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmG-uN-wAt">
-                                <rect key="frame" x="97" y="179" width="120" height="38"/>
+                                <rect key="frame" x="97" y="199" width="120" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="adF-Ok-A93"/>
                                 </constraints>
@@ -201,7 +201,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaa-hI-mNv">
-                                <rect key="frame" x="97" y="97" width="120" height="38"/>
+                                <rect key="frame" x="97" y="117" width="120" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="5SF-AW-bmU"/>
                                 </constraints>
@@ -218,14 +218,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp" translatesAutoresizingMaskIntoConstraints="NO" id="LWa-aJ-Gpt">
-                                <rect key="frame" x="16" y="168" width="59" height="60"/>
+                                <rect key="frame" x="16" y="188" width="59" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Bf5-tm-aho"/>
                                     <constraint firstAttribute="width" constant="59" id="M0t-Vp-1RN"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eng" translatesAutoresizingMaskIntoConstraints="NO" id="H0i-Ii-XUK">
-                                <rect key="frame" x="16" y="86" width="59" height="60"/>
+                                <rect key="frame" x="16" y="106" width="59" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="59" id="KCU-gR-Rw1"/>
                                     <constraint firstAttribute="height" constant="60" id="aK6-NB-pMr"/>
@@ -285,7 +285,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5c-m0-QTT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10034.4" y="218.1409295352324"/>
+            <point key="canvasLocation" x="9916" y="225"/>
         </scene>
         <!--SplashVC-->
         <scene sceneID="bEY-vg-veY">
@@ -299,14 +299,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNew" translatesAutoresizingMaskIntoConstraints="NO" id="GhG-gc-Rjl">
-                                <rect key="frame" x="117.5" y="22" width="140" height="140"/>
+                                <rect key="frame" x="117.5" y="42" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="3rK-DQ-zMf"/>
                                     <constraint firstAttribute="width" constant="140" id="MdM-uA-1lA"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No More Bad Karma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymr-FC-7cz">
-                                <rect key="frame" x="105.5" y="181" width="164.5" height="20"/>
+                                <rect key="frame" x="105.5" y="201" width="164.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
