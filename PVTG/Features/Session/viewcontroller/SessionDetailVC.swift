@@ -174,12 +174,12 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         if SaveToDefaults().getAppLang() ?? "en" == "en"{
             rescheduleBtn.setTitle("RESCHEDULE", for: .normal)
             completedBtn.setTitle("Completed", for: .normal)
-            iIconTextLbl.text = "All time slots are listed as 2-hour windows, this won't affect your chosen session length at the top, which sets the price. Sessions vary by healer, and not all offer same time options."
+            iIconTextLbl.text = "The 2-hour time slots in this calendar won't affect the session length you’ve chosen above."
             gotItBtn.setTitle("Got it!", for: .normal)
         }else{
             rescheduleBtn.setTitle("REPROGRAMAR", for: .normal)
             completedBtn.setTitle("Terminada", for: .normal)
-            iIconTextLbl.text = "Todos los intervalos de tiempo se enumeran como ventanas de 2 horas, esto no afectará la duración de la sesión elegida en la parte superior, que establece el precio. Las sesiones varían según el curandero y no todas ofrecen opciones al mismo tiempo."
+            iIconTextLbl.text = "Los intervalos de tiempo de 2 horas en este calendario no afectarán la duración de la sesión que haya elegido anteriormente."
             gotItBtn.setTitle("¡Entiendo!", for: .normal)
         }
         iIconBgVw.isHidden = false
