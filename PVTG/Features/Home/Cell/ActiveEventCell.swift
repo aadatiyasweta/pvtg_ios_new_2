@@ -32,6 +32,9 @@ class ActiveEventCell: UICollectionViewCell {
     @IBOutlet weak var activeEventCollectionView: UICollectionView!
     @IBOutlet weak var mapBtn: UIButton!
     
+    @IBOutlet weak var followUpView: UIView!
+    
+    
     //MARK: - Properties
     var dictData:EventsResult?
     var mapClosure : ()->() = {}

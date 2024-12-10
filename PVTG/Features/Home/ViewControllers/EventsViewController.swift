@@ -68,6 +68,11 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.mapClosure = {
               self.directions(lat: self.vm.model?.result?[indexPath.row].lat ?? "" ,long: self.vm.model?.result?[indexPath.row].long ?? "")
         }
+        if(self.vm.model?.result?[indexPath.row].follow_up_id != "0" && self.vm.model?.result?[indexPath.row].follow_up_id != "" && self.vm.model?.result?[indexPath.row].follow_up_id != nil){
+                cell.followUpView.isHidden = false
+        }else{
+            cell.followUpView.isHidden = true
+        }
         return cell
     }
     

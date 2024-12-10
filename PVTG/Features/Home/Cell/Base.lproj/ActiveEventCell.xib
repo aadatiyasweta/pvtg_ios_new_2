@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -160,6 +160,25 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waf-FR-B1d">
+                                <rect key="frame" x="8" y="55" width="82" height="28"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P45-be-eVg">
+                                        <rect key="frame" x="10" y="5" width="62" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.019607843140000001" green="0.85098039219999999" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="P45-be-eVg" secondAttribute="trailing" constant="10" id="2Ef-Lq-SUC"/>
+                                    <constraint firstItem="P45-be-eVg" firstAttribute="top" secondItem="waf-FR-B1d" secondAttribute="top" constant="5" id="6N0-n6-STU"/>
+                                    <constraint firstItem="P45-be-eVg" firstAttribute="leading" secondItem="waf-FR-B1d" secondAttribute="leading" constant="10" id="WYh-u7-ff9"/>
+                                    <constraint firstAttribute="bottom" secondItem="P45-be-eVg" secondAttribute="bottom" constant="5" id="XeH-7x-jAz"/>
+                                    <constraint firstAttribute="height" constant="28" id="yww-VA-tu2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -172,6 +191,7 @@
                             <constraint firstAttribute="trailing" secondItem="nOA-fq-04e" secondAttribute="trailing" constant="20" id="6Cd-c9-Vib"/>
                             <constraint firstItem="Fdc-Uq-9Ok" firstAttribute="leading" secondItem="kH7-ar-hiF" secondAttribute="leading" id="7dg-Ws-oJ4"/>
                             <constraint firstItem="6YQ-HM-aLs" firstAttribute="top" secondItem="kH7-ar-hiF" secondAttribute="top" constant="15" id="BCl-Nt-DEl"/>
+                            <constraint firstItem="waf-FR-B1d" firstAttribute="top" secondItem="6YQ-HM-aLs" secondAttribute="bottom" constant="10" id="MAW-fJ-l4e"/>
                             <constraint firstItem="nOA-fq-04e" firstAttribute="leading" secondItem="6YQ-HM-aLs" secondAttribute="leading" id="Rw6-3c-gfb"/>
                             <constraint firstItem="nOA-fq-04e" firstAttribute="top" secondItem="W1Q-Ha-oUo" secondAttribute="bottom" id="StA-5n-aZs"/>
                             <constraint firstItem="Fdc-Uq-9Ok" firstAttribute="top" secondItem="kH7-ar-hiF" secondAttribute="top" id="VSM-kX-JzS"/>
@@ -179,6 +199,7 @@
                             <constraint firstItem="4kr-Ys-v2h" firstAttribute="leading" secondItem="nOA-fq-04e" secondAttribute="leading" id="a3z-lA-isc"/>
                             <constraint firstAttribute="bottom" secondItem="Fdc-Uq-9Ok" secondAttribute="bottom" id="bgE-i9-FX9"/>
                             <constraint firstItem="Su8-x9-yGR" firstAttribute="centerY" secondItem="pwh-3I-huT" secondAttribute="centerY" id="geH-kL-r1s"/>
+                            <constraint firstItem="waf-FR-B1d" firstAttribute="leading" secondItem="6YQ-HM-aLs" secondAttribute="leading" id="nCm-H6-MDv"/>
                             <constraint firstItem="Su8-x9-yGR" firstAttribute="leading" secondItem="pwh-3I-huT" secondAttribute="trailing" constant="5" id="nYe-Kg-wPg"/>
                             <constraint firstItem="W1Q-Ha-oUo" firstAttribute="leading" secondItem="kH7-ar-hiF" secondAttribute="leading" constant="8" id="oA1-As-Ke4"/>
                             <constraint firstAttribute="trailing" secondItem="W1Q-Ha-oUo" secondAttribute="trailing" constant="8" id="udm-Mz-7Zw"/>
@@ -206,6 +227,7 @@
             <size key="customSize" width="325" height="420"/>
             <connections>
                 <outlet property="activeEventCollectionView" destination="W1Q-Ha-oUo" id="Pd3-ef-gmr"/>
+                <outlet property="followUpView" destination="waf-FR-B1d" id="IXX-Uk-uz4"/>
                 <outlet property="lblBookingId" destination="xZD-Tg-MJk" id="py6-Yw-ecF"/>
                 <outlet property="lblPlace" destination="nOA-fq-04e" id="ER3-Xe-590"/>
                 <outlet property="lblSessionName" destination="0nR-Q2-yAZ" id="wiX-E7-s7z"/>
