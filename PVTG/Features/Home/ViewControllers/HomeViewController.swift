@@ -80,6 +80,7 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeLocation()
+        self.id = "-1"
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
             if(self.lblLocn.text == ""){
                 self.showAlertForPermissionDenied()
