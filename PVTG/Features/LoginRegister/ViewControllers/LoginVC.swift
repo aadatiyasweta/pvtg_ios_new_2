@@ -30,7 +30,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var lblEmailErr: UILabel!
     @IBOutlet weak var lblPaswdErr: UILabel!
-    @IBOutlet weak var stackViewWidthConst: NSLayoutConstraint!
+   // @IBOutlet weak var stackViewWidthConst: NSLayoutConstraint!
     
     //MARK: - Properties
     var loginVM = LoginVM()
@@ -45,11 +45,11 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(SaveToDefaults().getAppLang() == "en"){
-            stackViewWidthConst.constant = 266
-        }else {
-            stackViewWidthConst.constant = 310
-        }
+//        if(SaveToDefaults().getAppLang() == "en"){
+//            stackViewWidthConst.constant = 266
+//        }else {
+//            stackViewWidthConst.constant = 310
+//        }
         self.lblEmailErr.isHidden = true
         self.lblPaswdErr.isHidden = true
         loginVM.delegate = self

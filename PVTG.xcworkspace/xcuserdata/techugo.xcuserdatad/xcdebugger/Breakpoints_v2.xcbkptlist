@@ -18,36 +18,6 @@
             endingLineNumber = "84"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6FA59C70-B949-422A-9276-DE8773C46651 - 3c332a6c6c7948de"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PVTG.HomeViewController.viewWillAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "PVTG.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Home/ViewControllers/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84">
-               </Location>
-               <Location
-                  uuid = "6FA59C70-B949-422A-9276-DE8773C46651 - dad90eb5285bd02"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in PVTG.HomeViewController.viewWillAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "PVTG.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/techugo/Desktop/PVTG/PVTG/Features/Home/ViewControllers/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
