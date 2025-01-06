@@ -744,6 +744,32 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 lblTicketCount.text = "01"
             }
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
+            
+            let getFromtime = self.timeArr[indexPath.row].from_time ?? ""
+            let getSchDateStr = self.timeArr[indexPath.row].schedule_date ?? ""
+                
+            var getTimeStr = ""
+            getTimeStr = getSchDateStr + " " + getFromtime
+                
+            let datee = Date()
+            let formatterr = DateFormatter()
+            formatterr.dateFormat =  "yyyy-MM-dd HH:mm"
+            formatterr.locale =  Locale(identifier: "en_US")
+            let curntTime = "\(formatterr.string(from: datee))"
+            
+              let firstDate = formatterr.date(from: curntTime)
+            let secondDate = formatterr.date(from: getTimeStr)
+            if(firstDate != nil && secondDate != nil)
+            {
+                let diffSeconds = secondDate!.timeIntervalSinceReferenceDate - firstDate!.timeIntervalSinceReferenceDate
+                
+                print("diffSeconds",diffSeconds)
+                if diffSeconds < 1 {
+                      print("Time is shorter ")
+                    self.timeArr[indexPath.row].is_avilable_time = "0"
+                  }
+            }
+            
             if self.timeArr[indexPath.row].is_avilable_time == "0" {
                 //cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
                 cell.vwContainCatgry.backgroundColor = UIColor.lightGray

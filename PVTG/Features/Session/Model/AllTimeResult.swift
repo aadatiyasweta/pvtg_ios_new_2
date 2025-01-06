@@ -18,10 +18,11 @@ struct AllTimeResult : Codable {
 	let to_time : String?
 	let total_ticket : String?
 	let sold_ticket : String?
-	let is_avilable_time : String?
+	var is_avilable_time : String?
     let session_booking_session_type : String?
     let session_booking_booking_date : String?
     let booked_price_type : String?
+    let schedule_date : String?
     
     let is_booked : String?
     let is_available : String?
@@ -38,6 +39,7 @@ struct AllTimeResult : Codable {
         case session_booking_session_type = "session_booking_session_type"
         case session_booking_booking_date = "session_booking_booking_date"
         case booked_price_type = "session_booking_price_type"
+        case schedule_date = "schedule_date"
         
         case is_booked = "is_booked"
         case is_available = "is_available"
@@ -57,6 +59,7 @@ struct AllTimeResult : Codable {
         session_booking_booking_date = try values.decodeIfPresent(String.self, forKey: .session_booking_booking_date)
         booked_price_type = try values.decodeIfPresent(String.self, forKey: .booked_price_type)
         is_available = try values.decodeIfPresent(String.self, forKey: .is_available)
+        schedule_date = try values.decodeIfPresent(String.self, forKey: .schedule_date)
         is_booked = try values.decodeIfPresent(String.self, forKey: .is_booked)
         currenttimezone = try values.decodeIfPresent(String.self, forKey: .currenttimezone)
 	}
