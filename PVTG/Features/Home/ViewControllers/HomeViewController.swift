@@ -26,6 +26,8 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
             colectionVw.dataSource = self
             colectionVw.delegate = self
             self.colectionVw.register(PriceCollCell.nib(), forCellWithReuseIdentifier: PriceCollCell.ident)
+            self.colectionVw.register(HomeAllCollectionViewCell.nib(), forCellWithReuseIdentifier: HomeAllCollectionViewCell.ident)
+            
             self.colectionVw.register(CategoryCell.nib(), forCellWithReuseIdentifier: CategoryCell.ident)
         }
     }
@@ -63,6 +65,7 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         lblNoSession.text = ""
         appDelegate.hitDeviceTokenApi()
+        initializeLocation()
         homevm.delegate = self
         DispatchQueue.main.async {
             self.userimg.layer.borderWidth = 0.5
@@ -79,8 +82,10 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initializeLocation()
+//        initializeLocation()
+        
         self.id = "-1"
+        self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
             if(self.lblLocn.text == ""){
                 self.showAlertForPermissionDenied()
@@ -277,11 +282,17 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 //MARK: - COLLECTION VIEW DELEGATE AND DATASOURCE
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0{
+            if self.categoryArr.count == 0{
+                return 0
+            }
+            return 1
+        }
+        if section == 1{
             if self.categoryArr.count == 0{
                 return 0
             }
@@ -298,6 +309,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             }else{
                 cell.priceLbl.text = R.string.localizable.priceFilter()
             }
+            return cell
+        }
+        else if indexPath.section == 1{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeAllCollectionViewCell.ident, for: indexPath) as! HomeAllCollectionViewCell
+            if(id == "-1" ){
+                cell.cellBgVw.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
+                cell.cellBgVw.border(width: 1, color: UIColor().coloWithHexString(hex: "#06d9bd"))
+                cell.allLbl.textColor = .white
+            }else{
+                cell.cellBgVw.backgroundColor = UIColor().coloWithHexString(hex: "#ffffff")
+                cell.cellBgVw.border(width: 1, color: UIColor().coloWithHexString(hex: "#E2E2E2"))
+                cell.allLbl.textColor = .black
+            }
+            cell.cellBgVw.layer.borderWidth = 1
+            cell.cellBgVw.layer.cornerRadius = 5
+                //cell.priceLbl.text = "All"
             return cell
         }
         else{
@@ -359,6 +386,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             label.sizeToFit()
             return CGSize(width: label.frame.size.width + 30, height: 65)
         }
+        if indexPath.section == 1{
+//            let label = UILabel(frame: CGRect.zero)
+//
+//                label.text = "All"
+//            label.sizeToFit()
+            return CGSize(width: 100, height: 65)
+        }
         let text = categoryArr[indexPath.row].name
         let label = UILabel(frame: CGRect.zero)
         label.text = text
@@ -395,7 +429,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                     break
                 }
             }
-        }else{
+        }else if(indexPath.section == 1){
+            self.id = "-1"
+            self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
+        }
+        else{
             if self.categoryArr.count == 2{
                 if self.categoryArr[1].image == ""{
                     if indexPath.row == 0{
@@ -511,6 +549,7 @@ extension HomeViewController: GetHomeData {
         self.origiMaxPrice = self.homevm.model?.max_price ?? 0
         loadImage(self.homevm.model?.user_image ?? "", self.userimg , activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
         self.categoryArr.removeAll()
+        //self.categoryArr.append(Category(name: "All", image: allHomeData, id: "0"))
         self.categoryArr.append(Category(name: R.string.localizable.topSearch(), image: topSearch, id: "0"))
         guard let data = self.homevm.model?.all_category else { return }
         if data.count == 0{

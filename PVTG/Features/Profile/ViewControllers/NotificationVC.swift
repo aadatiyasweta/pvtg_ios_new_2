@@ -127,7 +127,7 @@ class NotificationVC: BaseViewController {
         Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: "Your session begins soon, will you still be attending your " + sessionTitleStr + " session?", controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
             guard let self else{return}
             if result{
-               // self.hitApi(id: "\(id)")
+                self.hitApi(id: "\(id)")
                 Helper.shared.showAlertWithCallback(buttonText:  R.string.localizable.view(), buttonText2: R.string.localizable.later() , title: R.string.localizable.viewpolicy(), message: R.string.localizable.viewLatePolicy(), controller: AppObject.window?.rootViewController ?? UIViewController()) { [weak self] result in
                         guard let self else{return}
                         if result{
@@ -184,6 +184,12 @@ class NotificationVC: BaseViewController {
                     }
                 }
             }
+    }
+    
+    func hitApi(id : String){
+        let param : [String:String] = ["user_id" : SaveToDefaults().getUserId() ?? "" , "session_id":id ]
+        api_manager.POSTApi(attendingSession(), param: param, header: header()) { (json, err, statusCode) in
+        }
     }
 }
 

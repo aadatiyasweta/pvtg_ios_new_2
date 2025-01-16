@@ -66,7 +66,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>App would like to access Camera for your profile photo upload.Your photos won&apos;t be shared without your permission.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your location is required for searching on map</string>
+	<string>Location always usage description</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location is required for searching on map</string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -83,6 +83,11 @@
 		<string>AirbnbCereal-Medium.ttf</string>
 		<string>AirbnbCereal-Black.ttf</string>
 		<string>AirbnbCereal-Book.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-Regular.ttf</string>
+		<string>Poppins-Bold.ttf</string>
+		<string>Poppins-SemiBold.ttf</string>
+		<string>Poppins-Light.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
@@ -117,11 +122,9 @@
 	<string>$(BASE_URL)</string>
 	<key>kSocketUrl</key>
 	<string>$(SOCKET_URL)</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Location always usage description</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Location always and when in usage description</string>
-    <key>NSLocationUsageDescription</key>
-    <string>Location usage desription</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Location always and when in usage description</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Location usage desription</string>
 </dict>
 </plist>

@@ -5,6 +5,7 @@ import UIKit
 
 //let topSearch = "http://54.245.144.158/pvtg_dev/admin_assets/img/topsearch.png"
 let topSearch = "https://techugoserver.info/pvtg_dev/admin_assets/img/topsearch.png" // new dev url
+let allHomeData = ""
 //let testingServer = "http://54.245.144.158/pvtg_dev/api/v1/" // development
 let testingServer = "https://techugoserver.info/pvtg_dev/api/v1/" // new development url
 //let testingServer = "https://dharma.services/api/v1/" // live

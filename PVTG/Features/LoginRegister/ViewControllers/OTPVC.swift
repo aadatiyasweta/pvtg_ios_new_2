@@ -40,12 +40,12 @@ class OTPVC: BaseViewController {
         donotReciveLbl.text = ""
         resndBtn.setTitle("", for: .normal)
         resndBtn.isUserInteractionEnabled = false
-        timeLbl.text = "00:30"
+        timeLbl.text = "00:60"
         
 //        donotReciveLbl.text = "donotReciveLbl"
 //        resndBtn.setTitle("Resend Code", for: .normal)
         
-        self.totalSecond = 30
+        self.totalSecond = 60
         self.startTimer()
     }
     
@@ -132,7 +132,7 @@ class OTPVC: BaseViewController {
         self.vm.forgotApi(email: self.email, is_resend: "1")
         donotReciveLbl.text = ""
         resndBtn.setTitle("", for: .normal)
-        self.totalSecond = 30
+        self.totalSecond = 60
         self.startTimer()
     }
     
