@@ -89,6 +89,9 @@
 		<string>Poppins-SemiBold.ttf</string>
 		<string>Poppins-Light.ttf</string>
 	</array>
+	<key>ATSApplicationFontsPath
+</key>
+	<string>Poppins-SemiBold.ttf</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

@@ -1157,7 +1157,7 @@ struct _R {
     var appleToneWav: RswiftResources.FileResource { .init(name: "appleTone", pathExtension: "wav", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  /// This `_R.nib` struct is generated, and contains static references to 28 nibs.
+  /// This `_R.nib` struct is generated, and contains static references to 29 nibs.
   struct nib {
     let bundle: Foundation.Bundle
 
@@ -1193,6 +1193,9 @@ struct _R {
 
     /// Nib `HistoryCell`.
     var historyCell: RswiftResources.NibReference<HistoryCell> { .init(name: "HistoryCell", bundle: bundle) }
+
+    /// Nib `HomeAllCollectionViewCell`.
+    var homeAllCollectionViewCell: RswiftResources.NibReference<HomeAllCollectionViewCell> { .init(name: "HomeAllCollectionViewCell", bundle: bundle) }
 
     /// Nib `InterCell`.
     var interCell: RswiftResources.NibReference<InterCell> { .init(name: "InterCell", bundle: bundle) }

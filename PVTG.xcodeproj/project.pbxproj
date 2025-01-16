@@ -161,6 +161,8 @@
 		D6072A9226E8C8AE003BC668 /* OnboardingSecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6072A9026E8C8AE003BC668 /* OnboardingSecondCell.swift */; };
 		D61520702D38F5ED001024E4 /* HomeAllCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D615206F2D38F5ED001024E4 /* HomeAllCollectionViewCell.xib */; };
 		D61520712D38F5ED001024E4 /* HomeAllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D615206E2D38F5ED001024E4 /* HomeAllCollectionViewCell.swift */; };
+		D61520722D393B8A001024E4 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6499FE02B8DEEE800720E9B /* Poppins-Medium.ttf */; };
+		D618AAF82D39453200C26965 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6499FE82B8DEEE900720E9B /* Poppins-Bold.ttf */; };
 		D61FC51F2B8DC60300953315 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61FC5212B8DC60300953315 /* Chat.storyboard */; };
 		D62D733E26C67C3B00DFD0DA /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D733D26C67C3B00DFD0DA /* PriceView.swift */; };
 		D62D734326C68DA700DFD0DA /* LineMeasureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */; };
@@ -171,6 +173,7 @@
 		D6573BF525CCF02500CB64DD /* CircularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6573BF325CCF02500CB64DD /* CircularCell.swift */; };
 		D6573BF625CCF02500CB64DD /* CircularCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6573BF425CCF02500CB64DD /* CircularCell.xib */; };
 		D684EEB52BAD819800FB7E96 /* TUGHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D684EEB42BAD819800FB7E96 /* TUGHelpers.swift */; };
+		D68503052D393E76004D04B7 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6499FEB2B8DEEE900720E9B /* Poppins-SemiBold.ttf */; };
 		D69176472705976C0005C572 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69176462705976C0005C572 /* ReminderView.swift */; };
 		D69176782705ADF10005C572 /* ReminderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D691767A2705ADF10005C572 /* ReminderView.xib */; };
 		D699B82A2BB5A76F00B46F64 /* ChatCall.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D699B82C2BB5A76F00B46F64 /* ChatCall.storyboard */; };
@@ -1312,6 +1315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61520722D393B8A001024E4 /* Poppins-Medium.ttf in Resources */,
 				D6A257422747D36B0031B75D /* PriceView.xib in Resources */,
 				1855F4962592377B009396E6 /* Montserrat-Light.ttf in Resources */,
 				18525A56259994410042046C /* InterestCell.xib in Resources */,
@@ -1346,6 +1350,7 @@
 				D6FFDC3F26BC0AA900321F04 /* Onboarding.storyboard in Resources */,
 				D6FFDC6726BC0D6E00321F04 /* HistoryCell.xib in Resources */,
 				D6B852B52B9F3876007173B2 /* SenderTVCell.xib in Resources */,
+				D68503052D393E76004D04B7 /* Poppins-SemiBold.ttf in Resources */,
 				1855F49F2592377B009396E6 /* Montserrat-ExtraBold.ttf in Resources */,
 				1831523225A6CEB4006CA85A /* SearchLocationCell.xib in Resources */,
 				D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */,
@@ -1361,6 +1366,7 @@
 				1855F4982592377B009396E6 /* Montserrat-ExtraLight.ttf in Resources */,
 				D6FFDC5326BC0BA200321F04 /* SessionCell.xib in Resources */,
 				D6FFDC7526BC10D800321F04 /* Session.storyboard in Resources */,
+				D618AAF82D39453200C26965 /* Poppins-Bold.ttf in Resources */,
 				18A765E9259CA49200E71FF9 /* SearchCell.xib in Resources */,
 				187F3E72258CCB58008FB2CB /* appleTone.wav in Resources */,
 				D6FFDC5E26BC0CA400321F04 /* ActiveEventCell.xib in Resources */,
