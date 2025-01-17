@@ -27,7 +27,7 @@
                         <rect key="frame" x="5" y="0.0" width="95" height="53"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k82-5u-1rY">
-                                <rect key="frame" x="5" y="5" width="90" height="43"/>
+                                <rect key="frame" x="0.0" y="5" width="95" height="43"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="k82-5u-1rY" firstAttribute="leading" secondItem="4t0-6J-8uX" secondAttribute="leading" constant="5" id="0jQ-VY-lOt"/>
+                            <constraint firstItem="k82-5u-1rY" firstAttribute="leading" secondItem="4t0-6J-8uX" secondAttribute="leading" id="0jQ-VY-lOt"/>
                             <constraint firstAttribute="trailing" secondItem="k82-5u-1rY" secondAttribute="trailing" id="ikB-aW-fJ1"/>
                             <constraint firstItem="k82-5u-1rY" firstAttribute="top" secondItem="4t0-6J-8uX" secondAttribute="top" constant="5" id="kNm-GN-IYe"/>
                             <constraint firstAttribute="bottom" secondItem="k82-5u-1rY" secondAttribute="bottom" constant="5" id="rgr-Ys-WA3"/>

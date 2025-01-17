@@ -311,8 +311,9 @@ class SessionDetailViewModel: BaseVm {
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
-                    self.bookingDelegate?.bookingSuccess()
                     SKStoreReviewController.requestReview()
+                    self.bookingDelegate?.bookingSuccess()
+                    
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)

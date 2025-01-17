@@ -442,6 +442,23 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
     
     
+    @IBAction func mapBtnTapped(_ sender: Any) {
+        self.directions(lat: self.vm.model?.latitude ?? "", long: self.vm.model?.longitude ?? "")
+    }
+    
+    //MARK: - OPEN GOOGLE MAP APP
+    func directions(lat : String , long : String) {
+        // if GoogleMap installed
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+            UIApplication.shared.open(NSURL(string:
+                                                "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")! as URL, options: [:], completionHandler: nil)
+        } else {
+            // if GoogleMap App is not installed
+            UIApplication.shared.open(NSURL(string:
+                                                "https://maps.google.com/?q=@\(lat),\(long)")! as URL, options: [:], completionHandler: nil)
+        }
+    }
+    
     @IBAction func rescheduleBtnTap(_ sender: UIButton) {
         //handlingHeaderInFSCalendar()
         

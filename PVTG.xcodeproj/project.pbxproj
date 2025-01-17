@@ -163,6 +163,7 @@
 		D61520712D38F5ED001024E4 /* HomeAllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D615206E2D38F5ED001024E4 /* HomeAllCollectionViewCell.swift */; };
 		D61520722D393B8A001024E4 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6499FE02B8DEEE800720E9B /* Poppins-Medium.ttf */; };
 		D618AAF82D39453200C26965 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6499FE82B8DEEE900720E9B /* Poppins-Bold.ttf */; };
+		D618AAF92D39479E00C26965 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6499FE62B8DEEE800720E9B /* Poppins-Regular.ttf */; };
 		D61FC51F2B8DC60300953315 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61FC5212B8DC60300953315 /* Chat.storyboard */; };
 		D62D733E26C67C3B00DFD0DA /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D733D26C67C3B00DFD0DA /* PriceView.swift */; };
 		D62D734326C68DA700DFD0DA /* LineMeasureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D734126C68DA700DFD0DA /* LineMeasureCell.swift */; };
@@ -1351,6 +1352,7 @@
 				D6FFDC6726BC0D6E00321F04 /* HistoryCell.xib in Resources */,
 				D6B852B52B9F3876007173B2 /* SenderTVCell.xib in Resources */,
 				D68503052D393E76004D04B7 /* Poppins-SemiBold.ttf in Resources */,
+				D618AAF92D39479E00C26965 /* Poppins-Regular.ttf in Resources */,
 				1855F49F2592377B009396E6 /* Montserrat-ExtraBold.ttf in Resources */,
 				1831523225A6CEB4006CA85A /* SearchLocationCell.xib in Resources */,
 				D6C95FDE26BD4BA000DC5719 /* Localizable.strings in Resources */,

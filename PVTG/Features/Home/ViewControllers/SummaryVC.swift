@@ -570,7 +570,7 @@ extension SummaryVC : GetBookingResponse,getOnboardingResponse{
             vc.points = self.onboardingVm.model?.point_accumulation?.bookings ?? ""
         }
         vc.name = self.bookingDetails?.name_of_listing ?? ""
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 }
 

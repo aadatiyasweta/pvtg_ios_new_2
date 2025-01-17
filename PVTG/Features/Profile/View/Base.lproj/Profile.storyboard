@@ -609,6 +609,9 @@ Rate and write a review to earn 2pts</string>
                                             <constraint firstAttribute="height" constant="45" id="URP-eL-kRj"/>
                                             <constraint firstAttribute="width" constant="45" id="o4W-ER-BMB"/>
                                         </constraints>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="clickOnBack" destination="3la-LE-5TG" eventType="touchUpInside" id="Tsj-um-Yst"/>
                                         </connections>
@@ -640,25 +643,6 @@ You earned 45pts</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58W-0g-2Jt">
-                                        <rect key="frame" x="55" y="628" width="304" height="55"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="heh-Mx-CSL"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
-                                        <state key="normal" title="VIEW BOOKING">
-                                            <color key="titleColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="27"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="btnTapBooking:" destination="3la-LE-5TG" eventType="touchUpInside" id="ckX-De-l6B"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -666,18 +650,34 @@ You earned 45pts</string>
                                     <constraint firstItem="gMG-XD-3Zu" firstAttribute="top" secondItem="ixy-Vh-01W" secondAttribute="bottom" constant="15" id="9cq-St-6wf"/>
                                     <constraint firstItem="B5i-H9-8Dc" firstAttribute="leading" secondItem="0wN-FM-Jue" secondAttribute="leading" constant="24" id="9vK-HO-kVe"/>
                                     <constraint firstItem="j0s-Ox-bXt" firstAttribute="leading" secondItem="B5i-H9-8Dc" secondAttribute="leading" id="MJO-Cx-lIM"/>
-                                    <constraint firstItem="58W-0g-2Jt" firstAttribute="leading" secondItem="0wN-FM-Jue" secondAttribute="leading" constant="55" id="MZ5-uQ-fLv"/>
                                     <constraint firstItem="ixy-Vh-01W" firstAttribute="centerY" secondItem="0wN-FM-Jue" secondAttribute="centerY" constant="-68" id="NNl-3n-k9f"/>
                                     <constraint firstItem="I9w-Bq-rGL" firstAttribute="centerX" secondItem="0wN-FM-Jue" secondAttribute="centerX" id="W08-cL-wBW"/>
                                     <constraint firstAttribute="trailing" secondItem="j0s-Ox-bXt" secondAttribute="trailing" constant="30" id="ZtK-ES-1VS"/>
                                     <constraint firstItem="ixy-Vh-01W" firstAttribute="centerX" secondItem="0wN-FM-Jue" secondAttribute="centerX" id="jag-6d-Usr"/>
                                     <constraint firstItem="I9w-Bq-rGL" firstAttribute="top" secondItem="0wN-FM-Jue" secondAttribute="top" constant="50" id="lRO-uJ-Qvy"/>
-                                    <constraint firstAttribute="trailing" secondItem="58W-0g-2Jt" secondAttribute="trailing" constant="55" id="tcv-um-fII"/>
                                     <constraint firstItem="j0s-Ox-bXt" firstAttribute="top" secondItem="gMG-XD-3Zu" secondAttribute="bottom" constant="22" id="vYa-BR-kTL"/>
-                                    <constraint firstAttribute="bottom" secondItem="58W-0g-2Jt" secondAttribute="bottom" constant="33" id="woY-6B-C9N"/>
                                     <constraint firstItem="gMG-XD-3Zu" firstAttribute="centerX" secondItem="0wN-FM-Jue" secondAttribute="centerX" id="yqe-1E-EmN"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58W-0g-2Jt">
+                                <rect key="frame" x="55" y="648" width="304" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="heh-Mx-CSL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                <state key="normal" title="VIEW BOOKING">
+                                    <color key="titleColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="27"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tappedBtnbokking:" destination="3la-LE-5TG" eventType="touchUpInside" id="lYP-c3-kn6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NyF-mW-EU1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -685,6 +685,9 @@ You earned 45pts</string>
                             <constraint firstItem="0wN-FM-Jue" firstAttribute="top" secondItem="NyF-mW-EU1" secondAttribute="top" id="1JG-ba-G8k"/>
                             <constraint firstItem="0wN-FM-Jue" firstAttribute="leading" secondItem="NyF-mW-EU1" secondAttribute="leading" id="1TI-XT-4zM"/>
                             <constraint firstItem="NyF-mW-EU1" firstAttribute="trailing" secondItem="0wN-FM-Jue" secondAttribute="trailing" id="EOj-39-ltE"/>
+                            <constraint firstItem="58W-0g-2Jt" firstAttribute="leading" secondItem="NyF-mW-EU1" secondAttribute="leading" constant="55" id="Mxl-MA-eVz"/>
+                            <constraint firstItem="NyF-mW-EU1" firstAttribute="trailing" secondItem="58W-0g-2Jt" secondAttribute="trailing" constant="55" id="U4f-dt-2Lh"/>
+                            <constraint firstItem="NyF-mW-EU1" firstAttribute="bottom" secondItem="58W-0g-2Jt" secondAttribute="bottom" constant="33" id="YMi-jI-Vee"/>
                             <constraint firstAttribute="trailing" secondItem="8mo-KH-16m" secondAttribute="trailing" id="kQW-Ac-FOm"/>
                             <constraint firstAttribute="bottom" secondItem="8mo-KH-16m" secondAttribute="bottom" id="pJv-BQ-HZf"/>
                             <constraint firstItem="8mo-KH-16m" firstAttribute="leading" secondItem="cod-t1-cVr" secondAttribute="leading" id="q83-0v-oPU"/>
@@ -696,6 +699,7 @@ You earned 45pts</string>
                         <outlet property="btnBack" destination="B5i-H9-8Dc" id="Bau-ny-p7T"/>
                         <outlet property="pointsLbl" destination="j0s-Ox-bXt" id="BkG-Eg-fJB"/>
                         <outlet property="titleLbl" destination="gMG-XD-3Zu" id="VHW-wX-SMf"/>
+                        <outlet property="viwBookingBtn" destination="58W-0g-2Jt" id="G7Y-6H-qdk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gd-ta-FQ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1018,7 +1022,6 @@ You earned 45pts</string>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="SubmitTap:" destination="QIu-J9-mbc" eventType="touchUpInside" id="92p-Hi-rZG"/>
-                                                    <action selector="btnTapBooking:" destination="3la-LE-5TG" eventType="touchUpInside" id="32A-Wl-3qP"/>
                                                 </connections>
                                             </button>
                                         </subviews>

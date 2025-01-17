@@ -17,6 +17,9 @@ class ThankyouVC: BaseViewController {
     var name = ""
     var points = ""
     var isFromReschedule = false
+    
+    @IBOutlet weak var viwBookingBtn: UIButton!
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,8 @@ class ThankyouVC: BaseViewController {
         }else{
             self.pointsLbl.text = R.string.localizable.yourSessionHasBeen(self.points)
         }
+        
+        self.view.bringSubviewToFront(viwBookingBtn)
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,9 +50,20 @@ class ThankyouVC: BaseViewController {
         self.btnBack.tintColor = .white
     }
     
+    
+    @IBAction func tappedBtnbokking(_ sender: Any) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+           let tabBarVc = appDelegate.tabBarVc {
+            tabBarVc.selectedIndex = 1
+            self.navigationController?.popToRootViewController(animated: true)
+        } else {
+            print("appDelegate or tabBarVc is nil")
+        }
+    }
+    
     //MARK: - BUTTON ACTION
     @IBAction func btnTapBooking(_ sender: UIButton) {
-         appDelegate.tabBarVc?.selectedIndex = 1
-        self.navigationController?.popToRootViewController(animated: true)
+//         appDelegate.tabBarVc?.selectedIndex = 1
+//        self.navigationController?.popToRootViewController(animated: true)
     }
 }

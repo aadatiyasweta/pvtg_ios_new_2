@@ -276,6 +276,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         SaveToDefaults().setSessionTimeId(name: self.homeResultData[indexPath.row].session_image)
         self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = ThankyouVC.instance()
+//        vc.name =  ""
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
