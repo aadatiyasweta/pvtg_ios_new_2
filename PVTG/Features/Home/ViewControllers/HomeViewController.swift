@@ -85,12 +85,17 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 //        initializeLocation()
         
         self.id = "-1"
+        self.city = SaveToDefaults().getCity() ?? ""
+//        self.lblLocn.text = address
+        self.lblLocn.text = self.city
+       // UserDefaults.standard.setValue(address, forKey: "userAddress")
+        //loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
         self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
-            if(self.lblLocn.text == ""){
-                self.showAlertForPermissionDenied()
-            }
-        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+//            if(self.lblLocn.text == ""){
+//                self.showAlertForPermissionDenied()
+//            }
+//        })
        
         
         if(self.isSelectedFromFilter == false){
@@ -114,16 +119,40 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 //        }
     }
     
-    func initializeLocation(){
-            locationManager.requestAlwaysAuthorization()
-                    locationManager.requestWhenInUseAuthorization()
-                    if CLLocationManager.locationServicesEnabled() {
-                        locationManager.delegate = self
-                        locationManager.startUpdatingLocation()
-                    }
-                else{
-                        showAlertForPermissionDenied()
-                    }
+//    func initializeLocation(){
+////            locationManager.requestAlwaysAuthorization()
+////                    locationManager.requestWhenInUseAuthorization()
+////                    if CLLocationManager.locationServicesEnabled() {
+////                        locationManager.delegate = self
+////                        locationManager.startUpdatingLocation()
+////                    }
+////                else{
+////                        showAlertForPermissionDenied()
+////                    }
+//        
+//        // Request authorization (async process)
+//            locationManager.requestWhenInUseAuthorization()
+//
+//            // Check the location services state
+//            if CLLocationManager.locationServicesEnabled() {
+//                locationManager.delegate = self
+//            } else {
+//                showAlertForPermissionDenied()
+//            }
+//    }
+    
+    func initializeLocation() {
+        // Request the appropriate authorization
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self // Set the delegate to receive updates
+        getUserCurrentLocation()
+
+        // Check if location services are enabled at the system level
+        if CLLocationManager.locationServicesEnabled() {
+            print("Location services are enabled.")
+        } else {
+            showAlertForPermissionDenied()
+        }
     }
     
     func showAlertForPermissionDenied() {
@@ -144,6 +173,23 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
         alertController.addAction(openAction)
         self.present(alertController, animated: true, completion: nil)
         }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            // Authorization not determined yet
+            break
+        case .restricted, .denied:
+            // Location services restricted or denied
+            showAlertForPermissionDenied()
+        case .authorizedWhenInUse, .authorizedAlways:
+            // Start updating location if authorized
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            // Handle unexpected cases
+            break
+        }
+    }
     
     func getUserCurrentLocation(){
         locationManager = CLLocationManager()
@@ -394,7 +440,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 //
 //                label.text = "All"
 //            label.sizeToFit()
-            return CGSize(width: 100, height: 65)
+            return CGSize(width: 80, height: 65)
         }
         let text = categoryArr[indexPath.row].name
         let label = UILabel(frame: CGRect.zero)

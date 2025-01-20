@@ -122,7 +122,17 @@ extension SearchLocationVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.txfSearch.text = self.arrDict[indexPath.row]["name"]
         SaveToDefaults().setformattedAddress(lat: self.txfSearch.text ?? "")
-        SaveToDefaults().setCity(value: self.arrDict[indexPath.row]["city"])
+        if(self.arrDict[indexPath.row]["city"] == ""){
+            //let cityNameSTr = self.arrDict[indexPath.row]["name"]
+            let parts = self.arrDict[indexPath.row]["name"]?.components(separatedBy: ", ")
+            if let firstPart = parts?.first {
+                print(firstPart) // Prints "Goa"
+                self.arrDict[indexPath.row]["city"] = firstPart
+                SaveToDefaults().setCity(value: firstPart)
+            }
+        }else{
+            SaveToDefaults().setCity(value: self.arrDict[indexPath.row]["city"])
+        }
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(self.txfSearch.text ?? "") {
             placemarks, error in
@@ -236,6 +246,17 @@ extension SearchLocationVC: GMSAutocompleteTableDataSourceDelegate {
         dict["name"] = address
         dict["city"] = city
         
+        if(dict["city"] == ""){
+            if let name = place.name {
+                print(name) // Prints "Goa"
+                dict["city"] = name
+                SaveToDefaults().setCity(value: name)
+            } else {
+                print("Name not available")
+            }
+        }else{
+            SaveToDefaults().setCity(value: dict["city"])
+        }
         if !self.arrDict.contains(dict){
             self.arrDict.append(dict)
         }

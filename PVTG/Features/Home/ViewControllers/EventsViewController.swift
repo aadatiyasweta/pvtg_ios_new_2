@@ -47,7 +47,8 @@ class EventsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
-
+        loadApi(offset: "0")
+        self.setCollectionVw()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -224,6 +225,9 @@ extension EventsViewController: LoadingEvents {
              self.lblNoSession.text = R.string.localizable.noSession()
              self.lblNoSession.isHidden = false
         }else{
+            self.lblActiveEvent.isHidden = false
+            self.lblUndrLine1.isHidden = false
+             self.collectionHeightCons.constant = 440
              self.lblNoSession.text = ""
              self.lblNoSession.isHidden = true
         }

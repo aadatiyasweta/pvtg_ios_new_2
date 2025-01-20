@@ -30,7 +30,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     var navigation = UINavigationController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Thread.sleep(forTimeInterval: 3.0)
+        Thread.sleep(forTimeInterval: 2.0)
         FirebaseApp.configure()
         fireBaseSetup(application: application)
         Messaging.messaging().delegate = self
