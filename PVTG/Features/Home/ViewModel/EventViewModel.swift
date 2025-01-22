@@ -19,7 +19,7 @@ class EventViewModel: BaseVm {
     
     //MARK: - GET ACTIVE EVENT API
     func getActiveEventApi(user_id: String, latitude: String, longitude: String, offset: String) {
-        let prams : [String : Any] = ["user_id": user_id, "latitude": latitude, "longitude": longitude, "offset": offset,"language" : SaveToDefaults().getAppLang() ?? "en"]
+        let prams : [String : Any] = ["user_id": user_id, "latitude": latitude, "longitude": longitude, "offset": offset,"language" : SaveToDefaults().getAppLang() ?? "en","timezone" : TimeZone.current.identifier]
           self.show()
           api_manager.GETApi(activeEventApi(), param: prams, header: header()) { (response, err, code) in
               self.dismiss()

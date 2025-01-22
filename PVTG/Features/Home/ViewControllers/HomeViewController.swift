@@ -246,23 +246,26 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
             let value = self.lblLocn.text ?? ""
             if self.city == ""{
                 if  self.id == "-1"{
-                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+//                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minimUmPrice , maxprice: maximimPrice, currency: currency)
+                    
                 }else{
                     if categoryid == "0"{
+//                        homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
                         homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
                     }else{
-                        homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                        homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minimUmPrice , maxprice: maximimPrice, currency: currency)
                     }
                 }
             }else{
                 if self.id == "-1"{
-                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city,minPrice: minimUmPrice , maxprice: maximimPrice, currency: currency)
                 }else{
                     if categoryid == "0"{
-                        homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: self.city,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                        homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: self.city,minPrice: minimUmPrice , maxprice: maximimPrice, currency: currency)
                     }
                     else{
-                        homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city,minPrice: minPrice , maxprice: maxPrice, currency: currency)
+                        homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: self.city,minPrice: minimUmPrice , maxprice: maximimPrice, currency: currency)
                     }
                 }
             }

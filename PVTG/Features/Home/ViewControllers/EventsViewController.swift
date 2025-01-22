@@ -47,14 +47,15 @@ class EventsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
-        loadApi(offset: "0")
         self.setCollectionVw()
+        loadApi(offset: "0")
+       // self.setCollectionVw()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadApi(offset: "0")
-        self.setCollectionVw()
+//        self.setCollectionVw()
     }
 }
 
@@ -144,6 +145,7 @@ extension EventsViewController {
             floawLayout.sideItemAlpha = 0.9
             floawLayout.spacingMode = .fixed(spacing: 10)
             colectionVw.collectionViewLayout = floawLayout
+           // self.colectionVw.reloadData()
         }
     
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -214,11 +216,14 @@ extension EventsViewController: LoadingEvents {
             self.lblActiveEvent.isHidden = true
             self.lblUndrLine1.isHidden = true
             self.collectionHeightCons.constant = 0
+            //self.setCollectionVw()
         } else {
     
             self.lblActiveEvent.isHidden = false
             self.lblUndrLine1.isHidden = false
              self.collectionHeightCons.constant = 440
+           // self.setCollectionVw()
+            self.colectionVw.reloadData()
         }
         
         if self.vm.model?.history?.count ?? 0 == 0 &&  self.vm.model?.result?.count ?? 0 == 0{
@@ -227,7 +232,6 @@ extension EventsViewController: LoadingEvents {
         }else{
             self.lblActiveEvent.isHidden = false
             self.lblUndrLine1.isHidden = false
-             self.collectionHeightCons.constant = 440
              self.lblNoSession.text = ""
              self.lblNoSession.isHidden = true
         }
