@@ -830,7 +830,7 @@ struct _R {
     var purpleActionBtn: RswiftResources.ColorResource { .init(name: "PurpleActionBtn", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 76 images.
+  /// This `_R.image` struct is generated, and contains static references to 82 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -846,14 +846,29 @@ struct _R {
     /// Image `IIcon`.
     var iIcon: RswiftResources.ImageResource { .init(name: "IIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `LogoNew11`.
+    var logoNew11: RswiftResources.ImageResource { .init(name: "LogoNew11", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `LogoNewBG`.
+    var logoNewBG: RswiftResources.ImageResource { .init(name: "LogoNewBG", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `LogodarkBackG`.
+    var logodarkBackG: RswiftResources.ImageResource { .init(name: "LogodarkBackG", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `Search`.
     var search: RswiftResources.ImageResource { .init(name: "Search", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `Simulator Screenshot - iPhone 16 Pro - 2024-12-05 at 19.04.09`.
+    var simulatorScreenshotIPhone16Pro20241205At190409: RswiftResources.ImageResource { .init(name: "Simulator Screenshot - iPhone 16 Pro - 2024-12-05 at 19.04.09", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `addPhoto`.
     var addPhoto: RswiftResources.ImageResource { .init(name: "addPhoto", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `apple`.
     var apple: RswiftResources.ImageResource { .init(name: "apple", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `appstore`.
+    var appstore: RswiftResources.ImageResource { .init(name: "appstore", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `arrrow`.
     var arrrow: RswiftResources.ImageResource { .init(name: "arrrow", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -878,6 +893,9 @@ struct _R {
 
     /// Image `cross`.
     var cross: RswiftResources.ImageResource { .init(name: "cross", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `cup`.
+    var cup: RswiftResources.ImageResource { .init(name: "cup", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `descriptionImage`.
     var descriptionImage: RswiftResources.ImageResource { .init(name: "descriptionImage", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -1537,7 +1555,7 @@ struct _R {
 
       let name = "LaunchScreen"
       func validate() throws {
-        if UIKit.UIImage(named: "logoNew", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'logoNew' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "LogoNew11", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'LogoNew11' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
         if UIKit.UIImage(named: "spalshh", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'spalshh' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
     }
@@ -1558,11 +1576,11 @@ struct _R {
       var registrationvC: RswiftResources.StoryboardViewControllerIdentifier<RegistrationvC> { .init(identifier: "RegistrationvC", storyboard: name, bundle: bundle) }
 
       func validate() throws {
+        if UIKit.UIImage(named: "LogodarkBackG", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'LogodarkBackG' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "apple", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'apple' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bg", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bg' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "descriptionImage", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'descriptionImage' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "group4", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'group4' is used in storyboard 'Login', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "logoNew", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'logoNew' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "minimalLeft2X", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'minimalLeft2X' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "shape3", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'shape3' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "shape4", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'shape4' is used in storyboard 'Login', but couldn't be loaded.") }

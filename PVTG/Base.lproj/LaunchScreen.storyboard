@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,43 +22,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spalshh" translatesAutoresizingMaskIntoConstraints="NO" id="iFV-ue-QT2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNew" translatesAutoresizingMaskIntoConstraints="NO" id="p3r-yQ-dKx">
-                                <rect key="frame" x="137" y="66" width="140" height="140"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-8K-ZaO">
+                                <rect key="frame" x="0.0" y="48" width="414" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNew11" translatesAutoresizingMaskIntoConstraints="NO" id="Dvf-wA-Skz">
+                                        <rect key="frame" x="117" y="22" width="180" height="160"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="AkT-yE-HxO"/>
+                                            <constraint firstAttribute="width" constant="180" id="D2x-bU-hvb"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="6tV-YR-ci8"/>
-                                    <constraint firstAttribute="width" constant="140" id="UgI-pK-dyw"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dvf-wA-Skz" secondAttribute="bottom" constant="18" id="Qla-KQ-vR8"/>
+                                    <constraint firstItem="Dvf-wA-Skz" firstAttribute="top" secondItem="DMu-8K-ZaO" secondAttribute="top" constant="22" id="VZT-NM-I1Q"/>
+                                    <constraint firstItem="Dvf-wA-Skz" firstAttribute="centerX" secondItem="DMu-8K-ZaO" secondAttribute="centerX" id="aoI-5M-Ny1"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No More Bad Karma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6l-u5-HJa">
-                                <rect key="frame" x="125" y="225" width="164.5" height="20"/>
+                                <rect key="frame" x="30" y="244" width="354" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNew11" translatesAutoresizingMaskIntoConstraints="NO" id="bGF-6b-G8b">
+                                <rect key="frame" x="122" y="68" width="170" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="ImI-Mt-2cn"/>
+                                    <constraint firstAttribute="width" constant="170" id="hS9-d1-YEe"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="p3r-yQ-dKx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="20O-7Q-PFy"/>
-                            <constraint firstItem="p3r-yQ-dKx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="I0Q-GU-cph"/>
+                            <constraint firstItem="bGF-6b-G8b" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3gh-7Y-eE8"/>
+                            <constraint firstItem="iFV-ue-QT2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6R8-KZ-2dv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DMu-8K-ZaO" secondAttribute="trailing" id="9Kc-1H-bH0"/>
+                            <constraint firstItem="Q6l-u5-HJa" firstAttribute="top" secondItem="bGF-6b-G8b" secondAttribute="bottom" constant="6" id="BUi-iN-C9Z"/>
+                            <constraint firstItem="DMu-8K-ZaO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="McJ-SR-fvR"/>
                             <constraint firstItem="iFV-ue-QT2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R5s-eQ-Ycb"/>
+                            <constraint firstItem="DMu-8K-ZaO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UVf-iu-j6A"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q6l-u5-HJa" secondAttribute="trailing" constant="30" id="YZs-6g-ErB"/>
                             <constraint firstAttribute="bottom" secondItem="iFV-ue-QT2" secondAttribute="bottom" id="aoH-7B-q2Z"/>
-                            <constraint firstItem="Q6l-u5-HJa" firstAttribute="top" secondItem="p3r-yQ-dKx" secondAttribute="bottom" constant="19" id="asW-dk-k1I"/>
-                            <constraint firstItem="Q6l-u5-HJa" firstAttribute="centerX" secondItem="p3r-yQ-dKx" secondAttribute="centerX" id="fOy-JW-J4K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iFV-ue-QT2" secondAttribute="trailing" id="fTs-yw-14O"/>
-                            <constraint firstItem="iFV-ue-QT2" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ln3-Wm-XjV"/>
+                            <constraint firstItem="Q6l-u5-HJa" firstAttribute="top" secondItem="DMu-8K-ZaO" secondAttribute="bottom" constant="8" id="gOF-Mb-gQM"/>
+                            <constraint firstItem="bGF-6b-G8b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="sR4-ND-bij"/>
+                            <constraint firstItem="Q6l-u5-HJa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="xBf-O7-igV"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="DMu-8K-ZaO"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.5" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
-        <image name="logoNew" width="187" height="187.5"/>
-        <image name="spalshh" width="160" height="284"/>
+        <image name="LogoNew11" width="808" height="732"/>
+        <image name="spalshh" width="320" height="568"/>
     </resources>
 </document>

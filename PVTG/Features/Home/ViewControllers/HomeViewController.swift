@@ -148,10 +148,12 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
         getUserCurrentLocation()
 
         // Check if location services are enabled at the system level
-        if CLLocationManager.locationServicesEnabled() {
-            print("Location services are enabled.")
-        } else {
-            showAlertForPermissionDenied()
+        DispatchQueue.global(qos: .background).async {
+            if CLLocationManager.locationServicesEnabled() {
+                print("Location services are enabled.")
+            } else {
+                self.showAlertForPermissionDenied()
+            }
         }
     }
     

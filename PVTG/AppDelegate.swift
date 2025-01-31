@@ -30,7 +30,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     var navigation = UINavigationController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Thread.sleep(forTimeInterval: 2.0)
+        //Thread.sleep(forTimeInterval: 2.0)
         FirebaseApp.configure()
         fireBaseSetup(application: application)
         Messaging.messaging().delegate = self
@@ -138,7 +138,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
         {
 
-            let object = notification.request.content.userInfo as! [String : AnyObject]
+            _ = notification.request.content.userInfo as! [String : AnyObject]
 //            if isNetworkConnectionEnable {
 //                NotificationCenter.default.post(name: Notification.Name("chatBageUpdate"), object: nil)
 //                completionHandler([.alert,.sound, .badge])
