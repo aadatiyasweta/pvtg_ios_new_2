@@ -24,7 +24,6 @@ class MoreVC: BaseViewController {
  }
  
  //MARK: - Properties
-//    var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(),R.string.localizable.changeLanguage(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(),R.string.localizable.deleteAccount(), R.string.localizable.signout()]
     var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(),R.string.localizable.deleteAccount(), R.string.localizable.signout()]
  var morevm = MoreVM()
  
@@ -123,9 +122,6 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
     SaveToDefaults().setLogindata(data: Data())
     defaults.synchronize()
        UserDefaults.standard.removeObject(forKey: "userAddress")
-//    let vc = LoginVC.navigation()
-//    window?.rootViewController = vc
-//    window?.makeKeyAndVisible()
        appDelegate.setLoginVC()
    }
   }

@@ -1090,7 +1090,7 @@ struct _R {
     }
   }
 
-  /// This `_R.font` struct is generated, and contains static references to 13 fonts.
+  /// This `_R.font` struct is generated, and contains static references to 11 fonts.
   struct font: Sequence {
     let bundle: Foundation.Bundle
 
@@ -1099,9 +1099,6 @@ struct _R {
 
     /// Font `Montserrat-ExtraBold`.
     var montserratExtraBold: RswiftResources.FontResource { .init(name: "Montserrat-ExtraBold", bundle: bundle, filename: "Montserrat-ExtraBold.ttf") }
-
-    /// Font `Montserrat-ExtraLight`.
-    var montserratExtraLight: RswiftResources.FontResource { .init(name: "Montserrat-ExtraLight", bundle: bundle, filename: "Montserrat-ExtraLight.ttf") }
 
     /// Font `Montserrat-Italic`.
     var montserratItalic: RswiftResources.FontResource { .init(name: "Montserrat-Italic", bundle: bundle, filename: "Montserrat-Italic.ttf") }
@@ -1118,9 +1115,6 @@ struct _R {
     /// Font `Montserrat-SemiBold`.
     var montserratSemiBold: RswiftResources.FontResource { .init(name: "Montserrat-SemiBold", bundle: bundle, filename: "Montserrat-SemiBold.ttf") }
 
-    /// Font `Montserrat-Thin`.
-    var montserratThin: RswiftResources.FontResource { .init(name: "Montserrat-Thin", bundle: bundle, filename: "Montserrat-Thin.ttf") }
-
     /// Font `Poppins-Bold`.
     var poppinsBold: RswiftResources.FontResource { .init(name: "Poppins-Bold", bundle: bundle, filename: "Poppins-Bold.ttf") }
 
@@ -1134,7 +1128,7 @@ struct _R {
     var poppinsSemiBold: RswiftResources.FontResource { .init(name: "Poppins-SemiBold", bundle: bundle, filename: "Poppins-SemiBold.ttf") }
 
     func makeIterator() -> IndexingIterator<[RswiftResources.FontResource]> {
-      [montserratBold, montserratExtraBold, montserratExtraLight, montserratItalic, montserratLight, montserratMedium, montserratRegular, montserratSemiBold, montserratThin, poppinsBold, poppinsMedium, poppinsRegular, poppinsSemiBold].makeIterator()
+      [montserratBold, montserratExtraBold, montserratItalic, montserratLight, montserratMedium, montserratRegular, montserratSemiBold, poppinsBold, poppinsMedium, poppinsRegular, poppinsSemiBold].makeIterator()
     }
     func validate() throws {
       for font in self {
@@ -1143,7 +1137,7 @@ struct _R {
     }
   }
 
-  /// This `_R.file` struct is generated, and contains static references to 17 resource files.
+  /// This `_R.file` struct is generated, and contains static references to 15 resource files.
   struct file {
     let bundle: Foundation.Bundle
 
@@ -1159,9 +1153,6 @@ struct _R {
     /// Resource file `Montserrat-ExtraBold.ttf`.
     var montserratExtraBoldTtf: RswiftResources.FileResource { .init(name: "Montserrat-ExtraBold", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
 
-    /// Resource file `Montserrat-ExtraLight.ttf`.
-    var montserratExtraLightTtf: RswiftResources.FileResource { .init(name: "Montserrat-ExtraLight", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
-
     /// Resource file `Montserrat-Italic.ttf`.
     var montserratItalicTtf: RswiftResources.FileResource { .init(name: "Montserrat-Italic", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
 
@@ -1176,9 +1167,6 @@ struct _R {
 
     /// Resource file `Montserrat-SemiBold.ttf`.
     var montserratSemiBoldTtf: RswiftResources.FileResource { .init(name: "Montserrat-SemiBold", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
-
-    /// Resource file `Montserrat-Thin.ttf`.
-    var montserratThinTtf: RswiftResources.FileResource { .init(name: "Montserrat-Thin", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
 
     /// Resource file `Poppins-Bold.ttf`.
     var poppinsBoldTtf: RswiftResources.FileResource { .init(name: "Poppins-Bold", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }

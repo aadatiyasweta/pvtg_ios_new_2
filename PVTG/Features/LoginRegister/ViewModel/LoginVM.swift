@@ -62,7 +62,6 @@ class LoginVM: BaseVm {
     //MARK: LOGIN API
     func loginApi(email: String, password: String) {
         let prams : [String : Any] = ["email": email, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
-        //print(prams)
         self.show()
         api_manager.POSTApi(loginUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
@@ -102,7 +101,6 @@ class LoginVM: BaseVm {
     //MARK: - FORGOT PASSWORD API
     func forgotApi(email: String, is_resend: String) {
         let prams : [String : Any] = ["email": email, "is_resend": is_resend,"language" : SaveToDefaults().getAppLang() ?? "en"]
-        print(prams)
         self.show()
         api_manager.POSTApi(forgotUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
@@ -127,7 +125,6 @@ class LoginVM: BaseVm {
     //MARK: - OTP API
     func otpCheckApi(email: String, otp: String) {
         let prams : [String : Any] = ["email": email, "otp": otp,"language" : SaveToDefaults().getAppLang() ?? "en"]
-           print(prams)
            self.show()
         api_manager.GETApi(otpCheckUrl(email: email, otp: otp), param: nil, header: header()) { (response, err, code) in
                self.dismiss()
@@ -152,7 +149,6 @@ class LoginVM: BaseVm {
     //MARK: - CHANGE PASSWORD API
     func changePasswordApi(email: String, password: String) {
            let prams : [String : Any] = ["email": email, "password": password,"language" : SaveToDefaults().getAppLang() ?? "en"]
-              print(prams)
               self.show()
            api_manager.POSTApi(resetPasswordUrl(), param: prams, header: header()) { (response, err, code) in
                   self.dismiss()

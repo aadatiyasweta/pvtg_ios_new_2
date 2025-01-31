@@ -52,9 +52,7 @@ class OnboardingVC: UIViewController {
     }
     
     @objc func buttonClicked() {
-        print("Button Clicked")
         if index == self.titleArr.count - 1{
-            print(index)
             if controllerId == 1{
                 self.navigationController?.popViewController(animated: true)
             } else {
@@ -70,7 +68,6 @@ class OnboardingVC: UIViewController {
                 let vc = LoginVC.instance()
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-            print(index)
         }
     }
     

@@ -28,7 +28,6 @@ class OnboardingSecondCell: UICollectionViewCell {
     
     //MARK: - BIND DATA METHOD
     func bindRewardData(model : [RewardsModel]){
-        print(model.count)
         self.titleLbl.text =  R.string.localizable.earnUseRewardss()
         if model.count == 2{
             self.iconImageView.image = #imageLiteral(resourceName: "group3-1")

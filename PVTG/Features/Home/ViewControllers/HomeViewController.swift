@@ -82,35 +82,14 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        initializeLocation()
         
         self.id = "-1"
         self.city = SaveToDefaults().getCity() ?? ""
-//        self.lblLocn.text = address
         self.lblLocn.text = self.city
-       // UserDefaults.standard.setValue(address, forKey: "userAddress")
-        //loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
         self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
-//            if(self.lblLocn.text == ""){
-//                self.showAlertForPermissionDenied()
-//            }
-//        })
-       
         
         if(self.isSelectedFromFilter == false){
             appDelegate.currentVC = self
-            //let address = SaveToDefaults().getformattedAddress()
-//            if address ?? "" == "" {
-//                toDelegateSelf()
-//                placesClient = GMSPlacesClient.shared()
-
-//            }else{
-//                self.city = SaveToDefaults().getCity() ?? ""
-//                self.lblLocn.text = address
-//               // UserDefaults.standard.setValue(address, forKey: "userAddress")
-//                loadApi(categoryid: "\(id)", currency: self.selectedCurrency)
-//            }
         }
 //        if SaveToDefaults().getAppLang() ?? "en" == "en"{
 //            headerTitleLbl.text = "Explore energy healing sessions and balance your soul."
@@ -118,29 +97,7 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 //            headerTitleLbl.text = "Explora la sesións de sanación energética y equilibra tu alma."
 //        }
     }
-    
-//    func initializeLocation(){
-////            locationManager.requestAlwaysAuthorization()
-////                    locationManager.requestWhenInUseAuthorization()
-////                    if CLLocationManager.locationServicesEnabled() {
-////                        locationManager.delegate = self
-////                        locationManager.startUpdatingLocation()
-////                    }
-////                else{
-////                        showAlertForPermissionDenied()
-////                    }
-//        
-//        // Request authorization (async process)
-//            locationManager.requestWhenInUseAuthorization()
-//
-//            // Check the location services state
-//            if CLLocationManager.locationServicesEnabled() {
-//                locationManager.delegate = self
-//            } else {
-//                showAlertForPermissionDenied()
-//            }
-//    }
-    
+        
     func initializeLocation() {
         // Request the appropriate authorization
         locationManager.requestWhenInUseAuthorization()
@@ -248,12 +205,10 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
             let value = self.lblLocn.text ?? ""
             if self.city == ""{
                 if  self.id == "-1"{
-//                    homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
                     homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minimUmPrice , maxprice: maximimPrice, currency: currency)
                     
                 }else{
                     if categoryid == "0"{
-//                        homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
                         homevm.getHomeApi(user_id: userid, category_id: "", latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "1", city: value,minPrice: minPrice , maxprice: maxPrice, currency: currency)
                     }else{
                         homevm.getHomeApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: "", top_search: "", city: value,minPrice: minimUmPrice , maxprice: maximimPrice, currency: currency)
@@ -290,14 +245,11 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 //MARK: - TABLE VIEW DELEGATES AND DATASOURCE
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.homevm.model?.all_result?.count ?? 0)
-        //return self.homevm.model?.all_result?.count ?? 0
         return self.homeResultData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SessionCell.ident, for: indexPath) as? SessionCell else { return UITableViewCell()}
-//        cell.setHomeData(data: self.homevm.model?.all_result?[indexPath.row])
         cell.setHomeData(data: self.homeResultData[indexPath.row])
         if(self.homevm.model?.followUp?.follow_up_id != "0" && self.homevm.model?.followUp?.follow_up_id != "" && self.homevm.model?.followUp?.follow_up_id != nil){
             if(indexPath.row == self.homeResultData.count-1){
@@ -327,9 +279,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         SaveToDefaults().setSessionTimeId(name: self.homeResultData[indexPath.row].session_image)
         self.navigationController?.pushViewController(vc, animated: true)
-//        let vc = ThankyouVC.instance()
-//        vc.name =  ""
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -441,10 +390,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return CGSize(width: label.frame.size.width + 30, height: 65)
         }
         if indexPath.section == 1{
-//            let label = UILabel(frame: CGRect.zero)
-//
-//                label.text = "All"
-//            label.sizeToFit()
             return CGSize(width: 80, height: 65)
         }
         let text = categoryArr[indexPath.row].name
@@ -466,8 +411,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
             priceView?.selectCurrencyFiled.text = self.selectedCurrency
             priceView?.seekView.selectedMaxValue = CGFloat(self.maximimPrice)
-            print(self.maximimPrice)
-            print(self.minimUmPrice)
             priceView?.seekView.selectedMinValue = CGFloat(self.minimUmPrice)
             priceView?.selectedCurrency = self.selectedCurrency
             priceView?.maxValue = self.maximimPrice
@@ -523,69 +466,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-//MARK: - CLLOCATION MANAGER DELEGATE
-//extension HomeViewController: CLLocationManagerDelegate{
-//    func toDelegateSelf(){
-//        locationManager.requestWhenInUseAuthorization()
-//        if CLLocationManager.locationServicesEnabled()
-//        {
-//            locationManager.delegate = self
-//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//            locationManager.startUpdatingLocation()
-//        }
-//    }
-//    
-//    //MARK: - CLLocation Delegate
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        switch status {
-//        case .authorizedWhenInUse :
-//            break
-//        case .restricted :
-//            self.onDeniedLocatin()
-//        case .denied :
-//            self.onDeniedLocatin()
-//        default :
-//            break
-//        }
-//    }
-//    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.last else {
-//            return
-//        }
-//        self.userLocCoordinate = location.coordinate
-//        requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
-//        locationManager.stopUpdatingLocation()
-//    }
-//    
-//    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-//        self.userLocCoordinate = position.target
-//        requestToGetAddressFromLatLong(userloc: self.userLocCoordinate)
-//    }
-//  
-//    func requestToGetAddressFromLatLong(userloc:CLLocationCoordinate2D)
-//    {
-//        let addressCoordinates = CLLocationCoordinate2DMake(userloc.latitude,userloc.longitude)
-//        let coder = GMSGeocoder()
-//        coder.reverseGeocodeCoordinate(addressCoordinates) { response, error in
-//            if let addrss = response?.firstResult() {
-//                let location = CLLocationCoordinate2D(latitude: addressCoordinates.latitude, longitude: addressCoordinates.longitude)
-//                self.lblLocn.text = addrss.locality
-//                self.city = addrss.locality ?? ""
-//                SaveToDefaults().setCity(value: self.city)
-//                UserDefaults.standard.setValue(self.city, forKey: "userAddress")
-//                SaveToDefaults().setLatitude(lat: location.latitude)
-//                SaveToDefaults().setLongtitude(lon: location.longitude)
-//                self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
-//                if let addressLineArray = addrss.lines{
-//                    if addressLineArray.count>0{
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
-
 //MARK: - CUSTOM DELEGATE
 extension HomeViewController: GetHomeData {
     func reloadData(unreadNotificationCount : Int) {
@@ -622,7 +502,6 @@ extension HomeViewController: GetHomeData {
         if(self.homevm.model?.followUp?.follow_up_id != "0" && self.homevm.model?.followUp?.follow_up_id != "" && self.homevm.model?.followUp?.follow_up_id != nil){
             homeResultData.append((self.homevm.model?.followUp)!)
         }
-        //if self.homevm.model?.all_result?.count == 0 {
         if  self.homeResultData.count == 0 {
             self.lblNoSession.text = R.string.localizable.noSession()
         } else {
@@ -632,7 +511,6 @@ extension HomeViewController: GetHomeData {
         
         self.colectionVw.reloadData()
         self.tblSession.reloadData()
-//        if self.homevm.model?.all_result?.count != 0{
         if self.homeResultData.count != 0{
             self.tblSession.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
         }
@@ -642,7 +520,6 @@ extension HomeViewController: GetHomeData {
 //MARK: - GET SLIDER VALUE EXTENSION
 extension HomeViewController : getPriceSliderValues{
     func slidermaxMinValue(min: Int, max: Int, currency: String,isSelectedFromFilter : Bool) {
-        //  if(self.isSelectedFromFilter == true){
         self.isSelectedFromFilter = isSelectedFromFilter
         self.selectedCurrency = currency
         self.maximimPrice = max

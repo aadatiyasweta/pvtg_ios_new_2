@@ -306,9 +306,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.completedBtn.isHidden = true
             self.priceLabel.isHidden = false
         }
-//        loadApi(top_search: "")
-//        vm.delegate = self
-//        handlingHeaderInFSCalendar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -319,8 +316,6 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         iIcount = -2
-       // iIcountValue = false
-        //iIconBgVw.isHidden = true
         self.vwcalendar.deselect(self.dateToDeleselect)
         self.selectedDate = formatter.string(from: self.today)
         loadApi(top_search: "")
@@ -713,10 +708,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         else if(collectionView == serviceTimeCollectionVw){
 
             sessionPriArr.removeAll()
-//            if((self.vm.model?.session_booking_session_type ?? "") != ""){
-//                self.sessionPriArr.append(self.vm.model?.booked_price_type ?? "")
-//                print("sessionPriArr",self.sessionPriArr)
-//            }else{
                 for i in 0..<(self.vm.model?.session_type?.count ?? 0){
                     if self.vm.model?.session_type?[i].session_type == self.selectedSession{
                         self.sessionPriArr.append(self.vm.model?.session_type?[i].price_type ?? "")
@@ -727,9 +718,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 self.sessionTimeMinuteStr = self.vm.model?.session_type?[0].price_type ?? ""
             }
                 return self.sessionPriArr.count
-            
-            
-//            return self.vm.model?.session_type?.count ?? 0
         }else{
             print("timeCount ",self.timeArr.count)
             return self.timeArr.count
@@ -739,7 +727,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print(self.timeArr.count)
         print(vwCollection.isHidden)
-//        if self.controllerId == 0 || self.controllerId == 2{
         if self.controllerId == 0{
             if self.timeArr.count == 0 {
                 self.lblNoTime.isHidden = false
@@ -788,7 +775,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             }
             
             if self.timeArr[indexPath.row].is_avilable_time == "0" {
-                //cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
                 cell.vwContainCatgry.backgroundColor = UIColor.lightGray
                 cell.vwContainCatgry.layer.cornerRadius = 10
                 
@@ -803,16 +789,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             if self.timeArr[indexPath.row].is_available == "0" {
                 cell.vwContainCatgry.backgroundColor = UIColor.lightGray
             }else{
-////                if(iIcount == 1){
-//                iIcount = indexPath.row
-//                if (indexPath.row == iIcount && self.iIcountValue == false){
-//                    //cell.iIconBtn.isUserInteractionEnabled = true
-//                    iIcount = iIcount + 10
-//                    self.iIcountValue = true
-//                }
-//                else{
-//                    //cell.iiconImgVw.image = UIImage(named: "")
-//                }
             }
            
             cell.setData(data: self.timeArr[indexPath.row])
@@ -820,16 +796,8 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }
         else if collectionView == self.offeredCollView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
-            // cell.searchCategorylbl.text = self.vm.model?.session_type?[indexPath.row].session_type
-           // cell.iiconImgVw.isHidden = true
-           // cell.iIconBtn.isUserInteractionEnabled = false
             cell.searchCategorylbl.text = self.sessionTypeArr[indexPath.row]
             if offeredIndex != -1{
-                //                print("Price is",self.vm.model?.session_type?[offeredIndex].price ?? "")
-                //print("Price is",self.sessionTypePriceArr[offeredIndex])
-                
-                //                let myDouble  = Double(self.vm.model?.session_type?[offeredIndex].price ?? "") ?? 0.0
-                //                let strPrice = self.vm.model?.session_type?[offeredIndex].price ?? ""
                 if(isPriceLoop == false && isLoop == false){
                     let myDouble  = Double(self.sessionTypePriceArr[offeredIndex]) ?? 0.0
                     let strPrice = self.sessionTypePriceArr[offeredIndex]
@@ -877,8 +845,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                             selectedTimeIndex = 0
                             
                         }
-                       // for j in 0..<sessionPriArr.count{
-                           // if(j == selectedTimeIndex){
                                 if(sessionPriArr[selectedTimeIndex] == "sixty" ){
                                     self.sessionTimeMinuteStr = "sixty"
                                     indexPosi = i + selectedTimeIndex
@@ -909,8 +875,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                 self.reloadTimeBoolValue = false
                                                 
                                                 self.id = -1
-//                                                self.selectedDate = formatter.string(from: self.today)
-//                                                self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
                                                 if(self.selectedDate != ""){
                                                 }else{
                                                     self.vwcalendar.deselect(self.dateToDeleselect)
@@ -922,13 +886,9 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                 self.isLoop = false
                                                 indexPosi = 0
                                             }
-        //                                }
-        //                                }
                                     }
                                 }else if (sessionPriArr[selectedTimeIndex] == "ninety"){
-                                   // for i in 0..<(self.allSessionTypePriceTypeArr.count){
-                                        //if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
-                                            //
+
                                     self.sessionTimeMinuteStr = "ninety"
                                     indexPosi = i + selectedTimeIndex
                                             if(isLoop == true){
@@ -956,7 +916,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                     self.priceLabel.text = replaced + " " +  currency
                                                     self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
                                                     self.reloadTimeBoolValue = false
-                                                    //if(self.isFromSelection == true){
                                                     self.id = -1
                                                     if(self.selectedDate != ""){
                                                     }else{
@@ -965,19 +924,12 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                         self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
                                                         self.selectedDate = changeDateToAnotherDateString(date: self.selectedDate, fromFormat: "EEEE, MMMM d", toFormat: "yyyy-MM-dd", currentTimeZone: "")
                                                     }
-                                                     // "Monday, September 2"
                                                         self.reloadTime()
-                                                    //}
                                                     self.isLoop = false
                                                     indexPosi = 0
                                                 }
                                             }
-                                        //}
-                                    //}
                                 }else{
-        //                            for i in 0..<(self.allSessionTypePriceTypeArr.count){
-        //                                if(self.allSessionTypePriceTypeArr[i] == sessionPriArr[selectedTimeIndex]){
-        //                                    //
                                     self.sessionTimeMinuteStr = "one_twenty"
                                     indexPosi = i + selectedTimeIndex
                                             if(isLoop == true){
@@ -1005,32 +957,21 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                                                     self.priceLabel.text = replaced + " " +  currency
                                                     self.selectedSessionID = self.allSessionIDTypeArr[indexPosi]
                                                     self.reloadTimeBoolValue = false
-                                                   // if(self.isFromSelection == true){
-                                                    
                                                     self.id = -1
-//                                                    self.selectedDate = formatter.string(from: self.today)
-//                                                    self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
                                                     if(self.selectedDate != ""){
-                                                       // self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
                                                     }else{
                                                         self.vwcalendar.deselect(self.dateToDeleselect)
                                                         self.selectedDate = formatter.string(from: self.today)
                                                         self.lblDayWithDate.text = stringconvertIntoHour(inputDate:  self.selectedDate)
                                                         self.selectedDate = changeDateToAnotherDateString(date: self.selectedDate, fromFormat: "EEEE, MMMM d", toFormat: "yyyy-MM-dd", currentTimeZone: "")
                                                     }
-                                                   // }
                                                     self.reloadTime()
                                                     self.isLoop = false
                                                     indexPosi = 0
                                                 }
                                             }
-        //                                }
-        //                            }
+
                                 }
-//                            }else{
-//                                print("New1")
-//                            }
-                        //}
                     }
                 }
             }
@@ -1047,16 +988,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
         }
         else if(collectionView == serviceTimeCollectionVw){
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.ident, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
-           // cell.iiconImgVw.isHidden = true
-            //cell.iIconBtn.isUserInteractionEnabled = false
-//            if(self.vm.model?.session_type?[indexPath.row].price_type == "sixty"){
-//                cell.searchCategorylbl.text = "60 mins"
-//            }else if (self.vm.model?.session_type?[indexPath.row].price_type == "ninety"){
-//                cell.searchCategorylbl.text = "90 mins"
-//            }else{
-//
-//                cell.searchCategorylbl.text = "120 mins"
-//            }
             if(sessionPriArr[indexPath.row] == "sixty"){
                 cell.searchCategorylbl.text = "60 mins"
             }else if (sessionPriArr[indexPath.row] == "ninety"){
@@ -1098,30 +1029,22 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // self.isFromSelection = false
         if collectionView == self.vwCollection{
             self.iIcount = -2
-            //self.iIcountValue = false
             if self.timeArr[indexPath.row].is_available == "0" || self.timeArr[indexPath.row].is_avilable_time == "0"{
                 self.id = -1
             }else{
                 if self.id == indexPath.row{
                 } else {
                     self.id = indexPath.row
-                    //                if(self.tapReschudleBtn == true){
-                    //                    self.rescheduleBooking()
-                    //                }else{
                     guard let userid = SaveToDefaults().getUserId() else { return}
                     self.vm.getTicketDataApi(user_id: userid, session_id: sessionId, schedule_time_id: self.timeArr[id].schedule_time_id ?? "")
-                    //              }
                 }
             }
             self.vwCollection.reloadData()
         }else if collectionView == self.offeredCollView{
             self.offeredIndex = indexPath.row
             self.selectedSession = sessionTypeArr[indexPath.row]
-//            self.selectedSessionID = self.sessionTypeIDArr[indexPath.row]
-//            print("selectedSessionID",self.selectedSessionID) // ashiteshhh
             isLoop = true
             collectionView.reloadData()
             serviceTimeCollectionVw.reloadData()
@@ -1131,30 +1054,6 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             isLoop = true
             offeredCollView.reloadData()
             serviceTimeCollectionVw.reloadData()
-            
-            
-//            guard let alldate = self.vm.model?.all_date else {return}
-//            for val in alldate {
-//                if selectedDate == val.schedule_date{
-//                    if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
-//                        if val.is_avilable == "1" {
-//                            self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
-//                           // self.scrollViewBotmconstarint.constant = 97
-//                        }
-//                    }
-//                } else {
-//                    self.timeArr.removeAll()
-//                    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-//                       // self.scrollViewBotmconstarint.constant = 0
-//                        self.btnBooknow.isHidden = true
-//                        self.priceLabel.isHidden = true
-//                    }, completion: nil)
-//                }
-//            }
-//            
-//            self.vwCollection.reloadData()
-//            print(self.timeArr)
-//            self.colectnVwSessionImage.reloadData()
         }
     }
     
@@ -1228,13 +1127,6 @@ extension SessionDetailVC: GetResponse {
                 self.sessionTypeArr.removeAll()
                 self.sessionTypePriceArr.removeAll()
                 self.sessionTypeIDArr.removeAll()
-    
-               // self.sessionTypeArr.append(self.vm.timeArr?.result?[i].session_booking_session_type ?? "")
-                //self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
-                //self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
-                
-                //self.selectedSession = self.vm.model?.session_booking_session_type ?? ""
-                /*self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")*/ // now wrong type selection
                 self.sessionTypePriceArr.append(self.vm.model?.session_booking_amount ?? "")
                 self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
                 self.sessionTypeIDArr.append(self.vm.model?.session_booking_type_id ?? "")
@@ -1246,7 +1138,6 @@ extension SessionDetailVC: GetResponse {
                 
                 self.sessionTypeArr = self.tempSessionTypeArr
                 self.sessionTypePriceArr  = self.tempSessionTypePriceArr
-//                self.selectedSession = self.tempselectedSession
                 if(selectedSession == ""){
                     self.selectedSession = self.vm.model?.session_type?[0].session_type ?? ""
                 }
@@ -1295,13 +1186,6 @@ extension SessionDetailVC: GetResponse {
                         if(sessionStatus == "3" || sessionStatus == "2"){
                             self.btnBooknow.isHidden = true
                             self.cancelBtn.isHidden = false
-    //                        self.completedBtn.isHidden = true
-    //                        self.rescheduleBtn.isHidden = true
-    //                        self.cancelBtn.setTitle("Cancelled", for: .normal)
-    //                        self.cancelBtn.backgroundColor = UIColor(red: 96/255, green: 103/255, blue: 217/255, alpha: 1)
-    //                        self.cancelBtn.setTitleColor(.white, for: .normal)
-    //                        self.cancelBtn.layer.borderWidth = 0
-    //                        self.cancelBtn.layer.borderColor = UIColor.clear.cgColor
                         }else{
                             self.btnBooknow.isHidden = false
                             self.priceLabel.isHidden = false
@@ -1309,7 +1193,6 @@ extension SessionDetailVC: GetResponse {
                             self.rescheduleBtn.isHidden = true // here one
                         }
                     }
-                    //self.scrollViewBotmconstarint.constant = 97
                     if  self.isFromSelection{
                         let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
                         mainScrollview.setContentOffset(bottomOffset, animated: true)
@@ -1327,7 +1210,6 @@ extension SessionDetailVC: GetResponse {
         
         self.formatter.dateFormat = "yyyy-MM-dd"
         for val in alldate {
-            //if self.formatter.string(from: self.today) == val.schedule_date && val.is_avilable ?? "0" == "1"{
             if selectedDate == val.schedule_date{
                 if let userid = SaveToDefaults().getUserId(), let scheduleId =  val.schedule_id {
                     if((self.selectedSessionID != "") && (self.reloadTimeBoolValue == false)){
@@ -1337,7 +1219,6 @@ extension SessionDetailVC: GetResponse {
                         self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
                         break
                     }
-                    //self.scrollViewBotmconstarint.constant = 97
                 }
             }else{
                 self.timeArr.removeAll()
@@ -1347,16 +1228,6 @@ extension SessionDetailVC: GetResponse {
                     self.priceLabel.isHidden = true
                 }, completion: nil)
             }
-//                break
-//            } 
-//            else {
-//                self.timeArr.removeAll()
-//                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-//                   // self.scrollViewBotmconstarint.constant = 0
-//                    //self.btnBooknow.isHidden = true
-//                }, completion: nil)
-//                
-//            }
         }
     }
     
@@ -1378,7 +1249,6 @@ extension SessionDetailVC: GetResponse {
         vc.getSessionTimeMinuteStr = sessionTimeMinuteStr
         vc.selectedSessionSTr = selectedSession
         self.id = -1
-        //vc.getPriceFromPreviousPage =
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -1402,13 +1272,11 @@ extension SessionDetailVC: GetResponse {
             if self.timeArr.count == 0 {
                 self.btnBooknow.isHidden = true
                 self.priceLabel.isHidden = true
-                //self.scrollViewBotmconstarint.constant = 0
             } else {
                 self.btnBooknow.isHidden = false
                 self.priceLabel.isHidden = false
                 self.cancelBtn.isHidden = true
                 self.rescheduleBtn.isHidden = true
-                //self.scrollViewBotmconstarint.constant = 97
             }
         }
         self.sessionTypeArr.removeAll()
@@ -1466,16 +1334,6 @@ extension SessionDetailVC: GetResponse {
         }
         
         if((self.vm.model?.booked_price_type ?? "") != "" && self.controllerId == 1){
-
-           // for i in 0..<(self.vm.model?.session_type?.count ?? 0){
-//                if(sessionTypeArr.contains(self.vm.model?.session_type?[i].session_type ?? "")){
-//                }else{
-//                    self.selectedSession = self.vm.model?.session_type?[i].session_type ?? ""
-//                    self.sessionTypePriceArr.append(self.vm.model?.session_type?[i].price ?? "")
-//                    self.sessionTypeArr.append(self.vm.model?.session_booking_session_type ?? "")
-//                    self.sessionTypeIDArr.append(self.vm.model?.session_type?[i].session_type_id ?? "")
-            //    }
-           // }
             /* for booked status detail */
             self.selectedSession = self.vm.model?.session_booking_session_type ?? ""
             //self.sessionTypePriceArr.append(self.vm.model?.booked_price_type ?? "")
@@ -1538,7 +1396,6 @@ extension SessionDetailVC: GetResponse {
         let value = Double(data.distance ?? "")!
         let doubleStr = String(format: "%.2f", value)
         let str = (data.city ?? "") + " " + R.string.localizable.kmaway(doubleStr)
-        //        self.lblsessionPrice.text = (data.currency ?? "$")+(data.ticket_price ?? "")
         self.lblSessionname.text = data.category_name ?? ""
         self.vwrating.rating = Double(data.rating ?? "")!
         self.lblPlaceName.text = str
@@ -1559,8 +1416,6 @@ extension SessionDetailVC: GetResponse {
                 self.offeredIndex = 0
             }
             self.offerdView.isHidden = false
-//            self.offeredHeightCons.constant = 116
-            
             self.offeredHeightCons.constant = 198
         }
         self.vwCollection.reloadData()
@@ -1579,14 +1434,7 @@ extension SessionDetailVC: GetResponse {
             self.btnBooknow.isHidden = true
             self.cancelTagView.isHidden = true
             self.contactUsVw.isHidden = true
-//            if(self.screenFrom == "EventVC"){
-//                self.cancelTagView.isHidden = false
-//            }else{
-//                self.cancelTagView.isHidden = true
-//            }
         } 
-        //else if (controllerId == 3 && (data.session_booking_status == "2" ||  data.session_booking_status == "3")){
-        //}
         else {
             self.cancelTagView.isHidden = true
             self.cancelBtn.isEnabled = true
@@ -1611,14 +1459,12 @@ extension SessionDetailVC: GetResponse {
                         self.iIcount = -2
                        // self.iIcountValue = false
                         self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
-                       // self.scrollViewBotmconstarint.constant = 97
                     }
                 }
                 break
             } else {
                 self.timeArr.removeAll()
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-                   // self.scrollViewBotmconstarint.constant = 0
                     self.btnBooknow.isHidden = true
                 }, completion: nil)
                 
@@ -1674,12 +1520,9 @@ extension SessionDetailVC {
             print(scrollView.contentOffset.y)
             if scrollView.contentOffset.y  < 0{
                 scrollView.contentOffset.y = 0
-        //        self.backBtn.isHidden = false
             }else{
                 if scrollView.contentOffset.y > 55 {
-        //            self.backBtn.isHidden = true
                 }else{
-         //           self.backBtn.isHidden = false
                 }
             }
         }
@@ -1704,9 +1547,6 @@ extension SessionDetailVC {
                     self.selectedSessionID = self.sessionTypeIDArr[0]
                     offeredTypeId = selectedSessionID
                 }
-               // offeredTypeId = self.vm.model?.session_type?[self.offeredIndex].session_type_id ?? ""
-               // amt = self.vm.model?.session_type?[self.offeredIndex].price ?? ""
-               
             }else{
                 return
             }
@@ -1719,10 +1559,6 @@ extension SessionDetailVC {
         guard let userid = SaveToDefaults().getUserId() else {return}
         self.vm.sessionRescheduleApi(user_id: userid, session_id: sessionId, booking_id: bookingId, booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", rescheduleCount: rescheduleCountStr,session_time_minute : self.sessionTimeMinuteStr,selectedSessionSTr : self.selectedSession)
         self.vm.rescheduleSuccesClosure = {[weak self ] in
-//            guard let self else {return}
-//            let vc = ThankyouVC.instance()
-//            vc.isFromReschedule = true
-//            self.navigationController?.pushViewController(vc, animated: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 self?.navigationController?.popViewController(animated: true)
             })

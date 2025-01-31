@@ -87,13 +87,6 @@ extension TransformerExampleViewController {
     }
 }
 
-/*extension InterestVC {
-    class func instance()-> InterestVC {
-        return home.instantiateViewController(withIdentifier: "InterestVC") as! InterestVC
-    }
-}*/
-
-
 extension MoreVC {
     class func instance()-> MoreVC {
         return home.instantiateViewController(withIdentifier: "MoreVC") as! MoreVC

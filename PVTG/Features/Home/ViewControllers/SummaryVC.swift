@@ -82,7 +82,6 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         discountValuePicker.delegate = self
 
         discountpriceTxtfld.inputView = discountValuePicker
-        //discountpriceTxtfld.text = gradePickerValues[0]
         
         self.discountViewHeightCons.constant = 50
         self.onboardingVm.delegate = self
@@ -141,8 +140,6 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         if Int(self.ticketModel?.total_point ?? "0")! < self.selectedPoint{
             showAlertView("Your available points is low", title: appName)
         }else{
-//            lblPoints.text = (self.onboardingVm.model?.rewards?[row].points ?? "0")
-//            + " \(R.string.localizable.pts())"
             if(selectedPointStr == ""){
                 selectedPointStr = self.lblPoints.text?.replacingOccurrences(of: " Pts", with: "") ?? ""
                 self.selectedPoint = Int(selectedPointStr) ?? 0
@@ -153,7 +150,6 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         let intDiscountWithOUtPercent = Int(strDiscountWithoutPercent) ?? 0
         let discountGiven = Double(intDiscountWithOUtPercent) / Double(100)
         if let price = self.customModel?.paid_amount {
-            print(price)
             if let tkt = Int(self.totalTkt){
                 print("ticket\(self.totalTkt)")
                 print("booking currency\(String(describing: self.bookingDetails?.currency))")
@@ -161,10 +157,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 var myDouble  = Double(price) ?? 0.0
                 myDouble = myDouble * Double(tkt)
                 let totalPrice = myDouble
-                print(myDouble)
                 let totalDiscount   = myDouble * discountGiven
                 let priceAfterDiscount = totalPrice - totalDiscount
-                print(myDouble)
                 let strPrice = self.customModel?.paid_amount ?? ""
                 
                 let currencyFormatter = NumberFormatter()
@@ -180,7 +174,6 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 priceString = currencyFormatter.string(from: NSNumber(value: priceAfterDiscount ))!
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
-                print(replaced)
                 //let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // added by ashitesh
                 let val = Int(self.ticketModel?.total_point ?? "0")! - self.selectedPoint // added by ashitesh
                 self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal) // added by ashitesh
@@ -191,8 +184,6 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 self.discountViewHeightCons.constant = 50
             }
         }
-//            let val = Int(self.ticketModel?.total_point ?? "0")!
-//            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
         }
     }
     
@@ -306,7 +297,6 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 var myDouble  = Double(price) ?? 0.0
                 myDouble = myDouble * Double(tkt)
                 let totalPrice = myDouble
-                print(myDouble)
                 let currencyFormatter = NumberFormatter()
                 currencyFormatter.usesGroupingSeparator = true
                 currencyFormatter.numberStyle = .currency
@@ -322,7 +312,6 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 priceString = currencyFormatter.string(from: NSNumber(value: totalPrice ))!
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
-                print(replaced)
                 self.vwAdddashedBordr.alpha = 0.5
                 self.btnUseNow.alpha = 0.5
                 self.btnUseNow.isUserInteractionEnabled = false
@@ -393,8 +382,6 @@ extension SummaryVC {
             }
             
             if let tkt = Int(self.totalTkt){
-                print("ticket\(self.totalTkt)")
-                print("booking currency\(String(describing: self.bookingDetails?.currency))")
                 var priceString = ""
                 var myDouble  = Double(price) ?? 0.0
                 myDouble = myDouble * Double(tkt)
@@ -413,8 +400,6 @@ extension SummaryVC {
                 priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
-                print(replaced)
-                print(flaotPrice)
             }
             self.btnAvlblPoints.setTitle("\(pt ?? 0) \(R.string.localizable.ptsavailable())", for: .normal)
         }
@@ -486,12 +471,9 @@ extension SummaryVC {
             print(amount)
             if let price = self.customModel?.paid_amount {
                 if let tkt = Int(self.totalTkt){
-                    print("ticket\(self.totalTkt)")
-                    print("booking currency\(String(describing: self.bookingDetails?.currency))")
                     var myDouble  = Double(price) ?? 0.0
                     myDouble = myDouble * Double(tkt)
                     let totalPrice = myDouble
-                    print(myDouble)
                     let totalDiscount   = myDouble * discountGiven
                     let priceAfterDiscount = totalPrice - totalDiscount
                     var strAmount = ""

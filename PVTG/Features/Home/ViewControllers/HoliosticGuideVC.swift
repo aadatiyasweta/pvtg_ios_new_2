@@ -57,17 +57,12 @@ class HoliosticGuideVC: BaseViewController {
         setShadowToView()
         self.btnClose.isHidden = false
         self.colectionVwCategory.isPagingEnabled = true
-        
-//        let layout = UICollectionViewFlowLayout()
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        colectionVwCategory.collectionViewLayout = layout
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let userid = SaveToDefaults().getUserId() {
             vm.getAllCategoryApi(user_id: userid)
-           // self.colectionVwCategory.layoutIfNeeded()
         }
     }
     override func viewWillLayoutSubviews() {
@@ -101,20 +96,16 @@ extension HoliosticGuideVC: UITextFieldDelegate {
             else {
                 if textField.text?.count ?? 0 > 0 {
                     loadApi(categoryid: "\(catgryId)", search: textField.text! + string, isloader: false)
-                    //  searchVendor_API(searchText: textField.text! + string)
                 } else {
                     loadApi(categoryid: "\(catgryId)", search: string, isloader: false)
-                    //searchVendor_API(searchText: string)
                 }
             }
         }
         else {
             if textField.text?.count ?? 0 > 0 {
                 loadApi(categoryid: "\(catgryId)", search: textField.text! + string, isloader: false)
-                // searchVendor_API(searchText: textField.text! + string)
             } else {
                 loadApi(categoryid: "\(catgryId)", search: string, isloader: false)
-                // searchVendor_API(searchText: string)
             }
         }
         return true
@@ -203,8 +194,6 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
                 cell.searchCategorylbl.textColor = UIColor().coloWithHexString(hex: "#9a9a9a")
                 cell.vwContainCatgry.border(width: 0.3, color: UIColor().coloWithHexString(hex: "#9a9a9a"))
             }
-//            cell.searchCategorylbl.numberOfLines = 0
-//            cell.searchCategorylbl.lineBreakMode = .byWordWrapping
             cell.setSearchData(data: self.vm.categorymodel?.result?[indexPath.row])
             cell.vwContainCatgry.layer.cornerRadius = 17
             return cell
@@ -268,7 +257,6 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
                 if self.isOpenPopUp{
                     loadApi(categoryid: "\(self.catgryId)", search: "", isloader: true,minPrice: self.minimUmPrice,maxprice: self.maximimPrice)
                 }else{
-                    print("category id is",self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1")
                     loadApi(categoryid: self.vm.categorymodel?.result?[indexPath.row].category_id ?? "1", search: self.txfSearch.text ?? "", isloader: true)
                 }
                 
@@ -297,7 +285,7 @@ extension HoliosticGuideVC: GetSearchSessionData {
         self.colectionVwCategory.reloadData()
         if self.vm.categorymodel?.result?.count ?? 0 > 0{
             self.catgryId = Int(self.vm.categorymodel?.result?[indexPathRow].category_id ?? "1") ?? 0
-            print("category id is",Int(self.vm.categorymodel?.result?[0].category_id ?? "1") ?? 0)
+
             loadApi(categoryid: "\(self.catgryId)", search: "", isloader: true,minPrice: 0,maxprice: 0)
         }
     }

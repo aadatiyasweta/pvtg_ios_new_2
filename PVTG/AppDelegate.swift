@@ -36,7 +36,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         Messaging.messaging().delegate = self
         // Override point for customization after application launch.
         IQKeyboardManager.shared().isEnabled = true
-        //IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         if let apiKey = getAPIKeyFromPlist() {
             GMSServices.provideAPIKey(apiKey)
             GMSPlacesClient.provideAPIKey(apiKey)
@@ -51,10 +50,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     // Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
      Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
-//        let vc = SplashVC.navigation()
-//        window?.rootViewController = vc
-//        window?.makeKeyAndVisible()
-        //setSplashVC()
         checkLoginStatus()
         return true
     }
@@ -71,8 +66,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             } else {
                 setTabBarControllerVC()
             }
-            // commented by ashitesh and upper code added due to client requirement to hide change language
-            //setChangeLanguageVC()
         }else{
             if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
                 if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
@@ -154,43 +147,24 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             if let session_id = userInfo?["gcm.notification.session_id"] as? String, let session_name = userInfo?["gcm.notification.session_name"] as? String, let notificationString = userInfo?["gcm.notification.data"] as? String {
                 let notificationData = convertToDictionary(text: notificationString)
                 if let bookingId = notificationData?["booking_id"] as? String, let bodyMessage = notificationData?["body"] as? String, let rescheduleCount = notificationData?["reschedule_count"] as? String, let paymentIdSTr = notificationData?["payment_id"] as? String, let chargeIdStr = notificationData?["charge_id"] as? String, let amountSTr = notificationData?["amount"] as? String, let bookingDateStr = notificationData?["booking_date"] as? String{
-                    print(session_id,session_name,rescheduleCount)
-                    //                               if SaveToDefaults().getAccessToken() != nil{
-                    //                                   if application.applicationState == .active{
                     self.performAttendingAlert(name: session_name, id: session_id,message: bodyMessage, bookingId: bookingId, rescheduleCount: rescheduleCount, amount: amountSTr, payment_id: paymentIdSTr, charge_id: chargeIdStr, bookingDateStr: bookingDateStr)
-                 
-                    //                                   }
-                    //                               }
+
                 }
             }
         }else if userInfo?["gcm.notification.type"] as? String == "session_follow_up"{
             if let session_id = userInfo?["gcm.notification.session_id"] as? String, let session_name = userInfo?["gcm.notification.session_name"] as? String, let notificationString = userInfo?["gcm.notification.data"] as? String {
                 let notificationData = convertToDictionary(text: notificationString)
-                    print(session_id,session_name)
                 if let bodyMessage = notificationData?["body"] as? String{
                     self.performSessionFollowupAlert(name: session_name, id: session_id,message: bodyMessage)
                 }
                 }
         }
-//        else if let userInfo = userInfo as? [String: Any],
-//           let aps = userInfo["aps"] as? [String: Any],
-//           let alert = aps["alert"] as? [String: Any],
-//           let title = alert["title"] as? String {
-//            print("Title: \(title)")
-//            
-//            if(title == "Session Reminder" || title == "reminder"){
-//                
-//            }
-//        } 
         else if let userInfo = userInfo as? [String: Any],
              let type = userInfo["type"] as? String {
               print("Type: \(type)")
             if(type == "Session Reminder" || type == "reminder"){
                 if let session_id = userInfo["session_id"] as? String, let session_name = userInfo["session_name"] as? String {
-//                    , let notificationString = userInfo?["gcm.notification.data"] as? String {
-//                    let notificationData = convertToDictionary(text: notificationString)
                     if let bookingId = userInfo["booking_id"] as? String, let bodyMessage = userInfo["body"] as? String, let rescheduleCount = userInfo["reschedule_count"] as? String, let paymentIdSTr = userInfo["payment_id"] as? String, let chargeIdStr = userInfo["charge_id"] as? String, let amountSTr = userInfo["amount"] as? String, let bookingDateStr = userInfo["booking_date"] as? String{
-                        print(session_id,session_name,rescheduleCount)
 
                         self.performAttendingAlert(name: session_name, id: session_id,message: bodyMessage, bookingId: bookingId, rescheduleCount: rescheduleCount, amount: amountSTr, payment_id: paymentIdSTr, charge_id: chargeIdStr, bookingDateStr: bookingDateStr)
                     }
@@ -242,27 +216,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                 return nil
             }
     
-//    func checkLoginStatus() {
-//        if SaveToDefaults().getAccessToken() == nil || SaveToDefaults().getAccessToken() == "" {
-//            if SaveToDefaults().getIsNew() == nil || SaveToDefaults().getIsNew() == false {
-////                let vc = OnboardingVC.navigation()
-////                window?.rootViewController = vc
-////                window?.makeKeyAndVisible()
-//                setOnboardingVC()
-//            } else{
-////                let vc = LoginVC.navigation()
-////                window?.rootViewController = vc
-////                window?.makeKeyAndVisible()
-//                setLoginVC()
-//            }
-//        } else {
-////            let vc = TabBarControllerViewController.navigation()
-////            window?.rootViewController = vc
-////            window?.makeKeyAndVisible()
-//            setTabBarControllerVC()
-//        }
-//    }
-    
     func setOnboardingVC(){
         let vc = onboarding.instantiateViewController(withIdentifier: "OnboardingVC") as! OnboardingVC
         self.navigation = UINavigationController(rootViewController: vc)
@@ -298,19 +251,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }
-        
-//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        print("didRegisterForRemoteNotificationsWithDeviceToken")
-//        Messaging.messaging().setAPNSToken(deviceToken, type: .sandbox)
-//        Messaging.messaging().setAPNSToken(deviceToken, type: .prod)
-//        Messaging.messaging().token { (token, error) in
-//               if let error = error {
-//                   print("Error fetching remote instance ID: \(error.localizedDescription)")
-//               } else if let token = token {
-//                   UserDefaults.standard.set(token, forKey:"deviceToken")
-//               }
-//           }
-//    }
     
     //MARK: - Function For Open URL
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
@@ -319,9 +259,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         //Auth.auth().canHandle(url)
         return  facebookDidHandle || googleDidHandle
     }
-    
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-//    }
     
     func applicationWillResignActive(_ application: UIApplication) {
     }
@@ -366,11 +303,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     }
         
     func performAttendingAlert(name : String, id : String, message:String, bookingId: String, rescheduleCount: String, amount: String, payment_id: String, charge_id: String, bookingDateStr: String){
-//        let viewObj = ReminderView.initWith(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
-//        viewObj?.id = id
-//       viewObj?.titleLbl.text = R.string.localizable.willYouAttending(name)
-//        viewObj?.delegate = self
-//        window?.addSubview(viewObj!) // ashi1
         Helper.shared.showAlertWithCallback(buttonText: R.string.localizable.yes(), buttonText2: R.string.localizable.no(), title: R.string.localizable.notificationtitle(), message: message, controller: window?.rootViewController ?? UIViewController()) { [weak self] result in
             guard let self else{return}
             if result{
@@ -405,7 +337,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                                 vc.controllerId = 1
                                 vc.isFromReschedule = false // at first it was false
                                 vc.isFromRescheduleNo = true // at first it was true - both changed due to client requirement
-        //                                SaveToDefaults().setSessionTimeId(name: self.homevm.model?.all_result?[indexPath.row].session_image)
                                 self.navigation.pushViewController(vc, animated: true)
                             }else{
                                 print("no ")
@@ -466,7 +397,6 @@ extension AppDelegate : ReminderViewYesProtocol{
     }
 }
 
-//
 func getAPIKeyFromPlist() -> String? {
     if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
        let plist = NSDictionary(contentsOfFile: path),

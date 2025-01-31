@@ -49,13 +49,11 @@ class EventsViewController: BaseViewController {
         vm.delegate = self
         self.setCollectionVw()
         loadApi(offset: "0")
-       // self.setCollectionVw()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadApi(offset: "0")
-//        self.setCollectionVw()
     }
 }
 
@@ -145,7 +143,6 @@ extension EventsViewController {
             floawLayout.sideItemAlpha = 0.9
             floawLayout.spacingMode = .fixed(spacing: 10)
             colectionVw.collectionViewLayout = floawLayout
-           // self.colectionVw.reloadData()
         }
     
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -204,7 +201,6 @@ extension EventsViewController {
     private func loadApi(offset: String) {
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
             self.vm.getActiveEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)", offset: offset)
-            //self.vm.getHistoryEventApi(user_id: userid, latitude: "\(lat)", longitude: "\(lng)")
         }
     }
 }
