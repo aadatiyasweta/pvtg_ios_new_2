@@ -47,8 +47,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         
 //        GMSPlacesClient.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
 //        GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
-    // Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
-     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
+     Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
+     //Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
         checkLoginStatus()
         return true
@@ -317,7 +317,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
                             vc.isFromReschedule = true
                             vc.rescheduleCountStr = rescheduleCount
                            // vc.url = cancelPolicy
-                            vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html" // development
+//                            vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html" // development // for test
+                            vc.url = "https://dharma.services/late_fee.html" // for live
                             vc.isComingCancelBooking = false
                             self.navigation.pushViewController(vc, animated: true)
                         }else{

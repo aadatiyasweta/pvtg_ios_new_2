@@ -137,7 +137,8 @@ class NotificationVC: BaseViewController {
                             vc.isFromReschedule = true
                             vc.rescheduleCountStr = rescheduleCount
                             //vc.url = cancelPolicy
-                            vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html"
+//                            vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html" // for test
+                            vc.url = "https://dharma.services/late_fee.html" // for live
                             vc.isComingCancelBooking = false
                             self.navigationController?.pushViewController(vc, animated: true)
                         }else{

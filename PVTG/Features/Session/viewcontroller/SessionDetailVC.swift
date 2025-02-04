@@ -1113,8 +1113,8 @@ extension SessionDetailVC: GetResponse {
        // self.navigationController?.popViewController(animated: true)
         let vc = PrivacyPolicyVC.instance()
                 vc.type = "Cancellation Policy"
-                //vc.url = "http://dharma.services/cancel_policy.html" // // live
-            vc.url = "https://techugoserver.info/pvtg_dev/cancel_policy.html" // development
+                vc.url = "http://dharma.services/cancel_policy.html" // // live
+          //  vc.url = "https://techugoserver.info/pvtg_dev/cancel_policy.html" // development
                 self.navigationController?.pushViewController(vc, animated: true)
     }
     

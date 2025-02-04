@@ -9,7 +9,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-//new deve base url -- https://techugoserver.info/pvtg_dev/api/v1/
 SLASH = /
-BASE_URL = http:$(SLASH)/dharma.services/api/v1/
-SOCKET_URL = http:$(SLASH)/54.245.144.158:5040
+BASE_URL = https:$(SLASH)/dharma.services/api/v1/
+//https://dharma.services/api/v1/
+SOCKET_URL = https:$(SLASH)/dharma.services:2263  //https://dharma.services:2263

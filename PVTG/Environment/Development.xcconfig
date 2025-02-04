@@ -10,7 +10,9 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 SLASH = /
 //BASE_URL = http:$(SLASH)/54.245.144.158/pvtg_dev/api/v1/ old url
+//BASE_URL = https:$(SLASH)/techugoserver.info/pvtg_dev/api/v1/ // new Develpoment -2025
 BASE_URL = https:$(SLASH)/techugoserver.info/pvtg_dev/api/v1/
+
 //SOCKET_URL = http:$(SLASH)/54.245.144.158:5632 // old url
 
 SOCKET_URL = https:$(SLASH)/techugoserver.info:5632

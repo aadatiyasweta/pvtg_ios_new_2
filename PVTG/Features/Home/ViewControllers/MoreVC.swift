@@ -89,7 +89,9 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
   case 6:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
-   vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html" // late fee url
+//   vc.url = "https://techugoserver.info/pvtg_dev/late_fee.html" // late fee url - for test
+      
+      vc.url = "https://dharma.services/late_fee.html" // for live url
       vc.isComingCancelBooking = false
    self.navigationController?.pushViewController(vc, animated: true)
   case 7:
