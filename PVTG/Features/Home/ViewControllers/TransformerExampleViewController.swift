@@ -32,6 +32,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     var level:String = "Medium"
     var closureOK : (String,String) -> () = { _,_  in}
     var fromSignUp = false
+    var getCategoryId = [String]()
     
     fileprivate let transformerTypes: [FSPagerViewTransformerType] = [.crossFading,
                                                                       .zoomOut,
@@ -143,6 +144,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.backgroundColor = .clear
         cell.pageViewTag = pagerView.tag
+        //cell.selectedBackgroundView?.layer.backgroundColor = UIColor.blue.cgColor
         return cell
     }
     
@@ -151,6 +153,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         let id = self.vm.model?.result?[index].category_id ?? ""
         if !selectedCategoryArr.contains(where: {$0.category_id == id}){
             self.selectedCategoryArr.append(SelectedInterest(category_image: self.vm.model?.result?[index].category_image ?? "", category_name: self.vm.model?.result?[index].category_name ?? "", category_id: self.vm.model?.result?[index].category_id ?? ""))
+            
             colectionVw.reloadData()
             colectionVw.scrollToItem(at: IndexPath.init(row: selectedCategoryArr.count-1, section: 0), at: .bottom, animated: true)
             // self.lblCount.text = "\(selectedCategoryArr.count)"
@@ -160,7 +163,9 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         if index == self.selectedCtaegory {
+            print("yes")
         } else {
+            print("no")
         }
         pagerView.deselectItem(at: index, animated: true)
         pagerView.scrollToItem(at: index, animated: true)
@@ -224,6 +229,12 @@ extension TransformerExampleViewController: LoadingCategory {
     
     func reloaddata() {
         lblCount.text = "\(self.vm.model?.result?.count ?? 0)"
+//        for i in 0..<(self.vm.model?.result?.count ?? 0){
+//            self.getCategoryId.append(self.vm.model?.result?[i].category_id ?? "")
+//        }
+//        let intCategoryId = getCategoryId.compactMap { Int($0) }
+//        print(intCategoryId)
+        
         for val in self.vm.model?.selected_category ?? []{
             self.selectedCategoryArr.append(SelectedInterest(category_image: val.category_image ?? "", category_name: val.category_name ?? "", category_id: val.category_id ?? ""))
         }
@@ -236,6 +247,13 @@ extension TransformerExampleViewController: LoadingCategory {
             self.btnDone.setTitle(R.string.localizable.done(), for: .normal)
         }
         colectionVw.reloadData()
+//        var index = -2
+//        if index == self.selectedCtaegory {
+//            print("yes")
+//        } else {
+//            print("no")
+//        }
+//        pagerView.deselectItem(at: index, animated: true)
         pagerView.reloadData()
     }
 }

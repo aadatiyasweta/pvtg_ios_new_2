@@ -9,9 +9,9 @@ import UIKit
 let topSearch = "https://dharma.services/admin_assets/img/topsearch.png" // new Live url
 let allHomeData = ""
 //let testingServer = "http://54.245.144.158/pvtg_dev/api/v1/" // development
-//let testingServer = "https://techugoserver.info/pvtg_dev/api/v1/" // new development url - 2025
+let testingServer = "https://techugoserver.info/pvtg_dev/api/v1/" // new development url - 2025
 
-let testingServer = "https://dharma.services/api/v1/" // live
+//let testingServer = "https://dharma.services/api/v1/" // live
 let stripeTestPublishableKey = "pk_test_51KLVfEFKDEQWO0TJyXCr934HPHv6W2pl1kBJiVZnYBIti9OXCMbt3gt5Wzen5wg2tRaCikH81qLI2TFiAMH5WLSf009SjBYjnl" // for test
 let stripeSecretKey = "sk_test_51KLVfEFKDEQWO0TJrKqJfkq4CRtvcEwStccSrsYhM8tWaFxNAfX7VcepIXpbcUA0xAbPlReKxnuCcZEnFc9M5Uhd00PrDGpCFT" // for test
 let stripeLivePublishKey = "pk_live_51KLVfEFKDEQWO0TJD37bD6aaeD9D0zRixYanno17NoNB2anCHC3P6zwJLq5BH1b97XFX0M0RnC3nIPewmbNMb6Mi00H8JNUV0H" // dfor live

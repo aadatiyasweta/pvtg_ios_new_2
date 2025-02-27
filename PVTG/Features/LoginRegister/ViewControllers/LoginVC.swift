@@ -75,6 +75,9 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     @IBAction func tapForgotPassword(_ sender: UIButton) {
         let vc = ForgotPaswordVC.instance()
         self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = TransformerExampleViewController.instance()
+//        vc.fromSignUp = true
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapSubmit(_ sender: UIButton) {

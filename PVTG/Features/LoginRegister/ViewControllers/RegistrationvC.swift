@@ -48,6 +48,10 @@ class RegistrationvC: BaseViewController {
     @IBOutlet weak var lblmobileErr: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
+    @IBOutlet weak var lblFullErr: UILabel!
+    
+    @IBOutlet weak var addphotoLbl: UILabel!
+    
     //MARK: - Properties
     var regVM = RegistrationVM()
     var loginVM = LoginVM()
@@ -58,6 +62,7 @@ class RegistrationvC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextfield()
+        addphotoLbl.isHidden = false
         regVM.delegate = self
         if socialData["id"] == ""||socialData["id"] == nil {
             self.txfPassword.isHidden = false
@@ -170,6 +175,12 @@ extension RegistrationvC {
             self.lblEmailErr.text = validEmailMessage
             return false
         }
+        if txffullName.text == "" {
+            self.lblFullErr.isHidden = false
+            self.lblFullErr.text = emptyNameMessage
+            return false
+        }
+
         if txfPassword.isHidden == false {
         if txfPassword.text == ""{
             self.lblPaswdErr.isHidden = false
@@ -203,6 +214,8 @@ extension RegistrationvC {
         self.lblConfrmPaswdErr.text = ""
         self.lblmobileErr.isHidden = true
         self.lblmobileErr.text = ""
+        self.lblFullErr.isHidden = true
+        self.lblFullErr.text = ""
     }
     
     //MARK:- Textfield Properties
@@ -234,9 +247,9 @@ extension RegistrationvC {
     private func fetchUserData() {
         self.txfPassword.isHidden = true
         self.txfconfirmpaswd.isHidden = true
-//        if(socialData["FullName"] != "" || socialData["FullName"] != " " || socialData["FullName"] != "  " || socialData["FullName"] != "   "){
-//            self.txffullName.text = socialData["FullName"]
-//        }
+        if(socialData["FullName"] != "" || socialData["FullName"] != " " || socialData["FullName"] != "  " || socialData["FullName"] != "   "){
+            self.txffullName.text = socialData["FullName"]
+        }
        //
         self.txfEmail.text = socialData["Email_Id"]
         if self.txfEmail.text != "" {
@@ -299,13 +312,17 @@ extension RegistrationvC {
             if info[.originalImage] != nil {
                 
                 if let image = info[.originalImage] as? UIImage{
+                    self.addphotoLbl.isHidden = true
                     self.imageData = image.jpegData(compressionQuality: 0.5) ?? Data()
                     DispatchQueue.main.async {
                         self.userImage.image = image
                         self.userImage.contentMode = .scaleAspectFill
+                        
                     }
                     
                 }
+            }else{
+                self.addphotoLbl.isHidden = false
             }
             
         }

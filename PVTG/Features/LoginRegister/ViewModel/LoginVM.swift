@@ -174,10 +174,10 @@ class LoginVM: BaseVm {
             self.dismiss()
             if let json = response{
                 //debugPrint(json)
-//                let data = try? json["result"].rawData()
-//                let jsonDecoder = JSONDecoder()
-//                let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
-//                self.model = responseModel
+                let data = try? json["result"].rawData()
+                let jsonDecoder = JSONDecoder()
+                let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
+                self.model = responseModel
                 if json["statusCode"] == 200 {
                     let data = try? json["result"].rawData()
                     let jsonDecoder = JSONDecoder()
@@ -188,7 +188,7 @@ class LoginVM: BaseVm {
                     SaveToDefaults().setAccessToken(value: self.model?.user_token)
                     SaveToDefaults().setEmail(value: self.model?.email)
                     self.delegate?.loginSuccess()
-                }else if json["statusCode"] == 202{
+                }else if json["statusCode"] == 202 {
                     let data = try? json["result"].rawData()
                     let jsonDecoder = JSONDecoder()
                     let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)

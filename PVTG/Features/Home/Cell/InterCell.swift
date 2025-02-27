@@ -14,6 +14,7 @@ class InterCell: FSPagerViewCell {
     @IBOutlet weak var lbl: UILabel!
     @IBOutlet weak var img: UIImageView!
     
+    @IBOutlet weak var bgview: UIView!
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "InterCell"
     class func nib()-> UINib {
@@ -24,6 +25,7 @@ class InterCell: FSPagerViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //bgview.backgroundColor = .yellow
     }
     
 }

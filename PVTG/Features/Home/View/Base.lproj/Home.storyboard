@@ -212,7 +212,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EgR-BU-2Bl">
-                                <rect key="frame" x="10" y="70" width="310" height="222"/>
+                                <rect key="frame" x="10" y="70" width="310" height="228"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="23m-Sz-4S8">
                                     <size key="itemSize" width="50" height="50"/>
@@ -223,7 +223,7 @@
                                 <cells/>
                             </collectionView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Interest" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KN-Ax-CER">
-                                <rect key="frame" x="24" y="166.5" width="272" height="29.5"/>
+                                <rect key="frame" x="24" y="169.5" width="272" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -312,7 +312,7 @@
                             <constraint firstItem="2KN-Ax-CER" firstAttribute="leading" secondItem="LAB-Q0-gzy" secondAttribute="leading" constant="24" id="gOe-PW-KAt"/>
                             <constraint firstAttribute="trailing" secondItem="vot-Gs-cGo" secondAttribute="trailing" id="hgv-T3-AmM"/>
                             <constraint firstItem="EgR-BU-2Bl" firstAttribute="top" secondItem="Agk-yh-Pm9" secondAttribute="bottom" constant="5" id="j6g-6H-d5V"/>
-                            <constraint firstItem="bmK-Me-WYh" firstAttribute="top" secondItem="EgR-BU-2Bl" secondAttribute="bottom" constant="8" id="lbo-Pz-5D9"/>
+                            <constraint firstItem="bmK-Me-WYh" firstAttribute="top" secondItem="EgR-BU-2Bl" secondAttribute="bottom" constant="2" id="lbo-Pz-5D9"/>
                             <constraint firstItem="zXJ-65-iSK" firstAttribute="centerY" secondItem="crF-m2-F7f" secondAttribute="centerY" id="qih-WQ-Nvc"/>
                             <constraint firstItem="efH-Hw-rxl" firstAttribute="trailing" secondItem="PDd-oj-Npn" secondAttribute="trailing" id="tVu-BZ-ynu"/>
                             <constraint firstItem="efH-Hw-rxl" firstAttribute="bottom" secondItem="LAB-Q0-gzy" secondAttribute="bottom" id="y5i-9F-SC1"/>
@@ -1337,7 +1337,7 @@
         <image name="guideGrey" width="19" height="19.5"/>
         <image name="home" width="17" height="17"/>
         <image name="homeGrey" width="17" height="17"/>
-        <image name="interestBack" width="187.5" height="406"/>
+        <image name="interestBack" width="375" height="812"/>
         <image name="loc" width="10" height="12.5"/>
         <image name="logoLi" width="97.5" height="98"/>
         <image name="minimalLeft2X" width="7.5" height="13.5"/>

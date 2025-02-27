@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,6 +18,12 @@
         </array>
         <array key="Montserrat-SemiBold.ttf">
             <string>Montserrat-SemiBold</string>
+        </array>
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
         </array>
     </customFonts>
     <scenes>
@@ -201,7 +208,7 @@
                                                     <constraint firstAttribute="width" constant="190" id="Ag5-sP-vUJ"/>
                                                     <constraint firstAttribute="height" constant="40" id="xqv-6d-adR"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="-16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Sign in with Google" image="shape4">
@@ -222,7 +229,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Wh4-lo-ytZ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="13" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Sign in with Apple" image="apple">
@@ -400,10 +407,19 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD PHOTO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKu-BG-qI5">
+                                                        <rect key="frame" x="5" y="71.666666666666686" width="87" height="17"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                                        <color key="textColor" name="GreyActionBtn"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="97" id="3lk-rg-i9Q"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AKu-BG-qI5" secondAttribute="trailing" constant="5" id="J9X-26-s7i"/>
+                                                    <constraint firstItem="AKu-BG-qI5" firstAttribute="centerY" secondItem="ahI-WE-D3H" secondAttribute="centerY" constant="30" id="Ku8-Lc-QOe"/>
+                                                    <constraint firstItem="AKu-BG-qI5" firstAttribute="leading" secondItem="ahI-WE-D3H" secondAttribute="leading" constant="5" id="RpX-40-ZLX"/>
                                                     <constraint firstItem="5Po-J6-Pq8" firstAttribute="leading" secondItem="ahI-WE-D3H" secondAttribute="leading" id="b2t-eq-2pm"/>
                                                     <constraint firstAttribute="height" constant="100" id="hCn-eW-xCj"/>
                                                     <constraint firstAttribute="trailing" secondItem="5Po-J6-Pq8" secondAttribute="trailing" id="lE7-S1-OKM"/>
@@ -669,9 +685,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addphotoLbl" destination="AKu-BG-qI5" id="CHj-8q-wyz"/>
                         <outlet property="btnSubmit" destination="2kr-7h-bf8" id="R0h-Bb-Nwp"/>
                         <outlet property="lblConfrmPaswdErr" destination="AjF-sU-bYM" id="7bF-Pq-e8p"/>
                         <outlet property="lblEmailErr" destination="YC0-ly-5Us" id="uaL-c5-HUF"/>
+                        <outlet property="lblFullErr" destination="q5N-0u-qqm" id="zv6-uB-YWo"/>
                         <outlet property="lblPaswdErr" destination="AnO-yQ-U2R" id="keh-xE-EEF"/>
                         <outlet property="lblmobileErr" destination="mOi-7Z-Mn1" id="aCP-5m-r6e"/>
                         <outlet property="txfEmail" destination="Nd4-AL-cu4" id="kY8-Vt-ZOm"/>
@@ -1128,6 +1146,9 @@
         <image name="shape3" width="6.3333334922790527" height="13.333333015441895"/>
         <image name="shape4" width="17.333333969116211" height="17.333333969116211"/>
         <image name="yoga" width="36" height="33.333332061767578"/>
+        <namedColor name="GreyActionBtn">
+            <color red="0.3919999897480011" green="0.3919999897480011" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
