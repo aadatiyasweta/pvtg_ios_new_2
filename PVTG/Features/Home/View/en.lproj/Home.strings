@@ -27,10 +27,10 @@
 "SHI-lC-CLn.title" = "Events";
 
 /* Class = "UIButton"; normalTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
-"STU-Np-GOX.normalTitle" = "Use Dharma Points";
+"STU-Np-GOX.normalTitle" = "Use Points";
 
 /* Class = "UIButton"; selectedTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
-"STU-Np-GOX.selectedTitle" = "Use Dharma Points";
+"STU-Np-GOX.selectedTitle" = "Use Points";
 
 /* Class = "UILabel"; text = "Total Fare"; ObjectID = "UNq-AZ-pHi"; */
 "UNq-AZ-pHi.text" = "Total Fare";

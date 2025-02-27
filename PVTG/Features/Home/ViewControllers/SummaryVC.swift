@@ -38,6 +38,11 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var rewardPicImgBgVw: UIView!
     @IBOutlet weak var rewardCupBgVw: UIView!
     
+    @IBOutlet weak var sessionTypLbl: UILabel!
+    
+    @IBOutlet weak var sesionTimeLbl: UILabel! // 8AM-8PM
+    @IBOutlet weak var sesionDateLbl: UILabel! // 20 Feb 2025
+    
     //MARK: - Properties
     var onboardingVm = OnboardingVm()
     var bookingDetails: SessionDetailResult?
@@ -68,8 +73,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        pointsBgVw.layer.borderWidth = 1
-        pointsBgVw.layer.borderColor = UIColor.white.cgColor
+        //pointsBgVw.layer.borderWidth = 1
+        //pointsBgVw.layer.borderColor = UIColor.white.cgColor
         
         rewardPicImgBgVw.layer.cornerRadius = 5
         rewardPicImgBgVw.clipsToBounds = true
@@ -83,7 +88,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 
         discountpriceTxtfld.inputView = discountValuePicker
         
-        self.discountViewHeightCons.constant = 50
+        self.discountViewHeightCons.constant = 30
         self.onboardingVm.delegate = self
         self.vm.bookingDelegate = self
         DispatchQueue.main.async {
@@ -93,6 +98,28 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         btnAvlblPoints.isUserInteractionEnabled = false
         self.setDta()
         // Do any additional setup after loading the view.
+        sessionTypLbl.text = self.selectedSessionSTr
+        let timeZoneIdentifier = TimeZone.current.identifier
+        print(timeZoneIdentifier)
+        if let time1 = self.customModel?.booking_from_time, let toTime = self.customModel?.booking_to_time {
+            let time1Str = changeDateFormatForReminder(date: time1, fromFormat: "HH:mm", toFormat: "hha", currentTimeZone: timeZoneIdentifier)
+            let time2Str = changeDateFormatForReminder(date: toTime, fromFormat: "HH:mm", toFormat: "hha", currentTimeZone: timeZoneIdentifier)
+            self.sesionTimeLbl.text = "\(time1Str) - \(time2Str)"
+        }
+        //sesionTimeLbl.text = (self.customModel?.booking_from_time ?? "") + (self.customModel?.booking_to_time ?? "")
+        
+        let inputFormatter = DateFormatter()
+            inputFormatter.dateFormat = "yyyy-MM-dd"
+            
+            if let date = inputFormatter.date(from: self.customModel?.booking_date ?? "") {
+                let outputFormatter = DateFormatter()
+                outputFormatter.dateFormat = "d MMM yyyy"
+                let strr = outputFormatter.string(from: date)
+                sesionDateLbl.text = strr
+            }
+        
+        //sesionDateLbl.text = self.customModel?.booking_date ?? ""
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -176,12 +203,13 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
                 //let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // added by ashitesh
                 let val = Int(self.ticketModel?.total_point ?? "0")! - self.selectedPoint // added by ashitesh
-                self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal) // added by ashitesh
+                self.btnAvlblPoints.setTitle("\(val)", for: .normal)
+                /*self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)*/ // added by ashitesh
                 self.vwAdddashedBordr.alpha = 0.5
                 self.btnUseNow.alpha = 0.5
                 self.btnUseNow.isUserInteractionEnabled = false
                 self.discountpriceTxtfld.isUserInteractionEnabled = false
-                self.discountViewHeightCons.constant = 50
+                self.discountViewHeightCons.constant = 30
             }
         }
         }
@@ -248,14 +276,14 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             self.btnUseNow.alpha = 1
             self.btnUseNow.isUserInteractionEnabled = true
             self.discountpriceTxtfld.isUserInteractionEnabled = true
-            self.discountViewHeightCons.constant = 50
+            self.discountViewHeightCons.constant = 30
             if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
                 self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
                 self.lblPoints.text = "\(self.firstPoints) \(R.string.localizable.pts())"
                 self.selectedPoint = self.firstPoints
 //                let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints
                 let val = Int(self.ticketModel?.total_point ?? "0")! // commented by ashitesh
-                self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+                self.btnAvlblPoints.setTitle("\(val)", for: .normal)
             }else{
                 if self.secondPointDiscount == 0{
                     self.Discount.text = R.string.localizable.free()
@@ -266,7 +294,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 self.selectedPoint = self.secondPoins
 //                let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // commented by ashitesh
                 let val = Int(self.ticketModel?.total_point ?? "0")!
-                self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+                self.btnAvlblPoints.setTitle("\(val)", for: .normal)
             }
 //            if Int(self.ticketModel?.total_point ?? "0")! < self.selectedPoint{
 //                showAlertView("Your available points is low", title: appName)
@@ -280,9 +308,9 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
            self.btnUseNow.alpha = 0.5
             self.btnUseNow.isUserInteractionEnabled = false
             self.discountpriceTxtfld.isUserInteractionEnabled = false
-            self.discountViewHeightCons.constant = 50
+            self.discountViewHeightCons.constant = 30
             let val = (self.ticketModel?.total_point)!
-            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
+            self.btnAvlblPoints.setTitle("\(val)", for: .normal)
             self.setOriginalPriceWithOutDiscount()
         }
     }
@@ -316,7 +344,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 self.btnUseNow.alpha = 0.5
                 self.btnUseNow.isUserInteractionEnabled = false
                 self.discountpriceTxtfld.isUserInteractionEnabled = false
-                self.discountViewHeightCons.constant = 50
+                self.discountViewHeightCons.constant = 30
             }
         }
     }
@@ -327,7 +355,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         self.btnUseNow.alpha = 0.5
         self.btnUseNow.isUserInteractionEnabled = true
         self.discountpriceTxtfld.isUserInteractionEnabled = true
-        self.discountViewHeightCons.constant = 50
+        self.discountViewHeightCons.constant = 30
         if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
             self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
             self.lblPoints.text = "\(self.firstPoints) \(R.string.localizable.pts())"
@@ -368,7 +396,8 @@ extension SummaryVC {
             }
             self.lblCategry.text = self.bookingDetails?.category_name ?? ""
             loadImage(url, self.imgSession, activity: nil, defaultImage: nil)
-            self.lblSessionNmae.text = name
+            var stringCapitalized = name.uppercased
+            self.lblSessionNmae.text = stringCapitalized()
             self.vwRating.rating = Double(rating)!
             let value = Double(dist) ?? 0.0
             let doubleStr = String(format: "%.2f", value)
@@ -401,7 +430,7 @@ extension SummaryVC {
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
             }
-            self.btnAvlblPoints.setTitle("\(pt ?? 0) \(R.string.localizable.ptsavailable())", for: .normal)
+            self.btnAvlblPoints.setTitle("\(pt ?? 0)", for: .normal)
         }
     }
     
