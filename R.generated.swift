@@ -1573,6 +1573,7 @@ struct _R {
         if UIKit.UIImage(named: "shape3", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'shape3' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "shape4", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'shape4' is used in storyboard 'Login', but couldn't be loaded.") }
         if UIKit.UIImage(named: "yoga", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'yoga' is used in storyboard 'Login', but couldn't be loaded.") }
+        if UIKit.UIColor(named: "GreyActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'GreyActionBtn' is used in storyboard 'Login', but couldn't be loaded.") }
         if changepaswdVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'changepaswdVC' could not be loaded from storyboard 'Login' as 'ChangepaswdVC'.") }
         if forgotPaswordVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'forgotPaswordVC' could not be loaded from storyboard 'Login' as 'ForgotPaswordVC'.") }
         if loginVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'loginVC' could not be loaded from storyboard 'Login' as 'LoginVC'.") }

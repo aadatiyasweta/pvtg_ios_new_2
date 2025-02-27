@@ -87,6 +87,9 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
             SaveToDefaults().setIsNew(isNew: true)
                   self.loginVM.loginApi(email: self.txfEmail.text ?? "", password: self.txfPassword.text ?? "")
         }
+        
+//        let numbers = [0]
+//              let _ = numbers[1]
     }
     
     @IBAction func tapLoginWithFb(_ sender: UIButton) {
