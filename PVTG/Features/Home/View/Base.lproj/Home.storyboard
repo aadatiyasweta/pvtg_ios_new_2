@@ -837,7 +837,7 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.37647058823529411" green="0.40392156862745099" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.43137254899999999" green="0.41568627450000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="jb2-ss-OoV" firstAttribute="top" secondItem="72L-lD-Evs" secondAttribute="bottom" constant="10" id="0jE-Jt-xOp"/>
                                                     <constraint firstItem="STU-Np-GOX" firstAttribute="top" secondItem="jb2-ss-OoV" secondAttribute="bottom" constant="60" id="0qb-Oy-B3f"/>
