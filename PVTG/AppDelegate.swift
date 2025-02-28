@@ -40,15 +40,11 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             GMSServices.provideAPIKey(apiKey)
             GMSPlacesClient.provideAPIKey(apiKey)
         }
-//        FBSDKCoreKit.ApplicationDelegate.shared.application(
-//                    application,
-//                    didFinishLaunchingWithOptions: launchOptions
-//                )
+
+        // for Stripe Payment - Live - development code
+     //Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
+     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         
-//        GMSPlacesClient.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
-//        GMSServices.provideAPIKey("AIzaSyC6hyx1WnYOhTnbbvdYR-f7nWvVqyHgn2k")
-     Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
-     //Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
         checkLoginStatus()
         return true
