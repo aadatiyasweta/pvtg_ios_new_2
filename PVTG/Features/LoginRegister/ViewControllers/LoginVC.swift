@@ -92,6 +92,10 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
 //              let _ = numbers[1]
     }
     
+    func doubleValue(number: inout Int) {
+        number *= 2
+    }
+    
     @IBAction func tapLoginWithFb(_ sender: UIButton) {
         doCodeForFacebookLogin()
     }

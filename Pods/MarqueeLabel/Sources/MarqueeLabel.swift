@@ -630,7 +630,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     
     private func updateAndScroll() {
         // Do not automatically begin scroll if tapToScroll is true
-        //updateAndScroll(overrideHold: false) // ashitesh
+        updateAndScroll(overrideHold: false) // ashitesh
     }
     
     private func updateAndScroll(overrideHold: Bool) {
