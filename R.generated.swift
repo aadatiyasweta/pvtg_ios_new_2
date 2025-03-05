@@ -1687,7 +1687,9 @@ struct _R {
         if UIKit.UIImage(named: "cross", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'cross' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in storyboard 'Session', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "marker", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'marker' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "minimalLeft2X", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'minimalLeft2X' is used in storyboard 'Session', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "polylineMarker", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'polylineMarker' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in storyboard 'Session', but couldn't be loaded.") }
         if contactUsViewVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'contactUsViewVC' could not be loaded from storyboard 'Session' as 'ContactUsViewVC'.") }
         if searchSessionVC() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'searchSessionVC' could not be loaded from storyboard 'Session' as 'SearchSessionVC'.") }

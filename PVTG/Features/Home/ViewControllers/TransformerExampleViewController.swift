@@ -98,6 +98,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         }
         let index = self.typeIndexx
         self.typeIndexx = index // Manually trigger didSet
+        colectionVw.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
     }
     
     func roundedTop(targetView:UIView?, desiredCurve:CGFloat?) {

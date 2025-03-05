@@ -182,8 +182,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             iIconTextLbl.text = "Los intervalos de tiempo de 2 horas en este calendario no afectarán la duración de la sesión que haya elegido anteriormente."
             gotItBtn.setTitle("¡Entiendo!", for: .normal)
         }
-        iIconBgVw.isHidden = false
-        iIconBgVw.layer.cornerRadius = iIconBgVw.frame.size.height/2
+//        iIconBgVw.isHidden = false
+//        iIconBgVw.layer.cornerRadius = iIconBgVw.frame.size.height/2
         self.backBtn.isHidden = false
         cancelTagView.isHidden = true
         isLoop = false
@@ -205,11 +205,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         btnToPrev.isHidden = true
         btnToCurrent.isHidden = true
         btnToNext.isHidden = true
-            self.vwmap.isHidden = false
+//            self.vwmap.isHidden = false
             self.vwcalendar.isHidden = true
             self.vwCollection.isHidden = true
             self.vwColectionHeightConstarint.constant = 0
-            self.vwMapHeightConstraint.constant = 256
+//            self.vwMapHeightConstraint.constant = 256
 //            self.vwCalendarHeightConstraint.constant = 300
             self.vwCalendarHeightConstraint.constant = 0
             self.lblDayWithDate.isHidden = true
@@ -237,11 +237,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             btnToPrev.isHidden = false
             btnToCurrent.isHidden = false
             btnToNext.isHidden = false
-            self.vwmap.isHidden = false
+//            self.vwmap.isHidden = false
             self.vwcalendar.isHidden = false
             self.vwCollection.isHidden = false
             self.vwColectionHeightConstarint.constant = 70
-            self.vwMapHeightConstraint.constant = 256
+//            self.vwMapHeightConstraint.constant = 256
             self.vwCalendarHeightConstraint.constant = 300
             self.lblDayWithDate.isHidden = false
             self.lblNoTime.isHidden = true
@@ -255,11 +255,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             btnToPrev.isHidden = true
             btnToCurrent.isHidden = true
             btnToNext.isHidden = true
-            self.vwmap.isHidden = true
+//            self.vwmap.isHidden = true
             self.vwcalendar.isHidden = true
             self.vwCollection.isHidden = true
             self.vwColectionHeightConstarint.constant = 0
-            self.vwMapHeightConstraint.constant = 0
+//            self.vwMapHeightConstraint.constant = 0
             self.vwCalendarHeightConstraint.constant = 0
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
@@ -273,11 +273,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             btnToPrev.isHidden = true
             btnToCurrent.isHidden = true
             btnToNext.isHidden = true
-            self.vwmap.isHidden = true
+//            self.vwmap.isHidden = true
             self.vwcalendar.isHidden = true
             self.vwCollection.isHidden = true
             self.vwColectionHeightConstarint.constant = 0
-            self.vwMapHeightConstraint.constant = 0
+//            self.vwMapHeightConstraint.constant = 0
             self.vwCalendarHeightConstraint.constant = 0
             self.lblDayWithDate.isHidden = true
             self.lblNoTime.isHidden = true
@@ -291,11 +291,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             btnToPrev.isHidden = false
             btnToCurrent.isHidden = false
             btnToNext.isHidden = false
-            self.vwmap.isHidden = false
+//            self.vwmap.isHidden = false
             self.vwcalendar.isHidden = false
             self.vwCollection.isHidden = false
             self.vwColectionHeightConstarint.constant = 70
-            self.vwMapHeightConstraint.constant = 256
+//            self.vwMapHeightConstraint.constant = 256
             self.vwCalendarHeightConstraint.constant = 300
             self.lblDayWithDate.isHidden = false
             self.lblNoTime.isHidden = false
@@ -405,6 +405,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.backBtn.isHidden = true
             self.vwbookTickets.animShow()
             self.vwToGetBlurEffect.addBlurEffect()
+            self.colectnVwSessionImage.addBlurEffect()
             self.btnToRemove.isHidden = false
         }
     }
@@ -437,13 +438,22 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    @IBAction func mapBtnTapped(_ sender: Any) {
-//        self.directions(lat: self.vm.model?.latitude ?? "", long: self.vm.model?.longitude ?? "")
+    @IBAction func btnSessionDetailTapped(_ sender: UIButton) {
         DispatchQueue.main.async(execute: {
             
-            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 700.0), animated: true)
+            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 320.0), animated: true)
         })
+    }
+    @IBAction func btnAboutPractitionerTapped(_ sender: UIButton) {
+        DispatchQueue.main.async(execute: {
+            
+            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 580), animated: true)
+        })
+    }
+    
+    @IBAction func mapBtnTapped(_ sender: Any) {
+        self.directions(lat: self.vm.model?.latitude ?? "", long: self.vm.model?.longitude ?? "")
+        
        
     }
     
@@ -467,12 +477,12 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         self.vwcalendar.setNeedsLayout()
         self.vwcalendar.layoutIfNeeded()
         
-        self.vwmap.isHidden = false
+//        self.vwmap.isHidden = false
         btnToPrev.isHidden = false
         btnToCurrent.isHidden = false
         btnToNext.isHidden = false
         self.vwColectionHeightConstarint.constant = 70
-        self.vwMapHeightConstraint.constant = 256
+//        self.vwMapHeightConstraint.constant = 256
         self.vwCalendarHeightConstraint.constant = 300
         self.lblDayWithDate.isHidden = false
         self.lblNoTime.isHidden = true
@@ -494,7 +504,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
     
     @IBAction func iIconBtnTaped(_ sender: Any) {
-        iIconBgVw.isHidden = false
+//        iIconBgVw.isHidden = false
     }
     @IBAction func btnToTapPrev(_ sender: UIButton) {
         moveCurrentpage(value: true)
@@ -557,11 +567,11 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     }
     
     @IBAction func gotItBtnTapped(_ sender: Any) {
-        iIconBgVw.isHidden = true
+//        iIconBgVw.isHidden = true
     }
     //MARK: - Handler action iIconBtnTapped
     @objc private func iIconBtnTapped(_ sender: UIButton) {
-        iIconBgVw.isHidden = false
+//        iIconBgVw.isHidden = false
     }
     
     @IBAction func btnTapToRemoveFromSuperview(_ sender: UIButton) {
@@ -569,6 +579,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.vwbookTickets.animHide()
             self.btnToRemove.isHidden = true
             self.vwToGetBlurEffect.removeBlurEffect()
+            self.colectnVwSessionImage.removeBlurEffect()
             self.backBtn.isHidden = false
         }
     }
@@ -1060,6 +1071,10 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             isLoop = true
             offeredCollView.reloadData()
             serviceTimeCollectionVw.reloadData()
+            DispatchQueue.main.async(execute: {
+                
+                self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 800), animated: true)
+            })
         }
     }
     
@@ -1160,11 +1175,11 @@ extension SessionDetailVC: GetResponse {
                     btnToPrev.isHidden = false
                     btnToCurrent.isHidden = false
                     btnToNext.isHidden = false
-                    self.vwmap.isHidden = false
+//                    self.vwmap.isHidden = false
                     self.vwcalendar.isHidden = false
                     self.vwCollection.isHidden = false
                     self.vwColectionHeightConstarint.constant = 70
-                    self.vwMapHeightConstraint.constant = 256
+//                    self.vwMapHeightConstraint.constant = 256
                     self.vwCalendarHeightConstraint.constant = 300
                     self.lblDayWithDate.isHidden = false
                     self.lblNoTime.isHidden = true
@@ -1209,6 +1224,7 @@ extension SessionDetailVC: GetResponse {
         self.vwCollection.reloadData()
         self.offeredCollView.reloadData()
         self.serviceTimeCollectionVw.reloadData()
+      
     }
     
     func reloadTime() {
@@ -1247,6 +1263,7 @@ extension SessionDetailVC: GetResponse {
         self.btnToRemove.isHidden = true
         self.backBtn.isHidden = false
         self.vwToGetBlurEffect.removeBlurEffect()
+        self.colectnVwSessionImage.removeBlurEffect()
         let vc = SummaryVC.instance()
         vc.bookingDetails = self.vm.model
         vc.totalTkt = self.lblTicketCount.text ?? ""
@@ -1264,6 +1281,7 @@ extension SessionDetailVC: GetResponse {
             self.btnToRemove.isHidden = true
             self.vwbookTickets.isHidden = true
             self.vwToGetBlurEffect.removeBlurEffect()
+            self.colectnVwSessionImage.removeBlurEffect()
             self.backBtn.isHidden = false
         }
     }
@@ -1271,7 +1289,7 @@ extension SessionDetailVC: GetResponse {
     //MARK: - METHOD TO RELOAD DATA
     func reloadData() {
         DispatchQueue.main.async {
-            self.SetMap()
+//            self.SetMap()
         }
         self.timeArr = self.vm.timeArr?.result ?? Array()
         if self.controllerId != 1{
