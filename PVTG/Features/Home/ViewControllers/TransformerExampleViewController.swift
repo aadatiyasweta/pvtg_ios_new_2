@@ -146,6 +146,12 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         cell.textLabel?.backgroundColor = .clear
         cell.pageViewTag = pagerView.tag
         //cell.selectedBackgroundView?.layer.backgroundColor = UIColor.blue.cgColor
+        let id = self.vm.model?.result?[index].category_id ?? ""
+        if selectedCategoryArr.contains(where: {$0.category_id == id}){
+            cell.selectedForegroundView?.layer.backgroundColor = UIColor(white: 0.2, alpha: 0.2).cgColor
+        }else{
+            cell.selectedForegroundView?.layer.backgroundColor = UIColor.clear.cgColor
+        }
         return cell
     }
     
@@ -157,6 +163,8 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
             
             colectionVw.reloadData()
             colectionVw.scrollToItem(at: IndexPath.init(row: selectedCategoryArr.count-1, section: 0), at: .bottom, animated: true)
+            pagerView.reloadData()
+//            pagerView.scrollToItem(at: index, animated: true)
             // self.lblCount.text = "\(selectedCategoryArr.count)"
         }else{
         }
@@ -168,8 +176,20 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         } else {
             print("no")
         }
-        pagerView.deselectItem(at: index, animated: true)
-        pagerView.scrollToItem(at: index, animated: true)
+//        let id = self.vm.model?.result?[index].category_id ?? ""
+//        if !selectedCategoryArr.contains(where: {$0.category_id == id}){
+//            self.selectedCategoryArr.append(SelectedInterest(category_image: self.vm.model?.result?[index].category_image ?? "", category_name: self.vm.model?.result?[index].category_name ?? "", category_id: self.vm.model?.result?[index].category_id ?? ""))
+//            
+//            colectionVw.reloadData()
+//            pagerView.reloadData()
+////            pagerView.scrollToItem(at: index, animated: true)
+////            colectionVw.scrollToItem(at: IndexPath.init(row: selectedCategoryArr.count-1, section: 0), at: .bottom, animated: true)
+//            // self.lblCount.text = "\(selectedCategoryArr.count)"
+//        }else{
+//        }
+//        pagerView.deselectItem(at: index, animated: true)
+//        colectionVw.reloadData()
+        
     }
 }
 
@@ -200,6 +220,7 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
                     self.lblNoInterest.isHidden = true
                     self.btnDone.setTitle(R.string.localizable.done(), for: .normal)
                 }
+                self.pagerView.reloadData()
             }
         }
         if self.selectedCategoryArr.count == 0{
@@ -229,7 +250,8 @@ extension TransformerExampleViewController: LoadingCategory {
     }
     
     func reloaddata() {
-        lblCount.text = "\(self.vm.model?.result?.count ?? 0)"
+//        lblCount.text = "\(self.vm.model?.result?.count ?? 0)"
+        lblCount.text = "Toggle Wheel"
 //        for i in 0..<(self.vm.model?.result?.count ?? 0){
 //            self.getCategoryId.append(self.vm.model?.result?[i].category_id ?? "")
 //        }

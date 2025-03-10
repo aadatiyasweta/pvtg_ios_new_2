@@ -195,14 +195,17 @@
                                     <action selector="clickOnBack" destination="A3S-49-eub" eventType="touchUpInside" id="6be-Pr-mNx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Select Interest" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crF-m2-F7f">
-                                <rect key="frame" x="53" y="37.5" width="118.5" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Select Interest Now or Later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crF-m2-F7f">
+                                <rect key="frame" x="53" y="27" width="150" height="41.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="rof-Fb-0gi"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXJ-65-iSK">
-                                <rect key="frame" x="269" y="33.5" width="31" height="28"/>
+                                <rect key="frame" x="263" y="33.5" width="37" height="28"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="13"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -222,8 +225,13 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Interest" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KN-Ax-CER">
-                                <rect key="frame" x="24" y="211" width="272" height="28"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KN-Ax-CER">
+                                <rect key="frame" x="35" y="166.5" width="250" height="117.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="rIK-Qs-uhH"/>
+                                </constraints>
+                                <string key="text">Please Select Interest by 
+spinning the wheel &lt;-  -&gt; </string>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -266,9 +274,12 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQP-WF-ZTW">
                                 <rect key="frame" x="60" y="488" width="200" height="200"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TM-rB-C2t">
-                                        <rect key="frame" x="100" y="28" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="45"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toggle Wheel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TM-rB-C2t">
+                                        <rect key="frame" x="60" y="28" width="80" height="41.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="4sA-nX-8hO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -305,11 +316,9 @@
                             <constraint firstItem="Agk-yh-Pm9" firstAttribute="top" secondItem="LAB-Q0-gzy" secondAttribute="top" constant="10" id="YrO-7g-UHu"/>
                             <constraint firstItem="VYW-6m-f8C" firstAttribute="top" secondItem="bmK-Me-WYh" secondAttribute="top" constant="155" id="YxK-TD-ZW6"/>
                             <constraint firstItem="bmK-Me-WYh" firstAttribute="centerX" secondItem="LAB-Q0-gzy" secondAttribute="centerX" id="ZqK-yq-pOs"/>
-                            <constraint firstItem="LAB-Q0-gzy" firstAttribute="trailing" secondItem="2KN-Ax-CER" secondAttribute="trailing" constant="24" id="aYd-OL-Kr4"/>
                             <constraint firstItem="vot-Gs-cGo" firstAttribute="top" secondItem="PDd-oj-Npn" secondAttribute="top" id="bcw-6l-izE"/>
                             <constraint firstItem="VYW-6m-f8C" firstAttribute="centerX" secondItem="LAB-Q0-gzy" secondAttribute="centerX" id="cLm-af-7Wr"/>
                             <constraint firstItem="vot-Gs-cGo" firstAttribute="leading" secondItem="PDd-oj-Npn" secondAttribute="leading" id="f9n-zE-f5Y"/>
-                            <constraint firstItem="2KN-Ax-CER" firstAttribute="leading" secondItem="LAB-Q0-gzy" secondAttribute="leading" constant="24" id="gOe-PW-KAt"/>
                             <constraint firstAttribute="trailing" secondItem="vot-Gs-cGo" secondAttribute="trailing" id="hgv-T3-AmM"/>
                             <constraint firstItem="EgR-BU-2Bl" firstAttribute="top" secondItem="Agk-yh-Pm9" secondAttribute="bottom" constant="5" id="j6g-6H-d5V"/>
                             <constraint firstItem="bmK-Me-WYh" firstAttribute="top" secondItem="EgR-BU-2Bl" secondAttribute="bottom" constant="-80" id="lbo-Pz-5D9"/>

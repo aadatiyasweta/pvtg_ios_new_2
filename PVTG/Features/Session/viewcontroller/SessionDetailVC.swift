@@ -397,6 +397,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func btnSubmit(_ sender: UIButton) {
         if id == -1 && tapReschudleBtn == false{
             showAlert(strTitle: R.string.localizable.pleaseSelecttime())
+            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 880), animated: true)
         }else if (tapReschudleBtn == true){
             self.rescheduleBooking()
             self.tapReschudleBtn = false
