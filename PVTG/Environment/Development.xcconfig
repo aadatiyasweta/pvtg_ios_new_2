@@ -18,3 +18,4 @@ BASE_URL = https:$(SLASH)/techugoserver.info/pvtg_dev/api/v1/
 SOCKET_URL = https:$(SLASH)/techugoserver.info:5632
 //54.245.144.158:5040
 
+//https://techugoserver.info/pvtg_dev/api/v1/

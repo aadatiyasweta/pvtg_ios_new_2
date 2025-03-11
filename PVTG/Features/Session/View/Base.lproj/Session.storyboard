@@ -1433,6 +1433,7 @@
                         <outlet property="btnToPrev" destination="uxS-PF-csy" id="Vga-sN-nCI"/>
                         <outlet property="btnToRemove" destination="dLw-t5-wPy" id="R3w-5P-Vk2"/>
                         <outlet property="btndecrease" destination="Pfo-1k-OnA" id="DK5-HG-sUg"/>
+                        <outlet property="calendarView" destination="GqA-Io-d4z" id="EJh-Dt-TIG"/>
                         <outlet property="cancelBtn" destination="OLw-1C-Gok" id="jcs-5d-e08"/>
                         <outlet property="cancelTagView" destination="lQ9-Gn-rOb" id="u6C-kX-RqO"/>
                         <outlet property="colectnVwSessionImage" destination="gBF-F1-5bm" id="SCe-Rb-cw8"/>

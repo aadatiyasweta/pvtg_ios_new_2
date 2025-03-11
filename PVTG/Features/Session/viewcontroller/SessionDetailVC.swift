@@ -99,6 +99,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var contactUsLbl: UILabel!
     
     @IBOutlet weak var cancelTagView: UIView!
+    
+    @IBOutlet weak var calendarView: UIView!
     //MARK: - Properties
     var x = 1
     var mapView:GMSMapView?
@@ -397,7 +399,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func btnSubmit(_ sender: UIButton) {
         if id == -1 && tapReschudleBtn == false{
             showAlert(strTitle: R.string.localizable.pleaseSelecttime())
-            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 880), animated: true)
+            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofTime()), animated: true)
         }else if (tapReschudleBtn == true){
             self.rescheduleBooking()
             self.tapReschudleBtn = false
@@ -442,13 +444,13 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func btnSessionDetailTapped(_ sender: UIButton) {
         DispatchQueue.main.async(execute: {
             
-            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 320.0), animated: true)
+            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofSession()), animated: true)
         })
     }
     @IBAction func btnAboutPractitionerTapped(_ sender: UIButton) {
         DispatchQueue.main.async(execute: {
             
-            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 580), animated: true)
+            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofAbout()), animated: true)
         })
     }
     
@@ -497,6 +499,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         if id == -1 {
             self.tapReschudleBtn = true
             showAlert(strTitle: R.string.localizable.pleaseSelecttime())
+            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofTime()), animated: true)
         }else{
             self.rescheduleBooking()
             self.tapReschudleBtn = false
@@ -582,6 +585,53 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             self.vwToGetBlurEffect.removeBlurEffect()
             self.colectnVwSessionImage.removeBlurEffect()
             self.backBtn.isHidden = false
+        }
+    }
+    func getOffsetofSession() -> Double{
+        if let label = offerdView, let scrollView = mainScrollview {
+            let labelFrameInScrollView = label.convert(label.bounds, to: scrollView)
+            let contentOffset = scrollView.contentOffset
+            let labelOffsetY = labelFrameInScrollView.origin.y - contentOffset.y
+            print("Label offset in ScrollView: \(labelOffsetY)")
+            return labelOffsetY
+        }else{
+            return 320.0
+        }
+    }
+    func getOffsetofAbout() -> Double{
+        if let label = aboutView, let scrollView = mainScrollview {
+            let labelFrameInScrollView = label.convert(label.bounds, to: scrollView)
+            let contentOffset = scrollView.contentOffset
+            let labelOffsetY = labelFrameInScrollView.origin.y - contentOffset.y
+            print("Label offset in ScrollView: \(labelOffsetY)")
+            return labelOffsetY
+        }else{
+            return 580.0
+           
+        }
+    }
+    func getOffsetofCalendar() -> Double{
+        if let label = calendarView, let scrollView = mainScrollview {
+            let labelFrameInScrollView = label.convert(label.bounds, to: scrollView)
+            let contentOffset = scrollView.contentOffset
+            let labelOffsetY = labelFrameInScrollView.origin.y - contentOffset.y
+            print("Label offset in ScrollView: \(labelOffsetY)")
+            return labelOffsetY
+        }else{
+            return 800.0
+           
+        }
+    }
+    func getOffsetofTime() -> Double{
+        if let label = lblDayWithDate, let scrollView = mainScrollview {
+            let labelFrameInScrollView = label.convert(label.bounds, to: scrollView)
+            let contentOffset = scrollView.contentOffset
+            let labelOffsetY = labelFrameInScrollView.origin.y - contentOffset.y
+            print("Label offset in ScrollView: \(labelOffsetY)")
+            return labelOffsetY
+        }else{
+            return 880.0
+           
         }
     }
 }
@@ -1074,7 +1124,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             serviceTimeCollectionVw.reloadData()
             DispatchQueue.main.async(execute: {
                 
-                self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 800), animated: true)
+                self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofCalendar()), animated: true)
             })
         }
     }

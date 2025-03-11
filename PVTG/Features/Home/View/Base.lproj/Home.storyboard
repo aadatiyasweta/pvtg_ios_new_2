@@ -513,19 +513,19 @@ spinning the wheel &lt;-  -&gt; </string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCb-eT-2wc">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="722"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="745"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28V-G3-lvX">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xfjkh kdsfh" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-jm-3g2">
-                                                        <rect key="frame" x="26" y="84" width="148.5" height="24.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-jm-3g2">
+                                                        <rect key="frame" x="26" y="95" width="148.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FR5-dR-QfU">
-                                                        <rect key="frame" x="182.5" y="94" width="1" height="5"/>
+                                                        <rect key="frame" x="182.5" y="105" width="1" height="5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="1" id="fIL-aF-Zcw"/>
@@ -533,7 +533,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPq-X9-nRR">
-                                                        <rect key="frame" x="191.5" y="84" width="128.5" height="25"/>
+                                                        <rect key="frame" x="191.5" y="95" width="128.5" height="25"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="t7o-wC-bDD">
                                                                 <rect key="frame" x="0.0" y="5" width="15" height="15"/>
@@ -561,7 +561,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTK-Qm-DQG">
-                                                        <rect key="frame" x="191.5" y="114" width="122" height="25"/>
+                                                        <rect key="frame" x="191.5" y="125" width="122" height="25"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="TQW-Sn-KwT">
                                                                 <rect key="frame" x="0.0" y="5" width="15" height="15"/>
@@ -589,7 +589,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAs-Xo-Ey2" customClass="CosmosView" customModule="Cosmos">
-                                                        <rect key="frame" x="26" y="118.5" width="93" height="20"/>
+                                                        <rect key="frame" x="26" y="129.5" width="93" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="epf-z6-TJo"/>
@@ -620,7 +620,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oD5-V0-7HY">
-                                                        <rect key="frame" x="26" y="150.5" width="90" height="25"/>
+                                                        <rect key="frame" x="26" y="161.5" width="90" height="25"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="isdhf idhfig" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QS2-C6-1bZ">
                                                                 <rect key="frame" x="10" y="5" width="70" height="15"/>
@@ -677,14 +677,14 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72L-lD-Evs">
-                                                        <rect key="frame" x="26" y="188" width="268" height="1"/>
+                                                        <rect key="frame" x="26" y="199" width="268" height="1"/>
                                                         <color key="backgroundColor" red="0.2901960784" green="0.31372549020000001" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="N5o-zt-MPU"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiB-Lb-czc">
-                                                        <rect key="frame" x="26" y="199" width="145.5" height="53"/>
+                                                        <rect key="frame" x="26" y="210" width="145.5" height="53"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Cost:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdK-hn-DQP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="145.5" height="19"/>
@@ -714,7 +714,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jb2-ss-OoV">
-                                                        <rect key="frame" x="191.5" y="199" width="103.5" height="53"/>
+                                                        <rect key="frame" x="191.5" y="210" width="103.5" height="53"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Type:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l04-Wm-IlE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="103.5" height="19"/>
@@ -755,7 +755,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Acr-8I-iKU">
-                                                        <rect key="frame" x="22" y="262" width="189" height="35"/>
+                                                        <rect key="frame" x="22" y="273" width="189" height="35"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niO-uL-7t6">
                                                                 <rect key="frame" x="7" y="5" width="22" height="25"/>
@@ -810,7 +810,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STU-Np-GOX">
-                                                        <rect key="frame" x="26" y="307" width="250" height="40"/>
+                                                        <rect key="frame" x="26" y="318" width="250" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="250" id="9bK-yE-6Oh"/>
                                                             <constraint firstAttribute="height" constant="40" id="sfM-Rf-B2n"/>
@@ -827,7 +827,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </connections>
                                                     </button>
                                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SEV-hN-cGJ">
-                                                        <rect key="frame" x="26" y="359" width="203" height="30"/>
+                                                        <rect key="frame" x="26" y="370" width="203" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 % Discount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXQ-TX-RIj">
                                                                 <rect key="frame" x="10" y="7" width="94" height="16"/>
@@ -891,20 +891,17 @@ spinning the wheel &lt;-  -&gt; </string>
                                                             <constraint firstItem="I2s-QF-Ex0" firstAttribute="top" secondItem="SEV-hN-cGJ" secondAttribute="top" id="vFY-62-4TW"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzX-H3-Abf">
-                                                        <rect key="frame" x="130" y="414" width="60" height="18"/>
+                                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzX-H3-Abf">
+                                                        <rect key="frame" x="120" y="425" width="80" height="30"/>
                                                         <color key="backgroundColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="18" id="Ybf-si-LWN"/>
-                                                            <constraint firstAttribute="width" constant="60" id="llg-rh-0kB"/>
+                                                            <constraint firstAttribute="height" constant="30" id="Ybf-si-LWN"/>
+                                                            <constraint firstAttribute="width" constant="80" id="llg-rh-0kB"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
-                                                        <state key="normal" title="Use Now">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
+                                                        <state key="normal" title="Use Now"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="9"/>
+                                                                <integer key="value" value="15"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -964,7 +961,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                     <constraint firstItem="LzX-H3-Abf" firstAttribute="centerX" secondItem="28V-G3-lvX" secondAttribute="centerX" id="dZY-wI-elN"/>
                                                     <constraint firstItem="SEV-hN-cGJ" firstAttribute="top" secondItem="STU-Np-GOX" secondAttribute="bottom" constant="12" id="doy-xj-hpa"/>
                                                     <constraint firstItem="hPq-X9-nRR" firstAttribute="top" secondItem="pfI-jm-3g2" secondAttribute="top" id="fJq-SB-f5M"/>
-                                                    <constraint firstItem="pfI-jm-3g2" firstAttribute="top" secondItem="28V-G3-lvX" secondAttribute="top" constant="84" id="fNd-5H-v6q"/>
+                                                    <constraint firstItem="pfI-jm-3g2" firstAttribute="top" secondItem="28V-G3-lvX" secondAttribute="top" constant="95" id="fNd-5H-v6q"/>
                                                     <constraint firstItem="Acr-8I-iKU" firstAttribute="top" secondItem="WiB-Lb-czc" secondAttribute="bottom" constant="10" id="ffo-Sz-VBF"/>
                                                     <constraint firstItem="SEV-hN-cGJ" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="26" id="g2D-iR-zBy"/>
                                                     <constraint firstItem="oD5-V0-7HY" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="26" id="hLy-7v-pIz"/>
@@ -987,7 +984,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                 </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcx-09-Ngk">
-                                                <rect key="frame" x="0.0" y="457" width="320" height="265"/>
+                                                <rect key="frame" x="0.0" y="480" width="320" height="265"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="265" id="Mh5-hO-ArV"/>
@@ -1016,7 +1013,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObA-yu-ZUI">
-                                <rect key="frame" x="18" y="30" width="35" height="35"/>
+                                <rect key="frame" x="18" y="20" width="35" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1v3-Hr-3va"/>
@@ -1082,7 +1079,7 @@ spinning the wheel &lt;-  -&gt; </string>
                         <constraints>
                             <constraint firstItem="Fri-Sx-ywP" firstAttribute="leading" secondItem="smc-it-fhR" secondAttribute="leading" constant="75" id="5kC-EM-AGk"/>
                             <constraint firstItem="Bld-fc-Q69" firstAttribute="centerY" secondItem="K4D-8J-yAO" secondAttribute="centerY" id="Cas-dr-4fj"/>
-                            <constraint firstItem="ObA-yu-ZUI" firstAttribute="top" secondItem="QpN-KS-7bI" secondAttribute="top" constant="10" id="DTY-T8-13N"/>
+                            <constraint firstItem="ObA-yu-ZUI" firstAttribute="top" secondItem="QpN-KS-7bI" secondAttribute="top" id="DTY-T8-13N"/>
                             <constraint firstItem="QpN-KS-7bI" firstAttribute="bottom" secondItem="k0g-jZ-Hlr" secondAttribute="bottom" constant="9.5" id="HLT-qQ-V26"/>
                             <constraint firstItem="zO6-4b-fTJ" firstAttribute="top" secondItem="smc-it-fhR" secondAttribute="top" id="QZy-X1-ych"/>
                             <constraint firstAttribute="trailing" secondItem="Fri-Sx-ywP" secondAttribute="trailing" constant="75" id="RUR-Rd-InK"/>

@@ -69,6 +69,14 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.mapClosure = {
               self.directions(lat: self.vm.model?.result?[indexPath.row].lat ?? "" ,long: self.vm.model?.result?[indexPath.row].long ?? "")
         }
+        cell.chatClosure = {
+//            let vc = ChatBoxView.instance()
+//            vc.otherUser = (self.vm.model?.result?[indexPath.row].created_by ?? "").lowercased()
+//            vc.reciverId = self.vm.model?.result?[indexPath.row].created_id ?? ""
+//            vc.image = self.vm.model?.result?[indexPath.row].chat_user_image ?? ""
+//            vc.name = self.vm.model?.result?[indexPath.row].vendorName ?? ""
+//            self.navigationController?.pushViewController(vc, animated: true)
+        }
         if(self.vm.model?.result?[indexPath.row].follow_up_id != "0" && self.vm.model?.result?[indexPath.row].follow_up_id != "" && self.vm.model?.result?[indexPath.row].follow_up_id != nil){
                 cell.followUpView.isHidden = false
         }else{

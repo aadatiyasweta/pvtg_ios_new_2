@@ -34,10 +34,12 @@ class ActiveEventCell: UICollectionViewCell {
     
     @IBOutlet weak var followUpView: UIView!
     
+    @IBOutlet weak var clickOnChatBtn: UIButton!
     
     //MARK: - Properties
     var dictData:EventsResult?
     var mapClosure : ()->() = {}
+    var chatClosure : ()->() = {}
     
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "ActiveEventCell"
@@ -88,6 +90,10 @@ class ActiveEventCell: UICollectionViewCell {
     //MARK: - BUTTON ACTION
     @IBAction func mapBtnTap(_ sender: UIButton) {
         self.mapClosure()
+    }
+    
+    @IBAction func clickOnChatBtn(_ sender: UIButton) {
+        self.chatClosure()
     }
     
 }
