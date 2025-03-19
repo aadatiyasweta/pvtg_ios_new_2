@@ -149,6 +149,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
         let id = self.vm.model?.result?[index].category_id ?? ""
         if selectedCategoryArr.contains(where: {$0.category_id == id}){
             cell.selectedForegroundView?.layer.backgroundColor = UIColor(white: 0.2, alpha: 0.2).cgColor
+            cell.selectedForegroundView?.layer.cornerRadius = 8
         }else{
             cell.selectedForegroundView?.layer.backgroundColor = UIColor.clear.cgColor
         }

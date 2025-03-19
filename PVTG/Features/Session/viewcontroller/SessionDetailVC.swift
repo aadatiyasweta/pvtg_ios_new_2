@@ -454,6 +454,13 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         })
     }
     
+    @IBAction func btnAvailableTimeTapped(_ sender: UIButton) {
+        DispatchQueue.main.async(execute: {
+            
+            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofCalendar()), animated: true)
+        })
+    }
+    
     @IBAction func mapBtnTapped(_ sender: Any) {
         self.directions(lat: self.vm.model?.latitude ?? "", long: self.vm.model?.longitude ?? "")
         
@@ -499,7 +506,10 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         if id == -1 {
             self.tapReschudleBtn = true
             showAlert(strTitle: R.string.localizable.pleaseSelecttime())
-            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofTime()), animated: true)
+            if self.getOffsetofCalendar() > 300{
+                self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofCalendar()), animated: true)
+            }
+               
         }else{
             self.rescheduleBooking()
             self.tapReschudleBtn = false

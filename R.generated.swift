@@ -830,7 +830,7 @@ struct _R {
     var purpleActionBtn: RswiftResources.ColorResource { .init(name: "PurpleActionBtn", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 84 images.
+  /// This `_R.image` struct is generated, and contains static references to 87 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -840,8 +840,14 @@ struct _R {
     /// Image `Bg-3`.
     var bg3: RswiftResources.ImageResource { .init(name: "Bg-3", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `Cal`.
+    var cal: RswiftResources.ImageResource { .init(name: "Cal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `ChatIcn`.
     var chatIcn: RswiftResources.ImageResource { .init(name: "ChatIcn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `Clock`.
+    var clock: RswiftResources.ImageResource { .init(name: "Clock", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `IIcon`.
     var iIcon: RswiftResources.ImageResource { .init(name: "IIcon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -887,6 +893,9 @@ struct _R {
 
     /// Image `call`.
     var call: RswiftResources.ImageResource { .init(name: "call", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `chat`.
+    var chat: RswiftResources.ImageResource { .init(name: "chat", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `chaticon`.
     var chaticon: RswiftResources.ImageResource { .init(name: "chaticon", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -1286,6 +1295,7 @@ struct _R {
 
     func validate() throws {
       if UIKit.UIImage(named: "bgProfile", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bgProfile' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "chat", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'chat' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in nib 'AllCategoryCell', but couldn't be loaded.") }
@@ -1510,6 +1520,8 @@ struct _R {
       var transformerExampleViewController: RswiftResources.StoryboardViewControllerIdentifier<TransformerExampleViewController> { .init(identifier: "TransformerExampleViewController", storyboard: name, bundle: bundle) }
 
       func validate() throws {
+        if UIKit.UIImage(named: "Cal", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Cal' is used in storyboard 'Home', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Clock", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'Clock' is used in storyboard 'Home', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bg", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bg' is used in storyboard 'Home', but couldn't be loaded.") }
         if UIKit.UIImage(named: "cross", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'cross' is used in storyboard 'Home', but couldn't be loaded.") }
         if UIKit.UIImage(named: "cup", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'cup' is used in storyboard 'Home', but couldn't be loaded.") }

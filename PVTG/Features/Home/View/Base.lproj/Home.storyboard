@@ -195,8 +195,8 @@
                                     <action selector="clickOnBack" destination="A3S-49-eub" eventType="touchUpInside" id="6be-Pr-mNx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Select Interest Now or Later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crF-m2-F7f">
-                                <rect key="frame" x="53" y="27" width="150" height="41.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Interest Now or Later" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crF-m2-F7f">
+                                <rect key="frame" x="58" y="27" width="150" height="41.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="rof-Fb-0gi"/>
                                 </constraints>
@@ -304,7 +304,7 @@ spinning the wheel &lt;-  -&gt; </string>
                             <constraint firstItem="2KN-Ax-CER" firstAttribute="centerX" secondItem="LAB-Q0-gzy" secondAttribute="centerX" id="0mR-dM-IFG"/>
                             <constraint firstItem="ZQP-WF-ZTW" firstAttribute="centerX" secondItem="LAB-Q0-gzy" secondAttribute="centerX" id="2Fj-eC-ziv"/>
                             <constraint firstAttribute="leading" secondItem="efH-Hw-rxl" secondAttribute="leading" id="8Iq-k3-jYi"/>
-                            <constraint firstItem="crF-m2-F7f" firstAttribute="leading" secondItem="Agk-yh-Pm9" secondAttribute="trailing" id="9Cj-qc-Pmv"/>
+                            <constraint firstItem="crF-m2-F7f" firstAttribute="leading" secondItem="Agk-yh-Pm9" secondAttribute="trailing" constant="5" id="9Cj-qc-Pmv"/>
                             <constraint firstItem="LAB-Q0-gzy" firstAttribute="trailing" secondItem="zXJ-65-iSK" secondAttribute="trailing" constant="20" id="C7d-kl-NaT"/>
                             <constraint firstItem="efH-Hw-rxl" firstAttribute="top" secondItem="bmK-Me-WYh" secondAttribute="top" id="CzB-QN-fqT"/>
                             <constraint firstItem="crF-m2-F7f" firstAttribute="centerY" secondItem="Agk-yh-Pm9" secondAttribute="centerY" id="DhI-k3-sBM"/>
@@ -378,7 +378,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9D-1j-WGH">
                                         <rect key="frame" x="96" y="2.5" width="96.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                        <color key="textColor" red="0.70980392156862748" green="0.71764705882352942" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-sM-hoy">
@@ -535,7 +535,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPq-X9-nRR">
                                                         <rect key="frame" x="191.5" y="95" width="128.5" height="25"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="t7o-wC-bDD">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock" translatesAutoresizingMaskIntoConstraints="NO" id="t7o-wC-bDD">
                                                                 <rect key="frame" x="0.0" y="5" width="15" height="15"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="CNa-6e-2tD"/>
@@ -563,7 +563,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTK-Qm-DQG">
                                                         <rect key="frame" x="191.5" y="125" width="122" height="25"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc" translatesAutoresizingMaskIntoConstraints="NO" id="TQW-Sn-KwT">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cal" translatesAutoresizingMaskIntoConstraints="NO" id="TQW-Sn-KwT">
                                                                 <rect key="frame" x="0.0" y="5" width="15" height="15"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="MFp-t9-0fh"/>
@@ -1427,6 +1427,8 @@ spinning the wheel &lt;-  -&gt; </string>
         </scene>
     </scenes>
     <resources>
+        <image name="Cal" width="512" height="512"/>
+        <image name="Clock" width="512" height="512"/>
         <image name="bg" width="557.5" height="1086.5"/>
         <image name="cross" width="13.5" height="13.5"/>
         <image name="cup" width="17.5" height="19"/>

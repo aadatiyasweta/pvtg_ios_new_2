@@ -33,7 +33,10 @@ struct EventsResult : Codable {
     let currency : String?
     let status : String?
     let follow_up_id : String?
-    
+    let created_id : String?
+    let created_by : String?
+    let chat_user_image : String?
+    let created_name : String?
 	enum CodingKeys: String, CodingKey {
 		case booking_id = "booking_id"
 		case booking_date = "booking_date"
@@ -55,6 +58,10 @@ struct EventsResult : Codable {
         case currency = "currency"
         case status = "status"
         case follow_up_id = "follow_up_id"
+        case created_id = "created_id"
+        case created_by = "created_by"
+        case chat_user_image = "chat_user_image"
+        case created_name = "created_name"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -79,6 +86,10 @@ struct EventsResult : Codable {
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
         status = try values.decodeIfPresent(String.self, forKey: .status)
         follow_up_id = try values.decodeIfPresent(String.self, forKey: .follow_up_id)
+        created_id = try values.decodeIfPresent(String.self, forKey: .created_id)
+        created_by = try values.decodeIfPresent(String.self, forKey: .created_by)
+        chat_user_image = try values.decodeIfPresent(String.self, forKey: .chat_user_image)
+        created_name = try values.decodeIfPresent(String.self, forKey: .created_name)
 	}
 
 }
