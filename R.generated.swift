@@ -830,7 +830,7 @@ struct _R {
     var purpleActionBtn: RswiftResources.ColorResource { .init(name: "PurpleActionBtn", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 87 images.
+  /// This `_R.image` struct is generated, and contains static references to 91 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -846,6 +846,12 @@ struct _R {
     /// Image `ChatIcn`.
     var chatIcn: RswiftResources.ImageResource { .init(name: "ChatIcn", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `ChatNew`.
+    var chatNew: RswiftResources.ImageResource { .init(name: "ChatNew", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ChatNew1`.
+    var chatNew1: RswiftResources.ImageResource { .init(name: "ChatNew1", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `Clock`.
     var clock: RswiftResources.ImageResource { .init(name: "Clock", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
@@ -860,6 +866,12 @@ struct _R {
 
     /// Image `LogodarkBackG`.
     var logodarkBackG: RswiftResources.ImageResource { .init(name: "LogodarkBackG", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `MapNew`.
+    var mapNew: RswiftResources.ImageResource { .init(name: "MapNew", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `MapNew1`.
+    var mapNew1: RswiftResources.ImageResource { .init(name: "MapNew1", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `Search`.
     var search: RswiftResources.ImageResource { .init(name: "Search", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -1294,17 +1306,17 @@ struct _R {
     var sessionCell: RswiftResources.NibReference<SessionCell> { .init(name: "SessionCell", bundle: bundle) }
 
     func validate() throws {
+      if UIKit.UIImage(named: "ChatNew1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ChatNew1' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "MapNew1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'MapNew1' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "bgProfile", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bgProfile' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
-      if UIKit.UIImage(named: "chat", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'chat' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
-      if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in nib 'AllCategoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in nib 'ContactUsView', but couldn't be loaded.") }
       if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'ContactUsView', but couldn't be loaded.") }
       if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in nib 'DateHeaderTVCell', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "MapNew1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'MapNew1' is used in nib 'HistoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "bgProfile", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bgProfile' is used in nib 'HistoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'HistoryCell', but couldn't be loaded.") }
-      if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in nib 'HistoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "shape6Copy", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'shape6Copy' is used in nib 'HistoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "shape7Copy", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'shape7Copy' is used in nib 'HistoryCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "shape8Copy", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'shape8Copy' is used in nib 'HistoryCell', but couldn't be loaded.") }
@@ -1701,11 +1713,11 @@ struct _R {
         if UIKit.UIImage(named: "-", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named '-' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ChatIcn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ChatIcn' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "IIcon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'IIcon' is used in storyboard 'Session', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "MapNew", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'MapNew' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "add", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'add' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bg", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bg' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "cross", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'cross' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in storyboard 'Session', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "map", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'map' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "minimalLeft2X", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'minimalLeft2X' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIImage(named: "tap", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'tap' is used in storyboard 'Session', but couldn't be loaded.") }
         if UIKit.UIColor(named: "PurpleActionBtn", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Color named 'PurpleActionBtn' is used in storyboard 'Session', but couldn't be loaded.") }

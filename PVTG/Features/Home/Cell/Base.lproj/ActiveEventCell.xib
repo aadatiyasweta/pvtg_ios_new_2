@@ -136,29 +136,25 @@
                                     <constraint firstItem="zok-Qd-uCa" firstAttribute="centerY" secondItem="pwh-3I-huT" secondAttribute="centerY" id="kkb-iS-aMh"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="S1P-Ah-HJT">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="S1P-Ah-HJT">
                                 <rect key="frame" x="242" y="373" width="75" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBF-eN-D8t">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="Ft9-64-arp"/>
-                                            <constraint firstAttribute="width" constant="35" id="Scw-YB-XIb"/>
+                                            <constraint firstAttribute="width" constant="35" id="Eae-pf-mlL"/>
+                                            <constraint firstAttribute="height" constant="35" id="IOW-z7-Vsw"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="chat"/>
+                                        <state key="normal" image="ChatNew1"/>
                                         <connections>
                                             <action selector="clickOnChatBtn:" destination="7L4-Nd-KB7" eventType="touchUpInside" id="Fut-23-H8V"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Su8-x9-yGR">
                                         <rect key="frame" x="40" y="0.0" width="35" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="4jt-1l-1n7"/>
-                                            <constraint firstAttribute="height" constant="35" id="PyP-vx-YtR"/>
-                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="map"/>
+                                        <state key="normal" image="MapNew1"/>
                                         <connections>
                                             <action selector="mapBtnTap:" destination="7L4-Nd-KB7" eventType="touchUpInside" id="hR0-ye-oRl"/>
                                         </connections>
@@ -262,9 +258,9 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ChatNew1" width="28" height="28"/>
+        <image name="MapNew1" width="29" height="29"/>
         <image name="bgProfile" width="375" height="812"/>
-        <image name="chat" width="25" height="25"/>
         <image name="loc" width="10" height="12.5"/>
-        <image name="map" width="17.5" height="17.5"/>
     </resources>
 </document>

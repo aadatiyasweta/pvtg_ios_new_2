@@ -68,9 +68,9 @@ func otpCheckUrl(email:String, otp: String)-> String {
 //    var  url = "http://54.245.144.158/pvtg_dev/api/v1/Userapi/check_otp?email=\(email)&otp=\(otp)&language=\(SaveToDefaults().getAppLang() ?? "en")" // old development url
     
     
-//    var  url = "https://techugoserver.info/pvtg_dev/api/v1/Userapi/check_otp?email=\(email)&otp=\(otp)&language=\(SaveToDefaults().getAppLang() ?? "en")" // new test url
+    var  url = "https://techugoserver.info/pvtg_dev/api/v1/Userapi/check_otp?email=\(email)&otp=\(otp)&language=\(SaveToDefaults().getAppLang() ?? "en")" // new test url
     
-    var  url = "https://dharma.services/api/v1/Userapi/check_otp?email=\(email)&otp=\(otp)&language=\(SaveToDefaults().getAppLang() ?? "en")" // new live url
+//    var  url = "https://dharma.services/api/v1/Userapi/check_otp?email=\(email)&otp=\(otp)&language=\(SaveToDefaults().getAppLang() ?? "en")" // new live url
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("Userapi/check_otp",url)
     return url

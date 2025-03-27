@@ -560,13 +560,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oV-vk-FKa">
-                                                <rect key="frame" x="126" y="84.5" width="40" height="40"/>
+                                                <rect key="frame" x="126" y="89.5" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="9wk-ZZ-CTa"/>
-                                                    <constraint firstAttribute="height" constant="40" id="Su7-ch-msk"/>
+                                                    <constraint firstAttribute="width" constant="30" id="9wk-ZZ-CTa"/>
+                                                    <constraint firstAttribute="height" constant="30" id="Su7-ch-msk"/>
                                                 </constraints>
                                                 <color key="tintColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="map"/>
+                                                <state key="normal" backgroundImage="MapNew"/>
                                                 <connections>
                                                     <action selector="mapBtnTapped:" destination="g4N-T8-DGB" eventType="touchUpInside" id="Tdu-7k-PDV"/>
                                                 </connections>
@@ -691,7 +691,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AER-TR-pZv">
                                                                 <rect key="frame" x="0.0" y="63" width="186" height="22"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcj-h4-8xR">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Times" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcj-h4-8xR">
                                                                         <rect key="frame" x="40" y="2" width="136" height="18"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                                         <nil key="textColor"/>
@@ -1557,11 +1557,11 @@
         <image name="-" width="29.5" height="7.5"/>
         <image name="ChatIcn" width="40" height="40"/>
         <image name="IIcon" width="64" height="64"/>
+        <image name="MapNew" width="17" height="17"/>
         <image name="add" width="512" height="512"/>
         <image name="bg" width="557.5" height="1086.5"/>
         <image name="cross" width="13.5" height="13.5"/>
         <image name="loc" width="10" height="12.5"/>
-        <image name="map" width="17.5" height="17.5"/>
         <image name="minimalLeft2X" width="7.5" height="13.5"/>
         <image name="tap" width="512" height="512"/>
         <namedColor name="PurpleActionBtn">

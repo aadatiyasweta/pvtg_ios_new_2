@@ -16,12 +16,14 @@ struct All_date : Codable {
 	let schedule_id : String?
 	let schedule_date : String?
 	let is_avilable : String?
+    let session_type_id : String?
 
 	enum CodingKeys: String, CodingKey {
 
 		case schedule_id = "schedule_id"
 		case schedule_date = "schedule_date"
 		case is_avilable = "is_avilable"
+        case session_type_id = "session_type_id"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -29,6 +31,7 @@ struct All_date : Codable {
 		schedule_id = try values.decodeIfPresent(String.self, forKey: .schedule_id)
 		schedule_date = try values.decodeIfPresent(String.self, forKey: .schedule_date)
 		is_avilable = try values.decodeIfPresent(String.self, forKey: .is_avilable)
+        session_type_id = try values.decodeIfPresent(String.self, forKey: .session_type_id)
 	}
 
 }

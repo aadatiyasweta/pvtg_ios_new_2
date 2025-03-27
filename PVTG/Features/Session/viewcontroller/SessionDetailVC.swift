@@ -399,7 +399,10 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func btnSubmit(_ sender: UIButton) {
         if id == -1 && tapReschudleBtn == false{
             showAlert(strTitle: R.string.localizable.pleaseSelecttime())
-            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofTime()), animated: true)
+//            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofTime()), animated: true)
+            if self.getOffsetofCalendar() > 300{
+                self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofCalendar()), animated: true)
+            }
         }else if (tapReschudleBtn == true){
             self.rescheduleBooking()
             self.tapReschudleBtn = false
@@ -709,7 +712,7 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
                         if val.is_avilable == "1" {
                             self.iIcount = -2
                             //self.iIcountValue = false
-                            self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
+                            self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: true, session_type_id: self.selectedSessionID, session_type: self.selectedSession, selecteddate: self.selectedDate)
                             // self.scrollViewBotmconstarint.constant = 97
                         }
                     }
@@ -750,16 +753,17 @@ extension SessionDetailVC: FSCalendarDataSource, FSCalendarDelegate, FSCalendarD
         guard let data = self.vm.model?.all_date else {return [.white]}
         debugPrint(data)
         debugPrint(strDate)
-        for allDate in data{
-            if allDate.schedule_date == strDate{
-                if allDate.is_avilable=="1"{
-                    return [.green]
-                } else {
-                    return [.red]
+        self.vwcalendar.deselect(self.dateToDeleselect)
+            for allDate in data{
+                if allDate.schedule_date == strDate && allDate.session_type_id == self.selectedSessionID{
+                    if allDate.is_avilable=="1"{
+                        return [.green]
+                    } else {
+                        return [.red]
+                    }
                 }
+                
             }
-            
-        }
         return [.white]
     }
 }
@@ -867,6 +871,7 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             if self.timeArr[indexPath.row].is_available == "0" {
                 cell.vwContainCatgry.backgroundColor = UIColor.lightGray
             }else{
+                
             }
            
             cell.setData(data: self.timeArr[indexPath.row])
@@ -1126,17 +1131,25 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
             isLoop = true
             collectionView.reloadData()
             serviceTimeCollectionVw.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                self.vwcalendar.reloadData()
+            })
         }
         else if(collectionView == serviceTimeCollectionVw){
             self.selectedTimeIndex = indexPath.row
             isLoop = true
             offeredCollView.reloadData()
             serviceTimeCollectionVw.reloadData()
-            DispatchQueue.main.async(execute: {
-                
-                self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofCalendar()), animated: true)
+//            DispatchQueue.main.async(execute: {
+//                
+//                self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofCalendar()), animated: true)
+//            })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                self.vwcalendar.reloadData()
             })
         }
+       
+        
     }
     
     func presentAvplayerController(url : String){
@@ -1299,7 +1312,7 @@ extension SessionDetailVC: GetResponse {
                         self.reloadTimeBoolValue = true
                         self.iIcount = -2
                         //self.iIcountValue = false
-                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
+                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession,selecteddate: self.selectedDate)
                         break
                     }
                 }
@@ -1529,7 +1542,10 @@ extension SessionDetailVC: GetResponse {
                 cancelBtn.setTitle("Cancelar", for: .normal)
             }
         }
-        self.vwcalendar.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+            self.vwcalendar.reloadData()
+        })
+       
         self.colectnVwSessionImage.reloadData()
         self.offeredCollView.reloadData()
         self.serviceTimeCollectionVw.reloadData()
@@ -1543,7 +1559,7 @@ extension SessionDetailVC: GetResponse {
                     if self.controllerId == 0 || self.controllerId == 2{
                         self.iIcount = -2
                        // self.iIcountValue = false
-                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession)
+                        self.vm.timingArrayOfSpecificDateApi(user_id: userid, schedule_id: scheduleId, isloader: false, session_type_id: self.selectedSessionID, session_type: self.selectedSession, selecteddate: self.selectedDate)
                     }
                 }
                 break

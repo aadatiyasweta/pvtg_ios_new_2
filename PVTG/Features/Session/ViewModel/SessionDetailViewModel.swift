@@ -155,8 +155,8 @@ class SessionDetailViewModel: BaseVm {
         }
     }
     //MARK: - TIMING ARRAY PF SPECIFIC DATA API
-    func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool, session_type_id:String, session_type : String) {
-        let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id,"session_type_id": session_type_id,"currenttimezone" : TimeZone.current.identifier,"language" : SaveToDefaults().getAppLang() ?? "en","session_type" : session_type]
+    func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool, session_type_id:String, session_type : String, selecteddate:String) {
+        let prams : [String : Any] = ["user_id": user_id, "schedule_id": schedule_id,"session_type_id": session_type_id,"currenttimezone" : TimeZone.current.identifier,"language" : SaveToDefaults().getAppLang() ?? "en","session_type" : session_type,"date":selecteddate]
         if isloader {
             self.dismiss()
         } else {
