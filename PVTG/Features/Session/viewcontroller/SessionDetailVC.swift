@@ -1289,8 +1289,8 @@ extension SessionDetailVC: GetResponse {
                         }
                     }
                     if  self.isFromSelection{
-                        let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
-                        mainScrollview.setContentOffset(bottomOffset, animated: true)
+//                        let bottomOffset = CGPoint(x: 0, y: self.mainScrollview.contentSize.height - mainScrollview.bounds.height + mainScrollview.contentInset.bottom)
+//                        mainScrollview.setContentOffset(bottomOffset, animated: true)
                     }
                 }
             }

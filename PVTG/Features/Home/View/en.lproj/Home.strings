@@ -28,10 +28,10 @@ spinning the wheel <-  -> ";
 "SHI-lC-CLn.title" = "Events";
 
 /* Class = "UIButton"; normalTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
-"STU-Np-GOX.normalTitle" = "Use Points";
+"STU-Np-GOX.normalTitle" = "Choose Points";
 
 /* Class = "UIButton"; selectedTitle = "Use PVTG Points"; ObjectID = "STU-Np-GOX"; */
-"STU-Np-GOX.selectedTitle" = "Use Points";
+"STU-Np-GOX.selectedTitle" = "Choose Points";
 
 /* Class = "UILabel"; text = "Total Fare"; ObjectID = "UNq-AZ-pHi"; */
 "UNq-AZ-pHi.text" = "Total Fare";

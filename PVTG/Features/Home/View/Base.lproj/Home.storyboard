@@ -513,10 +513,10 @@ spinning the wheel &lt;-  -&gt; </string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCb-eT-2wc">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="745"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="710"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28V-G3-lvX">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="445"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-jm-3g2">
                                                         <rect key="frame" x="26" y="95" width="148.5" height="24.5"/>
@@ -810,15 +810,15 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STU-Np-GOX">
-                                                        <rect key="frame" x="26" y="318" width="250" height="40"/>
+                                                        <rect key="frame" x="26" y="318" width="110" height="40"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="250" id="9bK-yE-6Oh"/>
+                                                            <constraint firstAttribute="width" constant="110" id="qYL-Af-Ols"/>
                                                             <constraint firstAttribute="height" constant="40" id="sfM-Rf-B2n"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="-25" maxY="0.0"/>
-                                                        <state key="normal" title="Did you want to use PVTG points" image="radioGrey">
+                                                        <state key="normal" title="Choose Points" image="radioGrey">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" title="Use PVTG Points" image="radioFill"/>
@@ -885,6 +885,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                             <constraint firstItem="QXQ-TX-RIj" firstAttribute="leading" secondItem="SEV-hN-cGJ" secondAttribute="leading" constant="10" id="Mdv-RN-w3U"/>
                                                             <constraint firstItem="QXQ-TX-RIj" firstAttribute="centerY" secondItem="SEV-hN-cGJ" secondAttribute="centerY" id="PAh-36-MCt"/>
                                                             <constraint firstAttribute="height" constant="30" id="TbZ-og-hNP"/>
+                                                            <constraint firstAttribute="width" constant="203" id="Uep-1h-lnv"/>
                                                             <constraint firstItem="5tX-s7-y9e" firstAttribute="leading" secondItem="7KO-Ix-4yg" secondAttribute="trailing" constant="15" id="cw9-U1-B6Q"/>
                                                             <constraint firstItem="5tX-s7-y9e" firstAttribute="centerY" secondItem="I2s-QF-Ex0" secondAttribute="centerY" id="eIA-rw-2FI"/>
                                                             <constraint firstItem="7KO-Ix-4yg" firstAttribute="leading" secondItem="QXQ-TX-RIj" secondAttribute="trailing" constant="13" id="jiw-c2-af5"/>
@@ -892,7 +893,7 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzX-H3-Abf">
-                                                        <rect key="frame" x="120" y="425" width="80" height="30"/>
+                                                        <rect key="frame" x="146" y="323" width="80" height="30"/>
                                                         <color key="backgroundColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="Ybf-si-LWN"/>
@@ -918,11 +919,21 @@ spinning the wheel &lt;-  -&gt; </string>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lA0-dA-EXL">
-                                                        <rect key="frame" x="26" y="385.5" width="131" height="26"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                                        <state key="normal" title="View Cancellation Policy">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lA0-dA-EXL">
+                                                        <rect key="frame" x="26" y="410" width="136" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="6j5-fP-t8x"/>
+                                                        </constraints>
+                                                        <state key="normal">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="View Cancellation Policy">
+                                                                    <attributes>
+                                                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <font key="NSFont" size="12" name="HelveticaNeue-Medium"/>
+                                                                        <integer key="NSUnderline" value="1"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
                                                         </state>
                                                         <connections>
                                                             <action selector="viewCancelPolicyBtntap:" destination="XBb-8H-gMQ" eventType="touchUpInside" id="lK1-VO-pmi"/>
@@ -933,7 +944,6 @@ spinning the wheel &lt;-  -&gt; </string>
                                                 <constraints>
                                                     <constraint firstItem="jb2-ss-OoV" firstAttribute="top" secondItem="72L-lD-Evs" secondAttribute="bottom" constant="10" id="0jE-Jt-xOp"/>
                                                     <constraint firstItem="0QP-0k-xGF" firstAttribute="leading" secondItem="lA0-dA-EXL" secondAttribute="leading" id="0rC-Jf-ncK"/>
-                                                    <constraint firstAttribute="bottom" secondItem="LzX-H3-Abf" secondAttribute="bottom" constant="25" id="3DT-Lm-AXL"/>
                                                     <constraint firstItem="jb2-ss-OoV" firstAttribute="leading" secondItem="WiB-Lb-czc" secondAttribute="trailing" constant="20" id="3Hn-5o-aCp"/>
                                                     <constraint firstItem="lA0-dA-EXL" firstAttribute="bottom" secondItem="0QP-0k-xGF" secondAttribute="top" constant="5" id="3JC-ww-agW"/>
                                                     <constraint firstItem="72L-lD-Evs" firstAttribute="trailing" secondItem="wKx-Fk-BYS" secondAttribute="trailing" id="3WD-mT-MJE"/>
@@ -941,14 +951,17 @@ spinning the wheel &lt;-  -&gt; </string>
                                                     <constraint firstItem="STU-Np-GOX" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="26" id="7Sp-gb-xyQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="wKx-Fk-BYS" secondAttribute="trailing" constant="20" id="8Xy-1N-Goe"/>
                                                     <constraint firstAttribute="trailing" secondItem="hPq-X9-nRR" secondAttribute="trailing" id="ANn-cz-g21"/>
-                                                    <constraint firstAttribute="trailing" secondItem="STU-Np-GOX" secondAttribute="trailing" constant="44" id="Doi-jJ-l3u"/>
                                                     <constraint firstItem="SEV-hN-cGJ" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="26" id="G11-4q-EQO"/>
                                                     <constraint firstAttribute="trailing" secondItem="72L-lD-Evs" secondAttribute="trailing" constant="26" id="HaJ-KD-0mt"/>
+                                                    <constraint firstItem="lA0-dA-EXL" firstAttribute="top" secondItem="SEV-hN-cGJ" secondAttribute="bottom" constant="10" id="HoO-sS-KjU"/>
                                                     <constraint firstItem="0QP-0k-xGF" firstAttribute="trailing" secondItem="lA0-dA-EXL" secondAttribute="trailing" id="KhS-mx-mi8"/>
+                                                    <constraint firstItem="LzX-H3-Abf" firstAttribute="centerY" secondItem="STU-Np-GOX" secondAttribute="centerY" id="MXh-kj-Qhy"/>
                                                     <constraint firstItem="hPq-X9-nRR" firstAttribute="leading" secondItem="FR5-dR-QfU" secondAttribute="trailing" constant="8" id="NIb-Ee-TXF"/>
                                                     <constraint firstItem="pfI-jm-3g2" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="26" id="P1a-fu-nse"/>
+                                                    <constraint firstItem="LzX-H3-Abf" firstAttribute="leading" secondItem="STU-Np-GOX" secondAttribute="trailing" constant="10" id="QLp-4D-dv6"/>
                                                     <constraint firstItem="jb2-ss-OoV" firstAttribute="leading" secondItem="bTK-Qm-DQG" secondAttribute="leading" id="RHh-iu-Q4c"/>
                                                     <constraint firstItem="xAs-Xo-Ey2" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="26" id="S21-kh-xdw"/>
+                                                    <constraint firstItem="lA0-dA-EXL" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="26" id="TMg-n3-zRc"/>
                                                     <constraint firstItem="bTK-Qm-DQG" firstAttribute="leading" secondItem="hPq-X9-nRR" secondAttribute="leading" id="TSj-eR-86K"/>
                                                     <constraint firstItem="bTK-Qm-DQG" firstAttribute="top" secondItem="hPq-X9-nRR" secondAttribute="bottom" constant="5" id="TW7-UY-3W6"/>
                                                     <constraint firstItem="STU-Np-GOX" firstAttribute="top" secondItem="Acr-8I-iKU" secondAttribute="bottom" constant="10" id="V3k-Ux-eLS"/>
@@ -958,7 +971,6 @@ spinning the wheel &lt;-  -&gt; </string>
                                                     <constraint firstAttribute="bottom" secondItem="lA0-dA-EXL" secondAttribute="bottom" constant="5" id="Z7U-eD-lDM"/>
                                                     <constraint firstItem="FR5-dR-QfU" firstAttribute="leading" secondItem="pfI-jm-3g2" secondAttribute="trailing" constant="8" id="ZQC-Ry-Tsa"/>
                                                     <constraint firstItem="xAs-Xo-Ey2" firstAttribute="leading" secondItem="pfI-jm-3g2" secondAttribute="leading" id="Zdd-WM-DWR"/>
-                                                    <constraint firstItem="LzX-H3-Abf" firstAttribute="centerX" secondItem="28V-G3-lvX" secondAttribute="centerX" id="dZY-wI-elN"/>
                                                     <constraint firstItem="SEV-hN-cGJ" firstAttribute="top" secondItem="STU-Np-GOX" secondAttribute="bottom" constant="12" id="doy-xj-hpa"/>
                                                     <constraint firstItem="hPq-X9-nRR" firstAttribute="top" secondItem="pfI-jm-3g2" secondAttribute="top" id="fJq-SB-f5M"/>
                                                     <constraint firstItem="pfI-jm-3g2" firstAttribute="top" secondItem="28V-G3-lvX" secondAttribute="top" constant="95" id="fNd-5H-v6q"/>
@@ -970,7 +982,6 @@ spinning the wheel &lt;-  -&gt; </string>
                                                     <constraint firstItem="FR5-dR-QfU" firstAttribute="centerX" secondItem="28V-G3-lvX" secondAttribute="centerX" constant="23" id="jk1-mm-Sy7"/>
                                                     <constraint firstItem="STU-Np-GOX" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="26" id="rXw-gA-qor"/>
                                                     <constraint firstItem="lA0-dA-EXL" firstAttribute="leading" secondItem="STU-Np-GOX" secondAttribute="leading" id="rsA-AF-yGz"/>
-                                                    <constraint firstItem="LzX-H3-Abf" firstAttribute="top" secondItem="SEV-hN-cGJ" secondAttribute="bottom" constant="25" id="tbx-Eu-QOZ"/>
                                                     <constraint firstItem="WiB-Lb-czc" firstAttribute="centerY" secondItem="jb2-ss-OoV" secondAttribute="centerY" id="tyS-Ns-9wS"/>
                                                     <constraint firstItem="Acr-8I-iKU" firstAttribute="leading" secondItem="28V-G3-lvX" secondAttribute="leading" constant="22" id="z0n-DB-4Aj"/>
                                                     <constraint firstItem="FR5-dR-QfU" firstAttribute="centerY" secondItem="pfI-jm-3g2" secondAttribute="centerY" id="zmg-5x-30o"/>
@@ -979,12 +990,11 @@ spinning the wheel &lt;-  -&gt; </string>
                                                     <mask key="subviews">
                                                         <exclude reference="wKx-Fk-BYS"/>
                                                         <exclude reference="0QP-0k-xGF"/>
-                                                        <exclude reference="lA0-dA-EXL"/>
                                                     </mask>
                                                 </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcx-09-Ngk">
-                                                <rect key="frame" x="0.0" y="480" width="320" height="265"/>
+                                                <rect key="frame" x="0.0" y="445" width="320" height="265"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="265" id="Mh5-hO-ArV"/>
@@ -994,12 +1004,15 @@ spinning the wheel &lt;-  -&gt; </string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="hcx-09-Ngk" firstAttribute="leading" secondItem="LCb-eT-2wc" secondAttribute="leading" id="8Xa-Js-p6O"/>
+                                            <constraint firstItem="28V-G3-lvX" firstAttribute="centerX" secondItem="LCb-eT-2wc" secondAttribute="centerX" id="KGY-vd-KpM"/>
                                             <constraint firstItem="28V-G3-lvX" firstAttribute="leading" secondItem="LCb-eT-2wc" secondAttribute="leading" id="NPa-zx-Its"/>
                                             <constraint firstAttribute="bottom" secondItem="hcx-09-Ngk" secondAttribute="bottom" id="S8Z-o1-5GE"/>
                                             <constraint firstItem="hcx-09-Ngk" firstAttribute="top" secondItem="28V-G3-lvX" secondAttribute="bottom" id="Xj4-Hu-wIG"/>
                                             <constraint firstItem="28V-G3-lvX" firstAttribute="top" secondItem="LCb-eT-2wc" secondAttribute="top" id="Ywp-qt-CoW"/>
                                             <constraint firstAttribute="trailing" secondItem="hcx-09-Ngk" secondAttribute="trailing" id="cO8-gi-gzF"/>
                                             <constraint firstAttribute="trailing" secondItem="28V-G3-lvX" secondAttribute="trailing" id="h2W-z5-mlM"/>
+                                            <constraint firstItem="hcx-09-Ngk" firstAttribute="top" secondItem="28V-G3-lvX" secondAttribute="bottom" id="hyx-I2-JDe"/>
+                                            <constraint firstItem="hcx-09-Ngk" firstAttribute="top" secondItem="28V-G3-lvX" secondAttribute="bottom" id="z7f-aG-DDn"/>
                                         </constraints>
                                     </view>
                                 </subviews>

@@ -134,9 +134,12 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         imgLocn.image = tintableImage
         imgLocn.tintColor = .white
         
-        DispatchQueue.main.async {
-            self.vwAdddashedBordr.addDashedBorder()
-        }
+//        DispatchQueue.main.async {
+//            self.vwAdddashedBordr.addDashedBorder()
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+//            self.vwAdddashedBordr.addDashedBorder()
+//        })
     }
     
     //MARK: - METHOD TO SET MAP
@@ -431,6 +434,9 @@ extension SummaryVC {
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
             }
             self.btnAvlblPoints.setTitle("\(pt ?? 0)", for: .normal)
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                self.vwAdddashedBordr.addDashedBorder()
+            })
         }
     }
     
