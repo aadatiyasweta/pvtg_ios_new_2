@@ -1889,11 +1889,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				BASE_URL = "https://techugoserver.info/pvtg_dev/api/v1/";
+				BASE_URL = "https://dharma.services/api/v1/";
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = KNN6PGPRBD;
 				ENABLE_BITCODE = NO;
@@ -1907,7 +1907,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.mydharma.dharma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SOCKET_URL = "https://techugoserver.info:5632";
+				SOCKET_URL = "https://dharma.services:2263";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1919,11 +1919,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				BASE_URL = "https://techugoserver.info/pvtg_dev/api/v1/";
+				BASE_URL = "https://dharma.services/api/v1/";
 				CODE_SIGN_ENTITLEMENTS = PVTG/PVTG.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_TEAM = KNN6PGPRBD;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PVTG/Info.plist;
@@ -1936,7 +1936,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.mydharma.dharma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SOCKET_URL = "https://techugoserver.info:5632";
+				SOCKET_URL = "https://dharma.services:2263";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
