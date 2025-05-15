@@ -98,6 +98,22 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 //        }
     }
         
+//    func initializeLocation() {
+//        // Request the appropriate authorization
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.delegate = self // Set the delegate to receive updates
+//        getUserCurrentLocation()
+//
+//        // Check if location services are enabled at the system level
+//        DispatchQueue.global(qos: .background).async {
+//            if CLLocationManager.locationServicesEnabled() {
+//                print("Location services are enabled.")
+//            } else {
+//                self.showAlertForPermissionDenied()
+//            }
+//        }
+//    }
+    
     func initializeLocation() {
         // Request the appropriate authorization
         locationManager.requestWhenInUseAuthorization()
@@ -109,11 +125,12 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
             if CLLocationManager.locationServicesEnabled() {
                 print("Location services are enabled.")
             } else {
-                self.showAlertForPermissionDenied()
+                DispatchQueue.main.async {
+                    self.showAlertForPermissionDenied()
+                }
             }
         }
     }
-    
     func showAlertForPermissionDenied() {
         let alertController = UIAlertController(
             title: R.string.localizable.backGroundLocationdDisabled(),
