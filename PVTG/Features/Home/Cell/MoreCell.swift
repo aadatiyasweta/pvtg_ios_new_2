@@ -14,6 +14,7 @@ class MoreCell: UITableViewCell {
     @IBOutlet weak var lblMore: UILabel!
     @IBOutlet weak var vwSeperator: UIView!
     
+    @IBOutlet weak var lblBedge: UILabel!
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "MoreCell"
     class func nib()-> UINib {
@@ -23,6 +24,8 @@ class MoreCell: UITableViewCell {
     //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        lblBedge.layer.cornerRadius = 5
+        lblBedge.clipsToBounds = true
         // Initialization code
     }
 

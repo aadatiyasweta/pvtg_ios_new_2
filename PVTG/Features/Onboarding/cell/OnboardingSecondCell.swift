@@ -31,7 +31,7 @@ class OnboardingSecondCell: UICollectionViewCell {
         self.titleLbl.text =  R.string.localizable.earnUseRewardss()
         if model.count == 2{
             self.iconImageView.image = #imageLiteral(resourceName: "group3-1")
-            self.backgroundColor = #colorLiteral(red: 0.3772953153, green: 0.8521574736, blue: 0.7450372577, alpha: 1)
+//            self.backgroundColor = #colorLiteral(red: 0.3772953153, green: 0.8521574736, blue: 0.7450372577, alpha: 1)
             var strArr = [String]()
             if model[0].discount ?? "" == ""{
                 strArr.append("\(model[0].milstone ?? "")- \(R.string.localizable.freeService())= \(model[0].points ?? "") \(R.string.localizable.pts())")

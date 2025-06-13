@@ -19,10 +19,10 @@ class SessionCell: UITableViewCell {
     @IBOutlet weak var vwCard: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var sessionImg: UIImageView!
-    
     @IBOutlet weak var followUpView: UIView!
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "SessionCell"
+    let gradientLayer = CAGradientLayer()
     class func nib()-> UINib {
         return UINib.init(nibName: SessionCell.ident, bundle: nil)
     }
@@ -34,6 +34,26 @@ class SessionCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+//            self.gradientLayer.frame = (self.sessionImg.bounds)
+//            let colorSet = [UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.0),
+//                            UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)]
+//            let location = [0.1, 0.5]
+//            self.sessionImg.addGradient(with: self.gradientLayer, colorSet: colorSet, locations: location)
+//        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.gradientLayer.frame = self.sessionImg.bounds
+            self.gradientLayer.colors = [
+                UIColor.white.withAlphaComponent(0.0).cgColor,
+                UIColor.black.withAlphaComponent(0.5).cgColor
+            ]
+            self.gradientLayer.locations = [0.0, 1.0] // Smoothly from top to bottom
+            self.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0) // Top-center
+            self.gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)   // Bottom-center
+            self.sessionImg.layer.addSublayer(self.gradientLayer)
+        }
+       
     }
     
     //MARK: - METHOD TO SET DATE
@@ -81,4 +101,24 @@ class SessionCell: UITableViewCell {
                loadImage(sessionImg, self.sessionImg, activity: nil, defaultImage: nil)
            }
        }
+}
+extension UIView {
+    func addGradient(with layer: CAGradientLayer, gradientFrame: CGRect? = nil, colorSet: [UIColor],
+                     locations: [Double], startEndPoints: (CGPoint, CGPoint)? = nil) {
+        layer.frame = gradientFrame ?? self.bounds
+        layer.frame.origin = .zero
+        
+        let layerColorSet = colorSet.map { $0.cgColor }
+        let layerLocations = locations.map { $0 as NSNumber }
+        
+        layer.colors = layerColorSet
+        layer.locations = layerLocations
+        
+        if let startEndPoints = startEndPoints {
+            layer.startPoint = startEndPoints.0
+            layer.endPoint = startEndPoints.1
+        }
+        self.layer.mask = layer
+        self.layer.insertSublayer(layer, above: self.layer)
+    }
 }

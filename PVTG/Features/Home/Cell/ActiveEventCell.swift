@@ -40,7 +40,7 @@ class ActiveEventCell: UICollectionViewCell {
     var dictData:EventsResult?
     var mapClosure : ()->() = {}
     var chatClosure : ()->() = {}
-    
+    let gradientLayer = CAGradientLayer()
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "ActiveEventCell"
     class func nib()-> UINib {
@@ -52,8 +52,24 @@ class ActiveEventCell: UICollectionViewCell {
         super.awakeFromNib()
         let nib = UINib(nibName: "ActiveEventCollectionViewCell", bundle: nil)
         activeEventCollectionView?.register(nib, forCellWithReuseIdentifier: "ActiveEventCollectionViewCell")
+        activeEventCollectionView.showsHorizontalScrollIndicator = true
+        activeEventCollectionView.flashScrollIndicators()
     }
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.gradientLayer.frame = self.sessionImage.bounds
+            self.gradientLayer.colors = [
+                UIColor.white.withAlphaComponent(0.0).cgColor,
+                UIColor.black.withAlphaComponent(0.5).cgColor
+            ]
+            self.gradientLayer.locations = [0.0, 1.0] // Smoothly from top to bottom
+            self.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0) // Top-center
+            self.gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)   // Bottom-center
+            self.sessionImage.layer.addSublayer(self.gradientLayer)
+        }
+       
+    }
     //MARK: - METHOD TO SET DATA
     func setData(data: EventsResult?) {
         self.dictData = data

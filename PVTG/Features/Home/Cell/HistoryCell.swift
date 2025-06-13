@@ -39,13 +39,27 @@ class HistoryCell: UITableViewCell {
     }
     var selectedIndex: (_ tappedIndex: Int) -> Void = { _ in  }
     var selectedRate: (()->())?
-    
+    let gradientLayer = CAGradientLayer()
     //MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.gradientLayer.frame = self.sessionImage.bounds
+            self.gradientLayer.colors = [
+                UIColor.white.withAlphaComponent(0.0).cgColor,
+                UIColor.black.withAlphaComponent(0.5).cgColor
+            ]
+            self.gradientLayer.locations = [0.0, 1.0] // Smoothly from top to bottom
+            self.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0) // Top-center
+            self.gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)   // Bottom-center
+            self.sessionImage.layer.addSublayer(self.gradientLayer)
+        }
+       
+    }
     //MARK: - METHOD TO SET DATA
     func setData(data: EventsResult?) {
         guard let data = data else {return}

@@ -65,7 +65,7 @@
 "Discount" = "Discount";
 "ptsavailable" = "Dharma pts available";
 "youWillBeRewarded" = "You will be rewarded %@ pts for booking this session, ";
-"PleaseSelecttime" = "Please Select time";
+"PleaseSelecttime" = "Please Select date / time";
 "CancelTheBooking" = "Are you sure you want to cancel your booking";
 "onlyTickets" = "only %@ tickets for this session are available.";
 "onlyTicket" = "only %@ ticket for this session are available.";
@@ -97,7 +97,7 @@
 "doNotWorry" = "and don't worry you can always cancel up to 2 hours before a session begins for a Full Refund!";
 "FreeService" = "Free Service";
 "PriceFilter" = "Price Filter";
-"bookingdate" = "Booking Date :";
+"bookingdate" = "Booking Date:";
 "CancellationPolicy" = "Cancellation Policy";
 "View" = "View";
 "Later" = "Later";

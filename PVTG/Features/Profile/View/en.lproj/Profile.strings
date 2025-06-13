@@ -48,7 +48,7 @@
 "ZgX-6v-8V8.normalTitle" = "SUBMIT";
 
 /* Class = "UILabel"; text = "Add or Remove Holistic Interests"; ObjectID = "eKm-Ag-Gws"; */
-"eKm-Ag-Gws.text" = "Add or Remove Holistic Interests";
+"eKm-Ag-Gws.text" = "Add or Remove Categories";
 
 /* Class = "UILabel"; text = "  Notifications"; ObjectID = "eqW-F1-SJu"; */
 "eqW-F1-SJu.text" = "  Notifications";

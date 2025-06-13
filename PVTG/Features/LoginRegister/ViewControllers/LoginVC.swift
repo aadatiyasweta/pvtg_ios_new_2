@@ -31,6 +31,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     @IBOutlet weak var lblEmailErr: UILabel!
     @IBOutlet weak var lblPaswdErr: UILabel!
    // @IBOutlet weak var stackViewWidthConst: NSLayoutConstraint!
+    @IBOutlet weak var hidePasswordButton: UIButton!
     
     //MARK: - Properties
     var loginVM = LoginVM()
@@ -72,6 +73,15 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     }
     
     //MARK: - BUTTON ACTION
+    @IBAction func hidePasswordButtonAction(_ sender: Any) {
+        if hidePasswordButton.isSelected{
+            hidePasswordButton.isSelected = false
+            txfPassword.isSecureTextEntry = true
+        }else{
+            hidePasswordButton.isSelected = true
+            txfPassword.isSecureTextEntry = false
+        }
+    }
     @IBAction func tapForgotPassword(_ sender: UIButton) {
         let vc = ForgotPaswordVC.instance()
         self.navigationController?.pushViewController(vc, animated: true)

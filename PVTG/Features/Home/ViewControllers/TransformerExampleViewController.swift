@@ -117,12 +117,24 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     
     //MARK: - BUTTON ACTION
     @IBAction func doneTap(_ sender: UIButton) {
-        guard let userid = SaveToDefaults().getUserId() else {return}
-        var id = [String]()
-        for val in self.selectedCategoryArr{
-            id.append(val.category_id)
+//        guard let userid = SaveToDefaults().getUserId() else {return}
+//        var id = [String]()
+//        for val in self.selectedCategoryArr{
+//            id.append(val.category_id)
+//        }
+//        self.vm.userSelectedCategoryApi(user_id: userid, selected_category: id.joined(separator: ","))
+        
+        let alertController = UIAlertController(title: "Dharma", message: "To choose categories later, tap your profile image on the home screen.", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
+            guard let userid = SaveToDefaults().getUserId() else {return}
+            var id = [String]()
+            for val in self.selectedCategoryArr{
+                id.append(val.category_id)
+            }
+            self.vm.userSelectedCategoryApi(user_id: userid, selected_category: id.joined(separator: ","))
         }
-        self.vm.userSelectedCategoryApi(user_id: userid, selected_category: id.joined(separator: ","))
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: -  FSPAGERVIEWDATASOURCE
@@ -252,7 +264,8 @@ extension TransformerExampleViewController: LoadingCategory {
     
     func reloaddata() {
 //        lblCount.text = "\(self.vm.model?.result?.count ?? 0)"
-        lblCount.text = "Toggle Wheel"
+//        lblCount.text = "Toggle Wheel"
+        lblCount.text = "Categories"
 //        for i in 0..<(self.vm.model?.result?.count ?? 0){
 //            self.getCategoryId.append(self.vm.model?.result?[i].category_id ?? "")
 //        }

@@ -31,8 +31,12 @@ class MoreVC: BaseViewController {
  override func viewDidLoad() {
   super.viewDidLoad()
   renderTheColorOfImage()
+     tblMore.reloadData()
  }
- 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tblMore.reloadData()
+    }
  func renderTheColorOfImage() {
  }
 }
@@ -49,7 +53,18 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
   if moreArr.count-1 == indexPath.row {
    cell.lblMore.textColor = UIColor().coloWithHexString(hex: "#ff4949")
    cell.vwSeperator.alpha = 0
+     
   }
+     if indexPath.row == 0{
+         if (UserDefaults.standard.value(forKey: "unreadNotificationCount") as? Int) == 0{
+             cell.lblBedge.isHidden = true
+         }else{
+             cell.lblBedge.isHidden = false
+
+         }
+              }else{
+         cell.lblBedge.isHidden = true
+     }
   return cell
  }
  

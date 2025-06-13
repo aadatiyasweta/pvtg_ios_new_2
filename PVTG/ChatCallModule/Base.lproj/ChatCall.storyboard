@@ -298,7 +298,7 @@
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Write something here..."/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Write practitioner..."/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                         <color key="value" red="0.59999999999999998" green="0.62352941176470589" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1586,6 +1586,7 @@ Erocitica medication time ?</string>
                         <outlet property="hederView" destination="lZl-fI-61N" id="9Tf-pI-shC"/>
                         <outlet property="hideView" destination="96F-yN-aCc" id="Svk-2S-ttz"/>
                         <outlet property="imageVideoButton" destination="PQK-Qm-1Xl" id="ece-k2-MKf"/>
+                        <outlet property="lblOnline" destination="CTY-MW-SP3" id="074-g7-5h4"/>
                         <outlet property="mapBtn" destination="c7l-B9-uiu" id="GWg-U8-WdT"/>
                         <outlet property="messageTV" destination="OzX-7x-7BM" id="dA4-qu-BeR"/>
                         <outlet property="messageTVBottom" destination="DKh-Us-3aK" id="s4L-rE-YpE"/>

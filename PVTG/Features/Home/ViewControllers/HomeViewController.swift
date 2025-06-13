@@ -413,7 +413,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let label = UILabel(frame: CGRect.zero)
         label.text = text
         label.sizeToFit()
-        return CGSize(width: label.frame.size.width + 74, height: 65)
+        if label.text == "Top Search"{
+            return CGSize(width: label.frame.size.width + 35, height: 65)
+        }
+        else{
+            return CGSize(width: label.frame.size.width + 74, height: 65)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -491,6 +497,7 @@ extension HomeViewController: GetHomeData {
             self.minimUmPrice = self.homevm.model?.min_val ?? 0
             self.maximimPrice = self.homevm.model?.max_val ?? 0
         }
+        UserDefaults.standard.set(unreadNotificationCount, forKey: "unreadNotificationCount")
         if(unreadNotificationCount != 0){
             self.tabBarController?.addBadge(index: 3, value: unreadNotificationCount, color: .red, font:UIFont.systemFont(ofSize: 14.0, weight: .regular))
         }else {

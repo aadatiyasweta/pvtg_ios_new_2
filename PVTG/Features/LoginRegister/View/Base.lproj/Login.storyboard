@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="67d-hn-yqF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="67d-hn-yqF">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -79,8 +79,8 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbg-rJ-HPi">
-                                                                <rect key="frame" x="10" y="50" width="33.333333333333336" height="14.666666666666671"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                                                <rect key="frame" x="10" y="50" width="42" height="19.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -108,9 +108,19 @@
                                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9L0-nB-kr4">
+                                                                <rect key="frame" x="339" y="16.666666666666686" width="21" height="22"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" image="eye_close"/>
+                                                                <state key="selected" image="eye_open"/>
+                                                                <connections>
+                                                                    <action selector="hidePasswordButtonAction:" destination="uwE-2u-AJS" eventType="touchUpInside" id="JvB-5c-9Eg"/>
+                                                                </connections>
+                                                            </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4c-mr-rgO">
-                                                                <rect key="frame" x="10" y="50" width="33.333333333333336" height="14.666666666666671"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                                                <rect key="frame" x="10" y="50" width="42" height="19.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -119,7 +129,9 @@
                                                         <constraints>
                                                             <constraint firstItem="t4c-mr-rgO" firstAttribute="leading" secondItem="hRL-4P-Lif" secondAttribute="leading" constant="10" id="KdX-nj-LpN"/>
                                                             <constraint firstItem="hRL-4P-Lif" firstAttribute="leading" secondItem="ZUX-15-SbV" secondAttribute="leading" id="RVg-bb-Fb6"/>
+                                                            <constraint firstItem="9L0-nB-kr4" firstAttribute="centerY" secondItem="ZUX-15-SbV" secondAttribute="centerY" id="UuI-rj-Ko7"/>
                                                             <constraint firstItem="t4c-mr-rgO" firstAttribute="top" secondItem="hRL-4P-Lif" secondAttribute="bottom" id="WCa-KQ-JB1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="9L0-nB-kr4" secondAttribute="trailing" constant="10" id="hsv-05-WNc"/>
                                                             <constraint firstAttribute="height" constant="55" id="ibd-cY-EAx"/>
                                                             <constraint firstAttribute="trailing" secondItem="hRL-4P-Lif" secondAttribute="trailing" id="jcu-4A-l8N"/>
                                                             <constraint firstItem="hRL-4P-Lif" firstAttribute="centerY" secondItem="ZUX-15-SbV" secondAttribute="centerY" id="mes-nj-CoE"/>
@@ -247,17 +259,24 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Jcg-G1-Tdx">
                                                 <rect key="frame" x="30" y="694" width="354" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dont have an account?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32E-Aw-Y92">
-                                                        <rect key="frame" x="0.0" y="6.3333333333333712" width="213.66666666666666" height="17.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32E-Aw-Y92">
+                                                        <rect key="frame" x="0.0" y="6.3333333333333712" width="210" height="17.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="arx-vc-6JW">
-                                                        <rect key="frame" x="220.66666666666663" y="0.0" width="133.33333333333337" height="30"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
-                                                        <state key="normal" title="Register Now!">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arx-vc-6JW">
+                                                        <rect key="frame" x="217" y="0.0" width="137" height="30"/>
+                                                        <state key="normal">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="Register Now!">
+                                                                    <attributes>
+                                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                                                        <integer key="NSUnderline" value="1"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
                                                         </state>
                                                         <connections>
                                                             <action selector="tapRegiterNow:" destination="uwE-2u-AJS" eventType="touchUpInside" id="iVb-jV-cw7"/>
@@ -354,6 +373,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="btnSubmit" destination="eJK-jn-yd4" id="0CL-Lm-JIe"/>
+                        <outlet property="hidePasswordButton" destination="9L0-nB-kr4" id="mAG-xY-GCg"/>
                         <outlet property="lblEmailErr" destination="Jbg-rJ-HPi" id="x6F-dz-fYg"/>
                         <outlet property="lblPaswdErr" destination="t4c-mr-rgO" id="3YE-gE-1NJ"/>
                         <outlet property="logintoYouAcLbl" destination="0pk-2H-HMD" id="HK5-SZ-jhR"/>
@@ -449,8 +469,8 @@
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5N-0u-qqm">
-                                                                <rect key="frame" x="10" y="50" width="33.333333333333336" height="14.666666666666671"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                                                <rect key="frame" x="10" y="50" width="42" height="19.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -479,8 +499,8 @@
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOi-7Z-Mn1">
-                                                                <rect key="frame" x="10" y="50" width="33.333333333333336" height="14.666666666666671"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                                                <rect key="frame" x="10" y="50" width="42" height="19.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -509,8 +529,8 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YC0-ly-5Us">
-                                                                <rect key="frame" x="10" y="50" width="33.333333333333336" height="14.666666666666671"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                                                <rect key="frame" x="10" y="50" width="42" height="19.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -538,9 +558,20 @@
                                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6B-yY-fB9">
+                                                                <rect key="frame" x="337" y="16.666666666666629" width="21" height="22"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" image="eye_close"/>
+                                                                <state key="selected" image="eye_open"/>
+                                                                <connections>
+                                                                    <action selector="hidePasswordButtonAction:" destination="uwE-2u-AJS" eventType="touchUpInside" id="3IS-sy-ohp"/>
+                                                                    <action selector="hidePasswordButtonAction:" destination="AIa-Ro-UXS" eventType="touchUpInside" id="PFk-15-AZ5"/>
+                                                                </connections>
+                                                            </button>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnO-yQ-U2R">
-                                                                <rect key="frame" x="10" y="50" width="33.333333333333336" height="14.666666666666671"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                                                <rect key="frame" x="10" y="50" width="42" height="19.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -552,6 +583,8 @@
                                                             <constraint firstAttribute="height" constant="55" id="IJA-pU-Lnr"/>
                                                             <constraint firstItem="QmZ-ET-rbc" firstAttribute="width" secondItem="xN1-WN-aEA" secondAttribute="width" id="PUM-kk-mxO"/>
                                                             <constraint firstItem="QmZ-ET-rbc" firstAttribute="leading" secondItem="xN1-WN-aEA" secondAttribute="leading" id="Rdz-hW-a2w"/>
+                                                            <constraint firstItem="m6B-yY-fB9" firstAttribute="centerY" secondItem="xN1-WN-aEA" secondAttribute="centerY" id="hNm-0y-RYv"/>
+                                                            <constraint firstAttribute="trailing" secondItem="m6B-yY-fB9" secondAttribute="trailing" constant="10" id="iWC-5u-Use"/>
                                                             <constraint firstItem="AnO-yQ-U2R" firstAttribute="top" secondItem="QmZ-ET-rbc" secondAttribute="bottom" id="t15-tj-r05"/>
                                                         </constraints>
                                                     </view>
@@ -569,8 +602,8 @@
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjF-sU-bYM">
-                                                                <rect key="frame" x="10" y="50" width="33.333333333333336" height="14.666666666666671"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                                                <rect key="frame" x="10" y="50" width="42" height="19.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -625,11 +658,18 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2S-fv-4rg">
-                                                <rect key="frame" x="260" y="717.66666666666663" width="88" height="31"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
-                                                <state key="normal" title="Login Now!">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2S-fv-4rg">
+                                                <rect key="frame" x="260" y="717.66666666666663" width="87" height="31"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Login Now!">
+                                                            <attributes>
+                                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" size="16" name="HelveticaNeue-Bold"/>
+                                                                <integer key="NSUnderline" value="1"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                 </state>
                                                 <connections>
                                                     <action selector="tapLoginNow:" destination="AIa-Ro-UXS" eventType="touchUpInside" id="6Un-Ol-o3U"/>
@@ -687,6 +727,7 @@
                     <connections>
                         <outlet property="addphotoLbl" destination="AKu-BG-qI5" id="CHj-8q-wyz"/>
                         <outlet property="btnSubmit" destination="2kr-7h-bf8" id="R0h-Bb-Nwp"/>
+                        <outlet property="hidePasswordButton" destination="m6B-yY-fB9" id="lK0-WO-Z3c"/>
                         <outlet property="lblConfrmPaswdErr" destination="AjF-sU-bYM" id="7bF-Pq-e8p"/>
                         <outlet property="lblEmailErr" destination="YC0-ly-5Us" id="uaL-c5-HUF"/>
                         <outlet property="lblFullErr" destination="q5N-0u-qqm" id="zv6-uB-YWo"/>
@@ -1141,6 +1182,8 @@
         <image name="apple" width="17.666666030883789" height="20.666666030883789"/>
         <image name="bg" width="557.33331298828125" height="1086"/>
         <image name="descriptionImage" width="375" height="812"/>
+        <image name="eye_close" width="21" height="15"/>
+        <image name="eye_open" width="20" height="12"/>
         <image name="group4" width="375" height="812"/>
         <image name="minimalLeft2X" width="7.3333334922790527" height="13"/>
         <image name="shape3" width="6.3333334922790527" height="13.333333015441895"/>

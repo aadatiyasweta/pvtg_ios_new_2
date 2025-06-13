@@ -17,6 +17,7 @@ class CategoryCell: UICollectionViewCell {
     @IBOutlet weak var trailingConstrainOuterview: NSLayoutConstraint!
     @IBOutlet weak var leadingConstrain: NSLayoutConstraint!
     
+    @IBOutlet weak var widthCon: NSLayoutConstraint!
     //MARK: - CELL REUSE IDENTIFIER METHOD
     static let ident = "CategoryCell"
     class func nib()-> UINib {
@@ -39,5 +40,6 @@ class CategoryCell: UICollectionViewCell {
         guard let data = data else {return}
         loadImage(data.image, imgcategory, activity: nil, defaultImage: nil)
         self.lblCategory.text = data.name
+        widthCon.constant = 0
     }
 }

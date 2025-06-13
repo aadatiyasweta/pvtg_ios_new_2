@@ -40,7 +40,7 @@ spinning the wheel <-  -> ";
 "ZCK-U4-egh.title" = "More";
 
 /* Class = "UILabel"; text = "  Select Interest"; ObjectID = "crF-m2-F7f"; */
-"crF-m2-F7f.text" = "Select Interest Now or Later";
+"crF-m2-F7f.text" = "Select Interest";
 
 /* Class = "UILabel"; text = "Your Location"; ObjectID = "g9D-1j-WGH"; */
 "g9D-1j-WGH.text" = "Choose Your Location";

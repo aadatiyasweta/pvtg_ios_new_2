@@ -231,7 +231,8 @@ extension EventsViewController: LoadingEvents {
         }
         
         if self.vm.model?.history?.count ?? 0 == 0 &&  self.vm.model?.result?.count ?? 0 == 0{
-             self.lblNoSession.text = R.string.localizable.noSession()
+             self.lblNoSession.text = "Sessions that you book will appear here"
+            //R.string.localizable.noSession()
              self.lblNoSession.isHidden = false
         }else{
             self.lblActiveEvent.isHidden = false

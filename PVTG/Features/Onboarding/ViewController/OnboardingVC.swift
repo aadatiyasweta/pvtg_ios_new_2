@@ -34,7 +34,7 @@ class OnboardingVC: UIViewController {
         super.viewDidLoad()
         self.vm.delegate = self
         self.vm.hitOnboaridngApi()
-        self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle-3")
+//        self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle-3")
         self.vw1.backgroundColor = .white
         self.vw2.backgroundColor = .white
         self.vw3.backgroundColor = .white
@@ -105,7 +105,7 @@ extension OnboardingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIC
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingSecondCell", for: indexPath) as! OnboardingSecondCell
             cell.iconImageView.image = UIImage.init(named: "group3")
-            cell.backgroundColor = #colorLiteral(red: 0.3817746043, green: 0.4064786732, blue: 0.8502063155, alpha: 1)
+//            cell.backgroundColor = #colorLiteral(red: 0.3817746043, green: 0.4064786732, blue: 0.8502063155, alpha: 1)
             cell.titleLbl.text = R.string.localizable.rewards()
             var str = [String]()
             for val in 0..<(self.vm.model?.earn_reward!.count)!{
@@ -126,17 +126,17 @@ extension OnboardingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIC
             self.vw1.alpha = 1
             self.vw2.alpha = 0.5
             self.vw3.alpha = 0.5
-            self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle-3")
+//            self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle-3")
         }else if index == 1{
             self.vw1.alpha = 0.5
             self.vw2.alpha = 1
             self.vw3.alpha = 0.5
-            self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle3Copy")
+//            self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle3Copy")
         }else{
             self.vw1.alpha = 0.5
             self.vw2.alpha = 0.5
             self.vw3.alpha = 1
-            self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle-3")
+//            self.imgOnboarding.image = #imageLiteral(resourceName: "rectangle-3")
         }
       
         if index == 2 {

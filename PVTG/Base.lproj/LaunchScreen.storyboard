@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,10 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spalshh" translatesAutoresizingMaskIntoConstraints="NO" id="iFV-ue-QT2">
-                                <rect key="frame" x="0.0" y="48" width="414" height="848"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchBG" translatesAutoresizingMaskIntoConstraints="NO" id="iFV-ue-QT2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-8K-ZaO">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-8K-ZaO">
                                 <rect key="frame" x="0.0" y="48" width="414" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNew11" translatesAutoresizingMaskIntoConstraints="NO" id="Dvf-wA-Skz">
@@ -42,13 +42,13 @@
                                     <constraint firstItem="Dvf-wA-Skz" firstAttribute="centerX" secondItem="DMu-8K-ZaO" secondAttribute="centerX" id="aoI-5M-Ny1"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No More Bad Karma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6l-u5-HJa">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No More Bad Karma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6l-u5-HJa">
                                 <rect key="frame" x="30" y="244" width="354" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNew11" translatesAutoresizingMaskIntoConstraints="NO" id="bGF-6b-G8b">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNew11" translatesAutoresizingMaskIntoConstraints="NO" id="bGF-6b-G8b">
                                 <rect key="frame" x="122" y="68" width="170" height="170"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,7 +62,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bGF-6b-G8b" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3gh-7Y-eE8"/>
-                            <constraint firstItem="iFV-ue-QT2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6R8-KZ-2dv"/>
+                            <constraint firstItem="iFV-ue-QT2" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="6R8-KZ-2dv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DMu-8K-ZaO" secondAttribute="trailing" id="9Kc-1H-bH0"/>
                             <constraint firstItem="Q6l-u5-HJa" firstAttribute="top" secondItem="bGF-6b-G8b" secondAttribute="bottom" constant="6" id="BUi-iN-C9Z"/>
                             <constraint firstItem="DMu-8K-ZaO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="McJ-SR-fvR"/>
@@ -88,7 +88,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LaunchBG" width="1334" height="2000"/>
         <image name="LogoNew11" width="808" height="732"/>
-        <image name="spalshh" width="320" height="568"/>
     </resources>
 </document>

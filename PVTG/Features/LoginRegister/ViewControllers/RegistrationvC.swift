@@ -51,7 +51,7 @@ class RegistrationvC: BaseViewController {
     @IBOutlet weak var lblFullErr: UILabel!
     
     @IBOutlet weak var addphotoLbl: UILabel!
-    
+    @IBOutlet weak var hidePasswordButton: UIButton!
     //MARK: - Properties
     var regVM = RegistrationVM()
     var loginVM = LoginVM()
@@ -75,6 +75,15 @@ class RegistrationvC: BaseViewController {
     }
     
     //MARK: - BUTTON ACTION
+    @IBAction func hidePasswordButtonAction(_ sender: Any) {
+        if hidePasswordButton.isSelected{
+            hidePasswordButton.isSelected = false
+            txfPassword.isSecureTextEntry = true
+        }else{
+            hidePasswordButton.isSelected = true
+            txfPassword.isSecureTextEntry = false
+        }
+    }
     @IBAction func profilePicBtnTap(_ sender: UIButton) {
         self.showSheet()
     }

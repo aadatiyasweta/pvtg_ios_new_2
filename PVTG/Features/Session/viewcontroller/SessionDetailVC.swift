@@ -101,6 +101,10 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var cancelTagView: UIView!
     
     @IBOutlet weak var calendarView: UIView!
+    
+    @IBOutlet weak var btnToArrow: UIButton!
+    
+    @IBOutlet weak var lblHint: UILabel!
     //MARK: - Properties
     var x = 1
     var mapView:GMSMapView?
@@ -208,6 +212,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         btnToCurrent.isHidden = true
         btnToNext.isHidden = true
 //            self.vwmap.isHidden = false
+            self.lblHint.isHidden = true
             self.vwcalendar.isHidden = true
             self.vwCollection.isHidden = true
             self.vwColectionHeightConstarint.constant = 0
@@ -240,6 +245,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             btnToCurrent.isHidden = false
             btnToNext.isHidden = false
 //            self.vwmap.isHidden = false
+            self.lblHint.isHidden = false
             self.vwcalendar.isHidden = false
             self.vwCollection.isHidden = false
             self.vwColectionHeightConstarint.constant = 70
@@ -258,6 +264,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             btnToCurrent.isHidden = true
             btnToNext.isHidden = true
 //            self.vwmap.isHidden = true
+            self.lblHint.isHidden = true
             self.vwcalendar.isHidden = true
             self.vwCollection.isHidden = true
             self.vwColectionHeightConstarint.constant = 0
@@ -276,6 +283,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             btnToCurrent.isHidden = true
             btnToNext.isHidden = true
 //            self.vwmap.isHidden = true
+            self.lblHint.isHidden = true
             self.vwcalendar.isHidden = true
             self.vwCollection.isHidden = true
             self.vwColectionHeightConstarint.constant = 0
@@ -294,6 +302,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
             btnToCurrent.isHidden = false
             btnToNext.isHidden = false
 //            self.vwmap.isHidden = false
+            self.lblHint.isHidden = false
             self.vwcalendar.isHidden = false
             self.vwCollection.isHidden = false
             self.vwColectionHeightConstarint.constant = 70
@@ -358,6 +367,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         }
         self.setAttributedText()
         self.contactUsLbl.text = R.string.localizable.contactUs()
+        btnToArrow.isHidden = true
         
     }
     
@@ -393,6 +403,13 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
                 let attributedString = NSAttributedString(string: R.string.localizable.customQuestion(), attributes: attributes)
                 // Apply attributed text to the button
                 customQstnBtn.setAttributedTitle(attributedString, for: .normal)
+    }
+    @IBAction func clickOnTopArrowBtn(_ sender: UIButton) {
+//        if self.getOffsetofCalendar() > 300{
+//            self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: self.getOffsetofCalendar()), animated: true)
+//        }
+        self.mainScrollview.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: true)
+        btnToArrow.isHidden = true
     }
     
     //MARK: - BUTTON ACTION
@@ -501,7 +518,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         self.lblNoTime.isHidden = true
         self.vwcalendar.isHidden = false
         self.vwCollection.isHidden = false
-        
+        self.lblHint.isHidden = false
         self.priceLabel.isHidden = false
         //self.vwcalendar.reloadData()
         //handlingHeaderInFSCalendar()
@@ -1079,15 +1096,20 @@ extension SessionDetailVC: UICollectionViewDataSource, UICollectionViewDelegate,
                 cell.searchCategorylbl.text = "120 mins"
             }
             
-            if(selectedTimeIndex == indexPath.item){
-                cell.searchCategorylbl.textColor = UIColor.white
-                cell.vwContainCatgry.backgroundColor =  UIColor(red: 5/255, green: 217/255, blue: 189/255, alpha: 1)
-            }else{
-                cell.searchCategorylbl.textColor = UIColor.black
-                cell.vwContainCatgry.backgroundColor = UIColor.white
+//            if(selectedTimeIndex == indexPath.item){
+//                cell.searchCategorylbl.textColor = UIColor.white
+//                cell.vwContainCatgry.backgroundColor =  UIColor(red: 5/255, green: 217/255, blue: 189/255, alpha: 1)
+//            }else{
+//                cell.searchCategorylbl.textColor = UIColor.black
+//                cell.vwContainCatgry.backgroundColor = UIColor.white
+//            }
+//            cell.vwContainCatgry.layer.borderWidth = 1
+//            cell.vwContainCatgry.layer.borderColor = UIColor(red: 5/255, green: 217/255, blue: 189/255, alpha: 1).cgColor
+            if (selectedTimeIndex == indexPath.item) {
+                cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.01960784314, green: 0.8509803922, blue: 0.7411764706, alpha: 1)
+            } else {
+                cell.vwContainCatgry.backgroundColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
             }
-            cell.vwContainCatgry.layer.borderWidth = 1
-            cell.vwContainCatgry.layer.borderColor = UIColor(red: 5/255, green: 217/255, blue: 189/255, alpha: 1).cgColor
             cell.vwContainCatgry.layer.cornerRadius = 10
             return cell
         }
@@ -1250,6 +1272,7 @@ extension SessionDetailVC: GetResponse {
                     btnToCurrent.isHidden = false
                     btnToNext.isHidden = false
 //                    self.vwmap.isHidden = false
+                    self.lblHint.isHidden = false
                     self.vwcalendar.isHidden = false
                     self.vwCollection.isHidden = false
                     self.vwColectionHeightConstarint.constant = 70
@@ -1468,8 +1491,11 @@ extension SessionDetailVC: GetResponse {
                 dateFormatter.dateFormat = "h:mm a"
                 dateToTimeStr = dateFormatter.string(from: date)
             }
-            
-            self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a", currentTimeZone: data.currenttimezone ?? ""))" + "-" + dateToTimeStr
+            if data.session_booking_status == "3" {
+                self.bookingDateLbl.text = "Cancelled"
+            }else{
+                self.bookingDateLbl.text = "\(R.string.localizable.bookingdate()) \(changeDateFormatForReminder(date: data.booking_date ?? "", fromFormat: "yyyy-MM-dd HH:mm", toFormat: "dd MMM yyyy hh:mm a", currentTimeZone: data.currenttimezone ?? ""))" + "-" + dateToTimeStr
+            }
         }
         if data.bio == "" {
             self.lblAboutVendor.text = ""
@@ -1610,6 +1636,7 @@ extension SessionDetailVC {
     
     //UIScrollView INT TO COUNT
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -1626,6 +1653,11 @@ extension SessionDetailVC {
                 }else{
                 }
             }
+        }
+        if scrollView.contentOffset.y == 0.0{
+            btnToArrow.isHidden = true
+        }else{
+            btnToArrow.isHidden = false
         }
     }
     

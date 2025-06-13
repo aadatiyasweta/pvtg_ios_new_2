@@ -51,6 +51,7 @@ class NotificationVC: BaseViewController {
         super.viewDidLoad()
         bookigIdSTr = ""
         self.tabBarController?.removeBadgeSubview()
+        UserDefaults.standard.set(0, forKey: "unreadNotificationCount")
         self.notificationVM.delegate = self
        
         self.tblNotication.register(NotificationCell.nib(), forCellReuseIdentifier: NotificationCell.ident)
