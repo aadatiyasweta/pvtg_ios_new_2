@@ -43,6 +43,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var sesionTimeLbl: UILabel! // 8AM-8PM
     @IBOutlet weak var sesionDateLbl: UILabel! // 20 Feb 2025
     
+    @IBOutlet weak var lblRate: UILabel!
     //MARK: - Properties
     var onboardingVm = OnboardingVm()
     var bookingDetails: SessionDetailResult?
@@ -76,9 +77,9 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         //pointsBgVw.layer.borderWidth = 1
         //pointsBgVw.layer.borderColor = UIColor.white.cgColor
         
-        rewardPicImgBgVw.layer.cornerRadius = 5
+        rewardPicImgBgVw.layer.cornerRadius = 18
         rewardPicImgBgVw.clipsToBounds = true
-        rewardCupBgVw.layer.cornerRadius = 5
+//        rewardCupBgVw.layer.cornerRadius = 5
         rewardPicImgBgVw.clipsToBounds = true
         
         discountValuePicker = UIPickerView()
@@ -208,10 +209,15 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 let val = Int(self.ticketModel?.total_point ?? "0")! - self.selectedPoint // added by ashitesh
                 self.btnAvlblPoints.setTitle("\(val)", for: .normal)
                 /*self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)*/ // added by ashitesh
-                self.vwAdddashedBordr.alpha = 0.5
-                self.btnUseNow.alpha = 0.5
-                self.btnUseNow.isUserInteractionEnabled = false
-                self.discountpriceTxtfld.isUserInteractionEnabled = false
+                
+//                self.vwAdddashedBordr.alpha = 0.5
+//                self.btnUseNow.alpha = 0.5
+//                self.btnUseNow.isUserInteractionEnabled = false
+//                self.discountpriceTxtfld.isUserInteractionEnabled = false
+                self.vwAdddashedBordr.isHidden = true
+                self.btnUseNow.isHidden = true
+//                self.btnUseNow.isUserInteractionEnabled = false
+//                self.discountpriceTxtfld.isUserInteractionEnabled = false
                 self.discountViewHeightCons.constant = 30
             }
         }
@@ -275,10 +281,14 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     @IBAction func tapUseNow(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected{
-            self.vwAdddashedBordr.alpha = 1
-            self.btnUseNow.alpha = 1
-            self.btnUseNow.isUserInteractionEnabled = true
-            self.discountpriceTxtfld.isUserInteractionEnabled = true
+//            self.vwAdddashedBordr.alpha = 1
+//            self.btnUseNow.alpha = 1
+//            self.btnUseNow.isUserInteractionEnabled = true
+//            self.discountpriceTxtfld.isUserInteractionEnabled = true
+            self.vwAdddashedBordr.isHidden = false
+            self.btnUseNow.isHidden = false
+//            self.btnUseNow.isUserInteractionEnabled = true
+//            self.discountpriceTxtfld.isUserInteractionEnabled = true
             self.discountViewHeightCons.constant = 30
             if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
                 self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
@@ -307,10 +317,14 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 //            }
             
         }else{
-            self.vwAdddashedBordr.alpha = 0.5
-           self.btnUseNow.alpha = 0.5
-            self.btnUseNow.isUserInteractionEnabled = false
-            self.discountpriceTxtfld.isUserInteractionEnabled = false
+//            self.vwAdddashedBordr.alpha = 0.5
+//           self.btnUseNow.alpha = 0.5
+//            self.btnUseNow.isUserInteractionEnabled = false
+//            self.discountpriceTxtfld.isUserInteractionEnabled = false
+            self.vwAdddashedBordr.isHidden = true
+            self.btnUseNow.isHidden = true
+//            self.btnUseNow.isUserInteractionEnabled = false
+//            self.discountpriceTxtfld.isUserInteractionEnabled = false
             self.discountViewHeightCons.constant = 30
             let val = (self.ticketModel?.total_point)!
             self.btnAvlblPoints.setTitle("\(val)", for: .normal)
@@ -343,10 +357,14 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 priceString = currencyFormatter.string(from: NSNumber(value: totalPrice ))!
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
                 self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
-                self.vwAdddashedBordr.alpha = 0.5
-                self.btnUseNow.alpha = 0.5
-                self.btnUseNow.isUserInteractionEnabled = false
-                self.discountpriceTxtfld.isUserInteractionEnabled = false
+//                self.vwAdddashedBordr.alpha = 0.5
+//                self.btnUseNow.alpha = 0.5
+//                self.btnUseNow.isUserInteractionEnabled = false
+//                self.discountpriceTxtfld.isUserInteractionEnabled = false
+                self.vwAdddashedBordr.isHidden = true
+                self.btnUseNow.isHidden = true
+//                self.btnUseNow.isUserInteractionEnabled = false
+//                self.discountpriceTxtfld.isUserInteractionEnabled = false
                 self.discountViewHeightCons.constant = 30
             }
         }
@@ -354,10 +372,12 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     
     //MARK: - METHOD TO SHOW USED POINT
     private func showUseNow(){
-        self.vwAdddashedBordr.alpha = 0.5
-        self.btnUseNow.alpha = 0.5
-        self.btnUseNow.isUserInteractionEnabled = true
-        self.discountpriceTxtfld.isUserInteractionEnabled = true
+//        self.vwAdddashedBordr.alpha = 0.5
+//        self.btnUseNow.alpha = 0.5
+//        self.btnUseNow.isUserInteractionEnabled = true
+//        self.discountpriceTxtfld.isUserInteractionEnabled = true
+        self.vwAdddashedBordr.isHidden = true
+        self.btnUseNow.isHidden = true
         self.discountViewHeightCons.constant = 30
         if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
             self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
@@ -398,10 +418,11 @@ extension SummaryVC {
                 }
             }
             self.lblCategry.text = self.bookingDetails?.category_name ?? ""
-            loadImage(url, self.imgSession, activity: nil, defaultImage: nil)
+//            loadImage(url, self.imgSession, activity: nil, defaultImage: nil)
             var stringCapitalized = name.uppercased
             self.lblSessionNmae.text = stringCapitalized()
             self.vwRating.rating = Double(rating)!
+            self.lblRate.text = rating
             let value = Double(dist) ?? 0.0
             let doubleStr = String(format: "%.2f", value)
             let str = place + " " + R.string.localizable.kmaway(doubleStr)
@@ -435,7 +456,7 @@ extension SummaryVC {
             }
             self.btnAvlblPoints.setTitle("\(pt ?? 0)", for: .normal)
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                self.vwAdddashedBordr.addDashedBorder()
+//                self.vwAdddashedBordr.addDashedBorder()
             })
         }
     }
