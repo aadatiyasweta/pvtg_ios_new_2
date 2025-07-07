@@ -88,7 +88,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchBG" width="1334" height="2000"/>
+        <image name="LaunchBG" width="375" height="812"/>
         <image name="LogoNew11" width="808" height="732"/>
     </resources>
 </document>

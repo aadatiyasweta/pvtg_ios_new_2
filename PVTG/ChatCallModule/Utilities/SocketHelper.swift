@@ -26,6 +26,7 @@ class SocketHelper: NSObject {
     var getChatListClosure :(([MessageModel]?) -> Void)?
     var sendMessageClosure :((MessageModel?) -> Void)?
     var getChatHistoryClosure :(([GetChatHistory]?) -> Void)?
+    var onlinestatus :((String) -> Void)?
     var callBackConnect:(()->())?
     var callBackConnectSendMessage:(()->())?
     var callBackConnectDisconnect:(()->())?
@@ -113,8 +114,12 @@ class SocketHelper: NSObject {
                   let dict = results.first as? [String: Any],
                 //  let result = dict["result"] as? [String: Any],
                   let datas = dict["chat"] as? [Any],
+                  let status = dict["reciverStatus"] as? String,
+                
                   let final = self?.jsonData(from: datas)
             else {return}
+//            print(status)
+            self?.onlinestatus?(status)
             do {
                 let messages = try JSONDecoder().decode([MessageModel].self, from: final)
                 self?.getChatListClosure?(messages)

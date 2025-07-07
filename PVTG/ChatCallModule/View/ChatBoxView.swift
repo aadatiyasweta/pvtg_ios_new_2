@@ -637,6 +637,15 @@ extension ChatBoxView : UITableViewDelegate,UITableViewDataSource{
             }
         }}
     func chat(){
+        SocketHelper.shared.onlinestatus = { [weak self] onlineStatus in
+            print(onlineStatus)
+            if onlineStatus == "offline"{
+                self?.lblOnline.isHidden = true
+            }else{
+                self?.lblOnline.isHidden = false
+            }
+        }
+        
         SocketHelper.shared.sendMessageClosure = { [weak self] chatData in
             if let chatData = chatData {
                 self?.arrChatList.append(chatData)

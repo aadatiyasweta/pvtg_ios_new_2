@@ -109,11 +109,10 @@
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9L0-nB-kr4">
-                                                                <rect key="frame" x="339" y="16.666666666666686" width="21" height="22"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <rect key="frame" x="336" y="15.666666666666686" width="24" height="24"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" image="eye_close"/>
-                                                                <state key="selected" image="eye_open"/>
+                                                                <state key="normal" image="eyehidenew"/>
+                                                                <state key="selected" image="eyenew"/>
                                                                 <connections>
                                                                     <action selector="hidePasswordButtonAction:" destination="uwE-2u-AJS" eventType="touchUpInside" id="JvB-5c-9Eg"/>
                                                                 </connections>
@@ -559,11 +558,10 @@
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6B-yY-fB9">
-                                                                <rect key="frame" x="337" y="16.666666666666629" width="21" height="22"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <rect key="frame" x="334" y="15.666666666666629" width="24" height="24"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" image="eye_close"/>
-                                                                <state key="selected" image="eye_open"/>
+                                                                <state key="normal" image="eyehidenew"/>
+                                                                <state key="selected" image="eyenew"/>
                                                                 <connections>
                                                                     <action selector="hidePasswordButtonAction:" destination="uwE-2u-AJS" eventType="touchUpInside" id="3IS-sy-ohp"/>
                                                                     <action selector="hidePasswordButtonAction:" destination="AIa-Ro-UXS" eventType="touchUpInside" id="PFk-15-AZ5"/>
@@ -1182,8 +1180,8 @@
         <image name="apple" width="17.666666030883789" height="20.666666030883789"/>
         <image name="bg" width="557.33331298828125" height="1086"/>
         <image name="descriptionImage" width="375" height="812"/>
-        <image name="eye_close" width="21" height="15"/>
-        <image name="eye_open" width="20" height="12"/>
+        <image name="eyehidenew" width="24" height="24"/>
+        <image name="eyenew" width="24" height="24"/>
         <image name="group4" width="375" height="812"/>
         <image name="minimalLeft2X" width="7.3333334922790527" height="13"/>
         <image name="shape3" width="6.3333334922790527" height="13.333333015441895"/>
@@ -1196,7 +1194,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

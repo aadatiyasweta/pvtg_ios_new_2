@@ -65,7 +65,7 @@
 "Discount" = "Discount";
 "ptsavailable" = "Dharma pts available";
 "youWillBeRewarded" = "You will be rewarded %@ pts for booking this session, ";
-"PleaseSelecttime" = "Please Select date / time";
+"PleaseSelecttime" = "Please Select date, then time";
 "CancelTheBooking" = "Are you sure you want to cancel your booking";
 "onlyTickets" = "only %@ tickets for this session are available.";
 "onlyTicket" = "only %@ ticket for this session are available.";

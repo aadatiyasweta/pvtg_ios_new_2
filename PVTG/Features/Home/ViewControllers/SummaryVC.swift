@@ -105,7 +105,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         if let time1 = self.customModel?.booking_from_time, let toTime = self.customModel?.booking_to_time {
             let time1Str = changeDateFormatForReminder(date: time1, fromFormat: "HH:mm", toFormat: "hha", currentTimeZone: timeZoneIdentifier)
             let time2Str = changeDateFormatForReminder(date: toTime, fromFormat: "HH:mm", toFormat: "hha", currentTimeZone: timeZoneIdentifier)
-            self.sesionTimeLbl.text = "\(time1Str) - \(time2Str)"
+            self.sesionTimeLbl.text = "\(time1Str.lowercased()) - \(time2Str.lowercased())"
         }
         //sesionTimeLbl.text = (self.customModel?.booking_from_time ?? "") + (self.customModel?.booking_to_time ?? "")
         
@@ -214,8 +214,8 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 //                self.btnUseNow.alpha = 0.5
 //                self.btnUseNow.isUserInteractionEnabled = false
 //                self.discountpriceTxtfld.isUserInteractionEnabled = false
-                self.vwAdddashedBordr.isHidden = true
-                self.btnUseNow.isHidden = true
+//                self.vwAdddashedBordr.isHidden = true
+//                self.btnUseNow.isHidden = true
 //                self.btnUseNow.isUserInteractionEnabled = false
 //                self.discountpriceTxtfld.isUserInteractionEnabled = false
                 self.discountViewHeightCons.constant = 30

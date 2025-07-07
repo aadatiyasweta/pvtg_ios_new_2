@@ -40,6 +40,12 @@ class CategoryCell: UICollectionViewCell {
         guard let data = data else {return}
         loadImage(data.image, imgcategory, activity: nil, defaultImage: nil)
         self.lblCategory.text = data.name
-        widthCon.constant = 0
+        if self.lblCategory.text == "Top Search"{
+            widthCon.constant = 0
+        }
+        else{
+            widthCon.constant = 45
+        }
+        
     }
 }

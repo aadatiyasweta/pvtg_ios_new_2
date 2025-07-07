@@ -25,7 +25,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="302" height="756"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Rewards1" translatesAutoresizingMaskIntoConstraints="NO" id="T7r-e3-3kq">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Rewards1" translatesAutoresizingMaskIntoConstraints="NO" id="T7r-e3-3kq">
                         <rect key="frame" x="0.0" y="0.0" width="302" height="756"/>
                     </imageView>
                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3-2" translatesAutoresizingMaskIntoConstraints="NO" id="Qyz-pH-JEh">
@@ -116,7 +116,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Rewards1" width="1334" height="2000"/>
+        <image name="Rewards1" width="375" height="812"/>
         <image name="group3-2" width="249" height="421.5"/>
     </resources>
 </document>
