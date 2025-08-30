@@ -3,7 +3,7 @@
 "1mG-TN-p3i.text" = "01";
 
 /* Class = "UILabel"; text = "Session offered in:"; ObjectID = "4sM-6U-VCV"; */
-"4sM-6U-VCV.text" = "Choose Your Session Preferences:";
+"4sM-6U-VCV.text" = "Choose Your Session Options: ";
 
 /* Class = "UILabel"; text = "Thursday , July 3"; ObjectID = "BNd-Rq-Ks7"; */
 "BNd-Rq-Ks7.text" = "Thursday , July 3";

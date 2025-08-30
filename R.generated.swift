@@ -334,12 +334,12 @@ struct _R {
       /// Locales: en, es
       var pickfromCameraRoll: RswiftResources.StringResource { .init(key: "PickfromCameraRoll", tableName: "Localizable", source: source, developmentValue: "Pick from Camera Roll", comment: nil) }
 
-      /// en translation: Please Select date, then time
+      /// en translation: Please select date and time.
       ///
       /// Key: PleaseSelecttime
       ///
       /// Locales: en, es
-      var pleaseSelecttime: RswiftResources.StringResource { .init(key: "PleaseSelecttime", tableName: "Localizable", source: source, developmentValue: "Please Select date, then time", comment: nil) }
+      var pleaseSelecttime: RswiftResources.StringResource { .init(key: "PleaseSelecttime", tableName: "Localizable", source: source, developmentValue: "Please select date and time.", comment: nil) }
 
       /// en translation: Point Accumulation
       ///
@@ -1347,6 +1347,7 @@ struct _R {
     func validate() throws {
       if UIKit.UIImage(named: "ChatNew1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'ChatNew1' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "MapNew1", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'MapNew1' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
+      if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "arrowshape.right") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'arrowshape.right' is used in nib 'ActiveEventCell', but couldn't be loaded.") } }
       if UIKit.UIImage(named: "bgProfile", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'bgProfile' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "loc", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'loc' is used in nib 'ActiveEventCell', but couldn't be loaded.") }
       if UIKit.UIImage(named: "close", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'close' is used in nib 'AllCategoryCell', but couldn't be loaded.") }

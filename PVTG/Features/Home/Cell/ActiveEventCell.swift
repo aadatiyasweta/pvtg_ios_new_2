@@ -34,12 +34,15 @@ class ActiveEventCell: UICollectionViewCell {
     
     @IBOutlet weak var followUpView: UIView!
     
+    @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var clickOnChatBtn: UIButton!
     
     //MARK: - Properties
     var dictData:EventsResult?
     var mapClosure : ()->() = {}
     var chatClosure : ()->() = {}
+    var blinkCount = 0
+    var blinkTimer: Timer?
     let gradientLayer = CAGradientLayer()
     //MARK: - CELL REUSEIDENTIFIER
     static let ident = "ActiveEventCell"
@@ -54,6 +57,7 @@ class ActiveEventCell: UICollectionViewCell {
         activeEventCollectionView?.register(nib, forCellWithReuseIdentifier: "ActiveEventCollectionViewCell")
         activeEventCollectionView.showsHorizontalScrollIndicator = true
         activeEventCollectionView.flashScrollIndicators()
+        startBlinking5Times()
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -111,7 +115,23 @@ class ActiveEventCell: UICollectionViewCell {
     @IBAction func clickOnChatBtn(_ sender: UIButton) {
         self.chatClosure()
     }
-    
+    func startBlinking5Times() {
+        blinkCount = 0
+        blinkTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(performBlink), userInfo: nil, repeats: true)
+    }
+
+    @objc func performBlink() {
+        UIView.animate(withDuration: 0.25) {
+            self.arrowImageView.alpha = self.arrowImageView.alpha == 1 ? 0 : 1
+        }
+        
+        blinkCount += 1
+        if blinkCount >= 10 { // 10 toggles = 5 full blinks
+            blinkTimer?.invalidate()
+            blinkTimer = nil
+            arrowImageView.alpha = 0 // ensure it ends visible
+        }
+    }
 }
 
 //MARK: - COLLECTION VIEW DELEGATE

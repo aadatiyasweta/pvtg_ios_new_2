@@ -288,6 +288,9 @@ extension HoliosticGuideVC: GetSearchSessionData {
 
             loadApi(categoryid: "\(self.catgryId)", search: "", isloader: true,minPrice: 0,maxprice: 0)
         }
+        else{
+            loadApi(categoryid: "\(catgryId)", search: "", isloader: true)
+        }
     }
     
     func reloadData() {

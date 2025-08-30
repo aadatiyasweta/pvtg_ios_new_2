@@ -25,7 +25,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     
     //MARK: - Properties
     var type = ""
-    let webView = WKWebView()
+    var webView = WKWebView()
     var url = ""
     var timeStr = ""
     var ammountSTr = ""
@@ -49,9 +49,21 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
         self.showWithTouch()
         webView.uiDelegate = self
         webView.navigationDelegate = self
+        
+        // 1. Configure WebView with link detection
+               let config = WKWebViewConfiguration()
+               config.dataDetectorTypes = [.all]
+
+               // 2. Initialize WebView with temporary zero frame
+        self.webView = WKWebView(frame: .zero, configuration: config)
+        self.webView.navigationDelegate = self
+
+               // 3. Add WebView to subView
+               self.subView.addSubview(webView)
+
         if let url = URL(string: url) {
             let request = URLRequest(url: url)
-            webView.load(request)
+            self.webView.load(request)
         }
         if isFromReschedule == true{
             self.okBtnVw.isHidden = false
@@ -104,9 +116,16 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        webView.frame = CGRect.init(x: 0, y: 0, width: self.subView.frame.size.width, height: self.subView.frame.size.height - 20)
-        // webView.backgroundColor = .clear
-        self.subView.addSubview(webView)
+//        webView.frame = CGRect.init(x: 0, y: 0, width: self.subView.frame.size.width, height: self.subView.frame.size.height - 20)
+//        // webView.backgroundColor = .clear
+//        self.subView.addSubview(webView)
+        webView.frame = CGRect(
+                   x: 0,
+                   y: 0,
+                   width: self.subView.frame.size.width,
+                   height: self.subView.frame.size.height - 20
+               )
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -133,7 +152,46 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
     private func webViewDidStartLoad(_ webView: WKWebView) {
         print("webViewDidStartLoad")
     }
-    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
+                    decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+
+           if let url = navigationAction.request.url,
+              let scheme = url.scheme,
+              url.absoluteString.contains("7298") || scheme == "mailto" {
+               if url.absoluteString.contains("7298"){
+//                   if UIApplication.shared.canOpenURL(URL(string: "tel:573217298771")!) {
+//                       UIApplication.shared.open(URL(string: "tel:573217298771")!)
+//                   }
+                   openWhatsApp(phoneNumber: "+573217298771")
+                   decisionHandler(.cancel)
+               }else{
+                   if UIApplication.shared.canOpenURL(url) {
+                       UIApplication.shared.open(url)
+                   }
+                   decisionHandler(.cancel)
+               }
+           } else {
+               decisionHandler(.allow)
+           }
+        print(navigationAction.request.url)
+        print(navigationAction.request.url?.scheme)
+       }
+    func openWhatsApp(phoneNumber: String) {
+        // Ensure phone number is formatted correctly
+        let cleanPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let urlString = "https://wa.me/\(cleanPhoneNumber)"
+        
+        if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            // WhatsApp not installed or invalid URL
+            let alert = UIAlertController(title: "Error", message: "Cannot open WhatsApp. Please make sure it is installed.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            if let topController = AppObject.window?.rootViewController {
+                topController.present(alert, animated: true)
+            }
+        }
+    }
     @IBAction func okBtnAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         //self.navigationController?.popToRootViewController(animated: true)

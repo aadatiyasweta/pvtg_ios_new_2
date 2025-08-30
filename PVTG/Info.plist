@@ -53,6 +53,7 @@
 	<array>
 		<string>googlechromes</string>
 		<string>comgooglemaps</string>
+        <string>whatsapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

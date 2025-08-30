@@ -54,6 +54,9 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
    cell.lblMore.textColor = UIColor().coloWithHexString(hex: "#ff4949")
    cell.vwSeperator.alpha = 0
      
+  }else{
+      cell.lblMore.textColor = UIColor.black
+      cell.vwSeperator.alpha = 1
   }
      if indexPath.row == 0{
          if (UserDefaults.standard.value(forKey: "unreadNotificationCount") as? Int) == 0{
