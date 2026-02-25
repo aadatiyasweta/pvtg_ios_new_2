@@ -7,8 +7,8 @@ import UIKit
 //let topSearch = "https://techugoserver.info/pvtg_dev/admin_assets/img/topsearch.png" // new dev url
 //let testingServer = "https://techugoserver.info/pvtg_dev/api/v1/" // new development url - 2025
 //let stripePaymentAPI = "https://techugoserver.info/pvtg_dev/public/Stripe_IOS/stripe_payment.php" // new development
-let stripeTestPublishableKey = "pk_test_51KLVfEFKDEQWO0TJyXCr934HPHv6W2pl1kBJiVZnYBIti9OXCMbt3gt5Wzen5wg2tRaCikH81qLI2TFiAMH5WLSf009SjBYjnl" // for test
-let stripeSecretKey = "sk_test_51KLVfEFKDEQWO0TJrKqJfkq4CRtvcEwStccSrsYhM8tWaFxNAfX7VcepIXpbcUA0xAbPlReKxnuCcZEnFc9M5Uhd00PrDGpCFT" // for test
+//let stripeTestPublishableKey = "pk_test_51KLVfEFKDEQWO0TJyXCr934HPHv6W2pl1kBJiVZnYBIti9OXCMbt3gt5Wzen5wg2tRaCikH81qLI2TFiAMH5WLSf009SjBYjnl" // for test
+//let stripeSecretKey = "sk_test_51KLVfEFKDEQWO0TJrKqJfkq4CRtvcEwStccSrsYhM8tWaFxNAfX7VcepIXpbcUA0xAbPlReKxnuCcZEnFc9M5Uhd00PrDGpCFT" // for test
 //
 //let terms =  "https://techugoserver.info/pvtg_dev/terms_condition.html"
 //let aboutUs = "https://techugoserver.info/pvtg_dev/about_us.html"
@@ -22,8 +22,8 @@ let stripeSecretKey = "sk_test_51KLVfEFKDEQWO0TJrKqJfkq4CRtvcEwStccSrsYhM8tWaFxN
 let topSearch = "https://dharma.services/admin_assets/img/topsearch.png" // new Live url
 let testingServer = "https://dharma.services/api/v1/" // live
 let stripePaymentAPI = "https://dharma.services/public/Stripe_IOS/stripe_payment.php" // live
-//let stripeLivePublishKey = "pk_live_51KLVfEFKDEQWO0TJD37bD6aaeD9D0zRixYanno17NoNB2anCHC3P6zwJLq5BH1b97XFX0M0RnC3nIPewmbNMb6Mi00H8JNUV0H" // dfor live
-//let stripeLiveSecretKey = "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" // for live
+let stripeLivePublishKey = "pk_live_51KLVfEFKDEQWO0TJD37bD6aaeD9D0zRixYanno17NoNB2anCHC3P6zwJLq5BH1b97XFX0M0RnC3nIPewmbNMb6Mi00H8JNUV0H" // dfor live
+let stripeLiveSecretKey = "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" // for live
 
 let terms =  "https://dharma.services/terms_condition.html"
 let aboutUs = "https://dharma.services/about_us.html"

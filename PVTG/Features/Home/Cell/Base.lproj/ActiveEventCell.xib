@@ -137,28 +137,56 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="S1P-Ah-HJT">
-                                <rect key="frame" x="242" y="373" width="75" height="35"/>
+                                <rect key="frame" x="242" y="365.5" width="75" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBF-eN-D8t">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="Eae-pf-mlL"/>
-                                            <constraint firstAttribute="height" constant="35" id="IOW-z7-Vsw"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="ChatNew1"/>
-                                        <connections>
-                                            <action selector="clickOnChatBtn:" destination="7L4-Nd-KB7" eventType="touchUpInside" id="Fut-23-H8V"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Su8-x9-yGR">
-                                        <rect key="frame" x="40" y="0.0" width="35" height="35"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="MapNew1"/>
-                                        <connections>
-                                            <action selector="mapBtnTap:" destination="7L4-Nd-KB7" eventType="touchUpInside" id="hR0-ye-oRl"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Eec-VW-Mym">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBF-eN-D8t">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35" id="Eae-pf-mlL"/>
+                                                    <constraint firstAttribute="height" constant="35" id="IOW-z7-Vsw"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="ChatNew1"/>
+                                                <connections>
+                                                    <action selector="clickOnChatBtn:" destination="7L4-Nd-KB7" eventType="touchUpInside" id="Fut-23-H8V"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUQ-S0-3f9">
+                                                <rect key="frame" x="0.0" y="35" width="35" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="sXM-mD-V6Z"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZYC-aa-GOQ">
+                                        <rect key="frame" x="40" y="0.0" width="35" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Su8-x9-yGR">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="MapNew1"/>
+                                                <connections>
+                                                    <action selector="mapBtnTap:" destination="7L4-Nd-KB7" eventType="touchUpInside" id="hR0-ye-oRl"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRi-27-JRL">
+                                                <rect key="frame" x="0.0" y="35" width="35" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="tad-Wf-omf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-Ha-oUo">

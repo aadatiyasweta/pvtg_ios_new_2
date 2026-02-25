@@ -24,7 +24,7 @@ class MoreVC: BaseViewController {
  }
  
  //MARK: - Properties
-    var moreArr = [R.string.localizable.notifications(), R.string.localizable.changePassword(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.aboutUs(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(),R.string.localizable.deleteAccount(), R.string.localizable.signout()]
+    var moreArr = [R.string.localizable.notifications(),R.string.localizable.aboutUs(), R.string.localizable.faQs(),R.string.localizable.privacyPolicy(),R.string.localizable.termsConditions(),R.string.localizable.cancelPolicy(),R.string.localizable.latePolicy(),R.string.localizable.changePassword(),R.string.localizable.rateUs(),R.string.localizable.howItWorks(),R.string.localizable.deleteAccount(), R.string.localizable.signout()]
  var morevm = MoreVM()
  
 //MARK: - LifeCycle
@@ -76,7 +76,7 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
   case 0:
    let vc = NotificationVC.instance()
    self.navigationController?.pushViewController(vc, animated: true)
-  case 1:
+  case 7:
    let vc = ChangePasswordVC.instance()
    self.navigationController?.pushViewController(vc, animated: true)
 //  case 2:
@@ -112,7 +112,7 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
       vc.url = "https://dharma.services/late_fee.html" // for live url
       vc.isComingCancelBooking = false
    self.navigationController?.pushViewController(vc, animated: true)
-  case 7:
+  case 1:
    let vc = PrivacyPolicyVC.instance()
    vc.type = self.moreArr[indexPath.row]
    vc.url = aboutUs

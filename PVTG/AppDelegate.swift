@@ -42,8 +42,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         }
 
         // for Stripe Payment - Live - development code
-//     Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
-     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
+     Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
+//     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
         checkLoginStatus()
