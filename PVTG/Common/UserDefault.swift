@@ -1,5 +1,6 @@
 
 import Foundation
+import KeychainSwift
 
 enum ProfileInfoKeys : String {
     case unreadCount
@@ -63,6 +64,63 @@ enum UserLocation :String{
     case location = "location"
 }
 
+//MARK: - SECURE STORE
+/// Keeps login credentials in the Keychain (encrypted, not included in backups) instead of UserDefaults.
+final class SecureStore {
+    static let shared = SecureStore()
+
+    /// Keys that hold login credentials; they use the same names as the old UserDefaults keys.
+    static let secureKeys: [ProfileInfoKeys] = [.accessToken, .refreshToken, .clientSecret, .clientId, .encodedPassword, .homeData1, .authverification]
+
+    private let keychain = KeychainSwift(keyPrefix: "dharma_secure_")
+    private let access: KeychainSwiftAccessOptions = .accessibleAfterFirstUnlockThisDeviceOnly
+    private let migratedKey = "secureStoreMigrated"
+
+    private init() {
+        guard !defaults.bool(forKey: migratedKey) else { return }
+        // Keychain items survive deleting the app, so remove anything left from a previous install
+        SecureStore.secureKeys.forEach { keychain.delete($0.rawValue) }
+        // Move credentials saved by older app versions out of UserDefaults
+        for key in SecureStore.secureKeys {
+            if let value = defaults.string(forKey: key.rawValue) {
+                keychain.set(value, forKey: key.rawValue, withAccess: access)
+            } else if let data = defaults.data(forKey: key.rawValue) {
+                keychain.set(data, forKey: key.rawValue, withAccess: access)
+            }
+            defaults.removeObject(forKey: key.rawValue)
+        }
+        defaults.set(true, forKey: migratedKey)
+    }
+
+    func set(_ value: String?, for key: ProfileInfoKeys) {
+        if let value = value, !value.isEmpty {
+            keychain.set(value, forKey: key.rawValue, withAccess: access)
+        } else {
+            keychain.delete(key.rawValue)
+        }
+    }
+
+    func string(for key: ProfileInfoKeys) -> String? {
+        return keychain.get(key.rawValue)
+    }
+
+    func set(_ data: Data?, for key: ProfileInfoKeys) {
+        if let data = data, !data.isEmpty {
+            keychain.set(data, forKey: key.rawValue, withAccess: access)
+        } else {
+            keychain.delete(key.rawValue)
+        }
+    }
+
+    func data(for key: ProfileInfoKeys) -> Data? {
+        return keychain.getData(key.rawValue)
+    }
+
+    func removeAll() {
+        SecureStore.secureKeys.forEach { keychain.delete($0.rawValue) }
+    }
+}
+
 struct SaveToDefaults {
     func getSessionLatitude() -> Double? {
         let lat = defaults.double(forKey: "sessionLat")
@@ -107,10 +165,10 @@ struct SaveToDefaults {
     }
     
     func setLogindata(data: Data) {
-        defaults.set(data, forKey: ProfileInfoKeys.homeData1.rawValue)
+        SecureStore.shared.set(data, for: .homeData1)
     }
     func getLoginData()->Data?{
-        return defaults.value(forKey: ProfileInfoKeys.homeData1.rawValue) as? Data
+        return SecureStore.shared.data(for: .homeData1)
     }
     
     func setCurrentID(ID :  Int?) {
@@ -126,12 +184,11 @@ struct SaveToDefaults {
     }
     
     func setAccessToken(value : String?) {
-        defaults.set(value, forKey: ProfileInfoKeys.accessToken.rawValue)
+        SecureStore.shared.set(value, for: .accessToken)
     }
-    
+
     func getAccessToken()->String?{
-        let value = defaults.value(forKey: ProfileInfoKeys.accessToken.rawValue) as? String
-        return value
+        return SecureStore.shared.string(for: .accessToken)
     }
     
     func getProfilePercent() -> Int? {
@@ -279,30 +336,27 @@ struct SaveToDefaults {
     }
     
     func setRefreshToken(value : String?) {
-        defaults.set(value, forKey: ProfileInfoKeys.refreshToken.rawValue)
+        SecureStore.shared.set(value, for: .refreshToken)
     }
-    
+
     func getRefreshToken()->String?{
-        let value = defaults.value(forKey: ProfileInfoKeys.refreshToken.rawValue) as? String
-        return value
+        return SecureStore.shared.string(for: .refreshToken)
     }
-    
+
     func setClientSecret(value : String?) {
-        defaults.set(value, forKey: ProfileInfoKeys.clientSecret.rawValue)
+        SecureStore.shared.set(value, for: .clientSecret)
     }
-    
+
     func getClientSecret()->String?{
-        let value = defaults.value(forKey: ProfileInfoKeys.clientSecret.rawValue) as? String
-        return value
+        return SecureStore.shared.string(for: .clientSecret)
     }
-    
+
     func setClientId(value : String?) {
-        defaults.set(value, forKey: ProfileInfoKeys.clientId.rawValue)
+        SecureStore.shared.set(value, for: .clientId)
     }
-    
+
     func getClientId()->String?{
-        let value = defaults.value(forKey: ProfileInfoKeys.clientId.rawValue) as? String
-        return value
+        return SecureStore.shared.string(for: .clientId)
     }
     
     func setMobile(value : String?) {
@@ -324,12 +378,11 @@ struct SaveToDefaults {
     }
     
     func setEncodedPassword(value : String?) {
-        defaults.set(value, forKey: ProfileInfoKeys.encodedPassword.rawValue)
+        SecureStore.shared.set(value, for: .encodedPassword)
     }
-    
+
     func getEncodedPassword()->String?{
-        let value = defaults.value(forKey: ProfileInfoKeys.encodedPassword.rawValue) as? String
-        return value
+        return SecureStore.shared.string(for: .encodedPassword)
     }
     
     func setAppLang(value : String?) {
@@ -562,11 +615,11 @@ struct SaveToDefaults {
     }
     
     func setFcmAuth(token : String?) {
-        defaults.set(token, forKey: ProfileInfoKeys.authverification.rawValue)
+        SecureStore.shared.set(token, for: .authverification)
     }
-    
+
     func getFcmAuth()->String?{
-        return defaults.value(forKey: ProfileInfoKeys.authverification.rawValue) as? String
+        return SecureStore.shared.string(for: .authverification)
     }
 }
 
@@ -576,8 +629,9 @@ func removeLoginDetails() {
     SaveToDefaults().setName(value: nil)
     SaveToDefaults().setFirstName(value: nil)
     SaveToDefaults().setLastName(value: nil)
-    SaveToDefaults().setAccessToken(value: nil)
     SaveToDefaults().setUserId(id: nil)
+    // Clears the token and all other saved credentials from the Keychain
+    SecureStore.shared.removeAll()
 }
 
 
