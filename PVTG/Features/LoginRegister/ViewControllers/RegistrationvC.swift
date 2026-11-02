@@ -105,8 +105,8 @@ class RegistrationvC: BaseViewController {
         }
 
     @IBAction func tapLoginNow(_ sender: UIButton) {
-        let vc = LoginVC.instance()
-        self.navigationController?.pushViewController(vc, animated: true)
+        // Go back to the existing Login screen instead of stacking a new one
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
