@@ -32,6 +32,11 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
     var level:String = "Medium"
     var closureOK : (String,String) -> () = { _,_  in}
     var fromSignUp = false
+
+    // After sign-up, swiping back would return to the registration form
+    override var allowsSwipeBack: Bool {
+        return !fromSignUp
+    }
     var getCategoryId = [String]()
     
     fileprivate let transformerTypes: [FSPagerViewTransformerType] = [.crossFading,

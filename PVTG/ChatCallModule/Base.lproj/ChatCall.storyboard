@@ -43,7 +43,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZl-fI-61N" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="48" width="414" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuT-8t-0bm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" customClass="ExpandedHitButton" customModule="PVTG" customModuleProvider="target" id="yuT-8t-0bm">
                                         <rect key="frame" x="16" y="40" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="maU-lx-JCM"/>

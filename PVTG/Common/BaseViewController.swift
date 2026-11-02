@@ -34,6 +34,25 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
+
+    // Screens that must not go back with a swipe (e.g. after payment) override this and return false
+    var allowsSwipeBack: Bool {
+        return true
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.addSwipeGesture()
+    }
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let navigation = self.navigationController, gestureRecognizer == navigation.interactivePopGestureRecognizer else { return true }
+        // No swipe back on the first screen of a flow (nothing to go back to, and it can freeze the screen)
+        guard navigation.viewControllers.count > 1 else { return false }
+        // The main tabs are shown on top of Login / sign-up screens, so swiping back would leave the logged-in app
+        if navigation.topViewController is UITabBarController { return false }
+        return (navigation.topViewController as? BaseViewController)?.allowsSwipeBack ?? true
+    }
     
     @objc func hidePlusButton() {
     }

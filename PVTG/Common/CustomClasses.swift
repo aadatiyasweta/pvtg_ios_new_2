@@ -16,6 +16,18 @@ class BorderButton:UIButton {
     }
 }
 
+// Button whose tap area is at least 44x44 (Apple's minimum) without changing how it looks
+class ExpandedHitButton: UIButton {
+
+    let minimumHitSize: CGFloat = 44
+
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let dx = max(0, (minimumHitSize - bounds.width) / 2)
+        let dy = max(0, (minimumHitSize - bounds.height) / 2)
+        return bounds.insetBy(dx: -dx, dy: -dy).contains(point)
+    }
+}
+
 
 extension UILabel {
     open override func awakeFromNib() {

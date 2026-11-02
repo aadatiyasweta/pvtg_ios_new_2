@@ -316,7 +316,7 @@ aGVhcnQgZ2l2ZSB5b3Vyc2VsZiB0byBpdA0tQnVkZGhhA
                                     <constraint firstAttribute="trailing" secondItem="bMq-aJ-e6R" secondAttribute="trailing" id="wea-zx-gNV"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnC-Nh-L3R">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" customClass="ExpandedHitButton" customModule="PVTG" customModuleProvider="target" id="LnC-Nh-L3R">
                                 <rect key="frame" x="22" y="42" width="35" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="0.60004401408450714" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -400,7 +400,7 @@ aGVhcnQgZ2l2ZSB5b3Vyc2VsZiB0byBpdA0tQnVkZGhhA
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tv-Kp-J4e">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" customClass="ExpandedHitButton" customModule="PVTG" customModuleProvider="target" id="6tv-Kp-J4e">
                                                 <rect key="frame" x="18" y="10" width="35" height="35"/>
                                                 <color key="backgroundColor" white="1" alpha="0.60004401409999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -717,7 +717,7 @@ You earned 45pts</string>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-ZD-Gor">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4l-lm-ZBZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" customClass="ExpandedHitButton" customModule="PVTG" customModuleProvider="target" id="h4l-lm-ZBZ">
                                 <rect key="frame" x="18" y="30" width="35" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -799,7 +799,7 @@ You earned 45pts</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hj3-Yb-ogV">
                                 <rect key="frame" x="0.0" y="20" width="414" height="75"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9DX-Bc-iIU">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" customClass="ExpandedHitButton" customModule="PVTG" customModuleProvider="target" id="9DX-Bc-iIU">
                                         <rect key="frame" x="18" y="10" width="35" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>

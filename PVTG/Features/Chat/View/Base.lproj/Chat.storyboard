@@ -31,7 +31,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZM-er-AoD">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDb-sy-XR6">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" customClass="ExpandedHitButton" customModule="PVTG" customModuleProvider="target" id="BDb-sy-XR6">
                                                 <rect key="frame" x="16" y="70" width="28" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="28" id="jI2-rQ-8qo"/>

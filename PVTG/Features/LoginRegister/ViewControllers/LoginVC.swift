@@ -13,7 +13,12 @@ import AuthenticationServices
 import KeychainSwift
 
 class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    
+
+    // Login is a starting point (after onboarding, logout or password reset), so no swiping back from it
+    override var allowsSwipeBack: Bool {
+        return false
+    }
+
     //MARK: - Outlets
     @IBOutlet weak var txfPassword: UITextField!{
         didSet{

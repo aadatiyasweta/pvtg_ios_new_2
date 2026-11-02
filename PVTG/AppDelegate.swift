@@ -84,7 +84,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         let vc = onboarding.instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
         self.navigation = UINavigationController(rootViewController: vc)
         navigation.navigationBar.isHidden = true
-        navigation.interactivePopGestureRecognizer?.isEnabled = false
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }
@@ -221,7 +220,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         let vc = onboarding.instantiateViewController(withIdentifier: "OnboardingVC") as! OnboardingVC
         self.navigation = UINavigationController(rootViewController: vc)
         navigation.navigationBar.isHidden = true
-        navigation.interactivePopGestureRecognizer?.isEnabled = false
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }
@@ -230,7 +228,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         let vc = login.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         self.navigation = UINavigationController(rootViewController: vc)
         navigation.navigationBar.isHidden = true
-        navigation.interactivePopGestureRecognizer?.isEnabled = false
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }
@@ -239,7 +236,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         let vc = home.instantiateViewController(withIdentifier: "TabBarControllerViewController") as! TabBarControllerViewController
         self.navigation = UINavigationController(rootViewController: vc)
         navigation.navigationBar.isHidden = true
-        navigation.interactivePopGestureRecognizer?.isEnabled = false
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }
@@ -248,7 +244,6 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         let vc = onboarding.instantiateViewController(withIdentifier: "LanguageChnageVC") as! LanguageChnageVC
         self.navigation = UINavigationController(rootViewController: vc)
         navigation.navigationBar.isHidden = true
-        navigation.interactivePopGestureRecognizer?.isEnabled = false
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
     }

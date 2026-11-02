@@ -17,7 +17,12 @@ class ThankyouVC: BaseViewController {
     var name = ""
     var points = ""
     var isFromReschedule = false
-    
+
+    // Swiping back would return to the payment screen
+    override var allowsSwipeBack: Bool {
+        return false
+    }
+
     @IBOutlet weak var viwBookingBtn: UIButton!
     
     //MARK: - LifeCycle
