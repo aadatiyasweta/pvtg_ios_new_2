@@ -23,6 +23,9 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var vendorNameLbl: UILabel!
     @IBOutlet weak var mainScrollview: UIScrollView!
+    private var scrollBottomToBookNow: NSLayoutConstraint?
+    private var scrollBottomToSafeArea: NSLayoutConstraint?
+    private var bottomRowObservers: [NSKeyValueObservation] = []
     @IBOutlet weak var imgSession: UIImageView!
     @IBOutlet weak var lblsessionPrice: UILabel!
     @IBOutlet weak var languageLbl: UILabel!
@@ -199,6 +202,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         tempSessionTypePriceArr.removeAll()
         tempSessionIDTypeArr.removeAll()
         self.mainScrollview.delegate = self
+        setupBottomGapHandling()
         vwcalendar.appearance.todayColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         vwcalendar.appearance.todaySelectionColor = #colorLiteral(red: 0.3764705882, green: 0.4039215686, blue: 0.8509803922, alpha: 1)
         self.selectedDate = formatter.string(from: self.today)
@@ -1739,5 +1743,44 @@ extension Date {
     }
     var isLastDayOfMonth: Bool {
         return dayAfter.month != month
+    }
+}
+
+//MARK: - BOTTOM GAP (Book Now / Cancel / Reschedule / Completed row)
+extension SessionDetailVC {
+    /// Finds the "scroll view ends 22pt above Book Now" constraint and adds an alternative
+    /// "scroll view ends at the safe area" constraint, used when the whole bottom button row is hidden.
+    private func setupBottomGapHandling() {
+        guard let container = mainScrollview.superview else { return }
+        scrollBottomToBookNow = container.constraints.first { c in
+            ((c.firstItem as? UIButton) === btnBooknow && c.firstAttribute == .top
+                && (c.secondItem as? UIScrollView) === mainScrollview && c.secondAttribute == .bottom)
+            || ((c.secondItem as? UIButton) === btnBooknow && c.secondAttribute == .top
+                && (c.firstItem as? UIScrollView) === mainScrollview && c.firstAttribute == .bottom)
+        }
+        scrollBottomToSafeArea = mainScrollview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        // The existing code shows/hides these buttons in many places; follow them automatically
+        for button in [btnBooknow, cancelBtn, rescheduleBtn, completedBtn] {
+            guard let button = button else { continue }
+            bottomRowObservers.append(button.observe(\.isHidden, options: [.new]) { [weak self] _, _ in
+                DispatchQueue.main.async { self?.updateBottomGap() }
+            })
+        }
+        updateBottomGap()
+    }
+    
+    /// Collapses the empty space only when Book Now, Cancel, Reschedule and Completed are all hidden.
+    private func updateBottomGap() {
+        guard scrollBottomToBookNow != nil, scrollBottomToSafeArea != nil else { return }
+        let rowIsEmpty = [btnBooknow, cancelBtn, rescheduleBtn, completedBtn].allSatisfy { $0?.isHidden ?? true }
+        if rowIsEmpty {
+            scrollBottomToBookNow?.isActive = false
+            scrollBottomToSafeArea?.isActive = true
+        } else {
+            scrollBottomToSafeArea?.isActive = false
+            scrollBottomToBookNow?.isActive = true
+        }
+        view.layoutIfNeeded()
     }
 }
