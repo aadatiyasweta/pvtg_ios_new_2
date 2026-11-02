@@ -82,8 +82,7 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.id = "-1"
+
         self.city = SaveToDefaults().getCity() ?? ""
         self.lblLocn.text = self.city
         self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
@@ -516,6 +515,12 @@ extension HomeViewController: GetHomeData {
             for i in data{
                 self.categoryArr.append(Category(name: i.category_name ?? "", image: i.category_image ?? "", id: i.category_id ?? ""))
             }
+        }
+        // The remembered category was removed (e.g. in Add or Remove Categories), so go back to "All"
+        if self.id != "-1" && !self.categoryArr.contains(where: { $0.id == self.id }) {
+            self.id = "-1"
+            self.loadApi(categoryid: self.id, currency: self.selectedCurrency)
+            return
         }
         self.selectedCurrency = self.homevm.model?.selected_currency ?? "COP"
         
