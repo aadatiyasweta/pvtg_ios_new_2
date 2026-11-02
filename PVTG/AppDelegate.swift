@@ -95,11 +95,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             if #available(iOS 10.0, *) {
                 // For iOS 10 display notification (sent via APNS)
                 UNUserNotificationCenter.current().delegate = self
-
-                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-                UNUserNotificationCenter.current().requestAuthorization(
-                    options: authOptions,
-                    completionHandler: {_,_ in })
+                // Permission is no longer requested at launch; see requestNotificationPermission()
             } else {
                 let settings: UIUserNotificationSettings =
                     UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -107,6 +103,11 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             }
             application.registerForRemoteNotifications()
         }
+
+    // Ask for notification permission at a meaningful moment (called from Home), not at app launch
+    func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in }
+    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken

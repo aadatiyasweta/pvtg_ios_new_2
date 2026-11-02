@@ -66,6 +66,7 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
         lblNoSession.text = ""
         appDelegate.hitDeviceTokenApi()
         initializeLocation()
+        appDelegate.requestNotificationPermission()
         homevm.delegate = self
         DispatchQueue.main.async {
             self.userimg.layer.borderWidth = 0.5
