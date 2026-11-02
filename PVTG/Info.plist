@@ -2,6 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ATSApplicationFontsPath
+</key>
+	<string>Poppins-SemiBold.ttf</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
@@ -53,7 +56,7 @@
 	<array>
 		<string>googlechromes</string>
 		<string>comgooglemaps</string>
-        <string>whatsapp</string>
+		<string>whatsapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -65,9 +68,13 @@
 	<key>NSAppleMusicUsageDescription</key>
 	<string>App would like access your media Library.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>App would like to access Camera for your profile photo upload.Your photos won&apos;t be shared without your permission.</string>
+	<string>App would like to access Camera for your profile photo upload.Your photos won't be shared without your permission.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Location always and when in usage description</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Location always usage description</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Location usage desription</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location is required for searching on map</string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -90,9 +97,23 @@
 		<string>Poppins-SemiBold.ttf</string>
 		<string>Poppins-Light.ttf</string>
 	</array>
-	<key>ATSApplicationFontsPath
-</key>
-	<string>Poppins-SemiBold.ttf</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -101,8 +122,6 @@
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Login</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -126,9 +145,5 @@
 	<string>$(BASE_URL)</string>
 	<key>kSocketUrl</key>
 	<string>$(SOCKET_URL)</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location always and when in usage description</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Location usage desription</string>
 </dict>
 </plist>

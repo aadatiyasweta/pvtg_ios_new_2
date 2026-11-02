@@ -46,8 +46,13 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
 //     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
         
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
-        checkLoginStatus()
+        // The window and first screen are now set up in SceneDelegate
         return true
+    }
+
+    //MARK: - Scene configuration
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
     func checkLoginStatus() {
@@ -249,31 +254,19 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     }
     
     //MARK: - Function For Open URL
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
+    // Called from SceneDelegate when the app is opened with a URL (Google / Facebook sign-in return)
+    @discardableResult
+    func handleOpenURL(_ url: URL) -> Bool {
         let googleDidHandle = GIDSignIn.sharedInstance.handle(url)
-        let facebookDidHandle = appDelegate.application(app, open: url, options: options)
-        //Auth.auth().canHandle(url)
-        return  facebookDidHandle || googleDidHandle
+        let facebookDidHandle = FBSDKCoreKit.ApplicationDelegate.shared.application(UIApplication.shared, open: url, sourceApplication: nil, annotation: [UIApplication.OpenURLOptionsKey.annotation])
+        return facebookDidHandle || googleDidHandle
     }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-    }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-    }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        application.applicationIconBadgeNumber = 0
+
+    func clearBadgeAndDeliveredNotifications() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        application.applicationIconBadgeNumber = 0
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-    }
-    
+
     func hitDeviceTokenApi(isLogout : Bool? = false){
         let deviceToken = UserDefaults.standard.object(forKey: "deviceToken") ?? "1234"
         let param : [String:Any] = [
@@ -402,4 +395,37 @@ func getAPIKeyFromPlist() -> String? {
         return apiKey
     }
     return nil
+}
+
+//MARK: - SCENE DELEGATE
+// Required since the iOS 26 SDK: the window now belongs to the scene, not the app delegate.
+// The window is handed to AppDelegate so the existing root-switching code keeps working.
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    var window: UIWindow?
+    
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        appDelegate.window = window
+        appDelegate.checkLoginStatus()
+        
+        // App launched from a URL while it was closed
+        if let url = connectionOptions.urlContexts.first?.url {
+            appDelegate.handleOpenURL(url)
+        }
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        appDelegate.handleOpenURL(url)
+    }
+    
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        appDelegate.clearBadgeAndDeliveredNotifications()
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
 }
