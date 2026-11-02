@@ -5,8 +5,8 @@
 /* Class = "UITextField"; placeholder = "Email address"; ObjectID = "2eb-uq-YP5"; */
 "2eb-uq-YP5.placeholder" = "Email address";
 
-/* Class = "UIButton"; normalTitle = "SUBMIT"; ObjectID = "2kr-7h-bf8"; */
-"2kr-7h-bf8.normalTitle" = "SUBMIT";
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "2kr-7h-bf8"; */
+"2kr-7h-bf8.normalTitle" = "Submit";
 
 /* Class = "UILabel"; text = "Dont have an account?"; ObjectID = "32E-Aw-Y92"; */
 "32E-Aw-Y92.text" = "Don't have an account?";
@@ -63,7 +63,7 @@
 "WOs-68-ZzW.text" = "Didn’t Receive?";
 
 /* Class = "UILabel"; text = "Lets create your account"; ObjectID = "XSh-I1-R21"; */
-"XSh-I1-R21.text" = "Lets create your account";
+"XSh-I1-R21.text" = "Let's create your account";
 
 /* Class = "UIButton"; normalTitle = "Sign in with Facebook"; ObjectID = "Xem-gh-pc8"; */
 "Xem-gh-pc8.normalTitle" = "Sign in with Facebook";
@@ -89,11 +89,11 @@
 /* Class = "UILabel"; text = "  Forgot Password"; ObjectID = "dvX-Eo-IAe"; */
 "dvX-Eo-IAe.text" = "  Forgot Password";
 
-/* Class = "UIButton"; normalTitle = "SUBMIT"; ObjectID = "eJK-jn-yd4"; */
-"eJK-jn-yd4.normalTitle" = "SUBMIT";
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "eJK-jn-yd4"; */
+"eJK-jn-yd4.normalTitle" = "Submit";
 
 /* Class = "UIButton"; normalTitle = "Forgot Password ?"; ObjectID = "esW-29-ROl"; */
-"esW-29-ROl.normalTitle" = "Forgot Password ?";
+"esW-29-ROl.normalTitle" = "Forgot Password?";
 
 /* Class = "UILabel"; text = "Don't worry just fill in your email and we will send an otp to reset your password"; ObjectID = "fxv-xf-3wX"; */
 "fxv-xf-3wX.text" = "Don't worry just fill in your email and we will send an otp to reset your password";

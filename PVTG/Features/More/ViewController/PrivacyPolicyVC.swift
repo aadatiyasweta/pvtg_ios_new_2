@@ -234,7 +234,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
                         }
                     }
                     self.isComingCancelBooking = false
-                    self.cancelBookingBtn.setTitle("CANCELLED", for: .normal)
+                    self.cancelBookingBtn.setTitle("Cancelled", for: .normal)
                 }
             }
             

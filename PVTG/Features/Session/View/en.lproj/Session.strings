@@ -29,14 +29,14 @@
 /* Class = "UILabel"; text = "About Vendor"; ObjectID = "doD-ms-D5q"; */
 "doD-ms-D5q.text" = "About Vendor";
 
-/* Class = "UIButton"; normalTitle = "BOOK NOW"; ObjectID = "iJP-br-t1e"; */
-"iJP-br-t1e.normalTitle" = "BOOK NOW";
+/* Class = "UIButton"; normalTitle = "Book Now"; ObjectID = "iJP-br-t1e"; */
+"iJP-br-t1e.normalTitle" = "Book Now";
 
 /* Class = "UITextField"; placeholder = "Search any keyword"; ObjectID = "jhS-vy-LER"; */
 "jhS-vy-LER.placeholder" = "Search any keyword";
 
-/* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "oZc-hY-dzJ"; */
-"oZc-hY-dzJ.normalTitle" = "CONTINUE";
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "oZc-hY-dzJ"; */
+"oZc-hY-dzJ.normalTitle" = "Continue";
 
 /* Class = "UILabel"; text = "12$"; ObjectID = "p7v-VY-6P1"; */
 "p7v-VY-6P1.text" = "12$";

@@ -6,8 +6,8 @@ spinning the wheel <-  -> ";
 /* Class = "UILabel"; text = "200pts"; ObjectID = "A5V-63-iUD"; */
 "A5V-63-iUD.text" = "200pts";
 
-/* Class = "UIButton"; normalTitle = "PAY NOW"; ObjectID = "Fri-Sx-ywP"; */
-"Fri-Sx-ywP.normalTitle" = "PAY NOW";
+/* Class = "UIButton"; normalTitle = "Pay Now"; ObjectID = "Fri-Sx-ywP"; */
+"Fri-Sx-ywP.normalTitle" = "Pay Now";
 
 /* Class = "UILabel"; text = "And don't worry you can always cancel 2 hours"; ObjectID = "Fvp-bu-f3O"; */
 "Fvp-bu-f3O.text" = "and don't worry you can always cancel up to 2 hours";

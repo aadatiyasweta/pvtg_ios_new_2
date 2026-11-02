@@ -32,8 +32,8 @@
 /* Class = "UILabel"; text = "Partner Name"; ObjectID = "FLU-7v-zNP"; */
 "FLU-7v-zNP.text" = "Partner Name";
 
-/* Class = "UILabel"; text = "select Image"; ObjectID = "FNV-Rw-pxr"; */
-"FNV-Rw-pxr.text" = "select Image";
+/* Class = "UILabel"; text = "Select Image"; ObjectID = "FNV-Rw-pxr"; */
+"FNV-Rw-pxr.text" = "Select Image";
 
 /* Class = "UILabel"; text = "11.05 PM"; ObjectID = "JV1-Zr-wkb"; */
 "JV1-Zr-wkb.text" = "11.05 PM";

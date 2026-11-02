@@ -178,7 +178,7 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if SaveToDefaults().getAppLang() ?? "en" == "en"{
-            rescheduleBtn.setTitle("RESCHEDULE", for: .normal)
+            rescheduleBtn.setTitle("Reschedule", for: .normal)
             completedBtn.setTitle("Completed", for: .normal)
             iIconTextLbl.text = "The 2-hour time slots in this calendar won't affect the session length you’ve chosen above."
             gotItBtn.setTitle("Got it!", for: .normal)

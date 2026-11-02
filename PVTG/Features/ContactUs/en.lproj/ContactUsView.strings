@@ -6,7 +6,7 @@
 "7QD-5y-UtQ.text" = "Contact Us";
 
 /* Class = "UIButton"; normalTitle = "SEND"; ObjectID = "QPQ-Og-Azz"; */
-"QPQ-Og-Azz.normalTitle" = "SEND";
+"QPQ-Og-Azz.normalTitle" = "Send";
 
 /* Class = "UITextField"; placeholder = "NAME"; ObjectID = "pFQ-cU-i9k"; */
 "pFQ-cU-i9k.placeholder" = "Name";

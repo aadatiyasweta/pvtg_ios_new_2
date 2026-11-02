@@ -2,8 +2,8 @@
 /* Class = "UILabel"; text = "  Edit Profile"; ObjectID = "4ni-D3-Djb"; */
 "4ni-D3-Djb.text" = "  Edit Profile";
 
-/* Class = "UIButton"; normalTitle = "VIEW BOOKING"; ObjectID = "58W-0g-2Jt"; */
-"58W-0g-2Jt.normalTitle" = "VIEW BOOKING";
+/* Class = "UIButton"; normalTitle = "View Booking"; ObjectID = "58W-0g-2Jt"; */
+"58W-0g-2Jt.normalTitle" = "View Booking";
 
 /* Class = "UIButton"; normalTitle = "Change Picture"; ObjectID = "BKq-Ie-6uC"; */
 "BKq-Ie-6uC.normalTitle" = "Change Picture";
@@ -11,8 +11,8 @@
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "C5I-gh-Ghj"; */
 "C5I-gh-Ghj.normalTitle" = "Submit";
 
-/* Class = "UILabel"; text = "THANK YOU"; ObjectID = "I9w-Bq-rGL"; */
-"I9w-Bq-rGL.text" = "THANK YOU";
+/* Class = "UILabel"; text = "Thank You"; ObjectID = "I9w-Bq-rGL"; */
+"I9w-Bq-rGL.text" = "Thank You";
 
 /* Class = "UILabel"; text = "How was your experience?\n\nRate and write a review to earn 2pts"; ObjectID = "JP1-Fo-d7H"; */
 "JP1-Fo-d7H.text" = "How was your experience?\n\nRate and write a review to earn 2pts";
@@ -20,8 +20,8 @@
 /* Class = "UILabel"; text = "Your work is to discover your world and thenwith all your heart give yourself to it\r-Buddha"; ObjectID = "KbA-Sd-leB"; */
 //"KbA-Sd-leB.text" = "Your work is to discover your world and then with all your heart give yourself to it\r-Buddha";
 
-/* Class = "UILabel"; text = "  Rate Trip"; ObjectID = "LL0-Al-Nui"; */
-"LL0-Al-Nui.text" = "  Rate Trip";
+/* Class = "UILabel"; text = "Rate Session"; ObjectID = "LL0-Al-Nui"; */
+"LL0-Al-Nui.text" = "Rate Session";
 
 /* Class = "UILabel"; text = "Recent Searches"; ObjectID = "Mn1-KS-iob"; */
 "Mn1-KS-iob.text" = "Recent Searches";
@@ -44,8 +44,8 @@
 /* Class = "UITextField"; placeholder = "Search Locations"; ObjectID = "Zch-dh-ZKY"; */
 "Zch-dh-ZKY.placeholder" = "Search Locations";
 
-/* Class = "UIButton"; normalTitle = "SUBMIT"; ObjectID = "ZgX-6v-8V8"; */
-"ZgX-6v-8V8.normalTitle" = "SUBMIT";
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ZgX-6v-8V8"; */
+"ZgX-6v-8V8.normalTitle" = "Submit";
 
 /* Class = "UILabel"; text = "Add or Remove Holistic Interests"; ObjectID = "eKm-Ag-Gws"; */
 "eKm-Ag-Gws.text" = "Add or Remove Categories";
