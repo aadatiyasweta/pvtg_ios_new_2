@@ -38,6 +38,11 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
+    # Stripe ships a test image that shouldn't end up in the app
+    if target.name == 'Stripe-Stripe'
+      target.resources_build_phase.files.select { |file| file.display_name == 'stp_test_upload_image.jpeg' }.each(&:remove_from_project)
+    end
+
     target.build_configurations.each do |config|
       # Xcode 27 only supports iOS 15.0+, so pods targeting older versions fail to build
       if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 15.0

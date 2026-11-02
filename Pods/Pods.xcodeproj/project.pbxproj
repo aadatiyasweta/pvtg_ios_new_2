@@ -372,7 +372,6 @@
 		2544444FFA5F0366B0C5E4896E887844 /* GIDScopes.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1CE24CB276BFCADC9E5D5854CCFD3 /* GIDScopes.m */; };
 		2558B9A09FEC5710F7D00DD5E3E053C5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58601D38B8C73B29887904972C43DCEB /* Request.swift */; };
 		2581214AC9340BD15E046BD43A3228B0 /* FIRMessagingCheckinStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 23768B9E9604D87A6383635968183E72 /* FIRMessagingCheckinStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		258E24D7D48AE0B05214D28F630582C0 /* stp_test_upload_image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C565D89DF48BB9626986AC9DAD743EFE /* stp_test_upload_image.jpeg */; };
 		25FDE1A9D1F56E57C98505E7CF3E847D /* FIRCLSOnDemandModel_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EDECF110BD2325533A4632B03DC58192 /* FIRCLSOnDemandModel_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		26592BA6CD60C7349E5829CAB5558FEA /* STPCoreViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AFB9671EB7E34AEB54BED053E2FC43C7 /* STPCoreViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2671641A10F43455FBBE63E58CEFD550 /* FIRCLSNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB94A6CA7285EE9724231FE300B0BE /* FIRCLSNetworkOperation.m */; };
@@ -4346,7 +4345,6 @@
 		C527B862DB06AB59EE0834B3B4877191 /* STPMultipartFormDataPart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPMultipartFormDataPart.h; path = Stripe/STPMultipartFormDataPart.h; sourceTree = "<group>"; };
 		C53329831032D353EFE03DF33EC3E9AD /* id.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = id.lproj; path = GoogleSignIn/Sources/Strings/id.lproj; sourceTree = "<group>"; };
 		C5441DB2EF35B43F4D2B8E677A9FFA68 /* STPSource+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPSource+Private.h"; path = "Stripe/STPSource+Private.h"; sourceTree = "<group>"; };
-		C565D89DF48BB9626986AC9DAD743EFE /* stp_test_upload_image.jpeg */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_test_upload_image.jpeg; path = Stripe/Resources/Images/stp_test_upload_image.jpeg; sourceTree = "<group>"; };
 		C59CD62A711D5DA27B0DEFD0F55B1435 /* FIRCLSFABNetworkClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSFABNetworkClient.m; path = Crashlytics/Shared/FIRCLSNetworking/FIRCLSFABNetworkClient.m; sourceTree = "<group>"; };
 		C5D35963AF999BADD9F7852E2F5C3BB6 /* FIRCLSThreadState.c */ = {isa = PBXFileReference; includeInIndex = 1; name = FIRCLSThreadState.c; path = Crashlytics/Crashlytics/Helpers/FIRCLSThreadState.c; sourceTree = "<group>"; };
 		C61CDAC0A5A032F3C31BEA7E83EEB1E0 /* GDTCORStorageEventSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORStorageEventSelector.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORStorageEventSelector.m; sourceTree = "<group>"; };
@@ -8192,7 +8190,6 @@
 				A44CC0EC4BE6FD8BDD01FE4B30013A04 /* stp_shipping_form.png */,
 				4F82037B439F0E2526DDF586D1FCC376 /* stp_shipping_form@2x.png */,
 				82D87BA02572C2E5EDE65873ACDF6883 /* stp_shipping_form@3x.png */,
-				C565D89DF48BB9626986AC9DAD743EFE /* stp_test_upload_image.jpeg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -11363,7 +11360,6 @@
 				CA4F9932C5819227FB3CB34E860F5ECE /* stp_shipping_form.png in Resources */,
 				7C9F29DC915F11C648D1928E53B765DE /* stp_shipping_form@2x.png in Resources */,
 				38EC2F47DB01FB19EC4FE7FB76483261 /* stp_shipping_form@3x.png in Resources */,
-				258E24D7D48AE0B05214D28F630582C0 /* stp_test_upload_image.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
