@@ -48,6 +48,12 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
     var lname = ""
     var email = ""
     
+    // Dark rounded backgrounds behind the error messages (readable on the photo)
+    private var errorBgObservers: [NSKeyValueObservation] = []
+    private var errorStackDefaultSpacing: CGFloat = 12
+    private var forgotButtonTopConstraint: NSLayoutConstraint?
+    private var forgotButtonDefaultGap: CGFloat = 10
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +64,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
 //        }
         self.lblEmailErr.isHidden = true
         self.lblPaswdErr.isHidden = true
+        setupErrorBackgrounds()
         loginVM.delegate = self
         setTextfield()
         googleLogin()
@@ -460,4 +467,67 @@ extension LoginVC {
     
 }
 
-
+//MARK: - ERROR MESSAGE BACKGROUND
+extension LoginVC {
+    private func setupErrorBackgrounds() {
+        // Both error labels sit in rows of the same vertical stack view
+        let stack = lblEmailErr.superview?.superview as? UIStackView
+        if let stack = stack {
+            errorStackDefaultSpacing = stack.spacing
+            // "Forgot Password?" is pinned below the stack view; find that gap so it can grow while an error shows
+            forgotButtonTopConstraint = stack.superview?.constraints.first {
+                ($0.firstItem as? UIButton) != nil && ($0.secondItem as? UIStackView) === stack
+                    && $0.firstAttribute == .top && $0.secondAttribute == .bottom
+            }
+            forgotButtonDefaultGap = forgotButtonTopConstraint?.constant ?? 10
+        }
+        addErrorBackground(to: lblEmailErr, below: txfEmail)
+        addErrorBackground(to: lblPaswdErr, below: txfPassword)
+    }
+    
+    /// Puts the label inside a dark, semi-transparent rounded box (4pt padding) that shows and hides with the label.
+    private func addErrorBackground(to label: UILabel, below field: UITextField) {
+        guard let parent = label.superview else { return }
+        let padding: CGFloat = 4
+        let bg = UIView()
+        bg.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        bg.layer.cornerRadius = 6
+        bg.isUserInteractionEnabled = false
+        bg.translatesAutoresizingMaskIntoConstraints = false
+        parent.insertSubview(bg, belowSubview: label)
+        
+        // Move the label down by the padding so the box starts right under the text field
+        for c in parent.constraints where (c.firstItem as? UILabel) === label && c.firstAttribute == .top {
+            c.constant = padding
+        }
+        // Keep long messages on one line inside the field width
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
+        label.trailingAnchor.constraint(lessThanOrEqualTo: field.trailingAnchor, constant: -(padding + 4)).isActive = true
+        
+        NSLayoutConstraint.activate([
+            bg.leadingAnchor.constraint(equalTo: label.leadingAnchor, constant: -padding),
+            bg.trailingAnchor.constraint(equalTo: label.trailingAnchor, constant: padding),
+            bg.topAnchor.constraint(equalTo: label.topAnchor, constant: -padding),
+            bg.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: padding)
+        ])
+        bg.isHidden = label.isHidden
+        
+        // The existing code shows/hides the label; the box follows automatically
+        errorBgObservers.append(label.observe(\.isHidden, options: [.new]) { [weak self, weak bg] lbl, _ in
+            DispatchQueue.main.async {
+                bg?.isHidden = lbl.isHidden
+                self?.updateErrorSpacing()
+            }
+        })
+    }
+    
+    /// Adds room for the error box only while an error is visible, so nothing overlaps the next field or "Forgot Password?"
+    private func updateErrorSpacing() {
+        if let stack = lblEmailErr.superview?.superview as? UIStackView {
+            stack.spacing = lblEmailErr.isHidden ? errorStackDefaultSpacing : errorStackDefaultSpacing + 12
+        }
+        forgotButtonTopConstraint?.constant = lblPaswdErr.isHidden ? forgotButtonDefaultGap : forgotButtonDefaultGap + 16
+        UIView.animate(withDuration: 0.2) { self.view.layoutIfNeeded() }
+    }
+}
