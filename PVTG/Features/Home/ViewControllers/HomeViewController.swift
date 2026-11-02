@@ -114,21 +114,12 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 //    }
     
     func initializeLocation() {
-        // Request the appropriate authorization
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.delegate = self // Set the delegate to receive updates
-        getUserCurrentLocation()
-
-        // Check if location services are enabled at the system level
-        DispatchQueue.global(qos: .background).async {
-            if CLLocationManager.locationServicesEnabled() {
-                print("Location services are enabled.")
-            } else {
-                DispatchQueue.main.async {
-                    self.showAlertForPermissionDenied()
-                }
-            }
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters   // city level is enough, faster, saves battery
+        if locationManager.authorizationStatus == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()                  // the only permission prompt ("While Using")
         }
+        // Allowed / denied (including Location Services switched off) is handled in locationManagerDidChangeAuthorization
     }
     func showAlertForPermissionDenied() {
         let alertController = UIAlertController(
@@ -167,10 +158,7 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
     }
     
     func getUserCurrentLocation(){
-        locationManager = CLLocationManager()
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
+        // No "Always" request and no second location manager; permission is asked only in initializeLocation()
         locationManager.startUpdatingLocation()
     }
     

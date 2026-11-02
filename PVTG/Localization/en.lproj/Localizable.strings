@@ -46,8 +46,8 @@
 "NoSession" = "No Session";
 "Allow" = "Allow";
 "DonotAllow" = "Don't Allow";
-"backGroundLocationdDisabled" = "Background Location Access Disabled";
-"inOrderto" = "In order to be notified, please open this app's settings and set location access to 'Always'";
+"backGroundLocationdDisabled" = "Location Access Disabled";
+"inOrderto" = "To see sessions near you, allow location access while using the app in Settings.";
 "cancel" = "No";
 "OpenSettings" = "Open Settings";
 "Notifications" = "Notifications";

@@ -39,8 +39,8 @@
 "NoSession" = "Sin iniciar sesión";
 "Allow" = "Permitir";
 "DonotAllow" = "No permitir";
-"backGroundLocationdDisabled" = "Acceso a la ubicación en segundo plano deshabilitado";
-"inOrderto" = " Para ser notificado, abra la configuración y ajuste la opción de 'ubicación' en 'siempre'";
+"backGroundLocationdDisabled" = "Acceso a la ubicación desactivado";
+"inOrderto" = "Para ver sesiones cerca de ti, permite el acceso a la ubicación mientras usas la app en Ajustes.";
 //"cancel" = "Cancelar";
 "cancel" = "No";
 "OpenSettings" = "Abrir ajustes";

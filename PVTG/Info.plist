@@ -69,14 +69,8 @@
 	<string>App would like access your media Library.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>App would like to access Camera for your profile photo upload.Your photos won't be shared without your permission.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location always and when in usage description</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Location always usage description</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Location usage desription</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location is required for searching on map</string>
+	<string>Dharma uses your location to show sessions and practitioners near you.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>${PRODUCT_NAME} uses your microphone to capture audio which is shared with other room participants.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
