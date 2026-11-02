@@ -95,7 +95,7 @@ class TUGHelpers: NSObject {
     
     func normalAlert(msg: String, view : UIView) {
         let alert = UIAlertController(title: appName, message: msg, preferredStyle: .alert)
-        let dismiss = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let dismiss = UIAlertAction(title: R.string.localizable.okButton(), style: .cancel, handler: nil)
         alert.addAction(dismiss)
         view.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }

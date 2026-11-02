@@ -150,7 +150,7 @@ class OTPVC: BaseViewController {
 extension OTPVC: AfterLoginSuccess {
     func inCorrectOtpMessage() {
         let alertController = UIAlertController(title: "Dharma", message: "Invalid OTP." as? String, preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
             self.pinView.clearPin()
             self.otp = ""
         }

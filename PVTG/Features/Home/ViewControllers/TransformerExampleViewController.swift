@@ -125,7 +125,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
 //        self.vm.userSelectedCategoryApi(user_id: userid, selected_category: id.joined(separator: ","))
         
         let alertController = UIAlertController(title: "Dharma", message: "To choose categories later, tap your profile image on the home screen.", preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
             guard let userid = SaveToDefaults().getUserId() else {return}
             var id = [String]()
             for val in self.selectedCategoryArr{

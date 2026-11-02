@@ -116,7 +116,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     
     func showAlertView(_ msg: Any, title: String)  {
         let alertController = UIAlertController(title: "ALERT!", message: msg as? String, preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
         }
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
@@ -166,7 +166,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     
     func showAlertWithConfirmation1(_ message: String, withTitle title: String, itsController controller: UIViewController, completion completionBlock: @escaping (_ success: Bool) -> Void) {
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: R.string.localizable.ok(), style: .cancel, handler: {(_ alert: UIAlertAction) -> Void in
+        let ok = UIAlertAction(title: R.string.localizable.okButton(), style: .cancel, handler: {(_ alert: UIAlertAction) -> Void in
             completionBlock(true)
         })
         
