@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bg-search-min.png",
+      "filename" : "bg-search-min.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bg-search@2x-min.png",
+      "filename" : "bg-search@2x-min.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bg-search@3x-min.png",
+      "filename" : "bg-search@3x-min.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
