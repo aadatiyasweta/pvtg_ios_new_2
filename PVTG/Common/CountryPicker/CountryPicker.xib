@@ -38,7 +38,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="mhS-zh-F8Q"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isMotionEnabled" value="NO"/>

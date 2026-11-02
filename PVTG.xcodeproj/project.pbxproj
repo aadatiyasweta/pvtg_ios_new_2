@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01D4F7163091FFC50078F0CB /* Urbanist-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F7133091FFC50078F0CB /* Urbanist-Bold.ttf */; };
+		01D4F7173091FFC50078F0CB /* Epilogue-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F7093091FFC50078F0CB /* Epilogue-VariableFont_wght.ttf */; };
+
+        01D4F7193091FFC50078F0CB /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F70D3091FFC50078F0CB /* Raleway-Medium.ttf */; };
+		01D4F71A3091FFC50078F0CB /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F70F3091FFC50078F0CB /* Raleway-SemiBold.ttf */; };
+		01D4F71B3091FFC50078F0CB /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F7113091FFC50078F0CB /* Roboto-Bold.ttf */; };
+		01D4F71C3091FFC50078F0CB /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F70E3091FFC50078F0CB /* Raleway-Regular.ttf */; };
+		01D4F71D3091FFC50078F0CB /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F70C3091FFC50078F0CB /* Raleway-Light.ttf */; };
+		01D4F71E3091FFC50078F0CB /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F70B3091FFC50078F0CB /* Raleway-Bold.ttf */; };
 		180534D3259320F000625B53 /* RegistrationvC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180534D2259320F000625B53 /* RegistrationvC.swift */; };
 		180534D52593306300625B53 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180534D42593306300625B53 /* LoginVM.swift */; };
 		180534D725933C6C00625B53 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180534D625933C6C00625B53 /* RegistrationVM.swift */; };
@@ -225,6 +234,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01D4F7093091FFC50078F0CB /* Epilogue-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Epilogue-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		01D4F70B3091FFC50078F0CB /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		01D4F70C3091FFC50078F0CB /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
+		01D4F70D3091FFC50078F0CB /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
+		01D4F70E3091FFC50078F0CB /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		01D4F70F3091FFC50078F0CB /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
+		01D4F7113091FFC50078F0CB /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		01D4F7133091FFC50078F0CB /* Urbanist-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Bold.ttf"; sourceTree = "<group>"; };
+		01D4F7143091FFC50078F0CB /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
 		180534D2259320F000625B53 /* RegistrationvC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationvC.swift; sourceTree = "<group>"; };
 		180534D42593306300625B53 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		180534D625933C6C00625B53 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
@@ -500,6 +518,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01D4F70A3091FFC50078F0CB /* Epilogue */ = {
+			isa = PBXGroup;
+			children = (
+				01D4F7093091FFC50078F0CB /* Epilogue-VariableFont_wght.ttf */,
+			);
+			path = Epilogue;
+			sourceTree = "<group>";
+		};
+		01D4F7103091FFC50078F0CB /* Raleway */ = {
+			isa = PBXGroup;
+			children = (
+				01D4F70B3091FFC50078F0CB /* Raleway-Bold.ttf */,
+				01D4F70C3091FFC50078F0CB /* Raleway-Light.ttf */,
+				01D4F70D3091FFC50078F0CB /* Raleway-Medium.ttf */,
+				01D4F70E3091FFC50078F0CB /* Raleway-Regular.ttf */,
+				01D4F70F3091FFC50078F0CB /* Raleway-SemiBold.ttf */,
+			);
+			path = Raleway;
+			sourceTree = "<group>";
+		};
+		01D4F7123091FFC50078F0CB /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				01D4F7113091FFC50078F0CB /* Roboto-Bold.ttf */,
+			);
+			path = Roboto;
+			sourceTree = "<group>";
+		};
+		01D4F7153091FFC50078F0CB /* Urbanist */ = {
+			isa = PBXGroup;
+			children = (
+				01D4F7133091FFC50078F0CB /* Urbanist-Bold.ttf */,
+				01D4F7143091FFC50078F0CB /* Urbanist-Medium.ttf */,
+			);
+			path = Urbanist;
+			sourceTree = "<group>";
+		};
 		1831DCEF25AD61F000A1570B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +649,10 @@
 			children = (
 				D6499FDA2B8DEEE800720E9B /* Poppins */,
 				1855F4802592377A009396E6 /* Montserrat */,
+				01D4F70A3091FFC50078F0CB /* Epilogue */,
+				01D4F7103091FFC50078F0CB /* Raleway */,
+				01D4F7123091FFC50078F0CB /* Roboto */,
+				01D4F7153091FFC50078F0CB /* Urbanist */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -1277,6 +1336,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01D4F7163091FFC50078F0CB /* Urbanist-Bold.ttf in Resources */,
+				01D4F7173091FFC50078F0CB /* Epilogue-VariableFont_wght.ttf in Resources */,
+				01D4F7183091FFC50078F0CB /* Urbanist-Medium.ttf in Resources */,
+				01D4F7193091FFC50078F0CB /* Raleway-Medium.ttf in Resources */,
+				01D4F71A3091FFC50078F0CB /* Raleway-SemiBold.ttf in Resources */,
+				01D4F71B3091FFC50078F0CB /* Roboto-Bold.ttf in Resources */,
+				01D4F71C3091FFC50078F0CB /* Raleway-Regular.ttf in Resources */,
+				01D4F71D3091FFC50078F0CB /* Raleway-Light.ttf in Resources */,
+				01D4F71E3091FFC50078F0CB /* Raleway-Bold.ttf in Resources */,
 				D61520722D393B8A001024E4 /* Poppins-Medium.ttf in Resources */,
 				D6A257422747D36B0031B75D /* PriceView.xib in Resources */,
 				1855F4962592377B009396E6 /* Montserrat-Light.ttf in Resources */,
@@ -1346,9 +1414,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1404,9 +1476,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PVTG/Pods-PVTG-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
