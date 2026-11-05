@@ -48,7 +48,8 @@ class HoliosticGuideVC: BaseViewController {
     var isOpenPopUp = false
     var indexPathRow = 0
     var isSelectedFromFilter = false
-    
+    private var pendingSearch: DispatchWorkItem?
+
     //MARK: - Properties
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,29 +96,21 @@ class HoliosticGuideVC: BaseViewController {
 //MARK: - TEXT FIELD DELEGATES
 extension HoliosticGuideVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string == "" {
-            if textField.text?.count ?? 0 == 1 {
-                loadApi(categoryid: "\(catgryId)", search: string, isloader: false)
-                //  searchVendor_API(searchText: string)
-            }
-            else {
-                if textField.text?.count ?? 0 > 0 {
-                    loadApi(categoryid: "\(catgryId)", search: textField.text! + string, isloader: false)
-                } else {
-                    loadApi(categoryid: "\(catgryId)", search: string, isloader: false)
-                }
-            }
-        }
-        else {
-            if textField.text?.count ?? 0 > 0 {
-                loadApi(categoryid: "\(catgryId)", search: textField.text! + string, isloader: false)
-            } else {
-                loadApi(categoryid: "\(catgryId)", search: string, isloader: false)
-            }
-        }
+        scheduleSearch()
         return true
     }
-    
+
+    // Waits until typing pauses, then searches what's in the box, because this delegate runs before the box updates
+    private func scheduleSearch() {
+        pendingSearch?.cancel()
+        let search = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+            self.loadApi(categoryid: "\(self.catgryId)", search: self.txfSearch.text ?? "", isloader: false)
+        }
+        pendingSearch = search
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: search)
+    }
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
     }
     
@@ -273,6 +266,7 @@ extension HoliosticGuideVC: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func loadApi(categoryid: String, search: String, isloader: Bool,minPrice : Int? = 0 , maxprice : Int? = 0) {
+        pendingSearch?.cancel() // This load replaces any search still waiting
         if let userid = SaveToDefaults().getUserId(), let lat = SaveToDefaults().getLatitude(), let lng = SaveToDefaults().getLongtitude() {
             vm.searchSessionApi(user_id: userid, category_id: categoryid, latitude: "\(lat)", longitude: "\(lng)", search: search, isLoader: isloader,minPrice : minPrice , maxprice : maxprice,currency: self.selectedCurrency)
         }

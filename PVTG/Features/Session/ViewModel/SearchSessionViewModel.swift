@@ -16,7 +16,8 @@ class SearchSessionViewModel: BaseVm {
     var model: SearchBase?
     weak var delegate: GetSearchSessionData?
     var categorymodel: CategoryBase?
-    
+    private var latestSearchId = 0
+
     //MARK: - GET ALL CATEGORY API
     func getAllCategoryApi(user_id: String) {
         let prams : [String : Any] = ["user_id": user_id,"language" : SaveToDefaults().getAppLang() ?? "en"]
@@ -54,8 +55,12 @@ class SearchSessionViewModel: BaseVm {
         } else {
             self.dismiss()
         }
+        latestSearchId += 1
+        let searchId = latestSearchId
         api_manager.POSTApi(searchSessionUrl(), param: prams, header: header()) { (response, err, code) in
             self.dismiss()
+            // A late reply to an older search must not replace newer results
+            guard searchId == self.latestSearchId else { return }
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
