@@ -299,14 +299,6 @@ func getCurrencyDataUrl(id:String)-> String{
     return url
 }
 
-func getPrefrenceIdUrl()-> String{
-    var  url = "https://api.mercadopago.com/checkout/preferences"
-    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    print("getPrefrenceIdUrl",url)
-    return url
-    
-}
-
 func rescheduleSessionApiUrl()-> String{
     var  url = "\(server)Sessionapi/session_booking_reschedule"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -326,18 +318,6 @@ func sessionCancelApiUrl()-> String{
     var  url = "\(server)Sessionapi/session_cancellation"
     url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     print("sessionCancelApiUrl",url)
-    return url
-}
-func partialRefundApiUrl()-> String{
-    var  url = "\(server)Sessionapi/mecardo_partial_payment"
-    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    print("partialRefundApiUrl",url)
-    return url
-}
-func fullRefundApiUrl()-> String{
-    var  url = "\(server)Sessionapi/mecardo_payment_refund"
-    url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    print("fullRefundApiUrl",url)
     return url
 }
 func attendingSession()-> String{

@@ -260,14 +260,10 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                     amount = "\(price-perctange)"
                     points = "\(self.selectedPoint)"
         }
-        
-        if let n = NumberFormatter().number(from: amount) {
-            flaotPrice = CGFloat(truncating: n)
-        }
-        
+
         self.ammountPayment = amount
         self.pointsPayent = points
-        self.vm.getPrefrenceIdApi(price: flaotPrice, name: self.customModel?.sessionName ?? "", desc: self.customModel?.sessionDesc ?? "", currency: "$")
+        self.doPayment()
     }
     
     @IBAction func viewCancelPolicyBtntap(_ sender: UIButton) {
@@ -498,8 +494,7 @@ extension SummaryVC {
         task.resume()
     }
     
-    func doPayment(id : String){
-        print(id)
+    func doPayment(){
         let config = STPPaymentConfiguration.shared()
         config.requiredBillingAddressFields = .none
         let viewController = STPAddCardViewController(configuration: config, theme: STPTheme.default())
@@ -594,10 +589,6 @@ extension SummaryVC : GetBookingResponse,getOnboardingResponse{
         }else{
             self.rewardedString.text = R.string.localizable.youWillBeRewarded(self.onboardingVm.model?.point_accumulation?.bookings ?? "")
         }
-    }
-    
-    func getPrefrenceId(id: String) {
-        self.doPayment(id: id)
     }
     
     func bookingSuccess() {

@@ -213,7 +213,6 @@
 		D6D1540A2BAC114D003C71F0 /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D153FC2BAC114D003C71F0 /* ChatBoxView.swift */; };
 		D6D522B626CA67EB00CF9E95 /* PriceCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D522B426CA67EB00CF9E95 /* PriceCollCell.swift */; };
 		D6D522B726CA67EB00CF9E95 /* PriceCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D522B526CA67EB00CF9E95 /* PriceCollCell.xib */; };
-		D6DBB14E2681B4840061DC05 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBB14D2681B4840061DC05 /* PaymentVC.swift */; };
 		D6DC8D8226F36E23009E61EC /* OnboardingFirstPointsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8D8426F36E23009E61EC /* OnboardingFirstPointsCell.xib */; };
 		D6DC8D8A26F36E75009E61EC /* OnboardingSecondCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DC8D8C26F36E75009E61EC /* OnboardingSecondCell.xib */; };
 		D6E9764E26C5457B00204246 /* LanguageChnageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E9764D26C5457B00204246 /* LanguageChnageVC.swift */; };
@@ -463,7 +462,6 @@
 		D6D153FC2BAC114D003C71F0 /* ChatBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
 		D6D522B426CA67EB00CF9E95 /* PriceCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollCell.swift; sourceTree = "<group>"; };
 		D6D522B526CA67EB00CF9E95 /* PriceCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceCollCell.xib; sourceTree = "<group>"; };
-		D6DBB14D2681B4840061DC05 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 		D6DC8D8326F36E23009E61EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OnboardingFirstPointsCell.xib; sourceTree = "<group>"; };
 		D6DC8D8626F36E28009E61EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OnboardingFirstPointsCell.strings; sourceTree = "<group>"; };
 		D6DC8D8826F36E2A009E61EC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/OnboardingFirstPointsCell.strings; sourceTree = "<group>"; };
@@ -1010,7 +1008,6 @@
 				18C5A3C825920D8F008487FB /* HoliosticGuideVC.swift */,
 				18C5A3CA25920D9D008487FB /* MoreVC.swift */,
 				1834FF54259B59FA00F205D6 /* SummaryVC.swift */,
-				D6DBB14D2681B4840061DC05 /* PaymentVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1598,7 +1595,6 @@
 				18C5A3C325920CEE008487FB /* TabBarControllerViewController.swift in Sources */,
 				D6D154062BAC114D003C71F0 /* ChatBoxModels.swift in Sources */,
 				D69176472705976C0005C572 /* ReminderView.swift in Sources */,
-				D6DBB14E2681B4840061DC05 /* PaymentVC.swift in Sources */,
 				18B2A51425AF092C0028073E /* HomeResult.swift in Sources */,
 				180534D3259320F000625B53 /* RegistrationvC.swift in Sources */,
 				D6D153FD2BAC114D003C71F0 /* ChatBoxViewModel.swift in Sources */,

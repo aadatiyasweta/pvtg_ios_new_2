@@ -22,7 +22,6 @@ protocol GetResponse: AnyObject{
 }
 protocol GetBookingResponse: AnyObject{
     func bookingSuccess()
-    func getPrefrenceId(id : String)
 }
 class SessionDetailViewModel: BaseVm {
     
@@ -187,27 +186,6 @@ class SessionDetailViewModel: BaseVm {
     }
     
     
-    //MARK: - GET PREFERENCE ID API
-    func getPrefrenceIdApi(price : CGFloat,name : String,desc: String,currency : String){
-        let itemsArr : [[String:Any]] = [[ "title": name,
-                                           "quantity": 1,
-                                           "unit_price": price]]
-        
-        let payer : [String:Any] = ["email":SaveToDefaults().getEmail() ?? ""]
-        
-        let param :[String:Any] = ["payer" : payer,"items":itemsArr]
-        let headerPrefrence : [String:String] = ["Authorization" : "Bearer APP_USR-7488660032626366-081021-f6a853662803b7ae35548fb1c44b7b5b-790689138",
-                                                 "Content-Type" : "application/json"]
-        self.show()
-        api_manager.POSTApi(getPrefrenceIdUrl(), param: param, header: headerPrefrence,encoding: JSONEncoding.default) { (json, err, statusCode) in
-            self.dismiss()
-            if let response = json{
-                let id = response["id"].stringValue
-                self.bookingDelegate?.getPrefrenceId(id: id)
-            }
-        }
-    }
-    
     //MARK: - METHOD TO CANCEL SESSION API
     func sessionCancelApi(user_id: String, session_id: String,booking_id : String,isFromPartial : Bool , paymentId: String,ammount : String, chargeid : String) {
         self.show()
@@ -255,46 +233,6 @@ class SessionDetailViewModel: BaseVm {
             }
         }
     }
-    //MARK: - PARTIAL REFUND API
-    func partialRefundApi(user_id: String, paymentId: String,ammount : String) {
-        self.show()
-        let param : [String:Any] = ["user_id" : user_id , "payment_id" : paymentId,"amount":ammount]
-        api_manager.POSTApi(partialRefundApiUrl(), param: param, header: header()) { (response, err, code) in
-            self.dismiss()
-            if let json = response{
-                debugPrint(json)
-                if json["statusCode"] == 200 {
-                    self.delegate?.refundAPiResponse()
-                }
-                else {
-                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
-                }
-            }else{
-                showAlert(strTitle: somethingWentWrongMessage)
-            }
-        }
-    }
-    
-    //MARK: - FULL REFUND API
-    func fullRefundApi(user_id: String, paymentId: String) {
-        self.show()
-        let param : [String:Any] = ["user_id" : user_id , "payment_id" : paymentId]
-        api_manager.POSTApi(fullRefundApiUrl(), param: param, header: header()) { (response, err, code) in
-            self.dismiss()
-            if let json = response{
-                debugPrint(json)
-                if json["statusCode"] == 200 {
-                    self.delegate?.refundAPiResponse()
-                }
-                else {
-                    showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
-                }
-            }else{
-                showAlert(strTitle: somethingWentWrongMessage)
-            }
-        }
-    }
-    
     //MARK: - SESSION BOOKING API
     func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String,session_type_id : String? = "",paymentId : String,session_time_minute : String, selectedSessionSTr : String) {
         var prams = [String : Any]()
