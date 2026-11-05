@@ -53,6 +53,10 @@ class EventsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let hasContent = self.vm.model?.result?.count ?? 0 > 0 || self.vm.model?.history?.count ?? 0 > 0
+        updateNoInternetView(hasContent: hasContent) { [weak self] in
+            self?.loadApi(offset: "0")
+        }
         loadApi(offset: "0")
     }
 }

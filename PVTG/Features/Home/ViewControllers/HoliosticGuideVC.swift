@@ -61,6 +61,13 @@ class HoliosticGuideVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateNoInternetView(hasContent: self.vm.categorymodel?.result?.count ?? 0 > 0) { [weak self] in
+            self?.loadCategories()
+        }
+        loadCategories()
+    }
+    
+    private func loadCategories() {
         if let userid = SaveToDefaults().getUserId() {
             vm.getAllCategoryApi(user_id: userid)
         }

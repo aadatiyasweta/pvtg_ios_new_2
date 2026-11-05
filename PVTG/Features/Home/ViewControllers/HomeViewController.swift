@@ -86,6 +86,10 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
 
         self.city = SaveToDefaults().getCity() ?? ""
         self.lblLocn.text = self.city
+        self.updateNoInternetView(hasContent: !self.homeResultData.isEmpty) { [weak self] in
+            guard let self = self else { return }
+            self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
+        }
         self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
         
         if(self.isSelectedFromFilter == false){

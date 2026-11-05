@@ -20,6 +20,7 @@ var downloadURL = try! FileManager().url(for: .documentDirectory,
                                          appropriateFor: nil,
                                          create: true)
 let window = UIApplication.shared.keyWindow
+private let messageWindowTag = 9002
 let defaults = UserDefaults.standard
 let rupee = "₹"
 let fontName  = "Fonts-Reg"
@@ -227,17 +228,26 @@ func showAlert(msg:String , title:String , sender:UIViewController){
 }
 
 func showMesssgeWindow(msg:String){
-    let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: 64*widthFactor))
+    guard let currentWindow = appDelegate.window else { return }
+    // Several requests can fail together, so only keep the latest message on screen
+    currentWindow.viewWithTag(messageWindowTag)?.removeFromSuperview()
+    // The text starts below the safe area so the notch or Dynamic Island can't cover it
+    let topInset = currentWindow.safeAreaInsets.top
+    let labelHeight: CGFloat = 30
+    let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: topInset + labelHeight + 4))
+    view.tag = messageWindowTag
+    view.isUserInteractionEnabled = false // Taps on buttons under the message, such as Back, still work
     view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    let lbl = UILabel.init(frame: CGRect.init(x: 16, y: 64*widthFactor-30*widthFactor, width: SCREEN_WIDTH-16, height: 30*widthFactor))
+    let lbl = UILabel.init(frame: CGRect.init(x: 16, y: topInset, width: SCREEN_WIDTH-32, height: labelHeight))
     lbl.font = getFont(Fonts.bold.rawValue, 12)!
     lbl.textAlignment = .center
+    lbl.adjustsFontSizeToFitWidth = true
+    lbl.minimumScaleFactor = 0.8
     lbl.text = msg
     lbl.textColor = .white
     view.addSubview(lbl)
-    window?.addSubview(view)
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-        lbl.removeFromSuperview()
+    currentWindow.addSubview(view)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
         view.removeFromSuperview()
     })
 }

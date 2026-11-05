@@ -7,6 +7,7 @@ import SVProgressHUD
 class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate , UIGestureRecognizerDelegate{
     
     var emptyView:UIView!
+    private static let noInternetViewTag = 9001
     @IBOutlet weak var navBarView:UIView!
     var apiType = ""
     static let loaderView:UIView = {
@@ -54,6 +55,83 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         return (navigation.topViewController as? BaseViewController)?.allowsSwipeBack ?? true
     }
     
+    //MARK: - NO INTERNET VIEW
+    // Shows a message and Retry button on screens that would otherwise stay blank
+    // Pass "over" to cover only that view, so a title and Back button outside it stay visible
+    func showNoInternetView(in container: UIView? = nil, over target: UIView? = nil, message: String = R.string.localizable.msgNoInternetConnection(), iconName: String = "wifi.slash", retry: @escaping () -> Void) {
+        let parent: UIView = target?.superview ?? container ?? self.view
+        let covered: UIView = target ?? parent
+        parent.viewWithTag(BaseViewController.noInternetViewTag)?.removeFromSuperview()
+        
+        let background = UIView()
+        background.tag = BaseViewController.noInternetViewTag
+        background.backgroundColor = .white
+        background.translatesAutoresizingMaskIntoConstraints = false
+        parent.addSubview(background)
+        
+        let icon = UIImageView(image: UIImage(systemName: iconName))
+        icon.tintColor = .gray
+        icon.contentMode = .scaleAspectFit
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        
+        let label = UILabel()
+        label.text = message
+        label.font = getFont(Fonts.medium.rawValue, 16)
+        label.textColor = .darkGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        
+        let button = UIButton(type: .system)
+        button.setTitle(R.string.localizable.retry(), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = getFont(Fonts.semiBold.rawValue, 16)
+        button.backgroundColor = UIColor().coloWithHexString(hex: "#05d9bd")
+        button.layer.cornerRadius = 22
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addAction(UIAction { [weak self, weak parent] _ in
+            guard isConnection() else {
+                showMesssgeWindow(msg: internetConnectionMessage)
+                return
+            }
+            self?.hideNoInternetView(in: parent)
+            retry()
+        }, for: .touchUpInside)
+        
+        let stack = UIStackView(arrangedSubviews: [icon, label, button])
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.spacing = 16
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        background.addSubview(stack)
+        
+        NSLayoutConstraint.activate([
+            background.topAnchor.constraint(equalTo: covered.topAnchor),
+            background.bottomAnchor.constraint(equalTo: covered.bottomAnchor),
+            background.leadingAnchor.constraint(equalTo: covered.leadingAnchor),
+            background.trailingAnchor.constraint(equalTo: covered.trailingAnchor),
+            stack.centerYAnchor.constraint(equalTo: background.centerYAnchor),
+            stack.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 32),
+            stack.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -32),
+            icon.widthAnchor.constraint(equalToConstant: 48),
+            icon.heightAnchor.constraint(equalToConstant: 48),
+            button.widthAnchor.constraint(equalToConstant: 160),
+            button.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
+    func hideNoInternetView(in container: UIView? = nil) {
+        (container ?? self.view).viewWithTag(BaseViewController.noInternetViewTag)?.removeFromSuperview()
+    }
+    
+    // Screens that already show content keep it, so only empty screens get the view
+    func updateNoInternetView(hasContent: Bool, retry: @escaping () -> Void) {
+        if isConnection() || hasContent {
+            hideNoInternetView()
+        } else {
+            showNoInternetView(retry: retry)
+        }
+    }
+    
     @objc func hidePlusButton() {
     }
     
@@ -80,6 +158,8 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     
     func showWithTouch(){
            if isConnection(){
+               // Other screens set a touch-blocking mask that stays on, and Back must work while a page loads
+               SVProgressHUD.setDefaultMaskType(.none)
                SVProgressHUD.show()
            }
        }

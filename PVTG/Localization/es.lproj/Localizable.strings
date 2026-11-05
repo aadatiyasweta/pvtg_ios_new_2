@@ -108,3 +108,6 @@
 "DeleteAccount" = "Eliminar cuenta";
 "DeletePhoto" = "Eliminar foto";
 "SureDeleteAccount" = "¿Estás seguro de que quieres eliminar tu cuenta?";
+"retry" = "Reintentar";
+"pageLoadFailed" = "No se pudo cargar esta página.";
+"msgNoInternetConnection" = "Parece que no hay conexión a internet.";

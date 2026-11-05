@@ -147,3 +147,5 @@
 "titleCategories" = "Categories";
 "homeHeaderTitle" = "Explore energy healing sessions and balance your soul.";
 "sessionTimeSlotsInfo" = "The 2-hour time slots in this calendar won't affect the session length you've chosen above.";
+"retry" = "Retry";
+"pageLoadFailed" = "This page couldn't be loaded.";

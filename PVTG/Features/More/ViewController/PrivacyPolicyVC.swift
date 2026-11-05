@@ -61,10 +61,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
                // 3. Add WebView to subView
                self.subView.addSubview(webView)
 
-        if let url = URL(string: url) {
-            let request = URLRequest(url: url)
-            self.webView.load(request)
-        }
+        self.loadPage()
         if isFromReschedule == true{
             self.okBtnVw.isHidden = false
         }else{
@@ -141,8 +138,39 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
         self.hideWithTouch()
     }
     
-    private func webView(_ webView: WKWebView, didFailLoadWithError error: Error) {
-        print(error.localizedDescription)
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        handlePageLoadFailure(error)
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        handlePageLoadFailure(error)
+    }
+    
+    // Offline, the web view can stay blank for a long time before it reports a failure, so check first
+    private func loadPage() {
+        guard isConnection() else {
+            showPageLoadFailure()
+            return
+        }
+        if let url = URL(string: url) {
+            self.webView.load(URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30))
+        }
+    }
+
+    // Stops the spinner and lets the user retry, because a failed page never reaches didFinish
+    private func handlePageLoadFailure(_ error: Error) {
+        // A cancelled load isn't a failure, for example when another load has replaced it
+        if (error as NSError).code == NSURLErrorCancelled { return }
+        showPageLoadFailure()
+    }
+
+    private func showPageLoadFailure() {
+        self.hideWithTouch()
+        let message = isConnection() ? R.string.localizable.pageLoadFailed() : R.string.localizable.msgNoInternetConnection()
+        let iconName = isConnection() ? "exclamationmark.circle" : "wifi.slash"
+        self.showNoInternetView(in: self.subView, message: message, iconName: iconName) { [weak self] in
+            self?.loadPage()
+        }
     }
     
     private func webViewDidFinishLoad(_ webView: WKWebView) {

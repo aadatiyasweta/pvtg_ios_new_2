@@ -62,9 +62,16 @@ class NotificationVC: BaseViewController {
         arrNotificationresult.removeAll()
        // loadApi(offset: "0")
         offset = 0
+        if isConnection() {
+            hideNoInternetView()
+        } else {
+            showNoInternetView(over: tblNotication) { [weak self] in
+                self?.loadApi()
+            }
+        }
         loadApi()
     }
-    
+
     func loadApi() {
         guard let userid = SaveToDefaults().getUserId() else {return}
         self.notificationVM.getCoachNotificationListApi(user_id: userid, offset: "\(self.offset)", limit: "10")

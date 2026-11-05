@@ -333,6 +333,10 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
         iIcount = -2
         self.vwcalendar.deselect(self.dateToDeleselect)
         self.selectedDate = formatter.string(from: self.today)
+        updateNoInternetView(hasContent: self.vm.model != nil) { [weak self] in
+            self?.loadApi(top_search: "")
+        }
+        self.view.bringSubviewToFront(self.backBtn) // The view covers the whole screen, and Back must stay usable
         loadApi(top_search: "")
         vm.delegate = self
         handlingHeaderInFSCalendar()
