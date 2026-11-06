@@ -56,8 +56,7 @@ class OnboardingVC: UIViewController {
             if controllerId == 1{
                 self.navigationController?.popViewController(animated: true)
             } else {
-                let vc = LoginVC.instance()
-                self.navigationController?.pushViewController(vc, animated: true)
+                appDelegate.setLoginVC() // Login replaces onboarding instead of sitting on top of it
             }
             
         }else{
@@ -65,8 +64,7 @@ class OnboardingVC: UIViewController {
             if controllerId == 1{
                 self.navigationController?.popViewController(animated: true)
             } else {
-                let vc = LoginVC.instance()
-                self.navigationController?.pushViewController(vc, animated: true)
+                appDelegate.setLoginVC() // Login replaces onboarding instead of sitting on top of it
             }
         }
     }
@@ -76,8 +74,7 @@ class OnboardingVC: UIViewController {
         if controllerId == 1{
             self.navigationController?.popViewController(animated: true)
         } else {
-            let vc = LoginVC.instance()
-            self.navigationController?.pushViewController(vc, animated: true)
+            appDelegate.setLoginVC() // Login replaces onboarding instead of sitting on top of it
         }
     }
 }

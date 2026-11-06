@@ -239,8 +239,8 @@ extension LoginVC: AfterLoginSuccess {
             
                
         SaveToDefaults().setIsNew(isNew: true)
-        let vc = TabBarControllerViewController.instance() 
-        self.navigationController?.pushViewController(vc, animated: true)
+        // The main tabs replace Login instead of sitting on top of it
+        appDelegate.setTabBarControllerVC()
             
         })
     }

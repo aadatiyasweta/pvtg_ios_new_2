@@ -260,8 +260,8 @@ extension TransformerExampleViewController: UICollectionViewDelegate, UICollecti
 extension TransformerExampleViewController: LoadingCategory {
     func fillSelectedArray() {
         if self.fromSignUp{
-            let vc = TabBarControllerViewController.instance()
-            self.navigationController?.pushViewController(vc, animated: true)
+            // The main tabs replace the sign-up screens instead of sitting on top of them
+            appDelegate.setTabBarControllerVC()
         }else{
             self.navigationController?.popViewController(animated: true)
         }

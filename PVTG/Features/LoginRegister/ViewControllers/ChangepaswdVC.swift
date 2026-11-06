@@ -134,8 +134,8 @@ extension ChangepaswdVC: AfterLoginSuccess {
     }
     
     func changePaswdSucces() {
-        let vc = LoginVC.instance()
-        self.navigationController?.pushViewController(vc, animated: true)
+        // Go back to a single Login screen instead of adding a second one on top
+        appDelegate.setLoginVC()
     }
     
 }
