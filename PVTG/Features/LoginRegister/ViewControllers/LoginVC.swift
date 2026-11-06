@@ -428,29 +428,29 @@ extension LoginVC {
                 self.fname = firstName
                 self.keyChain.set(fname, forKey:"apple_f_name" )
                 
-                print("Apple Fisrt Name: \(fname)")
+                print("Apple first name received:", !fname.isEmpty)
             } else {
                 self.fname = keyChain.get("apple_f_name") ?? ""
-                print("Apple Fisrt Name: \(fname)")
+                print("Apple first name received:", !fname.isEmpty)
             }
             
             if let lastName = appleIDCredential.fullName?.familyName, lastName.count > 0 {
                 self.lname = lastName
                 self.keyChain.set(lname, forKey:"apple_l_name" )
-                print("Apple Last Name: \(lname)")
+                print("Apple last name received:", !lname.isEmpty)
             } else {
                 self.lname = keyChain.get("apple_l_name") ?? ""
-                print("Apple Last Name: \(lname)")
+                print("Apple last name received:", !lname.isEmpty)
             }
             Socialdata["FullName"] = "\(self.fname) \(self.lname)"
             
             if let email = appleIDCredential.email, email.count > 0 {
                 self.email = email
                 self.keyChain.set(email, forKey:"email" )
-                print("Apple userEmail: \(email)")
+                print("Apple email received:", !email.isEmpty)
             } else {
                 self.email = keyChain.get("email") ?? ""
-                print("Apple userEmail: \(email)")
+                print("Apple email received:", !email.isEmpty)
             }
             Socialdata["Email_Id"] = self.email
             

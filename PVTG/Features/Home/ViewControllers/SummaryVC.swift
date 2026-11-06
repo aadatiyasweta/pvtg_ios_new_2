@@ -615,7 +615,7 @@ extension SummaryVC : STPAddCardViewControllerDelegate
     }
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        print(token)
+        print("Stripe card token created")
         showAlertView(token, title: appName)
         dismiss(animated: false, completion: nil)
         self.makePayment(stripetoken: token)

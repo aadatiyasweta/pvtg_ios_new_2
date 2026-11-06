@@ -26,7 +26,7 @@ class ApiManager {
         //debugPrint(param ?? [:])
         
         if isConnection(){
-            print(param ?? [:])
+            print(logSafe(param))
             DispatchQueue.global(qos: .background).async {
                 AF.request(url, method: .post, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().response(completionHandler: { dataResponse in
                     DispatchQueue.main.async {
@@ -69,7 +69,7 @@ class ApiManager {
     
     
     func GETApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
-        print(param ?? [:])
+        print(logSafe(param))
         if isConnection(){
             DispatchQueue.global(qos: .background).async {
             AF.request(url, method: .get, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().response(completionHandler: { dataResponse in
@@ -106,7 +106,7 @@ class ApiManager {
     }
     
     func PUTApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
-        print(param ?? [:])
+        print(logSafe(param))
         if isConnection(){
             AF.request(url, method: .put, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().response(completionHandler: { dataResponse in
                 switch dataResponse.result {
@@ -136,7 +136,7 @@ class ApiManager {
     }
     
     func DeleteApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
-        print(param ?? [:])
+        print(logSafe(param))
         if isConnection(){
             let head = HTTPHeaders.init(header ?? [:])
             AF.request(url, method: .delete, parameters: param, encoding: encoding!, headers: HTTPHeaders.init(header ?? [:])).validate().response { dataResponse in
@@ -159,7 +159,7 @@ class ApiManager {
     func upload(_ url :String , _ data:Data,params : [String:Any]?, _ fileName:String , header:[String:String]? , completion:@escaping (_ error:Error? , _ responce:JSON?,_ statuscode :Int?)->()) {
         if isConnection(){
             let head = HTTPHeaders.init(header ?? [:])
-            print(params ?? [:])
+            print(logSafe(params))
             DispatchQueue.global(qos: .background).async {
             AF.upload(multipartFormData: { (multiPart) in
                 for (key, value) in params ?? [:] {

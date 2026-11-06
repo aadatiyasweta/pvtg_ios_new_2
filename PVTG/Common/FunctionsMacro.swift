@@ -14,6 +14,28 @@ import Reachability
 import SwiftyJSON
 import SVProgressHUD
 
+// Request fields and URL values that must never appear in the log
+private let sensitiveLogKeys: Set<String> = ["password", "new_password", "old_password", "otp", "key",
+                                             "device_token", "stripeytoken", "token", "social_id"]
+
+// Request data for the log, with passwords, OTPs and tokens shown as ***
+func logSafe(_ params: [String: Any]?) -> [String: Any] {
+    var safe = params ?? [:]
+    for key in safe.keys where sensitiveLogKeys.contains(key.lowercased()) {
+        safe[key] = "***"
+    }
+    return safe
+}
+
+// A URL for the log, with OTP and API key values shown as ***
+func logSafe(_ url: String) -> String {
+    guard var parts = URLComponents(string: url), let items = parts.queryItems else { return url }
+    parts.queryItems = items.map {
+        sensitiveLogKeys.contains($0.name.lowercased()) ? URLQueryItem(name: $0.name, value: "***") : $0
+    }
+    return parts.string ?? url
+}
+
 let documentsURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 var downloadURL = try! FileManager().url(for: .documentDirectory,
                                          in: .userDomainMask,

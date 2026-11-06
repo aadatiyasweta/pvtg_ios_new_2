@@ -137,7 +137,7 @@ class Facebook: NSObject
             GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, gender, picture,email,friends"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil)
                 {
-                    print("fetched user %@",result ?? "")
+                    print("Facebook user details fetched")
                     if let delegate = self.delegate
                     {
                         delegate.fbUserInfoSuccess(result: result as AnyObject)

@@ -114,7 +114,7 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
     }
     
          func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-            print("fcmToken:\(String(describing: fcmToken))")
+            print("fcmToken received:", fcmToken != nil)
              if let  fcmTokenn = fcmToken {
                 UserDefaults.standard.set(fcmTokenn, forKey:"deviceToken")
                                      }
@@ -387,7 +387,7 @@ func getAPIKeyFromPlist() -> String? {
     if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
        let plist = NSDictionary(contentsOfFile: path),
        let apiKey = plist.object(forKey: "Google_Api_Key") as? String {
-        print("GoogleApiKey \(apiKey)")
+        print("GoogleApiKey loaded")
         return apiKey
     }
     return nil

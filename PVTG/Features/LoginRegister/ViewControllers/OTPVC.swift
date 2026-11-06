@@ -120,7 +120,7 @@ class OTPVC: BaseViewController {
         pinView.keyboardType = .phonePad
         pinView.becomeFirstResponderAtIndex = 0
         pinView.didChangeCallback = { [weak self] pin in
-            print(pin)
+            print("OTP digits entered:", pin.count)
         }
         pinView.didFinishCallback = { [weak self] pin in
             self?.otp = pin
