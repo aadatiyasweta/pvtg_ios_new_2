@@ -1525,11 +1525,13 @@ extension SessionDetailVC: GetResponse {
         }
         self.vm.sessionName =  data.name_of_listing ?? ""
         self.vm.sessionDesc = data.description ?? ""
-        let value = Double(data.distance ?? "")!
-        let doubleStr = String(format: "%.2f", value)
-        let str = (data.city ?? "") + " " + R.string.localizable.kmaway(doubleStr)
+        // A missing distance or rating from the server must not crash the screen
+        var str = data.city ?? ""
+        if let value = Double(data.distance ?? "") {
+            str += " " + R.string.localizable.kmaway(String(format: "%.2f", value))
+        }
         self.lblSessionname.text = data.category_name ?? ""
-        self.vwrating.rating = Double(data.rating ?? "")!
+        self.vwrating.rating = Double(data.rating ?? "") ?? 0
         self.lblPlaceName.text = str
         self.txtVw.text = data.bio
         self.languageLbl.text = data.session_language

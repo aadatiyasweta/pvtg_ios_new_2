@@ -58,6 +58,10 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     var secondPointDiscount = 0
     var firstPoints = 0
     var secondPoins = 0
+    // The user's points from the server, or 0 if they're missing or not a number
+    private var availablePoints: Int {
+        Int(Double(self.ticketModel?.total_point ?? "") ?? 0)
+    }
     var isPointsUsed = false
     var selectedPoint = 0
     var getPriceFromPreviousPage = 0
@@ -168,7 +172,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
     
     //MARK: - BUTTON ACTION
     @IBAction func useNow(_ sender: Any) {
-        if Int(self.ticketModel?.total_point ?? "0")! < self.selectedPoint{
+        if self.availablePoints < self.selectedPoint{
             showAlertView("Your available points is low", title: appName)
         }else{
             if(selectedPointStr == ""){
@@ -204,9 +208,9 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 }
                 priceString = currencyFormatter.string(from: NSNumber(value: priceAfterDiscount ))!
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
-                self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
+                self.totalFare.text = replaced + " " +  (self.bookingDetails?.currency ?? "")
                 //let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // added by ashitesh
-                let val = Int(self.ticketModel?.total_point ?? "0")! - self.selectedPoint // added by ashitesh
+                let val = self.availablePoints - self.selectedPoint // added by ashitesh
                 self.btnAvlblPoints.setTitle("\(val)", for: .normal)
                 /*self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)*/ // added by ashitesh
                 
@@ -286,12 +290,12 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
 //            self.btnUseNow.isUserInteractionEnabled = true
 //            self.discountpriceTxtfld.isUserInteractionEnabled = true
             self.discountViewHeightCons.constant = 30
-            if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
+            if self.availablePoints < self.secondPoins{
                 self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
                 self.lblPoints.text = "\(self.firstPoints) \(R.string.localizable.pts())"
                 self.selectedPoint = self.firstPoints
 //                let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints
-                let val = Int(self.ticketModel?.total_point ?? "0")! // commented by ashitesh
+                let val = self.availablePoints // commented by ashitesh
                 self.btnAvlblPoints.setTitle("\(val)", for: .normal)
             }else{
                 if self.secondPointDiscount == 0{
@@ -302,7 +306,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 self.lblPoints.text = "\(self.secondPoins) \(R.string.localizable.pts())"
                 self.selectedPoint = self.secondPoins
 //                let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // commented by ashitesh
-                let val = Int(self.ticketModel?.total_point ?? "0")!
+                let val = self.availablePoints
                 self.btnAvlblPoints.setTitle("\(val)", for: .normal)
             }
 //            if Int(self.ticketModel?.total_point ?? "0")! < self.selectedPoint{
@@ -352,7 +356,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
                 }
                 priceString = currencyFormatter.string(from: NSNumber(value: totalPrice ))!
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
-                self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
+                self.totalFare.text = replaced + " " +  (self.bookingDetails?.currency ?? "")
 //                self.vwAdddashedBordr.alpha = 0.5
 //                self.btnUseNow.alpha = 0.5
 //                self.btnUseNow.isUserInteractionEnabled = false
@@ -375,13 +379,13 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         self.vwAdddashedBordr.isHidden = true
         self.btnUseNow.isHidden = true
         self.discountViewHeightCons.constant = 30
-        if Int(self.ticketModel?.total_point ?? "0")! < self.secondPoins{
+        if self.availablePoints < self.secondPoins{
             self.Discount.text = "\(firstPointDiscount)% \(R.string.localizable.discount())"
             self.lblPoints.text = "\(self.firstPoints) \(R.string.localizable.pts())"
             self.selectedPoint = self.firstPoints
 //            let val = Int(self.ticketModel?.total_point ?? "0")! - self.firstPoints // commented by ashitesh
             
-            let val = Int(self.ticketModel?.total_point ?? "0")!
+            let val = self.availablePoints
 //            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
             self.btnAvlblPoints.setTitle("\(val)", for: .normal)
         }else{
@@ -394,7 +398,7 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
             self.lblPoints.text = "\(self.secondPoins) \(R.string.localizable.pts())"
             self.selectedPoint = self.firstPoints
 //            let val = Int(self.ticketModel?.total_point ?? "0")! - self.secondPoins // commented by ashitesh
-            let val = Int(self.ticketModel?.total_point ?? "0")!
+            let val = self.availablePoints
 //            self.btnAvlblPoints.setTitle("\(val) \(R.string.localizable.ptsavailable())", for: .normal)
             self.btnAvlblPoints.setTitle("\(val)", for: .normal)
         }
@@ -448,7 +452,7 @@ extension SummaryVC {
                 currencyFormatter.locale =  Locale(identifier: "en_US")
                 priceString = currencyFormatter.string(from: NSNumber(value: myDouble ))!
                 let replaced = priceString.replacingOccurrences(of: "$", with: "") // "aaaaaaaa"
-                self.totalFare.text = replaced + " " +  self.bookingDetails!.currency!
+                self.totalFare.text = replaced + " " +  (self.bookingDetails?.currency ?? "")
             }
             self.btnAvlblPoints.setTitle("\(pt ?? 0)", for: .normal)
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {

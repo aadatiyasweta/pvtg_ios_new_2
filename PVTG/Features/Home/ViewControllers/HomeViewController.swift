@@ -433,7 +433,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             priceView?.currencyArr = self.homevm.model?.currency_data ?? []
             
             appDelegate.window?.addSubview(priceView!)
-            for val in 0..<(self.homevm.model?.currency_data!.count)!{
+            for val in 0..<(self.homevm.model?.currency_data?.count ?? 0){
                 if self.homevm.model?.currency_data?[val] == self.selectedCurrency{
                     priceView?.currentIndex = val
                     priceView?.pickerView.selectRow(priceView!.currentIndex, inComponent: 0, animated: true)
