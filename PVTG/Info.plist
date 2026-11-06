@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ATSApplicationFontsPath
-</key>
-	<string>Poppins-SemiBold.ttf</string>
-	<key>BGTaskSchedulerPermittedIdentifiers</key>
-	<array>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -79,33 +72,26 @@
 	<string>uses to Pick Photo</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>AirbnbCereal-Light.ttf</string>
-		<string>AirbnbCereal-Bold.ttf</string>
-		<string>AirbnbCereal-ExtraBold.ttf</string>
-		<string>AirbnbCereal-Medium.ttf</string>
-		<string>AirbnbCereal-Black.ttf</string>
-		<string>AirbnbCereal-Book.ttf</string>
 		<string>Poppins-Medium.ttf</string>
 		<string>Poppins-Regular.ttf</string>
 		<string>Poppins-Bold.ttf</string>
 		<string>Poppins-SemiBold.ttf</string>
-		<string>Poppins-Light.ttf</string>
 		<string>Montserrat-Regular.ttf</string>
-        <string>Montserrat-Medium.ttf</string>
-        <string>Montserrat-SemiBold.ttf</string>
-        <string>Montserrat-Bold.ttf</string>
-        <string>Montserrat-Light.ttf</string>
-        <string>Montserrat-ExtraBold.ttf</string>
-        <string>Montserrat-Italic.ttf</string>
-        <string>Urbanist-Medium.ttf</string>
-        <string>Urbanist-Bold.ttf</string>
-        <string>Roboto-Bold.ttf</string>
-        <string>Epilogue-VariableFont_wght.ttf</string>
-        <string>Raleway-Regular.ttf</string>
-        <string>Raleway-Medium.ttf</string>
-        <string>Raleway-SemiBold.ttf</string>
-        <string>Raleway-Bold.ttf</string>
-        <string>Raleway-Light.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-SemiBold.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-Light.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Montserrat-Italic.ttf</string>
+		<string>Urbanist-Medium.ttf</string>
+		<string>Urbanist-Bold.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Epilogue-VariableFont_wght.ttf</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Raleway-Medium.ttf</string>
+		<string>Raleway-SemiBold.ttf</string>
+		<string>Raleway-Bold.ttf</string>
+		<string>Raleway-Light.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -126,18 +112,14 @@
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
-		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>arm64</string>
 	</array>
-	<key>UIStatusBarStyle</key>
-	<string>Login</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
