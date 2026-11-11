@@ -40,7 +40,6 @@ class EventsViewController: BaseViewController {
     private var indexOfCellBeforeDragging = 0
     private var currentPage: Int = 0
     var vm = EventViewModel()
-    var indexOfPageToRequest = 0
     var ispageEnabled = false
     
     //MARK: - LifeCycle
@@ -48,12 +47,11 @@ class EventsViewController: BaseViewController {
         super.viewDidLoad()
         vm.delegate = self
         self.setCollectionVw()
-        loadApi(offset: "0")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let hasContent = self.vm.model?.result?.count ?? 0 > 0 || self.vm.model?.history?.count ?? 0 > 0
+        let hasContent = self.vm.model?.result?.count ?? 0 > 0 || !self.vm.history.isEmpty
         updateNoInternetView(hasContent: hasContent) { [weak self] in
             self?.loadApi(offset: "0")
         }
@@ -103,21 +101,21 @@ extension EventsViewController: UICollectionViewDataSource, UICollectionViewDele
 //MARK: - TABLE VIEW DELEGATES AND DATASOURCE
 extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.vm.model?.history?.count ?? 0
+        return self.vm.history.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.ident, for: indexPath) as? HistoryCell else { return UITableViewCell() }
         cell.selectedRate = {
             let vc = RateUsVC.instance()
-            vc.sessionid = self.vm.model?.history?[indexPath.row].session_id ?? ""
-            vc.bookingID = self.vm.model?.history?[indexPath.row].booking_id ?? ""
+            vc.sessionid = self.vm.history[indexPath.row].session_id ?? ""
+            vc.bookingID = self.vm.history[indexPath.row].booking_id ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
         cell.selectedIndex = { tap in
-           self.directions(lat: self.vm.model?.history?[indexPath.row].lat ?? "" ,long: self.vm.model?.history?[indexPath.row].long ?? "")
+           self.directions(lat: self.vm.history[indexPath.row].lat ?? "" ,long: self.vm.history[indexPath.row].long ?? "")
         }
-        cell.setData(data: self.vm.model?.history?[indexPath.row])
+        cell.setData(data: self.vm.history[indexPath.row])
         return cell
     }
     
@@ -130,9 +128,9 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
         vc.controllerId = 3
         vc.screenFrom = "EventVC"
         vc.isFromRescheduleNo = false
-        vc.sessionStatus = self.vm.model?.history?[indexPath.row].status ?? ""
-        vc.sessionId = self.vm.model?.history?[indexPath.row].session_id ?? ""
-        vc.bookingId = self.vm.model?.history?[indexPath.row].booking_id ?? ""
+        vc.sessionStatus = self.vm.history[indexPath.row].status ?? ""
+        vc.sessionId = self.vm.history[indexPath.row].session_id ?? ""
+        vc.bookingId = self.vm.history[indexPath.row].booking_id ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -194,13 +192,10 @@ extension EventsViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView != self.colectionVw{
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
-                // increments the number of the page to request
-                if self.vm.model?.history?.count ?? 0 > 0{
-                    indexOfPageToRequest += 10
-                    let data = String(indexOfPageToRequest)
-                    loadApi(offset: data)
-                    print(data)
-                    
+                if !self.vm.history.isEmpty {
+                    if !self.vm.isLoading && self.vm.hasMoreHistory {
+                        loadApi(offset: String(self.vm.nextHistoryOffset))
+                    }
                 }else{
                     lblNoSession.isHidden = true
                     lblNoSession.text = ""
@@ -234,7 +229,7 @@ extension EventsViewController: LoadingEvents {
             self.colectionVw.reloadData()
         }
         
-        if self.vm.model?.history?.count ?? 0 == 0 &&  self.vm.model?.result?.count ?? 0 == 0{
+        if self.vm.history.isEmpty &&  self.vm.model?.result?.count ?? 0 == 0{
              self.lblNoSession.text = "Sessions that you book will appear here"
             //R.string.localizable.noSession()
              self.lblNoSession.isHidden = false
@@ -245,7 +240,7 @@ extension EventsViewController: LoadingEvents {
              self.lblNoSession.isHidden = true
         }
         
-        if self.vm.model?.history?.count == 0 || self.vm.model?.history?.count == nil{
+        if self.vm.history.isEmpty{
             self.lblHistoryEvent.isHidden = true
             self.lblUndrLine2.isHidden = true
         } else {
@@ -253,17 +248,15 @@ extension EventsViewController: LoadingEvents {
             self.lblUndrLine2.isHidden = false
         }
         
-        let tableHeight = (self.vm.model?.history?.count ?? 0) * 225
-        constraintHeight.constant = CGFloat(tableHeight + (self.vm.model?.history?.count ?? 0) * 70)
+        let tableHeight = self.vm.history.count * 225
+        constraintHeight.constant = CGFloat(tableHeight + self.vm.history.count * 70)
         self.updateViewConstraints()
         self.view.layoutSubviews()
         self.view.layoutIfNeeded()
         self.TblVwHistory.reloadData()
         self.colectionVw.reloadData()
     }
-    
-    func tblReloadData() {
-    }
+
 }
 
 
