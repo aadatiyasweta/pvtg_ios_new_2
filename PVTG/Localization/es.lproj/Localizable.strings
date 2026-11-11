@@ -111,3 +111,7 @@
 "retry" = "Reintentar";
 "pageLoadFailed" = "No se pudo cargar esta página.";
 "msgNoInternetConnection" = "Parece que no hay conexión a internet.";
+"SessionExpired" = "Tu sesión ha expirado. Por favor, inicia sesión de nuevo.";
+"GoogleSignInFailed" = "No pudimos iniciar sesión con Google. Inténtalo de nuevo.";
+"FacebookSignInFailed" = "No pudimos iniciar sesión con Facebook. Inténtalo de nuevo.";
+"AppleSignInFailed" = "No pudimos iniciar sesión con Apple. Inténtalo de nuevo.";

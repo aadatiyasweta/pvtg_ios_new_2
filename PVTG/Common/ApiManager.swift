@@ -21,7 +21,34 @@ class ApiManager {
     
     private init() { }
     static let sharedInstance = ApiManager.init()
-    
+
+    private var isHandlingSessionExpiry = false
+
+    private func isAuthUrl(_ url: String) -> Bool {
+        return [loginUrl(), socialLoginUrl(), registrationUrl(), forgotUrl()].contains(url)
+    }
+
+    private func handleSessionExpiryIfNeeded(url: String, httpCode: Int?, data: Data?) -> Bool {
+        if isAuthUrl(url) { return false }
+        let bodyCode = JSON(data ?? Data())["statusCode"].int
+        let expired = httpCode == 401 || httpCode == 403 || bodyCode == 401 || bodyCode == 403
+        guard expired else { return false }
+        if isHandlingSessionExpiry { return true }
+        guard SaveToDefaults().getAccessToken() != nil else { return false }
+
+        isHandlingSessionExpiry = true
+        SVProgressHUD.dismiss()
+        SaveToDefaults().setAccessToken(value: nil)
+        SaveToDefaults().setLogindata(data: Data())
+        defaults.synchronize()
+        appDelegate.setLoginVC()
+        showAlert(strTitle: sessionExpiredMessage)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.isHandlingSessionExpiry = false
+        }
+        return true
+    }
+
     func POSTApi(_ url: String, param: [String: Any]?, header : [String : String]?,encoding : ParameterEncoding? = URLEncoding.default,completion:@escaping (_ jsonData:JSON? , _ error:Error?, _ statuscode : Int? )->()) {
         //debugPrint(param ?? [:])
         
@@ -37,26 +64,15 @@ class ApiManager {
                     //                let alertViewController = UIAlertController(title: appName, message: respString, preferredStyle: .alert)
                     //                alertViewController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
                     //                appDelegate.window?.rootViewController?.present(alertViewController, animated: true, completion: nil)
-                    
+
+                    if self.handleSessionExpiryIfNeeded(url: url, httpCode: dataResponse.response?.statusCode, data: dataResponse.data) { return }
                     switch dataResponse.result {
                     case .success( let value):
                         let json = JSON.init(value ?? Data())
                         debugPrint(json)
-                        if json["statusCode"].isKeyPresent(){
-                            if json["statusCode"].intValue == 403{
-                                SaveToDefaults().setAccessToken(value: nil)
-                                SaveToDefaults().setLogindata(data: Data())
-                                defaults.synchronize()
-                                //                            let vc = LoginVC.navigation()
-                                //                            window?.rootViewController = vc
-                                //                            window?.makeKeyAndVisible()
-                                appDelegate.setLoginVC()
-                            }
-                        }
-                        // debugPrint(json)
                         completion(json , nil, dataResponse.response?.statusCode)
                     case .failure(let err):
-                        completion(nil , err.underlyingError, dataResponse.response?.statusCode)
+                        completion(nil , err.underlyingError ?? err, dataResponse.response?.statusCode)
                     }
                 }
             })
@@ -77,24 +93,14 @@ class ApiManager {
                     SVProgressHUD.dismiss()
                     let respString:String = String(data: (dataResponse.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
                     print(respString)
+                    if self.handleSessionExpiryIfNeeded(url: url, httpCode: dataResponse.response?.statusCode, data: dataResponse.data) { return }
                     switch dataResponse.result {
                     case .success( let value):
                         let json = JSON.init(value ?? Data())
                         print(json)
-                        if json["statusCode"].isKeyPresent(){
-                            if json["statusCode"].intValue == 403{
-                                SaveToDefaults().setAccessToken(value: nil)
-                                SaveToDefaults().setLogindata(data: Data())
-                                defaults.synchronize()
-                                //                            let vc = LoginVC.navigation()
-                                //                            window?.rootViewController = vc
-                                //                            window?.makeKeyAndVisible()
-                                appDelegate.setLoginVC()
-                            }
-                        }
                         completion(json , nil, dataResponse.response?.statusCode)
                     case .failure(let err):
-                        completion(nil , err.underlyingError, dataResponse.response?.statusCode)
+                        completion(nil , err.underlyingError ?? err, dataResponse.response?.statusCode)
                     }
                 }
             })
@@ -109,24 +115,16 @@ class ApiManager {
         print(logSafe(param))
         if isConnection(){
             AF.request(url, method: .put, parameters:param, encoding:encoding!, headers:HTTPHeaders.init(header ?? [:])).validate().response(completionHandler: { dataResponse in
-                switch dataResponse.result {
-                case .success( let value):
-                    let json = JSON.init(value ?? Data())
-                    if json["statusCode"].isKeyPresent(){
-                        if json["statusCode"].intValue == 403{
-                            SaveToDefaults().setAccessToken(value: nil)
-                            SaveToDefaults().setLogindata(data: Data())
-                            defaults.synchronize()
-//                            let vc = LoginVC.navigation()
-//                            window?.rootViewController = vc
-//                            window?.makeKeyAndVisible()
-                            appDelegate.setLoginVC()
-                        }
+                DispatchQueue.main.async {
+                    if self.handleSessionExpiryIfNeeded(url: url, httpCode: dataResponse.response?.statusCode, data: dataResponse.data) { return }
+                    switch dataResponse.result {
+                    case .success( let value):
+                        let json = JSON.init(value ?? Data())
+                        completion(json , nil, dataResponse.response?.statusCode)
+                    case .failure(let err):
+                        debugPrint(err.underlyingError ?? err)
+                        completion(nil , err.underlyingError ?? err, dataResponse.response?.statusCode)
                     }
-                    completion(json , nil, dataResponse.response?.statusCode)
-                case .failure(let err):
-                    debugPrint(err.underlyingError ?? "")
-                    completion(nil , err.underlyingError, dataResponse.response?.statusCode)
                 }
             })
         }
@@ -140,14 +138,17 @@ class ApiManager {
         if isConnection(){
             let head = HTTPHeaders.init(header ?? [:])
             AF.request(url, method: .delete, parameters: param, encoding: encoding!, headers: HTTPHeaders.init(header ?? [:])).validate().response { dataResponse in
-                let respString:String = String(data: (dataResponse.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
-                print(respString)
-                switch dataResponse.result {
-                case .success( let value):
-                    let json = JSON.init(value ?? Data())
-                    completion(json , nil, dataResponse.response?.statusCode)
-                case .failure(let err):
-                    completion(nil , err.underlyingError, dataResponse.response?.statusCode)
+                DispatchQueue.main.async {
+                    let respString:String = String(data: (dataResponse.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
+                    print(respString)
+                    if self.handleSessionExpiryIfNeeded(url: url, httpCode: dataResponse.response?.statusCode, data: dataResponse.data) { return }
+                    switch dataResponse.result {
+                    case .success( let value):
+                        let json = JSON.init(value ?? Data())
+                        completion(json , nil, dataResponse.response?.statusCode)
+                    case .failure(let err):
+                        completion(nil , err.underlyingError ?? err, dataResponse.response?.statusCode)
+                    }
                 }
             }
         }else{
@@ -188,23 +189,13 @@ class ApiManager {
                 let respString:String = String(data: (response.data ?? Data()), encoding: String.Encoding.utf8) ?? ""
                 print(respString)
                 DispatchQueue.main.async {
+                if self.handleSessionExpiryIfNeeded(url: url, httpCode: response.response?.statusCode, data: response.data) { return }
                 switch response.result{
                 case .success(let data):
                     let json = JSON.init(data ?? Data())
-                    if json["statusCode"].isKeyPresent(){
-                        if json["statusCode"].intValue == 403{
-                            SaveToDefaults().setAccessToken(value: nil)
-                            SaveToDefaults().setLogindata(data: Data())
-                            defaults.synchronize()
-                            //                                    let vc = LoginVC.navigation()
-                            //                                    window?.rootViewController = vc
-                            //                                    window?.makeKeyAndVisible()
-                            appDelegate.setLoginVC()
-                        }
-                    }
                     completion(nil , json, response.response?.statusCode)
                 case .failure(let err):
-                    completion(err.underlyingError , nil, response.response?.statusCode)
+                    completion(err.underlyingError ?? err , nil, response.response?.statusCode)
                 }
             }
             }

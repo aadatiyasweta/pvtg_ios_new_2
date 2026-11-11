@@ -165,11 +165,17 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
 //        makeRequestToSocialSignup(accountType: "google", social_id: gPlusId ?? "")
         
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { user, error in
-                guard error == nil else { return }
-            guard let user = user?.user else{
-                    //assertionFailure("errror found in google plus sign in")
-                    return
-                }
+            if let error = error {
+                let nsError = error as NSError
+                print("Google sign-in error:", nsError.domain, nsError.code, nsError.localizedDescription)
+                if (error as? GIDSignInError)?.code == .canceled { return }
+                showAlert(strTitle: googleSignInFailedMessage)
+                return
+            }
+            guard let user = user?.user else {
+                showAlert(strTitle: googleSignInFailedMessage)
+                return
+            }
                 
                 if let fName = user.profile?.name, fName.count > 0 {
                     self.Socialdata["FullName"] = fName
@@ -192,6 +198,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
                 
                 let token = user.userID
                 guard token?.count ?? 0 > 0 else {
+                    showAlert(strTitle: googleSignInFailedMessage)
                     return
                 }
                // self.social_token = token ?? ""
@@ -259,51 +266,6 @@ extension LoginVC: UITextFieldDelegate {
 //MARK: - GOOGLE AND FACEBOOK DELEGATES
 //extension LoginVC: GIDSignInDelegate, FacebookDelegate{
 extension LoginVC: FacebookDelegate{
-    //MARK: - Google SignIn
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
-    {
-        if (error == nil)
-        {
-            let gPlusId = user.userID // For client-side use only!
-            let name = user.profile?.name
-            var email:String = ""
-            
-            Socialdata["FullName"] = name
-            if let emailID = user.profile?.email{
-                email = emailID
-                Socialdata["Email_Id"] = email
-            }else{
-                email = ""
-            }
-            Socialdata["Social_type"] = "google"
-            Socialdata["id"] = gPlusId
-            signIn.signOut()
-            makeRequestToSocialSignup(accountType: "google", social_id: gPlusId ?? "")
-        }
-        else
-        {
-            print("\(error.localizedDescription)")
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!)
-    {
-    }
-    
-    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!)
-    {
-    }
-    
-    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!)
-    {
-        self.present(viewController, animated: true, completion: nil)
-    }
-    
-    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!)
-    {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     //MARK: - FACEBOOK LOGIN
     func doCodeForFacebookLogin()
     {
@@ -314,20 +276,23 @@ extension LoginVC: FacebookDelegate{
     }
     
     func fbUserInfoFail(err: NSError) {
+        print("Facebook profile error:", err.domain, err.code, err.localizedDescription)
+        showAlert(strTitle: facebookSignInFailedMessage)
     }
-    
+
     func fbLoginSuccess()
     {
         fbHelper.getUserInformation()
     }
-    
+
     func fbLoginCancelled()
     {
     }
-    
+
     func fbLoginFail(error err:NSError)
     {
-        print(fbLoginFail)
+        print("Facebook sign-in error:", err.domain, err.code, err.localizedDescription)
+        showAlert(strTitle: facebookSignInFailedMessage)
     }
     
     func fbUserInfoSuccess(result:AnyObject)
@@ -357,6 +322,10 @@ extension LoginVC: FacebookDelegate{
             }
             
             Socialdata["Social_type"] = "facebook"
+            guard !fid.isEmpty else {
+                showAlert(strTitle: facebookSignInFailedMessage)
+                return
+            }
             makeRequestToSocialSignup(accountType: "fb", social_id: fid )
         }
     }
@@ -403,7 +372,9 @@ extension LoginVC {
     
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print(error.localizedDescription)
+        print("Apple sign-in error:", error)
+        if (error as? ASAuthorizationError)?.code == .canceled { return }
+        showAlert(strTitle: appleSignInFailedMessage)
     }
     
     @available(iOS 13.0, *)

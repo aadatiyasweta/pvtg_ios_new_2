@@ -50,6 +50,10 @@ let confirmPasswordMessage = "You must enter the same password twice in order to
 let serverErrorMessage = "Something went wrong at our end. Don't worry , it's not you it'us Sorry about that."
 let internetConnnectionErrorMessage = "Looks like you are not connected with internet.Please check the setting and try again"
 let somethingWentWrongMessage = "Something went wrong"
+var sessionExpiredMessage: String { NSLocalizedString("SessionExpired", comment: "") }
+var googleSignInFailedMessage: String { NSLocalizedString("GoogleSignInFailed", comment: "") }
+var facebookSignInFailedMessage: String { NSLocalizedString("FacebookSignInFailed", comment: "") }
+var appleSignInFailedMessage: String { NSLocalizedString("AppleSignInFailed", comment: "") }
 let attributedInternetMessage = AttriButedTextFirstBold("No Internet Connection", .black, getFont(Fonts.bold.rawValue, 18)!, "\n\n \(internetConnnectionErrorMessage)", .black, getFont(Fonts.regular.rawValue, 12)!)
 let attributedServerMessage = AttriButedTextFirstBold("Internal Server Error", .black, getFont(Fonts.bold.rawValue, 18)!, "\n\n\(serverErrorMessage)", .black, getFont(Fonts.regular.rawValue, 12)!)
 let wentWrongMessage = "Something went wrong please try again."

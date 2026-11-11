@@ -174,14 +174,12 @@ class LoginVM: BaseVm {
             self.dismiss()
             if let json = response{
                 //debugPrint(json)
-                let data = try? json["result"].rawData()
-                let jsonDecoder = JSONDecoder()
-                let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
-                self.model = responseModel
                 if json["statusCode"] == 200 {
-                    let data = try? json["result"].rawData()
-                    let jsonDecoder = JSONDecoder()
-                    let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
+                    guard let data = try? json["result"].rawData(),
+                          let responseModel = try? JSONDecoder().decode(LoginResult.self, from: data) else {
+                        showAlert(strTitle: somethingWentWrongMessage)
+                        return
+                    }
                     self.model = responseModel
                     self.setDataInLocal()
                     SaveToDefaults().setUserId(id: self.model?.user_id)
@@ -189,9 +187,11 @@ class LoginVM: BaseVm {
                     SaveToDefaults().setEmail(value: self.model?.email)
                     self.delegate?.loginSuccess()
                 }else if json["statusCode"] == 202 {
-                    let data = try? json["result"].rawData()
-                    let jsonDecoder = JSONDecoder()
-                    let responseModel = try? jsonDecoder.decode(LoginResult.self, from: data!)
+                    guard let data = try? json["result"].rawData(),
+                          let responseModel = try? JSONDecoder().decode(LoginResult.self, from: data) else {
+                        showAlert(strTitle: somethingWentWrongMessage)
+                        return
+                    }
                     self.model = responseModel
                     self.setDataInLocal()
                     SaveToDefaults().setEmail(value: self.model?.email)

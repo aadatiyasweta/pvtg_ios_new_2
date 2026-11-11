@@ -149,3 +149,7 @@
 "sessionTimeSlotsInfo" = "The 2-hour time slots in this calendar won't affect the session length you've chosen above.";
 "retry" = "Retry";
 "pageLoadFailed" = "This page couldn't be loaded.";
+"SessionExpired" = "Your session has expired. Please log in again.";
+"GoogleSignInFailed" = "We couldn't sign you in with Google. Please try again.";
+"FacebookSignInFailed" = "We couldn't sign you in with Facebook. Please try again.";
+"AppleSignInFailed" = "We couldn't sign you in with Apple. Please try again.";
