@@ -7,8 +7,10 @@ import UIKit
 //let topSearch = "https://techugoserver.info/pvtg_dev/admin_assets/img/topsearch.png" // new dev url
 //let testingServer = "https://techugoserver.info/pvtg_dev/api/v1/" // new development url - 2025
 //let stripePaymentAPI = "https://techugoserver.info/pvtg_dev/public/Stripe_IOS/stripe_payment.php" // new development
-//let stripeTestPublishableKey = "pk_test_51KLVfEFKDEQWO0TJyXCr934HPHv6W2pl1kBJiVZnYBIti9OXCMbt3gt5Wzen5wg2tRaCikH81qLI2TFiAMH5WLSf009SjBYjnl" // for test
-//let stripeSecretKey = "sk_test_51KLVfEFKDEQWO0TJrKqJfkq4CRtvcEwStccSrsYhM8tWaFxNAfX7VcepIXpbcUA0xAbPlReKxnuCcZEnFc9M5Uhd00PrDGpCFT" // for test
+let stripeTestPublishableKey = "pk_test_51KLVfEFKDEQWO0TJyXCr934HPHv6W2pl1kBJiVZnYBIti9OXCMbt3gt5Wzen5wg2tRaCikH81qLI2TFiAMH5WLSf009SjBYjnl" // for test
+#if DEBUG
+let stripeSecretKey = "sk_test_51KLVfEFKDEQWO0TJrKqJfkq4CRtvcEwStccSrsYhM8tWaFxNAfX7VcepIXpbcUA0xAbPlReKxnuCcZEnFc9M5Uhd00PrDGpCFT" // for test
+#endif
 //
 //let terms =  "https://techugoserver.info/pvtg_dev/terms_condition.html"
 //let aboutUs = "https://techugoserver.info/pvtg_dev/about_us.html"

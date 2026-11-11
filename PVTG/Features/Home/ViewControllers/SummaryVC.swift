@@ -511,7 +511,9 @@ extension SummaryVC {
     func makePayment(stripetoken:STPToken){
         let email = SaveToDefaults().getEmail() ?? ""
        // print(stripetoken.tokenId)
+#if !DEBUG
         showAlertView(stripetoken.tokenId, title: appName)
+#endif
         let acessToken = SaveToDefaults().getAccessToken() ?? ""
         if let id = SaveToDefaults().getUserId(){
             var currency = self.bookingDetails?.currency ?? "COP"
@@ -616,7 +618,9 @@ extension SummaryVC : STPAddCardViewControllerDelegate
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
         print("Stripe card token created")
+#if !DEBUG
         showAlertView(token, title: appName)
+#endif
         dismiss(animated: false, completion: nil)
         self.makePayment(stripetoken: token)
     }

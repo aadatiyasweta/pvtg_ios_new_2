@@ -42,8 +42,11 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
         }
 
         // for Stripe Payment - Live - development code
+#if DEBUG
+     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // Debug builds: Stripe test mode
+#else
      Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
-//     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // development
+#endif
         
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")
         // The window and first screen are now set up in SceneDelegate

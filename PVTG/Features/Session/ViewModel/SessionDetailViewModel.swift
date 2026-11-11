@@ -135,6 +135,30 @@ class SessionDetailViewModel: BaseVm {
     
     //MARK: - MAKE PAYMENT FROM STRIPE API
     func makePAymentStripe(user_id: String, stripeytoken: String,ammount : String,currency:String,email:String,token:String,sessionId:String,completionHandler:@escaping(String)->()) {
+#if DEBUG
+        guard let units = Int(ammount) else {
+            showAlert(strTitle: somethingWentWrongMessage)
+            return
+        }
+        var request = URLRequest(url: URL(string: "https://api.stripe.com/v1/charges")!)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(stripeSecretKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "amount=\(units * 100)&currency=\(currency.lowercased())&source=\(stripeytoken)&description=Debug%20test%20booking".data(using: .utf8)
+        self.show()
+        URLSession.shared.dataTask(with: request) { data, _, _ in
+            let json = (try? JSONSerialization.jsonObject(with: data ?? Data())) as? [String: Any]
+            DispatchQueue.main.async {
+                self.dismiss()
+                if let chargeId = json?["id"] as? String, json?["status"] as? String == "succeeded" {
+                    completionHandler(chargeId)
+                } else {
+                    let error = json?["error"] as? [String: Any]
+                    showAlert(strTitle: error?["message"] as? String ?? somethingWentWrongMessage)
+                }
+            }
+        }.resume()
+#else
         self.show()
         let param : [String:Any] = ["user_id" : user_id,"amount":ammount,"stripeytoken":stripeytoken,"currency":currency,"email":email,"token":token,"session_id":sessionId]
         api_manager.POSTApi(makePaymentUsingStripe(), param: param, header: header()) { (response, err, code) in
@@ -152,6 +176,7 @@ class SessionDetailViewModel: BaseVm {
                 showAlert(strTitle: somethingWentWrongMessage)
             }
         }
+#endif
     }
     //MARK: - TIMING ARRAY PF SPECIFIC DATA API
     func timingArrayOfSpecificDateApi(user_id: String, schedule_id: String, isloader: Bool, session_type_id:String, session_type : String, selecteddate:String) {
@@ -212,8 +237,13 @@ class SessionDetailViewModel: BaseVm {
     //MARK: - STRIPE REFUND API
     func stripeRefundAPI(chargeID:String) {
         self.show()
+#if DEBUG
+        let refundSecretKey = stripeSecretKey
+#else
+        let refundSecretKey = stripeLiveSecretKey
+#endif
         let  headers = [
-            "Authorization": "Bearer \(stripeLiveSecretKey)", //"stripeSecretKey" --  this is for development
+            "Authorization": "Bearer \(refundSecretKey)", //"stripeSecretKey" --  this is for development
         ] // "stripeLiveSecretKey" --  this is for live
         let param : [String:Any] = ["charge" : chargeID]
         api_manager.POSTApi(refundPaymentUsingStripe(), param: param, header: headers) { (response, err, code) in
