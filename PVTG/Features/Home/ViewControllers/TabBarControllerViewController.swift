@@ -37,10 +37,10 @@ class TabBarControllerViewController: UITabBarController {
         self.tabBar.items?[0].selectedImage = UIImage(named: "home")?.withRenderingMode(.alwaysOriginal)
         self.tabBar.items?[1].image = UIImage(named: "eventGrey")?.withRenderingMode(.alwaysOriginal)
         self.tabBar.items?[1].selectedImage = UIImage(named: "event")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items?[2].image = UIImage(named: "guideGrey")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items?[2].selectedImage = UIImage(named: "guide")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items?[3].image = UIImage(named: "more")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items?[3].selectedImage = UIImage(named: "moreGreen")?.withRenderingMode(.alwaysOriginal)
+//        self.tabBar.items?[2].image = UIImage(named: "guideGrey")?.withRenderingMode(.alwaysOriginal)
+//        self.tabBar.items?[2].selectedImage = UIImage(named: "guide")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items?[2].image = UIImage(named: "more")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items?[2].selectedImage = UIImage(named: "moreGreen")?.withRenderingMode(.alwaysOriginal)
     }
 
     //MARK: - HELPERS

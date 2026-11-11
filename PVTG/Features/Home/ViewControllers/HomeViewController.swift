@@ -491,9 +491,12 @@ extension HomeViewController: GetHomeData {
         }
         UserDefaults.standard.set(unreadNotificationCount, forKey: "unreadNotificationCount")
         if(unreadNotificationCount != 0){
-            self.tabBarController?.addBadge(index: 3, value: unreadNotificationCount, color: .red, font:UIFont.systemFont(ofSize: 14.0, weight: .regular))
+            self.tabBarController?.addBadge(index: 2, value: unreadNotificationCount, color: .red, font:UIFont.systemFont(ofSize: 14.0, weight: .regular))
         }else {
-            self.tabBarController?.tabBar.removeBadge(index: 3)
+            self.tabBarController?.tabBar.removeBadge(index: 2)
+//            self.tabBarController?.addBadge(index: 3, value: unreadNotificationCount, color: .red, font:UIFont.systemFont(ofSize: 14.0, weight: .regular))
+//        }else {
+//            self.tabBarController?.tabBar.removeBadge(index: 3)
         }
         self.origiMinPrice = self.homevm.model?.min_price ?? 0
         self.origiMaxPrice = self.homevm.model?.max_price ?? 0
