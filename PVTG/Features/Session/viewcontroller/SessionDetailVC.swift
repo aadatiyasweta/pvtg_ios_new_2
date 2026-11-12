@@ -447,7 +447,8 @@ class SessionDetailVC: BaseViewController, GMSMapViewDelegate {
                 vc.type = R.string.localizable.cancelPolicy()
                 vc.isFromReschedule = true
                 vc.url = cancelPolicy
-                vc.getChargeId = getChargeId
+                let bookingPaymentId = self.vm.model?.payment_id ?? ""
+                vc.getChargeId = bookingPaymentId.hasPrefix("ch_") ? bookingPaymentId : getChargeId
                 vc.isComingCancelBooking = true
                 vc.timeStr = self.vm.model?.booking_date ?? ""
                             
