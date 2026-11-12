@@ -231,7 +231,15 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
             
             showAlertWithConfirmation2(R.string.localizable.cancelTheBooking(), withTitle: "Confirm Booking Cancellation", itsController: self) { (succsss) in
                 if succsss{
-                    
+                    self.cancelBookingBtn.isEnabled = false
+                    self.vm.cancelResultClosure = { success in
+                        if success {
+                            self.isComingCancelBooking = false
+                            self.cancelBookingBtn.setTitle("Cancelled", for: .normal)
+                        } else {
+                            self.cancelBookingBtn.isEnabled = true
+                        }
+                    }
                     let time = self.timeStr
                     //let ammount = self.ammountSTr
                     let fromattter1 = DateFormatter()
@@ -246,23 +254,29 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
                                 let floatPrice = CGFloat(truncating: n)
                                 let fiftenPercent = CGFloat((floatPrice*15)/100)
                                 let finalPrice = floatPrice-fiftenPercent
-                                self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.payment_id, ammount: "\(finalPrice)", chargeid: self.getChargeId)
                                 self.vm.cancellSuccesClosure = {
                                     self.navigationController?.popViewController(animated: true)
                                 }
+                                self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: true, paymentId: self.payment_id, ammount: "\(finalPrice)", chargeid: self.getChargeId)
+                            } else {
+                                self.cancelBookingBtn.isEnabled = true
+                                showAlert(strTitle: somethingWentWrongMessage)
                             }
-                            
+                        } else {
+                            self.cancelBookingBtn.isEnabled = true
+                            showAlert(strTitle: somethingWentWrongMessage)
                         }
                     }else{
                         if let id = SaveToDefaults().getUserId(){
-                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.ammountSTr, chargeid: self.getChargeId)
                             self.vm.cancellSuccesClosure = {
                                 self.navigationController?.popViewController(animated: true)
                             }
+                            self.vm.sessionCancelApi(user_id: id, session_id: self.sessionId, booking_id: self.bookingId, isFromPartial: false, paymentId: self.vm.model?.payment_id ?? "", ammount: self.ammountSTr, chargeid: self.getChargeId)
+                        } else {
+                            self.cancelBookingBtn.isEnabled = true
+                            showAlert(strTitle: somethingWentWrongMessage)
                         }
                     }
-                    self.isComingCancelBooking = false
-                    self.cancelBookingBtn.setTitle("Cancelled", for: .normal)
                 }
             }
             

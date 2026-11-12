@@ -37,6 +37,7 @@ class SessionDetailViewModel: BaseVm {
     var sessionDesc = ""
     var chargeId = ""
     var cancellSuccesClosure:() -> (Void) = {   }
+    var cancelResultClosure: (Bool) -> Void = { _ in }
     var rescheduleSuccesClosure:() -> (Void) = {   }
     var rescheduleErrorClosure:() -> (Void) = {   }
     //MARK: - SESSION DETAIL API
@@ -220,15 +221,17 @@ class SessionDetailViewModel: BaseVm {
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
-                    
+                    self.cancelResultClosure(true)
                     self.stripeRefundAPI(chargeID: chargeid)
                     //showAlert(strTitle: "Session cancelled successfully.")
                     
                 }
                 else {
+                    self.cancelResultClosure(false)
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
                 }
             }else{
+                self.cancelResultClosure(false)
                 showAlert(strTitle: somethingWentWrongMessage)
             }
         }
