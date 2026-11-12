@@ -54,6 +54,15 @@ extension UITabBarController {
 
     badgeView.frame.size = CGSize(width: 17, height: 17)
     badgeView.center = CGPoint(x: (itemWidth * itemPosition) - (itemWidth / 2) + xOffset, y: 20 + yOffset)
+    tabBar.layoutIfNeeded()
+    var buttonCenters = Set<Int>()
+    let buttonFrames = tabButtonViews(in: tabBar)
+      .map { $0.convert($0.bounds, to: tabBar) }
+      .filter { buttonCenters.insert(Int($0.midX.rounded())).inserted }
+      .sorted { $0.midX < $1.midX }
+    if buttonFrames.count == tabBarItems.count {
+      badgeView.center.x = buttonFrames[index].midX + xOffset
+    }
     badgeView.layer.cornerRadius = badgeView.bounds.width / 2
     badgeView.clipsToBounds = true
     badgeView.border(width: 0.5, color: .darkGray)
@@ -67,6 +76,14 @@ extension UITabBarController {
     tabBar.addSubview(badgeView)
   }
  
+ private func tabButtonViews(in view: UIView) -> [UIView] {
+  view.subviews.flatMap { subview -> [UIView] in
+   let name = String(describing: type(of: subview))
+   if name.contains("TabBarButton") || name.contains("TabButton") { return [subview] }
+   return tabButtonViews(in: subview)
+  }
+ }
+
  func removeBadgeSubview(){
   for subview in tabBar.subviews{
    if subview is PGTabBadge {
