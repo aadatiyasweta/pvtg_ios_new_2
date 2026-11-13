@@ -115,3 +115,4 @@
 "GoogleSignInFailed" = "No pudimos iniciar sesión con Google. Inténtalo de nuevo.";
 "FacebookSignInFailed" = "No pudimos iniciar sesión con Facebook. Inténtalo de nuevo.";
 "AppleSignInFailed" = "No pudimos iniciar sesión con Apple. Inténtalo de nuevo.";
+"ChatUnavailable" = "El chat no está disponible en este momento. Inténtalo de nuevo más tarde.";

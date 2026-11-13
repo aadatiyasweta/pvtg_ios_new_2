@@ -54,6 +54,7 @@ var sessionExpiredMessage: String { NSLocalizedString("SessionExpired", comment:
 var googleSignInFailedMessage: String { NSLocalizedString("GoogleSignInFailed", comment: "") }
 var facebookSignInFailedMessage: String { NSLocalizedString("FacebookSignInFailed", comment: "") }
 var appleSignInFailedMessage: String { NSLocalizedString("AppleSignInFailed", comment: "") }
+var chatUnavailableMessage: String { NSLocalizedString("ChatUnavailable", comment: "") }
 let attributedInternetMessage = AttriButedTextFirstBold("No Internet Connection", .black, getFont(Fonts.bold.rawValue, 18)!, "\n\n \(internetConnnectionErrorMessage)", .black, getFont(Fonts.regular.rawValue, 12)!)
 let attributedServerMessage = AttriButedTextFirstBold("Internal Server Error", .black, getFont(Fonts.bold.rawValue, 18)!, "\n\n\(serverErrorMessage)", .black, getFont(Fonts.regular.rawValue, 12)!)
 let wentWrongMessage = "Something went wrong please try again."

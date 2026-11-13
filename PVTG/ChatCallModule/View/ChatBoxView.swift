@@ -85,6 +85,8 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     let locationManager = CLLocationManager()
     
     var locationSendStatus = false
+    var chatLoaded = false
+    private var chatUnavailableShown = false
     
     weak var playPauseObserver: NSObjectProtocol?
     private var selectedImagesData: [(data: Data,name: String,key: String,extension: String)] = []
@@ -96,6 +98,7 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         if(otherUser == ""){
             otherUser = "vendor"
         }
+        lblOnline.isHidden = true
         locationSendStatus = false
         locationManager.delegate = self
         locationManager.distanceFilter = 15
@@ -181,6 +184,13 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         SocketHelper.shared.establishConnection(type: "connect")
      //   AppObject.startLoader(viewName: self.view)
         self.show()
+        SocketHelper.shared.callBackConnectFailed = { [weak self] in
+            self?.showChatUnavailable()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15) { [weak self] in
+            guard let self = self, !self.chatLoaded else { return }
+            self.showChatUnavailable()
+        }
         SocketHelper.shared.callBackConnect = { [weak self] in
             SocketHelper.shared.initChat(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self?.reciverId ?? "", user: self?.user ?? "", otherUser: self?.otherUser ?? "")
             SocketHelper.shared.getChatList(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self?.reciverId ?? "", ticketNo: self?.ticketNo ?? "",offset: self?.offset ?? 1)
@@ -213,11 +223,17 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     func show(){
         if isConnection(){
             SVProgressHUD.show()
-            SVProgressHUD.setDefaultMaskType(.clear)
+            SVProgressHUD.setDefaultMaskType(.none)
         }
     }
     func dismiss(){
         SVProgressHUD.dismiss()
+    }
+    func showChatUnavailable() {
+        self.dismiss()
+        guard !chatUnavailableShown, !chatLoaded else { return }
+        chatUnavailableShown = true
+        PVTG.showAlert(strTitle: chatUnavailableMessage)
     }
    
     //MARK: - Functions Play Video
@@ -277,17 +293,13 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     }
     @IBAction private func backAction(_ sender: UIButton) {
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 10
+        self.dismiss()
         if SocketHelper.shared.isConnected {
             SocketHelper.shared.disconnect(senderId: SaveToDefaults().getUserId() ?? "")
-            self.back()
+        } else {
+            SocketHelper.shared.disconnect()
         }
-        else{
-            SocketHelper.shared.establishConnection(type: "disconnet")
-            SocketHelper.shared.callBackConnectDisconnect = { [weak self] in
-                SocketHelper.shared.disconnect(senderId: SaveToDefaults().getUserId() ?? "")
-                self?.back()
-            }
-        }
+        self.back()
     }
     
     @IBAction func attechmentButton(_ sender: Any) {
@@ -660,6 +672,7 @@ extension ChatBoxView : UITableViewDelegate,UITableViewDataSource{
             self?.apiHit = true
             self?.hideView.isHidden = true
            // AppObject.stopLoader()
+            self?.chatLoaded = true
             self?.dismiss()
             if let chatData  = chatData {
                 
@@ -849,6 +862,9 @@ extension ChatBoxView {
             ])
         }
         else{
+            SocketHelper.shared.callBackConnectFailed = { [weak self] in
+                self?.showChatUnavailable()
+            }
             SocketHelper.shared.establishConnection(type: "send")
             SocketHelper.shared.callBackConnectSendMessage = { [weak self] in
                 SocketHelper.shared.initChat(s_id: SaveToDefaults().getUserId() ?? "0", r_id: self?.reciverId ?? "", user: self?.user ?? "", otherUser: self?.otherUser ?? "")

@@ -153,3 +153,4 @@
 "GoogleSignInFailed" = "We couldn't sign you in with Google. Please try again.";
 "FacebookSignInFailed" = "We couldn't sign you in with Facebook. Please try again.";
 "AppleSignInFailed" = "We couldn't sign you in with Apple. Please try again.";
+"ChatUnavailable" = "Chat is unavailable right now. Please try again later.";

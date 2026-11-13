@@ -32,6 +32,7 @@ class SocketHelper: NSObject {
     var callBackConnectDisconnect:(()->())?
     var callBackDisConnected:(()->())?
     var callBackConnectList:(()->())?
+    var callBackConnectFailed: (() -> Void)?
     
     private var eventUUIDs: [UUID] = []
     var isConnected = false
@@ -48,7 +49,7 @@ class SocketHelper: NSObject {
 //            chaturl = "\(scheme)://\(baseUrl)"
 //        }
         
-        self.manager = SocketManager(socketURL: URL(string: Config.shared.socketUrl()) ?? .ServerSocketHost, config: [.log(true),.version(.two)])
+        self.manager = SocketManager(socketURL: URL(string: Config.shared.socketUrl()) ?? .ServerSocketHost, config: [.log(true),.version(.two),.reconnectAttempts(3)])
         guard let manager = self.manager else {return}
         self.socket = SocketIOClient(manager: manager, nsp: "audio_chat")
         socket = manager.defaultSocket
@@ -75,6 +76,10 @@ class SocketHelper: NSObject {
            
             self.isConnected = false
             self.callBackDisConnected?()
+        })
+        socket!.on(clientEvent: .error, callback: { data, ack in
+            self.isConnected = false
+            self.callBackConnectFailed?()
         })
         socket!.on(SocketEvent.sendUserMessage.rawValue) { [weak self] results, _ in
            
