@@ -25,6 +25,8 @@ class EventViewModel: BaseVm {
     //MARK: - GET ACTIVE EVENT API
     func getActiveEventApi(user_id: String, latitude: String, longitude: String, offset: String) {
         guard !isLoading else { return }
+        // Offline the request is never sent, so isLoading would never be cleared and Events would never load again
+        guard isConnection() else { showMesssgeWindow(msg: internetConnectionMessage); return }
         let isFirstPage = (offset == "0")
         if !isFirstPage && !hasMoreHistory { return }
         isLoading = true
