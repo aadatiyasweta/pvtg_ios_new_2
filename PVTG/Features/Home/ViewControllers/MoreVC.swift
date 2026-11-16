@@ -119,7 +119,7 @@ extension MoreVC: UITableViewDataSource, UITableViewDelegate {
    self.navigationController?.pushViewController(vc, animated: true)
   case 8:
    debugPrint("  Rate us")
-      SKStoreReviewController.requestReview()
+      rateApp()
   case 9:
    let vc = OnboardingVC.instance()
    vc.controllerId = 1
