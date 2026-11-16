@@ -68,6 +68,8 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
         initializeLocation()
         appDelegate.requestNotificationPermission()
         homevm.delegate = self
+        // The unread count only comes with Home's data, so reload it when a notification is created elsewhere
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshAfterNotificationsChanged), name: .notificationsChanged, object: nil)
         DispatchQueue.main.async {
             self.userimg.layer.borderWidth = 0.5
             self.userimg.layer.cornerRadius = 10
@@ -481,6 +483,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
+//MARK: - NOTIFICATION BADGE
+extension HomeViewController {
+    @objc func refreshAfterNotificationsChanged() {
+        self.loadApi(categoryid: "\(self.id)", currency: self.selectedCurrency)
+    }
+}
+
 //MARK: - CUSTOM DELEGATE
 extension HomeViewController: GetHomeData {
     func reloadData(unreadNotificationCount : Int) {
@@ -490,14 +499,7 @@ extension HomeViewController: GetHomeData {
             self.maximimPrice = self.homevm.model?.max_val ?? 0
         }
         UserDefaults.standard.set(unreadNotificationCount, forKey: "unreadNotificationCount")
-        if(unreadNotificationCount != 0){
-            self.tabBarController?.addBadge(index: 2, value: unreadNotificationCount, color: .red, font:UIFont.systemFont(ofSize: 14.0, weight: .regular))
-        }else {
-            self.tabBarController?.tabBar.removeBadge(index: 2)
-//            self.tabBarController?.addBadge(index: 3, value: unreadNotificationCount, color: .red, font:UIFont.systemFont(ofSize: 14.0, weight: .regular))
-//        }else {
-//            self.tabBarController?.tabBar.removeBadge(index: 3)
-        }
+        self.tabBarController?.showNotificationBadge(count: unreadNotificationCount)
         self.origiMinPrice = self.homevm.model?.min_price ?? 0
         self.origiMaxPrice = self.homevm.model?.max_price ?? 0
         loadImage(self.homevm.model?.user_image ?? "", self.userimg , activity: nil, defaultImage: #imageLiteral(resourceName: "more"))

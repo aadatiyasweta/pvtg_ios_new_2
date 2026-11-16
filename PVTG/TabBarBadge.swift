@@ -84,6 +84,14 @@ extension UITabBarController {
   }
  }
 
+ // Replaces any existing badge so labels don't stack, and clears it when the count is 0
+ func showNotificationBadge(count: Int, index: Int = 2) {
+  removeBadgeSubview()
+  if count > 0 {
+   addBadge(index: index, value: count, color: .red, font: UIFont.systemFont(ofSize: 14.0, weight: .regular))
+  }
+ }
+
  func removeBadgeSubview(){
   for subview in tabBar.subviews{
    if subview is PGTabBadge {
@@ -94,3 +102,8 @@ extension UITabBarController {
 }
 
 class PGTabBadge: UILabel {}
+
+extension Notification.Name {
+  // Sent after something that creates a notification (booking, cancelling, a push while the app is open)
+  static let notificationsChanged = Notification.Name("notificationsChanged")
+}

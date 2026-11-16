@@ -257,6 +257,7 @@ class SessionDetailViewModel: BaseVm {
                     print("success")
                     self.cancellSuccesClosure()
                     self.delegate?.refundAPiResponse()
+                    NotificationCenter.default.post(name: .notificationsChanged, object: nil)
                 }
                 else {
                     showAlert(strTitle: json["APICODERESULT"].string ?? somethingWentWrongMessage)
@@ -284,6 +285,7 @@ class SessionDetailViewModel: BaseVm {
                 if json["statusCode"] == 200 {
                     SKStoreReviewController.requestReview()
                     self.bookingDelegate?.bookingSuccess()
+                    NotificationCenter.default.post(name: .notificationsChanged, object: nil)
                     
                 }
                 else {

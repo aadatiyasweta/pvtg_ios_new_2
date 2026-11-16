@@ -140,6 +140,10 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
 //                NotificationCenter.default.post(name: Notification.Name("chatBageUpdate"), object: nil)
 //                completionHandler([.alert,.sound, .badge])
 //            }
+            // A notification arrived while the app is open, so refresh the unread badge on the More tab
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .notificationsChanged, object: nil)
+            }
             completionHandler([.alert,.sound, .badge])
         }
         
