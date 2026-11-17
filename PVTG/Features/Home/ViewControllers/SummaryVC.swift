@@ -499,10 +499,13 @@ extension SummaryVC {
     }
     
     func doPayment(){
-        let config = STPPaymentConfiguration.shared()
-        config.requiredBillingAddressFields = .none
-        let viewController = STPAddCardViewController(configuration: config, theme: STPTheme.default())
-        viewController.delegate = self
+        let viewController = CardEntryVC()
+        viewController.onCancel = { [weak self] in
+            self?.dismiss(animated: false, completion: nil)
+        }
+        viewController.onToken = { [weak self] token in
+            self?.cardTokenCreated(token)
+        }
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
     }
@@ -609,20 +612,205 @@ extension SummaryVC : GetBookingResponse,getOnboardingResponse{
     }
 }
 
-//MARK: - STPADDCARD VIEWCONTROLLER DELEGATE
-extension SummaryVC : STPAddCardViewControllerDelegate
-{
-    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
-        dismiss(animated: false, completion: nil)
-    }
-    
-    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
+//MARK: - CARD TOKEN CREATED
+extension SummaryVC {
+    func cardTokenCreated(_ token: STPToken) {
         print("Stripe card token created")
 #if !DEBUG
         showAlertView(token, title: appName)
 #endif
         dismiss(animated: false, completion: nil)
         self.makePayment(stripetoken: token)
+    }
+}
+
+//MARK: - CARD ENTRY SCREEN
+// Stripe 26 removed its ready-made card screen (STPAddCardViewController), so this rebuilds the same look:
+// card picture on top (flips for the CVC), a "Card" title and the card field in a rounded box, in Stripe's old colours.
+// It turns the card into the same one-time token as before, so the server payment flow doesn't change.
+final class CardEntryVC: UIViewController, STPPaymentCardTextFieldDelegate {
+    var onCancel: (() -> Void)?
+    var onToken: ((STPToken) -> Void)?
+
+    // Colours from Stripe's old default theme
+    private let pageColor = UIColor(red: 242/255, green: 242/255, blue: 245/255, alpha: 1)
+    private let textColor = UIColor(red: 43/255, green: 43/255, blue: 45/255, alpha: 1)
+    private let labelColor = UIColor(red: 142/255, green: 142/255, blue: 147/255, alpha: 1)
+    private let accentColor = UIColor(red: 0, green: 122/255, blue: 1, alpha: 1)
+    private let errorColor = UIColor(red: 1, green: 72/255, blue: 68/255, alpha: 1)
+    private let lineColor = UIColor(red: 200/255, green: 199/255, blue: 204/255, alpha: 1)
+
+    private let scrollView = UIScrollView()
+    private let cardImageView = UIImageView(image: UIImage(named: "CardFormFront"))
+    private let sectionLabel = UILabel()
+    private let cardRow = UIView()
+    private let cardField = STPPaymentCardTextField()
+    private let errorLabel = UILabel()
+    private let spinner = UIActivityIndicatorView(style: .medium)
+    private lazy var doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
+        title = "Add a Card"
+        view.backgroundColor = pageColor
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        navigationItem.rightBarButtonItem = doneButton
+        doneButton.isEnabled = false
+
+        cardImageView.contentMode = .center
+        cardImageView.tintColor = accentColor
+
+        sectionLabel.text = "Card"
+        sectionLabel.font = .systemFont(ofSize: 15)
+        sectionLabel.textColor = labelColor
+
+        // Rounded box around the card field; the border turns blue while typing
+        cardRow.backgroundColor = .white
+        cardRow.layer.cornerRadius = 12
+        cardRow.layer.borderWidth = 1
+        cardRow.layer.borderColor = lineColor.cgColor
+        cardField.postalCodeEntryEnabled = false
+        cardField.delegate = self
+        cardField.borderWidth = 0
+        cardField.cornerRadius = 0
+        cardField.backgroundColor = .clear
+        cardField.font = .systemFont(ofSize: 17)
+        cardField.textColor = textColor
+        cardField.placeholderColor = labelColor
+        cardField.textErrorColor = errorColor
+        cardField.cursorColor = accentColor
+
+        errorLabel.textColor = errorColor
+        errorLabel.font = .systemFont(ofSize: 14)
+        errorLabel.numberOfLines = 0
+
+        scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .interactive
+        let content = UIView()
+        [scrollView, content, cardImageView, sectionLabel, cardRow, cardField, errorLabel].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        view.addSubview(scrollView)
+        scrollView.addSubview(content)
+        [cardImageView, sectionLabel, cardRow, errorLabel].forEach { content.addSubview($0) }
+        cardRow.addSubview(cardField)
+
+        let imageHeight = (cardImageView.image?.size.height ?? 111) + 57 * 2
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            content.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            content.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            content.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            content.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            content.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+
+            cardImageView.topAnchor.constraint(equalTo: content.topAnchor),
+            cardImageView.leadingAnchor.constraint(equalTo: content.leadingAnchor),
+            cardImageView.trailingAnchor.constraint(equalTo: content.trailingAnchor),
+            cardImageView.heightAnchor.constraint(equalToConstant: imageHeight),
+
+            sectionLabel.topAnchor.constraint(equalTo: cardImageView.bottomAnchor),
+            sectionLabel.leadingAnchor.constraint(equalTo: content.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            sectionLabel.trailingAnchor.constraint(equalTo: content.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+
+            cardRow.topAnchor.constraint(equalTo: sectionLabel.bottomAnchor, constant: 8),
+            cardRow.leadingAnchor.constraint(equalTo: content.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            cardRow.trailingAnchor.constraint(equalTo: content.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            cardRow.heightAnchor.constraint(equalToConstant: 56),
+
+            cardField.topAnchor.constraint(equalTo: cardRow.topAnchor),
+            cardField.bottomAnchor.constraint(equalTo: cardRow.bottomAnchor),
+            cardField.leadingAnchor.constraint(equalTo: cardRow.leadingAnchor, constant: 12),
+            cardField.trailingAnchor.constraint(equalTo: cardRow.trailingAnchor, constant: -12),
+
+            errorLabel.topAnchor.constraint(equalTo: cardRow.bottomAnchor, constant: 10),
+            errorLabel.leadingAnchor.constraint(equalTo: sectionLabel.leadingAnchor),
+            errorLabel.trailingAnchor.constraint(equalTo: sectionLabel.trailingAnchor),
+            errorLabel.bottomAnchor.constraint(lessThanOrEqualTo: content.bottomAnchor, constant: -20)
+        ])
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.overrideUserInterfaceStyle = .light
+        navigationController?.navigationBar.tintColor = accentColor
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        cardField.becomeFirstResponder()
+    }
+
+    func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
+        doneButton.isEnabled = textField.isValid
+        errorLabel.text = nil
+    }
+
+    func paymentCardTextFieldDidBeginEditing(_ textField: STPPaymentCardTextField) {
+        cardRow.layer.borderColor = accentColor.cgColor
+    }
+
+    func paymentCardTextFieldDidEndEditing(_ textField: STPPaymentCardTextField) {
+        cardRow.layer.borderColor = lineColor.cgColor
+    }
+
+    // Flip the card picture to its back while the CVC is typed, like the old screen
+    func paymentCardTextFieldDidBeginEditingCVC(_ textField: STPPaymentCardTextField) {
+        let number = textField.paymentMethodParams.card?.number ?? ""
+        let back = STPCardValidator.brand(forNumber: number) == .amex ? "CardFormAmexCVC" : "CardFormBack"
+        setCardImage(named: back, flip: .transitionFlipFromRight)
+    }
+
+    func paymentCardTextFieldDidEndEditingCVC(_ textField: STPPaymentCardTextField) {
+        setCardImage(named: "CardFormFront", flip: .transitionFlipFromLeft)
+    }
+
+    private func setCardImage(named name: String, flip: UIView.AnimationOptions) {
+        UIView.transition(with: cardImageView, duration: 0.2, options: flip, animations: {
+            self.cardImageView.image = UIImage(named: name)
+        })
+    }
+
+    @objc private func cancelTapped() {
+        onCancel?()
+    }
+
+    @objc private func doneTapped() {
+        guard cardField.isValid, let card = cardField.paymentMethodParams.card else { return }
+        let params = STPCardParams()
+        params.number = card.number
+        params.expMonth = card.expMonth?.uintValue ?? 0
+        params.expYear = card.expYear?.uintValue ?? 0
+        params.cvc = card.cvc
+
+        setLoading(true)
+        STPAPIClient.shared.createToken(withCard: params) { [weak self] token, error in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.setLoading(false)
+                if let token = token {
+                    self.onToken?(token)
+                } else {
+                    self.errorLabel.text = error?.localizedDescription ?? somethingWentWrongMessage
+                }
+            }
+        }
+    }
+
+    private func setLoading(_ loading: Bool) {
+        cardField.isUserInteractionEnabled = !loading
+        navigationItem.leftBarButtonItem?.isEnabled = !loading
+        if loading {
+            spinner.startAnimating()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
+        } else {
+            navigationItem.rightBarButtonItem = doneButton
+            doneButton.isEnabled = cardField.isValid
+        }
     }
 }
 

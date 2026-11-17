@@ -43,9 +43,9 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
 
         // for Stripe Payment - Live - development code
 #if DEBUG
-     Stripe.setDefaultPublishableKey(stripeTestPublishableKey) // Debug builds: Stripe test mode
+     StripeAPI.defaultPublishableKey = stripeTestPublishableKey // Debug builds: Stripe test mode
 #else
-     Stripe.setDefaultPublishableKey(stripeLivePublishKey) // live
+     StripeAPI.defaultPublishableKey = stripeLivePublishKey // live
 #endif
         
         Bundle.setLanguage(SaveToDefaults().getAppLang() ?? "en")

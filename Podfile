@@ -30,7 +30,7 @@ target 'PVTG' do
   pod 'MarqueeLabel'
   pod 'R.swift'
   pod 'RangeSeekSlider'
-  pod 'Stripe', '~> 15.0.1'
+  pod 'Stripe', '26.15.0'
   pod 'Socket.IO-Client-Swift'
   pod 'KeychainSwift'
   pod 'Firebase/Crashlytics'
