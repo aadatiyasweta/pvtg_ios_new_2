@@ -17,10 +17,10 @@ RSYNC_PROTECT_TMP_FILES=(--filter "P .*.??????")
 variant_for_slice()
 {
   case "$1" in
-  "FBSDKCoreKit_Basics.xcframework/ios-arm64")
+  "FBSDKCoreKit_Basics.xcframework/ios-arm64_arm64e")
     echo ""
     ;;
-  "FBSDKCoreKit_Basics.xcframework/ios-arm64_x86_64-maccatalyst")
+  "FBSDKCoreKit_Basics.xcframework/ios-arm64_arm64e_x86_64-maccatalyst")
     echo "maccatalyst"
     ;;
   "FBSDKCoreKit_Basics.xcframework/ios-arm64_x86_64-simulator")
@@ -32,11 +32,11 @@ variant_for_slice()
 archs_for_slice()
 {
   case "$1" in
-  "FBSDKCoreKit_Basics.xcframework/ios-arm64")
-    echo "arm64"
+  "FBSDKCoreKit_Basics.xcframework/ios-arm64_arm64e")
+    echo "arm64 arm64e"
     ;;
-  "FBSDKCoreKit_Basics.xcframework/ios-arm64_x86_64-maccatalyst")
-    echo "arm64 x86_64"
+  "FBSDKCoreKit_Basics.xcframework/ios-arm64_arm64e_x86_64-maccatalyst")
+    echo "arm64 arm64e x86_64"
     ;;
   "FBSDKCoreKit_Basics.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
@@ -123,5 +123,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/FBSDKCoreKit_Basics/XCFrameworks/FBSDKCoreKit_Basics.xcframework" "FBSDKCoreKit_Basics" "framework" "ios-arm64" "ios-arm64_x86_64-maccatalyst" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/FBSDKCoreKit_Basics/XCFrameworks/FBSDKCoreKit_Basics.xcframework" "FBSDKCoreKit_Basics" "framework" "ios-arm64_arm64e" "ios-arm64_arm64e_x86_64-maccatalyst" "ios-arm64_x86_64-simulator"
 

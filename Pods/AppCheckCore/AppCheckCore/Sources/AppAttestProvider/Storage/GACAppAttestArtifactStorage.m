@@ -24,8 +24,12 @@
 
 #import <GoogleUtilities/GULKeychainStorage.h>
 
+#import "AppCheckCore/Sources/Core/Storage/GACKeychainStorageProtocol.h"
+
+#import "AppCheckCore/Sources/Core/Storage/GULKeychainStorage+GACKeychainStorageProtocol.h"
+
 #import "AppCheckCore/Sources/AppAttestProvider/Storage/GACAppAttestStoredArtifact.h"
-#import "AppCheckCore/Sources/Core/Errors/GACAppCheckErrorUtil.h"
+#import "AppCheckCore/Sources/Public/AppCheckCore/_GACAppCheckErrorUtil.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,7 +38,7 @@ static NSString *const kKeychainService = @"com.firebase.app_check.app_attest_ar
 @interface GACAppAttestArtifactStorage ()
 
 @property(nonatomic, readonly) NSString *keySuffix;
-@property(nonatomic, readonly) GULKeychainStorage *keychainStorage;
+@property(nonatomic, readonly) id<GACKeychainStorageProtocol> keychainStorage;
 @property(nonatomic, readonly, nullable) NSString *accessGroup;
 
 @end
@@ -42,7 +46,7 @@ static NSString *const kKeychainService = @"com.firebase.app_check.app_attest_ar
 @implementation GACAppAttestArtifactStorage
 
 - (instancetype)initWithKeySuffix:(NSString *)keySuffix
-                  keychainStorage:(GULKeychainStorage *)keychainStorage
+                  keychainStorage:(id<GACKeychainStorageProtocol>)keychainStorage
                       accessGroup:(nullable NSString *)accessGroup {
   self = [super init];
   if (self) {
@@ -78,14 +82,14 @@ static NSString *const kKeychainService = @"com.firebase.app_check.app_attest_ar
         }
       })
       .recover(^NSError *(NSError *error) {
-        return [GACAppCheckErrorUtil keychainErrorWithError:error];
+        return [_GACAppCheckErrorUtil keychainErrorWithError:error];
       });
 }
 
 - (FBLPromise<NSData *> *)setArtifact:(nullable NSData *)artifact forKey:(nonnull NSString *)keyID {
   if (artifact) {
     return [self storeArtifact:artifact forKey:keyID].recover(^NSError *(NSError *error) {
-      return [GACAppCheckErrorUtil keychainErrorWithError:error];
+      return [_GACAppCheckErrorUtil keychainErrorWithError:error];
     });
   } else {
     return [FBLPromise wrapErrorCompletion:^(FBLPromiseErrorCompletion _Nonnull handler) {
@@ -97,7 +101,7 @@ static NSString *const kKeychainService = @"com.firebase.app_check.app_attest_ar
           return nil;
         })
         .recover(^NSError *(NSError *error) {
-          return [GACAppCheckErrorUtil keychainErrorWithError:error];
+          return [_GACAppCheckErrorUtil keychainErrorWithError:error];
         });
   }
 }

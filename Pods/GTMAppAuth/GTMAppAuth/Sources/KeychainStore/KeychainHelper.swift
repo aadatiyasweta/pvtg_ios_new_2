@@ -47,10 +47,12 @@ final class KeychainWrapper: KeychainHelper {
       kSecAttrService as String: service,
     ]
 
+    query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
+
     keychainAttributes.forEach { configuration in
       switch configuration.attribute {
-      case .useDataProtectionKeychain:
-        query[configuration.attribute.keyName] = kCFBooleanTrue
+      case .useFileBasedKeychain:
+        query[configuration.attribute.keyName] = kCFBooleanFalse
       case .accessGroup(let name):
         query[configuration.attribute.keyName] = name
       }

@@ -24,11 +24,14 @@
 
 #import <GoogleUtilities/GULUserDefaults.h>
 
-#import "AppCheckCore/Sources/Core/APIService/GACAppCheckAPIService.h"
 #import "AppCheckCore/Sources/Core/GACAppCheckLogger+Internal.h"
 #import "AppCheckCore/Sources/DebugProvider/API/GACAppCheckDebugProviderAPIService.h"
 #import "AppCheckCore/Sources/Public/AppCheckCore/GACAppCheckErrors.h"
 #import "AppCheckCore/Sources/Public/AppCheckCore/GACAppCheckToken.h"
+#import "AppCheckCore/Sources/Public/AppCheckCore/_GACAppCheckAPIService.h"
+
+#import "AppCheckCore/Sources/Core/GACAppCheckDebugProvider+Internal.h"
+#import "AppCheckCore/Sources/Core/_GACAppCheckAPIService+Internal.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,18 +39,36 @@ static NSString *const kDebugTokenEnvKey = @"AppCheckDebugToken";
 static NSString *const kFirebaseDebugTokenEnvKey = @"FIRAAppCheckDebugToken";
 static NSString *const kDebugTokenUserDefaultsKey = @"GACAppCheckDebugToken";
 
+// The base key for registration status.
+// NOTE: Do not use this key directly. Use `registeredUserDefaultsKeyForServiceName:resourceName:`
+// to obtain the namespaced key.
+static NSString *const kDebugTokenRegisteredUserDefaultsKey = @"GACAppCheckDebugTokenRegistered";
+
 @interface GACAppCheckDebugProvider ()
 @property(nonatomic, readonly) id<GACAppCheckDebugProviderAPIServiceProtocol> APIService;
 @property(nonatomic, readonly, nullable, copy) NSString *debugTokenEnvValue;
+@property(nonatomic, readonly, copy) NSString *registeredUserDefaultsKey;
+
++ (NSString *)registeredUserDefaultsKeyForServiceName:(NSString *)serviceName
+                                         resourceName:(NSString *)resourceName;
 @end
+
+static NSString *_Nullable EnvironmentVariableDebugToken(
+    NSString *registeredUserDefaultsKey, NSDictionary<NSString *, NSString *> *environment);
 
 @implementation GACAppCheckDebugProvider
 
-- (instancetype)initWithAPIService:(id<GACAppCheckDebugProviderAPIServiceProtocol>)APIService {
+- (instancetype)initWithAPIService:(id<GACAppCheckDebugProviderAPIServiceProtocol>)APIService
+                       serviceName:(NSString *)serviceName
+                      resourceName:(NSString *)resourceName
+                       environment:(NSDictionary<NSString *, NSString *> *)environment {
   self = [super init];
   if (self) {
     _APIService = APIService;
-    _debugTokenEnvValue = EnvironmentVariableDebugToken();
+    _registeredUserDefaultsKey =
+        [[[self class] registeredUserDefaultsKeyForServiceName:serviceName
+                                                  resourceName:resourceName] copy];
+    _debugTokenEnvValue = EnvironmentVariableDebugToken(_registeredUserDefaultsKey, environment);
   }
   return self;
 }
@@ -56,21 +77,39 @@ static NSString *const kDebugTokenUserDefaultsKey = @"GACAppCheckDebugToken";
                        resourceName:(NSString *)resourceName
                             baseURL:(nullable NSString *)baseURL
                              APIKey:(NSString *)APIKey
-                       requestHooks:(nullable NSArray<GACAppCheckAPIRequestHook> *)requestHooks {
+                       requestHooks:(nullable NSArray<GACAppCheckAPIRequestHook> *)requestHooks
+                        environment:(NSDictionary<NSString *, NSString *> *)environment {
   NSURLSession *URLSession = [NSURLSession
       sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
 
-  GACAppCheckAPIService *APIService =
-      [[GACAppCheckAPIService alloc] initWithURLSession:URLSession
-                                                baseURL:baseURL
-                                                 APIKey:APIKey
-                                           requestHooks:requestHooks];
+  _GACAppCheckAPIService *APIService =
+      [[_GACAppCheckAPIService alloc] initWithURLSession:URLSession
+                                                 baseURL:baseURL
+                                                  APIKey:APIKey
+                                            requestHooks:requestHooks
+                                             environment:environment];
 
   GACAppCheckDebugProviderAPIService *debugAPIService =
       [[GACAppCheckDebugProviderAPIService alloc] initWithAPIService:APIService
                                                         resourceName:resourceName];
 
-  return [self initWithAPIService:debugAPIService];
+  return [self initWithAPIService:debugAPIService
+                      serviceName:serviceName
+                     resourceName:resourceName
+                      environment:environment];
+}
+
+- (instancetype)initWithServiceName:(NSString *)serviceName
+                       resourceName:(NSString *)resourceName
+                            baseURL:(nullable NSString *)baseURL
+                             APIKey:(NSString *)APIKey
+                       requestHooks:(nullable NSArray<GACAppCheckAPIRequestHook> *)requestHooks {
+  return [self initWithServiceName:serviceName
+                      resourceName:resourceName
+                           baseURL:baseURL
+                            APIKey:APIKey
+                      requestHooks:requestHooks
+                       environment:[[NSProcessInfo processInfo] environment]];
 }
 
 - (NSString *)currentDebugToken {
@@ -108,6 +147,7 @@ static NSString *const kDebugTokenUserDefaultsKey = @"GACAppCheckDebugToken";
         return [self.APIService appCheckTokenWithDebugToken:debugToken limitedUse:limitedUse];
       })
       .then(^id(GACAppCheckToken *appCheckToken) {
+        [[GULUserDefaults standardUserDefaults] setBool:YES forKey:self.registeredUserDefaultsKey];
         handler(appCheckToken, nil);
         return nil;
       })
@@ -115,6 +155,10 @@ static NSString *const kDebugTokenUserDefaultsKey = @"GACAppCheckDebugToken";
         NSString *logMessage = [NSString
             stringWithFormat:@"Failed to exchange debug token to app check token: %@", error];
         GACAppCheckLogDebug(GACLoggerAppCheckMessageDebugProviderFailedExchange, logMessage);
+        if (error.code != GACAppCheckErrorCodeServerUnreachable) {
+          [[GULUserDefaults standardUserDefaults]
+              removeObjectForKey:self.registeredUserDefaultsKey];
+        }
         handler(nil, error);
       });
 }
@@ -133,8 +177,20 @@ static NSString *GenerateAndStoreDebugToken(void) {
   return token;
 }
 
-static NSString *_Nullable EnvironmentVariableDebugToken(void) {
-  NSDictionary<NSString *, NSString *> *environment = [[NSProcessInfo processInfo] environment];
++ (NSString *)registeredUserDefaultsKeyForServiceName:(NSString *)serviceName
+                                         resourceName:(NSString *)resourceName {
+  NSString *safeServiceName = serviceName.length > 0 ? serviceName : @"default";
+  NSString *safeResourceName = [resourceName stringByReplacingOccurrencesOfString:@"/"
+                                                                       withString:@"_"];
+  if (safeResourceName.length == 0) {
+    safeResourceName = @"default";
+  }
+  return [NSString stringWithFormat:@"%@_%@_%@", kDebugTokenRegisteredUserDefaultsKey,
+                                    safeServiceName, safeResourceName];
+}
+
+static NSString *_Nullable EnvironmentVariableDebugToken(
+    NSString *registeredUserDefaultsKey, NSDictionary<NSString *, NSString *> *environment) {
   NSString *envVariableValue = environment[kDebugTokenEnvKey];
   NSString *firebaseEnvVariableValue = environment[kFirebaseDebugTokenEnvKey];
   if (envVariableValue.length == 0) {
@@ -175,9 +231,14 @@ static NSString *_Nullable EnvironmentVariableDebugToken(void) {
 
     return firebaseEnvVariableValue;
   } else {
-    // Print only a locally generated token to avoid a valid token leak on CI.
-    GACAppCheckLog(GACLoggerAppCheckMessageLocalDebugToken, GACAppCheckLogLevelWarning,
-                   [NSString stringWithFormat:@"App Check debug token: '%@'.", LocalDebugToken()]);
+    BOOL isRegistered =
+        [[GULUserDefaults standardUserDefaults] boolForKey:registeredUserDefaultsKey];
+    if (!isRegistered) {
+      // Print only a locally generated token to avoid a valid token leak on CI.
+      GACAppCheckLog(
+          GACLoggerAppCheckMessageLocalDebugToken, GACAppCheckLogLevelWarning,
+          [NSString stringWithFormat:@"App Check debug token: '%@'.", LocalDebugToken()]);
+    }
 
     return nil;
   }

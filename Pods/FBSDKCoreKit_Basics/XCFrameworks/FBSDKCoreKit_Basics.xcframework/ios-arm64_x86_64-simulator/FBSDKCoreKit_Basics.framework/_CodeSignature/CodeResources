@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/FBSDKCoreKit_Basics.h</key>
 		<data>
-		98/O+nEXsNQ8AcNbx/iw8ai/ktE=
+		f5yrDeTKjwUwr9zh/Jdp5mrNBPk=
 		</data>
 		<key>Headers/FBSDKCrashHandler.h</key>
 		<data>
@@ -76,13 +76,17 @@
 		<data>
 		aOm3T7/JlTQP0GIRlnLQzT+NKc8=
 		</data>
+		<key>Headers/FBSDKVersions.h</key>
+		<data>
+		Ep346FvuL7t0MhdAmCQW+rzYQpo=
+		</data>
 		<key>Headers/NSNotificationCenter+NotificationDelivering.h</key>
 		<data>
 		7k8yl29uNS0GjwEBkfViBHp6lN0=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		6dXXiCtQUndaon5r20GbAoje8jI=
+		FgXKOifemB/fyb39erJGuU1chu0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -113,7 +117,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			n96Ist8MxHyeU+TJA3OhwPRry3QcVtumXYCUmhcHycw=
+			EqWLwqNe58iZitOwzFixDVJURgjXW/7inXMFwy9D1Fc=
 			</data>
 		</dict>
 		<key>Headers/FBSDKCrashHandler.h</key>
@@ -219,6 +223,13 @@
 			<key>hash2</key>
 			<data>
 			3Efn6F2Y10Aul+I89unuMGdO1GJTM5xkZOglY+a5XtE=
+			</data>
+		</dict>
+		<key>Headers/FBSDKVersions.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cRZR1OMBNEgnnjPo5tKFzmz56sazF4D1QOAXsL8q5gw=
 			</data>
 		</dict>
 		<key>Headers/NSNotificationCenter+NotificationDelivering.h</key>

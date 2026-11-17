@@ -24,8 +24,12 @@
 
 #import <GoogleUtilities/GULKeychainStorage.h>
 
-#import "AppCheckCore/Sources/Core/Errors/GACAppCheckErrorUtil.h"
+#import "AppCheckCore/Sources/Core/Storage/GACKeychainStorageProtocol.h"
+
+#import "AppCheckCore/Sources/Core/Storage/GULKeychainStorage+GACKeychainStorageProtocol.h"
+
 #import "AppCheckCore/Sources/Core/Storage/GACAppCheckStoredToken+GACAppCheckToken.h"
+#import "AppCheckCore/Sources/Public/AppCheckCore/_GACAppCheckErrorUtil.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,7 +38,7 @@ static NSString *const kKeychainService = @"com.google.app_check_core.token_stor
 @interface GACAppCheckStorage ()
 
 @property(nonatomic, readonly) NSString *tokenKey;
-@property(nonatomic, readonly) GULKeychainStorage *keychainStorage;
+@property(nonatomic, readonly) id<GACKeychainStorageProtocol> keychainStorage;
 @property(nonatomic, readonly, nullable) NSString *accessGroup;
 
 @end
@@ -42,7 +46,7 @@ static NSString *const kKeychainService = @"com.google.app_check_core.token_stor
 @implementation GACAppCheckStorage
 
 - (instancetype)initWithTokenKey:(NSString *)tokenKey
-                 keychainStorage:(GULKeychainStorage *)keychainStorage
+                 keychainStorage:(id<GACKeychainStorageProtocol>)keychainStorage
                      accessGroup:(nullable NSString *)accessGroup {
   self = [super init];
   if (self) {
@@ -75,14 +79,14 @@ static NSString *const kKeychainService = @"com.google.app_check_core.token_stor
         }
       })
       .recover(^NSError *(NSError *error) {
-        return [GACAppCheckErrorUtil keychainErrorWithError:error];
+        return [_GACAppCheckErrorUtil keychainErrorWithError:error];
       });
 }
 
 - (FBLPromise<NSNull *> *)setToken:(nullable GACAppCheckToken *)token {
   if (token) {
     return [self storeToken:token].recover(^NSError *(NSError *error) {
-      return [GACAppCheckErrorUtil keychainErrorWithError:error];
+      return [_GACAppCheckErrorUtil keychainErrorWithError:error];
     });
   } else {
     return [FBLPromise wrapErrorCompletion:^(FBLPromiseErrorCompletion _Nonnull handler) {
@@ -94,7 +98,7 @@ static NSString *const kKeychainService = @"com.google.app_check_core.token_stor
           return token;
         })
         .recover(^NSError *(NSError *error) {
-          return [GACAppCheckErrorUtil keychainErrorWithError:error];
+          return [_GACAppCheckErrorUtil keychainErrorWithError:error];
         });
   }
 }

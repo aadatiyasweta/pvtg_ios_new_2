@@ -29,7 +29,7 @@ public class DataRequest: Request, @unchecked Sendable {
     /// `URLRequestConvertible` value used to create `URLRequest`s for this instance.
     public let convertible: any URLRequestConvertible
     /// `Data` read from the server so far.
-    public var data: Data? { dataMutableState.data }
+    public var data: Data? { dataMutableState.read(\.data) }
 
     private struct DataMutableState {
         var data: Data?
@@ -57,6 +57,7 @@ public class DataRequest: Request, @unchecked Sendable {
          serializationQueue: DispatchQueue,
          eventMonitor: (any EventMonitor)?,
          interceptor: (any RequestInterceptor)?,
+         shouldAutomaticallyResume: Bool?,
          delegate: any RequestDelegate) {
         self.convertible = convertible
 
@@ -65,6 +66,7 @@ public class DataRequest: Request, @unchecked Sendable {
                    serializationQueue: serializationQueue,
                    eventMonitor: eventMonitor,
                    interceptor: interceptor,
+                   shouldAutomaticallyResume: shouldAutomaticallyResume,
                    delegate: delegate)
     }
 
@@ -103,10 +105,7 @@ public class DataRequest: Request, @unchecked Sendable {
             httpResponseHandler.queue.async {
                 httpResponseHandler.handler(response) { disposition in
                     if disposition == .cancel {
-                        self.mutableState.write { mutableState in
-                            mutableState.state = .cancelled
-                            mutableState.error = mutableState.error ?? AFError.explicitlyCancelled
-                        }
+                        self.cancel()
                     }
 
                     self.underlyingQueue.async {
@@ -148,7 +147,9 @@ public class DataRequest: Request, @unchecked Sendable {
 
             let result = validation(request, response, data)
 
-            if case let .failure(error) = result { self.error = error.asAFError(or: .responseValidationFailed(reason: .customValidationFailed(error: error))) }
+            if case let .failure(error) = result {
+                self.error = error.asAFError(or: .responseValidationFailed(reason: .customValidationFailed(error: error)))
+            }
 
             eventMonitor?.request(self,
                                   didValidateRequest: request,
@@ -245,7 +246,7 @@ public class DataRequest: Request, @unchecked Sendable {
         -> Self {
         appendResponseSerializer {
             // Start work that should be on the serialization queue.
-            let start = ProcessInfo.processInfo.systemUptime
+            let start = Instant()
             let result: AFResult<Serializer.SerializedObject> = Result {
                 try responseSerializer.serialize(request: self.request,
                                                  response: self.response,
@@ -255,7 +256,7 @@ public class DataRequest: Request, @unchecked Sendable {
                 error.asAFError(or: .responseSerializationFailed(reason: .customSerializationFailed(error: error)))
             }
 
-            let end = ProcessInfo.processInfo.systemUptime
+            let end = Instant()
             // End work that should be on the serialization queue.
 
             self.underlyingQueue.async {

@@ -67,7 +67,7 @@ public final class DownloadRequest: Request, @unchecked Sendable {
                                                    options: Options = []) -> Destination {
         { temporaryURL, response in
             let directoryURLs = FileManager.default.urls(for: directory, in: domain)
-            let url = directoryURLs.first?.appendingPathComponent(response.suggestedFilename!) ?? temporaryURL
+            let url = response.suggestedFilename.flatMap { directoryURLs.first?.appendingPathComponent($0) } ?? temporaryURL
 
             return (url, options)
         }
@@ -85,9 +85,7 @@ public final class DownloadRequest: Request, @unchecked Sendable {
     /// provided file name.
     static let defaultDestinationURL: @Sendable (URL) -> URL = { url in
         let filename = "Alamofire_\(url.lastPathComponent)"
-        let destination = url.deletingLastPathComponent().appendingPathComponent(filename)
-
-        return destination
+        return url.deletingLastPathComponent().appendingPathComponent(filename)
     }
 
     // MARK: Downloadable
@@ -119,14 +117,14 @@ public final class DownloadRequest: Request, @unchecked Sendable {
     /// - Note: For more information about `resumeData`, see [Apple's documentation](https://developer.apple.com/documentation/foundation/urlsessiondownloadtask/1411634-cancel).
     public var resumeData: Data? {
         #if !canImport(FoundationNetworking) // If we not using swift-corelibs-foundation.
-        return mutableDownloadState.resumeData ?? error?.downloadResumeData
+        return mutableDownloadState.read(\.resumeData) ?? error?.downloadResumeData
         #else
-        return mutableDownloadState.resumeData
+        return mutableDownloadState.read(\.resumeData)
         #endif
     }
 
     /// If the download is successful, the `URL` where the file was downloaded.
-    public var fileURL: URL? { mutableDownloadState.fileURL }
+    public var fileURL: URL? { mutableDownloadState.read(\.fileURL) }
 
     // MARK: Initial State
 
@@ -138,21 +136,23 @@ public final class DownloadRequest: Request, @unchecked Sendable {
     /// Creates a `DownloadRequest` using the provided parameters.
     ///
     /// - Parameters:
-    ///   - id:                 `UUID` used for the `Hashable` and `Equatable` implementations. `UUID()` by default.
-    ///   - downloadable:       `Downloadable` value used to create `URLSessionDownloadTasks` for the instance.
-    ///   - underlyingQueue:    `DispatchQueue` on which all internal `Request` work is performed.
-    ///   - serializationQueue: `DispatchQueue` on which all serialization work is performed. By default targets
-    ///                         `underlyingQueue`, but can be passed another queue from a `Session`.
-    ///   - eventMonitor:       `EventMonitor` called for event callbacks from internal `Request` actions.
-    ///   - interceptor:        `RequestInterceptor` used throughout the request lifecycle.
-    ///   - delegate:           `RequestDelegate` that provides an interface to actions not performed by the `Request`
-    ///   - destination:        `Destination` closure used to move the downloaded file to its final location.
+    ///   - id:                        `UUID` used for the `Hashable` and `Equatable` implementations. `UUID()` by default.
+    ///   - downloadable:              `Downloadable` value used to create `URLSessionDownloadTasks` for the instance.
+    ///   - underlyingQueue:           `DispatchQueue` on which all internal `Request` work is performed.
+    ///   - serializationQueue:        `DispatchQueue` on which all serialization work is performed. By default targets
+    ///                                `underlyingQueue`, but can be passed another queue from a `Session`.
+    ///   - eventMonitor:              `EventMonitor` called for event callbacks from internal `Request` actions.
+    ///   - interceptor:               `RequestInterceptor` used throughout the request lifecycle.
+    ///   - shouldAutomaticallyResume: Whether the instance should resume after the first response handler is added.
+    ///   - delegate:                  `RequestDelegate` that provides an interface to actions not performed by the `Request`
+    ///   - destination:               `Destination` closure used to move the downloaded file to its final location.
     init(id: UUID = UUID(),
          downloadable: Downloadable,
          underlyingQueue: DispatchQueue,
          serializationQueue: DispatchQueue,
          eventMonitor: (any EventMonitor)?,
          interceptor: (any RequestInterceptor)?,
+         shouldAutomaticallyResume: Bool?,
          delegate: any RequestDelegate,
          destination: @escaping Destination) {
         self.downloadable = downloadable
@@ -163,6 +163,7 @@ public final class DownloadRequest: Request, @unchecked Sendable {
                    serializationQueue: serializationQueue,
                    eventMonitor: eventMonitor,
                    interceptor: interceptor,
+                   shouldAutomaticallyResume: shouldAutomaticallyResume,
                    delegate: delegate)
     }
 
@@ -184,7 +185,7 @@ public final class DownloadRequest: Request, @unchecked Sendable {
         eventMonitor?.request(self, didFinishDownloadingUsing: task, with: result)
 
         switch result {
-        case let .success(url): mutableDownloadState.fileURL = url
+        case let .success(url): mutableDownloadState.write { $0.fileURL = url }
         case let .failure(error): self.error = error
         }
     }
@@ -270,16 +271,23 @@ public final class DownloadRequest: Request, @unchecked Sendable {
 
             underlyingQueue.async { self.didCancel() }
 
-            guard let task = mutableState.tasks.last as? URLSessionDownloadTask, task.state != .completed else {
+            // Ensure we have a task. If we do, didCreateTask has been called but wouldn't have changed the task state
+            // since we just transitioned to cancelled. If we don't, didCreateTask hasn't been called yet, so we can
+            // start the finish process and return early, as didCreateTask will perform the task changes but we won't
+            // receive any task delegate callback.
+            guard let task = mutableState.tasks.last as? URLSessionDownloadTask else {
                 underlyingQueue.async { self.finish() }
                 return
             }
+            // We have a task, if it's completed, return early, as the delegate callbacks should be in flight and
+            // cancelling it will have no effect.
+            guard task.state != .completed else { return }
 
             if let completionHandler {
                 // Resume to ensure metrics are gathered.
                 task.resume()
                 task.cancel { resumeData in
-                    self.mutableDownloadState.resumeData = resumeData
+                    self.mutableDownloadState.write { $0.resumeData = resumeData }
                     self.underlyingQueue.async { self.didCancelTask(task) }
                     completionHandler(resumeData)
                 }
@@ -367,7 +375,7 @@ public final class DownloadRequest: Request, @unchecked Sendable {
         -> Self {
         appendResponseSerializer {
             // Start work that should be on the serialization queue.
-            let start = ProcessInfo.processInfo.systemUptime
+            let start = Instant()
             let result: AFResult<Serializer.SerializedObject> = Result {
                 try responseSerializer.serializeDownload(request: self.request,
                                                          response: self.response,
@@ -376,7 +384,7 @@ public final class DownloadRequest: Request, @unchecked Sendable {
             }.mapError { error in
                 error.asAFError(or: .responseSerializationFailed(reason: .customSerializationFailed(error: error)))
             }
-            let end = ProcessInfo.processInfo.systemUptime
+            let end = Instant()
             // End work that should be on the serialization queue.
 
             self.underlyingQueue.async {
@@ -390,7 +398,7 @@ public final class DownloadRequest: Request, @unchecked Sendable {
 
                 self.eventMonitor?.request(self, didParseResponse: response)
 
-                guard let serializerError = result.failure, let delegate = self.delegate else {
+                guard !self.isCancelled, let serializerError = result.failure, let delegate = self.delegate else {
                     self.responseSerializerDidComplete { queue.async { completionHandler(response) } }
                     return
                 }

@@ -28,10 +28,20 @@
 
 #include <unistd.h>
 
-// uint64_t should only have max 19 chars in base 10, and less in base 16
-static const size_t FIRCLSUInt64StringBufferLength = 21;
-static const size_t FIRCLSStringBufferLength = 16;
 const size_t FIRCLSWriteBufferLength = 1000;
+
+/// Use an enum to define true compile-time integer constants. This prevents
+/// compiler warnings when these constants are used to declare array sizes.
+enum {
+  /// The buffer size needed to hold a 64-bit unsigned integer as a string.
+  /// The largest uint64_t value (18,446,744,073,709,551,615) has 20 digits.
+  /// An additional byte is required for the null terminator.
+  FIRCLSUInt64StringBufferLength = 21,
+
+  /// The size in bytes of a raw 128-bit UUID. This is used for buffers
+  /// holding the binary data, not a C-style string.
+  FIRCLSStringBufferLength = 16
+};
 
 static bool FIRCLSFileInit(
     FIRCLSFile* file, const char* path, int fdm, bool appendMode, bool bufferWrites);
@@ -74,9 +84,9 @@ static bool FIRCLSFileInit(
 
   file->bufferWrites = bufferWrites;
   if (bufferWrites) {
-    file->writeBuffer = malloc(FIRCLSWriteBufferLength * sizeof(char));
+    file->writeBuffer = calloc(1, FIRCLSWriteBufferLength * sizeof(char));
     if (!file->writeBuffer) {
-      FIRCLSErrorLog(@"Unable to malloc in FIRCLSFileInit");
+      FIRCLSErrorLog(@"Unable to calloc in FIRCLSFileInit");
       return false;
     }
 
@@ -165,9 +175,13 @@ bool FIRCLSFileCloseWithOffset(FIRCLSFile* file, off_t* finalSize) {
     *finalSize = file->writtenLength;
   }
 
-  if (close(file->fd) != 0) {
-    FIRCLSSDKLog("Error: Unable to close file %s\n", strerror(errno));
-    return false;
+  // If the FIRCLSFile struct was zero-initialized (e.g. via memset) and never opened,
+  // fd will be 0. Closing fd 0 triggers a system-level EXC_GUARD crash.
+  if (file->fd > STDERR_FILENO) {
+    if (close(file->fd) != 0) {
+      FIRCLSSDKLog("Error: Unable to close file %s\n", strerror(errno));
+      return false;
+    }
   }
 
   memset(file, 0, sizeof(FIRCLSFile));
@@ -668,10 +682,10 @@ NSArray* FIRCLSFileReadSections(const char* path,
 
 NSString* FIRCLSFileHexEncodeString(const char* string) {
   size_t length = strlen(string);
-  char* encodedBuffer = malloc(length * 2 + 1);
+  char* encodedBuffer = calloc(1, length * 2 + 1);
 
   if (!encodedBuffer) {
-    FIRCLSErrorLog(@"Unable to malloc in FIRCLSFileHexEncodeString");
+    FIRCLSErrorLog(@"Unable to calloc in FIRCLSFileHexEncodeString");
     return nil;
   }
 
@@ -693,9 +707,9 @@ NSString* FIRCLSFileHexEncodeString(const char* string) {
 
 NSString* FIRCLSFileHexDecodeString(const char* string) {
   size_t length = strlen(string);
-  char* decodedBuffer = malloc(length);  // too long, but safe
+  char* decodedBuffer = calloc(1, length);  // too long, but safe
   if (!decodedBuffer) {
-    FIRCLSErrorLog(@"Unable to malloc in FIRCLSFileHexDecodeString");
+    FIRCLSErrorLog(@"Unable to calloc in FIRCLSFileHexDecodeString");
     return nil;
   }
 

@@ -11,8 +11,10 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CoreLocation.h>
 
+
 /**
- * GMSVisibleRegion contains the four points defining the polygon that is visible in a map's camera.
+ * `GMSVisibleRegion` contains the four points defining the polygon that is visible in a map's
+ * camera.
  *
  * This polygon can be a trapezoid instead of a rectangle, because a camera can have tilt. If the
  * camera is directly over the center of the camera, the shape is rectangular, but if the camera is
@@ -34,27 +36,28 @@ typedef struct {
 } GMSVisibleRegion;
 
 /**
- * Defines a mapping between Earth coordinates (CLLocationCoordinate2D) and coordinates in the map's
- * view (CGPoint). A projection is constant and immutable, in that the mapping it embodies never
+ * Defines a mapping between Earth coordinates `CLLocationCoordinate2D` and coordinates in the map's
+ * view `CGPoint`. A projection is constant and immutable, in that the mapping it embodies never
  * changes. The mapping is not necessarily linear.
  *
- * Passing invalid Earth coordinates (i.e., per CLLocationCoordinate2DIsValid) to this object may
+ * Passing invalid Earth coordinates (i.e., per `CLLocationCoordinate2DIsValid`) to this object may
  * result in undefined behavior.
  *
  * This class should not be instantiated directly unless under testing conditions. Instead, obtain
- * it via projection on GMSMapView.
+ * it via projection on `GMSMapView`.
  */
 @interface GMSProjection : NSObject
 
 /** Maps an Earth coordinate to a point coordinate in the map's view. */
 - (CGPoint)pointForCoordinate:(CLLocationCoordinate2D)coordinate;
 
+
 /** Maps a point coordinate in the map's view to an Earth coordinate. */
 - (CLLocationCoordinate2D)coordinateForPoint:(CGPoint)point;
 
 /**
  * Converts a distance in meters to content size.  This is only accurate for small Earth distances,
- * as it uses CGFloat for screen distances.
+ * as it uses `CGFloat` for screen distances.
  */
 - (CGFloat)pointsForMeters:(CLLocationDistance)meters
               atCoordinate:(CLLocationCoordinate2D)coordinate;
@@ -64,7 +67,7 @@ typedef struct {
 
 /**
  * Returns the region (four location coordinates) that is visible according to the projection. If
- * padding was set on GMSMapView, this region takes the padding into account.
+ * padding was set on `GMSMapView`, this region takes the padding into account.
  *
  * The visible region can be non-rectangular. The result is undefined if the projection includes
  * points that do not map to anywhere on the map (e.g., camera sees outer space).

@@ -10,20 +10,19 @@
 
 #import <Foundation/Foundation.h>
 
-
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * \defgroup PlaceField GMSPlaceField
+ * \defgroup GMSPlaceField GMSPlaceField
  * @{
  */
 
 /**
- * The fields represent individual information that can be requested for a |GMSPlace| object.
- * If no request fields are set, the |GMSPlace| object will be empty with no useful information.
+ * The fields represent individual information that can be requested for a `GMSPlace` object.
+ * If no request fields are set, the `GMSPlace` object will be empty with no useful information.
  *
- * Note: GMSPlaceFieldPhoneNumber, GMSPlaceFieldWebsite and GMSPlaceFieldAddressComponents are not
- *       supported for |GMSPlaceLikelihoodList| place objects. Please refer to
+ * Note: `GMSPlaceFieldPhoneNumber`, `GMSPlaceFieldWebsite` and `GMSPlaceFieldAddressComponents` are
+ * not supported for `GMSPlaceLikelihoodList` place objects. Please refer to
  *       https://developers.google.com/places/ios-sdk/place-data-fields for more details.
  */
 typedef NS_OPTIONS(uint64_t, GMSPlaceField) {
@@ -60,6 +59,9 @@ typedef NS_OPTIONS(uint64_t, GMSPlaceField) {
   GMSPlaceFieldServesVegetarianFood = GMSPlaceFieldName << 30,
   GMSPlaceFieldWheelchairAccessibleEntrance = GMSPlaceFieldName
                                               << 31,
+  GMSPlaceFieldCurrentOpeningHours = GMSPlaceFieldName << 32,
+  GMSPlaceFieldSecondaryOpeningHours = GMSPlaceFieldName << 33,
+  GMSPlaceFieldEditorialSummary = GMSPlaceFieldName << 34,
   GMSPlaceFieldAll = UINT64_MAX,
 };
 

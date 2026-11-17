@@ -22,12 +22,13 @@
 #import "FBLPromises.h"
 #endif
 
-#import "AppCheckCore/Sources/Core/APIService/GACURLSessionDataResponse.h"
+#import "AppCheckCore/Sources/Public/AppCheckCore/_GACURLSessionDataResponse.h"
 
 @implementation NSURLSession (GACPromises)
 
-- (FBLPromise<GACURLSessionDataResponse *> *)gac_dataTaskPromiseWithRequest:
+- (FBLPromise<_GACURLSessionDataResponse *> *)gac_dataTaskPromiseWithRequest:
     (NSURLRequest *)URLRequest {
+  NSDate *requestDate = [NSDate date];
   return [FBLPromise async:^(FBLPromiseFulfillBlock fulfill, FBLPromiseRejectBlock reject) {
     [[self dataTaskWithRequest:URLRequest
              completionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response,
@@ -35,9 +36,10 @@
                if (error) {
                  reject(error);
                } else {
-                 fulfill([[GACURLSessionDataResponse alloc]
+                 fulfill([[_GACURLSessionDataResponse alloc]
                      initWithResponse:(NSHTTPURLResponse *)response
-                             HTTPBody:data]);
+                             HTTPBody:data
+                          requestDate:requestDate]);
                }
              }] resume];
   }];

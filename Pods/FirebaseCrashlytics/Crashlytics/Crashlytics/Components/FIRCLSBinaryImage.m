@@ -163,6 +163,7 @@ bool FIRCLSBinaryImageFindImageForUUID(const char* uuidString,
     const struct mach_header* mh = _dyld_get_image_header(i);
 
     FIRCLSBinaryImageDetails image;
+    memset(&image, 0, sizeof(FIRCLSBinaryImageDetails));
 
     image.slice = FIRCLSMachOSliceWithHeader((void*)mh);
     FIRCLSBinaryImageFillInImageDetails(&image);
@@ -409,7 +410,7 @@ static void FIRCLSBinaryImageChanged(bool added,
   // fill imageDetails fields using slice & vmaddr_slide
   FIRCLSBinaryImageFillInImageDetails(&imageDetails);
 
-  FIRCLSImageChange* change = malloc(sizeof(FIRCLSImageChange));
+  FIRCLSImageChange* change = calloc(1, sizeof(FIRCLSImageChange));
   if (!change) return;
   change->added = added;
   change->details = imageDetails;

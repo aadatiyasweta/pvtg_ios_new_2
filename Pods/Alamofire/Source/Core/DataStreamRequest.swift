@@ -119,6 +119,7 @@ public final class DataStreamRequest: Request, @unchecked Sendable {
     ///                                       `underlyingQueue`, but can be passed another queue from a `Session`.
     ///   - eventMonitor:                     `EventMonitor` called for event callbacks from internal `Request` actions.
     ///   - interceptor:                      `RequestInterceptor` used throughout the request lifecycle.
+    ///   - shouldAutomaticallyResume:        Whether the instance should resume after the first response handler is added.
     ///   - delegate:                         `RequestDelegate` that provides an interface to actions not performed by
     ///                                       the `Request`.
     init(id: UUID = UUID(),
@@ -128,6 +129,7 @@ public final class DataStreamRequest: Request, @unchecked Sendable {
          serializationQueue: DispatchQueue,
          eventMonitor: (any EventMonitor)?,
          interceptor: (any RequestInterceptor)?,
+         shouldAutomaticallyResume: Bool?,
          delegate: any RequestDelegate) {
         self.convertible = convertible
         self.automaticallyCancelOnStreamError = automaticallyCancelOnStreamError
@@ -137,6 +139,7 @@ public final class DataStreamRequest: Request, @unchecked Sendable {
                    serializationQueue: serializationQueue,
                    eventMonitor: eventMonitor,
                    interceptor: interceptor,
+                   shouldAutomaticallyResume: shouldAutomaticallyResume,
                    delegate: delegate)
     }
 
@@ -158,6 +161,8 @@ public final class DataStreamRequest: Request, @unchecked Sendable {
             #if !canImport(FoundationNetworking) // If we not using swift-corelibs-foundation.
             if let stream = state.outputStream {
                 underlyingQueue.async {
+                    // Ensure we can write, as the stream may have been closed while this was enqueued.
+                    guard stream.hasSpaceAvailable else { return }
                     var bytes = Array(data)
                     stream.write(&bytes, maxLength: bytes.count)
                 }
@@ -178,10 +183,7 @@ public final class DataStreamRequest: Request, @unchecked Sendable {
             httpResponseHandler.queue.async {
                 httpResponseHandler.handler(response) { disposition in
                     if disposition == .cancel {
-                        self.mutableState.write { mutableState in
-                            mutableState.state = .cancelled
-                            mutableState.error = mutableState.error ?? AFError.explicitlyCancelled
-                        }
+                        self.cancel()
                     }
 
                     self.underlyingQueue.async {
@@ -344,7 +346,9 @@ public final class DataStreamRequest: Request, @unchecked Sendable {
     @preconcurrency
     @discardableResult
     public func responseStream(on queue: DispatchQueue = .main, stream: @escaping Handler<Data, Never>) -> Self {
-        let parser = { @Sendable [unowned self] (data: Data) in
+        let parser = { @Sendable [weak self] (data: Data) in
+            guard let self else { return }
+
             queue.async {
                 self.capturingError {
                     try stream(.init(event: .stream(.success(data)), token: .init(self)))
@@ -373,7 +377,9 @@ public final class DataStreamRequest: Request, @unchecked Sendable {
     public func responseStream<Serializer: DataStreamSerializer>(using serializer: Serializer,
                                                                  on queue: DispatchQueue = .main,
                                                                  stream: @escaping Handler<Serializer.SerializedObject, AFError>) -> Self {
-        let parser = { @Sendable [unowned self] (data: Data) in
+        let parser = { @Sendable [weak self] (data: Data) in
+            guard let self else { return }
+
             serializationQueue.async {
                 // Start work on serialization queue.
                 let result = Result { try serializer.serialize(data) }
@@ -414,7 +420,9 @@ public final class DataStreamRequest: Request, @unchecked Sendable {
     @discardableResult
     public func responseStreamString(on queue: DispatchQueue = .main,
                                      stream: @escaping Handler<String, Never>) -> Self {
-        let parser = { @Sendable [unowned self] (data: Data) in
+        let parser = { @Sendable [weak self] (data: Data) in
+            guard let self else { return }
+
             serializationQueue.async {
                 // Start work on serialization queue.
                 let string = String(decoding: data, as: UTF8.self)

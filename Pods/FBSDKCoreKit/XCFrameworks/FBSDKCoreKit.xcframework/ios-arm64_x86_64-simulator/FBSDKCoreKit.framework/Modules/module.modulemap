@@ -7,5 +7,4 @@ framework module FBSDKCoreKit {
 
 module FBSDKCoreKit.Swift {
   header "FBSDKCoreKit-Swift.h"
-  requires objc
 }
