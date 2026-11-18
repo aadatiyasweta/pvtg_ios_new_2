@@ -919,8 +919,29 @@ You earned 45pts</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmx-Mb-z7r">
                                                                 <rect key="frame" x="3" y="3" width="364" height="45"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1234567890" placeholder="Mobile No." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-mz-IWe">
-                                                                        <rect key="frame" x="0.0" y="12.999999999999998" width="364" height="19.333333333333329"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pf5-cC-r2B">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="45"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="64" id="Pf5-w8-1bB"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                                        <state key="normal" title="+57">
+                                                                            <color key="titleColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="tapCountryCode:" destination="QIu-J9-mbc" eventType="touchUpInside" id="Pf5-ac-2lL"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pf5-sP-r3C">
+                                                                        <rect key="frame" x="64" y="10" width="0.5" height="25"/>
+                                                                        <color key="backgroundColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="0.5" id="Pf5-sw-4dD"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="Pf5-sh-5eE"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-mz-IWe">
+                                                                        <rect key="frame" x="64.5" y="12.999999999999998" width="299.5" height="19.333333333333329"/>
                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="textColor" red="0.019607843137254902" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
@@ -931,7 +952,12 @@ You earned 45pts</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="YZN-mz-IWe" secondAttribute="trailing" id="SaS-KA-Drg"/>
                                                                     <constraint firstItem="YZN-mz-IWe" firstAttribute="centerY" secondItem="zmx-Mb-z7r" secondAttribute="centerY" id="biB-Wv-kf0"/>
-                                                                    <constraint firstItem="YZN-mz-IWe" firstAttribute="leading" secondItem="zmx-Mb-z7r" secondAttribute="leading" id="dr8-fb-Sbn"/>
+                                                                    <constraint firstItem="YZN-mz-IWe" firstAttribute="leading" secondItem="Pf5-sP-r3C" secondAttribute="trailing" id="dr8-fb-Sbn"/>
+                                                                    <constraint firstItem="Pf5-cC-r2B" firstAttribute="leading" secondItem="zmx-Mb-z7r" secondAttribute="leading" id="Pf5-ld-6fF"/>
+                                                                    <constraint firstItem="Pf5-cC-r2B" firstAttribute="top" secondItem="zmx-Mb-z7r" secondAttribute="top" id="Pf5-tp-7gG"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Pf5-cC-r2B" secondAttribute="bottom" id="Pf5-bt-8hH"/>
+                                                                    <constraint firstItem="Pf5-sP-r3C" firstAttribute="leading" secondItem="Pf5-cC-r2B" secondAttribute="trailing" id="Pf5-sl-9iI"/>
+                                                                    <constraint firstItem="Pf5-sP-r3C" firstAttribute="centerY" secondItem="zmx-Mb-z7r" secondAttribute="centerY" id="Pf5-sc-0jJ"/>
                                                                     <constraint firstAttribute="height" constant="45" id="eqz-bt-1DU"/>
                                                                 </constraints>
                                                             </view>
@@ -1077,6 +1103,7 @@ You earned 45pts</string>
                         <outlet property="txfUserName" destination="j7j-ke-vya" id="3oM-32-I7f"/>
                         <outlet property="txfmail" destination="VfC-IM-SqT" id="p4Q-zS-WS0"/>
                         <outlet property="txfmobileNo" destination="YZN-mz-IWe" id="O3x-Zl-kmV"/>
+                        <outlet property="btnCountryCode" destination="Pf5-cC-r2B" id="Pf5-oT-1kK"/>
                         <outlet property="vw1" destination="feC-a7-SfC" id="aEH-e1-hwI"/>
                         <outlet property="vw2" destination="zmx-Mb-z7r" id="VNC-VG-GeV"/>
                         <outlet property="vw3" destination="6gg-43-gEB" id="zkh-Xo-IVz"/>

@@ -22,7 +22,7 @@ class CountryPicker: UIView ,UITableViewDelegate,UITableViewDataSource{
     var isSearching = false
     var filterCountry = [Country]()
     var country = [Country]()
-    var countryCode = "+91"
+    var countryCode = "+57"
     weak var delegateObj:SelectCountryProtocol?
     
     //MARK: - LifeCycle

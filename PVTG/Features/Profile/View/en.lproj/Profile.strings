@@ -36,7 +36,7 @@
 "VfC-IM-SqT.text" = "johndoe@gmail.com";
 
 /* Class = "UITextField"; placeholder = "Mobile No."; ObjectID = "YZN-mz-IWe"; */
-"YZN-mz-IWe.placeholder" = "Mobile No.";
+"YZN-mz-IWe.placeholder" = "Phone number";
 
 /* Class = "UITextField"; text = "1234567890"; ObjectID = "YZN-mz-IWe"; */
 "YZN-mz-IWe.text" = "1234567890";

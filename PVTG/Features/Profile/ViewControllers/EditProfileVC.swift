@@ -24,6 +24,7 @@ class EditProfileVC: BaseViewController {
             txfmobileNo.delegate = self
         }
     }
+    @IBOutlet weak var btnCountryCode: UIButton!
     @IBOutlet weak var vwContainMobileField: UIView!
     @IBOutlet weak var txfmail: UITextField!{
         didSet{
@@ -43,7 +44,8 @@ class EditProfileVC: BaseViewController {
     private var selectedImage = UIImage()
     private var vm = ProfileViewModel()
     var userDta: User_profile?
-    
+    var selectedCountryCode = "+57"
+
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,12 +79,28 @@ class EditProfileVC: BaseViewController {
     @IBAction func btnTapChangePicture(_ sender: UIButton) {
         showSheet()
     }
+
+    @IBAction func tapCountryCode(_ sender: UIButton) {
+        view.endEditing(true)
+        guard let picker = CountryPicker.initWith(frame: view.bounds) else { return }
+        picker.delegateObj = self
+        view.addSubview(picker)
+    }
     
     @IBAction func SubmitTap(_ sender: UIButton) {
         guard let userid = SaveToDefaults().getUserId() else {return}
         if validRegistrationetails() {
-            self.vm.updateProfileApi(user_id: userid, image: self.imageData, email: self.txfmail.text ?? "", country_code: "+91", phone: self.txfmobileNo.text ?? "", name: self.txfUserName.text ?? "")
+            let phone = self.txfmobileNo.text?.trimmingCharacters(in: .whitespaces) ?? ""
+            let countryCode = phone.isEmpty ? "" : self.selectedCountryCode
+            self.vm.updateProfileApi(user_id: userid, image: self.imageData, email: self.txfmail.text ?? "", country_code: countryCode, phone: phone, name: self.txfUserName.text ?? "")
         }
+    }
+}
+
+extension EditProfileVC: SelectCountryProtocol {
+    func getAddressValues(code: String) {
+        selectedCountryCode = code
+        btnCountryCode.setTitle(code, for: .normal)
     }
 }
 
@@ -161,6 +179,10 @@ extension EditProfileVC {
     private func setData() {
         self.txfUserName.text = userDta?.name
         self.txfmobileNo.text = userDta?.phone
+        if let code = userDta?.country_code, !code.isEmpty {
+            selectedCountryCode = code
+        }
+        btnCountryCode.setTitle(selectedCountryCode, for: .normal)
         self.txfmail.text = userDta?.email
         SaveToDefaults().setProfilePic(value: userDta?.user_image ?? "")
         loadImage(userDta?.user_image ?? "", self.imguser, activity: nil, defaultImage: #imageLiteral(resourceName: "more"))
@@ -214,8 +236,8 @@ extension EditProfileVC: UITextFieldDelegate {
         }
         
         if textField == self.txfmobileNo {
-            let length = (textField.text?.count ?? 0) + (string.count - range.length) <= 10
-            return length
+            let newText = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+            return string.unicodeScalars.allSatisfy { CharacterSet.decimalDigits.contains($0) } && newText.count <= 15
         }
         return newString.length <= maxLength
     }
@@ -232,6 +254,17 @@ extension EditProfileVC {
         if !isValidEmail(testStr: txfmail.text ?? ""){
             self.lblMailErr.isHidden = false
             self.lblMailErr.text = validEmailMessage
+            return false
+        }
+        let phone = txfmobileNo.text?.trimmingCharacters(in: .whitespaces) ?? ""
+        if phone.isEmpty {
+            self.lblMobileerr.isHidden = false
+            self.lblMobileerr.text = emptyPhone
+            return false
+        }
+        if phone.count < 7 || phone.count > 15 {
+            self.lblMobileerr.isHidden = false
+            self.lblMobileerr.text = validNumber
             return false
         }
         return true

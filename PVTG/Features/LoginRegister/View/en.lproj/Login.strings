@@ -45,7 +45,7 @@
 "Oz5-xH-JbT.placeholder" = "Full Name";
 
 /* Class = "UITextField"; placeholder = "Mobile No"; ObjectID = "QHI-pp-kVk"; */
-"QHI-pp-kVk.placeholder" = "Mobile No";
+"QHI-pp-kVk.placeholder" = "*Phone number";
 
 /* Class = "UITextField"; placeholder = "*Password"; ObjectID = "QmZ-ET-rbc"; */
 "QmZ-ET-rbc.placeholder" = "*Password";

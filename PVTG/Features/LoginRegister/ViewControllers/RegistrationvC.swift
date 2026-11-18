@@ -28,6 +28,7 @@ class RegistrationvC: BaseViewController {
             txfMobileNo.delegate = self
         }
     }
+    @IBOutlet weak var btnCountryCode: UIButton!
     
     @IBOutlet weak var txfPassword: UITextField!{
         didSet {
@@ -57,7 +58,8 @@ class RegistrationvC: BaseViewController {
     var loginVM = LoginVM()
     var imageData = Data()
     var socialData = [String: String]()
-   
+    var selectedCountryCode = "+57"
+
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +89,13 @@ class RegistrationvC: BaseViewController {
     @IBAction func profilePicBtnTap(_ sender: UIButton) {
         self.showSheet()
     }
+
+    @IBAction func tapCountryCode(_ sender: UIButton) {
+        view.endEditing(true)
+        guard let picker = CountryPicker.initWith(frame: view.bounds) else { return }
+        picker.delegateObj = self
+        view.addSubview(picker)
+    }
     
     @IBAction func tapSubmit(_ sender: UIButton) {
         self.txfEmail.resignFirstResponder()
@@ -96,10 +105,12 @@ class RegistrationvC: BaseViewController {
         self.txfMobileNo.resignFirstResponder()
             if validRegistrationetails() {
                 SaveToDefaults().setIsNew(isNew: true)
+                let phone = self.txfMobileNo.text?.trimmingCharacters(in: .whitespaces) ?? ""
+                let countryCode = phone.isEmpty ? "" : self.selectedCountryCode
                 if self.socialData.isEmpty{
-                    self.regVM.checkinEmailPhoneApi(email: self.txfEmail.text ?? "", country_code: "+91", phone: self.txfMobileNo.text ?? "", password: self.txfPassword.text ?? "", name: self.txffullName.text ?? "", acc_type: "normal", social_id: "", pictureData: imageData)
+                    self.regVM.checkinEmailPhoneApi(email: self.txfEmail.text ?? "", country_code: countryCode, phone: phone, password: self.txfPassword.text ?? "", name: self.txffullName.text ?? "", acc_type: "normal", social_id: "", pictureData: imageData)
                 }else{
-                    self.regVM.checkinEmailPhoneApi(email: self.txfEmail.text ?? "", country_code: "+91", phone: self.txfMobileNo.text ?? "", password: self.txfPassword.text ?? "", name: self.txffullName.text ?? "", acc_type: self.socialData["Social_type"] ?? "normal", social_id: self.socialData["id"] ?? "", pictureData: imageData)
+                    self.regVM.checkinEmailPhoneApi(email: self.txfEmail.text ?? "", country_code: countryCode, phone: phone, password: self.txfPassword.text ?? "", name: self.txffullName.text ?? "", acc_type: self.socialData["Social_type"] ?? "normal", social_id: self.socialData["id"] ?? "", pictureData: imageData)
                 }
             }
         }
@@ -107,6 +118,13 @@ class RegistrationvC: BaseViewController {
     @IBAction func tapLoginNow(_ sender: UIButton) {
         // Go back to the existing Login screen instead of stacking a new one
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension RegistrationvC: SelectCountryProtocol {
+    func getAddressValues(code: String) {
+        selectedCountryCode = code
+        btnCountryCode.setTitle(code, for: .normal)
     }
 }
 
@@ -157,8 +175,8 @@ extension RegistrationvC: UITextFieldDelegate {
         }
         
         if textField == self.txfMobileNo {
-            let length = (textField.text?.count ?? 0) + (string.count - range.length) <= 10
-            return length
+            let newText = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+            return string.unicodeScalars.allSatisfy { CharacterSet.decimalDigits.contains($0) } && newText.count <= 15
         }
         return newString.length <= maxLength
     }
@@ -167,12 +185,16 @@ extension RegistrationvC: UITextFieldDelegate {
 //MARK: - VIEW CONTROLLER EXTENSION
 extension RegistrationvC {
     private func validRegistrationetails()->Bool{
-        if txfMobileNo.text != "" {
-            if txfMobileNo.text?.count ?? 0 < 10 || txfMobileNo.text?.count ?? 0 > 10 {
-                self.lblmobileErr.isHidden = false
-                self.lblmobileErr.text = validNumber
-                return false
-            }
+        let phone = txfMobileNo.text?.trimmingCharacters(in: .whitespaces) ?? ""
+        if phone.isEmpty {
+            self.lblmobileErr.isHidden = false
+            self.lblmobileErr.text = emptyPhone
+            return false
+        }
+        if phone.count < 7 || phone.count > 15 {
+            self.lblmobileErr.isHidden = false
+            self.lblmobileErr.text = validNumber
+            return false
         }
         if txfEmail.text == "" {
             self.lblEmailErr.isHidden = false
@@ -251,6 +273,9 @@ extension RegistrationvC {
         txfconfirmpaswd.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
         btnSubmit.layer.borderWidth = 0.5
         btnSubmit.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
+        btnCountryCode.layer.cornerRadius = 10
+        btnCountryCode.layer.borderWidth = 0.5
+        btnCountryCode.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
     }
     
     private func fetchUserData() {
