@@ -47,7 +47,10 @@ struct CustomBokingModel {
     var offeredTypeId: String?
     var sessionName: String?
     var sessionDesc: String?
-    init(user_id: String, session_id: String, latitude: String, longitude: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,offeredTypeId : String,sessionName: String,sessionDesc : String) {
+    /// Time zone the booking date and times are in (the slot's currenttimezone from the server)
+    var timeZoneId: String?
+    init(user_id: String, session_id: String, latitude: String, longitude: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,offeredTypeId : String,sessionName: String,sessionDesc : String, timeZoneId: String? = nil) {
+        self.timeZoneId = timeZoneId
         self.user_id = user_id
         self.session_id = session_id
         self.latitude = latitude

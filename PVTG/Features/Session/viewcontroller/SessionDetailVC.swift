@@ -1491,14 +1491,8 @@ extension SessionDetailVC: GetResponse {
             var dateToTimeStr = ""
             
             if(getBookingToTimeStr != ""){
-                let dateFormatter = DateFormatter()
-                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-                dateFormatter.dateFormat = "HH:mm"
-                let date = dateFormatter.date(from:getBookingToTimeStr)!
-                
-                // let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "h:mm a"
-                dateToTimeStr = dateFormatter.string(from: date)
+                // End time is in the session's time zone on the booking date; show it in the user's time
+                dateToTimeStr = sessionDateTimeInLocal(date: data.booking_date ?? "", time: getBookingToTimeStr, timeZoneId: data.currenttimezone, toFormat: "h:mm a") ?? getBookingToTimeStr
             }
             if data.session_booking_status == "3" {
                 self.bookingDateLbl.text = "Cancelled"
@@ -1694,14 +1688,14 @@ extension SessionDetailVC {
             }else{
                 return
             }
-            self.vm.checkTicketAvailabilityApi(user_id: userid, session_id: id, latitude: "\(lat)", longitude: "\(lng)", ticket: self.lblTicketCount.text ?? "", booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", paid_amount: amt, schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", offeredTypeId: offeredTypeId)
+            self.vm.checkTicketAvailabilityApi(user_id: userid, session_id: id, latitude: "\(lat)", longitude: "\(lng)", ticket: self.lblTicketCount.text ?? "", booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", paid_amount: amt, schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", offeredTypeId: offeredTypeId, timeZoneId: self.vm.timeArr?.result?[self.id].currenttimezone)
         }
     }
      
     //MARK: - Reschedule Api
     private func rescheduleBooking(){
         guard let userid = SaveToDefaults().getUserId() else {return}
-        self.vm.sessionRescheduleApi(user_id: userid, session_id: sessionId, booking_id: bookingId, booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", rescheduleCount: rescheduleCountStr,session_time_minute : self.sessionTimeMinuteStr,selectedSessionSTr : self.selectedSession)
+        self.vm.sessionRescheduleApi(user_id: userid, session_id: sessionId, booking_id: bookingId, booking_date: self.selectedDate, booking_from_time: "\(self.vm.timeArr?.result?[self.id].from_time ?? "0")", booking_to_time: "\(self.vm.timeArr?.result?[self.id].to_time ?? "0")", schedule_time_id: "\(self.vm.timeArr?.result?[self.id].schedule_time_id ?? "0")", rescheduleCount: rescheduleCountStr,session_time_minute : self.sessionTimeMinuteStr,selectedSessionSTr : self.selectedSession, timeZoneId: self.vm.timeArr?.result?[self.id].currenttimezone)
         self.vm.rescheduleSuccesClosure = {[weak self ] in
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 self?.navigationController?.popViewController(animated: true)

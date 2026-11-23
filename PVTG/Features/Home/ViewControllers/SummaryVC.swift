@@ -104,24 +104,19 @@ class SummaryVC: BaseViewController, GMSMapViewDelegate {
         self.setDta()
         // Do any additional setup after loading the view.
         sessionTypLbl.text = self.selectedSessionSTr
-        let timeZoneIdentifier = TimeZone.current.identifier
-        print(timeZoneIdentifier)
+        // Booking date and times are in the session's time zone; show them in the user's own time.
+        // "h:mma" keeps the minutes, since converting can give half hours (e.g. India).
+        let bookingDate = self.customModel?.booking_date ?? ""
+        let sessionTZ = self.customModel?.timeZoneId
         if let time1 = self.customModel?.booking_from_time, let toTime = self.customModel?.booking_to_time {
-            let time1Str = changeDateFormatForReminder(date: time1, fromFormat: "HH:mm", toFormat: "hha", currentTimeZone: timeZoneIdentifier)
-            let time2Str = changeDateFormatForReminder(date: toTime, fromFormat: "HH:mm", toFormat: "hha", currentTimeZone: timeZoneIdentifier)
+            let time1Str = sessionDateTimeInLocal(date: bookingDate, time: time1, timeZoneId: sessionTZ, toFormat: "h:mma") ?? time1
+            let time2Str = sessionDateTimeInLocal(date: bookingDate, time: toTime, timeZoneId: sessionTZ, toFormat: "h:mma") ?? toTime
             self.sesionTimeLbl.text = "\(time1Str.lowercased()) - \(time2Str.lowercased())"
         }
         //sesionTimeLbl.text = (self.customModel?.booking_from_time ?? "") + (self.customModel?.booking_to_time ?? "")
-        
-        let inputFormatter = DateFormatter()
-            inputFormatter.dateFormat = "yyyy-MM-dd"
-            
-            if let date = inputFormatter.date(from: self.customModel?.booking_date ?? "") {
-                let outputFormatter = DateFormatter()
-                outputFormatter.dateFormat = "d MMM yyyy"
-                let strr = outputFormatter.string(from: date)
-                sesionDateLbl.text = strr
-            }
+
+        // The local date can be a day earlier/later than the session's date
+        sesionDateLbl.text = sessionDateTimeInLocal(date: bookingDate, time: self.customModel?.booking_from_time ?? "00:00", timeZoneId: sessionTZ, toFormat: "d MMM yyyy") ?? bookingDate
         
         //sesionDateLbl.text = self.customModel?.booking_date ?? ""
         
@@ -554,7 +549,7 @@ extension SummaryVC {
     
     //MARK: - METHOD TO HIT SESSION BOOKING API
     private func bookSession(transactionID:String) {
-        self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: self.ammountPayment, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:self.pointsPayent,session_type_id: self.customModel?.offeredTypeId ?? "",paymentId: transactionID, session_time_minute: self.getSessionTimeMinuteStr, selectedSessionSTr : self.selectedSessionSTr)
+        self.vm.sessionBookingApi(user_id: self.customModel?.user_id ?? "", session_id: self.customModel?.session_id ?? "", ticket: self.totalTkt, booking_date: self.customModel?.booking_date ?? "", booking_from_time: self.customModel?.booking_from_time ?? "", booking_to_time: self.customModel?.booking_to_time ?? "", paid_amount: self.ammountPayment, schedule_time_id: self.customModel?.schedule_time_id ?? "",points:self.pointsPayent,session_type_id: self.customModel?.offeredTypeId ?? "",paymentId: transactionID, session_time_minute: self.getSessionTimeMinuteStr, selectedSessionSTr : self.selectedSessionSTr, timeZoneId: self.customModel?.timeZoneId)
     }
 }
 

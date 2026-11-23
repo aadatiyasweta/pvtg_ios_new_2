@@ -31,8 +31,16 @@ class SearchCell: UICollectionViewCell {
     func setData(data: AllTimeResult?) {
         guard let data = data else {return}
         if let time1 = data.from_time, let toTime = data.to_time {
-            let time1Str = changeDateFormatForReminder(date: time1, fromFormat: "HH:mm", toFormat: "hh:mm a", currentTimeZone: data.currenttimezone ?? "")
-            let time2Str = changeDateFormatForReminder(date: toTime, fromFormat: "HH:mm", toFormat: "hh:mm a", currentTimeZone: data.currenttimezone ?? "")
+            // Slot times are in the session's time zone; show them in the user's own time
+            let date = data.schedule_date ?? ""
+            let tz = data.currenttimezone
+            let startDay = sessionDateTimeInLocal(date: date, time: time1, timeZoneId: tz, toFormat: "yyyy-MM-dd")
+            // Add the day when the local time falls on a different day than the one picked
+            let startFormat = (startDay != nil && startDay != String(date.prefix(10))) ? "d MMM, hh:mm a" : "hh:mm a"
+            let time1Str = sessionDateTimeInLocal(date: date, time: time1, timeZoneId: tz, toFormat: startFormat)
+                ?? changeDateFormatForReminder(date: time1, fromFormat: "HH:mm", toFormat: "hh:mm a", currentTimeZone: "")
+            let time2Str = sessionDateTimeInLocal(date: date, time: toTime, timeZoneId: tz, toFormat: "hh:mm a")
+                ?? changeDateFormatForReminder(date: toTime, fromFormat: "HH:mm", toFormat: "hh:mm a", currentTimeZone: "")
             self.searchCategorylbl.text = "\(time1Str) - \(time2Str)"
         }
     }

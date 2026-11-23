@@ -47,20 +47,4 @@ class ContactUsViewViewModel: BaseVm {
             }
         }
     }
-    
-    
-    func convertLocalToUTC(localTime: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.timeZone = NSTimeZone.local
-        let timeLocal = dateFormatter.date(from: localTime)
-        if timeLocal != nil {
-            dateFormatter.timeZone = TimeZone.init(abbreviation: "UTC")
-            
-            let timeUTC = dateFormatter.string(from: timeLocal!)
-            return timeUTC
-        }
-        return nil
-    }
-    
 }

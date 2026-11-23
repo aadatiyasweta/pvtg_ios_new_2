@@ -65,7 +65,7 @@ class SessionDetailViewModel: BaseVm {
     }
     
     //Api Ticket Avilability (user_id: userid, session_id: id, ticket: "\(tempTkt)", booking_date: self.selectedDate, booking_from_time: fromtime, booking_to_time: toTime, paid_amount: amt, schedule_time_id: timeId)
-    func checkTicketAvailabilityApi(user_id: String, session_id: String, latitude: String, longitude: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,offeredTypeId : String) {
+    func checkTicketAvailabilityApi(user_id: String, session_id: String, latitude: String, longitude: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,offeredTypeId : String, timeZoneId: String? = nil) {
         self.show()
         api_manager.GETApi(check_ticketApi(user_id: user_id, ticket: ticket, schedule_time_id: schedule_time_id), param: nil, header: header()) { [self] (response, err, code) in
             self.dismiss()
@@ -73,7 +73,7 @@ class SessionDetailViewModel: BaseVm {
                 debugPrint(json)
                 if json["statusCode"] == 200 {
                     
-                    self.customModel = CustomBokingModel.init(user_id: user_id, session_id: session_id, latitude: latitude, longitude: longitude, booking_date: booking_date, booking_from_time: booking_from_time, booking_to_time: booking_to_time, paid_amount: paid_amount, schedule_time_id: schedule_time_id, offeredTypeId: offeredTypeId,sessionName: self.sessionName,sessionDesc: self.sessionDesc)
+                    self.customModel = CustomBokingModel.init(user_id: user_id, session_id: session_id, latitude: latitude, longitude: longitude, booking_date: booking_date, booking_from_time: booking_from_time, booking_to_time: booking_to_time, paid_amount: paid_amount, schedule_time_id: schedule_time_id, offeredTypeId: offeredTypeId,sessionName: self.sessionName,sessionDesc: self.sessionDesc, timeZoneId: timeZoneId)
                     self.delegate?.bookingSuccess()
                     
                 }else if json["statusCode"] == 300 {
@@ -268,14 +268,22 @@ class SessionDetailViewModel: BaseVm {
         }
     }
     //MARK: - SESSION BOOKING API
-    func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String,session_type_id : String? = "",paymentId : String,session_time_minute : String, selectedSessionSTr : String) {
+    func sessionBookingApi(user_id: String, session_id: String, ticket: String, booking_date: String, booking_from_time: String, booking_to_time: String, paid_amount: String, schedule_time_id: String,points : String,session_type_id : String? = "",paymentId : String,session_time_minute : String, selectedSessionSTr : String, timeZoneId: String? = nil) {
         var prams = [String : Any]()
+        // booking_date/booking_from_time are in the session's time zone (the slot's currenttimezone),
+        // so convert from that zone; this is correct across daylight saving and midnight
+        let utcStart = bookingStartInUTC(date: booking_date, time: booking_from_time, timeZone: sessionTimeZone(timeZoneId))
         if session_type_id ?? "" == ""{
-            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","payment_id" : paymentId,"session_type_id" : session_type_id ?? "","session_time_minute" : session_time_minute,"session_type" : selectedSessionSTr]
+            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : utcStart?.time ?? "","language" : SaveToDefaults().getAppLang() ?? "en","payment_id" : paymentId,"session_type_id" : session_type_id ?? "","session_time_minute" : session_time_minute,"session_type" : selectedSessionSTr]
         }else{
-            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : convertLocalToUTC(localTime: booking_from_time) ?? "","language" : SaveToDefaults().getAppLang() ?? "en","session_type_id" : session_type_id ?? "","payment_id" : paymentId,"session_time_minute" : session_time_minute,"session_type" : selectedSessionSTr]
+            prams = ["user_id": user_id, "session_id": session_id, "ticket": ticket, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "paid_amount": paid_amount, "schedule_time_id": schedule_time_id,"points" : points,"booking_convert_time" : utcStart?.time ?? "","language" : SaveToDefaults().getAppLang() ?? "en","session_type_id" : session_type_id ?? "","payment_id" : paymentId,"session_time_minute" : session_time_minute,"session_type" : selectedSessionSTr]
         }
-        
+        // New fields so the server knows the full UTC moment, not just the time (ignored until the server uses them)
+        prams["booking_convert_date"] = utcStart?.date ?? ""
+        prams["booking_utc_datetime"] = utcStart?.iso8601 ?? ""
+        prams["currenttimezone"] = TimeZone.current.identifier
+        prams["session_timezone"] = sessionTimeZone(timeZoneId).identifier
+
         print(prams)
         self.show()
         api_manager.POSTApi(sessionBookingUrl(), param: prams, header: header()) { (response, err, code) in
@@ -301,9 +309,16 @@ class SessionDetailViewModel: BaseVm {
     }
     
     //MARK: - RESCHEDULE SESSION BOOKING API
-    func sessionRescheduleApi(user_id: String, session_id: String, booking_id: String, booking_date: String, booking_from_time: String, booking_to_time: String, schedule_time_id: String,session_type_id : String? = "",rescheduleCount : String,session_time_minute : String,selectedSessionSTr : String) {
+    func sessionRescheduleApi(user_id: String, session_id: String, booking_id: String, booking_date: String, booking_from_time: String, booking_to_time: String, schedule_time_id: String,session_type_id : String? = "",rescheduleCount : String,session_time_minute : String,selectedSessionSTr : String, timeZoneId: String? = nil) {
         var prams = [String : Any]()
         prams = ["user_id": user_id, "session_id": session_id, "reschedule_count": rescheduleCount, "booking_date": booking_date, "booking_from_time": booking_from_time, "booking_to_time": booking_to_time, "schedule_time_id": schedule_time_id,"booking_id": booking_id,"session_type_id":self.model?.session_type?[0].session_type_id ?? "" ,"language" : SaveToDefaults().getAppLang() ?? "en","session_time_minute" : session_time_minute,"session_type" : selectedSessionSTr]
+        // Same UTC fields as a new booking, so the server can update the booking's UTC start time
+        let utcStart = bookingStartInUTC(date: booking_date, time: booking_from_time, timeZone: sessionTimeZone(timeZoneId))
+        prams["booking_convert_time"] = utcStart?.time ?? ""
+        prams["booking_convert_date"] = utcStart?.date ?? ""
+        prams["booking_utc_datetime"] = utcStart?.iso8601 ?? ""
+        prams["currenttimezone"] = TimeZone.current.identifier
+        prams["session_timezone"] = sessionTimeZone(timeZoneId).identifier
         print(prams)
         self.show()
         api_manager.POSTApi(rescheduleSessionApiUrl(), param: prams, header: header()) { (response, err, code) in
@@ -322,20 +337,5 @@ class SessionDetailViewModel: BaseVm {
                 showAlert(strTitle: somethingWentWrongMessage)
             }
         }
-    }
-    
-    
-    func convertLocalToUTC(localTime: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.timeZone = NSTimeZone.local
-        let timeLocal = dateFormatter.date(from: localTime)
-        if timeLocal != nil {
-            dateFormatter.timeZone = TimeZone.init(abbreviation: "UTC")
-            
-            let timeUTC = dateFormatter.string(from: timeLocal!)
-            return timeUTC
-        }
-        return nil
     }
 }

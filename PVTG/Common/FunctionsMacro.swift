@@ -783,7 +783,8 @@ func showOpenSettingAlert(sender : UIViewController){
 
 func changeDateFormatForReminder(date : String,fromFormat : String = "dd-MMMM-yyyy", toFormat : String = "yyyy-MM-dd", currentTimeZone:String)-> String{
     dateFormatter.dateFormat = fromFormat
-    dateFormatter.timeZone = TimeZone(abbreviation: currentTimeZone) //locatimeZone
+    // The server sends names like "America/New_York", which TimeZone(abbreviation:) can't read
+    dateFormatter.timeZone = sessionTimeZone(currentTimeZone)
     let date1 = dateFormatter.date(from: date)
     dateFormatter.timeZone = NSTimeZone.local
     dateFormatter.dateFormat = toFormat
@@ -797,7 +798,7 @@ func changeDateFormatForReminder(date : String,fromFormat : String = "dd-MMMM-yy
 
 func changeDateToAnotherDateString(date : String,fromFormat : String = "EEEE, MMMM d", toFormat : String = "yyyy-MM-dd", currentTimeZone:String)-> String{
     dateFormatter.dateFormat = fromFormat
-    dateFormatter.timeZone = TimeZone(abbreviation: currentTimeZone)
+    dateFormatter.timeZone = sessionTimeZone(currentTimeZone)
     let date1 = dateFormatter.date(from: date)
     dateFormatter.timeZone = NSTimeZone.local
     dateFormatter.dateFormat = toFormat
@@ -1517,6 +1518,64 @@ func UTCToLocal(date:String) -> String {
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     print(dateFormatter.string(from: dt!))
     return dateFormatter.string(from: dt!)
+}
+
+/// Converts a booking's local date and start time to UTC.
+/// Uses the date so the offset is right for that exact day (daylight saving) and the
+/// UTC date moves to the next/previous day when needed (for example 23:30 in New York).
+/// - Parameters:
+///   - date: booking date as "yyyy-MM-dd" (same format the app sends as booking_date)
+///   - time: start time as "HH:mm" (extra seconds like "10:00:00" are ignored)
+///   - timeZone: the time zone the date and time are in; the phone's by default
+/// - Returns: UTC date ("yyyy-MM-dd"), UTC time ("HH:mm") and the full ISO 8601 moment
+///   (for example "2026-07-16T03:30:00Z"), or nil if the date or time can't be read.
+func bookingStartInUTC(date: String, time: String, timeZone: TimeZone = .current) -> (date: String, time: String, iso8601: String)? {
+    let input = DateFormatter()
+    input.locale = Locale(identifier: "en_US_POSIX") // fixed format, not affected by phone settings
+    input.timeZone = timeZone
+    input.dateFormat = "yyyy-MM-dd HH:mm"
+    guard let start = input.date(from: "\(date) \(time.prefix(5))") else { return nil }
+
+    let utc = TimeZone(identifier: "UTC")!
+    let output = DateFormatter()
+    output.locale = Locale(identifier: "en_US_POSIX")
+    output.timeZone = utc
+    output.dateFormat = "yyyy-MM-dd"
+    let utcDate = output.string(from: start)
+    output.dateFormat = "HH:mm"
+    let utcTime = output.string(from: start)
+
+    let iso = ISO8601DateFormatter()
+    iso.timeZone = utc
+    return (utcDate, utcTime, iso.string(from: start))
+}
+
+/// The time zone a session's times are in, from the server's value (e.g. "America/New_York").
+/// Falls back to the phone's time zone when the value is missing or unknown.
+func sessionTimeZone(_ identifier: String?) -> TimeZone {
+    guard let identifier = identifier, !identifier.isEmpty else { return .current }
+    return TimeZone(identifier: identifier) ?? TimeZone(abbreviation: identifier) ?? .current
+}
+
+/// Shows a session date + time (set in the session's time zone) in the phone's time zone.
+/// Uses the date, so daylight saving is right and the day can move (e.g. 23:00 New York = next day in India).
+/// - Parameters:
+///   - date: "yyyy-MM-dd" (anything after the date, like " 13:00", is ignored)
+///   - time: "HH:mm" (extra seconds are ignored)
+///   - timeZoneId: the session's time zone from the server
+///   - toFormat: output format, e.g. "h:mm a"
+/// - Returns: the formatted local value, or nil if the date or time can't be read.
+func sessionDateTimeInLocal(date: String, time: String, timeZoneId: String?, toFormat: String) -> String? {
+    let input = DateFormatter()
+    input.locale = Locale(identifier: "en_US_POSIX")
+    input.timeZone = sessionTimeZone(timeZoneId)
+    input.dateFormat = "yyyy-MM-dd HH:mm"
+    guard let moment = input.date(from: "\(date.prefix(10)) \(time.prefix(5))") else { return nil }
+
+    let output = DateFormatter()
+    output.timeZone = .current
+    output.dateFormat = toFormat
+    return output.string(from: moment)
 }
 
 func isDataSizeOverFlow(data:NSData , maxSize:CGFloat)->Bool{
