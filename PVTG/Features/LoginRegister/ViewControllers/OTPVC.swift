@@ -59,7 +59,7 @@ class OTPVC: BaseViewController {
     // Counts down from 01:00; the "Resend Code" button appears once it reaches zero.
     private func startTimer() {
         timer?.invalidate()
-        totalSecond = resendWai     tSeconds
+        totalSecond = resendWaitSeconds
         updateTimerUI()
         // [weak self] so the timer doesn't keep this screen in memory
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
