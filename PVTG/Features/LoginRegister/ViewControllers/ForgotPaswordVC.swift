@@ -28,6 +28,11 @@ class ForgotPaswordVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.paswdVM.delegate = self
+        // Lets iOS fill in the saved login email
+        txfEmail.textContentType = .username
+        txfEmail.keyboardType = .emailAddress
+        txfEmail.autocapitalizationType = .none
+        txfEmail.autocorrectionType = .no
     }
     
     override func viewWillLayoutSubviews() {

@@ -34,6 +34,12 @@ class ChangepaswdVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
+        // Lets iOS suggest a strong new password and update the saved one
+        let passwordRules = UITextInputPasswordRules(descriptor: "minlength: 8;") // same minimum the app checks
+        txfNewPaswd.textContentType = .newPassword
+        txfNewPaswd.passwordRules = passwordRules
+        txfConfirmPaswd.textContentType = .newPassword
+        txfConfirmPaswd.passwordRules = passwordRules
         DispatchQueue.main.async {
             self.setUptheTextfields()
         }

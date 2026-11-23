@@ -78,6 +78,8 @@ class RegistrationvC: BaseViewController {
     
     //MARK: - BUTTON ACTION
     @IBAction func hidePasswordButtonAction(_ sender: Any) {
+        // Switching secure entry can clear the field, so keep what was typed or suggested
+        let text = txfPassword.text
         if hidePasswordButton.isSelected{
             hidePasswordButton.isSelected = false
             txfPassword.isSecureTextEntry = true
@@ -85,6 +87,7 @@ class RegistrationvC: BaseViewController {
             hidePasswordButton.isSelected = true
             txfPassword.isSecureTextEntry = false
         }
+        txfPassword.text = text
     }
     @IBAction func profilePicBtnTap(_ sender: UIButton) {
         self.showSheet()
@@ -273,6 +276,17 @@ extension RegistrationvC {
         txfconfirmpaswd.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
         btnSubmit.layer.borderWidth = 0.5
         btnSubmit.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
+        // Lets iOS suggest a strong password and save it with the email for later logins
+        txffullName.textContentType = .name
+        txfEmail.textContentType = .username
+        txfEmail.keyboardType = .emailAddress
+        txfEmail.autocapitalizationType = .none
+        txfEmail.autocorrectionType = .no
+        let passwordRules = UITextInputPasswordRules(descriptor: "minlength: 8;") // same minimum the app checks
+        txfPassword.textContentType = .newPassword
+        txfPassword.passwordRules = passwordRules
+        txfconfirmpaswd.textContentType = .newPassword
+        txfconfirmpaswd.passwordRules = passwordRules
         btnCountryCode.layer.cornerRadius = 10
         btnCountryCode.layer.borderWidth = 0.5
         btnCountryCode.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor

@@ -42,6 +42,13 @@ class ChangePasswordVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         changPaswrdVM.delegateChangePassword = self
+        // Lets iOS fill the current password and suggest/save a strong new one
+        let passwordRules = UITextInputPasswordRules(descriptor: "minlength: 8;") // same minimum the app checks
+        txfOldpasswd.textContentType = .password
+        txfNewPaswd.textContentType = .newPassword
+        txfNewPaswd.passwordRules = passwordRules
+        txfConfirmPaswd.textContentType = .newPassword
+        txfConfirmPaswd.passwordRules = passwordRules
     }
     
     override func viewWillAppear(_ animated: Bool) {

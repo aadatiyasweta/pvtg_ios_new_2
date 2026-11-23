@@ -82,10 +82,18 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
         txfEmail.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
         btnSubmit.layer.borderWidth = 0.5
         btnSubmit.layer.borderColor = UIColor().coloWithHexString(hex: "#FFFFFF").cgColor
+        // Lets iOS offer saved passwords here and offer to save them after login
+        txfEmail.textContentType = .username
+        txfEmail.keyboardType = .emailAddress
+        txfEmail.autocapitalizationType = .none
+        txfEmail.autocorrectionType = .no
+        txfPassword.textContentType = .password
     }
-    
+
     //MARK: - BUTTON ACTION
     @IBAction func hidePasswordButtonAction(_ sender: Any) {
+        // Switching secure entry can clear the field, so keep what was typed or autofilled
+        let text = txfPassword.text
         if hidePasswordButton.isSelected{
             hidePasswordButton.isSelected = false
             txfPassword.isSecureTextEntry = true
@@ -93,6 +101,7 @@ class LoginVC: BaseViewController, ASAuthorizationControllerDelegate, ASAuthoriz
             hidePasswordButton.isSelected = true
             txfPassword.isSecureTextEntry = false
         }
+        txfPassword.text = text
     }
     @IBAction func tapForgotPassword(_ sender: UIButton) {
         let vc = ForgotPaswordVC.instance()

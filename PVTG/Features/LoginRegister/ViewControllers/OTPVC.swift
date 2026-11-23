@@ -23,85 +23,60 @@ class OTPVC: BaseViewController {
     //MARK: - Properties
     var email = ""
     var otp = ""
-//    var otpTimer : Timer?
-//    var counter = 60
     var vm = LoginVM()
-    
-    var totalSecond = 60
-    var timer:Timer?
-    
+
+    private let resendWaitSeconds = 60
+    private var totalSecond = 60
+    private var timer: Timer?
+
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer?.invalidate()
         setupPinView()
         self.vm.delegate = self
         self.otpMobileLbL.text = R.string.localizable.entertheverificationcode(self.email)
-        donotReciveLbl.text = ""
-        resndBtn.setTitle("", for: .normal)
-        resndBtn.isUserInteractionEnabled = false
-        timeLbl.text = "00:60"
-        
-//        donotReciveLbl.text = "donotReciveLbl"
-//        resndBtn.setTitle("Resend Code", for: .normal)
-        
-        self.totalSecond = 60
-        self.startTimer()
+        startTimer()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Stop the countdown when the user goes back, so it doesn't keep running
+        if isMovingFromParent || isBeingDismissed {
+            timer?.invalidate()
+        }
     }
-    
+
+    deinit {
+        timer?.invalidate()
+    }
+
     override func viewWillLayoutSubviews() {
         self.view.layoutIfNeeded()
         setVSViewShadow(radius: 10, color: .black, view: self.btnBack, opacity: 0.12)
     }
-  
-    //MARK:  - INITIAL TIMER
-//    func initialtimer(){
-//        self.resndBtn.alpha = 0
-//        self.donotReciveLbl.alpha = 0
-//        self.otpTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerAction), userInfo: nil, repeats: true)
-//    }
-    
-    //MARK: - TIMER ACTION
-//    @objc func timerAction() {
-//        if(counter > 0){
-//            self.counter -= 1
-//            self.resndBtn.alpha = 0
-//            self.donotReciveLbl.alpha = 0
-//        }else{
-//            otpTimer?.invalidate()
-//            self.resndBtn.alpha = 1
-//            self.donotReciveLbl.alpha = 1
-//         }
-//    }
-    func startTimer(){
-       timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
-    }
-    
-    @objc func countdown() {
-        var minutes: Int
-        var seconds: Int
 
-        if totalSecond == 0 {
+    //MARK: - RESEND COUNTDOWN
+    // Counts down from 01:00; the "Resend Code" button appears once it reaches zero.
+    private func startTimer() {
+        timer?.invalidate()
+        totalSecond = resendWai     tSeconds
+        updateTimerUI()
+        // [weak self] so the timer doesn't keep this screen in memory
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.totalSecond = max(self.totalSecond - 1, 0)
+            self.updateTimerUI()
+        }
+    }
+
+    private func updateTimerUI() {
+        let waiting = totalSecond > 0
+        timeLbl.text = waiting ? String(format: "%02d:%02d", totalSecond / 60, totalSecond % 60) : ""
+        donotReciveLbl.text = waiting ? "" : R.string.localizable.otpDidntReceive()
+        resndBtn.setTitle(waiting ? "" : R.string.localizable.otpResendCode(), for: .normal)
+        resndBtn.isUserInteractionEnabled = !waiting
+        if !waiting {
             timer?.invalidate()
-            timeLbl.text = ""
-            //resendTimeLbl.textColor = UIColor.lightGray
-            
-            self.resndBtn.isUserInteractionEnabled = true
-            donotReciveLbl.text = "Didn’t Receive? "
-            resndBtn.setTitle("Resend Code", for: .normal)
-        }else{
-            donotReciveLbl.text = ""
-            resndBtn.setTitle("", for: .normal)
-            totalSecond = totalSecond - 1
-            minutes = (totalSecond % 3600) / 60
-            seconds = (totalSecond % 3600) % 60
-            print(String(format: "%02d:%02d", minutes, seconds))
-            timeLbl.text = "\(String(format: "%02d:%02d", minutes, seconds))"
-            self.resndBtn.isUserInteractionEnabled = false
         }
     }
     
@@ -119,7 +94,7 @@ class OTPVC: BaseViewController {
         pinView.font = getFont(Fonts.semiBold.rawValue, 14)!
         pinView.keyboardType = .phonePad
         pinView.becomeFirstResponderAtIndex = 0
-        pinView.didChangeCallback = { [weak self] pin in
+        pinView.didChangeCallback = { pin in
             print("OTP digits entered:", pin.count)
         }
         pinView.didFinishCallback = { [weak self] pin in
@@ -129,10 +104,8 @@ class OTPVC: BaseViewController {
     
     @IBAction func resendBtnTap(_ sender: UIButton) {
         self.pinView.clearPin()
+        self.otp = ""
         self.vm.forgotApi(email: self.email, is_resend: "1")
-        donotReciveLbl.text = ""
-        resndBtn.setTitle("", for: .normal)
-        self.totalSecond = 60
         self.startTimer()
     }
     
@@ -149,7 +122,7 @@ class OTPVC: BaseViewController {
 //MARK: - CUSTOM DELEGATE
 extension OTPVC: AfterLoginSuccess {
     func inCorrectOtpMessage() {
-        let alertController = UIAlertController(title: "Dharma", message: "Invalid OTP." as? String, preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: appName, message: R.string.localizable.otpInvalid(), preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
             self.pinView.clearPin()
             self.otp = ""
