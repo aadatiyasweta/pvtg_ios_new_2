@@ -144,7 +144,8 @@ class AppDelegate:UIResponder,UIApplicationDelegate,UNUserNotificationCenterDele
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .notificationsChanged, object: nil)
             }
-            completionHandler([.alert,.sound, .badge])
+            // .banner shows it on screen and .list keeps it in Notification Center (together they replace the old .alert)
+            completionHandler([.banner, .list, .sound, .badge])
         }
         
      

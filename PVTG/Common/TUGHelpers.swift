@@ -340,7 +340,7 @@ class TUGHelpers: NSObject {
     
     
     class func getTopMostViewController() -> UIViewController {
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+        if var topController = UIApplication.shared.getKeyWindow()?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
@@ -428,7 +428,7 @@ class TUGHelpers: NSObject {
     
     class func rootViewController() -> UIViewController
     {
-        return (UIApplication.shared.keyWindow?.rootViewController)!
+        return (UIApplication.shared.getKeyWindow()?.rootViewController)!
     }
     func getLocalisedString(strKey:String)->String
     {

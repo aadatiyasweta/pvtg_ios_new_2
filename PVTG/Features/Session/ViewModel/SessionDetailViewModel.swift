@@ -283,7 +283,10 @@ class SessionDetailViewModel: BaseVm {
             if let json = response{
                 debugPrint(json)
                 if json["statusCode"] == 200 {
-                    SKStoreReviewController.requestReview()
+                    // Ask for an App Store rating in the window scene the user is looking at
+                    if let scene = UIApplication.shared.getKeyWindow()?.windowScene {
+                        SKStoreReviewController.requestReview(in: scene)
+                    }
                     self.bookingDelegate?.bookingSuccess()
                     NotificationCenter.default.post(name: .notificationsChanged, object: nil)
                     

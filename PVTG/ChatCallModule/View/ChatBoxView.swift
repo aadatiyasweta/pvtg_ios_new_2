@@ -510,15 +510,14 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
         guard sender.tag < arrChatList.count,
               let lat = arrChatList[sender.tag].lat,
               let long = arrChatList[sender.tag].long else { return }
-        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
-                    UIApplication.shared.openURL(NSURL(string:
-                                                        "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")! as URL)
-
-                } else {
-                    // if GoogleMap App is not installed
-                    UIApplication.shared.openURL(NSURL(string:
-                                                        "https://maps.google.com/?q=@\(lat),\(long)&directionsmode=driving")! as URL)
-                }
+        let googleMapsAppURL = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")
+        // Used when the Google Maps app is not installed
+        let googleMapsWebURL = URL(string: "https://maps.google.com/?q=@\(lat),\(long)&directionsmode=driving")
+        if let appURL = googleMapsAppURL, UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+            UIApplication.shared.open(appURL)
+        } else if let webURL = googleMapsWebURL {
+            UIApplication.shared.open(webURL)
+        }
     }
 }
 

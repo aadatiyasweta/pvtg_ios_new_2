@@ -41,7 +41,7 @@ var downloadURL = try! FileManager().url(for: .documentDirectory,
                                          in: .userDomainMask,
                                          appropriateFor: nil,
                                          create: true)
-let window = UIApplication.shared.keyWindow
+var window: UIWindow? { UIApplication.shared.getKeyWindow() }
 private let messageWindowTag = 9002
 let defaults = UserDefaults.standard
 let rupee = "₹"
@@ -1389,12 +1389,12 @@ extension UIView {
 }
 
 extension UIApplication {
+    // The key window of the app's window scenes (same result as the old UIApplication.windows lookup)
     func getKeyWindow() -> UIWindow? {
-        if #available(iOS 13, *) {
-            return windows.first { $0.isKeyWindow }
-        } else {
-            return keyWindow
-        }
+        return connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
     }
     func makeSnapshot() -> UIImage? { return getKeyWindow()?.layer.makeSnapshot() }
 }

@@ -7,7 +7,7 @@ import UIKit
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
-let keyWindow  = UIApplication.shared.keyWindow
+var keyWindow: UIWindow? { UIApplication.shared.getKeyWindow() }
 
 let themeColor = #colorLiteral(red: 0.1843137255, green: 0.5529411765, blue: 0.168627451, alpha: 1)
 let boldTextColor = #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
