@@ -506,14 +506,18 @@ class ChatBoxView: AKBaseVC,DelegatePlayVideo {
     }
     
     @objc private func openMap(sender: UIButton) {
+        // Don't open the map at 0,0 (in the ocean) when the message has no location
+        guard sender.tag < arrChatList.count,
+              let lat = arrChatList[sender.tag].lat,
+              let long = arrChatList[sender.tag].long else { return }
         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
                     UIApplication.shared.openURL(NSURL(string:
-                                                        "comgooglemaps://?saddr=&daddr=\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0),\(Double(arrChatList[sender.tag].long ?? 0.0) ?? 0.0)&directionsmode=driving")! as URL)
-                    
+                                                        "comgooglemaps://?saddr=&daddr=\(lat),\(long)&directionsmode=driving")! as URL)
+
                 } else {
                     // if GoogleMap App is not installed
                     UIApplication.shared.openURL(NSURL(string:
-                                                        "https://maps.google.com/?q=@\(Double(arrChatList[sender.tag].lat ?? 0.0) ?? 0.0),\(Double(arrChatList[sender.tag].long ?? 0.0) ?? 0.0)&directionsmode=driving")! as URL)
+                                                        "https://maps.google.com/?q=@\(lat),\(long)&directionsmode=driving")! as URL)
                 }
     }
 }

@@ -860,13 +860,14 @@ class TUGHelpers: NSObject {
         }
         
         switch src.imageOrientation {
+        // Flip mirrored images back. translatedBy/scaledBy return a new transform, so assign it.
         case UIImage.Orientation.upMirrored, UIImage.Orientation.downMirrored:
-            transform.translatedBy(x: src.size.width, y: 0)
-            transform.scaledBy(x: -1, y: 1)
+            transform = transform.translatedBy(x: src.size.width, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
             break
         case UIImage.Orientation.leftMirrored, UIImage.Orientation.rightMirrored:
-            transform.translatedBy(x: src.size.height, y: 0)
-            transform.scaledBy(x: -1, y: 1)
+            transform = transform.translatedBy(x: src.size.height, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
         case UIImage.Orientation.up, UIImage.Orientation.down, UIImage.Orientation.left, UIImage.Orientation.right:
             break
         }

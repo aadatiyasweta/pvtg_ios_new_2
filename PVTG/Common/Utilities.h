@@ -9,5 +9,4 @@
 #import <Foundation/Foundation.h>
 
 @interface Utilities : NSObject
-+(NSAttributedString*)convertHTMLStringToAttributedString:(NSString*)str;
 @end

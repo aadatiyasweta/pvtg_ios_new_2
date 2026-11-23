@@ -9,9 +9,10 @@ import Foundation
 
 extension UserDefaults {
     
-    static var user_id: Int! {
+    // Optional, so a missing or non-number value returns nil instead of crashing
+    static var user_id: Int? {
         get {
-            UserDefaults.standard.value(forKey: "user_id") as! Int
+            UserDefaults.standard.value(forKey: "user_id") as? Int
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "user_id")

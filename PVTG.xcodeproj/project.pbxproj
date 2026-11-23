@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01D4F7163091FFC50078F0CB /* Urbanist-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F7133091FFC50078F0CB /* Urbanist-Bold.ttf */; };
 		01D4F7173091FFC50078F0CB /* Epilogue-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F7093091FFC50078F0CB /* Epilogue-VariableFont_wght.ttf */; };
+		01D4F7183091FFC50078F0CB /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F7143091FFC50078F0CB /* Urbanist-Medium.ttf */; };
 
         01D4F7193091FFC50078F0CB /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F70D3091FFC50078F0CB /* Raleway-Medium.ttf */; };
 		01D4F71A3091FFC50078F0CB /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D4F70F3091FFC50078F0CB /* Raleway-SemiBold.ttf */; };
