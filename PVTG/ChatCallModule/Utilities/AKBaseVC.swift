@@ -122,7 +122,7 @@ class AKBaseVC: UIViewController {
     private func setKeyboardObservers(){
         guard let keyboardHandler = self.keyboardHandler else { return }
         self.keyboardDidShowNotificationObserver = NotificationCenter.default.addObserver(
-            forName: UIResponder.keyboardDidShowNotification,
+            forName: UIResponder.keyboardWillShowNotification, // "will": move with the keyboard, not after it
             object: nil,
             queue: .main
         ) { [weak self] (noti) in
@@ -136,7 +136,7 @@ class AKBaseVC: UIViewController {
         }
         
         self.keyboardDidHideNotificationObserver = NotificationCenter.default.addObserver(
-            forName: UIResponder.keyboardDidHideNotification,
+            forName: UIResponder.keyboardWillHideNotification,
             object: nil,
             queue: .main
         ) { [weak self] (noti) in
