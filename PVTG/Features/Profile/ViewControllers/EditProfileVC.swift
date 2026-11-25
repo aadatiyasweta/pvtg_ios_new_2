@@ -177,7 +177,7 @@ extension EditProfileVC {
     }
     
     private func setData() {
-        self.txfUserName.text = userDta?.name
+        self.txfUserName.text = userDta?.name ?? ""
         self.txfmobileNo.text = userDta?.phone
         if let code = userDta?.country_code, !code.isEmpty {
             selectedCountryCode = code
