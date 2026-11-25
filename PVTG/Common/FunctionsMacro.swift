@@ -1431,10 +1431,10 @@ extension UIViewController {
     
     func showOpenSettingAlert(title:String , message :String , completion:@escaping ()->Void){
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Cancel", style: .default, handler: {(_ alert: UIAlertAction) -> Void in
+        let ok = UIAlertAction(title: R.string.localizable.btnCancel(), style: .default, handler: {(_ alert: UIAlertAction) -> Void in
             completion()
         })
-        let Cancel = UIAlertAction(title: "Open-Settings", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+        let Cancel = UIAlertAction(title: R.string.localizable.btnSettings(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
             }
@@ -1442,22 +1442,15 @@ extension UIViewController {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
         })
-        
-        let attributedTitle = NSAttributedString.init(string: title, attributes: [NSAttributedString.Key.font:getFont(Fonts.bold.rawValue, 16)!])
-        
-        let attributedMessage = NSAttributedString.init(string: message, attributes: [NSAttributedString.Key.font:getFont(Fonts.regular.rawValue, 14)!])
-        
-        alrt.setValue(attributedTitle, forKey: "attributedTitle")
-        alrt.setValue(attributedMessage, forKey: "attributedMessage")
-        
+
         alrt.addAction(ok)
         alrt.addAction(Cancel)
         self.present(alrt, animated: true, completion: nil)
     }
-    
+
     func showDeniedLocationlAlert(title:String , message :String){
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let Cancel = UIAlertAction(title: "Open-Settings", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+        let Cancel = UIAlertAction(title: R.string.localizable.btnSettings(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
             }
@@ -1465,35 +1458,21 @@ extension UIViewController {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
         })
-        
-        let attributedTitle = NSAttributedString.init(string: title, attributes: [NSAttributedString.Key.font:getFont(Fonts.bold.rawValue, 16)!])
-        
-        let attributedMessage = NSAttributedString.init(string: message, attributes: [NSAttributedString.Key.font:getFont(Fonts.regular.rawValue, 14)!])
-        
-        alrt.setValue(attributedTitle, forKey: "attributedTitle")
-        alrt.setValue(attributedMessage, forKey: "attributedMessage")
-        
+
         alrt.addAction(Cancel)
         self.present(alrt, animated: true, completion: nil)
     }
-    
+
     func showCantFindLocationlAlert(title:String , message :String , completion:@escaping (Bool)-> Void){
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let Cancel = UIAlertAction(title: "Retry", style: .default, handler: {(_ action: UIAlertAction) -> Void in
+        let Cancel = UIAlertAction(title: R.string.localizable.btnRetry(), style: .default, handler: {(_ action: UIAlertAction) -> Void in
             completion(true)
         })
-        
-        let selectList = UIAlertAction(title: "Select From List", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+
+        let selectList = UIAlertAction(title: R.string.localizable.btnSelectFromList(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
             completion(false)
         })
-        
-        let attributedTitle = NSAttributedString.init(string: title, attributes: [NSAttributedString.Key.font:getFont(Fonts.bold.rawValue, 16)!])
-        
-        let attributedMessage = NSAttributedString.init(string: message, attributes: [NSAttributedString.Key.font:getFont(Fonts.regular.rawValue, 14)!])
-        
-        alrt.setValue(attributedTitle, forKey: "attributedTitle")
-        alrt.setValue(attributedMessage, forKey: "attributedMessage")
-        
+
         alrt.addAction(selectList)
         alrt.addAction(Cancel)
         self.present(alrt, animated: true, completion: nil)
@@ -1946,11 +1925,26 @@ func isNtworkReachable() -> Bool {
         return false
     }
 }
+func topPresenter(from base: UIViewController?) -> UIViewController? {
+    if let nav = base as? UINavigationController {
+        return topPresenter(from: nav.visibleViewController ?? nav)
+    }
+    if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+        return topPresenter(from: selected)
+    }
+    if let presented = base?.presentedViewController, !presented.isBeingDismissed {
+        return topPresenter(from: presented)
+    }
+    return base
+}
+
 func showAlert(strTitle:String)
 {
-    let alertViewController = UIAlertController(title: appName, message: strTitle, preferredStyle: .alert)
-    alertViewController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
-    appDelegate.window?.rootViewController?.present(alertViewController, animated: true, completion: nil)
+    DispatchQueue.main.async {
+        let alertViewController = UIAlertController(title: appName, message: strTitle, preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default,handler: nil))
+        topPresenter(from: appDelegate.window?.rootViewController)?.present(alertViewController, animated: true, completion: nil)
+    }
 }
 
 func showAlertWithTitle(messageBody:String,controller:UIViewController) {
@@ -1958,8 +1952,8 @@ func showAlertWithTitle(messageBody:String,controller:UIViewController) {
     {
         let alertController = UIAlertController(title: appName, message:
                                                     messageBody, preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
-        controller.present(alertController, animated: true, completion: nil)
+        alertController.addAction(UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default,handler: nil))
+        (topPresenter(from: controller) ?? controller).present(alertController, animated: true, completion: nil)
     }
 }
 

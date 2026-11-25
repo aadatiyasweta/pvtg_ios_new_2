@@ -119,3 +119,7 @@
 "otpDidntReceive" = "¿No recibiste el código? ";
 "otpResendCode" = "Reenviar código";
 "otpInvalid" = "Código no válido.";
+"btnSettings" = "Configuración";
+"btnCancel" = "Cancelar";
+"btnRetry" = "Reintentar";
+"btnSelectFromList" = "Seleccionar de la lista";

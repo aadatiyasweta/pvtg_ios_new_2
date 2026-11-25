@@ -256,8 +256,8 @@ class TUGHelpers: NSObject {
         {
             let alertController = UIAlertController(title: appName, message:
                                                         messageBody, preferredStyle: UIAlertController.Style.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: nil))
-            controller.present(alertController, animated: true, completion: nil)
+            alertController.addAction(UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default,handler: nil))
+            (topPresenter(from: controller) ?? controller).present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -267,10 +267,10 @@ class TUGHelpers: NSObject {
         {
             let alertController = UIAlertController(title: appName, message:
                                                         messageBody, preferredStyle: UIAlertController.Style.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: { action in
+            alertController.addAction(UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default,handler: { action in
                 completion(true)
             }))
-            controller.present(alertController, animated: true, completion: nil)
+            (topPresenter(from: controller) ?? controller).present(alertController, animated: true, completion: nil)
         }
     }
     

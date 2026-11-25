@@ -214,7 +214,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     }
     
     func showAlertView(_ msg: Any, title: String)  {
-        let alertController = UIAlertController(title: "ALERT!", message: msg as? String, preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: title, message: msg as? String, preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
         }
         alertController.addAction(okAction)
@@ -223,20 +223,13 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
     
     func showAlertWithConfirmation(_ message: String, withTitle title: String, itsController controller: UIViewController,okBtn : String? = R.string.localizable.ok(),cancelBtn : String? = R.string.localizable.cancel(),completion completionBlock: @escaping (_ success: Bool) -> Void) {
         let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: {(_ alert: UIAlertAction) -> Void in
+        let ok = UIAlertAction(title: okBtn ?? R.string.localizable.ok(), style: .default, handler: {(_ alert: UIAlertAction) -> Void in
             completionBlock(true)
         })
-        let Cancel = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+        let Cancel = UIAlertAction(title: cancelBtn ?? R.string.localizable.cancel(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
             completionBlock(false)
         })
-        
-        let attributedTitle = NSAttributedString.init(string: title, attributes: [NSAttributedString.Key.font:getFont(Fonts.semiBold.rawValue, 16)!])
-        
-        let attributedMessage = NSAttributedString.init(string: message, attributes: [NSAttributedString.Key.font:getFont(Fonts.regular.rawValue, 14)!])
-        
-        alrt.setValue(attributedTitle, forKey: "attributedTitle")
-        alrt.setValue(attributedMessage, forKey: "attributedMessage")
-        
+
         alrt.addAction(ok)
         alrt.addAction(Cancel)
         controller.present(alrt, animated: true, completion: nil)
@@ -244,20 +237,13 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
  
  func showAlertWithConfirmation2(_ message: String, withTitle title: String, itsController controller: UIViewController,okBtn : String? = R.string.localizable.yes(),cancelBtn : String? = R.string.localizable.no(),completion completionBlock: @escaping (_ success: Bool) -> Void) {
      let alrt = UIAlertController(title: title, message: message, preferredStyle: .alert)
-     let ok = UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: {(_ alert: UIAlertAction) -> Void in
+     let ok = UIAlertAction(title: okBtn ?? R.string.localizable.yes(), style: .default, handler: {(_ alert: UIAlertAction) -> Void in
          completionBlock(true)
      })
-     let Cancel = UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+     let Cancel = UIAlertAction(title: cancelBtn ?? R.string.localizable.no(), style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
          completionBlock(false)
      })
-     
-     let attributedTitle = NSAttributedString.init(string: title, attributes: [NSAttributedString.Key.font:getFont(Fonts.semiBold.rawValue, 16)!])
-     
-     let attributedMessage = NSAttributedString.init(string: message, attributes: [NSAttributedString.Key.font:getFont(Fonts.regular.rawValue, 14)!])
-     
-     alrt.setValue(attributedTitle, forKey: "attributedTitle")
-     alrt.setValue(attributedMessage, forKey: "attributedMessage")
-     
+
      alrt.addAction(ok)
      alrt.addAction(Cancel)
      controller.present(alrt, animated: true, completion: nil)
@@ -268,14 +254,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         let ok = UIAlertAction(title: R.string.localizable.okButton(), style: .cancel, handler: {(_ alert: UIAlertAction) -> Void in
             completionBlock(true)
         })
-        
-        let attributedTitle = NSAttributedString.init(string: title, attributes: [NSAttributedString.Key.font:getFont(Fonts.bold.rawValue, 16)!])
-        
-        let attributedMessage = NSAttributedString.init(string: message, attributes: [NSAttributedString.Key.font:getFont(Fonts.regular.rawValue, 14)!])
-        
-        alrt.setValue(attributedTitle, forKey: "attributedTitle")
-        alrt.setValue(attributedMessage, forKey: "attributedMessage")
-        
+
         alrt.addAction(ok)
         controller.present(alrt, animated: true, completion: nil)
     }
