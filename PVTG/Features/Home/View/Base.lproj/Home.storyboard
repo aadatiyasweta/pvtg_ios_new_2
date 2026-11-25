@@ -132,6 +132,9 @@
                                     <constraint firstItem="ToU-hx-9tH" firstAttribute="leading" secondItem="FVM-SR-JjC" secondAttribute="leading" id="SXR-bJ-qci"/>
                                     <constraint firstAttribute="trailing" secondItem="ToU-hx-9tH" secondAttribute="trailing" id="qIZ-lZ-ytI"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="lNq-GG-FXb" id="Ev1-Sd-001"/>
+                                </connections>
                             </scrollView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pri-4U-OYz">
                                 <rect key="frame" x="139" y="243.5" width="42" height="18.5"/>

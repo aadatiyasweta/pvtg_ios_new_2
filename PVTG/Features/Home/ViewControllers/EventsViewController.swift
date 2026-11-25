@@ -191,7 +191,7 @@ extension EventsViewController {
     //MARK: - PAGINATION
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView != self.colectionVw{
-            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+            if scrollView.contentSize.height > 0 && (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height - 100 {
                 if !self.vm.history.isEmpty {
                     if !self.vm.isLoading && self.vm.hasMoreHistory {
                         loadApi(offset: String(self.vm.nextHistoryOffset))
@@ -248,13 +248,13 @@ extension EventsViewController: LoadingEvents {
             self.lblUndrLine2.isHidden = false
         }
         
-        let tableHeight = self.vm.history.count * 225
-        constraintHeight.constant = CGFloat(tableHeight + self.vm.history.count * 70)
-        self.updateViewConstraints()
-        self.view.layoutSubviews()
-        self.view.layoutIfNeeded()
         self.TblVwHistory.reloadData()
         self.colectionVw.reloadData()
+        self.TblVwHistory.layoutIfNeeded()
+        constraintHeight.constant = self.TblVwHistory.contentSize.height
+        self.view.layoutIfNeeded()
+        constraintHeight.constant = self.TblVwHistory.contentSize.height
+        self.view.layoutIfNeeded()
     }
 
 }
