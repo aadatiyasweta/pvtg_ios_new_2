@@ -25,7 +25,7 @@ let topSearch = "https://dharma.services/admin_assets/img/topsearch.png" // new 
 let testingServer = "https://dharma.services/api/v1/" // live
 let stripePaymentAPI = "https://dharma.services/public/Stripe_IOS/stripe_payment.php" // live
 let stripeLivePublishKey = "pk_live_51KLVfEFKDEQWO0TJD37bD6aaeD9D0zRixYanno17NoNB2anCHC3P6zwJLq5BH1b97XFX0M0RnC3nIPewmbNMb6Mi00H8JNUV0H" // dfor live
-let stripeLiveSecretKey = "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" // for live
+let stripeLiveSecretKey = "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" // for live
 
 let terms =  "https://dharma.services/terms_condition.html"
 let aboutUs = "https://dharma.services/about_us.html"
