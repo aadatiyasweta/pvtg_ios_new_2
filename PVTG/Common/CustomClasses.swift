@@ -567,6 +567,7 @@ class Helper {
         alert.addAction(button1)
         alert.addAction(button2)
         alert.preferredAction = button1
+        alert.applyAlertFonts()
         controller.present(alert, animated: true)
     }
     

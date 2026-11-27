@@ -139,6 +139,7 @@ class TransformerExampleViewController: BaseViewController,FSPagerViewDataSource
             self.vm.userSelectedCategoryApi(user_id: userid, selected_category: id.joined(separator: ","))
         }
         alertController.addAction(okAction)
+        alertController.applyAlertFonts()
         self.present(alertController, animated: true, completion: nil)
     }
     

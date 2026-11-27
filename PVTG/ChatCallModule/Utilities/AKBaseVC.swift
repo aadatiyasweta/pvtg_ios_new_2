@@ -189,6 +189,7 @@ class AKBaseVC: UIViewController {
             }
             configs.configurations(tfs)
         }
+        alert.applyAlertFonts()
         alert.popoverPresentationController?.sourceView = sourceView
         if presentedViewController != nil {
             dismiss(animated: true) {

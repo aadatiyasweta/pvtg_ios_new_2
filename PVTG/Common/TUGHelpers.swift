@@ -97,6 +97,7 @@ class TUGHelpers: NSObject {
         let alert = UIAlertController(title: appName, message: msg, preferredStyle: .alert)
         let dismiss = UIAlertAction(title: R.string.localizable.okButton(), style: .cancel, handler: nil)
         alert.addAction(dismiss)
+        alert.applyAlertFonts()
         view.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
@@ -257,6 +258,7 @@ class TUGHelpers: NSObject {
             let alertController = UIAlertController(title: appName, message:
                                                         messageBody, preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default,handler: nil))
+            alertController.applyAlertFonts()
             (topPresenter(from: controller) ?? controller).present(alertController, animated: true, completion: nil)
         }
     }
@@ -270,6 +272,7 @@ class TUGHelpers: NSObject {
             alertController.addAction(UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default,handler: { action in
                 completion(true)
             }))
+            alertController.applyAlertFonts()
             (topPresenter(from: controller) ?? controller).present(alertController, animated: true, completion: nil)
         }
     }
@@ -285,6 +288,7 @@ class TUGHelpers: NSObject {
             popoverController.sourceRect = CGRect(x: viewController.view.bounds.midX, y: viewController.view.bounds.midY, width: 0, height: 0)
             popoverController.permittedArrowDirections = []
         }
+        alert.applyAlertFonts()
         viewController.present(alert, animated: true) { }
     }
     
@@ -392,10 +396,12 @@ class TUGHelpers: NSObject {
         }
         if let viewController = viewC {
             
+            alertController.applyAlertFonts()
             viewController.present(alertController, animated: true, completion: nil)
             
         } else {
             let topViewController: UIViewController? = TUGHelpers.topMostViewController(rootViewController: TUGHelpers.rootViewController())
+            alertController.applyAlertFonts()
             topViewController?.present(alertController, animated: true, completion: nil)
         }
     }

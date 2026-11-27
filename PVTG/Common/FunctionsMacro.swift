@@ -778,6 +778,7 @@ func showOpenSettingAlert(sender : UIViewController){
     })
     alrt.addAction(ok)
     alrt.addAction(Cancel)
+    alrt.applyAlertFonts()
     sender.present(alrt, animated: true, completion: nil)
 }
 
@@ -1018,6 +1019,7 @@ extension UIViewController {
         let alert = UIAlertController.init(title: "Error", message: "It seems there is no Internet connection.", preferredStyle: .alert)
         let okAction = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
+        alert.applyAlertFonts()
         self.present(alert, animated: true, completion: nil)
     }
 }
@@ -1445,6 +1447,7 @@ extension UIViewController {
 
         alrt.addAction(ok)
         alrt.addAction(Cancel)
+        alrt.applyAlertFonts()
         self.present(alrt, animated: true, completion: nil)
     }
 
@@ -1460,6 +1463,7 @@ extension UIViewController {
         })
 
         alrt.addAction(Cancel)
+        alrt.applyAlertFonts()
         self.present(alrt, animated: true, completion: nil)
     }
 
@@ -1475,6 +1479,7 @@ extension UIViewController {
 
         alrt.addAction(selectList)
         alrt.addAction(Cancel)
+        alrt.applyAlertFonts()
         self.present(alrt, animated: true, completion: nil)
     }
     
@@ -1925,6 +1930,33 @@ func isNtworkReachable() -> Bool {
         return false
     }
 }
+// MARK: - Common pop-up fonts
+// Every pop-up (UIAlertController) calls applyAlertFonts() so the title and message
+// use the same font everywhere. Change the fonts here only.
+enum AlertFonts {
+    static var title: UIFont { getFont(Fonts.semiBold.rawValue, 16) ?? .systemFont(ofSize: 16, weight: .semibold) }
+    static var message: UIFont { getFont(Fonts.regular.rawValue, 14) ?? .systemFont(ofSize: 14) }
+}
+
+extension UIAlertController {
+    /// Sets the common title and message fonts.
+    /// UIAlertController has no public font setting, so this uses its internal
+    /// "attributedTitle" / "attributedMessage" keys. Each key is checked first: if a
+    /// future iOS removes it, the pop-up keeps the system font instead of crashing.
+    func applyAlertFonts() {
+        if let title = title, !title.isEmpty, Self.hasKey("attributedTitle") {
+            setValue(NSAttributedString(string: title, attributes: [.font: AlertFonts.title]), forKey: "attributedTitle")
+        }
+        if let message = message, !message.isEmpty, Self.hasKey("attributedMessage") {
+            setValue(NSAttributedString(string: message, attributes: [.font: AlertFonts.message]), forKey: "attributedMessage")
+        }
+    }
+
+    private static func hasKey(_ key: String) -> Bool {
+        class_getProperty(UIAlertController.self, key) != nil
+    }
+}
+
 func topPresenter(from base: UIViewController?) -> UIViewController? {
     if let nav = base as? UINavigationController {
         return topPresenter(from: nav.visibleViewController ?? nav)
@@ -1943,6 +1975,7 @@ func showAlert(strTitle:String)
     DispatchQueue.main.async {
         let alertViewController = UIAlertController(title: appName, message: strTitle, preferredStyle: .alert)
         alertViewController.addAction(UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default,handler: nil))
+        alertViewController.applyAlertFonts()
         topPresenter(from: appDelegate.window?.rootViewController)?.present(alertViewController, animated: true, completion: nil)
     }
 }
@@ -1953,6 +1986,7 @@ func showAlertWithTitle(messageBody:String,controller:UIViewController) {
         let alertController = UIAlertController(title: appName, message:
                                                     messageBody, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default,handler: nil))
+        alertController.applyAlertFonts()
         (topPresenter(from: controller) ?? controller).present(alertController, animated: true, completion: nil)
     }
 }

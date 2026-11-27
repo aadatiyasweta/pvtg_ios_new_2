@@ -144,6 +144,7 @@ class HomeViewController: BaseViewController, CLLocationManagerDelegate {
             }
         }
         alertController.addAction(openAction)
+        alertController.applyAlertFonts()
         self.present(alertController, animated: true, completion: nil)
         }
     

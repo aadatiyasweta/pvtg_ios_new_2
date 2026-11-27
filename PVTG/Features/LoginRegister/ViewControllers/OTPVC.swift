@@ -128,6 +128,7 @@ extension OTPVC: AfterLoginSuccess {
             self.otp = ""
         }
         alertController.addAction(okAction)
+        alertController.applyAlertFonts()
         self.present(alertController, animated: true, completion: nil)
     }
     

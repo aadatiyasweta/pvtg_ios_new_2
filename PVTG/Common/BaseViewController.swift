@@ -218,6 +218,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         let okAction = UIAlertAction(title: R.string.localizable.okButton(), style: UIAlertAction.Style.default) { (result : UIAlertAction) -> Void in
         }
         alertController.addAction(okAction)
+        alertController.applyAlertFonts()
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -232,6 +233,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
 
         alrt.addAction(ok)
         alrt.addAction(Cancel)
+        alrt.applyAlertFonts()
         controller.present(alrt, animated: true, completion: nil)
     }
  
@@ -246,6 +248,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
 
      alrt.addAction(ok)
      alrt.addAction(Cancel)
+     alrt.applyAlertFonts()
      controller.present(alrt, animated: true, completion: nil)
  }
     
@@ -256,6 +259,7 @@ class BaseViewController: UIViewController , AVCapturePhotoCaptureDelegate, UIIm
         })
 
         alrt.addAction(ok)
+        alrt.applyAlertFonts()
         controller.present(alrt, animated: true, completion: nil)
     }
 }

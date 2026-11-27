@@ -216,6 +216,7 @@ class PrivacyPolicyVC: BaseViewController,WKNavigationDelegate ,UIWebViewDelegat
             let alert = UIAlertController(title: "Error", message: "Cannot open WhatsApp. Please make sure it is installed.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             if let topController = AppObject.window?.rootViewController {
+                alert.applyAlertFonts()
                 topController.present(alert, animated: true)
             }
         }
